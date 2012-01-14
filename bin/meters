@@ -1,0 +1,7 @@
+#!/bin/sh
+#meterbridge -t vu "PulseAudio JACK Sink":front-left "PulseAudio JACK Sink":front-right &
+#meterbridge -t dpm "PulseAudio JACK Sink":front-left "PulseAudio JACK Sink":front-right &
+
+meterbridge -t vu alsa_pcm:monitor_1 alsa_pcm:monitor_2 &
+meterbridge -t dpm alsa_pcm:monitor_1 alsa_pcm:monitor_2 &
+

@@ -1,0 +1,47 @@
+#!/bin/sh
+# 2011-09/30:jeff
+#
+#	WWW document script for caching web content
+#
+#	TODO / FIXME: 
+#	a)	I dislike the lack of handling the related attributes of TITLE / 
+#		file extension; UPDATE: basename is a good start
+#	b) 	Implement additional error checking, such as on command exec return
+#		as well as to check existance of said command exec
+#	c) 	Execute $URL literally for wget execution -- note that if you do not
+#		include double quotes around the URL, it messes because of the = char
+#	d) 	md5sum checking, such as the example: 
+#		md5sum ${TITLE}.htm >> ${TITLE}.md5sum
+#
+
+PROGNAME=`basename $0`
+WGET="wget"
+TITLE=$1
+URL=$2
+ARGC=$#
+
+function wwwdoc()
+{
+	LOGFILE=`basename $TITLE`
+	PARAMS="--no-check-certificate --convert-links --append-output=${LOGFILE}.log --output-document=${TITLE} ${URL}"	
+	EXEC="${WGET} ${PARAMS}"
+	
+	# not sure why I need to prepare the statement above for this command exec to work
+	command -p $EXEC
+	
+	# conditional test for file existance *AND* size greater than zero
+	if [[ ! -s ${TITLE} ]]; then
+		echo -e "\aERROR: File size is zero -- check ${LOGFILE}.log to see what went wrong"
+	fi
+}
+
+function usage()
+{
+	echo -e "Usage: $PROGNAME <title>.ext \"<url>\""
+}
+
+if [ $ARGC == 2 ]; then
+	wwwdoc
+else
+	usage
+fi

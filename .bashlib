@@ -1,0 +1,142 @@
+# 2011-07-20:jeff
+#
+# 		~/.bashlib
+#
+#   Local bash (1) functions executed for non-login interactive shells.
+#
+
+function scite() {
+	if [[ "$#" -ge 1 ]]; then # test expression: >=
+		command scite "$@" &
+	else
+		echo -e "Usage: scite.alias <file(s)>"
+	fi
+}
+
+function geany() {
+    command geany "$@" &
+}
+
+function firefox() {
+    command firefox "$@" &
+}
+
+function meld() {
+    command meld "$@" &
+}
+
+function bless() {
+    command bless "$@" &
+}
+
+function gtkman() {
+    command gtkman "$1" &
+}
+
+function pdf() {
+    command epdfview "$1" &
+}
+
+function ggv() {
+    command ggv "$1" &
+}
+
+function pkgbrowser() {
+    command pkgbrowser "$1" &
+}
+
+function luakit() {
+    command luakit "$@" &
+}
+
+function thunar()
+{
+	if [ -n "$1" ]; then
+		command thunar "$@" &
+	else
+		command thunar . &
+	fi
+}
+
+function gitg()
+{
+    if [ -n "$1" ]; then
+        command gitg "$@" &
+    else
+        command gitg . &
+    fi
+}
+
+function alsamixer()
+{
+	if [ -n "$1" ]; then
+		command alsamixer "$@"
+	else
+		command alsamixer -c0
+	fi
+}
+
+function ssh()
+{
+    if [[ "$1" = "-X" && -n "$2" ]]; then
+        echo -ne "TRANSLATING /usr/bin/ssh argument one [-X] to [-Y], appended $2"
+        command ssh "-Y" "$2"
+    else
+        command ssh "$@"
+    fi
+}
+
+function viewnior()
+{
+    if [ -n "$1" ]; then
+        command viewnior "$@" &
+    else
+        command viewnior ./* &
+    fi
+}
+
+function apkg()
+{
+    if [[ -z "$1" ]]; then
+        echo "Usage: apkg <pkg> ... where <pkg> is the AUR package name"
+    else
+        command wget http://aur.archlinux.org/packages/$1/$1.tar.gz
+    fi
+}
+
+# Handy extract function (example) from bash scripting howto
+function extract()
+{
+     if [ -f $1 ] ; then
+         case $1 in
+             *.tar.bz2)   tar xvjf $1     ;;
+             *.tar.gz)    tar xvzf $1     ;;
+             *.bz2)       bunzip2 $1      ;;
+             *.rar)       unrar x $1      ;;
+             *.gz)        gunzip $1       ;;
+             *.tar)       tar xvf $1      ;;
+             *.tbz2)      tar xvjf $1     ;;
+             *.tgz)       tar xvzf $1     ;;
+             *.zip)       unzip $1        ;;
+             *.Z)         uncompress $1   ;;
+             *.7z)        7z x $1         ;;
+             *)           echo "'$1' cannot be extracted via >extract<" ;;
+         esac
+     else
+         echo "'$1' is not a valid file"
+     fi
+}
+
+# Source: https://wiki.archlinux.org/index.php/Man_Page#Colored_man_pages
+man() {
+	env \
+		LESS_TERMCAP_mb=$(printf "\e[1;31m") \
+		LESS_TERMCAP_md=$(printf "\e[1;31m") \
+		LESS_TERMCAP_me=$(printf "\e[0m") \
+		LESS_TERMCAP_se=$(printf "\e[0m") \
+		LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
+		LESS_TERMCAP_ue=$(printf "\e[0m") \
+		LESS_TERMCAP_us=$(printf "\e[1;32m") \
+	man "$@"
+}
+

@@ -1,0 +1,9 @@
+# 2011-09/09:jeffrey.carp@gmail.com
+#
+#		~/.bash_login
+#
+
+# restore ALSA sfx levels
+#alsactl -f ~/.asound.state restore 0
+alsactl -f ~/.asound.state restore 1
+

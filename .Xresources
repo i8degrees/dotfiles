@@ -1,0 +1,92 @@
+! 2012-01/13:jeff
+
+! 		~/.Xresources
+
+! See also,
+
+! 	xinit (1)	urxvt (1)
+
+! --#define TERM_COLOR_THEME_FIELDING
+#define TERM_COLOR_THEME_HONKY
+#define URXVT_COLOR_THEME_MANPAGES
+! --#define CURSOR_THEME_DEFAULT
+#define CURSOR_THEME_NPLUS
+#define USE_XAUTOLOCK
+
+!		[ URxvt.General ]
+URxvt.title: 			Term
+!URxvt.termName:		rxvt-unicode
+!URxvt.geometry:		80x24
+URxvt.geometry:			$(LINES)x$(COLUMNS)
+!URxvt.modifier:		alt
+!URxvt.iconName:		terminal
+URxvt.iso14755:			false
+URxvt.iso14755_52:		false
+URxvt.skipScroll: 		false
+URxvt.scrollBar:		false
+URxvt.saveLines: 		65536
+URxvt.borderLess: 		false
+URxvt.cursorBlink: 		true
+URxvt.internalBorder: 	0
+URxvt.externalBorder:	0
+URxvt.cutchars: 		"()*,<>[]{}|'"
+URxvt.print-pipe: 		cat > $(TMPDIR)=$HOME mktemp urxvt.XXXXXX
+URxvt.visualBell: 		false
+URxvt.urgentOnBell:		true
+
+!		[ URxvt.URL/Clipboard Handling ]
+URxvt.perl-ext-common: 	default
+URxvt.urlLauncher:     	firefox
+URxvt.underlineURLs:   	true
+URxvt.keysym.M-Escape: 	perl:keyboard-select:activate
+URxvt.keysym.M-s:      	perl:keyboard-select:search
+
+!		[ URxvt.Fonts & Colors ]
+URxvt.font: 			xft:DroidSansMono:pixelsize=16
+URxvt.boldFont: 		xft:DroidSansMono:pixelsize=16:bold
+URxvt.depth: 			32
+URxvt.background: 		rgba:0000/0000/0000/bbbb
+URxvt.foreground: 		#eeeeee
+URxvt.cursorColor:		#83C048
+URxvt.highlightColor:	#444444
+URxvt.underlinecolor: 	#999999
+URxvt.transparent:		true
+URxvt.tintColor: 		white
+URxvt.shading: 			12							! Darken = 0..99
+													! Lighten = 101..200
+													! Disable Shade = 100
+
+!		[Colored man pages ]
+#ifdef URXVT_COLOR_THEME_MANPAGES
+	URxvt.colorIT:			#87af5f
+	URxvt.colorBD:			#d7d7d7
+	URxvt.colorUL:			#87afd7
+#endif
+
+!		[ Color Schemes ]
+#ifdef TERM_COLOR_THEME_FIELDING
+	#include				"/home/jeff/.colors/fielding"
+#endif
+
+#ifdef TERM_COLOR_THEME_HONKY
+	#include 				"/home/jeff/.colors/honky"
+#endif
+
+!		[ Xpointer ]
+#ifdef CURSOR_THEME_DEFAULT
+	Xcursor.theme: 			Black-DMZ
+	Xcursor.size: 			64
+#endif
+
+#ifdef CURSOR_THEME_NPLUS
+	Xcursor.theme: 			NPlus
+	Xcursor.size: 			64
+#endif
+
+!		[ xautolock ]
+#ifdef USE_XAUTOLOCK
+	Xautolock.time:			10
+	Xautolock.locker:		/usr/bin/slimlock
+#endif
+
+!		[ xscreensaver ]
