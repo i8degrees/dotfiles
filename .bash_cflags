@@ -1,0 +1,26 @@
+#!/bin/sh
+#
+# 2012-01/16:jeff
+#
+# 		~/.bash_cflags
+#
+# 	Local system compiler / linker flags for the GNU toolchain;
+# relatively no tuning for the time being until I (re)-build a
+# new system ...
+#
+# See also,
+#
+#	makepkg.conf(5)		makepkg(8)		pacman(8)		PKGBUILD(5)
+#
+
+#FIXME/TODO: eval /etc/makepkg.conf
+#export CARCH=""
+#export CHOST=""
+#export LDFLAGS="-W1,-O1,--sort-common,--as-needed,-z,relro,--hash-style=gnu"
+
+export CFLAGS="-march=i686 -mtune=generic -O2 -pipe -fstack-protector -D_FORTIFY_SOURCE=2"
+export CXXFLAGS=$CFLAGS
+export MAKEFLAGS="-j3"
+export LOCAL="libra"
+export PREFIX="/usr/local"
+export RUBYOPT="-W1 -rubygems"
