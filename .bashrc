@@ -29,7 +29,8 @@ export CXXFLAGS=$CFLAGS
 export MAKEFLAGS="-j3"
 export PREFIX="/usr/local"
 #FIXME/TODO: eval /etc/makepkg.conf
-export RUBYOPT="-W2 -rubygems"
+export RUBYOPT="-W1 -rubygems"
+export PATH="$HOME/.rbenv/bin"
 export MINICOM="-m -c on"
 #export USECOLOR=true
 
@@ -59,6 +60,8 @@ export RECOLL_CONFDIR="$HOME/.recoll"
 if [ "$COLORTERM" ]; then
     eval $(dircolors -b ~/.colors/.dir_colors)
 fi
+
+eval "$(rbenv init -)"
 
 . "${HOME}"/.bash_aliases
 . "${HOME}"/.bashlib
