@@ -20,10 +20,10 @@ set nowrap                                                              " don't 
 set textwidth=0                                                         " stops linewrapping at invisible margins
 set lbr                                                                 " wrap text
 set number                                                              " show line numbers
-set paste                                                               " set paste mode
+"set paste                                                               " set paste mode
 set backup                                                              " turn on auto backups
-set backupdir=~/.vim/backup//                                          	" where to put backup files
-set directory=~/.vim/tmp//                                             	" where to put tmp files
+set backupdir=~/.vim/backup/                                          	" where to put backup files
+set directory=~/.vim/tmp/                                             	" where to put tmp files
 set pastetoggle=<f5>                                                    " toggle paste mode
 set clipboard=unnamedplus												" aliases the unnamed register to the + register
 																		" AKA X11 clipboard
@@ -59,7 +59,8 @@ map Q gq                                                                " Q does
 
 inoremap <C-U> <C-G>u<C-U>                                              " enables CTRL-U after inserting a line break.
 :noremap <silent> <Space> :silent noh<Bar>echo<CR>                      " spacebar unhighlights search text
-cmap w!! w !sudo tee % >/dev/null %                                      " force writing of files that need root privs
+" sudo write as root
+cmap w!! w !sudo tee % >/dev/null %
 
 
 " In many terminal emulators the mouse works just fine, thus enable it.
