@@ -2,9 +2,7 @@
 #
 #		~/.bash_profile
 #
-#	User's local bash profile executed for login shells; non-console 
-#	(think: X11) terminal shells are excluded.
-#	
+#	User's local bash profile executed for login shells (non-interactive).
 #
 
 #if [[ -z $DISPLAY && $(tty) = /dev/tty1 ]]; then
@@ -15,3 +13,4 @@
 
 . $HOME/.bashrc
 
+umask 022
