@@ -4,6 +4,6 @@
 #
 
 # restore ALSA sfx levels
-#alsactl -f ~/.asound.state store 0
+alsactl -f ~/.asound.state store 0
 alsactl -f ~/.asound.state store 1
 
