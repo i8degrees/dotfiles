@@ -1,0 +1,66 @@
+#!/bin/sh
+#
+# 2012-01/16:jeff
+#
+# 		~/.bash_prompt
+#
+#   Local bash(1) command prompt
+#
+# See also,
+#
+#	bash(8)
+#
+# https://wiki.archlinux.org/index.php/Color_Bash_Prompt
+#
+#			NOTES
+#
+#	1.	Make sure that your color variables are enclosed in double and not
+#		single quote marks. Using single quote marks seems to give Bash
+#		problems with line wrapping correctly.
+
+# Declare & initialize color palette
+
+RS="\[\e[0m"       	# Text Reset
+BLACK="\e[0;00m" 	# blank space
+RED="\e[0;31m" 		# @
+GREEN="\e[0;32m" 	# timestamp
+ORANGE="\e[0;33m" 	# hostname
+CYAN="\e[0;34m" 	# username || :
+GREY="\e[0;36m" 	# $CWD || ~
+
+BLANK="\[$BLACK\]"
+USERNAME="\[$CYAN\]\u\[$RS\]"
+HOST="\[$ORANGE\]\h\[$CYAN\]"
+AT="\[$GREEN\]@"
+WORKING_DIRECTORY=":\w\[$GREY\]"
+PROMPT="\[$ORANGE\] \$ \[$RS\]"
+TIMESTAMP_CMD="[`date +%H:%M:%S`]"
+TIMESTAMP="\[$GREEN\]$TIMESTAMP_CMD"
+ROOT=`id -u`
+
+if [ "$ROOT" = "0" ]; then
+	USERNAME="\[$RED\]\u\[$RS\]"
+	PROMPT="\[$RED\] \# \[$RS\]"
+	# [23:52:37] root@libra:~ #
+	PS1="${TIMESTAMP} ${USERNAME}${AT}${HOST}${WORKING_DIRECTORY}${PROMPT}"
+else
+	# [23:52:37] jeff@libra:~ $
+	PS1="${TIMESTAMP} ${USERNAME}${AT}${HOST}${WORKING_DIRECTORY}${PROMPT}"
+fi
+
+PS2="> "
+PS3="> "
+PS4="+ "
+
+export PS1 PS2 PS3 PS4
+
+if test "$TERM" = "xterm" -o \
+		"$TERM" = "xterm-color" -o \
+		"$TERM" = "xterm-256color" -o \
+		"$TERM" = "rxvt" -o \
+		"$TERM" = "rxvt-unicode" -o \
+		"$TERM" = "xterm-xfree86" -o \
+		"$TERM" = "screen-256color"; then
+	PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
+	export PROMPT_COMMAND
+fi
