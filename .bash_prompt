@@ -17,6 +17,29 @@
 #	1.	Make sure that your color variables are enclosed in double and not
 #		single quote marks. Using single quote marks seems to give Bash
 #		problems with line wrapping correctly.
+#	2.	http://maketecheasier.com/8-useful-and-interesting-bash-prompts/2009/09/04
+#	3.	http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html
+#	4.	http://www.hypexr.org/bash_tutorial.php#cdargs
+#
+
+
+# set variable identifying the chroot you work in (used in the prompt below)
+#if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
+#    debian_chroot=$(cat /etc/debian_chroot)
+#fi
+
+# set a fancy prompt (non-color, unless we know we "want" color)
+#case "$TERM" in
+#xterm-color)
+#    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+#    ;;
+#*)
+#    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+#    ;;
+#esac
+# Comment in the above and uncomment this below for a color prompt
+#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ '
+
 
 # Declare & initialize color palette
 
@@ -33,6 +56,7 @@ USERNAME="\[$CYAN\]\u\[$RS\]"
 HOST="\[$ORANGE\]\h\[$CYAN\]"
 AT="\[$GREEN\]@"
 WORKING_DIRECTORY=":\w\[$GREY\]"
+#PROMPT="\[$ORANGE\] \$ "
 PROMPT="\[$ORANGE\] \$ \[$RS\]"
 TIMESTAMP_CMD="[`date +%H:%M:%S`]"
 TIMESTAMP="\[$GREEN\]$TIMESTAMP_CMD"
@@ -41,11 +65,11 @@ ROOT=`id -u`
 if [ "$ROOT" = "0" ]; then
 	USERNAME="\[$RED\]\u\[$RS\]"
 	PROMPT="\[$RED\] \# \[$RS\]"
-	# [23:52:37] root@libra:~ #
-	PS1="${TIMESTAMP} ${USERNAME}${AT}${HOST}${WORKING_DIRECTORY}${PROMPT}"
+	# root@libra:~ #
+	PS1="${USERNAME}${AT}${HOST}${WORKING_DIRECTORY}${PROMPT}"
 else
-	# [23:52:37] jeff@libra:~ $
-	PS1="${TIMESTAMP} ${USERNAME}${AT}${HOST}${WORKING_DIRECTORY}${PROMPT}"
+	# jeff@libra:~ $
+	PS1="${USERNAME}${AT}${HOST}${WORKING_DIRECTORY}${PROMPT}"
 fi
 
 PS2="> "
@@ -62,5 +86,15 @@ if test "$TERM" = "xterm" -o \
 		"$TERM" = "xterm-xfree86" -o \
 		"$TERM" = "screen-256color"; then
 	PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME%%.*}:${PWD/$HOME/~}\007"'
+	history -a
 	export PROMPT_COMMAND
 fi
+
+# If this is an xterm set the title to user@host:dir
+#case "$TERM" in
+#xterm*|rxvt*)
+#    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
+#    ;;
+#*)
+#    ;;
+#esac
