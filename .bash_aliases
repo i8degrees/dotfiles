@@ -27,8 +27,8 @@ alias watch="watch -n 1.0 $@"
 alias iostat="iostat -d 1 $@"
 #alias ifstat=""
 
-alias mount_jasmine="mount /media/sshfs/jasmine.www"
-alias umount_jasmine="fusermount -u /media/sshfs/jasmine.www"
+alias mount_jasmine="mount /media/sshfs/jasmine/jeff"
+alias umount_jasmine="fusermount -u /media/sshfs/jasmine/jeff"
 
 alias edit="$(which geany)"
 #alias edit="$VISUAL"
@@ -41,15 +41,15 @@ alias xclip="xclip -sel clip"
 # TODO/FIXME
 #alias 'shutdown_vbox'="VBoxManage controlvm $@ poweroff"
 
-if [[ "$COLORTERM" && -x "$(which colorgcc)" ]]; then
-	alias gcc="$(which colorgcc)"
-	alias g++="$(which colorgcc)"
-else
+#if [[ "$COLORTERM" && -x "$(which colorgcc)" ]]; then
+	#alias gcc="$(which colorgcc)"
+	#alias g++="$(which colorgcc)"
+#else
 	alias gcc="$(which gcc)"
 	alias g++="$(which g++)"
-	#alias gcc="/usr/bin/gcc"
-	#alias g++="/usr/bin/gcc"
-fi
+	alias gcc="/usr/bin/gcc"
+	alias g++="/usr/bin/gcc"
+#fi
 
 if [[ "$COLORTERM" && -x "$(which colordiff)" ]]; then
 	alias diff="$(which colordiff)"
@@ -70,19 +70,19 @@ fi
 
 # Arch (Linux) specific:
 
-if [[ "$COLORTERM" && -x "$(which pacman-color)" ]]; then
-	alias pacman="$(which pacman-color)"
-else
-	alias pacman="$(which pacman)"
-	#alias pacman="/usr/bin/pacman"
-fi
+#if [[ "$COLORTERM" && -x "$(which pacman-color)" ]]; then
+	#alias pacman="$(which pacman-color)"
+#else
+	#alias pacman="$(which pacman)"
+	alias pacman="/usr/bin/pacman"
+#fi
 
-if [[ "$COLORTERM" && -x "$(which packer-color)" ]]; then
-	alias packer="$(which packer-color)"
-else
-	alias packer="$(which packer)"
-	#alias packer="/usr/bin/packer"
-fi
+#if [[ "$COLORTERM" && -x "$(which packer-color)" ]]; then
+	#alias packer="$(which packer-color)"
+#else
+	#alias packer="$(which packer)"
+	alias packer="/usr/bin/yaourt"
+#fi
 
 # TODO/FIXME: yaourt <3
 alias yogurt="yaourt"
@@ -102,3 +102,4 @@ alias pkgsrc="pacman -sQm" # list locally compiled/installed packages (AUR, abs)
 
 
 alias ifstat="cls && $(which ifstat) -z -i eth0,eth1 -w -S $@"
+
