@@ -12,7 +12,7 @@
 export DESKTOP_BACKGROUND=$HOME/.backgrounds/archlinux.png
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 export DISPLAY=":0"
-SYNERGY_EXEC=/usr/bin/synergys
+SYNERGY_EXEC=/usr/local/bin/synergys
 SYNERGY_HOST=libra.syn.localnet
 SYNERGY_PARAMS="--restart --debug ERROR --address $SYNERGY_HOST --log /var/log/synergy.log"
 DEFAULT_SESSION=awesome
@@ -89,8 +89,6 @@ else
 	echo -e "ERROR: Xmodmap configuration is missing"
 fi
 
-
-
 # parcellite copy/paste bug creates weird autocomplete
 # issues while browsing folders / typing path directly
 # into location bar -- DISABLED until new tray app
@@ -102,6 +100,7 @@ if [[ -f /usr/bin/unclutter && -x /usr/bin/unclutter ]]; then
 	unclutter -idle 4 & # 2&>1
 fi
 
+pulseaudio --kill
 blueman-applet &
 #xscreensaver & # 2&>1
 #nvdock & # 2&>1
@@ -118,6 +117,7 @@ pasystray & # 2&>1
 #xfs & # 2&>1
 #xhost + # 2&>1
 dropboxd &
+#python2.7 $HOME/src/py-cloudapp.git/cloudapp &
 
 if [ -x $SYNERGY_EXEC ]; then
 	nice -n -5 $SYNERGY_EXEC $SYNERGY_PARAMS & # 2&>1
