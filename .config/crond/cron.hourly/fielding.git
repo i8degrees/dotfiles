@@ -14,7 +14,7 @@ ARGC=$#
 
 usage()
 {
-	PROGNAME="$(which basename $0)"
+	PROGNAME="/usr/bin/basename $0)"
 	echo -e "Usage: $PROGNAME <TODO> ..."
 }
 
@@ -50,3 +50,5 @@ if [ -d "$FIELDING_FIELDNOTE" ]; then
 else
 	log_err
 fi
+
+exit 0
