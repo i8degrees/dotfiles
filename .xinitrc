@@ -102,15 +102,16 @@ fi
 
 pulseaudio --kill
 blueman-applet &
+wicd-gtk &
 #xscreensaver & # 2&>1
 #nvdock & # 2&>1
 nvidia-settings --load-config-only --config=$HOME/.nvidia-settings-libra & # 2&>1
-system-config-printer-applet & # 2&>1
+#system-config-printer-applet & # 2&>1
 thunar --daemon & # 2&>1
-gmpc & # 2&>1
+ario & # 2&>1
 #sonata & # 2&>1
 #pidgin & # 2&>1
-qasmixer -t & # 2&>1
+#qasmixer -t & # 2&>1
 pasystray & # 2&>1
 #padevchooser & # 1&>1
 #xcompmgr -d $DISPLAY -n -F & # 2&>1
@@ -118,6 +119,7 @@ pasystray & # 2&>1
 #xhost + # 2&>1
 dropboxd &
 #python2.7 $HOME/src/py-cloudapp.git/cloudapp &
+gem server --port 1025 -b "libra.local","192.168.151.100" &
 
 if [ -x $SYNERGY_EXEC ]; then
 	nice -n -5 $SYNERGY_EXEC $SYNERGY_PARAMS & # 2&>1
