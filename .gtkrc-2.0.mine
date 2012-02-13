@@ -23,7 +23,30 @@ gtk-xft-hinting = 1
 gtk-xft-hintstyle = hintfull
 gtk-xft-rgba = rgb
 
-# http://thunar.xfce.org/pwiki/documentation/advanced_settings
+# Pidgin Conversations Font
+# Origins: http://developer.pidgin.im/wiki/Using%20Pidgin#HowdoIchangethefontPidginusesThebackgroundcolor
+style "imhtml-fix"
+{
+    font_name = "Helvetica Neue LT Com 53 Extended 14"
+}
+
+# Pidgin Conversation entry box
+widget "*pidgin_conv_entry" style "imhtml-fix"
+
+# Pidgin Conversation History Pane
+widget "*pidgin_conv_imhtml" style "imhtml-fix"
+
+# Pidgin Log viewer
+widget "*pidgin_log_imhtml" style "imhtml-fix"
+
+# Pidgin IM::HTML Widgets
+widget "*pidgin_request_imhtml" style "imhtml-fix"
+
+# Pidgin Dialog::HTML Widgets
+widget "*pidgin_notify_imhtml" style "imhtml-fix"
+
+# Thunar
+# Origins: http://thunar.xfce.org/pwiki/documentation/advanced_settings
 style "thunar-icon-view-reduced-style"
 {
 	#ThunarIconView::column-spacing = 4
@@ -38,5 +61,4 @@ style "fonttweak"
 
 widget_class "*Thunar*View*" style "fonttweak"
 #widget_class "*GtkTreeView*" style "fonttweak"
-
 
