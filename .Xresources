@@ -12,6 +12,9 @@
 ! --#define CURSOR_THEME_DEFAULT
 #define CURSOR_THEME_NPLUS
 #define USE_XAUTOLOCK
+! --#define BACKGROUND
+#define BACKGROUND_ARCH
+! --#define BACKGROUND_NAUGHTY
 
 !		[ URxvt.General ]
 URxvt.title: 			Term
@@ -52,9 +55,20 @@ URxvt.highlightColor:	#444444
 URxvt.underlinecolor: 	#999999
 URxvt.transparent:		true
 URxvt.tintColor: 		white
-URxvt.shading: 			12							! Darken = 0..99
+
+#ifdef BACKGROUND_NAUGHTY
+	URxvt.shading:			25		! ~/.bg/naughty/desktop_slut.png
+#endif
+#ifdef BACKGROUND_ARCH
+	! ~/.bg/archlinux.png
+	URxvt.shading: 			12					! Darken = 0..99
 													! Lighten = 101..200
-													! Disable Shade = 100
+														! Disable Shade = 100
+#endif
+#ifdef BACKGROUND
+	! default shading level
+	URxvt.shading:			45
+#endif												
 
 !		[Colored man pages ]
 #ifdef URXVT_COLOR_THEME_MANPAGES
