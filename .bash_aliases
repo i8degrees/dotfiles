@@ -51,10 +51,10 @@ alias xclip="xclip -sel clip"
 	alias g++="/usr/bin/gcc"
 #fi
 
-if [[ "$COLORTERM" && -x "$(which colordiff)" ]]; then
-	alias diff="$(which colordiff)"
+if [[ "$COLORTERM" && -x "/usr/bin/colordiff" ]]; then
+	alias diff="/usr/bin/colordiff"
 else
-	alias diff="$(which diff)"
+	alias diff="/usr/bin/diff"
 	#alias diff="/usr/bin/diff"
 fi
 
@@ -91,15 +91,14 @@ alias pkgupdate="pacman -Syy" # package repos update
 alias pkgupgrade="pacman -Syu" # package upgrade from arch repos
 #alias pkgupgrade="yaourt -Syua" # package repo upgrade, arch + AUR
 alias pkgq="pacman -Q|grep $1" # package repo query (installed)
-alias pkgd="packer -Sii $@" # package info w/ details
-alias pkgs="yogurt -Ss" # package search from arch + AUR repos
-alias pkgi="packer -Si $@" # package info
+alias pkgd="yaourt -Sii $@" # package info w/ details
+alias pkgs="yaourt -Ss" # package search from arch + AUR repos
+alias pkgi="yaourt -Si $@" # package info
 alias pkgii="pacman -Qii $@" # ???
-alias pkgf="packer -Ql $@" # list files within package
+alias pkgf="yaourt -Ql $@" # list files within package
 alias pkgf?="pacman -Qo $1" # list package from which file is from
 alias pkgorphan="pacman -Qdt" # list package orphans; ...
 alias pkgsrc="pacman -sQm" # list locally compiled/installed packages (AUR, abs)
 
 
 alias ifstat="cls && $(which ifstat) -z -i eth0,eth1 -w -S $@"
-
