@@ -2,7 +2,7 @@
 # Any customization should be done in ~/.gtkrc-2.0.mine instead.
 
 gtk-theme-name="Unity"
-gtk-icon-theme-name="Tangerine"
+gtk-icon-theme-name="Tango"
 gtk-font-name="AquaBase Medium 14"
 #gtk-cursor-theme-name="Adwaita"
 gtk-cursor-theme-name="NPlus"
