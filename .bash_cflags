@@ -13,6 +13,9 @@
 #	makepkg.conf(5)		makepkg(8)		pacman(8)		PKGBUILD(5)
 #
 
+#PROJECTS="$HOME/Projects"
+#GIT_PROJ_ROOT="$HOME/git"
+
 #FIXME/TODO: eval /etc/makepkg.conf
 #export CARCH=""
 #export CHOST=""
@@ -22,5 +25,10 @@ export CFLAGS="-march=i686 -mtune=generic -O2 -pipe -fstack-protector -D_FORTIFY
 export CXXFLAGS=$CFLAGS
 export MAKEFLAGS="-j3"
 export LOCAL="libra"
-export PREFIX="/usr/local"
-export RUBYOPT="-W1 -rubygems"
+#export PREFIX="/usr/local"
+
+export GEM_HOME="$HOME/.gem/ruby/1.9.3-p0"
+#export RUBYOPT="-rubygems"
+
+export RUBYLIB="/home/jeff/Projects/ruby/lib"
+#export GEM_PATH="/usr/lib/ruby/gems/1.9.3"

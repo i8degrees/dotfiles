@@ -41,6 +41,18 @@ if [ "$COLORTERM" ]; then
     eval "$(dircolors -b $HOME/.colors/.dir_colors)"
 fi
 
+if [ -f "$HOME"/.bash_cflags ]; then
+	. "$HOME"/.bash_cflags
+else
+	echo -e "ERR: Ensure that file permissions are executable (x) and readable (r)."
+fi
+
+if [ -f "$HOME"/.bashlib ]; then
+	. "$HOME"/.bashlib
+else
+	echo -e "ERR: Ensure that file permissions are executable (x) and readable (r)."
+fi
+
 if [ -f "$HOME"/.bash_prompt ]; then
 	. "$HOME"/.bash_prompt
 else
@@ -53,7 +65,7 @@ fi
 #PATH="/usr/lib/colorgcc/bin"
 PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:$PATH"
 PATH="$HOME/bin:$PATH"
-#PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
+PATH="$HOME/.rbenv/bin:$HOME/.rbenv/shims:$PATH"
 PATH="$HOME/.config/feh/themes:$PATH"
 export PATH
 
@@ -77,7 +89,7 @@ shopt -s hostcomplete
 # if true, minor spelling errors of a dir component in a cd will be corrected
 shopt -s cdspell
 
-#eval "$(rbenv init -)"
+eval "$(rbenv init -)"
 #eval "$(resize)"
 
 export TERM=xterm-256color
@@ -88,16 +100,21 @@ export INPUTRC="/etc/inputrc"
 
 TERMINAL="/usr/bin/urxvtc"; export TERMINAL
 BROWSER="/usr/bin/google-chrome"; export BROWSER
-EDITOR="$(which vim)"; export EDITOR
-VISUAL="$(which scite)"; export VISUAL
+EDITOR="vim"; export EDITOR
+VISUAL="scite"; export VISUAL
 
 # XDG CONFIG DIRS (Xorg FreeDesktop standard)
 if [ -f ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs ]; then
-    . ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
-    export XDG_DESKTOP_DIR XDG_DOWNLOAD_DIR XDG_TEMPLATES_DIR
-    export XDG_PUBLICSHARE_DIR XDG_DOCUMENTS_DIR XDG_MUSIC_DIR
-    export XDG_PICTURES_DIR XDG_VIDEOS_DIR
+	. ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
 fi
+
+#if [ -f ${XDG_DOCUMENTS_DIR:-~/.config}/user-dirs.dirs ]; then
+#	. ${XDG_DOCUMENTS_DIR:-~/.config}/user-dirs.dirs
+#fi
+
+    export XDG_DESKTOP_DIR XDG_DOWNLOAD_DIR XDG_TEMPLATES_DIR
+    export XDG_PUBLICSHARE_DIR XDG_MUSIC_DIR
+    export XDG_PICTURES_DIR XDG_VIDEOS_DIR
 
 MINICOM="-m -c on"; export MINICOM
 export MPD_HOST="666@libra"
@@ -114,10 +131,8 @@ if [ -r "/etc/bash_completion" ]; then
 	. /etc/bash_completion
 fi
 
-if [ -f "$HOME"/.bash_cflags ]; then
-	. "$HOME"/.bash_cflags
-else
-	echo -e "ERR: Ensure that file permissions are executable (x) and readable (r)."
+if [ -r "/etc/bash_completion.d/git" ]; then
+	. /etc/bash_completion.d/git
 fi
 
 if [ -f "$HOME"/.bash_aliases ]; then
@@ -126,8 +141,4 @@ else
 	echo -e "ERR: Ensure that file permissions are executable (x) and readable (r)."
 fi
 
-if [ -f "$HOME"/.bashlib ]; then
-	. "$HOME"/.bashlib
-else
-	echo -e "ERR: Ensure that file permissions are executable (x) and readable (r)."
-fi
+
