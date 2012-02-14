@@ -4,24 +4,26 @@
 #
 # 		~/.bash_prompt
 #
-#   Local bash(1) command prompt
+#   Local bash(1) shell prompt
 #
 # See also,
 #
 #	bash(8)
 #
-# https://wiki.archlinux.org/index.php/Color_Bash_Prompt
+# 	Special thanks goes to the author of the script located at the following
+# URL https://raw.github.com/gf3/dotfiles/master/.bash_prompt for the idea
+# behind display of the current git-branch.
 #
-#			NOTES
+#			REFERENCES / IDEAS
 #
 #	1.	Make sure that your color variables are enclosed in double and not
 #		single quote marks. Using single quote marks seems to give Bash
 #		problems with line wrapping correctly.
-#	2.	http://maketecheasier.com/8-useful-and-interesting-bash-prompts/2009/09/04
-#	3.	http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html
-#	4.	http://www.hypexr.org/bash_tutorial.php#cdargs
+#	2. 	https://wiki.archlinux.org/index.php/Color_Bash_Prompt
+#	3.	http://maketecheasier.com/8-useful-and-interesting-bash-prompts/2009/09/04
+#	4.	http://www.cyberciti.biz/tips/howto-linux-unix-bash-shell-setup-prompt.html
+#	5.	http://www.hypexr.org/bash_tutorial.php#cdargs
 #
-
 
 # set variable identifying the chroot you work in (used in the prompt below)
 #if [ -z "$debian_chroot" ] && [ -r /etc/debian_chroot ]; then
@@ -51,25 +53,32 @@ ORANGE="\e[0;33m" 	# hostname
 CYAN="\e[0;34m" 	# username || :
 GREY="\e[0;36m" 	# $CWD || ~
 
-BLANK="\[$BLACK\]"
+#BLANK="\[$BLACK\]"
 USERNAME="\[$CYAN\]\u\[$RS\]"
 HOST="\[$ORANGE\]\h\[$CYAN\]"
 AT="\[$GREEN\]@"
 WORKING_DIRECTORY=":\w\[$GREY\]"
-#PROMPT="\[$ORANGE\] \$ "
 PROMPT="\[$ORANGE\] \$ \[$RS\]"
-TIMESTAMP_CMD="[`date +%H:%M:%S`]"
-TIMESTAMP="\[$GREEN\]$TIMESTAMP_CMD"
+#PROMPT="\[$ORANGE\] \$ "
+#TIMESTAMP_CMD="$(date +%H:%M:%S)"
+#TIMESTAMP="\[$GREEN\][$TIMESTAMP_CMD] \[$RS\]"
 ROOT=`id -u`
+
+if [[ -n get_git_branch ]]; then
+	GIT_BRANCH_DIRECTORY="\[$ORANGE\]:\$(parse_git_branch)"
+else
+	# fuck if I know or care at the moment :>O (leaving silly msg for debugging worries later)
+	GIT_BRANCH_DIRECTORY=" \[$ORANGE\][git-branch: POSSIBLE BUG] "
+fi
 
 if [ "$ROOT" = "0" ]; then
 	USERNAME="\[$RED\]\u\[$RS\]"
 	PROMPT="\[$RED\] \# \[$RS\]"
 	# root@libra:~ #
-	PS1="${USERNAME}${AT}${HOST}${WORKING_DIRECTORY}${PROMPT}"
+	PS1="${USERNAME}${AT}${HOST}${WORKING_DIRECTORY}${GIT_BRANCH_DIRECTORY}${PROMPT}"
 else
 	# jeff@libra:~ $
-	PS1="${USERNAME}${AT}${HOST}${WORKING_DIRECTORY}${PROMPT}"
+	PS1="${USERNAME}${AT}${HOST}${WORKING_DIRECTORY}${GIT_BRANCH_DIRECTORY}${PROMPT}"
 fi
 
 PS2="> "
@@ -89,12 +98,3 @@ if test "$TERM" = "xterm" -o \
 	history -a
 	export PROMPT_COMMAND
 fi
-
-# If this is an xterm set the title to user@host:dir
-#case "$TERM" in
-#xterm*|rxvt*)
-#    PROMPT_COMMAND='echo -ne "\033]0;${USER}@${HOSTNAME}: ${PWD/$HOME/~}\007"'
-#    ;;
-#*)
-#    ;;
-#esac
