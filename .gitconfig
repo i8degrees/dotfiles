@@ -2,8 +2,8 @@
 	name = Jeffrey Carpenter
 	email = jeffrey.carp@gmail.com
 [core]
-	editor = /usr/bin/gitg --commit
-	askpass = /home/jeff/.ssh/askpass-gtk
+	editor = vim
+	askpass = askpass
 	whitespace = space-before-tab, tabwidth=4, nowarn
 
 	# core.excludesfile ~/.gitignore
