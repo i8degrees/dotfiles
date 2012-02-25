@@ -1,0 +1,15 @@
+#!/bin/sh
+# 2012-02/24:jeff
+#
+#		~/bin/show_dotfiles
+#
+# Show/hide dotfiles within Finder on OSX 
+#
+
+if [ "$(defaults read com.apple.finder AppleShowAllFiles)" = "FALSE" ]; then
+	defaults write com.apple.finder AppleShowAllFiles TRUE
+	killall Finder
+elif [ "$(defaults read com.apple.finder AppleShowAllFiles)" = "TRUE" ]; then
+	defaults write com.apple.finder AppleShowAllFiles FALSE
+	killall Finder
+fi
