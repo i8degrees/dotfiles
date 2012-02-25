@@ -11,6 +11,7 @@ case "$(uname -s)" in
 	Darwin)
 		alias ls="gls -lhas --color=auto"
 		alias lsr="gls -lRa --color=auto"
+		alias ln="gln"
 		alias df="gdf -Th"
 		alias rm="grm -iv"
 		alias cp="gcp -iav"
@@ -19,14 +20,15 @@ case "$(uname -s)" in
 		
 		alias pgrep="psgrep"
 
-		alias edit="/Applications/Sublime\ Text\ 2.app/Contents/MacOS/Sublime\ Text\ 2 --new-window"
+		alias edit="/Applications/Sublime\ Text\ 2.app/Contents/MacOS/Sublime\ Text\ 2 &"
 
 		if [ -x "$(which md5deep)" ]; then
 			alias md5='md5deep -re'
 		fi
 	;;
 	Linux)
-		
+		alias ls="ls -lhas --color=auto"
+		alias lsr="ls -lRa --color=auto"
 		alias df="df -Th"
 		alias rm="rm -iv"
 		alias cp="cp -iav"
