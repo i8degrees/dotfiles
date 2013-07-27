@@ -1,63 +1,93 @@
 [user]
 	name = Jeffrey Carpenter
 	email = jeffrey.carp@gmail.com
+
 [core]
 	editor = vim
-	askpass = askpass
-	whitespace = space-before-tab, tabwidth=4, nowarn
+    #askpass = /usr/local/libexec/ssh-askpass
+	whitespace = tabwidth=2,nowarn
 
-	# core.excludesfile ~/.gitignore
+	excludesfile = /Users/jeff/.gitignore_global
 	# ...core.excludesfile ~/src/.gitignore
 	# ...core.excludesfile ~/Projects/.gitignore
 
-	# ignore file perms (chmods)
+	# ignorednore file perms (chmods)
 	# Source: http://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-mode-changes-chmod
 	# filemode = false
+
+[credential]
+    helper = osxkeychain
+
 [advice]
-	statusHints = false
-	pushNonFastForward = false
+    statusHints = false
+    pushNonFastForward = false
+
 [merge]
-	stat = true
+    stat = true
+
 [diff]
-	renames = copies
-	mnemonicprefix = true
+    renames = copies
+    mnemonicprefix = true
+
 [branch]
-	autosetupmerge = true
-	autosetuprebase = always
+    autosetupmerge = true
+    autosetuprebase = always
+
 [color]
-	ui = auto
+    ui = auto
+
 [color "branch"]
-	current = yellow reverse
-	local = yellow
-	remote = green
+    current = yellow reverse
+    local = yellow
+    remote = green
+
 [color "diff"]
-	meta = yellow bold
-	frag = magenta bold
-	old = red bold
-	new = green bold
+    meta = yellow bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+    added = yellow
+    changed = green
+    untracked = cyan
+
 [color "diff"]
-	whitespace = red reverse
+    whitespace = red reverse
+
 [alias]
-	status = status -sb # minimalistic git-status
-	com = commit # git-commit
-	br = remote show origin # show remote branching
-	brdel = branch -d # delete a merged branches
-	co = checkout # git-checkout
-	# create & save a clipboard of changes to allow switching
-	# branches w/o committing
-	save = stash save
-	slist = stash list # list stashes
-	log = --graph --decorate --pretty=oneline --abbrev-commit --all
-	ls = ls-files
-	fixtypo = amend
-	undo = reset --soft HEAD^
-	unstage = reset HEAD
-	ignore = ls-files -o -i --exclude-standard # show files ignored by git
+    status = status -sb # minimalistic git-status
+    commit = commit -v # git-commit
+    br = remote show origin # show remote branching
+    brdel = branch -d # delete a merged branches
+    co = checkout # git-checkout
+    # create & save a clipboard of changes to allow switching
+    # branches w/o committing
+    save = stash save
+    slist = stash list # list stashes
+    logv = --graph --decorate --pretty=oneline --abbrev-commit --all
+    ls = ls-files
+    oops = amend
+    chunk = add -p # Patch (read: commit) code in chunks / hunks as they were (created?)
+#    undo = reset --soft HEAD^
+    unstage = reset HEAD
+    ignore = ls-files -o -i --exclude-standard # show files ignored by git
+    ptags = push --tags
+	ctags = !.git/hooks/ctags
+
 [push]
-	default = upstream
+    default = upstream
+
 [remotes]
-	default = origin dev devel feature/* # git remote update default
+    default = origin dev devel feature/* # git remote update default
+
+[difftool "sourcetree"]
+    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    path =
+
+[mergetool "sourcetree"]
+    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+trustExitCode = true
+
+[init]
+	templatedir = ~/Projects/hax/dotfiles/git_template

@@ -25,14 +25,15 @@ set backup                                                              " turn o
 set backupdir=~/.vim/backup/                                          	" where to put backup files
 set directory=~/.vim/tmp/                                             	" where to put tmp files
 set pastetoggle=<f5>                                                    " toggle paste mode
-set clipboard=unnamedplus												" aliases the unnamed register to the + register
+set clipboard=unnamed                            " Mac OS X
+"set clipboard=unnamedplus												" aliases the unnamed register to the + register
 																		" AKA X11 clipboard
 																		" SOURCE:
 																		" http://vim.wikia.com/wiki/Accessing_the_system_clipboard
-																		
+
 "set clipboard+=unnamed                                                 " yank and copy to xclipboard
 set wildmenu                                                            " enhanced tab-completion
-set suffixesadd=.rb                                                     " comma seperated list of file suffixes 
+set suffixesadd=.rb                                                     " comma seperated list of file suffixes
 set includeexpr+=substitute(v:fname,'s$','','g')                        " expression substitution
 
 " status bar info and appearance
@@ -47,14 +48,14 @@ set cindent                                                             " strict
 set shiftwidth=2                                                        " 2 cols for autoindenting
 
 " tabs
-" set expandtab                                                           " use spaces instead of true tabs
+set expandtab                                                           " use spaces instead of true tabs
 set tabstop=2                                                           " 2 column tabs
 
 let g:html_indent_tags = 'li\|p'                                        "
 
 " maps!
 map Q gq                                                                " Q does formatting qith gq. Vim 5.0 style
-" map ; : 																" ...to shift or not to shift [NOT] 
+" map ; : 																" ...to shift or not to shift [NOT]
 
 
 inoremap <C-U> <C-G>u<C-U>                                              " enables CTRL-U after inserting a line break.
@@ -121,7 +122,13 @@ set term=xterm-256color       	" ...
 
 " tabs
 set smartindent
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
 
 call pathogen#infect() 			" vim plugins management
+
+:nnoremap <leader>m :silent !open -a Marked.app '%'<cr>
+
+" default location of ctags
+set tags=.tags 
+

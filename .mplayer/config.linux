@@ -1,0 +1,102 @@
+# 2012-01/12:jeff
+#
+#		~/.mplayer/config
+#
+
+#include="~/.mplayer/jeff.config"
+
+[defaults]
+profile-desc="Video defaults"
+use-filedir-conf="yes"
+#geometry="720x480"
+msgcolor="yes"
+ontop=yes
+vo="xv,gl,sdl"
+fs="no"
+osdlevel="2"
+vsync="true"
+framedrop="no"
+af="scaletempo"
+vf="eq"
+ao="pulse"
+mixer="hw:1"
+slang="en"
+alang="en"
+
+[incomplete.download]
+profile-desc="Seeking forward/backward through video streams still downloading"
+profile="defaults"
+idx=yes
+
+# force aspect ratio
+[faspect]
+msgcolor="yes"
+profile-desc="Force Monitor's Aspect Ratio"
+aspect=2
+monitoraspect=16:9
+
+# ASCII pr0n
+[ascii]
+profile-desc="ASCII video output"
+msgcolor="yes"
+ao="null"
+vo="caca"
+#mf="mf://*.png"
+#mf="fps=0.00"
+aspect=2
+monitoraspect=16:9
+
+[alt_audio]
+profile-desc="Alternative to pulse, defaults to ALSA"
+msgcolor="yes"
+ao="alsa:device=hw=1.0"
+mixer="hw:1.0"
+
+[headphones]
+profile-desc="Audio tunings for Headphones"
+msgcolor="yes"
+ao="pulse:device=hw=0.0"
+mixer="hw:0.0"
+
+# audio/video work
+[avpro]
+profile-desc="Pro A/V work"
+msgcolor="yes"
+ontop=yes
+vo="xv,gl"
+vf="eq2,screenshot"
+# (???) vf="spp"
+autoq=20
+vsync="true"
+framedrop="no"
+loop="0"
+osdlevel=3
+osd-fractions=1
+ao="jack,pulse" #:device=hw=1.0"
+af="scaletempo"
+softvol-max=200
+mixer="hw:1,hw:0"
+nocache="yes"
+include="/home/jeff/.mplayer/profiles/soften-eq"
+
+[cache]
+profile-desc="Video stream caching"
+msgcolor="yes"
+cache=16384
+cache-min=25
+cache-seek-min=35
+
+[dvd]
+profile-desc="dvd streams"
+msgcolor="yes"
+vf=pp=hb/vb/dr/al/fd
+alang=en
+slang="en"
+
+[dvdnav]
+profile-desc="dvdnav streams"
+profile=dvd
+msgcolor="yes"
+mouse-movements=yes
+nocache=yes
+

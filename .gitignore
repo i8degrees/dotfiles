@@ -1,3 +1,7 @@
 .DS_Store
-vim/backup/*
+aria2/
+vim/.netrwhist
+vim/backup/*.*
 vim/tmp/*
+config/
+ref/

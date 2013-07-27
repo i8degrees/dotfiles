@@ -1,0 +1,17 @@
+# 2012-03/08:jeff
+#
+#		~/.powconfig
+#
+# Local user Pow configuration file; these are the base / default settings we
+# adhere to. These settings override Pow's default out-of-the-box config.
+#
+# REMEMBER: You need to restart Pow for any modifications made here to take effect.
+#
+
+# MANDATORY: See https://github.com/37signals/pow/wiki/Running-Pow-with-Apache
+export POW_DST_PORT=88
+#export POW_DOMAINS=dev,local
+#export POW_EXT_DOMAINS=
+
+export POW_TIMEOUT=300 # 5 minutes
+export POW_WORKERS=3 # Three worker threads per app instance

@@ -9,24 +9,72 @@
 
 case "$(uname -s)" in
 	Darwin)
-		alias ls="gls -lhas --color=auto"
-		alias lsr="gls -lRa --color=auto"
-		alias ln="gln"
-		alias df="gdf -Th"
-		alias rm="grm -iv"
-		alias cp="gcp -iav"
-		alias mv="gmv -iv"
-		alias mkdir="gmkdir -pv"
-		
-		alias pgrep="psgrep"
 
-		alias edit="/Applications/Sublime\ Text\ 2.app/Contents/MacOS/Sublime\ Text\ 2 &"
+		alias ncdu='ncdu -r $@'
+		alias ip='echo "Public IP: "; curl icanhazip.com; echo "Internal IPs: "; ifconfig|grep 192.168.151.'
+    alias www='browser $@'
+    #alias findfile='find $1 -name $2'
+    alias fstring='grep $1 -R $2'
+    alias c='pbcopy'
+    alias p='pbpaste'
+
+		# coreutils package from brew needs to be installed
+		if [ "$(brew list|grep coreutils)" ]; then
+      alias du='gdu -csh'
+      alias ls="gls -lhas --color=auto"
+			alias lsr="gls -lRa --color=auto"
+			alias df="gdf -Th"
+			alias rm="grm -iv"
+			alias cp="gcp -iav"
+			alias mv="gmv -iv"
+			alias mkdir="gmkdir -pv"
+			alias rmdir='grmdir -v'
+			alias chmod='gchmod -v'
+			alias chown='gchown -v'
+			alias ln='gln -v'
+			alias find='gfind'
+			alias depcheck='otool -L'
+			alias dmesg='sudo dmesg'
+			alias eject='diskutil eject $@'
+			alias mount_ext4='ext4fuse -o allow_other $@'
+			#alias cloc='cloc --by-file-by-lang --exclude-list-file=.cloc $@'
+      alias route='netstat -nr'
+      alias gitx='open -a "GitX"'
+      alias leaks='iprofiler -T 300 -allocations -leaks $@'
+		fi
+
+		#alias pgrep="psgrep"
+
+		alias edit='subl' 	# See the ~/local/bin/subl file -- note that it is
+							# indeed a symbolic (soft) link to an unusual binary
+							# location for us to execute from.
+							# ...this is our best & preferred method of launching
+							# OSX GUI apps from the term. Unfortunately, many
+							# $PACKAGE.app/Contents/MacOS/$BIN apps refuse to
+							# run from our terminal, thus we use the
+							# pre-installed open (1) command.
+
+		alias chrome='open -a "Google Chrome" --args -allow-file-access-from-files'
+		alias marked='open -a "Marked"'
+		alias iphone='open -a "iPhone Simulator"'
+		alias extract='open -a "Archive Utility"'
+		alias lsmod='kextstat'
+		alias modprobe='kextload $@'
+    alias otool='otool -L $@'
 
 		if [ -x "$(which md5deep)" ]; then
 			alias md5='md5deep -re'
 		fi
+
+		if [ -x "$(which colormake)" ]; then
+			alias make='colormake'
+		fi
 	;;
 	Linux)
+
+		alias ip='echo "Public IP: " && curl icanhazip.com; echo "\nInternal IPs: "; ifconfig|grep 192.168.151.'
+		# safe assumption that coreutils package is installed within any
+		# given Linux distribution -- that I'll touch, anyway...
 		alias ls="ls -lhas --color=auto"
 		alias lsr="ls -lRa --color=auto"
 		alias df="df -Th"
@@ -34,19 +82,19 @@ case "$(uname -s)" in
 		alias cp="cp -iav"
 		alias mv="mv -iv"
 		alias mkdir="mkdir -pv"
-
-		#alias mount_jasmine="mount /media/sshfs/jasmine/jeff"
-		#alias umount_jasmine="fusermount -u /media/sshfs/jasmine/jeff"
+		alias chmod='chmod -v'
+		alias chown='chown -v'
+		alias ln='ln -v'
+		alias xclip="xclip -sel clip"
 
 		alias edit="$(which geany)"
+
 
 		if [ -x "$(which md5deep)" ]; then
 			alias md5='md5deep -re' # recursive, progress
 		else
 			alias md5='md5sum'
 		fi
-
-		alias xclip="xclip -sel clip"
 
 		# User specific
 		if [[ -n "$(id|grep jeff)" ]]; then
@@ -98,17 +146,20 @@ case "$(uname -s)" in
 	;;
 esac
 
+alias gclone='git clone $@'
+alias youtube-dl='youtube-dl --max-quality mp4 $@'
 
+# grep options
 alias tree="tree -Chu"
-alias grep="grep --color=auto"
-alias kill="kill -s SIGKILL"
+GREP_OPTIONS="--color=always -I"; export GREP_OPTIONS # -I = --binary-files-without-match
+alias killall="killall -9 $@"
 
 alias pid="ps aux|pgrep"
 alias watch="watch -n 1.0"
 alias iostat="iostat -d 1"
-alias ifstat="clear && $(which ifstat) -z -i eth0,eth1 -w -S $@"
+alias ifstat="clear && $(which ifstat) -z -i en2 -w -S $@"
 
-alias cls="clear"
+alias cls="reset"
 #alias diff="diff -uNr"
 alias kpatch="patch -p1 < $@"
 
@@ -127,7 +178,9 @@ alias kpatch="patch -p1 < $@"
 
 if [ -x "$(which colordiff)" ]; then
 #if [[ "$COLORTERM" && -x "/usr/bin/colordiff" ]]; then
-	alias diff="$(which colordiff) -uNr $@"
+	alias diff="$(which colordiff)"
+	#alias diff="$(which colordiff) -uNr $@"
 else
 	alias diff="$(which diff)"
 fi
+

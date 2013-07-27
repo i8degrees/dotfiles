@@ -2,15 +2,15 @@
 #
 # 2012-01/16:jeff
 #
-# 		~/.bash_cflags
+#     ~/.bash_cflags
 #
-# 	Local system compiler / linker flags for the GNU toolchain;
+#   Local system compiler / linker flags for the GNU toolchain;
 # relatively no tuning for the time being until I (re)-build a
 # new system ...
 #
 # See also,
 #
-#	makepkg.conf(5)		makepkg(8)		pacman(8)		PKGBUILD(5)
+# makepkg.conf(5)   makepkg(8)    pacman(8)   PKGBUILD(5)
 #
 
 #PROJECTS="$HOME/Projects"
@@ -23,12 +23,38 @@
 
 #export CFLAGS="-march=i686 -mtune=generic -O2 -pipe -fstack-protector -D_FORTIFY_SOURCE=2"
 #export CXXFLAGS=$CFLAGS
-export MAKEFLAGS="-j3"
-export LOCAL="libra"
-#export PREFIX="/usr/local"
 
+case "$(uname -s)" in
+  Darwin)
+    CC="/usr/bin/clang"; export CC
+    CXX="/usr/bin/clang++"; export CXX
+    MAKEFLAGS="-j6"; export MAKEFLAGS # MacBook Air Mid 2011
+    DEVELOPER_DIR="/Users/$(whoami)/Applications/Developer/Xcode.app/Contents/Developer"; export DEVELOPER_DIR
+    CCACHE_PATH="/usr/local/Cellar/ccache/3.1.9/libexec"; export CCACHE_PATH
+    #CCACHE_DIR="/ramdisk/dir"; export CCACHE_DIR
+    NODE_PATH="/usr/local/lib/node_modules"; export NODE_PATH
+    #EMMAKEN_COMPILER="/usr/local/bin/clang++"; export EMMAKEN_COMPILER
+  ;;
+  Linux)
+  ;;
+  *)
+  ;;
+esac
+
+LOCAL="virgo"; export LOCAL
+
+SDL_DEV="$(pkg-config --cflags --libs sdl SDL_image SDL_mixer SDL_ttf)"; export SDL_DEV
+
+# removed PREFIX due to NPM trying to use this for global install dir
+#
+#export PREFIX="~/local"
+
+if [ -f "$(which rbenv)" ]; then
+  eval "$(rbenv init -)"
+fi
 #export GEM_HOME="$HOME/.gem/ruby/1.9.3-p0"
 #export GEM_PATH="$HOME/.gem/ruby/1.9.3-p0"
 #export GEM_PATH="/usr/lib/ruby/gems/1.9.3"
 #export RUBYOPT="-w"
+#RUBYLIB="/Library/Ruby"; export RUBYLIB
 #export RUBYLIB="/home/jeff/Projects/ruby/lib"

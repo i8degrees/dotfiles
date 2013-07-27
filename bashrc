@@ -38,7 +38,7 @@ shopt -s cdspell
 # Our bash (1) history file
 export HISTFILE="$HOME/.bash_history"
 
-# 8,192 Bytes or 8.1K history cap size
+# Maximum of 16384 lines storable in our history file
 export HISTFILESIZE=8192
 
 # TODO: need to verify this is the same as above.
@@ -47,70 +47,72 @@ export HISTSIZE="$HISTFILESIZE"
 # Do not put duplicate lines in the history.
 export HISTCONTROL=ignoredups
 
-if [ -f "$HOME/.bash_cflags" ]; then
-	. "$HOME/.bash_cflags"
-else
-	echo -e "ERR: Ensure that $HOME/.bash_cflags file permissions are executable (x) and readable (r)."
-fi
-
-if [ -f "$HOME/.bashlib" ]; then
-	. "$HOME/.bashlib"
-else
-	echo -e "ERR: Ensure that $HOME/.bashlib file permissions are executable (x) and readable (r)."
-fi
-
-if [ -f "$HOME/.bash_prompt" ]; then
-	. "$HOME/.bash_prompt"
-else
-	echo -e "ERR: Ensure that $HOME/.bash_prompt file permissions are executable (x) and readable (r)."
-fi
-
+# Linux)
 # NOTE:	The following line *must* be included before the repo GCC toolchain bins
 #		path is set
 #PATH="/usr/lib/colorgcc/bin"
-PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
 
-case "$(uname -s)" in
-	Darwin)
-		PATH="$PATH:/usr/X11/bin"
-	;;
-	Linux)
-		PATH="$PATH:$HOME/.config/feh/themes"
-	;;
-	*)
-	;;
-esac
-
-PATH="$HOME/.rbenv/shims:$PATH"
-PATH="$HOME/bin:$PATH"
-export PATH
-
-if [ -f "$(which rbenv)" ]; then
-	eval "$(rbenv init -)"
+if [ -x "$HOME/.bash_cflags" ]; then
+	. "$HOME/.bash_cflags"
 fi
 
-if [ -f "$(which locale)" ]; then
+if [ -x "$HOME/.bashlib" ]; then
+	. "$HOME/.bashlib"
+fi
+
+if [ -x "$HOME/.bash_prompt" ]; then
+	. "$HOME/.bash_prompt"
+fi
+
+if [ -x "$(which locale)" ]; then
 	eval "$(locale)"
 fi
+
+PATH="$CCACHE_PATH:$HOME/local/bin:$PATH"
+export PATH
+
+PATH="$PATH:$HOME/local/bin/checker"
+export PATH
+
+PYTHONPATH="$(brew --prefix)/lib/python2.7/site-packages"
+
+PATH="$PATH:/usr/local/share/python:$PYTHONPATH"
+export PATH
+
+#PATH="$PATH:$HOME/local/src/emscripten"
+#export PATH
+
 #eval "$(resize)"
 
 #export USECOLOR=true
-export TERM=xterm-256color
-TMPDIR="/tmp"; export TMPDIR
+TERM=xterm-256color; export TERM
+TMPDIR="/private/tmp"; export TMPDIR
+#TMPDIR="$HOME/tmp"; export TMPDIR
 BLOCKSIZE=K; export BLOCKSIZE
-INPUTRC="/etc/inputrc"; export INPUTRC
+INPUTRC="/private/etc/inputrc"; export INPUTRC
+
+if [ -x "$(which vimpager)" ]; then
+	#PAGER="aless"; export PAGER
+	MAN_PAGER="aless"; export MAN_PAGER;
+fi
 
 BROWSER="google-chrome"; export BROWSER
-EDITOR="vim"; export EDITOR
-VISUAL="vim"; export VISUAL
+EDITOR="subl"; export EDITOR
+VISUAL="subl"; export VISUAL
+
+MINICOM="-m -c on"; export MINICOM
+MPD_HOST="666@virgo.local"; export MPD_HOST
+SSH_KEYS="$HOME/.ssh/libra_dsa"; export SSH_KEYS
 
 case "$(uname -s)" in
 	Darwin)
-		#TERMINAL="iTerm2"; export TERMINAL
+		TERMINAL="iterm"; export TERMINAL
 
 		if [ -f "$(which lesspipe.sh)" ]; then
-			eval "$(lesspipe.sh)"
+			LESSOPEN="|/usr/local/bin/lesspipe.sh %s"; export LESSOPEN
 		fi
+
+		LESS="-r"; export LESS # color support
 
 		if [ -f "$(which gdircolors)" ]; then
 			eval "$(gdircolors -b $HOME/.colors/dir_colors)"
@@ -118,11 +120,14 @@ case "$(uname -s)" in
 
 		if [ -f `brew --prefix`/etc/bash_completion ]; then
     		. `brew --prefix`/etc/bash_completion
-    	else
-			echo -e "ERR: Ensure that $(which brew) --prefix /etc/bash_completion file permissions are executable (x) and readable (r)."
+    	#else
+			#echo "ERR: Ensure that $(which brew) --prefix /etc/bash_completion file permissions are executable (x) and readable (r)."
 		fi
+
+		SSH_ASKPASS="/usr/local/libexec/ssh-askpass"; export SSH_ASKPASS
+		SUDO_ASKPASS="/usr/local/libexec/ssh-askpass"; export SUDO_ASKPASS
 	;;
-	Linux)	
+	Linux)
 		TERMINAL="urxvtc"; export TERMINAL
 
 		if [ -f "$(which lesspipe)" ]; then
@@ -135,7 +140,7 @@ case "$(uname -s)" in
 		if [ -f ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs ]; then
 			. ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
 		fi
-		
+
 		if [ -f ${XDG_DOCUMENTS_DIR:-~/.config}/user-dirs.dirs ]; then
 			. ${XDG_DOCUMENTS_DIR:-~/.config}/user-dirs.dirs
 		fi
@@ -143,33 +148,34 @@ case "$(uname -s)" in
 		export XDG_DESKTOP_DIR XDG_DOWNLOAD_DIR XDG_TEMPLATES_DIR
 		export XDG_PUBLICSHARE_DIR XDG_MUSIC_DIR
 		export XDG_PICTURES_DIR XDG_VIDEOS_DIR
-		
-		SciTE_HOME="/home/jeff/.scite"; export SciTE_HOME
 
-		MINICOM="-m -c on"; export MINICOM
-		MPD_HOST="666@libra"; export MPD_HOST
-		SSH_KEYS="$HOME/.ssh/id"; export SSH_KEYS
+		SciTE_HOME="/home/jeff/.scite"; export SciTE_HOME
 
 		if [ -f "/etc/bash_completion" ]; then
 			. /etc/bash_completion
-		else
-			echo -e "ERR: Ensure that /etc/bash_completion file permissions are executable (x) and readable (r)."
+		#else
+			#echo "ERR: Ensure that /etc/bash_completion file permissions are executable (x) and readable (r)."
 		fi
+
+		#SSH_ASKPASS=""; export SSH_ASKPASS
+		#SUDO_ASKPASS=""; export SUDO_ASKPASS
 	;;
-	*)		
+	*)
 	;;
 esac
 
 # Additional Bash(1) inclusion files
 
-if [ -f "/etc/bash_completion.d/git" ]; then
-	. /etc/bash_completion.d/git
-else
-	echo -e "ERR: Ensure that /etc/bash_completion.d/git file permissions are executable (x) and readable (r)."
+#if [ -f "/usr/local/etc/bash_completion.d/git-completion.bash" ]; then
+#	. /usr/local/etc/bash_completion.d/git-completion.bash
+#else
+#	echo "ERR: Ensure that /usr/local/etc/bash_completion.d/git-completion.bash file permissions are executable (x) and readable (r)."
+#fi
+
+if [ -x "$HOME/.bash_aliases" ]; then
+	. $HOME/.bash_aliases
 fi
 
-if [ -f "$HOME/.bash_aliases" ]; then
+if [ -x "$HOME/.bash_aliases" ]; then
 	. $HOME/.bash_aliases
-else
-	echo -e "ERR: Ensure that $HOME/.bash_aliases file permissions are executable (x) and readable (r)."
 fi
