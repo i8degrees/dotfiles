@@ -52,6 +52,8 @@ SDL_DEV="$(pkg-config --cflags --libs sdl SDL_image SDL_mixer SDL_ttf)"; export 
 if [ -f "$(which rbenv)" ]; then
   eval "$(rbenv init -)"
 fi
+
+PATH="$HOME/.rbenv/versions/1.9.3-p0/bin:$PATH"; export PATH
 #export GEM_HOME="$HOME/.gem/ruby/1.9.3-p0"
 #export GEM_PATH="$HOME/.gem/ruby/1.9.3-p0"
 #export GEM_PATH="/usr/lib/ruby/gems/1.9.3"
