@@ -33,7 +33,6 @@ case "$(uname -s)" in
 			alias chown='gchown -v'
 			alias ln='gln -v'
 			alias find='gfind'
-			alias depcheck='otool -L'
 			alias dmesg='sudo dmesg'
 			alias eject='diskutil eject $@'
 			alias mount_ext4='ext4fuse -o allow_other $@'
