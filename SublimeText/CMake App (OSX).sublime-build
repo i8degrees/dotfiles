@@ -14,6 +14,11 @@
     },
 
     {
+      "name": "Debug-POSIX",
+      "cmd": [ "cd build && touch .subl-auto && cmake -D VERBOSE=on -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=on -D DOCS=off -D OSXAPP=off .. && make rebuild_cache && make -j6 install" ]
+    },
+
+    {
       "name": "Release",
       "cmd": [ "cd build && touch .subl-auto && cmake -D DEBUG=off -D DOCS=on -D UNIVERSAL=on -D OSXAPP=on .. && make rebuild_cache && make -j6 install" ]
     },
