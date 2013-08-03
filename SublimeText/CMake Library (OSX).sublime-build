@@ -10,7 +10,7 @@
     // This is our default build command (bound to our build key)
     {
       "name": "Debug",
-      "cmd": [ "cd build && touch .subl-auto && cmake -D VERBOSE=on -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=on -D EXAMPLES=on -D DOCS=off -D FRAMEWORK=on .. && make rebuild_cache && make -j6 install" ]
+      "cmd": [ "cd build && touch .subl-auto && cmake -D VERBOSE=on -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=on -D EXAMPLES=on -D DOCS=off -D FRAMEWORK=on -D CMAKE_INSTALL_PREFIX=${HOME}/Library/Frameworks .. && make rebuild_cache && make -j6 install" ]
     },
 /*
     {
