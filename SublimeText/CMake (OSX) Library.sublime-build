@@ -1,0 +1,54 @@
+{
+  "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+  "working_dir": "${project_path:${folder:${file_path}}}",
+  "selector": "source.makefile",
+  "path": "${HOME}/local/bin/checker:${HOME}/local/bin:/bin:/usr/bin:/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin",
+
+  "cmd": [ "cd build && touch .subl-auto && make -j6 install" ],
+  //"cmd": [ "cd build && touch .subl-auto && scan-build -V make -j4 install" ],
+  "shell": true,
+
+  "variants":
+  [
+    {
+      "name": "Clean",
+      "cmd":  [ "cd build; make clean && make uninstall; if [[ -s 'CMakeCache.txt' && -r '.subl-auto' ]]; then rm -rf *; fi; touch .subl-auto && cmake .." ]
+      //"cmd":  [ "cd build; make clean && make uninstall; if [[ -s 'CMakeCache.txt' && -r '.subl-auto' ]]; then rm -rfv *; fi; touch .subl-auto && scan-build cmake .." ]
+      //"cmd":  [ "cd build; make clean && make uninstall; rm -f CMakeCache.txt && cmake .." ]
+    },
+
+    {
+      "name": "Install",
+      "cmd": [ "cd build && make -j6 install" ]
+      //"cmd": [ "cd build && scan-build -V make -j4 install" ]
+    },
+
+    {
+      "name": "Uninstall",
+      "cmd": [ "cd build && make uninstall" ]
+    },
+
+    {
+      "name": "Run",
+      "cmd": [ "open --wait-apps --fresh -a Terminal ${file_path}/${file_base_name}" ]
+    },
+
+    {
+      "name": "Test",
+      "cmd": [ "cd build && make clean && scan-build -V make -j6" ]
+      //"cmd": [ "cd build && scan-build -V make -j4 test" ]
+    },
+
+    {
+      "name": "Package",
+      "cmd": [ "cd build && make package" ]
+    },
+
+    {
+      "name": "docs",
+      "cmd": [ "cd build && make docs" ]
+    },
+
+    {} // EOL placeholder
+  ]
+}

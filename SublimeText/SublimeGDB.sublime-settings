@@ -1,0 +1,4 @@
+{
+    "workingdir": "/private/tmp",
+    "commandline": "/usr/bin/gdb --interpreter=mi ./executable"
+}
