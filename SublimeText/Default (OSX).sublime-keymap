@@ -1,5 +1,7 @@
 [
 
+    // CTags Package
+/*
     {
     "command": "navigate_to_definition",
     "keys": ["ctrl+shift+period"]
@@ -19,7 +21,7 @@
     "command": "rebuild_tags",
     "keys": ["ctrl+t", "ctrl+r"]
     },
-
+*/
     // Resize Group w/ Keyboard Package
 /*
     { "keys": ["super+shift+left"], "command": "resize_active_group", "args" : { "direction" : "left" } },
@@ -28,19 +30,48 @@
     { "keys": ["super+shift+down"], "command": "resize_active_group", "args" : { "direction" : "down" } },
 */
 
+    // Synchronized Page Scrolling Package
+/*
+    { "keys": ["shift+up"], "command": "synchro_scroll", "args": {"cmd": "move", "by": "lines", "forward": false} },
+    { "keys": ["shift+down"], "command": "synchro_scroll", "args": {"cmd": "move", "by": "lines", "forward": true} },
+    { "keys": ["shift+pageup"], "command": "synchro_scroll", "args": {"cmd": "move", "by": "pages", "forward": false} },
+    { "keys": ["shift+pagedown"], "command": "synchro_scroll", "args": {"cmd": "move", "by": "pages", "forward": true} },
+    { "keys": ["shift+home"], "command": "synchro_scroll", "args": {"cmd": "move_to", "to": "bof", "extend": false} },
+    { "keys": ["shift+end"], "command": "synchro_scroll", "args": {"cmd": "move_to", "to": "eof", "extend": false} },
+*/
+
+    // Goto Open File Package
+/*
+    { "keys":["super+shift+o"], "command": "goto_open_file", "args": {"active_group": false } },
+    { "keys":["alt+shift+o"], "command": "goto_open_file", "args": {"active_group": true } },
+*/
+
+    // These grouped key bindings are bound to my Logitech G300 mouse using SteerMouse
     { "keys": ["super+ctrl+f"], "command": "toggle_side_bar" },
     { "keys": ["super+ctrl+space"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
-
     { "keys": ["super+ctrl+q"], "command": "indent" },
     { "keys": ["super+ctrl+z"], "command": "unindent" },
-
     //{ "keys": ["super+alt+["], "command": "fold" },
     //{ "keys": ["super+alt+]"], "command": "unfold" },
 
-    // Goto Open File Package
-    { "keys":["super+shift+o"], "command": "goto_open_file", "args": {"active_group": false } },
-    { "keys":["alt+shift+o"], "command": "goto_open_file", "args": {"active_group": true } },
+    // Default build command
+    { "keys": ["super+b"], "command": "build", "args": {"variant": "Debug"} },
 
+    // Cancel current build
+    { "keys": ["ctrl+shift+c"], "command": "exec", "args": {"kill": "cancel"} },
+
+    // Make target commands configured in my sublime-build files
+    { "keys": ["super+r"], "command": "build", "args": {"variant": "Run"} },
+    { "keys": ["ctrl+r"], "command": "build", "args": {"variant": "Release"} },
+    { "keys": ["ctrl+c"], "command": "build", "args": {"variant": "Clean"} },
+    { "keys": ["ctrl+i"], "command": "build", "args": {"variant": "Install"} },
+    { "keys": ["ctrl+u"], "command": "build", "args": {"variant": "Uninstall"} },
+    { "keys": ["ctrl+t"], "command": "build", "args": {"variant": "Test"} },
+    { "keys": ["ctrl+p"], "command": "build", "args": {"variant": "Package"} },
+    { "keys": ["ctrl+a"], "command": "build", "args": {"variant": "Analyze"} },
+    //{ "keys": ["ctrl+d"], "command": "build", "args": {"variant": "docs"} },
+
+    // Layouts control
     { "keys": ["alt+1"], "command": "focus_group", "args": { "group": 0 } },
     { "keys": ["alt+2"], "command": "focus_group", "args": { "group": 1 } },
     { "keys": ["alt+3"], "command": "focus_group", "args": { "group": 2 } },
@@ -64,27 +95,5 @@
     { "keys": ["super+_"], "command": "select_by_index", "args": { "index": 10 } },
     { "keys": ["super++"], "command": "select_by_index", "args": { "index": 11 } },
 
-    { "keys": ["super+b"], "command": "build" },
-    { "keys": ["ctrl+shift+c"], "command": "exec", "args": {"kill": "cancel"} },
-
-    { "keys": ["ctrl+a"], "command": "build", "args": {"variant": "Analyze"} },
-    { "keys": ["ctrl+c"], "command": "build", "args": {"variant": "Clean"} },
-    { "keys": ["ctrl+e"], "command": "build", "args": {"variant": "emcc"} },
-    { "keys": ["ctrl+i"], "command": "build", "args": {"variant": "Install"} },
-    { "keys": ["super+r"], "command": "build", "args": {"variant": "Run"} },
-    { "keys": ["ctrl+t"], "command": "build", "args": {"variant": "Test"} },
-    { "keys": ["ctrl+u"], "command": "build", "args": {"variant": "Uninstall"} },
-    { "keys": ["ctrl+d"], "command": "build", "args": {"variant": "docs"} },
-
-    // Synchronized Page Scrolling Package
-/*
-    { "keys": ["shift+up"], "command": "synchro_scroll", "args": {"cmd": "move", "by": "lines", "forward": false} },
-    { "keys": ["shift+down"], "command": "synchro_scroll", "args": {"cmd": "move", "by": "lines", "forward": true} },
-    { "keys": ["shift+pageup"], "command": "synchro_scroll", "args": {"cmd": "move", "by": "pages", "forward": false} },
-    { "keys": ["shift+pagedown"], "command": "synchro_scroll", "args": {"cmd": "move", "by": "pages", "forward": true} },
-    { "keys": ["shift+home"], "command": "synchro_scroll", "args": {"cmd": "move_to", "to": "bof", "extend": false} },
-    { "keys": ["shift+end"], "command": "synchro_scroll", "args": {"cmd": "move_to", "to": "eof", "extend": false} },
-*/
-
-    {} // EOL placeholder
+    {} // placeholder
 ]
