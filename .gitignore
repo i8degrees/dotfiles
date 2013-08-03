@@ -5,3 +5,4 @@ vim/backup/*.*
 vim/tmp/*
 config/
 ref/
+*.cache
