@@ -12,12 +12,12 @@
       "name": "Debug",
       "cmd": [ "cd build && touch .subl-auto && cmake -D VERBOSE=on -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=on -D EXAMPLES=on -D DOCS=off -D FRAMEWORK=on -D CMAKE_INSTALL_PREFIX=/Users/jeff/Library/Frameworks .. && make rebuild_cache && make -j6 install" ]
     },
-/*
+
     {
       "name": "Debug-POSIX",
       "cmd": [ "cd build && touch .subl-auto && cmake -D VERBOSE=on -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=on -D EXAMPLES=on -D DOCS=off -D FRAMEWORK=off .. && make rebuild_cache && make -j6 install" ]
     },
-*/
+
     {
       "name": "Release",
       "cmd": [ "cd build && touch .subl-auto && cmake -D DEBUG=off EXAMPLES=on -D DOCS=on -D UNIVERSAL=on -D FRAMEWORK=on .. && make rebuild_cache && make -j6 install" ]
