@@ -10,26 +10,30 @@
     // This is our default build command (bound to our build key)
     {
       "name": "Debug",
-      "cmd": [ "cd build && touch .subl-auto && cmake -D VERBOSE=on -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=on .. && make rebuild_cache && make -j6 install" ]
+      "cmd": [ "cd build && cmake -D VERBOSE=on -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=on .. && make rebuild_cache && make -j6 install" ]
     },
 
-    {
-      "name": "Debug-POSIX",
-      "cmd": [ "cd build && touch .subl-auto && cmake -D VERBOSE=on -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=on -D OSXAPP=off .. && make rebuild_cache && make -j6 install" ]
-    },
-
+    // Build default release target; you should always perform a 'clean' build
+    // before using this build type just in case old cmake variables are
+    // leftover
     {
       "name": "Release",
-      "cmd": [ "cd build && touch .subl-auto && cmake -D DEBUG=off -D DOCS=on -D UNIVERSAL=on -D OSXAPP=on .. && make rebuild_cache && make -j6 install" ]
+      "cmd": [ "cd build && cmake -D UNIVERSAL=on .. && make rebuild_cache && make -j6 install" ]
     },
 
-    // This crazy command tries to ensure that we have no possible chance of
-    // bias introduced by CMake variables, old object files being used in build,
-    // and so forth while also attempting to be as safe as possible about
-    // issuing the always scurry "rm -rf *" command.
+    // Build POSIX release target; you should always perform a 'clean' build
+    // before using this build type just in case old cmake variables are
+    // leftover
+    {
+      "name": "Release-POSIX",
+      "cmd": [ "cd build && cmake -D UNIVERSAL=on -D OSXAPP=off .. && make rebuild_cache && make -j6 install" ]
+    },
+
+    // 'make clean' followed by 'make uninstall' followed by a purging of all
+    // the CMake cached variables.
     {
       "name": "Clean",
-      "cmd":  [ "cd build; make clean && make uninstall; if [[ -s 'CMakeCache.txt' && -r '.subl-auto' ]]; then rm -rf *; fi; touch .subl-auto && cmake -DVERBOSE=on .." ]
+      "cmd": [ "cd build && make clean; make uninstall; rm -rf CMakeFiles CMakeCache.txt cmake_install.cmake cmake_uninstall.cmake CPackConfig.cmake CPackSourceConfig.cmake" ]
     },
 
     {
