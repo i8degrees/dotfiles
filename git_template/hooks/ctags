@@ -4,7 +4,6 @@
 #
 set -e
 PATH="/usr/local/bin:$PATH"
-trap "rm -f .tags.$$" EXIT
-ctags --tag-relative -Rf.tags.$$ --exclude=.git --languages=-sql
-#mv .tags.$$ .tags
-
+trap "rm -f .git/tags.$$" EXIT
+ctags --tag-relative --exclude=build --exclude=extlibs -Rf.git/tags.$$ --languages=-sql
+mv .git/tags.$$ .git/tags
