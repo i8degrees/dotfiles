@@ -46,6 +46,9 @@
     { "keys":["alt+shift+o"], "command": "goto_open_file", "args": {"active_group": true } },
 */
 
+    // Markdown Preview Package
+    { "keys": [ "super+shift+m" ], "command": "markdown_preview" },
+
     // These grouped key bindings are bound to my Logitech G300 mouse using SteerMouse
     { "keys": ["super+ctrl+f"], "command": "toggle_side_bar" },
     { "keys": ["super+ctrl+space"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
