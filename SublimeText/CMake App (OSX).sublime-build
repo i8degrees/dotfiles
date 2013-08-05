@@ -33,7 +33,7 @@
     // the CMake cached variables.
     {
       "name": "Clean",
-      "cmd": [ "cd build && make clean; make uninstall; rm -rf CMakeFiles CMakeCache.txt cmake_install.cmake cmake_uninstall.cmake CPackConfig.cmake CPackSourceConfig.cmake" ]
+      "cmd": [ "cd build && make clean; make uninstall; rm -rf CMakeFiles CMakeCache.txt cmake_install.cmake cmake_uninstall.cmake CPackConfig.cmake CPackSourceConfig.cmake && cmake .." ]
     },
 
     {
