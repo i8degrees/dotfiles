@@ -65,7 +65,8 @@
 
     // Make target commands configured in my sublime-build files
     { "keys": ["super+r"], "command": "build", "args": {"variant": "Run"} },
-    { "keys": ["ctrl+r"], "command": "build", "args": {"variant": "Release"} },
+
+    //{ "keys": ["super+shift+p"], "command": "build", "args": {"variant": "Release-POSIX"} },
     //{ "keys": ["super+t"], "command": "build", "args": {"variant": "Debug-POSIX"} },
     { "keys": ["ctrl+c"], "command": "build", "args": {"variant": "Clean"} },
     { "keys": ["ctrl+i"], "command": "build", "args": {"variant": "Install"} },

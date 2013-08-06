@@ -26,7 +26,7 @@
     // leftover
     {
       "name": "Release-POSIX",
-      "cmd": [ "cd build && cmake -D FRAMEWORK=off .. && make rebuild_cache && make -j6 install" ]
+      "cmd": [ "cd build && cmake -D CMAKE_INSTALL_PREFIX=/usr/local -D FRAMEWORK=off .. && make rebuild_cache && make -j6 install" ]
     },
 
     // 'make clean' followed by 'make uninstall' followed by a purging of all
