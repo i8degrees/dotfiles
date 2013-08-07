@@ -1,0 +1,54 @@
+#!/bin/sh
+#
+# 2012-10/12:jeff
+#
+#       ~/.bash_syscheck
+#
+# Helper script that does some rudimentary sanity checks for us
+#
+
+if [ ! -x "$HOME/.bashlib" ]; then
+    echo "ERR: Ensure that $HOME/.bashlib file permissions are executable (x) and readable (r)."
+fi
+
+if [ ! -x "$HOME/.bash_cflags" ]; then
+    echo "ERR: Ensure that $HOME/.bash_cflags file permissions are executable (x) and readable (r)."
+fi
+
+if [ ! -x "$HOME/.bash_prompt" ]; then
+    echo "ERR: Ensure that $HOME/.bash_prompt file permissions are executable (x) and readable (r)."
+fi
+
+if [ ! -x "$HOME/.bash_aliases" ]; then
+    echo "ERR: Ensure that $HOME/.bash_aliases file permissions are executable (x) and readable (r)."
+fi
+
+# BASH variable sanity check
+if [ ! -z "$CCACHE_PATH" ]; then
+    echo "ERR: Update CCACHE_PATH within your ~/.bash_cflags"
+fi
+
+# Misc. one-time setup configuration options
+#
+case "$(uname -s)" in
+    Darwin)
+        # http://fuse4x.org/options.html
+        # http://fuse4x.org/faq.html
+        if [ ! "$(sysctl vfs.generic.fuse4x.tunables.admin_group)" \
+            == "vfs.generic.fuse4x.tunables.admin_group: 80" ]; then
+            # TODO/FIXME: this ought to be a separate configuration opt check
+            echo "Be sure to install the fuse4x port via Homebrew:\n"
+            echo "brew install fuse4x"
+
+            echo "To setup, execute this command after installing the fuse4x port via Homebrew:\n"
+            echo "sudo sysctl -w vfs.generic.fuse4x.tunables.admin_group=80"
+
+            echo "Also, add yourself to the admin group:\n"
+            echo "dseditgroup -o edit -a $(whoami) -t user admin\n"
+        fi
+    ;;
+    Linux)
+    ;;
+    *)
+    ;;
+esac
