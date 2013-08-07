@@ -22,6 +22,12 @@ if [ "$(which colormake)" ]; then
 	alias make='colormake'
 fi
 
+if [ "$(which cmake)" ]; then
+	alias cmakeclean='make clean; make uninstall; rm -rf CMakeFiles CMakeCache.txt cmake_install.cmake cmake_uninstall.cmake CPackConfig.cmake CPackSourceConfig.cmake Makefile'
+else
+	echo "CMake is not installed"
+fi
+
 case "$(uname -s)" in
 	Darwin)
     	alias www='browser $@'
