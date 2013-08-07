@@ -7,21 +7,31 @@
 # Local bash (1) aliases executed for interactive shells.
 #
 
+alias ncdu='ncdu -r $@'
+alias ip='echo "Public IP: "; curl icanhazip.com; echo "Internal IPs: "; ifconfig|grep 192.168.151.'
+#alias findfile='find $1 -name $2'
+alias fstring='grep $1 -R $2'
+
+if [ "$(which md5deep)" ]; then
+	alias md5='md5deep -re' # recursive, progress
+else
+	alias md5='md5sum'
+fi
+
+if [ "$(which colormake)" ]; then
+	alias make='colormake'
+fi
+
 case "$(uname -s)" in
 	Darwin)
-
-		alias ncdu='ncdu -r $@'
-		alias ip='echo "Public IP: "; curl icanhazip.com; echo "Internal IPs: "; ifconfig|grep 192.168.151.'
-    alias www='browser $@'
-    #alias findfile='find $1 -name $2'
-    alias fstring='grep $1 -R $2'
-    alias c='pbcopy'
-    alias p='pbpaste'
+    	alias www='browser $@'
+    	alias c='pbcopy'
+    	alias p='pbpaste'
 
 		# coreutils package from brew needs to be installed
 		if [ "$(brew list|grep coreutils)" ]; then
-      alias du='gdu -csh'
-      alias ls="gls -lhas --color=auto"
+      		alias du='gdu -csh'
+      		alias ls="gls -lhas --color=auto"
 			alias lsr="gls -lRa --color=auto"
 			alias df="gdf -Th"
 			alias rm="grm -iv"
@@ -37,9 +47,9 @@ case "$(uname -s)" in
 			alias eject='diskutil eject $@'
 			alias mount_ext4='ext4fuse -o allow_other $@'
 			#alias cloc='cloc --by-file-by-lang --exclude-list-file=.cloc $@'
-      alias route='netstat -nr'
-      alias gitx='open -a "GitX"'
-      alias leaks='iprofiler -T 300 -allocations -leaks $@'
+      		alias route='netstat -nr'
+      		alias gitx='open -a "GitX"'
+      		alias leaks='iprofiler -T 300 -allocations -leaks $@'
 		fi
 
 		#alias pgrep="psgrep"
@@ -59,21 +69,11 @@ case "$(uname -s)" in
 		alias extract='open -a "Archive Utility"'
 		alias lsmod='kextstat'
 		alias modprobe='kextload $@'
-    alias otool='otool -L $@'
-
-		if [ -x "$(which md5deep)" ]; then
-			alias md5='md5deep -re'
-		fi
-
-		if [ -x "$(which colormake)" ]; then
-			alias make='colormake'
-		fi
+    	alias otool='otool -L $@'
 	;;
 	Linux)
-
-		alias ip='echo "Public IP: " && curl icanhazip.com; echo "\nInternal IPs: "; ifconfig|grep 192.168.151.'
 		# safe assumption that coreutils package is installed within any
-		# given Linux distribution -- that I'll touch, anyway...
+		# given Linux distribution
 		alias ls="ls -lhas --color=auto"
 		alias lsr="ls -lRa --color=auto"
 		alias df="df -Th"
@@ -86,14 +86,8 @@ case "$(uname -s)" in
 		alias ln='ln -v'
 		alias xclip="xclip -sel clip"
 
-		alias edit="$(which geany)"
-
-
-		if [ -x "$(which md5deep)" ]; then
-			alias md5='md5deep -re' # recursive, progress
-		else
-			alias md5='md5sum'
-		fi
+		#alias edit="$(which geany)"
+		alias edit="$(which vim)"
 
 		# User specific
 		if [[ -n "$(id|grep jeff)" ]]; then
@@ -171,8 +165,8 @@ alias kpatch="patch -p1 < $@"
 #else
 	alias gcc="$(which gcc)"
 	alias g++="$(which g++)"
-	alias gcc="/usr/bin/gcc"
-	alias g++="/usr/bin/gcc"
+	#alias gcc="/usr/bin/gcc"
+	#alias g++="/usr/bin/gcc"
 #fi
 
 if [ -x "$(which colordiff)" ]; then

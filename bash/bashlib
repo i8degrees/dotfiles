@@ -160,21 +160,31 @@ fi
 
 # Derives from Fielding's dotfiles repo
 # https://github.com/justfielding/dotfiles
-timecap () {
-  pwd_bin="$(which pwd)"
-  parent="$(pwd_bin)"
-  filenumber=${1:-1}
-  delay=${2:-5}
-  scdir=${3:-$(parent)}
-  date_bin=$(which date)
-  screencap_bin="$(which screencapture)"
-  i=$filenumber
-  while [ 1 ]
+case "$(uname -s)" in
+    Darwin)
+      timecap ()
+      {
+        pwd_bin="$(which pwd)"
+        parent="$(pwd_bin)"
+        filenumber=${1:-1}
+        delay=${2:-5}
+        scdir=${3:-$(parent)}
+        date_bin=$(which date)
+        screencap_bin="$(which screencapture)"
+        i=$filenumber
 
-    do $screencap_bin -t jpg -x ${scdir}${i}_${timestamp}.jpg
-      timestamp="$($date_bin +%y-%m-%d_%s)"
-      echo "Capturing to ${i}_${timestamp}.jpg"
-      let i++
-      sleep $delay
-    done
-}
+        while [ 1 ]
+          do $screencap_bin -t jpg -x ${scdir}${i}_${timestamp}.jpg
+          timestamp="$($date_bin +%y-%m-%d_%s)"
+          echo "Capturing to ${i}_${timestamp}.jpg"
+          let i++
+          sleep $delay
+        done
+      }
+    ;;
+    Linux)
+    ;;
+    *)
+    ;;
+esac
+

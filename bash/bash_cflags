@@ -36,6 +36,7 @@ case "$(uname -s)" in
     #EMMAKEN_COMPILER="/usr/local/bin/clang++"; export EMMAKEN_COMPILER
   ;;
   Linux)
+    MAKEFLAGS="-j4"; export MAKEFLAGS
   ;;
   *)
   ;;
@@ -43,7 +44,9 @@ esac
 
 LOCAL="virgo"; export LOCAL
 
-SDL_DEV="$(pkg-config --cflags --libs sdl SDL_image SDL_mixer SDL_ttf)"; export SDL_DEV
+#if [ "$(which pkg-config)" ]; then
+  #SDL_DEV="$(pkg-config --cflags --libs sdl SDL_image SDL_mixer SDL_ttf)"; export SDL_DEV
+#fi
 
 # removed PREFIX due to NPM trying to use this for global install dir
 #
@@ -51,9 +54,9 @@ SDL_DEV="$(pkg-config --cflags --libs sdl SDL_image SDL_mixer SDL_ttf)"; export 
 
 if [ -f "$(which rbenv)" ]; then
   eval "$(rbenv init -)"
+  PATH="$HOME/.rbenv/versions/1.9.3-p0/bin:$PATH"; export PATH
 fi
 
-PATH="$HOME/.rbenv/versions/1.9.3-p0/bin:$PATH"; export PATH
 #export GEM_HOME="$HOME/.gem/ruby/1.9.3-p0"
 #export GEM_PATH="$HOME/.gem/ruby/1.9.3-p0"
 #export GEM_PATH="/usr/lib/ruby/gems/1.9.3"

@@ -68,37 +68,53 @@ if [ -x "$(which locale)" ]; then
 	eval "$(locale)"
 fi
 
-PATH="$CCACHE_PATH:$HOME/local/bin:$PATH"
-export PATH
+case "$(uname -s)" in
+  Darwin)
+	PATH="$HOME/local/bin:$PATH"
+	export PATH
 
-PATH="$PATH:$HOME/local/bin/checker"
-export PATH
+	PATH="$PATH:$HOME/local/bin/checker"
+	export PATH
 
-PYTHONPATH="$(brew --prefix)/lib/python2.7/site-packages"
+	PYTHONPATH="$(brew --prefix)/lib/python2.7/site-packages"
 
-PATH="$PATH:/usr/local/share/python:$PYTHONPATH"
-export PATH
+	PATH="$PATH:/usr/local/share/python:$PYTHONPATH"
+	export PATH
 
-#PATH="$PATH:$HOME/local/src/emscripten"
-#export PATH
+	#PATH="$PATH:$HOME/local/src/emscripten"
+	#export PATH
+
+	EDITOR="subl"; export EDITOR
+	VISUAL="subl"; export VISUAL
+
+	if [ "$(which aless)" ]; then
+		#PAGER="aless"; export PAGER
+		MAN_PAGER="aless"; export MAN_PAGER;
+	fi
+
+	TMPDIR="/private/tmp"; export TMPDIR
+  ;;
+  Linux)
+	EDITOR="vim"; export EDITOR
+	TMPDIR="/tmp"; export TMPDIR
+  ;;
+  *)
+  ;;
+esac
 
 #eval "$(resize)"
 
 #export USECOLOR=true
 TERM=xterm-256color; export TERM
-TMPDIR="/private/tmp"; export TMPDIR
 #TMPDIR="$HOME/tmp"; export TMPDIR
 BLOCKSIZE=K; export BLOCKSIZE
 INPUTRC="/private/etc/inputrc"; export INPUTRC
 
-if [ -x "$(which vimpager)" ]; then
-	#PAGER="aless"; export PAGER
-	MAN_PAGER="aless"; export MAN_PAGER;
-fi
+#if [ "$(which vimpager)" ]; then
+	# ...
+#fi
 
 BROWSER="google-chrome"; export BROWSER
-EDITOR="subl"; export EDITOR
-VISUAL="subl"; export VISUAL
 
 MINICOM="-m -c on"; export MINICOM
 MPD_HOST="666@virgo.local"; export MPD_HOST
@@ -171,10 +187,6 @@ esac
 #else
 #	echo "ERR: Ensure that /usr/local/etc/bash_completion.d/git-completion.bash file permissions are executable (x) and readable (r)."
 #fi
-
-if [ -x "$HOME/.bash_aliases" ]; then
-	. $HOME/.bash_aliases
-fi
 
 if [ -x "$HOME/.bash_aliases" ]; then
 	. $HOME/.bash_aliases

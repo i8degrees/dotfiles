@@ -22,23 +22,23 @@ EIGHTBIT 1
 
 # Below are the color init strings for the basic file types. A color init
 # string consists of one or more of the following numeric codes:
-# Attribute codes: 
+# Attribute codes:
 # 00=none 01=bold 04=underscore 05=blink 07=reverse 08=concealed
 # Text color codes:
 # 30=black 31=red 32=green 33=yellow 34=blue 35=magenta 36=cyan 37=white
 # Background color codes:
 # 40=black 41=red 42=green 43=yellow 44=blue 45=magenta 46=cyan 47=white
- 
+
  NORMAL         00         # global default, although everything should be something.
  FILE           00         # normal file
- DIR            00;34      # directory
+ DIR            00;32      # directory
  LINK           35         # symbolic link
  FIFO           40;33      # pipe
  SOCK           01;35      # socket
  BLK            40;33;01   # block device driver
  CHR            40;33;01   # character device driver
  ORPHAN         01;30
- #EXEC          01;31 
+#EXEC          01;31
 # SETGID			0		   # reset to "normal" color (???)
 #SETGID			30;43	   # file that is setgid (g+s)
 
@@ -117,7 +117,7 @@ EIGHTBIT 1
  .css           00;36
  .csv           00;36
  .deb           00;36
- .diff          01;33 
+ .diff          01;33
  .dir_colors    01;33
  .enc           00;36
  .eps           00;36
@@ -200,12 +200,12 @@ EIGHTBIT 1
  .urlview       01;35
  .vim           01;35
  .vimrc         01;35
- .xinitrc       01;31 
+ .xinitrc       01;31
  .Xauthority    01;31
  .Xmodmap       00;31
  .Xresources    01;33
 
- .melons		00;31
+ .orig					00;31
 
  # Below, there should be one TERM entry for each termtype that is colorizable
  TERM Eterm
@@ -257,4 +257,4 @@ EIGHTBIT 1
  TERM xterm-256color
  TERM xterm-88color
  TERM xterm-color
- TERM xterm-debian 
+ TERM xterm-debian

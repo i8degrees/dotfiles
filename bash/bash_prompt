@@ -76,12 +76,15 @@ get_git_branch () {
     GIT_EXEC="$(git branch 2> /dev/null)"
 }
 
-
-if [[ -n get_git_branch ]]; then
-	GIT_BRANCH_DIRECTORY="\[$ORANGE\]:\$(parse_git_branch)"
+if [ "$(which git)" ]; then
+	if [[ -n get_git_branch ]]; then
+		GIT_BRANCH_DIRECTORY="\[$ORANGE\]:\$(parse_git_branch)"
+	else
+		# fuck if I know or care at the moment :>O (leaving silly msg for debugging worries later)
+		GIT_BRANCH_DIRECTORY=" \[$ORANGE\][git-branch: POSSIBLE BUG] "
+	fi
 else
-	# fuck if I know or care at the moment :>O (leaving silly msg for debugging worries later)
-	GIT_BRANCH_DIRECTORY=" \[$ORANGE\][git-branch: POSSIBLE BUG] "
+	GIT_BRANCH_DIRECTORY=""
 fi
 
 if [ "$ROOT" = "0" ]; then

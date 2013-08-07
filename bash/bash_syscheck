@@ -24,9 +24,9 @@ if [ ! -x "$HOME/.bash_aliases" ]; then
 fi
 
 # BASH variable sanity check
-if [ ! -z "$CCACHE_PATH" ]; then
-    echo "ERR: Update CCACHE_PATH within your ~/.bash_cflags"
-fi
+#if [ ! -z "$CCACHE_PATH" ]; then
+#    echo "ERR: Update CCACHE_PATH within your ~/.bash_cflags"
+#fi
 
 # Misc. one-time setup configuration options
 #
