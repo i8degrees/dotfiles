@@ -87,10 +87,10 @@ case "$(uname -s)" in
 	EDITOR="subl"; export EDITOR
 	VISUAL="subl"; export VISUAL
 
-	if [ "$(which aless)" ]; then
+	#if [ "$(which aless)" ]; then
 		#PAGER="aless"; export PAGER
-		MAN_PAGER="aless"; export MAN_PAGER;
-	fi
+		#MAN_PAGER="aless"; export MAN_PAGER;
+	#fi
 
 	TMPDIR="/private/tmp"; export TMPDIR
   ;;
