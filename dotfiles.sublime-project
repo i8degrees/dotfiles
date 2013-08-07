@@ -1,0 +1,17 @@
+{
+	"folders":
+	[
+/*
+		{
+      "name": "cmake",
+      "path": "cmake"
+    },
+*/
+    {
+      "name": "dotfiles",
+      "path": "."
+    },
+
+    {} // placeholder
+	]
+}
