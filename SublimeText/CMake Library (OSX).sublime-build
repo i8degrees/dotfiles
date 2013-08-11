@@ -10,7 +10,7 @@
     // This is our default build command (bound to our build key)
     {
       "name": "Debug",
-      "cmd": [ "cd build && cmake -D VERBOSE=on -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=off -D EXAMPLES=on -D CMAKE_INSTALL_PREFIX=/Users/jeff/Library/Frameworks .. && make rebuild_cache && make -j6 install" ]
+      "cmd": [ "cd build && cmake -D VERBOSE=on -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=on -D EXAMPLES=on -D CMAKE_INSTALL_PREFIX=/Users/jeff/Library/Frameworks .. && make rebuild_cache && make -j6 install" ]
     },
 
     // Build default release target; you should always perform a 'clean' build
