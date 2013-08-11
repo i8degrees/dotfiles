@@ -34,6 +34,7 @@ case "$(uname -s)" in
     #CCACHE_DIR="/ramdisk/dir"; export CCACHE_DIR
     NODE_PATH="/usr/local/lib/node_modules"; export NODE_PATH
     #EMMAKEN_COMPILER="/usr/local/bin/clang++"; export EMMAKEN_COMPILER
+    PATH="$PATH:/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/bin"; export PATH
   ;;
   Linux)
     MAKEFLAGS="-j4"; export MAKEFLAGS

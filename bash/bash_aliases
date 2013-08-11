@@ -75,7 +75,12 @@ case "$(uname -s)" in
 		alias extract='open -a "Archive Utility"'
 		alias lsmod='kextstat'
 		alias modprobe='kextload $@'
-    	alias otool='otool -L $@'
+    alias otool='otool -L $@'
+
+    if [ -x "$(which i586-mingw32-gcc)" ]; then
+    	alias win32-gcc='i586-mingw32-gcc'
+    fi
+
 	;;
 	Linux)
 		# safe assumption that coreutils package is installed within any
