@@ -53,9 +53,9 @@ case "$(uname -s)" in
 			alias eject='diskutil eject $@'
 			alias mount_ext4='ext4fuse -o allow_other $@'
 			#alias cloc='cloc --by-file-by-lang --exclude-list-file=.cloc $@'
-      		alias route='netstat -nr'
-      		alias gitx='open -a "GitX"'
-      		alias leaks='iprofiler -T 300 -allocations -leaks $@'
+      alias route='netstat -nr'
+      alias gitx='open -a "GitX"'
+      alias leaks='iprofiler -T 300 -allocations -leaks $@'
 		fi
 
 		#alias pgrep="psgrep"
