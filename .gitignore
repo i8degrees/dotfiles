@@ -6,3 +6,6 @@ vim/tmp/*
 config/
 ref/
 *.cache
+
+# Sublime Text
+*.last-run
