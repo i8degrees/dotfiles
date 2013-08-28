@@ -36,9 +36,9 @@
     "enabled_extensions":
     [
         "footnotes",
-        "toc",
-        "fenced-code-blocks",
-        "cuddled-lists"
+        "toc"
+        //"fenced-code-blocks",
+        //"cuddled-lists"
     ],
 
     /*
