@@ -16,7 +16,7 @@
 	# filemode = false
 
 [credential]
-    helper = osxkeychain
+    helper = /usr/local/bin/git-credential-osxkeychain
 
 [advice]
     statusHints = false
