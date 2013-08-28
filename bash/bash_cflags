@@ -28,7 +28,7 @@ case "$(uname -s)" in
   Darwin)
     CC="/usr/bin/clang"; export CC
     CXX="/usr/bin/clang++"; export CXX
-    MAKEFLAGS="-j6"; export MAKEFLAGS # MacBook Air Mid 2011
+    MAKEFLAGS="-j4"; export MAKEFLAGS # MacBook Air Mid 2011
     DEVELOPER_DIR="/Users/$(whoami)/Applications/Developer/Xcode.app/Contents/Developer"; export DEVELOPER_DIR
     CCACHE_PATH="/usr/local/Cellar/ccache/3.1.9/libexec"; export CCACHE_PATH
     #CCACHE_DIR="/ramdisk/dir"; export CCACHE_DIR

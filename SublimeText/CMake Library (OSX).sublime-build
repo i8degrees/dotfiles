@@ -10,7 +10,7 @@
     // This is our default build command (bound to our build key)
     {
       "name": "Debug",
-      "cmd": [ "cd build && cmake -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=on -D EXAMPLES=on -D CMAKE_INSTALL_PREFIX=/Users/jeff/Library/Frameworks .. && make rebuild_cache && make -j6 install" ]
+      "cmd": [ "cd build && cmake -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=on -D EXAMPLES=on -D CMAKE_INSTALL_PREFIX=/Users/jeff/Library/Frameworks .. && make rebuild_cache && make -j4 install" ]
     },
 
     // Build default release target; you should always perform a 'clean' build
@@ -18,7 +18,7 @@
     // leftover
     {
       "name": "Release",
-      "cmd": [ "cd build && cmake -D UNIVERSAL=on -D FRAMEWORK=on .. && make rebuild_cache && make -j6 install" ]
+      "cmd": [ "cd build && cmake -D UNIVERSAL=on -D FRAMEWORK=on .. && make rebuild_cache && make -j4 install" ]
     },
 
     // Build POSIX release target; you should always perform a 'clean' build
@@ -26,7 +26,7 @@
     // leftover
     {
       "name": "Release-POSIX",
-      "cmd": [ "cd build && cmake -D CMAKE_INSTALL_PREFIX=/usr/local -D FRAMEWORK=off .. && make rebuild_cache && make -j6 install" ]
+      "cmd": [ "cd build && cmake -D CMAKE_INSTALL_PREFIX=/usr/local -D FRAMEWORK=off .. && make rebuild_cache && make -j4 install" ]
     },
 
     // 'make clean' followed by 'make uninstall' followed by a purging of all
@@ -38,7 +38,7 @@
 
     {
       "name": "Install",
-      "cmd": [ "cd build && make -j6 install" ]
+      "cmd": [ "cd build && make -j4 install" ]
     },
 
     {
@@ -55,12 +55,12 @@
 
     {
       "name": "Test",
-      "cmd": [ "cd build && make -j6 test" ]
+      "cmd": [ "cd build && make -j4 test" ]
     },
 
     {
       "name": "Analyze",
-      "cmd": [ "cd build && scan-build -V make -j6" ]
+      "cmd": [ "cd build && scan-build -V make -j4" ]
     },
 
     {
