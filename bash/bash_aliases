@@ -7,10 +7,13 @@
 # Local bash (1) aliases executed for interactive shells.
 #
 
+alias rbash='source ~/.bashrc'
+
 alias ncdu='ncdu -r $@'
 alias ip='echo "Public IP: "; curl icanhazip.com; echo "Internal IPs: "; ifconfig|grep 192.168.151.'
 #alias findfile='find $1 -name $2'
 alias fstring='grep $1 -R $2'
+alias g='grep $@'
 
 if [ "$(which md5deep)" ]; then
 	alias md5='md5deep -re' # recursive, progress
@@ -80,6 +83,19 @@ case "$(uname -s)" in
     if [ -x "$(which i586-mingw32-gcc)" ]; then
     	alias win32-gcc='i586-mingw32-gcc'
     fi
+
+    # Homebrew package management helpers
+    alias btree='brew uses -installed $@'
+    alias binstall='brew install -vd $@'
+    alias binst='binstall $@'
+    alias breinstall='brew reinstall -vd $@'
+    alias bremove='brew remove $@'
+    alias bdeps='brew deps $@'
+    alias blist='brew list'
+    alias bdoc='brew doctor'
+    alias bupdate='brew update'
+    alias bupgrade='brew upgrade'
+    alias binfo='brew info $@'
 
 	;;
 	Linux)
