@@ -76,11 +76,6 @@ case "$(uname -s)" in
 	PATH="$PATH:$HOME/local/bin/checker"
 	export PATH
 
-	PYTHONPATH="$(brew --prefix)/lib/python2.7/site-packages"
-
-	PATH="$PATH:/usr/local/share/python:$PYTHONPATH"
-	export PATH
-
 	#PATH="$PATH:$HOME/local/src/emscripten"
 	#export PATH
 
