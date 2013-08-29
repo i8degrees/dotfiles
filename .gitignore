@@ -8,4 +8,4 @@ ref/
 *.cache
 
 # Sublime Text
-*.last-run
+SublimeText/Package Control.last-run
