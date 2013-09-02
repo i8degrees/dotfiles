@@ -100,5 +100,8 @@
     { "keys": ["super+_"], "command": "select_by_index", "args": { "index": 10 } },
     { "keys": ["super++"], "command": "select_by_index", "args": { "index": 11 } },
 
+    // Misc
+    { "keys": ["alt+shift+f"], "command": "show_panel", "args": {"panel": "find_in_files"} },
+
     {} // placeholder
 ]
