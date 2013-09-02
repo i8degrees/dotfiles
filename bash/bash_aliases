@@ -96,6 +96,7 @@ case "$(uname -s)" in
     alias bupdate='brew update'
     alias bupgrade='brew upgrade'
     alias binfo='brew info $@'
+    alias bsearch='brew search $@'
 
 	;;
 	Linux)
