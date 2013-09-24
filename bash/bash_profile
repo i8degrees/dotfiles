@@ -31,3 +31,6 @@ if [ -f "$HOME/.bashrc" ]; then
 fi
 
 umask 022
+
+# rbenv path related variables
+eval "$(rbenv init -)"
