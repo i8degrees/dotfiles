@@ -2,7 +2,6 @@
 
 WORKING_DIR=$(pwd)
 RM_COMMAND=$(which rm)
-LINK_COMMAND=$(which ln)
 
 # vim configuration
 ${RM_COMMAND} -v $HOME/.vim/autoload
@@ -26,3 +25,6 @@ ${RM_COMMAND} -v  $HOME/.bashrc
 
 # mplayer configuration
 ${RM_COMMAND} -rv ${HOME}/.mplayer
+
+# mpd configuration
+${RM_COMMAND} -rv ${HOME}/.config/mpd

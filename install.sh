@@ -29,3 +29,38 @@ ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bashrc $HOME/.bashrc
 
 # mplayer configuration
 ${LINK_COMMAND} -sf ${WORKING_DIR}/mplayer/ $HOME/.mplayer
+
+# mpd configuration
+${MKDIR_COMMAND} -p ${HOME}/.config/mpd
+${MKDIR_COMMAND} -p ${HOME}/.config/mpd/cache
+${MKDIR_COMMAND} -p ${HOME}/.config/mpd/log
+${MKDIR_COMMAND} -p ${HOME}/.config/mpd/db
+${MKDIR_COMMAND} -p ${HOME}/.config/mpd/tmp
+${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/mpd.conf $HOME/.config/mpd/mpd.conf
+#${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/mpdscribble.conf $HOME/.config/mpd/mpdscribble.conf
+
+case "$(uname -s)" in
+Darwin)
+  if [ -d "/Volumes/Music" ]; then
+    ${LINK_COMMAND} -sf /Volumes/Music/ $HOME/.config/mpd/music
+
+    if [ -d "/Volumes/Music/playlists" ]; then
+      ${LINK_COMMAND} -sf /Volumes/Music/playlists/ $HOME/.config/mpd/playlists
+    fi
+  else
+    if [ -d "$HOME/Music" ]; then
+      ${LINK_COMMAND} -sf $HOME/Music/ $HOME/.config/mpd/music
+
+      if [ -d "$HOME/Music/playlists" ]; then
+        ${LINK_COMMAND} -sf $HOME/Music/ $HOME/.config/mpd/music
+      fi
+    fi
+  fi
+  ;;
+Linux)
+  return 0
+  ;;
+*)
+  return 0
+  ;;
+esac

@@ -6,6 +6,12 @@ vim/tmp/*
 config/
 ref/
 *.cache
+mpd/cache/
+mpd/log/
+mpd/db/
+mpd/mpdscribble.conf
+mpd/music
+mpd/playlists
 
 # Sublime Text
 SublimeText/Package Control.last-run
