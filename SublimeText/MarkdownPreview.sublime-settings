@@ -8,7 +8,8 @@
         default - Use the system default HTML viewer
         other - Set a full path to any executable. ex: /Applications/Google Chrome Canary.app or /Applications/Firefox.app
     */
-    "browser": "Marked",
+    "browser": "/Users/jeff/Applications/Marked.app",
+    //"browser": "/Users/jeff/Applications/Google Chrome.app",
 
     /*
         Sets the default parser for converting markdown to html.
@@ -17,17 +18,17 @@
         default - Use the builtin python-markdown2 parser
         github - User github API to convert markdown, so you can use GitHub flavored Markdown, see http://github.github.com/github-flavored-markdown/
     */
-    "parser": "github",
+    "parser": "default",
 
     /*
        Enable or not mathjax support.
     */
-    "enable_mathjax": false,
+    "enable_mathjax": true,
 
     /*
         Enable or not highlight.js support for syntax highlighting.
     */
-    "enable_highlight": false,
+    "enable_highlight": true,
 
     /*
         List of enabled extensions of markdown2. You can get the full list of
@@ -58,7 +59,8 @@
         default - Use the builtin CSS or github CSS, depending on parser config (markdown.css or github.css)
         other - Set an absolute path or url to any css file
     */
-    "css": "default",
+    "css": "github.css",
+    //"css": "/Users/jeff/Applications/Marked.app/Contents/Resources/github.css",
 
     /*
         Allow CSS overrides
@@ -71,7 +73,7 @@
     /*
         Sets the supported filetypes for auto-reload on save
     */
-    "markdown_filetypes": [".md", ".markdown", ".mdown"],
+    "markdown_filetypes": [".md", ".markdown", ".mdown", ".mmd" ],
 
     /*
         Sets a custom temporary folder for MarkdownPreview-generated html files. Useful if you're
