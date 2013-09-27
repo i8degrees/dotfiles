@@ -1,5 +1,6 @@
 ## TODO
 
+* copy mpd OS X launchctl scripts to repo
 * Finish importing vim config (plugins, bundle, autoload)
-* Create install script (think: symlinks to git repo config files back to the local config dirs) 
+* Create install script (think: symlinks to git repo config files back to the local config dirs)
 
