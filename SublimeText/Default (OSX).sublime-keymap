@@ -1,5 +1,4 @@
 [
-
     // CTags Package
 /*
     {
@@ -48,6 +47,9 @@
 
     // Markdown Preview Package
     { "keys": [ "super+shift+m" ], "command": "markdown_preview" },
+
+    // SublimeAlternate Package
+    { "keys": ["alt+o"], "command": "alternate_file" },
 
     // These grouped key bindings are bound to my Logitech G300 mouse using SteerMouse
     { "keys": ["super+ctrl+f"], "command": "toggle_side_bar" },

@@ -1,4 +1,9 @@
 {
+	"auto_upgrade_frequency": 24, // hours
+	"auto_upgrade_ignore":
+	[
+		"SublimeAlternate"
+	],
 	"auto_upgrade_last_run": null,
 	"installed_packages":
 	[
@@ -18,6 +23,7 @@
 		"Dogs Colour Scheme",
 		"EncodingHelper",
 		"FileDiffs",
+		"Fountain",
 		"GotoOpenFile",
 		"Haml",
 		"INI",
@@ -31,7 +37,9 @@
 		"ST2SyntaxFromFileName",
 		"StringEncode",
 		"sublime-jslint",
+		"SublimeAStyleFormatter",
 		"SublimeGDB",
+		"sublimelint",
 		"SublimeTODO",
 		"SyncedSideBar",
 		"Theme - Pseudo OSX",
