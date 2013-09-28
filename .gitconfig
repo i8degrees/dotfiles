@@ -7,7 +7,7 @@
     #askpass = /usr/local/libexec/ssh-askpass
 	whitespace = tabwidth=2,nowarn
 
-	excludesfile = /Users/jeff/.gitignore_global
+  excludesfile = /Users/jeff/.gitignore_global
 	# ...core.excludesfile ~/src/.gitignore
 	# ...core.excludesfile ~/Projects/.gitignore
 
