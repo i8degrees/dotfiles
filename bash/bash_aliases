@@ -31,6 +31,10 @@ else
 	echo "CMake is not installed"
 fi
 
+if [ "$(which git)" ]; then
+  alias gpush='git push -u'
+fi
+
 case "$(uname -s)" in
 	Darwin)
     	alias www='browser $@'

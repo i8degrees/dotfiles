@@ -69,11 +69,11 @@
     ls = ls-files
     oops = amend
     chunk = add -p # Patch (read: commit) code in chunks / hunks as they were (created?)
-#    undo = reset --soft HEAD^
+    #undo = reset --soft HEAD^
     unstage = reset HEAD
     ignore = ls-files -o -i --exclude-standard # show files ignored by git
     ptags = push --tags
-	ctags = !.git/hooks/ctags
+    #ctags = !.git/hooks/ctags
 
 [push]
     default = upstream
