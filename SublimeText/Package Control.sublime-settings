@@ -1,5 +1,5 @@
 {
-	"auto_upgrade_frequency": 24, // hours
+	"auto_upgrade_frequency": 24,
 	"auto_upgrade_ignore":
 	[
 		"SublimeAlternate"
@@ -27,7 +27,9 @@
 		"GotoOpenFile",
 		"Haml",
 		"INI",
+		"Markdown Extended",
 		"Markdown Preview",
+		"Monokai Extended",
 		"Open Recent Files",
 		"Package Control",
 		"QuickFileMove",
