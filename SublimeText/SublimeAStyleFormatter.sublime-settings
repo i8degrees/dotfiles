@@ -1,6 +1,4 @@
 {
-    // NOTE: You should always edit options in user file, not this file.
-
     // Auto format on file save
     "autoformat_on_save": false,
 
@@ -94,7 +92,7 @@
         // Insert space padding around parenthesis on both the outside and
         // the inside. Any end of line comments will remain in the original
         // column, if possible.
-        "pad-paren": false,
+        "pad-paren": true,
 
         // Insert space padding around parenthesis on the outside only. Any
         // end of line comments will remain in the original column, if possible.
@@ -211,7 +209,7 @@
         // By default logical conditionals will be placed first on the new line.
         // The option break‑after‑logical will cause the logical conditionals to be
         // placed last on the previous line. This option has no effect without max‑code‑length.
-        "max-code-length": 80,
+        "max-code-length": 79,
         "break-after-logical": false
     },
 
