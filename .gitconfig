@@ -14,6 +14,8 @@
 	# ignorednore file perms (chmods)
 	# Source: http://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-mode-changes-chmod
 	# filemode = false
+    autocrlf = input
+    #safecrlf = true
 
 [credential]
     helper = /usr/local/bin/git-credential-osxkeychain
