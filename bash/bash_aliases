@@ -102,6 +102,12 @@ case "$(uname -s)" in
     alias binfo='brew info $@'
     alias bsearch='brew search $@'
 
+		# grep color term support -- GREP_OPTIONS / GREP_COLOR bash vars --
+		# apparently does not work under OS X (v10.7.x+)
+		# http://www.askdavetaylor.com/force_mac_os_x_grep_to_always_output_in_color/
+		if [ "$(which grep)" ]; then # /usr/local/bin/grep (homebrew package)
+			alias grep='grep --color=always $@'
+		fi
 	;;
 	Linux)
 		# safe assumption that coreutils package is installed within any
@@ -164,6 +170,9 @@ case "$(uname -s)" in
 		alias pkgf?="pacman -Qo $1" # list package from which file is from
 		alias pkgorphan="pacman -Qdt" # list package orphans; ...
 		alias pkgsrc="pacman -sQm" # list locally compiled/installed packages (AUR, abs)
+
+		# grep color term support
+		export GREP_OPTIONS="--color=always -I"; # -I = --binary-files-without-match
 	;;
 	*)
 		#alias ls="ls -lhas --color=never"
@@ -174,9 +183,7 @@ esac
 alias gclone='git clone $@'
 alias youtube-dl='youtube-dl --max-quality mp4 $@'
 
-# grep options
 alias tree="tree -Chu"
-GREP_OPTIONS="--color=always -I"; export GREP_OPTIONS # -I = --binary-files-without-match
 alias killall="killall -9 $@"
 
 alias pid="ps aux|pgrep"
