@@ -98,9 +98,9 @@ case "$(uname -s)" in
     alias blist='brew list'
     alias bdoc='brew doctor'
     alias bupdate='brew update'
-    alias bupgrade='brew upgrade'
     alias binfo='brew info $@'
     alias bsearch='brew search $@'
+    alias boutdated='brew outdated $@'
 
 		# grep color term support -- GREP_OPTIONS / GREP_COLOR bash vars --
 		# apparently does not work under OS X (v10.7.x+)
