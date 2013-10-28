@@ -34,3 +34,6 @@ ${RM_COMMAND} -rv ${HOME}/.synergy.conf
 ${RM_COMMAND} -rv ${HOME}/Library/LaunchAgents/org.local.synergys.plist
 ${RM_COMMAND} -rv ${HOME}/local/bin/synergys.sh
 
+# unison configuration
+${RM_COMMAND} -rv ${HOME}/Library/LaunchAgents/org.local.unison.plist
+${RM_COMMAND} -rv ${HOME}/local/bin/unison.sh

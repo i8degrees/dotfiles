@@ -69,6 +69,11 @@ Darwin)
   #launchctl unload ~/Library/LaunchAgents/org.local.synergys.plist
   #launchctl load ~/Library/LaunchAgents/org.local.synergys.plist
 
+  # unison launchd script
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/unison.sh $HOME/local/bin/unison.sh
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/org.local.unison.plist $HOME/Library/LaunchAgents/org.local.unison.plist
+  launchctl unload ~/Library/LaunchAgents/org.local.unison.plist
+  launchctl load ~/Library/LaunchAgents/org.local.unison.plist
   ;;
 Linux)
   return 0

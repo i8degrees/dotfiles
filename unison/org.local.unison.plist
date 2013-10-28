@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN"
+    "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<!--
+  Derives in part from official org.synergy-foss.org.synergys.plist script
+  provided in the source tarball of synergy v10.4.15
+-->
+<dict>
+  <key>Disabled</key>
+  <false/>
+  <key>Label</key>
+  <string>org.local.unison</string>
+  <key>RunAtLoad</key>
+  <true/>
+  <key>LowPriorityIO</key>
+  <true/>
+  <key>KeepAlive</key>
+  <true/>
+
+  <key>Program</key>
+  <string>/Users/jeff/local/bin/unison.sh</string>
+</dict>
+</plist>
