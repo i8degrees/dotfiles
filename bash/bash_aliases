@@ -98,6 +98,7 @@ case "$(uname -s)" in
     alias blist='brew list'
     alias bdoc='brew doctor'
     alias bupdate='brew update'
+    alias bupgrade='brew doctor; brew update; brew upgrade'
     alias binfo='brew info $@'
     alias bsearch='brew search $@'
     alias boutdated='brew outdated $@'
