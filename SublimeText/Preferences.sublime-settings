@@ -61,11 +61,11 @@
 		".hg",
 		"CVS"
 	],
-	"font_face": "Envy Code R",
+	"font_face": "Droid Sans Mono",
 	"font_options":
 	[
 	],
-	"font_size": 15.0,
+	"font_size": 13.0,
 	"gutter": true,
 	"highlight_line": true,
 	"hot_exit": false,
