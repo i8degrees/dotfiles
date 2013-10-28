@@ -3,6 +3,7 @@
 WORKING_DIR=$(pwd)
 MKDIR_COMMAND=$(which mkdir)
 LINK_COMMAND=$(which ln)
+COPY_COMMAND=$(which cp)
 
 # vim configuration
 ${MKDIR_COMMAND} -p ${HOME}/.vim
@@ -39,8 +40,13 @@ ${MKDIR_COMMAND} -p ${HOME}/.config/mpd/tmp
 ${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/mpd.conf $HOME/.config/mpd/mpd.conf
 #${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/mpdscribble.conf $HOME/.config/mpd/mpdscribble.conf
 
+# synergys configuration
+${LINK_COMMAND} -sf ${WORKING_DIR}/synergy/synergy.conf $HOME/.synergy.conf
+
 case "$(uname -s)" in
 Darwin)
+
+  # mpd configuration
   if [ -d "/Volumes/Music" ]; then
     ${LINK_COMMAND} -sf /Volumes/Music/ $HOME/.config/mpd/music
 
@@ -56,6 +62,13 @@ Darwin)
       fi
     fi
   fi
+
+  # FIXME: synergys launchd script
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/synergy/synergys.sh $HOME/local/bin/synergys.sh
+  #${LINK_COMMAND} -sf ${WORKING_DIR}/synergy/org.local.synergys.plist $HOME/Library/LaunchAgents/org.local.synergys.plist
+  #launchctl unload ~/Library/LaunchAgents/org.local.synergys.plist
+  #launchctl load ~/Library/LaunchAgents/org.local.synergys.plist
+
   ;;
 Linux)
   return 0

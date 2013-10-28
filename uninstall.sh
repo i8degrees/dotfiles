@@ -28,3 +28,9 @@ ${RM_COMMAND} -rv ${HOME}/.mplayer
 
 # mpd configuration
 ${RM_COMMAND} -rv ${HOME}/.config/mpd
+
+# synergys configuration
+${RM_COMMAND} -rv ${HOME}/.synergy.conf
+${RM_COMMAND} -rv ${HOME}/Library/LaunchAgents/org.local.synergys.plist
+${RM_COMMAND} -rv ${HOME}/local/bin/synergys.sh
+
