@@ -7,7 +7,7 @@
     #askpass = /usr/local/libexec/ssh-askpass
 	whitespace = tabwidth=2,nowarn
 
-  excludesfile = /Users/jeff/.gitignore_global
+	excludesfile = /Users/jeff/.gitignore_global
 	# ...core.excludesfile ~/src/.gitignore
 	# ...core.excludesfile ~/Projects/.gitignore
 
@@ -81,15 +81,18 @@
     default = upstream
 
 [remotes]
-    default = origin dev devel feature/* # git remote update default
+    default = origin # git remote update default
 
-[difftool "sourcetree"]
-    cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-    path =
+#[difftool "sourcetree"]
+    #cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+    #path =
 
 [mergetool "sourcetree"]
-    cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
-trustExitCode = true
+	cmd = /Users/jeff/Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
 
-[init]
-	templatedir = ~/Projects/hax/dotfiles/git_template
+#[init]
+	#templatedir = ~/Projects/hax/dotfiles/git_template
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
