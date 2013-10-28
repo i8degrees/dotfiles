@@ -139,37 +139,38 @@ case "$(uname -s)" in
 			alias urxvt='urxvtc'
 		fi
 
-		# Arch (Linux) specific:
+		# ArchLinux-tailored configuration:
+		if [ "$LOCAL" == "virgo.arch" ]; then
+			#if [[ "$COLORTERM" && -x "$(which pacman-color)" ]]; then
+				#alias pacman="$(which pacman-color)"
+			#else
+				#alias pacman="$(which pacman)"
+				alias pacman="/usr/bin/pacman"
+			#fi
 
-		#if [[ "$COLORTERM" && -x "$(which pacman-color)" ]]; then
-			#alias pacman="$(which pacman-color)"
-		#else
-			#alias pacman="$(which pacman)"
-			alias pacman="/usr/bin/pacman"
-		#fi
+			#if [[ "$COLORTERM" && -x "$(which packer-color)" ]]; then
+				#alias packer="$(which packer-color)"
+			#else
+				#alias packer="$(which packer)"
+				alias packer="/usr/bin/yaourt"
+			#fi
 
-		#if [[ "$COLORTERM" && -x "$(which packer-color)" ]]; then
-			#alias packer="$(which packer-color)"
-		#else
-			#alias packer="$(which packer)"
-			alias packer="/usr/bin/yaourt"
-		#fi
-
-		# TODO/FIXME: yaourt <3
-		alias yogurt="yaourt"
-		alias pkginst="pacman -S" # package install from arch repos
-		alias pkgupdate="pacman -Syy" # package repos update
-		alias pkgupgrade="pacman -Syu" # package upgrade from arch repos
-		#alias pkgupgrade="yaourt -Syua" # package repo upgrade, arch + AUR
-		alias pkgq="pacman -Q|grep $1" # package repo query (installed)
-		alias pkgd="yaourt -Sii $@" # package info w/ details
-		alias pkgs="yaourt -Ss" # package search from arch + AUR repos
-		alias pkgi="yaourt -Si $@" # package info
-		alias pkgii="pacman -Qii $@" # ???
-		alias pkgf="yaourt -Ql $@" # list files within package
-		alias pkgf?="pacman -Qo $1" # list package from which file is from
-		alias pkgorphan="pacman -Qdt" # list package orphans; ...
-		alias pkgsrc="pacman -sQm" # list locally compiled/installed packages (AUR, abs)
+			# TODO/FIXME: yaourt <3
+			alias yogurt="yaourt"
+			alias pkginst="pacman -S" # package install from arch repos
+			alias pkgupdate="pacman -Syy" # package repos update
+			alias pkgupgrade="pacman -Syu" # package upgrade from arch repos
+			#alias pkgupgrade="yaourt -Syua" # package repo upgrade, arch + AUR
+			alias pkgq="pacman -Q|grep $1" # package repo query (installed)
+			alias pkgd="yaourt -Sii $@" # package info w/ details
+			alias pkgs="yaourt -Ss" # package search from arch + AUR repos
+			alias pkgi="yaourt -Si $@" # package info
+			alias pkgii="pacman -Qii $@" # ???
+			alias pkgf="yaourt -Ql $@" # list files within package
+			alias pkgf?="pacman -Qo $1" # list package from which file is from
+			alias pkgorphan="pacman -Qdt" # list package orphans; ...
+			alias pkgsrc="pacman -sQm" # list locally compiled/installed packages (AUR, abs)
+		fi # end ArchLinux-tailored configuration
 
 		# grep color term support
 		export GREP_OPTIONS="--color=always -I"; # -I = --binary-files-without-match
@@ -202,8 +203,8 @@ alias kpatch="patch -p1 < $@"
 	#alias gcc="$(which colorgcc)"
 	#alias g++="$(which colorgcc)"
 #else
-	alias gcc="$(which gcc)"
-	alias g++="$(which g++)"
+	#alias gcc="$(which gcc)"
+	#alias g++="$(which g++)"
 	#alias gcc="/usr/bin/gcc"
 	#alias g++="/usr/bin/gcc"
 #fi
