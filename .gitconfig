@@ -1,6 +1,7 @@
 [user]
 	name = Jeffrey Carpenter
 	email = jeffrey.carp@gmail.com
+	signingkey = F38DCE7F835748F9
 
 [core]
 	editor = vim
