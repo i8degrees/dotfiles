@@ -1,56 +1,77 @@
 #!/bin/sh
 #
-# 2012-01/16:jeff
+# Jeffrey Carpenter <jeffrey.carp@gmail.com>
 #
-#     ~/.bash_cflags
-#
-#   Local system compiler / linker flags for the GNU toolchain;
-# relatively no tuning for the time being until I (re)-build a
-# new system ...
-#
-# See also,
-#
-# makepkg.conf(5)   makepkg(8)    pacman(8)   PKGBUILD(5)
+#   Local development config for hobbyist software development & general system
+# administration
 #
 
-#PROJECTS="$HOME/Projects"
-#GIT_PROJ_ROOT="$HOME/git"
+export LOCAL="virgo" # Reserved bash var for future use...
 
-#FIXME/TODO: eval /etc/makepkg.conf
-#export CARCH=""
-#export CHOST=""
-#export LDFLAGS="-W1,-O1,--sort-common,--as-needed,-z,relro,--hash-style=gnu"
+# convenience bash shell vars for common user paths
+export DESKTOP="$HOME/Desktop"
+export DOCUMENTS="$HOME/Documents"
+export DOWNLOADS="$HOME/Downloads"
+export MOVIES="$HOME/Movies"
+export MUSIC="$HOME/Music"
+export PICTURES="$HOME/Pictures"
+export PROJECTS="$HOME/Projects/hax"
+export TMP="$HOME/tmp"
+export TORRENTS="$HOME/Downloads/torrents"
 
-#export CFLAGS="-march=i686 -mtune=generic -O2 -pipe -fstack-protector -D_FORTIFY_SOURCE=2"
-#export CXXFLAGS=$CFLAGS
+export nom="$PROJECTS/nomlib.git"
+export tt="$PROJECTS/ttcards.git"
+export cfg="$PROJECTS/dotfiles"
+export hcfg="$PROJECTS/homebrew"
 
 case "$(uname -s)" in
   Darwin)
-    CC="/usr/bin/clang"; export CC
-    CXX="/usr/bin/clang++"; export CXX
-    MAKEFLAGS="-j4"; export MAKEFLAGS # MacBook Air Mid 2011
-    DEVELOPER_DIR="/Users/$(whoami)/Applications/Developer/Xcode.app/Contents/Developer"; export DEVELOPER_DIR
-    CCACHE_PATH="/usr/local/Cellar/ccache/3.1.9/libexec"; export CCACHE_PATH
+    # CC & CXX should not need to be set
+    #export CC="/usr/bin/clang"
+    #export CXX="/usr/bin/clang++"
+
+    export MAKEFLAGS="-j4" # MacBook Air Mid 2011 [Intel Core i5 1.6Ghz]
+
+    # See also man 1 xcode-select
+    export DEVELOPER_DIR="/Applications/Developer/Xcode.app/Contents/Developer"
+
+    export CCACHE_PATH="/usr/local/Cellar/ccache/3.1.9/libexec"
     #CCACHE_DIR="/ramdisk/dir"; export CCACHE_DIR
-    NODE_PATH="/usr/local/lib/node_modules"; export NODE_PATH
+
+    # node.js
+    export NODE_PATH="/usr/local/lib/node_modules"
+
+    # emscripten
     #EMMAKEN_COMPILER="/usr/local/bin/clang++"; export EMMAKEN_COMPILER
-    PATH="$PATH:/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/bin"; export PATH
+
+    export PATH="$PATH:/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/bin"
   ;;
-  Linux)
-    MAKEFLAGS="-j4"; export MAKEFLAGS
+  # Horribly outdated configuration from several years ago... sniff, sniff!
+  #
+  # See also,
+  #
+  # makepkg.conf(5)   makepkg(8)    pacman(8)   PKGBUILD(5)
+  Linux) # ArchLinux-tailored (increasingly evolving towards a more generic *nix setup...)
+    export MAKEFLAGS="-j4"
+
+    #FIXME/TODO: eval /etc/makepkg.conf
+    #export CARCH=""
+    #export CHOST=""
+    #export LDFLAGS="-W1,-O1,--sort-common,--as-needed,-z,relro,--hash-style=gnu"
+
+    #export CFLAGS="-march=i686 -mtune=generic -O2 -pipe -fstack-protector -D_FORTIFY_SOURCE=2"
+    #export CXXFLAGS=$CFLAGS
   ;;
   *)
   ;;
 esac
 
-LOCAL="virgo"; export LOCAL
-
 #if [ "$(which pkg-config)" ]; then
   #SDL_DEV="$(pkg-config --cflags --libs sdl SDL_image SDL_mixer SDL_ttf)"; export SDL_DEV
 #fi
 
-# removed PREFIX due to NPM trying to use this for global install dir
-#
+# Apparently, PREFIX bash var conflicts with NPM (node's package manager), so
+# the quick solution was to not use this bash var anymore.
 #export PREFIX="~/local"
 
 if [ -f "$(which rbenv)" ]; then
