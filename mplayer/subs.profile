@@ -15,8 +15,11 @@ noquiet=true
 nofs=true
 slave=true
 idle=true
-ontop=true
+ontop=false
 utf8=true
-embeddedfonts=true
-volume=75
+#embeddedfonts=true
+volume=100
+font=/System/Library/Fonts/Helvetica.dfont
+
 ass=true
+#subfont-text-scale=3
