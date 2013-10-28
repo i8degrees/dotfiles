@@ -37,9 +37,9 @@ set suffixesadd=.rb                                                     " comma 
 set includeexpr+=substitute(v:fname,'s$','','g')                        " expression substitution
 
 " status bar info and appearance
-set statusline=\ \%f%m%r%h%w\ ::\ %y\ [%{&ff}]\%=\ [%p%%:\ %l/%L]\      " content for statusline
-set laststatus=2                                                        " lastwindow always has status line
-set cmdheight=1                                                         " set 1 line limit for 'messages'
+set statusline=\ \%f%m%r%h%w\ ::\ %y\ [%{&ff}]\%=\ [%p%%:\ %l/%L]\ col:\ %c]  " content for statusline
+set laststatus=2                                                              " lastwindow always has status line
+set cmdheight=1                                                               " set 1 line limit for 'messages'
 
 " indenting
 set autoindent                                                          " turns autoidenting on for new lines
@@ -130,5 +130,5 @@ call pathogen#infect() 			" vim plugins management
 :nnoremap <leader>m :silent !open -a Marked.app '%'<cr>
 
 " default location of ctags
-set tags=.tags 
+set tags=.tags
 
