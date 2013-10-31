@@ -35,6 +35,20 @@ if [ "$(which git)" ]; then
   alias gpush='git push -u'
 fi
 
+# TODO: combine tar, zip, ... creation and listing as one do-it-all function
+if [[ "$(which tar)" ]]; then
+	alias listtar='tar -tvf $@'
+	alias createtar='tar -czvf $@'
+fi
+
+if [[ "$(which zip)" ]]; then
+	alias createzip='zip -r $@'
+fi
+
+if [[ "$(which wget)" ]]; then
+	alias dl='wget $@'
+fi
+
 case "$(uname -s)" in
 	Darwin)
     	alias www='browser $@'
@@ -88,20 +102,20 @@ case "$(uname -s)" in
     	alias win32-gcc='i586-mingw32-gcc'
     fi
 
-    # Homebrew package management helpers
-    alias btree='brew uses -installed $@'
-    alias binstall='brew install -vd $@'
-    alias binst='binstall $@'
-    alias breinstall='brew reinstall -vd $@'
-    alias bremove='brew remove $@'
+    # Homebrew package helpers
+    alias bdepstree='brew uses -installed $@'
     alias bdeps='brew deps $@'
-    alias blist='brew list'
+    alias binst='brew install -vd $@'
+    alias breinst='brew reinstall -vd $@'
+    alias bremove='brew remove $@'
+    alias blist='brew list |g $@'
     alias bdoc='brew doctor'
     alias bupdate='brew update'
-    alias bupgrade='brew doctor; brew update; brew upgrade'
+    alias bupgrade='brew upgrade'
     alias binfo='brew info $@'
     alias bsearch='brew search $@'
     alias boutdated='brew outdated $@'
+    alias bpinned='brew list --pinned'
 
 		# grep color term support -- GREP_OPTIONS / GREP_COLOR bash vars --
 		# apparently does not work under OS X (v10.7.x+)
