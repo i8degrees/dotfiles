@@ -71,9 +71,9 @@
 	"hot_exit": false,
 	"ignored_packages":
 	[
-		"SublimeLint",
+		"Vintage",
 		"CoffeeScript",
-		"Vintage"
+		"SublimeLint"
 	],
 	"indent_guide_options":
 	[
