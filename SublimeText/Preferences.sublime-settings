@@ -104,7 +104,7 @@
 		80
 	],
 	"save_on_focus_lost": false,
-	"scroll_past_end": true,
+	"scroll_past_end": false,
 	"shift_tab_unindent": false,
 	"show_tab_close_buttons": false,
 	"smart_indent": true,
