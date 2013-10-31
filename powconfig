@@ -13,8 +13,9 @@
 #export POW_DOMAINS=dev,local
 #export POW_EXT_DOMAINS=
 
+# improved performance options
 export POW_TIMEOUT=300 # 5 minutes
 export POW_WORKERS=3 # Three worker threads per app instance
 
+# ruby env setup
 export PATH="$HOME/.rbenv/shims:$HOME/.rbenv/bin:$PATH"
-

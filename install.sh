@@ -74,6 +74,10 @@ Darwin)
   ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/org.local.unison.plist $HOME/Library/LaunchAgents/org.local.unison.plist
   launchctl unload ~/Library/LaunchAgents/org.local.unison.plist
   launchctl load ~/Library/LaunchAgents/org.local.unison.plist
+
+  # pow configuration
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/powconfig $HOME/.powconfig
+
   ;;
 Linux)
   return 0

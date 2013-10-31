@@ -22,6 +22,7 @@ ${RM_COMMAND} -v $HOME/.bash_prompt
 ${RM_COMMAND} -v $HOME/.bash_syscheck
 ${RM_COMMAND} -v  $HOME/.bashlib
 ${RM_COMMAND} -v  $HOME/.bashrc
+${RM_COMMAND} -v  $HOME/.inputrc
 
 # mplayer configuration
 ${RM_COMMAND} -rv ${HOME}/.mplayer
@@ -37,3 +38,6 @@ ${RM_COMMAND} -rv ${HOME}/local/bin/synergys.sh
 # unison configuration
 ${RM_COMMAND} -rv ${HOME}/Library/LaunchAgents/org.local.unison.plist
 ${RM_COMMAND} -rv ${HOME}/local/bin/unison.sh
+
+# pow configuration
+${RM_COMMAND} -rv ${HOME}/.powconfig
