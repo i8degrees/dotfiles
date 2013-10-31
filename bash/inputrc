@@ -1,0 +1,12 @@
+#!/bin/sh
+# Jeffrey Carpenter <jefffrey.carp@gmail.com>
+#
+"\e[1~"	beginning-of-line # ^A
+"\e[4~"	end-of-line # ^E
+
+"\e[1;5D"	backward-word
+"\e[1;5C"	forward-word
+
+# http://www.ibb.net/~anne/keyboard.html
+#"\e[3~": delete-char
+# this is actually equivalent to "\C-?": delete-char

@@ -103,7 +103,7 @@ esac
 TERM=xterm-256color; export TERM
 #TMPDIR="$HOME/tmp"; export TMPDIR
 BLOCKSIZE=K; export BLOCKSIZE
-INPUTRC="/private/etc/inputrc"; export INPUTRC
+export INPUTRC="$HOME/.inputrc"
 
 #if [ "$(which vimpager)" ]; then
 	# ...

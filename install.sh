@@ -27,6 +27,7 @@ ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bash_prompt $HOME/.bash_prompt
 ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bash_syscheck $HOME/.bash_syscheck
 ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bashlib $HOME/.bashlib
 ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bashrc $HOME/.bashrc
+${LINK_COMMAND} -sf ${WORKING_DIR}/bash/inputrc $HOME/.inputrc
 
 # mplayer configuration
 ${LINK_COMMAND} -sf ${WORKING_DIR}/mplayer/ $HOME/.mplayer
