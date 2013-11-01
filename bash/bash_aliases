@@ -116,6 +116,7 @@ case "$(uname -s)" in
     alias bsearch='brew search $@'
     alias boutdated='brew outdated $@'
     alias bpinned='brew list --pinned'
+    alias bmissing='brew missing $@'
 
 		# grep color term support -- GREP_OPTIONS / GREP_COLOR bash vars --
 		# apparently does not work under OS X (v10.7.x+)
