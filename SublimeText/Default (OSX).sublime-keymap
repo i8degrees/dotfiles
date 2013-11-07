@@ -63,7 +63,7 @@
     { "keys": ["super+b"], "command": "build", "args": {"variant": "Debug"} },
 
     // Cancel current build
-    { "keys": ["ctrl+shift+c"], "command": "exec", "args": {"kill": "cancel"} },
+    { "keys": ["super+shift+c"], "command": "exec", "args": {"kill": "cancel"} },
 
     // Make target commands configured in my sublime-build files
     { "keys": ["super+r"], "command": "build", "args": {"variant": "Run"} },
