@@ -19,10 +19,10 @@ export PROJECTS="$HOME/Projects/hax"
 export TMP="$HOME/tmp"
 export TORRENTS="$HOME/Downloads/torrents"
 
-export nom="$PROJECTS/nomlib.git"
-export tt="$PROJECTS/ttcards.git"
-export cfg="$PROJECTS/dotfiles"
-export hcfg="$PROJECTS/homebrew"
+export NOM="$PROJECTS/nomlib.git"
+export TT="$PROJECTS/ttcards.git"
+export CFG="$PROJECTS/dotfiles"
+export HCFG="$PROJECTS/homebrew"
 
 case "$(uname -s)" in
   Darwin)
@@ -82,6 +82,6 @@ fi
 #export GEM_HOME="$HOME/.gem/ruby/1.9.3-p0"
 #export GEM_PATH="$HOME/.gem/ruby/1.9.3-p0"
 #export GEM_PATH="/usr/lib/ruby/gems/1.9.3"
-#export RUBYOPT="-w"
+export RUBYOPT="-W2 -v"
 #RUBYLIB="/Library/Ruby"; export RUBYLIB
 #export RUBYLIB="/home/jeff/Projects/ruby/lib"
