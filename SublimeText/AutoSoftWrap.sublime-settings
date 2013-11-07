@@ -10,7 +10,6 @@
         "mediawiki",
         "rst",
         "asciidoc",
-        "pod",
-        "txt"
+        "pod"
     ]
 }
