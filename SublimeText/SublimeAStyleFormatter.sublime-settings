@@ -29,7 +29,7 @@
 
         // Indent 'case X:' blocks from the 'case X:' headers. Case statements
         // not enclosed in blocks are NOT indented.
-        "indent-cases": true,
+        "indent-cases": false,
 
         // Add extra indentation to namespace blocks. This option has
         // no effect on Java files.
