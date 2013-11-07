@@ -11,7 +11,8 @@
     // This is our default build command (bound to our build key)
     {
       "name": "Debug",
-      "cmd": [ "scan-build -V make -j4" ]
+      "cmd": [ "make -j4" ]
+      //"cmd": [ "scan-build -V make -j4" ]
     },
 
     {
