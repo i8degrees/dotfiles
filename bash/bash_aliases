@@ -32,7 +32,9 @@ else
 fi
 
 if [ "$(which git)" ]; then
-  alias gpush='git push -u'
+  alias gpush='git push -u $@'
+  alias gcheckout='git checkout $@'
+  alias gmerge='git merge --no-ff $@'
 fi
 
 # TODO: combine tar, zip, ... creation and listing as one do-it-all function
@@ -81,14 +83,7 @@ case "$(uname -s)" in
 
 		#alias pgrep="psgrep"
 
-		alias edit='subl' 	# See the ~/local/bin/subl file -- note that it is
-							# indeed a symbolic (soft) link to an unusual binary
-							# location for us to execute from.
-							# ...this is our best & preferred method of launching
-							# OSX GUI apps from the term. Unfortunately, many
-							# $PACKAGE.app/Contents/MacOS/$BIN apps refuse to
-							# run from our terminal, thus we use the
-							# pre-installed open (1) command.
+		alias edit="open -a 'Sublime Text 2' $@"
 
 		alias chrome='open -a "Google Chrome" --args -allow-file-access-from-files'
 		alias marked='open -a "Marked"'
