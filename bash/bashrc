@@ -135,8 +135,14 @@ case "$(uname -s)" in
 			#echo "ERR: Ensure that $(which brew) --prefix /etc/bash_completion file permissions are executable (x) and readable (r)."
 		fi
 
-		SSH_ASKPASS="/usr/local/libexec/ssh-askpass"; export SSH_ASKPASS
-		SUDO_ASKPASS="/usr/local/libexec/ssh-askpass"; export SUDO_ASKPASS
+		#SSH_ASKPASS="/usr/local/libexec/ssh-askpass"; export SSH_ASKPASS
+		#SUDO_ASKPASS="/usr/local/libexec/ssh-askpass"; export SUDO_ASKPASS
+
+		# brew search, info, ... uses the GitHub Web API that is easily exceeded
+		# without a Personal Access Token
+    if [ -f ${HOME}/.github_token ]; then
+      . ${HOME}/.github_token
+    fi
 	;;
 	Linux)
 		TERMINAL="urxvtc"; export TERMINAL
