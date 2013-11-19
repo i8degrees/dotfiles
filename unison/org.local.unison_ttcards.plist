@@ -10,7 +10,7 @@
   <key>Disabled</key>
   <false/>
   <key>Label</key>
-  <string>org.local.unison</string>
+  <string>org.local.unison_ttcards</string>
   <key>RunAtLoad</key>
   <true/>
   <key>LowPriorityIO</key>
@@ -19,6 +19,6 @@
   <true/>
 
   <key>Program</key>
-  <string>/Users/jeff/local/bin/unison.sh</string>
+  <string>/Users/jeff/local/bin/unison_ttcards.sh</string>
 </dict>
 </plist>

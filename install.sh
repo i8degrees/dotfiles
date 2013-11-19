@@ -71,10 +71,21 @@ Darwin)
   #launchctl load ~/Library/LaunchAgents/org.local.synergys.plist
 
   # unison launchd script
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/unison.sh $HOME/local/bin/unison.sh
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/org.local.unison.plist $HOME/Library/LaunchAgents/org.local.unison.plist
-  launchctl unload ~/Library/LaunchAgents/org.local.unison.plist
-  launchctl load ~/Library/LaunchAgents/org.local.unison.plist
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/unison_nomlib.sh $HOME/local/bin/unison_nomlib.sh
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/unison_nomdev.sh $HOME/local/bin/unison_nomdev.sh
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/unison_ttcards.sh $HOME/local/bin/unison_ttcards.sh
+
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/org.local.unison_nomlib.plist $HOME/Library/LaunchAgents/org.local.unison_nomlib.plist
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/org.local.unison_nomdev.plist $HOME/Library/LaunchAgents/org.local.unison_nomdev.plist
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/org.local.unison_ttcards.plist $HOME/Library/LaunchAgents/org.local.unison_ttcards.plist
+
+  launchctl unload ~/Library/LaunchAgents/org.local.unison_nomlib.plist
+  launchctl unload ~/Library/LaunchAgents/org.local.unison_nomdev.plist
+  launchctl unload ~/Library/LaunchAgents/org.local.unison_ttcards.plist
+
+  launchctl load ~/Library/LaunchAgents/org.local.unison_nomlib.plist
+  launchctl load ~/Library/LaunchAgents/org.local.unison_nomdev.plist
+  launchctl load ~/Library/LaunchAgents/org.local.unison_ttcards.plist
 
   # pow configuration
   ${LINK_COMMAND} -sf ${WORKING_DIR}/powconfig $HOME/.powconfig

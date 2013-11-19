@@ -12,10 +12,4 @@ PWD=$HOME/Projects/hax/nomlib.git
 
 cd $PWD
 
-# Clean up any existing synergys process
-#/usr/bin/killall unison
-
-# We hereby turn over primary control to launchd:
-# --no-restart and --no-daemon are required for getting along with launchd
 unison -socket 7222 -log
-# TODO: -log
