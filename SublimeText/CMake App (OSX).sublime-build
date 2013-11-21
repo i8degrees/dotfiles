@@ -51,7 +51,7 @@
     // run command in a terminal
     {
       "name": "Run",
-      "cmd": [ "cd build && make run" ]
+      "cmd": [ "open --wait-apps --fresh -a iTerm ${project_path}/build/ttcards.app/Contents/MacOS/ttcards" ]
     },
 
     {

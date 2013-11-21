@@ -50,7 +50,7 @@
     // run command in a terminal
     {
       "name": "Run",
-      "cmd": [ "open --wait-apps --fresh -a Terminal ${project_path}/build/examples/Debug/${file_base_name}" ]
+      "cmd": [ "open --wait-apps --fresh -a iTerm ${project_path}/build/examples/Debug/${file_base_name}" ]
     },
 
     {
