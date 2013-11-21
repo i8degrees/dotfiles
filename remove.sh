@@ -50,3 +50,5 @@ ${RM_COMMAND} -rv ${HOME}/local/bin/unison_ttcards.sh
 
 # pow configuration
 ${RM_COMMAND} -rv ${HOME}/.powconfig
+${RM_COMMAND} -rv $HOME/local/bin/audio.applescript
+${RM_COMMAND} -rv $HOME/local/bin/setaudio

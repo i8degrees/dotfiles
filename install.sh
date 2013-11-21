@@ -47,6 +47,11 @@ ${LINK_COMMAND} -sf ${WORKING_DIR}/synergy/synergy.conf $HOME/.synergy.conf
 case "$(uname -s)" in
 Darwin)
 
+  # Ensure that expected environment folders are present
+  if [[ ! -d "$HOME/local/bin" ]]; then
+    mkdir -p $HOME/local/bin
+  fi
+
   # mpd configuration
   if [ -d "/Volumes/Music" ]; then
     ${LINK_COMMAND} -sf /Volumes/Music/ $HOME/.config/mpd/music
@@ -89,6 +94,10 @@ Darwin)
 
   # pow configuration
   ${LINK_COMMAND} -sf ${WORKING_DIR}/powconfig $HOME/.powconfig
+
+  # Convenience helper script for setting default audio routing to Internal Output
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/AppleScript/audio.applescript $HOME/local/bin/audio.applescript
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/AppleScript/setaudio $HOME/local/bin/setaudio
 
   ;;
 Linux)
