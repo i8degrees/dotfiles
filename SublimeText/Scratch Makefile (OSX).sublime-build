@@ -24,7 +24,7 @@
     // run command in a terminal
     {
       "name": "Run",
-      "cmd": [ "open --wait-apps --fresh -a Terminal ${file_path}/${file_base_name}" ]
+      "cmd": [ "${file_path}/${file_base_name}" ]
     },
 
     {} // placeholder
