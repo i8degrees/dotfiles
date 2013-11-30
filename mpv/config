@@ -1,0 +1,25 @@
+#     Mplayer configuration defaults
+#
+[default]
+#input=conf="/home/jeff/.mpv/input.conf" # Defaults for input controls
+include="/home/jeff/.mpv/kq.profile"
+include="/home/jeff/.mpv/subs.profile"
+volume=25
+softvol-max=100
+volstep=5
+    #vo="corevideo"
+af="scaletempo" # correct pitch when speed factor is <> 1.0
+#sws=9
+osd-fractions
+osd-level=3
+#ao="null"
+#mixer="hw:1"
+cache=102400 # Assumes a minimum bandwidth pipe of 10/100mbps ethernet
+alang="en"
+slang="eng"
+channels=2 # Stereo
+
+# set the window title using the media filename, when not set with --title.
+title=${filename}
+
+    #idx=true

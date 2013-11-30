@@ -27,6 +27,9 @@ ${RM_COMMAND} -v  $HOME/.inputrc
 # mplayer configuration
 ${RM_COMMAND} -rv ${HOME}/.mplayer
 
+# mpv configuration
+${RM_COMMAND} -rv ${HOME}/.mpv
+
 # mpd configuration
 ${RM_COMMAND} -rv ${HOME}/.config/mpd
 

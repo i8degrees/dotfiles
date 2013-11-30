@@ -30,7 +30,10 @@ ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bashrc $HOME/.bashrc
 ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/inputrc $HOME/.inputrc
 
 # mplayer configuration
-${LINK_COMMAND} -sf ${WORKING_DIR}/mplayer/ $HOME/.mplayer
+#${LINK_COMMAND} -sf ${WORKING_DIR}/mplayer/ $HOME/.mplayer
+
+# mpv-player configuration
+${LINK_COMMAND} -sf ${WORKING_DIR}/mpv $HOME/.mpv
 
 # mpd configuration
 ${MKDIR_COMMAND} -p ${HOME}/.config/mpd
