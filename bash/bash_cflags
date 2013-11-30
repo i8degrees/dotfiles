@@ -84,6 +84,6 @@ fi
 #export GEM_HOME="$HOME/.gem/ruby/1.9.3-p0"
 #export GEM_PATH="$HOME/.gem/ruby/1.9.3-p0"
 #export GEM_PATH="/usr/lib/ruby/gems/1.9.3"
-export RUBYOPT="-W2 -v"
+#export RUBYOPT="-W2 -v"
 #RUBYLIB="/Library/Ruby"; export RUBYLIB
 #export RUBYLIB="/home/jeff/Projects/ruby/lib"
