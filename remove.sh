@@ -52,3 +52,23 @@ ${RM_COMMAND} -rv ${HOME}/local/bin/unison_ttcards.sh
 ${RM_COMMAND} -rv ${HOME}/.powconfig
 ${RM_COMMAND} -rv $HOME/local/bin/audio.applescript
 ${RM_COMMAND} -rv $HOME/local/bin/setaudio
+
+# git configuration
+${RM_COMMAND} -rv $HOME/.gitattributes
+${RM_COMMAND} -rv $HOME/.gitconfig
+${RM_COMMAND} -rv $HOME/.gitignore_global
+${RM_COMMAND} -rv $HOME/.gitk
+${RM_COMMAND} -rv $HOME/.git_template
+
+# hg configuration
+${RM_COMMAND} -rv $HOME/.hgignore_global
+
+# tmux configuration
+${RM_COMMAND} -rv $HOME/.tmux.conf
+
+# gtk configuration
+${RM_COMMAND} -rv $HOME/.gtkrc-2.0
+${RM_COMMAND} -rv $HOME/.gtkrc-2.0.mine
+
+# X11 configuration
+${RM_COMMAND} -rv $HOME/.Xresources

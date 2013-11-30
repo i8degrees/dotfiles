@@ -44,6 +44,26 @@ ${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/mpd.conf $HOME/.config/mpd/mpd.conf
 # synergys configuration
 ${LINK_COMMAND} -sf ${WORKING_DIR}/synergy/synergy.conf $HOME/.synergy.conf
 
+# git configuration
+${LINK_COMMAND} -sf ${WORKING_DIR}/git/gitattributes $HOME/.gitattributes
+${LINK_COMMAND} -sf ${WORKING_DIR}/git/gitconfig $HOME/.gitconfig
+${LINK_COMMAND} -sf ${WORKING_DIR}/git/gitignore_global $HOME/.gitignore_global
+${LINK_COMMAND} -sf ${WORKING_DIR}/git/gitk $HOME/.gitk
+${LINK_COMMAND} -sf ${WORKING_DIR}/git/hooks $HOME/.git_template
+
+# hg configuration
+${LINK_COMMAND} -sf ${WORKING_DIR}/hg/hgignore_global $HOME/.hgignore_global
+
+# tmux configuration
+${LINK_COMMAND} -sf ${WORKING_DIR}/tmux/tmux.conf $HOME/.tmux.conf
+
+# gtk configuration
+${LINK_COMMAND} -sf ${WORKING_DIR}/gtk/gtkrc-2.0 $HOME/.gtkrc-2.0
+${LINK_COMMAND} -sf ${WORKING_DIR}/gtk/gtkrc-2.0.mine $HOME/.gtkrc-2.0.mine
+
+# X11 configuration
+${LINK_COMMAND} -sf ${WORKING_DIR}/X11/Xresources $HOME/.Xresources
+
 case "$(uname -s)" in
 Darwin)
 
