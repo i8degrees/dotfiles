@@ -2,7 +2,7 @@
 #
 # 2011-07-20:jeff
 #
-# 		~/.bashrc
+#     ~/.bashrc
 #
 # Local interactive bash (1) shell config.
 #
@@ -48,50 +48,50 @@ export HISTSIZE="$HISTFILESIZE"
 export HISTCONTROL=ignoredups
 
 # Linux)
-# NOTE:	The following line *must* be included before the repo GCC toolchain bins
-#		path is set
+# NOTE: The following line *must* be included before the repo GCC toolchain bins
+#   path is set
 #PATH="/usr/lib/colorgcc/bin"
 
 if [ -x "$HOME/.bash_cflags" ]; then
-	. "$HOME/.bash_cflags"
+  . "$HOME/.bash_cflags"
 fi
 
 if [ -x "$HOME/.bashlib" ]; then
-	. "$HOME/.bashlib"
+  . "$HOME/.bashlib"
 fi
 
 if [ -x "$HOME/.bash_prompt" ]; then
-	. "$HOME/.bash_prompt"
+  . "$HOME/.bash_prompt"
 fi
 
 if [ -x "$(which locale)" ]; then
-	eval "$(locale)"
+  eval "$(locale)"
 fi
 
 case "$(uname -s)" in
   Darwin)
-	PATH="$HOME/local/bin:$PATH"
-	export PATH
+  PATH="$HOME/local/bin:$PATH"
+  export PATH
 
-	PATH="$PATH:$HOME/local/bin/checker"
-	export PATH
+  PATH="$PATH:$HOME/local/bin/checker"
+  export PATH
 
-	#PATH="$PATH:$HOME/local/src/emscripten"
-	#export PATH
+  #PATH="$PATH:$HOME/local/src/emscripten"
+  #export PATH
 
-	EDITOR="subl"; export EDITOR
-	VISUAL="subl"; export VISUAL
+  EDITOR="subl"; export EDITOR
+  VISUAL="subl"; export VISUAL
 
-	#if [ "$(which aless)" ]; then
-		#PAGER="aless"; export PAGER
-		#MAN_PAGER="aless"; export MAN_PAGER;
-	#fi
+  #if [ "$(which aless)" ]; then
+    #PAGER="aless"; export PAGER
+    #MAN_PAGER="aless"; export MAN_PAGER;
+  #fi
 
-	TMPDIR="/private/tmp"; export TMPDIR
+  TMPDIR="/private/tmp"; export TMPDIR
   ;;
   Linux)
-	EDITOR="vim"; export EDITOR
-	TMPDIR="/tmp"; export TMPDIR
+  EDITOR="vim"; export EDITOR
+  TMPDIR="/tmp"; export TMPDIR
   ;;
   *)
   ;;
@@ -106,7 +106,7 @@ BLOCKSIZE=K; export BLOCKSIZE
 export INPUTRC="$HOME/.inputrc"
 
 #if [ "$(which vimpager)" ]; then
-	# ...
+  # ...
 #fi
 
 BROWSER="google-chrome"; export BROWSER
@@ -116,73 +116,73 @@ MPD_HOST="666@virgo.local"; export MPD_HOST
 SSH_KEYS="$HOME/.ssh/libra_dsa"; export SSH_KEYS
 
 case "$(uname -s)" in
-	Darwin)
-		TERMINAL="iterm"; export TERMINAL
+  Darwin)
+    TERMINAL="iterm"; export TERMINAL
 
-		if [ -f "$(which lesspipe.sh)" ]; then
-			LESSOPEN="|/usr/local/bin/lesspipe.sh %s"; export LESSOPEN
-		fi
+    if [ -f "$(which lesspipe.sh)" ]; then
+      LESSOPEN="|/usr/local/bin/lesspipe.sh %s"; export LESSOPEN
+    fi
 
-		LESS="-r"; export LESS # color support
+    LESS="-r"; export LESS # color support
 
-		if [ -f "$(which gdircolors)" ]; then
-			eval "$(gdircolors -b $HOME/.colors/dir_colors)"
-		fi
+    if [ -f "$(which gdircolors)" ]; then
+      eval "$(gdircolors -b $HOME/.colors/dir_colors)"
+    fi
 
- 		if [[ -f "/usr/local/etc/bash_completion" ]]; then
-  		. /usr/local/etc/bash_completion
-		else
-  		echo "WARNING: /usr/local/etc/bash_completion.d does not exist! Is homebrew setup?"
-		fi
+    if [[ -f "/usr/local/etc/bash_completion" ]]; then
+      . /usr/local/etc/bash_completion
+    else
+      echo "WARNING: /usr/local/etc/bash_completion.d does not exist! Is homebrew setup?"
+    fi
 
-		#SSH_ASKPASS="/usr/local/libexec/ssh-askpass"; export SSH_ASKPASS
-		#SUDO_ASKPASS="/usr/local/libexec/ssh-askpass"; export SUDO_ASKPASS
+    #SSH_ASKPASS="/usr/local/libexec/ssh-askpass"; export SSH_ASKPASS
+    #SUDO_ASKPASS="/usr/local/libexec/ssh-askpass"; export SUDO_ASKPASS
 
-		# brew search, info, ... uses the GitHub Web API that is easily exceeded
-		# without a Personal Access Token
+    # brew search, info, ... uses the GitHub Web API that is easily exceeded
+    # without a Personal Access Token
     if [ -f ${HOME}/.github_token ]; then
       . ${HOME}/.github_token
     fi
-	;;
-	Linux)
-		TERMINAL="urxvtc"; export TERMINAL
+  ;;
+  Linux)
+    TERMINAL="urxvtc"; export TERMINAL
 
-		if [ -f "$(which lesspipe)" ]; then
-			eval "$(lesspipe)"
-		fi
+    if [ -f "$(which lesspipe)" ]; then
+      eval "$(lesspipe)"
+    fi
 
-		eval "$(dircolors -b $HOME/.colors/dir_colors)"
+    eval "$(dircolors -b $HOME/.colors/dir_colors)"
 
-		# XDG CONFIG DIRS (Xorg FreeDesktop standard)
-		if [ -f ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs ]; then
-			. ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
-		fi
+    # XDG CONFIG DIRS (Xorg FreeDesktop standard)
+    if [ -f ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs ]; then
+      . ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
+    fi
 
-		if [ -f ${XDG_DOCUMENTS_DIR:-~/.config}/user-dirs.dirs ]; then
-			. ${XDG_DOCUMENTS_DIR:-~/.config}/user-dirs.dirs
-		fi
+    if [ -f ${XDG_DOCUMENTS_DIR:-~/.config}/user-dirs.dirs ]; then
+      . ${XDG_DOCUMENTS_DIR:-~/.config}/user-dirs.dirs
+    fi
 
-		export XDG_DESKTOP_DIR XDG_DOWNLOAD_DIR XDG_TEMPLATES_DIR
-		export XDG_PUBLICSHARE_DIR XDG_MUSIC_DIR
-		export XDG_PICTURES_DIR XDG_VIDEOS_DIR
+    export XDG_DESKTOP_DIR XDG_DOWNLOAD_DIR XDG_TEMPLATES_DIR
+    export XDG_PUBLICSHARE_DIR XDG_MUSIC_DIR
+    export XDG_PICTURES_DIR XDG_VIDEOS_DIR
 
-		SciTE_HOME="/home/jeff/.scite"; export SciTE_HOME
+    SciTE_HOME="/home/jeff/.scite"; export SciTE_HOME
 
-		if [ -f "/etc/bash_completion" || -h "/etc/bash_completion" ]; then
-					. /etc/bash_completion
-				#else
-					#echo "WARNING: /usr/local/etc/bash_completion.d does not exist! Is homebrew setup?"
-		fi
+    if [ -f "/etc/bash_completion" || -h "/etc/bash_completion" ]; then
+          . /etc/bash_completion
+        #else
+          #echo "WARNING: /usr/local/etc/bash_completion.d does not exist! Is homebrew setup?"
+    fi
 
-		#SSH_ASKPASS=""; export SSH_ASKPASS
-		#SUDO_ASKPASS=""; export SUDO_ASKPASS
-	;;
-	*)
-	;;
+    #SSH_ASKPASS=""; export SSH_ASKPASS
+    #SUDO_ASKPASS=""; export SUDO_ASKPASS
+  ;;
+  *)
+  ;;
 esac
 
 # Additional bash scripts to include in local site configuration
 
 if [ -x "$HOME/.bash_aliases" ]; then
-	. $HOME/.bash_aliases
+  . $HOME/.bash_aliases
 fi
