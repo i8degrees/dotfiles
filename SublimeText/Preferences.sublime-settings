@@ -130,10 +130,9 @@
 		],
 		"patterns":
 		{
-      // TODO: Explicit support for Doxygen tags
-      "BUG": "BUG[\\s]*?:+(?P<bug>.*)$",
+			"BUG": "BUG[\\s]*?:+(?P<bug>.*)$",
 			"DEPRECATED": "DEPRECATED[\\s]*?:+(?P<deprecated>.*)$",
-			"FIXME": "FIX ?ME[\\s]*?:+(?P<fixme>\\S.*)$",
+			"FIXME": "FIXME[\\s]*?:+(?P<fixme>\\S.*)$",
 			"NOTE": "NOTE[\\s]*?:+(?P<note>.*)$",
 			"TODO": "TODO[\\s]*?:+(?P<todo>.*)$"
 		},
