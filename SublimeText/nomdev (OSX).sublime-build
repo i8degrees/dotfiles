@@ -2,7 +2,7 @@
   "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
   "working_dir": "${project_path:${folder:${file_path}}}",
   "selector": "source.makefile",
-  "path": "${HOME}/Projects/hax/nomdev.git:${HOME}/local/bin/checker:/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin",
+  "path": "${HOME}/Projects/nomdev.git:${HOME}/local/bin/checker:/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin",
   "shell": true,
 
   "variants":
