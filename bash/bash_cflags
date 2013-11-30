@@ -15,7 +15,7 @@ export DOWNLOADS="$HOME/Downloads"
 export MOVIES="$HOME/Movies"
 export MUSIC="$HOME/Music"
 export PICTURES="$HOME/Pictures"
-export PROJECTS="$HOME/Projects/hax"
+export PROJECTS="$HOME/Projects"
 export TMP="$HOME/tmp"
 export TORRENTS="$HOME/Downloads/torrents"
 

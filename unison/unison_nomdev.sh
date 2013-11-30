@@ -8,7 +8,7 @@
 #
 #   launchctl(1), launchd(8), launchd.plist(5)
 
-PWD=$HOME/Projects/hax/nomdev.git
+PWD=$HOME/Projects/nomdev.git
 
 cd $PWD
 
