@@ -129,10 +129,10 @@ case "$(uname -s)" in
 			eval "$(gdircolors -b $HOME/.colors/dir_colors)"
 		fi
 
-		if [ -f `brew --prefix`/etc/bash_completion ]; then
-    		. `brew --prefix`/etc/bash_completion
-    	#else
-			#echo "ERR: Ensure that $(which brew) --prefix /etc/bash_completion file permissions are executable (x) and readable (r)."
+ 		if [[ -f "/usr/local/etc/bash_completion" ]]; then
+  		. /usr/local/etc/bash_completion
+		else
+  		echo "WARNING: /usr/local/etc/bash_completion.d does not exist! Is homebrew setup?"
 		fi
 
 		#SSH_ASKPASS="/usr/local/libexec/ssh-askpass"; export SSH_ASKPASS
@@ -168,10 +168,10 @@ case "$(uname -s)" in
 
 		SciTE_HOME="/home/jeff/.scite"; export SciTE_HOME
 
-		if [ -f "/etc/bash_completion" ]; then
-			. /etc/bash_completion
-		#else
-			#echo "ERR: Ensure that /etc/bash_completion file permissions are executable (x) and readable (r)."
+		if [ -f "/etc/bash_completion" || -h "/etc/bash_completion" ]; then
+					. /etc/bash_completion
+				#else
+					#echo "WARNING: /usr/local/etc/bash_completion.d does not exist! Is homebrew setup?"
 		fi
 
 		#SSH_ASKPASS=""; export SSH_ASKPASS
@@ -181,13 +181,7 @@ case "$(uname -s)" in
 	;;
 esac
 
-# Additional Bash(1) inclusion files
-
-#if [ -f "/usr/local/etc/bash_completion.d/git-completion.bash" ]; then
-#	. /usr/local/etc/bash_completion.d/git-completion.bash
-#else
-#	echo "ERR: Ensure that /usr/local/etc/bash_completion.d/git-completion.bash file permissions are executable (x) and readable (r)."
-#fi
+# Additional bash scripts to include in local site configuration
 
 if [ -x "$HOME/.bash_aliases" ]; then
 	. $HOME/.bash_aliases
