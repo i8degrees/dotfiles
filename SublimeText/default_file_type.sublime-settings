@@ -1,4 +1,4 @@
 {
-    "default_new_file_syntax": "Packages/Markdown/Markdown Extended.tmLanguage",
-    "use_current_file_syntax": true
+    "default_new_file_syntax": "Packages/Markdown Extended/Syntaxes/Markdown Extended.tmLanguage",
+    "use_current_file_syntax": false
 }
