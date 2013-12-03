@@ -8,12 +8,7 @@
 #
 
 alias rbash='source ~/.bashrc'
-
-alias ncdu='ncdu -r $@'
-alias ip='echo "Public IP: "; curl icanhazip.com; echo "Internal IPs: "; ifconfig|grep 192.168.151.'
-#alias findfile='find $1 -name $2'
-alias fstring='grep $1 -R $2'
-alias g='grep $@'
+alias ncdu='ncdu -r -x $@'
 
 if [ "$(which md5deep)" ]; then
 	alias md5='md5deep -re' # recursive, progress
@@ -39,8 +34,14 @@ fi
 
 # TODO: combine tar, zip, ... creation and listing as one do-it-all function
 if [[ "$(which tar)" ]]; then
-	alias listtar='tar -tvf $@'
+	if [[ "$(which tarcolor)" ]]; then # lesspipe bash script
+    alias listtar='tar -tvf $@ | tarcolor'
+  else
+    alias listtar='tar -tvf $@'
+  fi
+
 	alias createtar='tar -czvf $@'
+  #FIXME: alias createtar='tar -czvf $1 --exclude=*.DS_Store $2'
 fi
 
 if [[ "$(which zip)" ]]; then
@@ -100,8 +101,8 @@ case "$(uname -s)" in
     # Homebrew package helpers
     alias bdepstree='brew uses -installed $@'
     alias bdeps='brew deps $@'
-    alias binst='brew install -vd $@'
-    alias breinst='brew reinstall -vd $@'
+    alias binstall='brew install -vd $@'
+    alias breinstall='brew reinstall -vd $@'
     alias bremove='brew remove $@'
     alias blist='brew list |g $@'
     alias bdoc='brew doctor'
@@ -204,7 +205,6 @@ alias iostat="iostat -d 1"
 alias ifstat="clear && $(which ifstat) -z -i en2 -w -S $@"
 
 alias cls="reset"
-#alias diff="diff -uNr"
 alias kpatch="patch -p1 < $@"
 
 # TODO/FIXME
@@ -222,9 +222,16 @@ alias kpatch="patch -p1 < $@"
 
 if [ -x "$(which colordiff)" ]; then
 #if [[ "$COLORTERM" && -x "/usr/bin/colordiff" ]]; then
-	alias diff="$(which colordiff)"
+	alias diff="$(which colordiff) -r $@" # recursive
 	#alias diff="$(which colordiff) -uNr $@"
 else
-	alias diff="$(which diff)"
+	alias diff="$(which diff) -r $@" # recursive
 fi
+
+# Grep options: silent mode (do not show errors), ignore binary files, case
+# in-sensitive, recursive
+alias fstring='grep $1 -s -I -i -R $@'
+alias g='grep $@'
+alias ip='echo "Public IP: "; curl icanhazip.com; echo "Internal IPs: "; ifconfig|grep 192.168.151.'
+#alias findfile='find $1 -name $2'
 
