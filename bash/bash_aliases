@@ -84,7 +84,7 @@ case "$(uname -s)" in
 
 		#alias pgrep="psgrep"
 
-		alias edit="open -a 'Sublime Text 2' $@"
+		alias edit='subl $@'
 
 		alias chrome='open -a "Google Chrome" --args -allow-file-access-from-files'
 		alias marked='open -a "Marked"'

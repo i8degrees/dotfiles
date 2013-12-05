@@ -79,8 +79,8 @@ case "$(uname -s)" in
   #PATH="$PATH:$HOME/local/src/emscripten"
   #export PATH
 
-  EDITOR="subl"; export EDITOR
-  VISUAL="subl"; export VISUAL
+  export EDITOR='subl -w' # Do not exit editor until file is closed
+  export VISUAL=$EDITOR
 
   #if [ "$(which aless)" ]; then
     #PAGER="aless"; export PAGER
