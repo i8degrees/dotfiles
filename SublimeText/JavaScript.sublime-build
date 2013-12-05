@@ -1,0 +1,26 @@
+{
+  // FIXME: Implement proper prev/next build results support
+  "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+  "selector": "source.json",
+  "path": "${HOME}/local/opt/java:/usr/local/bin:/usr/bin",
+  "shell": true,
+  // FIXME: Using the packaged jslint from the sublime-jslint package would work
+  // here if we were able to fix accessing paths with spaces, such as:
+  // ~/Library/Application Support/Sublime Text 2/Packages/sublime-jslint/jslint4java-2.0.5-SNAPSHOT.jar
+  //"cmd": [ "java -jar ${packages}/jslint4java-2.0.5-SNAPSHOT.jar ${file}" ],
+
+  "cmd": [ "java -jar ~/local/opt/java/jslint4java-2.0.5-SNAPSHOT.jar ${file}" ],
+
+  "variants":
+  [
+
+/* placeholder
+    {
+      "name": "Run",
+      "cmd": [ "" ]
+    },
+placeholder */
+
+    {} // placeholder
+  ]
+}
