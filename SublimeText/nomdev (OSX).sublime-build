@@ -1,18 +1,13 @@
 {
   "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
   "working_dir": "${project_path:${folder:${file_path}}}",
-  "selector": "source.makefile",
+  "selector": "source.c, source.c++",
   "path": "${HOME}/Projects/nomdev.git:${HOME}/local/bin/checker:/usr/bin:/Applications/Xcode.app/Contents/Developer/usr/bin",
   "shell": true,
+  "cmd": [ "nomdev.rb build --threads -j4; nomdev.rb install" ],
 
   "variants":
   [
-    // This is our default build command (bound to our build key)
-    {
-      "name": "Debug",
-      "cmd": [ "nomdev.rb build --threads -j4; nomdev.rb install" ]
-    },
-
     // Build default release target; you should always perform a 'clean' build
     // before using this build type just in case old cmake variables are
     // leftover
@@ -32,9 +27,12 @@
 TODO */
     // 'make clean' followed by 'make uninstall' followed by a purging of all
     // the CMake cached variables.
+    //
+    // FIXME: nomdev.rb gen does not work here :-( I am not sure why...
+    // Something is causing it to return 1 (err)
     {
       "name": "Clean",
-      "cmd": [ "nomdev.rb uninstall; nomdev.rb gen --dev --prefix /Users/jeff/Library/Frameworks" ]
+      "cmd": [ "nomdev.rb uninstall; nomdev.rb gen --dev --prefix ~/Library/Frameworks" ]
     },
 
     {
@@ -47,11 +45,10 @@ TODO */
       "cmd": [ "nomdev.rb uninstall" ]
     },
 
-    // Custom hook created in our project's CMakeLists.txt allows us flexible
-    // run command in a terminal
     {
       "name": "Run",
-      "cmd": [ "open --wait-apps --fresh -a iTerm ${project_path}/build/examples/Debug/${file_base_name}" ]
+      "cmd": [ "${project_path}/build/examples/Debug/${file_base_name} > ${project_path}/build/examples/Debug/${file_base_name}.log" ]
+      //"cmd": [ "open --wait-apps --fresh -a iTerm ${project_path}/build/examples/Debug/${file_base_name}" ]
     },
 /* TODO
     {

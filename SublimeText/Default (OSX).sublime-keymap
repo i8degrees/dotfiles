@@ -60,7 +60,8 @@
     //{ "keys": ["super+alt+]"], "command": "unfold" },
 
     // Default build command
-    { "keys": ["super+b"], "command": "build", "args": {"variant": "Debug"} },
+    { "keys": ["super+b"], "command": "build" },
+    //{ "keys": ["super+b"], "command": "build", "args": {"variant": "Debug"} },
 
     // Cancel current build
     { "keys": ["super+shift+c"], "command": "exec", "args": {"kill": "cancel"} },

@@ -4,15 +4,10 @@
   "selector": "source.makefile",
   "path": "${HOME}/local/bin/checker:${HOME}/local/bin:/bin:/usr/bin:/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin",
   "shell": true,
+  "cmd": [ "cd build && cmake -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=on .. && make rebuild_cache && make -j4 install" ],
 
   "variants":
   [
-    // This is our default build command (bound to our build key)
-    {
-      "name": "Debug",
-      "cmd": [ "cd build && cmake -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=on .. && make rebuild_cache && make -j4 install" ]
-    },
-
     // Build default release target; you should always perform a 'clean' build
     // before using this build type just in case old cmake variables are
     // leftover
@@ -47,11 +42,10 @@
       "cmd": [ "cd build && make uninstall" ]
     },
 
-    // Custom hook created in our project's CMakeLists.txt allows us flexible
-    // run command in a terminal
     {
       "name": "Run",
-      "cmd": [ "open --wait-apps --fresh -a iTerm ${project_path}/build/ttcards.app/Contents/MacOS/ttcards" ]
+      "cmd": [ "${project_path}/build/${project_base_name}.app/Contents/MacOS/${project_base_name} > ${project_path}/build/${project_base_name}.log" ]
+      //"cmd": [ "open --wait-apps --fresh -a iTerm ${project_path}/build/ttcards.app/Contents/MacOS/ttcards" ]
     },
 
     {
