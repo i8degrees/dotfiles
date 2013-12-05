@@ -1,0 +1,14 @@
+# project binaries
+build
+third-party
+
+# Misc
+*.bck
+tmp
+
+# OS X Finder metadata
+*.DS_Store
+.LSOverride
+
+# Sublime Project metadata
+*.sublime-workspace
