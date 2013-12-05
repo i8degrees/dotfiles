@@ -122,6 +122,10 @@ Darwin)
   ${LINK_COMMAND} -sf ${WORKING_DIR}/AppleScript/audio.applescript $HOME/local/bin/audio.applescript
   ${LINK_COMMAND} -sf ${WORKING_DIR}/AppleScript/setaudio $HOME/local/bin/setaudio
 
+  # Helper script for AirParrot that activates AppleTV's "Extended Desktop"
+  # feature at user login
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/AppleScript/AppleTV.applescript $HOME/local/bin/AppleTV.applescript
+
   ;;
 Linux)
   return 0

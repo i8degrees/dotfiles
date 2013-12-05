@@ -53,8 +53,6 @@ ${RM_COMMAND} -rv ${HOME}/local/bin/unison_ttcards.sh
 
 # pow configuration
 ${RM_COMMAND} -rv ${HOME}/.powconfig
-${RM_COMMAND} -rv $HOME/local/bin/audio.applescript
-${RM_COMMAND} -rv $HOME/local/bin/setaudio
 
 # git configuration
 ${RM_COMMAND} -rv $HOME/.gitattributes
@@ -75,3 +73,8 @@ ${RM_COMMAND} -rv $HOME/.gtkrc-2.0.mine
 
 # X11 configuration
 ${RM_COMMAND} -rv $HOME/.Xresources
+
+# AppleScripts
+${RM_COMMAND} -rv $HOME/local/bin/audio.applescript
+${RM_COMMAND} -rv $HOME/local/bin/setaudio
+${RM_COMMAND} -rv $HOME/local/bin/AppleTV.applescript
