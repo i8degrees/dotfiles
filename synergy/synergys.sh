@@ -23,7 +23,7 @@ HOSTNAME=$(hostname -s) # Short hostname
 IP_PORT=":24800" # Listen on all interfaces with the default port for synergys
 
 # Clean up any existing synergys process
-/usr/bin/killall synergys
+/usr/bin/killall -9 synergys
 
 # We hereby turn over primary control to launchd:
 # --no-restart and --no-daemon are required for getting along with launchd
