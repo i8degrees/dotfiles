@@ -19,7 +19,6 @@
 		<string>h++</string>
 		<string>inl</string>
 		<string>ipp</string>
-		<string>in</string>
 	</array>
 	<key>firstLineMatch</key>
 	<string>-\*- C\+\+ -\*-</string>
