@@ -52,10 +52,10 @@
     { "keys": ["alt+o"], "command": "alternate_file" },
 
     // These grouped key bindings are bound to my Logitech G300 mouse using SteerMouse
-    { "keys": ["super+ctrl+f"], "command": "toggle_side_bar" },
-    { "keys": ["super+ctrl+space"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
-    { "keys": ["super+ctrl+q"], "command": "indent" },
-    { "keys": ["super+ctrl+z"], "command": "unindent" },
+    { "keys": ["super+alt+s"], "command": "toggle_side_bar" },
+    { "keys": ["super+alt+space"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
+    { "keys": ["super+alt+q"], "command": "indent" },
+    { "keys": ["super+alt+z"], "command": "unindent" },
     //{ "keys": ["super+alt+["], "command": "fold" },
     //{ "keys": ["super+alt+]"], "command": "unfold" },
 
