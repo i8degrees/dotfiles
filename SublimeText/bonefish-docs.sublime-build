@@ -1,6 +1,0 @@
-{
-  "cmd": [ "regen", "$file" ],
-  "working_dir": "/Users/jeff/Projects/bonefish-media/docs",
-  "path": "/Users/jeff/Projects/bonefish-media/docs/bin:/Users/jeff/local/bin:/Users/jeff/.rbenv/shims:/Users/jeff/local/bin:/usr/local/bin:/Users/jeff/Applications/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/usr/X11/bin",
-  "selector": "source.md"
-}
