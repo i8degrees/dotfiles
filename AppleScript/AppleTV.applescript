@@ -4,40 +4,50 @@
 --
 -- Use as an application bundle (Application file format) with option "Run-only"
 --
+-- Set the global deviceName variable to match the name of your AppleTV device
+--
 -- Source: http://support.airsquirrels.com/article.php?id=15
 
+global debug
+global deviceName
+
+on run
+  set deviceName to "Jeff's AppleTV"
+  set debug to false
+
+  tell application "AirParrot"
+    activate
+  end tell
+
+  connectDevice()
+end run
+
 on connectDevice()
-	set deviceName to "Jeff's AppleTV"
+  tell application "AirParrot"
+    repeat until device deviceName exists
+      -- This holds AirParrot from connecting until the AppleTV exists.
+      count device
+    end repeat
 
-	tell application "AirParrot"
-		repeat until device deviceName exists
-			count device -- This holds AirParrot from connecting until the AppleTV exists.
-		end repeat
+    -- Checks for detection of the AppleTV
+    if device deviceName exists then
 
-		-- Checks for detection of the AppleTV
-		if device deviceName exists then
-			-- sets the display to Extended option, will initialize the Extended display drivers.
-			set selectedDisplay to (display ((count display)))
-			delay 2 -- May have to adjust this between 2 to 5 seconds.
-			set connectedDevice to device named deviceName
+      if debug is not true then
+        -- Sets the display to Extended option, will initialize the Extended
+        -- display drivers
+        set selectedDisplay to (display ((count display)))
+        delay 2 -- May need to adjust this between 2 to 5 seconds
+        set connectedDevice to device named deviceName
+      end if -- debug != true
 
-			--if underscan is lesser than 4 or greater than 4 then
-			set underscan to 4
-			--end if
+    tell application "AirParrot"
+      set underscan to 5 -- May need to adjust this value for your setup
+    end tell
 
-			--if videoQuality is not "Low" then
-			--set videoQuality to "Low"
-			--end if
+    --if audio is disabled then
+      --set audio to enabled
+    --end if
 
-			--if audio is disabled then
-			--set audio to enabled
-			--end if
-		end if
-	end tell
+    end if -- deviceName exists
+  end tell -- application "AirParrot"
 end connectDevice
-
-tell application "AirParrot"
-	activate
-end tell
-
-connectDevice()
