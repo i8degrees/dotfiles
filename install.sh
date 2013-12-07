@@ -35,14 +35,14 @@ ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/inputrc $HOME/.inputrc
 # mpv-player configuration
 ${LINK_COMMAND} -sf ${WORKING_DIR}/mpv $HOME/.mpv
 
-# mpd configuration
+# mpd, mpdscribble configuration
 ${MKDIR_COMMAND} -p ${HOME}/.config/mpd
 ${MKDIR_COMMAND} -p ${HOME}/.config/mpd/cache
 ${MKDIR_COMMAND} -p ${HOME}/.config/mpd/log
 ${MKDIR_COMMAND} -p ${HOME}/.config/mpd/db
 ${MKDIR_COMMAND} -p ${HOME}/.config/mpd/tmp
 ${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/mpd.conf $HOME/.config/mpd/mpd.conf
-#${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/mpdscribble.conf $HOME/.config/mpd/mpdscribble.conf
+${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/mpdscribble.conf $HOME/.config/mpd/mpdscribble.conf
 
 # synergys configuration
 ${LINK_COMMAND} -sf ${WORKING_DIR}/synergy/synergy.conf $HOME/.synergy.conf

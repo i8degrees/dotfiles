@@ -30,7 +30,7 @@ ${RM_COMMAND} -rv ${HOME}/.mplayer
 # mpv configuration
 ${RM_COMMAND} -rv ${HOME}/.mpv
 
-# mpd configuration
+# mpd, mpdscribble configuration
 ${RM_COMMAND} -rv ${HOME}/.config/mpd
 
 # synergys configuration
