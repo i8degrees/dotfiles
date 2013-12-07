@@ -2,7 +2,7 @@
 #
 # 2011-07-20:jeff
 #
-# 		~/.bash_aliases
+#     ~/.bash_aliases
 #
 # Local bash (1) aliases executed for interactive shells.
 #
@@ -11,19 +11,19 @@ alias rbash='source ~/.bashrc'
 alias ncdu='ncdu -r -x $@'
 
 if [ "$(which md5deep)" ]; then
-	alias md5='md5deep -re' # recursive, progress
+  alias md5='md5deep -re' # recursive, progress
 else
-	alias md5='md5sum'
+  alias md5='md5sum'
 fi
 
 if [ "$(which colormake)" ]; then
-	alias make='colormake'
+  alias make='colormake'
 fi
 
 if [ "$(which cmake)" ]; then
-	alias cmakeclean='make clean; make uninstall; rm -rf CMakeFiles CMakeCache.txt cmake_install.cmake cmake_uninstall.cmake CPackConfig.cmake CPackSourceConfig.cmake Makefile'
+  alias cmakeclean='make clean; make uninstall; rm -rf CMakeFiles CMakeCache.txt cmake_install.cmake cmake_uninstall.cmake CPackConfig.cmake CPackSourceConfig.cmake Makefile'
 else
-	echo "CMake is not installed"
+  echo "CMake is not installed"
 fi
 
 if [ "$(which git)" ]; then
@@ -34,68 +34,70 @@ fi
 
 # TODO: combine tar, zip, ... creation and listing as one do-it-all function
 if [[ "$(which tar)" ]]; then
-	if [[ "$(which tarcolor)" ]]; then # lesspipe bash script
+  if [[ "$(which tarcolor)" ]]; then # lesspipe bash script
     alias listtar='tar -tvf $@ | tarcolor'
   else
     alias listtar='tar -tvf $@'
   fi
 
-	alias createtar='tar -czvf $@'
+  alias createtar='tar -czvf $@'
   #FIXME: alias createtar='tar -czvf $1 --exclude=*.DS_Store $2'
 fi
 
 if [[ "$(which zip)" ]]; then
-	alias createzip='zip -r $@'
+  alias createzip='zip -r $@'
 fi
 
 if [[ "$(which wget)" ]]; then
-	alias dl='wget $@'
+  alias dl='wget $@'
 fi
 
 case "$(uname -s)" in
-	Darwin)
-    	alias www='browser $@'
-    	alias c='pbcopy'
-    	alias p='pbpaste'
+  Darwin)
+      alias www='browser $@'
+      alias c='pbcopy'
+      alias p='pbpaste'
 
-		# coreutils package from brew needs to be installed
-		if [ "$(brew list|grep coreutils)" ]; then
-      		alias du='gdu -csh'
-      		alias ls="gls -lhas --color=auto"
-			alias lsr="gls -lRa --color=auto"
-			alias df="gdf -Th"
-			alias rm="grm -iv"
-			alias cp="gcp -iav"
-			alias mv="gmv -iv"
-			alias mkdir="gmkdir -pv"
-			alias rmdir='grmdir -v'
-			alias chmod='gchmod -v'
-			alias chown='gchown -v'
-			alias ln='gln -v'
-			alias find='gfind'
-			alias dmesg='sudo dmesg'
-			alias eject='diskutil eject $@'
-			alias mount_ext4='ext4fuse -o allow_other $@'
-			#alias cloc='cloc --by-file-by-lang --exclude-list-file=.cloc $@'
+    # coreutils package from brew needs to be installed
+    if [ "$(brew list|grep coreutils)" ]; then
+          alias du='gdu -csh'
+          alias ls="gls -lhas --color=auto"
+      alias lsr="gls -lRa --color=auto"
+      alias df="gdf -Th"
+      alias rm="grm -iv"
+      alias cp="gcp -iav"
+      alias mv="gmv -iv"
+      alias mkdir="gmkdir -pv"
+      alias rmdir='grmdir -v'
+      alias chmod='gchmod -v'
+      alias chown='gchown -v'
+      alias ln='gln -v'
+      alias find='gfind'
+      alias dmesg='sudo dmesg'
+      alias eject='diskutil eject $@'
+      alias mount_ext4='ext4fuse -o allow_other $@'
+      #alias cloc='cloc --by-file-by-lang --exclude-list-file=.cloc $@'
       alias route='netstat -nr'
       alias gitx='open -a "GitX"'
       alias leaks='iprofiler -T 300 -allocations -leaks $@'
-		fi
+    fi
 
-		#alias pgrep="psgrep"
+  #alias pgrep="psgrep"
 
-		alias edit='subl $@'
+  # ~/local/bin/subl is a symbolic link to
+    # $HOME/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl
+    alias edit='subl $@'
 
-		alias chrome='open -a "Google Chrome" --args -allow-file-access-from-files'
-		alias marked='open -a "Marked"'
-		alias iphone='open -a "iPhone Simulator"'
-		alias extract='open -a "Archive Utility"'
-		alias lsmod='kextstat'
-		alias modprobe='kextload $@'
+  alias chrome='open -a "Google Chrome" --args -allow-file-access-from-files'
+  alias marked='open -a "Marked"'
+  alias iphone='open -a "iPhone Simulator"'
+  alias extract='open -a "Archive Utility"'
+  alias lsmod='kextstat'
+  alias modprobe='kextload $@'
     alias otool='otool -L $@'
 
     if [ -x "$(which i586-mingw32-gcc)" ]; then
-    	alias win32-gcc='i586-mingw32-gcc'
+      alias win32-gcc='i586-mingw32-gcc'
     fi
 
     # Homebrew package helpers
@@ -114,83 +116,83 @@ case "$(uname -s)" in
     alias bpinned='brew list --pinned'
     alias bmissing='brew missing $@'
 
-		# grep color term support -- GREP_OPTIONS / GREP_COLOR bash vars --
-		# apparently does not work under OS X (v10.7.x+)
-		# http://www.askdavetaylor.com/force_mac_os_x_grep_to_always_output_in_color/
-		if [ "$(which grep)" ]; then # /usr/local/bin/grep (homebrew package)
-			alias grep='grep --color=always $@'
-		fi
-	;;
-	Linux)
-		# safe assumption that coreutils package is installed within any
-		# given Linux distribution
-		alias ls="ls -lhas --color=auto"
-		alias lsr="ls -lRa --color=auto"
-		alias df="df -Th"
-		alias rm="rm -iv"
-		alias cp="cp -iav"
-		alias mv="mv -iv"
-		alias mkdir="mkdir -pv"
-		alias chmod='chmod -v'
-		alias chown='chown -v'
-		alias ln='ln -v'
-		alias xclip="xclip -sel clip"
+    # grep color term support -- GREP_OPTIONS / GREP_COLOR bash vars --
+    # apparently does not work under OS X (v10.7.x+)
+    # http://www.askdavetaylor.com/force_mac_os_x_grep_to_always_output_in_color/
+    if [ "$(which grep)" ]; then # /usr/local/bin/grep (homebrew package)
+      alias grep='grep --color=always $@'
+    fi
+  ;;
+  Linux)
+    # safe assumption that coreutils package is installed within any
+    # given Linux distribution
+    alias ls="ls -lhas --color=auto"
+    alias lsr="ls -lRa --color=auto"
+    alias df="df -Th"
+    alias rm="rm -iv"
+    alias cp="cp -iav"
+    alias mv="mv -iv"
+    alias mkdir="mkdir -pv"
+    alias chmod='chmod -v'
+    alias chown='chown -v'
+    alias ln='ln -v'
+    alias xclip="xclip -sel clip"
 
-		#alias edit="$(which geany)"
-		alias edit="$(which vim)"
+    #alias edit="$(which geany)"
+    alias edit="$(which vim)"
 
-		# User specific
-		if [[ -n "$(id|grep jeff)" ]]; then
-			if [ -x "$(which nvidia-settings)" ]; then
-				alias nvidia-settings="nvidia-settings --config=$HOME/.nvidia-settings-libra &"
-			fi
-		fi
+    # User specific
+    if [[ -n "$(id|grep jeff)" ]]; then
+      if [ -x "$(which nvidia-settings)" ]; then
+        alias nvidia-settings="nvidia-settings --config=$HOME/.nvidia-settings-libra &"
+      fi
+    fi
 
-		#if [[ "$TERMINAL" == "urxvtc" && getpid 'urxvtd' > 0 ]]; then
-		if [ "$TERMINAL" == "urxvtc" ]; then
-			alias urxvt='urxvtc'
-		fi
+    #if [[ "$TERMINAL" == "urxvtc" && getpid 'urxvtd' > 0 ]]; then
+    if [ "$TERMINAL" == "urxvtc" ]; then
+      alias urxvt='urxvtc'
+    fi
 
-		# ArchLinux-tailored configuration:
-		if [ "$LOCAL" == "virgo.arch" ]; then
-			#if [[ "$COLORTERM" && -x "$(which pacman-color)" ]]; then
-				#alias pacman="$(which pacman-color)"
-			#else
-				#alias pacman="$(which pacman)"
-				alias pacman="/usr/bin/pacman"
-			#fi
+    # ArchLinux-tailored configuration:
+    if [ "$LOCAL" == "virgo.arch" ]; then
+      #if [[ "$COLORTERM" && -x "$(which pacman-color)" ]]; then
+        #alias pacman="$(which pacman-color)"
+      #else
+        #alias pacman="$(which pacman)"
+        alias pacman="/usr/bin/pacman"
+      #fi
 
-			#if [[ "$COLORTERM" && -x "$(which packer-color)" ]]; then
-				#alias packer="$(which packer-color)"
-			#else
-				#alias packer="$(which packer)"
-				alias packer="/usr/bin/yaourt"
-			#fi
+      #if [[ "$COLORTERM" && -x "$(which packer-color)" ]]; then
+        #alias packer="$(which packer-color)"
+      #else
+        #alias packer="$(which packer)"
+        alias packer="/usr/bin/yaourt"
+      #fi
 
-			# TODO/FIXME: yaourt <3
-			alias yogurt="yaourt"
-			alias pkginst="pacman -S" # package install from arch repos
-			alias pkgupdate="pacman -Syy" # package repos update
-			alias pkgupgrade="pacman -Syu" # package upgrade from arch repos
-			#alias pkgupgrade="yaourt -Syua" # package repo upgrade, arch + AUR
-			alias pkgq="pacman -Q|grep $1" # package repo query (installed)
-			alias pkgd="yaourt -Sii $@" # package info w/ details
-			alias pkgs="yaourt -Ss" # package search from arch + AUR repos
-			alias pkgi="yaourt -Si $@" # package info
-			alias pkgii="pacman -Qii $@" # ???
-			alias pkgf="yaourt -Ql $@" # list files within package
-			alias pkgf?="pacman -Qo $1" # list package from which file is from
-			alias pkgorphan="pacman -Qdt" # list package orphans; ...
-			alias pkgsrc="pacman -sQm" # list locally compiled/installed packages (AUR, abs)
-		fi # end ArchLinux-tailored configuration
+      # TODO/FIXME: yaourt <3
+      alias yogurt="yaourt"
+      alias pkginst="pacman -S" # package install from arch repos
+      alias pkgupdate="pacman -Syy" # package repos update
+      alias pkgupgrade="pacman -Syu" # package upgrade from arch repos
+      #alias pkgupgrade="yaourt -Syua" # package repo upgrade, arch + AUR
+      alias pkgq="pacman -Q|grep $1" # package repo query (installed)
+      alias pkgd="yaourt -Sii $@" # package info w/ details
+      alias pkgs="yaourt -Ss" # package search from arch + AUR repos
+      alias pkgi="yaourt -Si $@" # package info
+      alias pkgii="pacman -Qii $@" # ???
+      alias pkgf="yaourt -Ql $@" # list files within package
+      alias pkgf?="pacman -Qo $1" # list package from which file is from
+      alias pkgorphan="pacman -Qdt" # list package orphans; ...
+      alias pkgsrc="pacman -sQm" # list locally compiled/installed packages (AUR, abs)
+    fi # end ArchLinux-tailored configuration
 
-		# grep color term support
-		export GREP_OPTIONS="--color=always -I"; # -I = --binary-files-without-match
-	;;
-	*)
-		#alias ls="ls -lhas --color=never"
-		#alias lsr="ls -lRa --color=never"
-	;;
+    # grep color term support
+    export GREP_OPTIONS="--color=always -I"; # -I = --binary-files-without-match
+  ;;
+  *)
+    #alias ls="ls -lhas --color=never"
+    #alias lsr="ls -lRa --color=never"
+  ;;
 esac
 
 alias gclone='git clone $@'
@@ -211,21 +213,21 @@ alias kpatch="patch -p1 < $@"
 #alias 'shutdown_vbox'="VBoxManage controlvm $@ poweroff"
 
 #if [[ "$COLORTERM" && -x "$(which colorgcc)" ]]; then
-	#alias gcc="$(which colorgcc)"
-	#alias g++="$(which colorgcc)"
+  #alias gcc="$(which colorgcc)"
+  #alias g++="$(which colorgcc)"
 #else
-	#alias gcc="$(which gcc)"
-	#alias g++="$(which g++)"
-	#alias gcc="/usr/bin/gcc"
-	#alias g++="/usr/bin/gcc"
+  #alias gcc="$(which gcc)"
+  #alias g++="$(which g++)"
+  #alias gcc="/usr/bin/gcc"
+  #alias g++="/usr/bin/gcc"
 #fi
 
 if [ -x "$(which colordiff)" ]; then
 #if [[ "$COLORTERM" && -x "/usr/bin/colordiff" ]]; then
-	alias diff="$(which colordiff) -r $@" # recursive
-	#alias diff="$(which colordiff) -uNr $@"
+  alias diff="$(which colordiff) -r $@" # recursive
+  #alias diff="$(which colordiff) -uNr $@"
 else
-	alias diff="$(which diff) -r $@" # recursive
+  alias diff="$(which diff) -r $@" # recursive
 fi
 
 # Grep options: silent mode (do not show errors), ignore binary files, case
