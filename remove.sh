@@ -75,7 +75,6 @@ ${RM_COMMAND} -rv $HOME/.gtkrc-2.0.mine
 ${RM_COMMAND} -rv $HOME/.Xresources
 
 # AppleScripts
-${RM_COMMAND} -rv $HOME/local/bin/audio.applescript
-${RM_COMMAND} -rv $HOME/local/bin/setaudio
+${RM_COMMAND} -rv $HOME/local/bin/setaudio.applescript
 ${RM_COMMAND} -rv $HOME/local/bin/AppleTV.applescript
 ${RM_COMMAND} -rv $HOME/local/bin/hermes

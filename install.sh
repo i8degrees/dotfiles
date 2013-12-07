@@ -119,8 +119,7 @@ Darwin)
   ${LINK_COMMAND} -sf ${WORKING_DIR}/powconfig $HOME/.powconfig
 
   # Convenience helper script for setting default audio routing to Internal Output
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/AppleScript/audio.applescript $HOME/local/bin/audio.applescript
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/AppleScript/setaudio $HOME/local/bin/setaudio
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/AppleScript/setaudio.applescript $HOME/local/bin/setaudio
 
   # Helper script for AirParrot that activates AppleTV's "Extended Desktop"
   # feature at user login

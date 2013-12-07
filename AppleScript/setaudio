@@ -1,5 +1,0 @@
-#!/bin/sh
-# Helper script for executing AppleScript
-
-osascript $HOME/local/bin/audio.applescript
-

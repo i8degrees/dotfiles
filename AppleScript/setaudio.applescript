@@ -1,3 +1,4 @@
+#!/usr/bin/osascript
 -- Dependencies
 -- 1. http://whoshacks.blogspot.com/2009/01/change-audio-devices-via-shell-script.html
 
