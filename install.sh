@@ -126,6 +126,9 @@ Darwin)
   # feature at user login
   ${LINK_COMMAND} -sf ${WORKING_DIR}/AppleScript/AppleTV.applescript $HOME/local/bin/AppleTV.applescript
 
+  # Hermes app helper script
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/AppleScript/hermes.applescript $HOME/local/bin/hermes
+
   ;;
 Linux)
   return 0

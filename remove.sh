@@ -78,3 +78,4 @@ ${RM_COMMAND} -rv $HOME/.Xresources
 ${RM_COMMAND} -rv $HOME/local/bin/audio.applescript
 ${RM_COMMAND} -rv $HOME/local/bin/setaudio
 ${RM_COMMAND} -rv $HOME/local/bin/AppleTV.applescript
+${RM_COMMAND} -rv $HOME/local/bin/hermes
