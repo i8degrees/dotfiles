@@ -94,7 +94,7 @@ case "$(uname -s)" in
   alias extract='open -a "Archive Utility"'
   alias lsmod='kextstat'
   alias modprobe='kextload $@'
-    alias otool='otool -L $@'
+  alias otool='otool -L $@'
 
     if [ -x "$(which i586-mingw32-gcc)" ]; then
       alias win32-gcc='i586-mingw32-gcc'
@@ -122,6 +122,9 @@ case "$(uname -s)" in
     if [ "$(which grep)" ]; then # /usr/local/bin/grep (homebrew package)
       alias grep='grep --color=always $@'
     fi
+
+    # iPhone Simulator 7.x
+    alias ios='/Applications/Developer/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app/Contents/MacOS/iPhone\ Simulator $@'
   ;;
   Linux)
     # safe assumption that coreutils package is installed within any
