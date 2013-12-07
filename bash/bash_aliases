@@ -125,6 +125,11 @@ case "$(uname -s)" in
 
     # iPhone Simulator 7.x
     alias ios='/Applications/Developer/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app/Contents/MacOS/iPhone\ Simulator $@'
+
+    # Open SourceTree app at specified path(s)
+    if [[ -x "$HOME/Applications/SourceTree.app/Contents/MacOS/SourceTree" ]]; then
+      alias stree='open -a SourceTree $@'
+    fi
   ;;
   Linux)
     # safe assumption that coreutils package is installed within any
