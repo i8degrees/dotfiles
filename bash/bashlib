@@ -200,3 +200,20 @@ if [[ -x "$(which md5)" && -x "$(which openssl)" ]]; then
 else
   echo "WARNING: internal function 'md5calc' is disabled -- necessary commands not found"
 fi
+
+if [[ -x "$(which otool)" && -x "$(which grep)" ]]; then
+  function osver()
+  {
+    if [[ "$1" ]]; then
+      otool_bin="$(which otool)" # bin path
+      grep_bin="$(which grep)" # bin path
+
+      # Should include the output of both version & sdk
+      $otool_bin -l "$1" | $grep_bin -B 1 sdk
+    else
+      echo "Error: osver alias requires an input argument: specify a binary file to process."
+    fi
+  }
+else
+  echo "WARNING: internal function 'osver' is disabled -- necessary commands not found."
+fi
