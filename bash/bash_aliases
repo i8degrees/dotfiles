@@ -130,6 +130,10 @@ case "$(uname -s)" in
     if [[ -x "$HOME/Applications/SourceTree.app/Contents/MacOS/SourceTree" ]]; then
       alias stree='open -a SourceTree $@'
     fi
+    
+    if [[ "$(which mpv)" ]]; then
+      alias mplayer='mpv $@'
+    fi
   ;;
   Linux)
     # safe assumption that coreutils package is installed within any
