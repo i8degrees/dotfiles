@@ -90,7 +90,11 @@ case "$(uname -s)" in
 
   alias chrome='open -a "Google Chrome" --args -allow-file-access-from-files'
   alias marked='open -a "Marked"'
-  alias iphone='open -a "iPhone Simulator"'
+
+  # ~/local/bin/iphone is a symbolic link to the location of "iPhone Simulator"
+  # app
+  alias iphone='iphone $@'
+
   alias extract='open -a "Archive Utility"'
   alias lsmod='kextstat'
   alias modprobe='kextload $@'
@@ -130,7 +134,7 @@ case "$(uname -s)" in
     if [[ -x "$HOME/Applications/SourceTree.app/Contents/MacOS/SourceTree" ]]; then
       alias stree='open -a SourceTree $@'
     fi
-    
+
     if [[ "$(which mpv)" ]]; then
       alias mplayer='mpv $@'
     fi
