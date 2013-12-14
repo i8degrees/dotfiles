@@ -70,28 +70,29 @@ fi
 
 case "$(uname -s)" in
   Darwin)
-  PATH="$HOME/local/bin:$PATH"
-  export PATH
+    PATH="$HOME/local/bin:$PATH"
+    export PATH
 
-  PATH="$PATH:$HOME/local/bin/checker"
-  export PATH
+    PATH="$PATH:$HOME/local/bin/checker"
+    export PATH
 
-  #PATH="$PATH:$HOME/local/src/emscripten"
-  #export PATH
+    #PATH="$PATH:$HOME/local/src/emscripten"
+    #export PATH
 
-  export EDITOR='subl -w' # Do not exit editor until file is closed
-  export VISUAL=$EDITOR
 
-  #if [ "$(which aless)" ]; then
-    #PAGER="aless"; export PAGER
-    #MAN_PAGER="aless"; export MAN_PAGER;
-  #fi
+    export EDITOR='subl -w' # Do not exit editor until file is closed
+    export VISUAL=$EDITOR
 
-  TMPDIR="/private/tmp"; export TMPDIR
+    #if [ "$(which aless)" ]; then
+      #PAGER="aless"; export PAGER
+      #MAN_PAGER="aless"; export MAN_PAGER;
+    #fi
+
+    TMPDIR="/private/tmp"; export TMPDIR
   ;;
   Linux)
-  EDITOR="vim"; export EDITOR
-  TMPDIR="/tmp"; export TMPDIR
+    EDITOR="vim"; export EDITOR
+    TMPDIR="/tmp"; export TMPDIR
   ;;
   *)
   ;;
