@@ -47,6 +47,8 @@ case "$(uname -s)" in
 
     #export PATH="$PATH:/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/bin"
     export PATH="$NOMDEV:$PATH"
+
+    alias nomdev='nomdev.rb $@'
   ;;
   # Horribly outdated configuration from several years ago... sniff, sniff!
   #
