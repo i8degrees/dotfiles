@@ -79,7 +79,7 @@
     #ctags = !.git/hooks/ctags
 
 [push]
-    default = upstream
+  default = simple
 
 [remotes]
     default = origin # git remote update default
