@@ -54,9 +54,9 @@ fi
 
 case "$(uname -s)" in
   Darwin)
-      alias www='browser $@'
-      alias c='pbcopy'
-      alias p='pbpaste'
+    alias www='browser $@'
+    alias c='pbcopy'
+    alias p='pbpaste'
 
     # coreutils package from Homebrew for GNU commands to replace Darwin BSD
     # defaults
@@ -85,23 +85,23 @@ case "$(uname -s)" in
       echo "WARNING: coreutils package from Homebrew is not installed."
     fi
 
-  #alias pgrep="psgrep"
+    #alias pgrep="psgrep"
 
-  # ~/local/bin/subl is a symbolic link to
-    # $HOME/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl
-    alias edit='subl $@'
+    # ~/local/bin/subl is a symbolic link to
+      # $HOME/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl
+      alias edit='subl $@'
 
-  alias chrome='open -a "Google Chrome" --args -allow-file-access-from-files'
-  alias marked='open -a "Marked"'
+    alias chrome='open -a "Google Chrome" --args -allow-file-access-from-files'
+    alias marked='open -a "Marked"'
 
-  # ~/local/bin/iphone is a symbolic link to the location of "iPhone Simulator"
-  # app
-  alias iphone='iphone $@'
+    # ~/local/bin/iphone is a symbolic link to the location of "iPhone Simulator"
+    # app
+    alias iphone='iphone $@'
 
-  alias extract='open -a "Archive Utility"'
-  alias lsmod='kextstat'
-  alias modprobe='kextload $@'
-  alias otool='otool -L $@'
+    alias extract='open -a "Archive Utility"'
+    alias lsmod='kextstat'
+    alias modprobe='kextload $@'
+    alias otool='otool -L $@'
 
     if [ -x "$(which i586-mingw32-gcc)" ]; then
       alias win32-gcc='i586-mingw32-gcc'
