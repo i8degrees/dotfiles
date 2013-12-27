@@ -81,6 +81,8 @@ case "$(uname -s)" in
       alias route='netstat -nr'
       alias gitx='open -a "GitX"'
       alias leaks='iprofiler -T 300 -allocations -leaks $@'
+    else
+      echo "WARNING: coreutils package from Homebrew is not installed."
     fi
 
   #alias pgrep="psgrep"
