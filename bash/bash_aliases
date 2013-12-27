@@ -58,10 +58,11 @@ case "$(uname -s)" in
       alias c='pbcopy'
       alias p='pbpaste'
 
-    # coreutils package from brew needs to be installed
+    # coreutils package from Homebrew for GNU commands to replace Darwin BSD
+    # defaults
     if [ "$(brew list|grep coreutils)" ]; then
-          alias du='gdu -csh'
-          alias ls="gls -lhas --color=auto"
+      alias du='gdu -csh'
+      alias ls="gls --dereference-command-line --human-readable --all --size -l --color=auto"
       alias lsr="gls -lRa --color=auto"
       alias df="gdf -Th"
       alias rm="grm -iv"
