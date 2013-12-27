@@ -45,7 +45,8 @@ case "$(uname -s)" in
     # emscripten
     #EMMAKEN_COMPILER="/usr/local/bin/clang++"; export EMMAKEN_COMPILER
 
-    #export PATH="$PATH:/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/bin"
+    # Source: http://crossgcc.rts-software.org/doku.php?id=start
+    export PATH="$PATH:/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/bin"
     export PATH="$NOMDEV:$PATH"
 
     alias nomdev='nomdev.rb $@'
