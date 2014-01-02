@@ -217,3 +217,12 @@ if [[ -x "$(which otool)" && -x "$(which grep)" ]]; then
 else
   echo "WARNING: internal function 'osver' is disabled -- necessary commands not found."
 fi
+
+if [[ -x "$(which brew)" ]]; then
+  function brewupgrade()
+  {
+    brew doctor; brew update; brew upgrade; brew missing
+  }
+else
+  echo "Error: brew command not found -- brewupgrade alias is unavailable."
+fi

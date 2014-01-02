@@ -94,9 +94,7 @@ case "$(uname -s)" in
     alias chrome='open -a "Google Chrome" --args -allow-file-access-from-files'
     alias marked='open -a "Marked"'
 
-    # ~/local/bin/iphone is a symbolic link to the location of "iPhone Simulator"
-    # app
-    alias iphone='iphone $@'
+    alias iphone='open -a "iPhone Simulator" --args $@'
 
     alias extract='open -a "Archive Utility"'
     alias lsmod='kextstat'
@@ -123,7 +121,6 @@ case "$(uname -s)" in
       alias boutdated='brew outdated $@'
       alias bpinned='brew list --pinned'
       alias bmissing='brew missing $@'
-      alias brewupgrade='brew doctor && brew update && brew upgrade && brew missing'
     fi
 
     # grep color term support -- GREP_OPTIONS / GREP_COLOR bash vars --
