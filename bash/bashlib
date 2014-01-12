@@ -226,3 +226,16 @@ if [[ -x "$(which brew)" ]]; then
 else
   echo "Error: brew command not found -- brewupgrade alias is unavailable."
 fi
+
+if [[ -x "$(which grep)" ]]; then
+  function fstring()
+  {
+    if [[ ! "$2" ]]; then
+      grep $1 -s -I -i -R --exclude-dir \*.git .
+    else
+      grep $1 -s -I -i -R --exclude-dir \*.git $@
+    fi
+  }
+else
+  echo "Error: brew command not found -- brewupgrade alias is unavailable."
+fi
