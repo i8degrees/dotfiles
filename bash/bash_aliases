@@ -30,6 +30,12 @@ if [ "$(which git)" ]; then
   alias gpush='git push -u $@'
   alias gcheckout='git checkout $@'
   alias gmerge='git merge --no-ff $@'
+  alias gclone='git clone $@'
+  # Compare branches to determine which branch <source> is based from
+  # $1 = <source>
+  # $2 = <relation>
+  alias gbase='git show-branch $1 $2'
+  #alias gbase='git show --summary `git merge-base branch $1`'
 fi
 
 # TODO: combine tar, zip, ... creation and listing as one do-it-all function
@@ -79,7 +85,6 @@ case "$(uname -s)" in
       alias mount_ext4='ext4fuse -o allow_other $@'
       #alias cloc='cloc --by-file-by-lang --exclude-list-file=.cloc $@'
       alias route='netstat -nr'
-      alias gitx='open -a "GitX"'
       alias leaks='iprofiler -T 300 -allocations -leaks $@'
     else
       echo "WARNING: coreutils package from Homebrew is not installed."
@@ -214,7 +219,6 @@ case "$(uname -s)" in
   ;;
 esac
 
-alias gclone='git clone $@'
 alias youtube-dl='youtube-dl --max-quality mp4 $@'
 
 alias tree="tree -Chu"
