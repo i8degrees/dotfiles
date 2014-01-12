@@ -255,7 +255,7 @@ fi
 
 # Grep options: silent mode (do not show errors), ignore binary files, case
 # in-sensitive, recursive
-alias fstring='grep $1 -s -I -i -R $@'
+alias fstring='grep $1 -s -I -i -R --exclude-dir \*.git $@'
 alias g='grep $@'
 alias ip='echo "Public IP: "; curl icanhazip.com; echo "Internal IPs: "; ifconfig|grep "192.168.151.\|192.168.15."'
 #alias findfile='find $1 -name $2'
