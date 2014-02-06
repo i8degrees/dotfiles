@@ -93,8 +93,9 @@ case "$(uname -s)" in
     #alias pgrep="psgrep"
 
     # ~/local/bin/subl is a symbolic link to
-      # $HOME/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl
-      alias edit='subl $@'
+    # $HOME/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl
+    alias edit='subl $@'
+    alias e='edit $@'
 
     alias chrome='open -a "Google Chrome" --args -allow-file-access-from-files'
     alias marked='open -a "Marked"'
