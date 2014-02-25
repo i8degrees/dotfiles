@@ -135,7 +135,7 @@ case "$(uname -s)" in
     if [[ -f "/usr/local/etc/bash_completion" ]]; then
       . /usr/local/etc/bash_completion
     else
-      echo "WARNING: /usr/local/etc/bash_completion.d does not exist! Is homebrew setup?"
+      echo "WARNING: /usr/local/etc/bash_completion does not exist! Is homebrew setup?"
     fi
 
     #SSH_ASKPASS="/usr/local/libexec/ssh-askpass"; export SSH_ASKPASS
