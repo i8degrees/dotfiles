@@ -76,11 +76,11 @@ Darwin)
   fi
 
   # mpd configuration
-  if [ -d "/Volumes/Music" ]; then
-    ${LINK_COMMAND} -sf /Volumes/Music/ $HOME/.config/mpd/music
+  if [ -d "/Volumes/Media/Music" ]; then
+    ${LINK_COMMAND} -sf /Volumes/Media/Music $HOME/.config/mpd/music
 
-    if [ -d "/Volumes/Music/playlists" ]; then
-      ${LINK_COMMAND} -sf /Volumes/Music/playlists/ $HOME/.config/mpd/playlists
+    if [ -d "/Volumes/Media/Music/playlists" ]; then
+      ${LINK_COMMAND} -sf /Volumes/Media/Music/playlists/ $HOME/.config/mpd/playlists
     fi
   else
     if [ -d "$HOME/Music" ]; then
