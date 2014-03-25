@@ -68,6 +68,8 @@ if [ -x "$(which locale)" ]; then
   eval "$(locale)"
 fi
 
+# NOTE: Initial PATH environment is set in ~/.bash_profile.
+
 case "$(uname -s)" in
   Darwin)
     PATH="$HOME/local/bin:$PATH"
