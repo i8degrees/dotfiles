@@ -42,14 +42,17 @@ ${RM_COMMAND} -rv ${HOME}/local/bin/synergys.sh
 launchctl unload ~/Library/LaunchAgents/org.local.unison_nomlib.plist
 launchctl unload ~/Library/LaunchAgents/org.local.unison_nomdev.plist
 launchctl unload ~/Library/LaunchAgents/org.local.unison_ttcards.plist
+launchctl unload ~/Library/LaunchAgents/org.local.unison_third-party.plist
 
 ${RM_COMMAND} -rv ${HOME}/Library/LaunchAgents/org.local.unison_nomlib.plist
 ${RM_COMMAND} -rv ${HOME}/Library/LaunchAgents/org.local.unison_nomdev.plist
 ${RM_COMMAND} -rv ${HOME}/Library/LaunchAgents/org.local.unison_ttcards.plist
+${RM_COMMAND} -rv ${HOME}/Library/LaunchAgents/org.local.unison_third-party.plist
 
 ${RM_COMMAND} -rv ${HOME}/local/bin/unison_nomlib.sh
 ${RM_COMMAND} -rv ${HOME}/local/bin/unison_nomdev.sh
 ${RM_COMMAND} -rv ${HOME}/local/bin/unison_ttcards.sh
+${RM_COMMAND} -rv ${HOME}/local/bin/unison_third-party.sh
 
 # pow configuration
 ${RM_COMMAND} -rv ${HOME}/.powconfig
