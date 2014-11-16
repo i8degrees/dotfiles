@@ -58,6 +58,15 @@ if [[ "$(which wget)" ]]; then
   alias dl='wget $@'
 fi
 
+if [[ "$(which valgrind)" ]]; then
+  alias memleaks=' valgrind --tool=memcheck --leak-check=full --num-callers=40 $@'
+fi
+
+# Quick access to comparing nomlib's screen-shots from visual unit tests
+if [[ "$(which md5)" ]]; then
+  alias dupe='md5 $@'
+fi
+
 case "$(uname -s)" in
   Darwin)
     alias www='browser $@'
@@ -100,7 +109,7 @@ case "$(uname -s)" in
     alias chrome='open -a "Google Chrome" --args -allow-file-access-from-files'
     alias marked='open -a "Marked"'
 
-    alias iphone='open -a "iPhone Simulator" --args $@'
+    alias iphone='open -a "iOS Simulator" --args $@'
 
     alias extract='open -a "Archive Utility"'
     alias lsmod='kextstat'
@@ -147,6 +156,13 @@ case "$(uname -s)" in
     if [[ "$(which mpv)" ]]; then
       alias mplayer='mpv $@'
     fi
+
+    # watch is part of coreutils brew pkg, methinks
+    if [[ $(which watch) ]]; then
+      alias watchclang="watch 'pgrep clang'"
+    fi
+
+    alias cmake-gui='${HOME}/Applications/Developer/CMake.app/Contents/MacOS/CMake $@'
   ;;
   Linux)
     # safe assumption that coreutils package is installed within any
