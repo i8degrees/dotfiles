@@ -131,11 +131,12 @@ case "$(uname -s)" in
       alias bdoc='brew doctor'
       alias bupdate='brew update'
       alias bupgrade='brew upgrade'
-      alias binfo='brew info $@'
       alias bsearch='brew search $@'
       alias boutdated='brew outdated $@'
       alias bpinned='brew list --pinned'
       alias bmissing='brew missing $@'
+
+      # See also: ~/.bashlib for additional definitions
     fi
 
     # grep color term support -- GREP_OPTIONS / GREP_COLOR bash vars --

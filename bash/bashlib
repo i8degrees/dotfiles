@@ -239,3 +239,24 @@ if [[ -x "$(which grep)" ]]; then
 else
   echo "Error: brew command not found -- brewupgrade alias is unavailable."
 fi
+
+# Homebrew package management
+if [[ -x "$(which brew)" ]]; then
+  BREW_BIN=$(which brew)
+
+  # brew tap telemachus/homebrew-desc && brew install brew-desc
+  # https://github.com/telemachus/homebrew-desc
+  if [[ -x "/usr/local/bin/brew-desc.rb" ]]; then
+    function binfo()
+    {
+      # $BREW_BIN info $1; $BREW_BIN desc $1
+      $BREW_BIN desc $1; $BREW_BIN info $1
+    }
+  else # Use standard brew info
+    function binfo()
+    {
+      $BREW_BIN info $1
+    }
+  fi # end if brew-desc
+
+fi # end if brew
