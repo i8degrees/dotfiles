@@ -67,6 +67,10 @@ ${LINK_COMMAND} -sf ${WORKING_DIR}/gtk/gtkrc-2.0.mine $HOME/.gtkrc-2.0.mine
 # X11 configuration
 ${LINK_COMMAND} -sf ${WORKING_DIR}/X11/Xresources $HOME/.Xresources
 
+# pianobar cfg
+${MKDIR_COMMAND} -p ${HOME}/.config/pianobar
+${LINK_COMMAND} -sf ${WORKING_DIR}/pianobar/config ${HOME}/.config/pianobar/config
+
 case "$(uname -s)" in
 Darwin)
 

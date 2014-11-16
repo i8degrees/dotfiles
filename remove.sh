@@ -81,3 +81,6 @@ ${RM_COMMAND} -rv $HOME/.Xresources
 ${RM_COMMAND} -rv $HOME/local/bin/setaudio.applescript
 ${RM_COMMAND} -rv $HOME/local/bin/AppleTV.applescript
 ${RM_COMMAND} -rv $HOME/local/bin/hermes
+
+# pianobar cfg
+${RM_COMMAND} -rv ${HOME}/.config/pianobar
