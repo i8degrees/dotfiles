@@ -93,6 +93,14 @@ case "$(uname -s)" in
     #fi
 
     TMPDIR="/private/tmp"; export TMPDIR
+
+    # Use coreutils (brew package) commands with their normal names, AKA without
+    # the default 'g' prefix. This means using GNU's tools instead of the
+    # default provided BSD (OS X) tools.
+    PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+    # Access coreutils (brew package) man pages with their normal names
+    #MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
   ;;
   Linux)
     EDITOR="vim"; export EDITOR
@@ -191,3 +199,6 @@ esac
 if [ -x "$HOME/.bash_aliases" ]; then
   . $HOME/.bash_aliases
 fi
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
