@@ -197,6 +197,9 @@ esac
 # Additional bash scripts to include in local site configuration
 
 if [ -x "$HOME/.bash_aliases" ]; then
+  # Reset aliases to ensure consistent state upon environment reload; see my
+  # rbash alias.
+  unalias -a # Remove all alias definitions
   . $HOME/.bash_aliases
 fi
 
