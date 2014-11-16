@@ -29,15 +29,24 @@ case "$(uname -s)" in
   Darwin)
     # CC & CXX should not need to be set
     #export CC="/usr/bin/clang"
-    #export CXX="/usr/bin/clang++"
+    # export CXX="/usr/bin/clang++"
 
-    export MAKEFLAGS="-j4" # MacBook Air Mid 2011 [Intel Core i5 1.6Ghz]
+    export MAKEFLAGS="-j5" # MacBook Air Mid 2011 [Intel Core i5 1.6Ghz]
 
-    # See also man 1 xcode-select
-    export DEVELOPER_DIR="/Applications/Developer/Xcode.app/Contents/Developer"
+    # It is a personal preference to use /usr/bin/xcode-select to set the
+    # default DEVELOPER_DIR path, instead of setting it from the shell
+    # environment; i.e.: eases the use of concurrent build environments.
+    #
+    # See also: man 1 xcode-select
+    #export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
 
-    export CCACHE_PATH="/usr/local/Cellar/ccache/3.1.9/libexec"
+    #export CCACHE_PATH="/usr/local/opt/ccache/libexec"
     #CCACHE_DIR="/ramdisk/dir"; export CCACHE_DIR
+
+    # Note that $CCACHE_PATH be included early on, so that it does not get
+    # overridden by the standard search paths, i.e.: /usr/local/bin, /usr/bin,
+    # etc.
+    #export PATH="$CCACHE_PATH:$PATH"
 
     # node.js
     export NODE_PATH="/usr/local/lib/node_modules"
