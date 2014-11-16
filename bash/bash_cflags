@@ -59,6 +59,11 @@ case "$(uname -s)" in
     export PATH="$NOMDEV:$PATH"
 
     alias nomdev='nomdev.rb $@'
+
+    # Show GTest diagnostics output
+    export CTEST_OUTPUT_ON_FAILURE=true
+
+    export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/opt/X11/lib/pkgconfig"
   ;;
   # Horribly outdated configuration from several years ago... sniff, sniff!
   #
@@ -99,3 +104,5 @@ fi
 #export RUBYOPT="-W2 -v"
 #RUBYLIB="/Library/Ruby"; export RUBYLIB
 #export RUBYLIB="/home/jeff/Projects/ruby/lib"
+
+export NOM_COLOR=always
