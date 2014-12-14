@@ -31,7 +31,7 @@ case "$(uname -s)" in
     #export CC="/usr/bin/clang"
     # export CXX="/usr/bin/clang++"
 
-    export MAKEFLAGS="-j5" # MacBook Air Mid 2011 [Intel Core i5 1.6Ghz]
+    export MAKEFLAGS="-j3" # MacBook Air Mid 2011 [Intel Core i5 1.6Ghz]
 
     # It is a personal preference to use /usr/bin/xcode-select to set the
     # default DEVELOPER_DIR path, instead of setting it from the shell
@@ -58,12 +58,8 @@ case "$(uname -s)" in
     export PATH="$PATH:/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/bin"
     export PATH="$NOMDEV:$PATH"
 
-    alias nomdev='nomdev.rb $@'
-
-    # Show GTest diagnostics output
-    export CTEST_OUTPUT_ON_FAILURE=true
-
-    export PKG_CONFIG_PATH="${PKG_CONFIG_PATH}:/opt/X11/lib/pkgconfig"
+    # export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig:/opt/X11/lib/pkgconfig"
+    export PKG_CONFIG_PATH="/opt/X11/lib/pkgconfig"
   ;;
   # Horribly outdated configuration from several years ago... sniff, sniff!
   #
@@ -105,4 +101,9 @@ fi
 #RUBYLIB="/Library/Ruby"; export RUBYLIB
 #export RUBYLIB="/home/jeff/Projects/ruby/lib"
 
+# Show GTest diagnostics output
+export CTEST_OUTPUT_ON_FAILURE=true
+
+# Colored logging output from nomlib
 export NOM_COLOR=always
+alias nomdev='nomdev.rb $@'
