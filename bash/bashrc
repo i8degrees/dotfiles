@@ -52,6 +52,10 @@ export HISTCONTROL=ignoredups
 #   path is set
 #PATH="/usr/lib/colorgcc/bin"
 
+# Reset aliases to ensure consistent state upon environment reload; see my
+# rbash alias.
+unalias -a # Remove all alias definitions
+
 if [ -x "$HOME/.bash_cflags" ]; then
   . "$HOME/.bash_cflags"
 fi
@@ -197,9 +201,6 @@ esac
 # Additional bash scripts to include in local site configuration
 
 if [ -x "$HOME/.bash_aliases" ]; then
-  # Reset aliases to ensure consistent state upon environment reload; see my
-  # rbash alias.
-  unalias -a # Remove all alias definitions
   . $HOME/.bash_aliases
 fi
 
