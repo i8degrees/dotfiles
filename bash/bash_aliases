@@ -99,6 +99,12 @@ case "$(uname -s)" in
       echo "WARNING: coreutils package from Homebrew is not installed."
     fi
 
+    # Use rsync for file transfer progress updates when available over
+    # gcp from coreutils bins; for some reason, gcp doesn't show progress bar
+    # for me as it allegedly does on Linux?
+    if [[ "$(which rsync)" ]]; then
+      alias cp='rsync -iavzP $@'
+    fi
     #alias pgrep="psgrep"
 
     # ~/local/bin/subl is a symbolic link to
