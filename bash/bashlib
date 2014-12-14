@@ -173,37 +173,37 @@ if [ -x "$(which ssh)" ]; then
   }
 fi
 
-if [[ -x "$(which sha1sum)" && -x "$(which openssl)" ]]; then
-  function sha1calc()
-  {
+function sha1calc()
+{
+  if [[ -x "$(which sha1sum)" && -x "$(which openssl)" ]]; then
     if [[ $@ ]]; then
       openssl="$(which openssl)" # bin path
       eval echo -n \""$@\"" | $openssl sha1
     else
       echo "Err: sha1calc requires textual input arguments."
     fi
-  }
-else
-  echo "Err: internal function 'sha1calc' is disabled -- necessary commands not found"
-fi
+  else
+    echo "Err: internal function 'sha1calc' is not available; necessary commands not found."
+  fi
+}
 
-if [[ -x "$(which md5)" && -x "$(which openssl)" ]]; then
-  function md5calc()
-  {
+function md5calc()
+{
+  if [[ -x "$(which md5)" && -x "$(which openssl)" ]]; then
     if [[ $@ ]]; then
       openssl="$(which openssl)" # bin path
       eval echo -n \""$@\"" | $openssl md5
     else
       echo "Err: md5calc requires textual input arguments."
     fi
-  }
-else
-  echo "WARNING: internal function 'md5calc' is disabled -- necessary commands not found"
-fi
+  else
+    echo "WARNING: internal function 'md5calc' is not available; necessary commands not found."
+  fi
+}
 
-if [[ -x "$(which otool)" && -x "$(which grep)" ]]; then
-  function osver()
-  {
+function osver()
+{
+  if [[ -x "$(which otool)" && -x "$(which grep)" ]]; then
     if [[ "$1" ]]; then
       otool_bin="$(which otool)" # bin path
       grep_bin="$(which grep)" # bin path
@@ -213,19 +213,19 @@ if [[ -x "$(which otool)" && -x "$(which grep)" ]]; then
     else
       echo "Error: osver alias requires an input argument: specify a binary file to process."
     fi
-  }
-else
-  echo "WARNING: internal function 'osver' is disabled -- necessary commands not found."
-fi
+  else
+    echo "WARNING: internal function 'osver' is not available; necessary commands not found."
+  fi
+}
 
-if [[ -x "$(which brew)" ]]; then
-  function brewupgrade()
-  {
+function brewupgrade()
+{
+  if [[ -x "$(which brew)" ]]; then
     brew doctor; brew update; brew upgrade; brew missing
-  }
-else
-  echo "Error: brew command not found -- brewupgrade alias is unavailable."
-fi
+  else
+    echo "Error: brew command not found; brewupgrade alias is unavailable."
+  fi
+}
 
 if [[ -x "$(which grep)" ]]; then
   function fstring()
@@ -237,7 +237,7 @@ if [[ -x "$(which grep)" ]]; then
     fi
   }
 else
-  echo "Error: brew command not found -- brewupgrade alias is unavailable."
+  echo "Error: grep command not found -- fstring alias is unavailable."
 fi
 
 # Homebrew package management

@@ -185,7 +185,7 @@ case "$(uname -s)" in
 
     SciTE_HOME="/home/jeff/.scite"; export SciTE_HOME
 
-    if [ -f "/etc/bash_completion" || -h "/etc/bash_completion" ]; then
+    if [[ -f "/etc/bash_completion" || -h "/etc/bash_completion" ]]; then
           . /etc/bash_completion
         #else
           #echo "WARNING: /usr/local/etc/bash_completion.d does not exist! Is homebrew setup?"
