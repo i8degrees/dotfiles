@@ -67,7 +67,7 @@ case "$(uname -s)" in
   #
   # makepkg.conf(5)   makepkg(8)    pacman(8)   PKGBUILD(5)
   Linux) # ArchLinux-tailored (increasingly evolving towards a more generic *nix setup...)
-    export MAKEFLAGS="-j4"
+    #export MAKEFLAGS="-j4"
 
     #FIXME/TODO: eval /etc/makepkg.conf
     #export CARCH=""

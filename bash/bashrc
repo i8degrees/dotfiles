@@ -107,7 +107,9 @@ case "$(uname -s)" in
     #MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
   ;;
   Linux)
-    EDITOR="vim"; export EDITOR
+    export PATH="$HOME/local/bin:$PATH"
+    export EDITOR="vim"
+    export VISUAL=$EDITOR
     TMPDIR="/tmp"; export TMPDIR
   ;;
   *)

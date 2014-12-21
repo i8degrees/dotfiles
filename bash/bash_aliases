@@ -187,7 +187,12 @@ case "$(uname -s)" in
     alias xclip="xclip -sel clip"
 
     #alias edit="$(which geany)"
-    alias edit="$(which vim)"
+    # alias edit="$(which vim)"
+
+    # ~/local/bin/subl is a symbolic link to
+    # $HOME/local/opt/SublimeText2/sublime_text
+    alias edit='subl $@'
+    alias e='edit $@'
 
     # User specific
     if [[ -n "$(id|grep jeff)" ]]; then
