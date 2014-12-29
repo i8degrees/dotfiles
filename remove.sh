@@ -84,3 +84,6 @@ ${RM_COMMAND} -rv $HOME/local/bin/hermes
 
 # pianobar cfg
 ${RM_COMMAND} -rv ${HOME}/.config/pianobar
+
+# emacs cfg
+${RM_COMMAND} -sf ${HOME}/.emacs

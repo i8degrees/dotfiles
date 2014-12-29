@@ -71,6 +71,9 @@ ${LINK_COMMAND} -sf ${WORKING_DIR}/X11/Xresources $HOME/.Xresources
 ${MKDIR_COMMAND} -p ${HOME}/.config/pianobar
 ${LINK_COMMAND} -sf ${WORKING_DIR}/pianobar/config ${HOME}/.config/pianobar/config
 
+# emacs cfg
+${LINK_COMMAND} -sf ${WORKING_DIR}/emacs ${HOME}/.emacs
+
 case "$(uname -s)" in
 Darwin)
 
