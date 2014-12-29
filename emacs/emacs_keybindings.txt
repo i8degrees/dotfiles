@@ -1,6 +1,8 @@
 QUICK REFERENCE GUIDE FOR CASEY'S .EMACS KEYBINDINGS
 ----------------------------------------------------
 
+CTRL-x, C-c  Kill Emacs (save-buffers-kill-terminal)
+
 TAB          Cycles through completions for a word.
 
 ALT-B        Switch to buffer in the current window.
