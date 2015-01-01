@@ -72,7 +72,7 @@ ${MKDIR_COMMAND} -p ${HOME}/.config/pianobar
 ${LINK_COMMAND} -sf ${WORKING_DIR}/pianobar/config ${HOME}/.config/pianobar/config
 
 # emacs cfg
-${LINK_COMMAND} -sf ${WORKING_DIR}/emacs ${HOME}/.emacs
+${LINK_COMMAND} -sf ${WORKING_DIR}/emacs/emacs ${HOME}/.emacs
 
 case "$(uname -s)" in
 Darwin)
