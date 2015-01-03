@@ -25,11 +25,7 @@ set backup                                                              " turn o
 set backupdir=~/.vim/backup/                                          	" where to put backup files
 set directory=~/.vim/tmp/                                             	" where to put tmp files
 set pastetoggle=<f5>                                                    " toggle paste mode
-set clipboard=unnamed                            " Mac OS X
-"set clipboard=unnamedplus												" aliases the unnamed register to the + register
-																		" AKA X11 clipboard
-																		" SOURCE:
-																		" http://vim.wikia.com/wiki/Accessing_the_system_clipboard
+set clipboard=unnamed                                                   " Use the OS clipboard by default
 
 "set clipboard+=unnamed                                                 " yank and copy to xclipboard
 set wildmenu                                                            " enhanced tab-completion
@@ -132,3 +128,6 @@ call pathogen#infect() 			" vim plugins management
 " default location of ctags
 set tags=.tags
 
+" Mac OS X aliases the unnamed register to the + register AKA X11 clipboard
+" SOURCE: http://vim.wikia.com/wiki/Accessing_the_system_clipboard
+"set clipboard=unnamedplus
