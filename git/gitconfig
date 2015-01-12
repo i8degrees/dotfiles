@@ -4,8 +4,8 @@
 	signingkey = F38DCE7F835748F9
 
 [core]
-	editor = subl -w
-    #askpass = /usr/local/libexec/ssh-askpass
+  editor = /usr/local/bin/vim
+  #askpass = /usr/local/libexec/ssh-askpass
 	whitespace = tabwidth=2,nowarn
 
 	excludesfile = /Users/jeff/.gitignore_global
