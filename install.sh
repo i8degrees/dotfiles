@@ -9,13 +9,13 @@ COPY_COMMAND=$(which cp)
 ${MKDIR_COMMAND} -p ${HOME}/.vim
 ${MKDIR_COMMAND} -p ${HOME}/.vim/backup
 ${MKDIR_COMMAND} -p ${HOME}/.vim/tmp
-${LINK_COMMAND} -sf ${WORKING_DIR}/vim/autoload/ $HOME/.vim/autoload
-${LINK_COMMAND} -sf ${WORKING_DIR}/vim/bundle/ $HOME/.vim/bundle
-${LINK_COMMAND} -sf ${WORKING_DIR}/vim/colors/ $HOME/.vim/colors
+${LINK_COMMAND} -sfT ${WORKING_DIR}/vim/autoload $HOME/.vim/autoload
+${LINK_COMMAND} -sfT ${WORKING_DIR}/vim/bundle $HOME/.vim/bundle
+${LINK_COMMAND} -sfT ${WORKING_DIR}/vim/colors $HOME/.vim/colors
 ${LINK_COMMAND} -sf ${WORKING_DIR}/vim/vimrc $HOME/.vimrc
 
 # Bash supporting configuration
-${LINK_COMMAND} -sf ${WORKING_DIR}/colors/ $HOME/.colors
+${LINK_COMMAND} -sfT ${WORKING_DIR}/colors $HOME/.colors
 
 # Bash scripts
 ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bash_aliases $HOME/.bash_aliases
@@ -33,7 +33,7 @@ ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/inputrc $HOME/.inputrc
 #${LINK_COMMAND} -sf ${WORKING_DIR}/mplayer/ $HOME/.mplayer
 
 # mpv-player configuration
-${LINK_COMMAND} -sf ${WORKING_DIR}/mpv $HOME/.mpv
+${LINK_COMMAND} -sfT ${WORKING_DIR}/mpv $HOME/.mpv
 
 # mpd, mpdscribble configuration
 ${MKDIR_COMMAND} -p ${HOME}/.config/mpd
@@ -52,7 +52,7 @@ ${LINK_COMMAND} -sf ${WORKING_DIR}/git/gitattributes $HOME/.gitattributes
 ${LINK_COMMAND} -sf ${WORKING_DIR}/git/gitconfig $HOME/.gitconfig
 ${LINK_COMMAND} -sf ${WORKING_DIR}/git/gitignore_global $HOME/.gitignore_global
 ${LINK_COMMAND} -sf ${WORKING_DIR}/git/gitk $HOME/.gitk
-${LINK_COMMAND} -sf ${WORKING_DIR}/git/hooks $HOME/.git_template
+${LINK_COMMAND} -sfT ${WORKING_DIR}/git/hooks $HOME/.git_template
 
 # hg configuration
 ${LINK_COMMAND} -sf ${WORKING_DIR}/hg/hgignore_global $HOME/.hgignore_global
