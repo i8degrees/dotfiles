@@ -43,6 +43,9 @@ ${MKDIR_COMMAND} -p ${HOME}/.config/mpd/db
 ${MKDIR_COMMAND} -p ${HOME}/.config/mpd/tmp
 ${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/mpd.conf $HOME/.config/mpd/mpd.conf
 ${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/mpdscribble.conf $HOME/.config/mpd/mpdscribble.conf
+${MKDIR_COMMAND} -p ${HOME}/.ncmpcpp
+${LINK_COMMAND} -sfT ${WORKING_DIR}/ncmpcpp/config ${HOME}/.ncmpcpp/config
+${LINK_COMMAND} -sfT ${WORKING_DIR}/ncmpcpp/bindings ${HOME}/.ncmpcpp/bindings
 
 # synergys configuration
 ${LINK_COMMAND} -sf ${WORKING_DIR}/synergy/synergy.conf $HOME/.synergy.conf

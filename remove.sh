@@ -32,6 +32,7 @@ ${RM_COMMAND} -rv ${HOME}/.mpv
 
 # mpd, mpdscribble configuration
 ${RM_COMMAND} -rv ${HOME}/.config/mpd
+${RM_COMMAND} -rv ${HOME}/.ncmpcpp
 
 # synergys configuration
 ${RM_COMMAND} -rv ${HOME}/.synergy.conf
