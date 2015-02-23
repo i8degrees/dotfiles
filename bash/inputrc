@@ -31,10 +31,17 @@ $if mode=vi
   "\e[A": history-search-backward
   "\e[B": history-search-forward
 
+  # Insert the arguments from the last command
+  "p": "i !!*\r"
+
   set keymap vi-insert
   # these are for vi-insert mode
   "\e[A": history-search-backward
   "\e[B": history-search-forward
+
+  # Needed because binding 'p' in command mode above wipes its insert mode
+  # function, too. This fixes that, and will insert 'p' when you type 'p'.
+  "p": self-insert
 
   "\e[1~" beginning-of-line # ^A
   "\e[4~" end-of-line # ^E
