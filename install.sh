@@ -32,8 +32,12 @@ ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/inputrc $HOME/.inputrc
 # mplayer configuration
 #${LINK_COMMAND} -sf ${WORKING_DIR}/mplayer/ $HOME/.mplayer
 
-# mpv-player configuration
-${LINK_COMMAND} -sfT ${WORKING_DIR}/mpv $HOME/.mpv
+# mpv player configuration
+${MKDIR_COMMAND} -p ${HOME}/.mpv ${HOME}/.mpv/watch_later
+${LINK_COMMAND} -sfT ${WORKING_DIR}/mpv/config $HOME/.mpv/config
+${LINK_COMMAND} -sfT ${WORKING_DIR}/mpv/input.conf $HOME/.mpv/input.conf
+${LINK_COMMAND} -sfT ${WORKING_DIR}/mpv/kq.profile $HOME/.mpv/kq.profile
+${LINK_COMMAND} -sfT ${WORKING_DIR}/mpv/subs.profile $HOME/.mpv/subs.profile
 
 # mpd, mpdscribble configuration
 ${MKDIR_COMMAND} -p ${HOME}/.config/mpd
