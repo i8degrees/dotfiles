@@ -207,11 +207,6 @@ case "$(uname -s)" in
       fi
     fi
 
-    #if [[ "$TERMINAL" == "urxvtc" && getpid 'urxvtd' > 0 ]]; then
-    if [ "$TERMINAL" == "urxvtc" ]; then
-      alias urxvt='urxvtc'
-    fi
-
     # ArchLinux-tailored configuration:
     if [ "$LOCAL" == "virgo.arch" ]; then
       #if [[ "$COLORTERM" && -x "$(which pacman-color)" ]]; then

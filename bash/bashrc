@@ -120,7 +120,7 @@ fi
 #eval "$(resize)"
 
 #export USECOLOR=true
-TERM=xterm-256color; export TERM
+export TERM=xterm-256color
 #TMPDIR="$HOME/tmp"; export TMPDIR
 BLOCKSIZE=K; export BLOCKSIZE
 export INPUTRC="$HOME/.inputrc"
@@ -137,8 +137,6 @@ SSH_KEYS="$HOME/.ssh/libra_dsa"; export SSH_KEYS
 
 case "$(uname -s)" in
   Darwin)
-    TERMINAL="iterm"; export TERMINAL
-
     if [ -f "$(which lesspipe.sh)" ]; then
       LESSOPEN="|/usr/local/bin/lesspipe.sh %s"; export LESSOPEN
     fi
@@ -165,8 +163,6 @@ case "$(uname -s)" in
     fi
   ;;
   Linux)
-    TERMINAL="urxvtc"; export TERMINAL
-
     if [ -f "$(which lesspipe)" ]; then
       eval "$(lesspipe)"
     fi
