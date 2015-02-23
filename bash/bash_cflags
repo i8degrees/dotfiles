@@ -27,56 +27,62 @@ NOMDEV="${PROJECTS}/nomdev.git"
 
 case "$(uname -s)" in
   Darwin)
-    # CC & CXX should not need to be set
-    #export CC="/usr/bin/clang"
-    # export CXX="/usr/bin/clang++"
 
-    export MAKEFLAGS="-j3" # MacBook Air Mid 2011 [Intel Core i5 1.6Ghz]
+    case "$(hostname)" in
+      virgo.local) # MacBook Air Mid 2011 [Intel Core i5 1.6Ghz]
 
-    # It is a personal preference to use /usr/bin/xcode-select to set the
-    # default DEVELOPER_DIR path, instead of setting it from the shell
-    # environment; i.e.: eases the use of concurrent build environments.
-    #
-    # See also: man 1 xcode-select
-    #export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
+      # CC & CXX should not need to be set
+      #export CC="/usr/bin/clang"
+      # export CXX="/usr/bin/clang++"
 
-    #export CCACHE_PATH="/usr/local/opt/ccache/libexec"
-    #CCACHE_DIR="/ramdisk/dir"; export CCACHE_DIR
+      # Number of CPU threads to spawn for clang, GCC && CTest
+      export NUM_THREADS=2
+      export MAKEFLAGS="-j${NUM_THREADS}"
+      export CTEST_PARALLEL_LEVEL=${NUM_THREADS}
 
-    # Note that $CCACHE_PATH be included early on, so that it does not get
-    # overridden by the standard search paths, i.e.: /usr/local/bin, /usr/bin,
-    # etc.
-    #export PATH="$CCACHE_PATH:$PATH"
+      # It is a personal preference to use /usr/bin/xcode-select to set the
+      # default DEVELOPER_DIR path, instead of setting it from the shell
+      # environment; i.e.: eases the use of concurrent build environments.
+      #
+      # See also: man 1 xcode-select
+      #export DEVELOPER_DIR="/Applications/Xcode.app/Contents/Developer"
 
-    # node.js
-    export NODE_PATH="/usr/local/lib/node_modules"
+      #export CCACHE_PATH="/usr/local/opt/ccache/libexec"
+      #CCACHE_DIR="/ramdisk/dir"; export CCACHE_DIR
 
-    # emscripten
-    #EMMAKEN_COMPILER="/usr/local/bin/clang++"; export EMMAKEN_COMPILER
+      # Note that $CCACHE_PATH be included early on, so that it does not get
+      # overridden by the standard search paths, i.e.: /usr/local/bin, /usr/bin,
+      # etc.
+      #export PATH="$CCACHE_PATH:$PATH"
 
-    # Source: http://crossgcc.rts-software.org/doku.php?id=start
-    export PATH="$PATH:/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/bin"
-    export PATH="$NOMDEV:$PATH"
+      # node.js
+      export NODE_PATH="/usr/local/lib/node_modules"
 
-    # export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig:/opt/X11/lib/pkgconfig"
-    export PKG_CONFIG_PATH="/opt/X11/lib/pkgconfig"
-  ;;
-  # Horribly outdated configuration from several years ago... sniff, sniff!
-  #
-  # See also,
-  #
-  # makepkg.conf(5)   makepkg(8)    pacman(8)   PKGBUILD(5)
-  Linux) # ArchLinux-tailored (increasingly evolving towards a more generic *nix setup...)
-    #export MAKEFLAGS="-j4"
+      # emscripten
+      #EMMAKEN_COMPILER="/usr/local/bin/clang++"; export EMMAKEN_COMPILER
 
-    #FIXME/TODO: eval /etc/makepkg.conf
-    #export CARCH=""
-    #export CHOST=""
-    #export LDFLAGS="-W1,-O1,--sort-common,--as-needed,-z,relro,--hash-style=gnu"
+      # Source: http://crossgcc.rts-software.org/doku.php?id=start
+      export PATH="$PATH:/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/bin"
+      export PATH="$NOMDEV:$PATH"
 
-    #export CFLAGS="-march=i686 -mtune=generic -O2 -pipe -fstack-protector -D_FORTIFY_SOURCE=2"
-    #export CXXFLAGS=$CFLAGS
-  ;;
+      # export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig:/opt/X11/lib/pkgconfig"
+      export PKG_CONFIG_PATH="/opt/X11/lib/pkgconfig"
+    ;; # end case virgo.local
+    esac # end switch hostname
+    # [generic OS X cfg]
+  ;; # end case Darwin
+  Linux)
+    case "$(hostname)" in
+      libra.local)
+
+      # Number of CPU threads to spawn for clang, GCC && CTest
+      export NUM_THREADS=1
+      export MAKEFLAGS="-j${NUM_THREADS}"
+      export CTEST_PARALLEL_LEVEL=${NUM_THREADS}
+    ;; # end case libra.local
+    esac # end switch hostname
+    # [generic Linux cfg]
+  ;; # end case Linux
   *)
   ;;
 esac
@@ -107,3 +113,4 @@ export CTEST_OUTPUT_ON_FAILURE=true
 # Colored logging output from nomlib
 export NOM_COLOR=always
 alias nomdev='nomdev.rb $@'
+
