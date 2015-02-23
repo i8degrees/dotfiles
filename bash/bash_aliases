@@ -8,6 +8,10 @@
 #
 
 alias rbash='source ~/.bashrc'
+
+# Clear BASH history; zero out, flush immediately && reload shell
+alias chistory='cat /dev/null > ~/.bash_history && history -cw && rbash'
+
 alias ncdu='ncdu -r -x $@'
 
 if [ "$(which md5deep)" ]; then
@@ -66,6 +70,8 @@ fi
 if [[ "$(which md5)" ]]; then
   alias dupe='md5 $@'
 fi
+
+alias top='top -stats cpu,pid,command,time,rsize,pstate -user jeff -n43 -o-CPU $@'
 
 case "$(uname -s)" in
   Darwin)
