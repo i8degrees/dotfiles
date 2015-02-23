@@ -128,3 +128,11 @@ set tags=.tags
 " Mac OS X aliases the unnamed register to the + register AKA X11 clipboard
 " SOURCE: http://vim.wikia.com/wiki/Accessing_the_system_clipboard
 "set clipboard=unnamedplus
+
+" Highlight column 80
+if exists('+colorcolumn') "vim 7.3
+  set colorcolumn=80
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
+
