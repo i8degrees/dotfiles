@@ -242,6 +242,10 @@ case "$(uname -s)" in
 
     # grep color term support
     export GREP_OPTIONS="--color=always -I"; # -I = --binary-files-without-match
+
+    if [[ $(which xdg-open) ]]; then
+      alias open='xdg-open $@'
+    fi
   ;;
   *)
     #alias ls="ls -lhas --color=never"
