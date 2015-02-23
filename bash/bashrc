@@ -88,9 +88,6 @@ case "$(uname -s)" in
     # MacTex-basic package (used with pdfjam from brew)
     export PATH="$PATH:/usr/local/texlive/2013basic/bin/x86_64-darwin"
 
-    export EDITOR='subl -w' # Do not exit editor until file is closed
-    export VISUAL=$EDITOR
-
     #if [ "$(which aless)" ]; then
       #PAGER="aless"; export PAGER
       #MAN_PAGER="aless"; export MAN_PAGER;
@@ -108,13 +105,17 @@ case "$(uname -s)" in
   ;;
   Linux)
     export PATH="$HOME/local/bin:$PATH"
-    export EDITOR="vim"
-    export VISUAL=$EDITOR
     TMPDIR="/tmp"; export TMPDIR
   ;;
   *)
   ;;
 esac
+
+# export EDITOR='subl -w' # Do not exit editor until file is closed
+if [[ $(which vim) ]]; then
+  export EDITOR=$(which vim)
+  export VISUAL=$EDITOR
+fi
 
 #eval "$(resize)"
 
