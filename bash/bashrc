@@ -192,6 +192,8 @@ case "$(uname -s)" in
 
     #SSH_ASKPASS=""; export SSH_ASKPASS
     #SUDO_ASKPASS=""; export SUDO_ASKPASS
+
+    export GIT_ASKPASS=/usr/bin/ssh-askpass
   ;;
   *)
   ;;
