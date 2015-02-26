@@ -10,8 +10,8 @@ case "$(uname -s)" in
 	;;
 	Linux)
 		# restore ALSA sfx levels
-		alsactl -f "$HOME/.asound.state restore 0"
-		alsactl -f "$HOME/.asound.state restore 1"
+		#alsactl -f "$HOME/.asound.state restore 0"
+		#alsactl -f "$HOME/.asound.state restore 1"
 	;;
 	*)
 	;;
