@@ -23,7 +23,7 @@ set number                                                              " show l
 set backup                                                              " turn on auto backups
 set backupdir=~/.vim/backup/                                            " where to put backup files
 set directory=~/.vim/tmp/                                               " where to put tmp files
-set pastetoggle=<f5>                                                    " toggle paste mode
+"set pastetoggle=<f5>                                                    " toggle paste mode
 set clipboard+=unnamed                                                  " yank and copy to xclipboard
 set wildmenu                                                            " enhanced tab-completion
 set suffixesadd=.rb                                                     " comma seperated list of file suffixes
@@ -135,4 +135,11 @@ if exists('+colorcolumn') "vim 7.3
 else
   au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
 endif
+
+" NerdTree file tree style (list)
+let g:netrw_liststyle=3
+
+" Quick access to vim's file explorer
+" TODO: figure out a more sensible key binding for this
+map <F5> :E
 
