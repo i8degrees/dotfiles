@@ -88,3 +88,6 @@ ${RM_COMMAND} -rv ${HOME}/.config/pianobar
 
 # emacs cfg
 ${RM_COMMAND} -sf ${HOME}/.emacs
+
+# grc cfg
+${RM_COMMAND} -sf ${HOME}/.grc

@@ -73,6 +73,35 @@ fi
 
 alias top='top -stats cpu,pid,command,time,rsize,pstate -user jeff -n43 -o-CPU $@'
 
+# Generic Colourizer for terminal apps
+GRC_BIN=$(which grc)
+if [[ -x $GRC_BIN ]]; then
+
+  if [[ ! -r ${HOME}/.grc ]]; then
+    echo "WARNING: colorized output config for grc not found!"
+  fi
+
+  # Default grc cfg
+  alias colourify="${GRC_BIN} -es --colour=auto"
+  alias configure='colourify ./configure'
+  alias diff='colourify diff'
+  alias make='colourify make'
+  alias gcc='colourify gcc'
+  alias g++='colourify g++'
+  alias as='colourify as'
+  alias gas='colourify gas'
+  alias ld='colourify ld'
+  alias netstat='colourify netstat'
+  alias ping='colourify ping'
+  alias traceroute='colourify /usr/sbin/traceroute'
+
+  # Additional grc cfg
+  alias tail='colourify tail $@'
+  alias clang='colourify clang $@'
+else
+  echo "WARNING: colorized output with grc is disabled; command not found."
+fi
+
 case "$(uname -s)" in
   Darwin)
     alias www='browser $@'
