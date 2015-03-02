@@ -38,7 +38,7 @@ case "$(uname -s)" in
       # Number of CPU threads to spawn for clang, GCC && CTest
       export NUM_THREADS=2
       export MAKEFLAGS="-j${NUM_THREADS}"
-      export CTEST_PARALLEL_LEVEL=${NUM_THREADS}
+      export CTEST_PARALLEL_LEVEL=$((NUM_THREADS+2))
 
       # It is a personal preference to use /usr/bin/xcode-select to set the
       # default DEVELOPER_DIR path, instead of setting it from the shell
