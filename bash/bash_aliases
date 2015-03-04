@@ -94,10 +94,15 @@ if [[ -x $GRC_BIN ]]; then
   alias netstat='colourify netstat'
   alias ping='colourify ping'
   alias traceroute='colourify /usr/sbin/traceroute'
-
-  # Additional grc cfg
   alias tail='colourify tail $@'
   alias clang='colourify clang $@'
+  alias df='colourify df $@'
+  alias cvs='colourify cvs $@'
+  # TODO: Swap out gls colorize with grc variant?
+  # See https://github.com/justfielding/dotfiles/commit/b66ee9468e77dea912bbf21a4866d7a89bb1d749
+  # alias ls='colourify ls $@'
+  alias mount='colourify mount $@'
+  # alias mount='colourify mount2 $@'
 else
   echo "WARNING: colorized output with grc is disabled; command not found."
 fi
