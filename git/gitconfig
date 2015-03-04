@@ -56,6 +56,9 @@
 [color "diff"]
     whitespace = red reverse
 
+[apply]
+    whitespace = fix
+
 [alias]
     status = status -sb # minimalistic git-status
     commit = commit -v # git-commit
