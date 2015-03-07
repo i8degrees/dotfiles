@@ -1,7 +1,17 @@
 "--------------------------------------------------------------
 " file:         ~/.vimrc
 " author:       fielding johnston - http://www.justfielding.com
-"--------------------------------------------------------------i
+"               jeff (additions)
+"--------------------------------------------------------------
+
+" where to put backup files
+set backupdir=~/.vim/backup/
+
+" where to put tmp files
+set directory=~/.vim/tmp/
+
+" where to find colors, plugins and so on
+set runtimepath=~/.vim
 
 syntax on
 colorscheme fielding
@@ -21,8 +31,6 @@ set textwidth=0                                                         " stops 
 set lbr                                                                 " wrap text
 set number                                                              " show line numbers
 set backup                                                              " turn on auto backups
-set backupdir=~/.vim/backup/                                            " where to put backup files
-set directory=~/.vim/tmp/                                               " where to put tmp files
 "set pastetoggle=<f5>                                                    " toggle paste mode
 set clipboard+=unnamed                                                  " yank and copy to xclipboard
 set wildmenu                                                            " enhanced tab-completion
@@ -107,16 +115,14 @@ if &term !=# "linux"
     set list listchars=tab:\»\ ,trail:·,nbsp:-
 endif
 
-" 2012-01/10:jeff
-"
-"   ~/.vimrc
-"
-" Additions to fielding.dotfiles ~/.vimrc
-"
-
 set noerrorbells novisualbell 	" [disabled] audible && visual queue bells
 set t_vb=                     	" [disabled] visual bell
-set term=xterm-256color       	" ...
+
+if has("win32") || has ("win16")
+  set term=win32
+else
+  set term=xterm-256color
+endif
 
 call pathogen#infect() 			" vim plugins management
 
