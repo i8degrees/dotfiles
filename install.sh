@@ -82,29 +82,9 @@ ${LINK_COMMAND} -sf ${WORKING_DIR}/pianobar/config ${HOME}/.config/pianobar/conf
 ${LINK_COMMAND} -sf ${WORKING_DIR}/emacs/emacs ${HOME}/.emacs
 
 # grc cfg
-${MKDIR_COMMAND} -p ${HOME}/.grc
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.configure ${HOME}/.grc/conf.configure
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.cvs ${HOME}/.grc/conf.cvs
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.df ${HOME}/.grc/conf.df
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.diff ${HOME}/.grc/conf.diff
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.dig ${HOME}/.grc/conf.dig
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.esperanto ${HOME}/.grc/conf.esperanto
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.gcc ${HOME}/.grc/conf.gcc
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.ifconfig ${HOME}/.grc/conf.ifconfig
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.irclog ${HOME}/.grc/conf.irclog
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.ldap ${HOME}/.grc/conf.ldap
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.log ${HOME}/.grc/conf.log
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.ls ${HOME}/.grc/conf.ls
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.mount ${HOME}/.grc/conf.mount
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.mount2 ${HOME}/.grc/conf.mount2
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.mtr ${HOME}/.grc/conf.mtr
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.netstat ${HOME}/.grc/conf.netstat
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.php ${HOME}/.grc/conf.php
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.ping ${HOME}/.grc/conf.ping
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.proftpd ${HOME}/.grc/conf.proftpd
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.ps ${HOME}/.grc/conf.ps
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.traceroute ${HOME}/.grc/conf.traceroute
-${LINK_COMMAND} -sf ${WORKING_DIR}/grc/conf.wdiff ${HOME}/.grc/conf.wdiff
+if [[ ! (-L ${HOME}/.grc) ]]; then
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/grc ${HOME}/.grc
+fi
 
 case "$(uname -s)" in
 Darwin)
