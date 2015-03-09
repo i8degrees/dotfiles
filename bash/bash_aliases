@@ -139,7 +139,7 @@ case "$(uname -s)" in
       alias binstall='brew install -vd $@'
       alias breinstall='brew reinstall -vd $@'
       alias bremove='brew remove $@'
-      alias blist='brew list |g $@'
+      alias blist='brew leaves $@'
       alias bdoc='brew doctor'
       alias bupdate='brew update'
       alias bupgrade='brew upgrade'

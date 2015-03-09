@@ -218,15 +218,6 @@ function osver()
   fi
 }
 
-function brewupgrade()
-{
-  if [[ -x "$(which brew)" ]]; then
-    brew doctor; brew update; brew upgrade; brew missing
-  else
-    echo "Error: brew command not found; brewupgrade alias is unavailable."
-  fi
-}
-
 if [[ -x "$(which grep)" ]]; then
   function fstring()
   {
@@ -240,9 +231,15 @@ else
   echo "Error: grep command not found -- fstring alias is unavailable."
 fi
 
-# Homebrew package management
+# Homebrew package management helpers
+
 if [[ -x "$(which brew)" ]]; then
   BREW_BIN=$(which brew)
+
+  function brewupgrade()
+  {
+    brew doctor; brew update; brew upgrade; brew missing
+  }
 
   # brew tap telemachus/homebrew-desc && brew install brew-desc
   # https://github.com/telemachus/homebrew-desc
