@@ -11,7 +11,9 @@ set backupdir=~/.vim/backup/
 set directory=~/.vim/tmp/
 
 " where to find colors, plugins and so on
-set runtimepath=~/.vim
+if has("win32") || has ("win16")
+  set runtimepath=~/.vim
+endif
 
 syntax on
 colorscheme fielding
