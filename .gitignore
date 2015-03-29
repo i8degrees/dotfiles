@@ -16,3 +16,8 @@ mpd/playlists
 # Sublime Text
 SublimeText/Package Control.last-run
 SublimeText/*.bck
+
+# temporary project data
+*.bck
+tmp
+
