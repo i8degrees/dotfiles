@@ -84,8 +84,7 @@ case "$(uname -s)" in
     # defaults
     if [ "$(brew list|grep coreutils)" ]; then
       alias du='gdu -csh'
-      alias ls="gls --dereference-command-line --human-readable --all --size -l --color=auto"
-      alias lsr="gls -lRa --color=auto"
+      alias ls="gls --dereference-command-line --human-readable --size -l --color=auto"
       alias df="gdf -Th"
       alias rm="grm -iv"
       alias cp="gcp -iav"
