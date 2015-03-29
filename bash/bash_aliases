@@ -12,7 +12,7 @@ alias rbash='source ~/.bashrc'
 # Clear BASH history; zero out, flush immediately && reload shell
 alias chistory='cat /dev/null > ~/.bash_history && history -cw && rbash'
 
-alias ncdu='ncdu -r -x $@'
+alias ncdu='ncdu -x $@'
 
 if [ "$(which md5deep)" ]; then
   alias md5='md5deep -re' # recursive, progress
