@@ -257,3 +257,19 @@ if [[ -x "$(which brew)" ]]; then
   fi # end if brew-desc
 
 fi # end if brew
+
+function fullpath()
+{
+  PARENT_WORKING_DIR=$(pwd)
+  FILE_ARG=${1}
+  echo ${PARENT_WORKING_DIR}/${FILE_ARG}
+}
+
+function fullpathcopy()
+{
+  PBCOPY_BIN=$(which pbcopy)
+  fullpath $1 | ${PBCOPY_BIN}
+}
+
+alias fullp='fullpath'
+alias fullpcopy='fullpathcopy'
