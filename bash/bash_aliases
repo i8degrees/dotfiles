@@ -40,6 +40,7 @@ if [ "$(which git)" ]; then
   # $2 = <relation>
   alias gbase='git show-branch $1 $2'
   #alias gbase='git show --summary `git merge-base branch $1`'
+  alias grev='git rev-parse --short HEAD'
 fi
 
 # TODO: combine tar, zip, ... creation and listing as one do-it-all function
