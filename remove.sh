@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 WORKING_DIR=$(pwd)
 RM_COMMAND=$(which rm)
@@ -87,7 +87,7 @@ ${RM_COMMAND} -rv $HOME/local/bin/hermes
 ${RM_COMMAND} -rv ${HOME}/.config/pianobar
 
 # emacs cfg
-${RM_COMMAND} -sf ${HOME}/.emacs
+${RM_COMMAND} -rv ${HOME}/.emacs
 
 # grc cfg
-${RM_COMMAND} -sf ${HOME}/.grc
+${RM_COMMAND} -rv ${HOME}/.grc

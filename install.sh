@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 WORKING_DIR=$(pwd)
 MKDIR_COMMAND=$(which mkdir)
@@ -153,9 +153,9 @@ Darwin)
 
   ;;
 Linux)
-  return 0
+  exit 0
   ;;
 *)
-  return 0
+  exit 0
   ;;
 esac
