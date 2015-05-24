@@ -72,7 +72,12 @@ if [[ "$(which md5)" ]]; then
   alias dupe='md5 $@'
 fi
 
-alias top='top -stats cpu,pid,command,time,rsize,pstate -user jeff -n43 -o-CPU $@'
+#       -F     Do not calculate statistics on shared libraries, also  known
+#              as frameworks.
+#
+#       -R     Do  not  traverse  and report the memory object map for each
+#              process.
+alias top='top -stats cpu,pid,command,time,rsize,pstate -user jeff -n43 -F -R -o-CPU $@'
 
 case "$(uname -s)" in
   Darwin)
