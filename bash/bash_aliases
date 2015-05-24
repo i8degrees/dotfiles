@@ -26,8 +26,6 @@ fi
 
 if [ "$(which cmake)" ]; then
   alias cmakeclean='make clean; make uninstall; rm -rf CMakeFiles CMakeCache.txt cmake_install.cmake cmake_uninstall.cmake CPackConfig.cmake CPackSourceConfig.cmake Makefile'
-else
-  echo "CMake is not installed"
 fi
 
 if [ "$(which git)" ]; then
@@ -106,8 +104,6 @@ case "$(uname -s)" in
       #alias cloc='cloc --by-file-by-lang --exclude-list-file=.cloc $@'
       alias route='netstat -nr'
       alias leaks='iprofiler -T 300 -allocations -leaks $@'
-    else
-      echo "WARNING: coreutils package from Homebrew is not installed."
     fi
 
     #alias pgrep="psgrep"
@@ -296,10 +292,6 @@ alias ip='echo "Public IP: "; curl icanhazip.com; echo "Internal IPs: "; ifconfi
 GRC_BIN=$(which grc)
 if [[ -x $GRC_BIN ]]; then
 
-  if [[ ! -r ${HOME}/.grc ]]; then
-    echo "WARNING: colorized output config for grc not found!"
-  fi
-
   # Default grc cfg
   alias colourify='${GRC_BIN} -es --colour=auto'
   alias configure='colourify ./configure'
@@ -322,6 +314,4 @@ if [[ -x $GRC_BIN ]]; then
   # alias ls='colourify ls $@'
   # alias mount='colourify mount $@'
   # alias mount='colourify mount2 $@'
-else
-  echo "WARNING: colorized output with grc is disabled; command not found."
 fi

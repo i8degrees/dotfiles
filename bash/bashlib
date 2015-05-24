@@ -182,8 +182,6 @@ function sha1calc()
     else
       echo "Err: sha1calc requires textual input arguments."
     fi
-  else
-    echo "Err: internal function 'sha1calc' is not available; necessary commands not found."
   fi
 }
 
@@ -196,8 +194,6 @@ function md5calc()
     else
       echo "Err: md5calc requires textual input arguments."
     fi
-  else
-    echo "WARNING: internal function 'md5calc' is not available; necessary commands not found."
   fi
 }
 
@@ -213,8 +209,6 @@ function osver()
     else
       echo "Error: osver alias requires an input argument: specify a binary file to process."
     fi
-  else
-    echo "WARNING: internal function 'osver' is not available; necessary commands not found."
   fi
 }
 
@@ -227,8 +221,6 @@ if [[ -x "$(which grep)" ]]; then
       grep $1 -s -I -i -R --exclude-dir \*.git $@
     fi
   }
-else
-  echo "Error: grep command not found -- fstring alias is unavailable."
 fi
 
 # Homebrew package management helpers
