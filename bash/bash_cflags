@@ -64,9 +64,12 @@ case "$(uname -s)" in
       # Source: http://crossgcc.rts-software.org/doku.php?id=start
       export PATH="$PATH:/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/bin"
       export PATH="$NOMDEV:$PATH"
+      export PATH=$PATH:$HOME/local/opt/bin
 
       # export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig:/opt/X11/lib/pkgconfig"
       export PKG_CONFIG_PATH="/opt/X11/lib/pkgconfig"
+
+      export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages:$PYTHONPATH
     ;; # end case virgo.local
     esac # end switch hostname
     # [generic OS X cfg]
