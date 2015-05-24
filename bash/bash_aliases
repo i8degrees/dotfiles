@@ -147,7 +147,7 @@ case "$(uname -s)" in
       alias blist='brew leaves $@'
       alias bdoc='brew doctor'
       alias bupdate='brew update'
-      alias bupgrade='brew upgrade'
+      alias bupgrade='brew upgrade --all'
       alias bsearch='brew search $@'
       alias boutdated='brew outdated $@'
       alias bpinned='brew list --pinned'

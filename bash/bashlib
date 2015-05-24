@@ -238,7 +238,7 @@ if [[ -x "$(which brew)" ]]; then
 
   function brewupgrade()
   {
-    brew doctor; brew update; brew upgrade; brew missing
+    brew doctor; brew update; brew upgrade --all; brew missing
   }
 
   # brew tap telemachus/homebrew-desc && brew install brew-desc
