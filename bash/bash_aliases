@@ -87,7 +87,7 @@ case "$(uname -s)" in
 
     # coreutils package from Homebrew for GNU commands to replace Darwin BSD
     # defaults
-    if [ "$(brew list|grep coreutils)" ]; then
+    if [ "$(brew) -o $(brew list|grep coreutils)" ]; then
       alias du='gdu -csh'
       alias ls="gls --dereference-command-line --human-readable --size -l --color=auto"
       alias df="gdf -Th"
