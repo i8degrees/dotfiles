@@ -153,8 +153,8 @@ case "$(uname -s)" in
       alias grep='grep --color=always $@'
     fi
 
-    # iPhone Simulator 7.x
-    alias ios='/Applications/Developer/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/Applications/iPhone\ Simulator.app/Contents/MacOS/iPhone\ Simulator $@'
+    # iOS Simulator
+    alias simios='open /Applications/Xcode.app/Contents/Developer/Applications/iOS\ Simulator.app'
 
     # Open SourceTree app at specified path(s)
     if [[ -x "$HOME/Applications/SourceTree.app/Contents/MacOS/SourceTree" ]]; then
