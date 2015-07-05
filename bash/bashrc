@@ -147,8 +147,9 @@ case "$(uname -s)" in
       eval "$(gdircolors -b $HOME/.colors/dir_colors)"
     fi
 
-    if [[ -f "/usr/local/etc/bash_completion" ]]; then
-      . /usr/local/etc/bash_completion
+    if [[ -f "/usr/local/share/bash-completion/completions" ]]; then
+      . /usr/local/etc/bash_completion.d
+      . /usr/local/share/bash-completion/completions
     fi
 
     #SSH_ASKPASS="/usr/local/libexec/ssh-askpass"; export SSH_ASKPASS
@@ -182,8 +183,8 @@ case "$(uname -s)" in
 
     SciTE_HOME="/home/jeff/.scite"; export SciTE_HOME
 
-    if [[ -f "/etc/bash_completion" || -h "/etc/bash_completion" ]]; then
-      . /etc/bash_completion
+    if [ -f $(brew --prefix)/share/bash-completion/completions ]; then
+      . $(brew --prefix)/share/bash-completion/completions
     fi
 
     #SSH_ASKPASS=""; export SSH_ASKPASS
