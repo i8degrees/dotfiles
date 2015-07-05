@@ -16,6 +16,8 @@ global device_name -- Our iPhone Device Name
 on run --{input, parameters}
 
   set device_name to "Jeff's iPhone 4s"
+	
+	activate application "iTunes"
 
   tell application "iTunes"
     try
