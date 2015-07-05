@@ -159,3 +159,9 @@ Linux)
   exit 0
   ;;
 esac
+
+# Install 256 color terminal support with italic glyphs added; this requires
+# a terminal that supports italic text
+if [[ -x $(which tic) && -f "./terminfo/screen-256color-italic.terminfo" ]]; then
+    tic terminfo/screen-256color-italic.terminfo
+fi

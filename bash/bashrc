@@ -120,7 +120,8 @@ fi
 #eval "$(resize)"
 
 #export USECOLOR=true
-export TERM=xterm-256color
+#export TERM=xterm-256color
+export TERM=screen-256color-italic
 #TMPDIR="$HOME/tmp"; export TMPDIR
 BLOCKSIZE=K; export BLOCKSIZE
 export INPUTRC="$HOME/.inputrc"
