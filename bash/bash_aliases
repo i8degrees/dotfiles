@@ -70,15 +70,15 @@ if [[ "$(which md5)" ]]; then
   alias dupe='md5 $@'
 fi
 
-#       -F     Do not calculate statistics on shared libraries, also  known
-#              as frameworks.
-#
-#       -R     Do  not  traverse  and report the memory object map for each
-#              process.
-alias top='top -stats cpu,pid,command,time,rsize,pstate -user jeff -n43 -F -R -o-CPU $@'
-
 case "$(uname -s)" in
   Darwin)
+
+    #       -F     Do not calculate statistics on shared libraries, also  known
+    #              as frameworks.
+    #
+    #       -R     Do  not  traverse  and report the memory object map for each
+    #              process.
+    alias top='cpu,pid,command,time,rsize,pstate -user jeff -n43 -F -R -o-CPU $@'
     alias www='browser $@'
     alias c='pbcopy'
     alias p='pbpaste'
@@ -175,8 +175,8 @@ case "$(uname -s)" in
     alias hexedit='${HOME}/Applications/0xED.app/Contents/MacOS/0xED'
   ;;
   Linux)
-    # safe assumption that coreutils package is installed within any
-    # given Linux distribution
+    # GNU coreutils
+    alias top='top -o %CPU -o PID -o COMMAND -o TIME -o %MEM -o PR -o S -u jeff -n43'
     alias ls="ls -lhas --color=auto"
     alias lsr="ls -lRa --color=auto"
     alias df="df -Th"
