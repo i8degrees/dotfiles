@@ -66,10 +66,13 @@ case "$(uname -s)" in
       export PATH="$NOMDEV:$PATH"
       export PATH=$PATH:$HOME/local/opt/bin
 
-      # export PKG_CONFIG_PATH="/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/local/lib/pkgconfig:/usr/lib/pkgconfig:/opt/X11/lib/pkgconfig"
-      export PKG_CONFIG_PATH="/opt/X11/lib/pkgconfig"
+      # Additional pkg-config paths
+      export PKG_CONFIG_PATH="/opt/X11/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/pkgconfig:/usr/local/Cellar/curl/7.42.1/lib/pkgconfig:/usr/local/Library/ENV/pkgconfig/10.10"
 
       export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages:$PYTHONPATH
+
+      #export GL_ENABLE_DEBUG_ATTACH=YES
+
     ;; # end case virgo.local
     esac # end switch hostname
     # [generic OS X cfg]
