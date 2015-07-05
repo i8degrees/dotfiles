@@ -47,6 +47,15 @@ case "$(uname -s)" in
         sleep $delay
       done
     }
+
+  function tagwhere()
+  {
+    if [[ -z "$1" ]]; then
+      echo "Usage: tagwhere <url> <file_path>"
+    else
+      xattr -w 'com.apple.metadata:kMDItemWhereFroms' $1 $2
+    fi
+  }
   ;;
   Linux)
     function apkg()
