@@ -172,6 +172,7 @@ case "$(uname -s)" in
     fi
 
     alias cmake-gui='${HOME}/Applications/Developer/CMake.app/Contents/MacOS/CMake $@'
+    alias hexedit='${HOME}/Applications/0xED.app/Contents/MacOS/0xED'
   ;;
   Linux)
     # safe assumption that coreutils package is installed within any
@@ -248,8 +249,6 @@ case "$(uname -s)" in
     #alias lsr="ls -lRa --color=never"
   ;;
 esac
-
-alias youtube-dl='youtube-dl --max-quality mp4 $@'
 
 alias tree="tree -Chu"
 alias killall="killall -9 $@"
