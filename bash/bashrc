@@ -184,8 +184,8 @@ case "$(uname -s)" in
 
     SciTE_HOME="/home/jeff/.scite"; export SciTE_HOME
 
-    if [ -f $(brew --prefix)/share/bash-completion/completions ]; then
-      . $(brew --prefix)/share/bash-completion/completions
+    if [[ -r "/etc/bash_completion" ]]; then
+      . /etc/bash_completion
     fi
 
     #SSH_ASKPASS=""; export SSH_ASKPASS
