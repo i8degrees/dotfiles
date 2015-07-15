@@ -1,23 +1,9 @@
 .DS_Store
 aria2/
-vim/.netrwhist
-vim/backup/*.*
-vim/tmp/*
 config/
 ref/
-*.cache
-mpd/cache/
-mpd/log/
-mpd/db/
 mpd/mpdscribble.conf
-mpd/music
-mpd/playlists
-
-# Sublime Text
-SublimeText/Package Control.last-run
-SublimeText/*.bck
 
 # temporary project data
 *.bck
 tmp
-

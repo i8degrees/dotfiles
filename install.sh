@@ -7,8 +7,11 @@ COPY_COMMAND=$(which cp)
 
 # vim configuration
 ${MKDIR_COMMAND} -p ${HOME}/.vim
+
+# NOTE: These two directories should be kept local to the machine
 ${MKDIR_COMMAND} -p ${HOME}/.vim/backup
 ${MKDIR_COMMAND} -p ${HOME}/.vim/tmp
+
 ${LINK_COMMAND} -sfT ${WORKING_DIR}/vim/autoload $HOME/.vim/autoload
 ${LINK_COMMAND} -sfT ${WORKING_DIR}/vim/bundle $HOME/.vim/bundle
 ${LINK_COMMAND} -sfT ${WORKING_DIR}/vim/colors $HOME/.vim/colors
