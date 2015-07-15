@@ -148,9 +148,9 @@ endif
 " NerdTree file tree style (list)
 let g:netrw_liststyle=3
 
-" Quick access to vim's file explorer
-" TODO: figure out a more sensible key binding for this
-map <F5> :E
+" Quick access to vim's file explorer (netrw)
+" map <F5> :E
+nmap <C-f> :E<CR>
 
 " vim-gitgutter; default to line highlighting
 let g:gitgutter_highlight_lines=1
@@ -158,3 +158,12 @@ let g:gitgutter_highlight_lines=1
 " TERM=screen-256color-italic
 highlight Comment cterm=italic
 
+" QBASIC syntax highlighting
+au BufRead,BufNewFile *.bac* colorscheme bacon " BaCON
+au BufRead,BufNewFile *.bas* colorscheme bacon " Gambas, etc.
+
+" vim-tagbar plugin; Exuberant ctags (symbol browser)
+nmap <C-T> : TagbarToggle<CR>
+
+" vim-fuzzyfinder key bindings
+nmap <C-p> :FufTaggedFile<CR>
