@@ -78,7 +78,7 @@ case "$(uname -s)" in
     #
     #       -R     Do  not  traverse  and report the memory object map for each
     #              process.
-    alias top='cpu,pid,command,time,rsize,pstate -user jeff -n43 -F -R -o-CPU $@'
+    alias top='top -stats cpu,pid,command,time,rsize,pstate -user jeff -n43 -F -R -o-CPU $@'
     alias www='browser $@'
     alias c='pbcopy'
     alias p='pbpaste'
