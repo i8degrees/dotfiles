@@ -16,9 +16,6 @@
     autocrlf = input
     #safecrlf = true
 
-[credential]
-    helper = /usr/local/bin/git-credential-osxkeychain
-
 [advice]
     statusHints = false
     pushNonFastForward = false
@@ -87,7 +84,7 @@
 
 [difftool "sourcetree"]
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
-	path = 
+	path =
 [mergetool "sourcetree"]
 	cmd = /Users/jeff/Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
