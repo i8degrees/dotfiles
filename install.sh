@@ -14,6 +14,12 @@ ${LINK_COMMAND} -sfT ${WORKING_DIR}/vim/bundle $HOME/.vim/bundle
 ${LINK_COMMAND} -sfT ${WORKING_DIR}/vim/colors $HOME/.vim/colors
 ${LINK_COMMAND} -sf ${WORKING_DIR}/vim/vimrc $HOME/.vimrc
 
+CTAGS_BIN="$(which ctags)"
+
+if [[ ! -x $CTAGS_BIN ]]; then
+  echo "WARNING: Exuberant CTags must be installed for vim-tagbar functionality."
+fi
+
 # Bash supporting configuration
 ${LINK_COMMAND} -sfT ${WORKING_DIR}/colors $HOME/.colors
 
@@ -164,4 +170,7 @@ esac
 # a terminal that supports italic text
 if [[ -x $(which tic) && -f "./terminfo/screen-256color-italic.terminfo" ]]; then
     tic terminfo/screen-256color-italic.terminfo
+
+    # NOTE: Use the shell command 'toe' to verify that 
+    # 'screen-256color-italic' has been installed.
 fi
