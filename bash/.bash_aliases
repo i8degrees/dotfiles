@@ -177,7 +177,7 @@ case "$(uname -s)" in
   Linux)
     # GNU coreutils
     alias top='top -o %CPU -o PID -o COMMAND -o TIME -o %MEM -o PR -o S -u jeff -n43'
-    alias ls="ls -lhas --color=auto"
+    alias ls="ls -lhs --color=auto"
     alias lsr="ls -lRa --color=auto"
     alias df="df -Th"
     alias rm="rm -iv"
