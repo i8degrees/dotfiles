@@ -156,11 +156,13 @@ case "$(uname -s)" in
     #SSH_ASKPASS="/usr/local/libexec/ssh-askpass"; export SSH_ASKPASS
     #SUDO_ASKPASS="/usr/local/libexec/ssh-askpass"; export SUDO_ASKPASS
 
-    # brew search, info, ... uses the GitHub Web API that is easily exceeded
+    # brew search, info, ... uses the GitHub Web API that is often exceeded
     # without a Personal Access Token
     if [ -f ${HOME}/.github_token ]; then
       . ${HOME}/.github_token
     fi
+
+    export GIT_ASKPASS=/usr/local/bin/git-credential-osxkeychain
   ;;
   Linux)
     if [ -f "$(which lesspipe)" ]; then
@@ -190,8 +192,6 @@ case "$(uname -s)" in
 
     #SSH_ASKPASS=""; export SSH_ASKPASS
     #SUDO_ASKPASS=""; export SUDO_ASKPASS
-
-    export GIT_ASKPASS=/usr/bin/ssh-askpass
   ;;
   *)
   ;;
