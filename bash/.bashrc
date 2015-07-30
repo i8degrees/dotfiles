@@ -102,6 +102,10 @@ case "$(uname -s)" in
 
     # Access coreutils (brew package) man pages with their normal names
     #MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
+    # gnu-sed brew package
+    PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+    MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
   ;;
   Linux)
     PATH="$HOME/.nodenv/shims:/home/linuxbrew/.linuxbrew/bin:$HOME/local/bin:$PATH"
@@ -146,7 +150,8 @@ INPUTRC="$HOME/.inputrc"; export INPUTRC
 BROWSER="google-chrome"; export BROWSER
 
 MINICOM="-m -c on"; export MINICOM
-MPD_HOST="666@virgo.local"; export MPD_HOST
+#MPD_HOST="666@virgo.local"; export MPD_HOST
+export MPD_HOST="666@localhost"
 SSH_KEYS="$HOME/.ssh/libra_dsa"; export SSH_KEYS
 
 case "$(uname -s)" in
