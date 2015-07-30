@@ -69,6 +69,9 @@ case "$(uname -s)" in
       # Additional pkg-config paths
       export PKG_CONFIG_PATH="/opt/X11/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/pkgconfig:/usr/local/Cellar/curl/7.42.1/lib/pkgconfig:/usr/local/Library/ENV/pkgconfig/10.10"
 
+      # qt52-dev
+      export PKG_CONFIG_PATH="/usr/local/opt/qt52/lib/pkgconfig:${PKG_CONFIG_PATH}"
+
       export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages:$PYTHONPATH
 
       #export GL_ENABLE_DEBUG_ATTACH=YES
