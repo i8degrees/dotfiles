@@ -166,4 +166,7 @@ au BufRead,BufNewFile *.bas* colorscheme bacon " Gambas, etc.
 nmap <C-T> : TagbarToggle<CR>
 
 " vim-fuzzyfinder key bindings
-nmap <C-p> :FufTaggedFile<CR>
+" nmap <C-p> :FufTaggedFile<CR>
+
+" vim-ctrlp key bindings
+
