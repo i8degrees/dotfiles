@@ -2,6 +2,8 @@
 
 WORKING_DIR=$(pwd)
 MKDIR_COMMAND=$(which mkdir)
+# FIXME: Do **not** use BSD ln, as it does not have the -T switch, which
+# means some of these symbolic links will not be installed correctly!
 LINK_COMMAND=$(which ln)
 COPY_COMMAND=$(which cp)
 TMUX_COMMAND=$(which tmux)
@@ -128,6 +130,33 @@ Darwin)
     mkdir -p $HOME/local/bin
   fi
 
+  # local support bins
+  if [[ -x "${HOME}/local/bin" ]]; then
+    ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/dotfiles ${HOME}/local/bin/dotfiles
+    ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/gen-ssh-key ${HOME}/local/bin/gen-ssh-key
+    ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/subl ${HOME}/local/bin/subl
+    ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/Terminal ${HOME}/local/bin/Terminal
+  fi
+
+  if [[ -x "${HOME}/local/bin" ]]; then
+    CURL_BIN=$(which curl)
+    if [[ -x "${CURL_BIN}" && ! -f "${HOME}/.iterm2_shell_integration.bash" ]]; then
+      curl -L https://iterm2.com/misc/install_shell_integration.sh
+    fi
+    ${LINK_COMMAND} -sf ${WORKING_DIR}/iterm/bin/imgcat ${HOME}/local/bin/imgcat
+    ${LINK_COMMAND} -sf ${WORKING_DIR}/iterm/bin/imgls ${HOME}/local/bin/imgls
+  fi
+
+  # Mac OS X Automator Services
+  # FIXME: Figure out an automated installation method for these files
+  #if [[ -x "${HOME}/Library/Services" ]]; then
+    #${LINK_COMMAND} -sf "${WORKING_DIR}/osx/services/Duplicate Tab.workflow" "${HOME}/Library/Services/Duplicate Tab.workflow"
+    #${LINK_COMMAND} -sf "${WORKING_DIR}/osx/services/New File.workflow" "${HOME}/Library/Services/New File.workflow"
+    #${LINK_COMMAND} -sf "${WORKING_DIR}/osx/services/Toggle Hidden Files.workflow" "${HOME}/Library/Services/"
+    #${LINK_COMMAND} -sf "${WORKING_DIR}/osx/services/Zoom In.workflow" "${HOME}/Library/Services/Zoom In.workflow"
+    #${LINK_COMMAND} -sf "${WORKING_DIR}/osx/services/Zoom Out.workflow" "${HOME}/Library/Services/Zoom Out.workflow"
+  #fi
+
   # mpd configuration
   if [ -d "/Volumes/Media/Music" ]; then
     ${LINK_COMMAND} -sf /Volumes/Media/Music $HOME/.config/mpd/music
@@ -199,6 +228,6 @@ esac
 if [[ -x $(which tic) && -f "./terminfo/screen-256color-italic.terminfo" ]]; then
     tic terminfo/screen-256color-italic.terminfo
 
-    # NOTE: Use the shell command 'toe' to verify that 
+    # NOTE: Use the shell command 'toe' to verify that
     # 'screen-256color-italic' has been installed.
 fi

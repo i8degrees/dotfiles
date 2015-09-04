@@ -91,3 +91,16 @@ ${RM_COMMAND} -rv ${HOME}/.emacs
 
 # grc cfg
 ${RM_COMMAND} -rv ${HOME}/.grc
+
+# local support bins
+${RM_COMMAND} -rv ${HOME}/local/bin/dotfiles
+${RM_COMMAND} -rv ${HOME}/local/bin/gen-ssh-key
+${RM_COMMAND} -rv ${HOME}/local/bin/subl
+${RM_COMMAND} -rv ${HOME}/local/bin/Terminal
+
+# Mac OS X Automator Services
+# ${RM_COMMAND} -rv "${HOME}/Library/Services/Duplicate Tab.workflow"
+# ${RM_COMMAND} -rv "${HOME}/Library/Services/New File.workflow"
+# ${RM_COMMAND} -rv "${HOME}/Library/Services/"
+# ${RM_COMMAND} -rv "${HOME}/Library/Services/Zoom In.workflow"
+# ${RM_COMMAND} -rv "${HOME}/Library/Services/Zoom Out.workflow"
