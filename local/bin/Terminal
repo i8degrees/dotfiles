@@ -1,0 +1,13 @@
+#!/bin/bash
+
+#/usr/bin/killall -u jeff Terminal
+/usr/bin/osascript -e 'tell application "Terminal"' -e 'quit' -e 'end tell'
+
+/usr/bin/open -a Terminal "${1}" --args "${2}"
+
+# echo "${1}"
+# echo "${2}"
+
+# TODO: Finish me?
+#/usr/bin/osascript /Users/jeff/Projects/dotfiles.git/AppleScript/RepositionTerminal.applescript
+
