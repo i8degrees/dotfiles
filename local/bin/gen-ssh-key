@@ -1,0 +1,85 @@
+#!/bin/sh
+#
+# 	Generate sshd host authentication keys
+#
+
+KEYGEN_BIN=$(which ssh-keygen)
+
+if [[ ! $KEYGEN_BIN ]]; then
+  echo "ERROR: ssh-keygen command not found."
+  exit -1
+fi
+
+function usage_info()
+{
+  APP_NAME=$(basename $0)
+
+  echo "\n${APP_NAME} <output_key_file> <output_key_comment>"
+}
+
+# NOTE: Secure our keys
+function secure_ssh_keys()
+{
+  /bin/mkdir -p ${HOME}/.ssh
+  /bin/chmod 700 ${HOME}/.ssh
+  /bin/chmod 600 ${HOME}/.ssh/*
+  # IMPORTANT: This file **must** be user-read only
+  /bin/chmod 600 ${HOME}/.ssh/authorized_keys
+}
+
+# Ensure that our system has its sshd host keys setup
+function check_host_keys()
+{
+  SSHD_CFG_DIR="/etc"
+
+  echo "System-configuration directory: ${SSHD_CFG_DIR}"
+
+  SSHD_HOST_RSA_KEY=${SSHD_CFG_DIR}/ssh_host_rsa_key
+  SSHD_HOST_DSA_KEY=${SSHD_CFG_DIR}/ssh_host_dsa_key
+  SSHD_HOST_ECDSA_KEY=${SSHD_CFG_DIR}/ssh_host_ecdsa_key
+  SSHD_HOST_ED25519_KEY=${SSHD_CFG_DIR}/ssh_host_ed25519_key
+
+  if [[ ! -f $SSHD_HOST_RSA_KEY ]]; then
+    $KEYGEN_BIN -f $SSHD_HOST_RSA_KEY -N '' -t rsa1
+  fi
+
+  if [[ ! -f $SSHD_HOST_DSA_KEY ]]; then
+    $KEYGEN_BIN -f $SSHD_HOST_DSA_KEY -N '' -t dsa
+  fi
+
+  if [[ ! -f $SSHD_HOST_ECDSA_KEY ]]; then
+    $KEYGEN_BIN -f $SSHD_HOST_ECDSA_KEY -N '' -t ecdsa
+  fi
+
+  if [[ ! -f $SSHD_HOST_ED25519_KEY ]]; then
+    $KEYGEN_BIN -f $$SSHD_HOST_ED25519_KEY -N '' -t ed25519
+  fi
+}
+
+if [[ $1 != "" ]]; then
+
+  if [[ $1 == "host" ]]; then
+    # Create ssh host keys
+    check_host_keys
+  else # Create a ssh public authentication key
+
+    KEY_COMMENT="$(id -un)@$(hostname)-$(date --rfc-3339=date)"
+    if [[ $2 != "" ]]; then
+        KEY_COMMENT=$2
+    fi
+
+    # echo "Key file: ${FILE}"
+    # echo "Key comment: ${COMMENT}"
+
+    $KEYGEN_BIN -b 1024 -t dsa -C ${KEY_COMMENT} -f $1
+
+    if [[ $? == 0 ]]; then
+      echo "...Checking the file permissions of local ssh keys..."
+      secure_ssh_keys
+    fi
+  fi
+
+else # No arguments given
+  usage_info
+  exit 0
+fi
