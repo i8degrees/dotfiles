@@ -104,3 +104,19 @@ ${RM_COMMAND} -rv ${HOME}/local/bin/Terminal
 # ${RM_COMMAND} -rv "${HOME}/Library/Services/"
 # ${RM_COMMAND} -rv "${HOME}/Library/Services/Zoom In.workflow"
 # ${RM_COMMAND} -rv "${HOME}/Library/Services/Zoom Out.workflow"
+
+# TODO: Relocate platform-specific bits to the appropriate area below
+case "$(uname -s)" in
+Darwin)
+  # My registered GitHub API token for use on behalf of HomeBrew requests,
+  # i.e.: brew search
+  ${RM_COMMAND} -rv ${HOME}/.github_token
+
+  ;;
+Linux)
+  exit 0
+  ;;
+*)
+  exit 0
+  ;;
+esac
