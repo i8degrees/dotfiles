@@ -189,6 +189,12 @@ Darwin)
   # Hermes app helper script
   ${LINK_COMMAND} -sf ${WORKING_DIR}/AppleScript/hermes.applescript $HOME/local/bin/hermes
 
+  # My registered GitHub API token for use on behalf of HomeBrew requests,
+  # i.e.: brew search
+  #
+  # NOTE: This file is sourced from my .bashrc
+  curl -L -o ${HOME}/.github_token https://www.dropbox.com/s/zfqyfvvcu7upf9b/github_token?dl=0
+
   ;;
 Linux)
   exit 0
