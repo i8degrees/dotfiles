@@ -113,6 +113,7 @@ Darwin)
     ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/Terminal ${HOME}/local/bin/Terminal
   fi
 
+  # iTerm2 integration
   if [[ -x "${HOME}/local/bin" ]]; then
     CURL_BIN=$(which curl)
     if [[ -x "${CURL_BIN}" && ! -f "${HOME}/.iterm2_shell_integration.bash" ]]; then
