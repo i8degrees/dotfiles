@@ -7,7 +7,7 @@
 # Show/hide dotfiles within Finder views
 #
 
-get_hidden="$(defaults read com.apple.finder AppleShowAllFiles)"
+get_hidden=$(defaults read com.apple.finder AppleShowAllFiles)
 
 if [ $get_hidden = 0 -o $get_hidden = "FALSE" -o $get_hidden = "NO" ]; then
 	defaults write com.apple.finder AppleShowAllFiles TRUE
