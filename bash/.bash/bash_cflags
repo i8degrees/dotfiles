@@ -127,15 +127,22 @@ esac
 
 if [ -f "$(which rbenv)" ]; then
   eval "$(rbenv init -)"
-  PATH="$HOME/.rbenv/versions/1.9.3-p0/bin:$PATH"; export PATH
-fi
+  
+  RBENV_RUBY_VER=$(rbenv global)
+  RBENV_ROOT=${HOME}/.rbenv; export RBENV_ROOT
 
-#export GEM_HOME="$HOME/.gem/ruby/1.9.3-p0"
-#export GEM_PATH="$HOME/.gem/ruby/1.9.3-p0"
-#export GEM_PATH="/usr/lib/ruby/gems/1.9.3"
-#export RUBYOPT="-W2 -v"
-#RUBYLIB="/Library/Ruby"; export RUBYLIB
-#export RUBYLIB="/home/jeff/Projects/ruby/lib"
+  PATH="${RBENV_ROOT}/versions/${RBENV_RUBY_VER}/bin:$PATH"; export PATH
+
+  export GEM_HOME="$HOME/.gem/ruby/${RBENV_RUBY_VER}"
+  export GEM_PATH="$HOME/.gem/ruby/${RBENV_RUBY_VER}"
+  #export GEM_PATH="/usr/lib/ruby/gems/1.9.3"
+  
+  # NOTE: These environment variables are known to cause problems if set 
+  # globally for a shell.
+  #RUBYOPT="-W2 -v"
+  #RUBYLIB="/Library/Ruby"; export RUBYLIB
+  #export RUBYLIB="/home/jeff/Projects/ruby/lib"
+fi
 
 # Show GTest diagnostics output
 export CTEST_OUTPUT_ON_FAILURE=true
