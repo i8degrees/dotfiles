@@ -150,8 +150,7 @@ INPUTRC="$HOME/.inputrc"; export INPUTRC
 BROWSER="google-chrome"; export BROWSER
 
 MINICOM="-m -c on"; export MINICOM
-#MPD_HOST="666@virgo.local"; export MPD_HOST
-export MPD_HOST="666@localhost"
+export MPD_HOST="666@${HOSTNAME}"
 SSH_KEYS="$HOME/.ssh/libra_dsa"; export SSH_KEYS
 
 case "$(uname -s)" in
@@ -166,6 +165,7 @@ case "$(uname -s)" in
       eval "$(gdircolors -b $HOME/.colors/dir_colors)"
     fi
 
+    # homebrew/versions/bash_completion2
     if [[ -f "/usr/local/share/bash-completion/completions" ]]; then
       . /usr/local/etc/bash_completion.d
       . /usr/local/share/bash-completion/completions
