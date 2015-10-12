@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>UserName</key>
+    <string>jeff</string>
+    <key>Label</key>
+    <string>org.local.mpd</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>sh</string>
+      <string>-i</string>
+      <string>-c</string>
+      <string>$SHELL --login -c "mpd --no-daemon /Users/jeff/.config/mpd/mpd.conf"</string>
+    </array>
+
+    <key>Disabled</key>
+    <false/>
+    <key>KeepAlive</key>
+    <true/>
+    <key>RunAtLoad</key>
+    <true/>
+
+  </dict>
+</plist>

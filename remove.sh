@@ -72,6 +72,15 @@ Darwin)
   # mpd, mpdscribble configuration
   #${RM_COMMAND} -rv ${HOME}/.config/mpd
   #${RM_COMMAND} -rv ${HOME}/.ncmpcpp
+  if [[ $(which mpd) ]]; then
+    launchctl stop ${HOME}/Library/LaunchAgents/org.local.mpd.plist
+    launchctl unload ${HOME}/Library/LaunchAgents/org.local.mpd.plist
+  fi
+
+  if [[ $(which mpdscribble) ]]; then
+    launchctl stop ${HOME}/Library/LaunchAgents/org.local.mpdscribble.plist
+    launchctl unload ${HOME}/Library/LaunchAgents/org.local.mpdscribble.plist
+  fi
 
   # synergys configuration
   # ${RM_COMMAND} -rv ${HOME}/.synergy.conf

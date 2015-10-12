@@ -52,17 +52,27 @@ ${LINK_COMMAND} -sfT ${WORKING_DIR}/mpv/input.conf $HOME/.mpv/input.conf
 ${LINK_COMMAND} -sfT ${WORKING_DIR}/mpv/kq.profile $HOME/.mpv/kq.profile
 ${LINK_COMMAND} -sfT ${WORKING_DIR}/mpv/subs.profile $HOME/.mpv/subs.profile
 
-# mpd, mpdscribble configuration
-${MKDIR_COMMAND} -p ${HOME}/.config/mpd
-${MKDIR_COMMAND} -p ${HOME}/.config/mpd/cache
-${MKDIR_COMMAND} -p ${HOME}/.config/mpd/log
-${MKDIR_COMMAND} -p ${HOME}/.config/mpd/db
-${MKDIR_COMMAND} -p ${HOME}/.config/mpd/tmp
-${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/mpd.conf $HOME/.config/mpd/mpd.conf
-${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/mpdscribble.conf $HOME/.config/mpd/mpdscribble.conf
-${MKDIR_COMMAND} -p ${HOME}/.ncmpcpp
-${LINK_COMMAND} -sfT ${WORKING_DIR}/ncmpcpp/config ${HOME}/.ncmpcpp/config
-${LINK_COMMAND} -sfT ${WORKING_DIR}/ncmpcpp/bindings ${HOME}/.ncmpcpp/bindings
+# mpd configuration
+if [[ $(which mpd) ]]; then
+  ${MKDIR_COMMAND} -p ${HOME}/.config/mpd
+  ${MKDIR_COMMAND} -p ${HOME}/.config/mpd/cache
+  ${MKDIR_COMMAND} -p ${HOME}/.config/mpd/log
+  ${MKDIR_COMMAND} -p ${HOME}/.config/mpd/db
+  ${MKDIR_COMMAND} -p ${HOME}/.config/mpd/tmp
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/mpd.conf $HOME/.config/mpd/mpd.conf
+fi
+
+# mpdscribble configuration
+if [[ $(which mpdscribble) ]]; then
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/mpdscribble.conf $HOME/.config/mpd/mpdscribble.conf
+fi
+
+# ncmpcpp configuration
+if [[ $(which mpdscribble) ]]; then
+  ${MKDIR_COMMAND} -p ${HOME}/.ncmpcpp
+  ${LINK_COMMAND} -sfT ${WORKING_DIR}/ncmpcpp/config ${HOME}/.ncmpcpp/config
+  ${LINK_COMMAND} -sfT ${WORKING_DIR}/ncmpcpp/bindings ${HOME}/.ncmpcpp/bindings
+fi
 
 # synergys configuration
 ${LINK_COMMAND} -sf ${WORKING_DIR}/synergy/synergy.conf $HOME/.synergy.conf
@@ -159,20 +169,35 @@ Darwin)
   #fi
 
   # mpd configuration
-  if [ -d "/Volumes/Media/Music" ]; then
-    ${LINK_COMMAND} -sf /Volumes/Media/Music $HOME/.config/mpd/music
+  if [[ $(which mpd) ]]; then
+    ${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/org.local.mpd.plist $HOME/Library/LaunchAgents/org.local.mpd.plist
 
-    if [ -d "/Volumes/Media/Music/playlists" ]; then
-      ${LINK_COMMAND} -sf /Volumes/Media/Music/playlists/ $HOME/.config/mpd/playlists
-    fi
-  else
-    if [ -d "$HOME/Music" ]; then
-      ${LINK_COMMAND} -sf $HOME/Music/ $HOME/.config/mpd/music
+    launchctl unload ${HOME}/Library/LaunchAgents/org.local.mpd.plist
+    launchctl load ${HOME}/Library/LaunchAgents/org.local.mpd.plist
+    launchctl start ${HOME}/Library/LaunchAgents/org.local.mpd.plist
 
-      if [ -d "$HOME/Music/playlists" ]; then
-        ${LINK_COMMAND} -sf $HOME/Music/ $HOME/.config/mpd/music
+    if [ -d "/Volumes/Media/Music" ]; then
+      ${LINK_COMMAND} -sf /Volumes/Media/Music $HOME/.config/mpd/music
+
+      if [ -d "/Volumes/Media/Music/playlists" ]; then
+        ${LINK_COMMAND} -sf /Volumes/Media/Music/playlists/ $HOME/.config/mpd/playlists
       fi
-    fi
+    else
+      if [ -d "$HOME/Music" ]; then
+        ${LINK_COMMAND} -sf $HOME/Music/ $HOME/.config/mpd/music
+        if [ -d "$HOME/Music/playlists" ]; then
+          ${LINK_COMMAND} -sf $HOME/Music/ $HOME/.config/mpd/music
+        fi
+      fi
+    fi # end if symlink
+  fi # end if mpd
+
+  # mpdscribble configuration
+  if [[ $(which mpdscribble) ]]; then
+    ${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/org.local.mpdscribble.plist $HOME/Library/LaunchAgents/org.local.mpdscribble.plist
+    launchctl unload ${HOME}/Library/LaunchAgents/org.local.mpdscribble.plist
+    launchctl load ${HOME}/Library/LaunchAgents/org.local.mpdscribble.plist
+    launchctl start ${HOME}/Library/LaunchAgents/org.local.mpdscribble.plist
   fi
 
   # FIXME: synergys launchd script
