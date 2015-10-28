@@ -3,7 +3,7 @@
 #     Mplayer configuration defaults
 #
 [default]
-input=conf="/home/jeff/.mpv/input.conf" # Defaults for input controls
+input=conf="~/.mpv/input.conf" # Defaults for input controls
 #include="/home/jeff/.mpv/kq.profile"
 #include="/home/jeff/.mpv/subs.profile"
 volume=25
