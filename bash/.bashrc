@@ -139,8 +139,13 @@ fi
 #eval "$(resize)"
 
 #export USECOLOR=true
+<<<<<<< HEAD:bash/.bashrc
 TERM="tmux-256color"; export TERM
 TMPDIR="/tmp"; export TMPDIR
+=======
+export TERM=screen-256color-italic
+#TMPDIR="$HOME/tmp"; export TMPDIR
+>>>>>>> a0612b8 (Fix vim issue (CTRL modifier key)):bash/bashrc
 BLOCKSIZE=K; export BLOCKSIZE
 INPUTRC="$HOME/.inputrc"; export INPUTRC
 
