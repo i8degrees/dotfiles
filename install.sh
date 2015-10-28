@@ -230,11 +230,10 @@ Linux)
   ;;
 esac
 
-# Install 256 color terminal support with italic glyphs added; this requires
-# a terminal that supports italic text
-if [[ -x $(which tic) && -f "./terminfo/screen-256color-italic.terminfo" ]]; then
-    tic terminfo/screen-256color-italic.terminfo
+# Install 256 color terminal support with italic glyphs added
+if [[ -x $(which tic) ]]; then
+  tic terminfo/screen-256color-italic.terminfo
+  tic terminfo/xterm-256color-italic.terminfo
 
-    # NOTE: Use the shell command 'toe' to verify that
-    # 'screen-256color-italic' has been installed.
+  # NOTE: Use the shell command 'toe' to verify that the termcap is usable
 fi

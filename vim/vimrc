@@ -123,13 +123,11 @@ set t_vb=                     	" [disabled] visual bell
 if has("win32") || has ("win16")
   set term=win32
 else
-  set term=xterm-256color
-  " FIXME: This breaks the use of the CTRL modifier key!
-  " set term=screen-256color-italic
+  set term=xterm-256color-italic
 endif
 
-" TERM=screen-256color-italic
-" highlight Comment cterm=italic
+" Enable italics support for comment syntax
+highlight Comment cterm=italic
 
 call pathogen#infect() 			" vim plugins management
 
