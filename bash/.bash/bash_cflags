@@ -84,7 +84,8 @@ case "$(uname -s)" in
     # export GL_ENABLE_DEBUG_ATTACH=YES
 
     # Number of CPU threads to spawn for clang, GCC && CTest
-    export NUM_THREADS=9
+
+    export NUM_THREADS=6    # CPU is an eight-core 64-bit Intel Haswell
     export MAKEFLAGS="-j${NUM_THREADS}"
     export CTEST_PARALLEL_LEVEL=$((NUM_THREADS+2))
 
@@ -127,10 +128,10 @@ esac
 
 if [ -f "$(which rbenv)" ]; then
   eval "$(rbenv init -)"
-  
+
   RBENV_ROOT=${HOME}/.rbenv; export RBENV_ROOT
 
-  # NOTE: These environment variables are known to cause problems if set 
+  # NOTE: These environment variables are known to cause problems if set
   # globally for a shell.
   #RUBYOPT="-W2 -v"
   #RUBYLIB="/Library/Ruby"; export RUBYLIB
