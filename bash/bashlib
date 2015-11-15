@@ -225,7 +225,7 @@ if [[ -x "$(which grep)" ]]; then
   function fstring()
   {
     if [[ ! "$2" ]]; then
-      grep $1 -s -I -i -R --exclude-dir \*.git .
+      grep $1 -s -I -i -R --exclude-dir \*.git . $@
     else
       grep $1 -s -I -i -R --exclude-dir \*.git $@
     fi
