@@ -51,6 +51,8 @@ Darwin)
   ${RM_COMMAND} -rv ${HOME}/local/bin/gen-ssh-key
   ${RM_COMMAND} -rv ${HOME}/local/bin/subl
   ${RM_COMMAND} -rv ${HOME}/local/bin/Terminal
+  ${RM_COMMAND} -rv ${HOME}/local/bin/wakeuplibra
+  ${RM_COMMAND} -rv ${HOME}/local/bin/wakeupwindev
 
   # iTerm2 integration
   if [[ -x "${HOME}/local/bin" ]]; then

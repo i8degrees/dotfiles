@@ -121,6 +121,8 @@ Darwin)
     ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/gen-ssh-key ${HOME}/local/bin/gen-ssh-key
     ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/subl ${HOME}/local/bin/subl
     ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/Terminal ${HOME}/local/bin/Terminal
+    ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/wakeuplibra ${HOME}/local/bin/wakeuplibra
+    ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/wakeupwindev ${HOME}/local/bin/wakeupwindev
   fi
 
   # iTerm2 integration
