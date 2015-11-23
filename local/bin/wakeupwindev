@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# wake up windev.local
+wakeonlan -i 192.168.151.255 08:00:27:88:CD::94
