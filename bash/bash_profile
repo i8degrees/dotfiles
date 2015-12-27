@@ -19,7 +19,7 @@ case "$(uname -s)" in
 	Darwin)
 		PATH="$PATH:$HOME/Applications:/usr/X11/bin"
 
-    # Do not hide me from my own damn library!
+    # Un-hide my user's Library directory
     chflags nohidden ~/Library
 
     # Show Debug menu in App Store
@@ -36,6 +36,15 @@ case "$(uname -s)" in
 
     # Use current directory as default search scope in Finder
     defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+
+    # Disable Apptivate's menu icon:
+    # defaults write se.cocoabeans.apptivate TAShowStatusbarIcon 0
+
+    # Enable Contacts Debug menu
+    defaults write com.apple.AddressBook ABShowDebugMenu -bool true
+
+    # Enable DVDPlayer Debug menu
+    defaults write com.apple.DVDPlayer EnableDebugging -bool true
 	;;
 	Linux)
 		PATH="$PATH:$HOME/.config/feh/themes"
