@@ -8,7 +8,7 @@
 -->
 <dict>
   <key>Disabled</key>
-  <false/>
+  <true/>
   <key>Label</key>
   <string>org.local.unison_ttcards</string>
   <key>RunAtLoad</key>
