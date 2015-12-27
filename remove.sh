@@ -56,6 +56,7 @@ Darwin)
     ${RM_COMMAND} -rv ${HOME}/local/bin/wakeuplibra
     ${RM_COMMAND} -rv ${HOME}/local/bin/wakeupwindev
     ${RM_COMMAND} -rv ${HOME}/local/bin/Marked2.sh
+    ${RM_COMMAND} -rv ${HOME}/local/bin/mac-sdks.sh
 
     # iTerm2 integration
     if [[ -x "${HOME}/.iterm2_shell_integration.bash" ]]; then
