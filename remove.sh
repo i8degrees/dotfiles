@@ -46,22 +46,24 @@ ${RM_COMMAND} -rv ${HOME}/.grc
 
 case "$(uname -s)" in
 Darwin)
-  # local support bins
-  ${RM_COMMAND} -rv ${HOME}/local/bin/dotfiles
-  ${RM_COMMAND} -rv ${HOME}/local/bin/gen-ssh-key
-  ${RM_COMMAND} -rv ${HOME}/local/bin/subl
-  ${RM_COMMAND} -rv ${HOME}/local/bin/Terminal
-  ${RM_COMMAND} -rv ${HOME}/local/bin/wakeuplibra
-  ${RM_COMMAND} -rv ${HOME}/local/bin/wakeupwindev
 
-  # iTerm2 integration
   if [[ -x "${HOME}/local/bin" ]]; then
-    CURL_BIN=$(which curl)
-    if [[ -x "${CURL_BIN}" && ! -f "${HOME}/.iterm2_shell_integration.bash" ]]; then
+    # local support bins
+    ${RM_COMMAND} -rv ${HOME}/local/bin/dotfiles
+    ${RM_COMMAND} -rv ${HOME}/local/bin/gen-ssh-key
+    ${RM_COMMAND} -rv ${HOME}/local/bin/subl
+    ${RM_COMMAND} -rv ${HOME}/local/bin/Terminal
+    ${RM_COMMAND} -rv ${HOME}/local/bin/wakeuplibra
+    ${RM_COMMAND} -rv ${HOME}/local/bin/wakeupwindev
+    ${RM_COMMAND} -rv ${HOME}/local/bin/Marked2.sh
+
+    # iTerm2 integration
+    if [[ -x "${HOME}/.iterm2_shell_integration.bash" ]]; then
       ${RM_COMMAND} -rv "${HOME}/.iterm2_shell_integration.bash"
+
+      ${RM_COMMAND} -rv ${HOME}/local/bin/imgcat
+      ${RM_COMMAND} -rv ${HOME}/local/bin/imgls
     fi
-    ${RM_COMMAND} -rv ${HOME}/local/bin/imgcat
-    ${RM_COMMAND} -rv ${HOME}/local/bin/imgls
   fi
 
   # Mac OS X Automator Services
@@ -110,6 +112,7 @@ Darwin)
 
   # AppleScripts
   ${RM_COMMAND} -rv $HOME/local/bin/setaudio.applescript
+  ${RM_COMMAND} -rv ${HOME}/local/bin/audiodevice
   ${RM_COMMAND} -rv $HOME/local/bin/AppleTV.applescript
   ${RM_COMMAND} -rv $HOME/local/bin/hermes
 
