@@ -134,6 +134,7 @@ Darwin)
 
     ${LINK_COMMAND} -sf ${WORKING_DIR}/iterm/bin/imgcat ${HOME}/local/bin/imgcat
     ${LINK_COMMAND} -sf ${WORKING_DIR}/iterm/bin/imgls ${HOME}/local/bin/imgls
+  fi
 
   # Mac OS X Automator Services
   # FIXME: Figure out an automated installation method for these files
