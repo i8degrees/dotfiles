@@ -116,7 +116,7 @@ case "$(uname -s)" in
     alias chrome='open -a "Google Chrome" --args -allow-file-access-from-files'
     alias marked='open -a "Marked"'
 
-    alias iphone='open -a "iOS Simulator" --args $@'
+    alias iphone='open -a "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/" --args $@'
 
     alias extract='open -a "Archive Utility"'
     alias lsmod='kextstat'
