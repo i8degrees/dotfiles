@@ -149,6 +149,7 @@ Darwin)
     ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/wakeuplibra ${HOME}/local/bin/wakeuplibra
     ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/wakeupwindev ${HOME}/local/bin/wakeupwindev
     ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/Marked2.sh ${HOME}/local/bin/Marked2.sh
+    ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/mac-sdks.sh ${HOME}/local/bin/mac-sdks.sh
 
     # iTerm2 integration
     CURL_BIN=$(which curl)
