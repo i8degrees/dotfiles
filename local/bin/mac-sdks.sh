@@ -70,6 +70,12 @@ function install_sdks()
     if [[ -L ${dest_path} ]]; then
       echo "WARN: file exists at ${dest_path} -- skipping"
     else
+      if [[ !(-x ${src_path}) ]]; then
+        echo "ERROR (fatal): file does not exist at ${src_path}"
+        # EX_UNAVAILABLE (69) as per man 3 sysexits (BSD)
+        exit 69
+      fi
+
       if [[ $NOM_DRY_RUN ]]; then
         echo "${LN_BIN} -s ${src_path} ${dest_path}"
       else
