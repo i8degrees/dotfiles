@@ -148,17 +148,16 @@ Darwin)
     ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/Terminal ${HOME}/local/bin/Terminal
     ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/wakeuplibra ${HOME}/local/bin/wakeuplibra
     ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/wakeupwindev ${HOME}/local/bin/wakeupwindev
-  fi
+    ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/Marked2.sh ${HOME}/local/bin/Marked2.sh
 
-  # iTerm2 integration
-  if [[ -x "${HOME}/local/bin" ]]; then
+    # iTerm2 integration
     CURL_BIN=$(which curl)
     if [[ -x "${CURL_BIN}" && ! -f "${HOME}/.iterm2_shell_integration.bash" ]]; then
       curl -L https://iterm2.com/misc/install_shell_integration.sh
     fi
+
     ${LINK_COMMAND} -sf ${WORKING_DIR}/iterm/bin/imgcat ${HOME}/local/bin/imgcat
     ${LINK_COMMAND} -sf ${WORKING_DIR}/iterm/bin/imgls ${HOME}/local/bin/imgls
-  fi
 
   # Mac OS X Automator Services
   # FIXME: Figure out an automated installation method for these files
@@ -234,6 +233,7 @@ Darwin)
 
   # Convenience helper script for setting default audio routing to Internal Output
   ${LINK_COMMAND} -sf ${WORKING_DIR}/AppleScript/setaudio.applescript $HOME/local/bin/setaudio
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/audiodevice ${HOME}/local/bin/audiodevice
 
   # Helper script for AirParrot that activates AppleTV's "Extended Desktop"
   # feature at user login
