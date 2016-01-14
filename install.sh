@@ -9,6 +9,9 @@ COPY_COMMAND=$(which cp)
 TMUX_COMMAND=$(which tmux)
 GRC_COMMAND=$(which grc)
 
+# git clone https://github.com/i8degrees/dotfiles.git
+# cd ${WORKING_DIR}
+
 # vim configuration
 ${MKDIR_COMMAND} -p "${HOME}/.vim"
 
@@ -249,6 +252,9 @@ Darwin)
   #
   # NOTE: This file is sourced from my .bashrc
   curl -L -o ${HOME}/.github_token https://www.dropbox.com/s/zfqyfvvcu7upf9b/github_token?dl=0
+
+  # OpenAL-soft configuration
+  ${LINK_COMMAND} -sf ${WORKING_DIR}/alsoftrc ${HOME}/.alsoftrc
 
   ;;
 Linux)

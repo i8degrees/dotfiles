@@ -121,6 +121,9 @@ Darwin)
   # i.e.: brew search
   ${RM_COMMAND} -rv ${HOME}/.github_token
 
+  # OpenAL-soft configuration
+  ${RM_COMMAND} -v ${HOME}/.alsoftrc
+
   ;;
 Linux)
   exit 0
@@ -141,6 +144,6 @@ ${RM_COMMAND} -v $HOME/.bash_logout
 ${RM_COMMAND} -v $HOME/.bash_profile
 ${RM_COMMAND} -v $HOME/.bash_prompt
 ${RM_COMMAND} -v $HOME/.bash_syscheck
-${RM_COMMAND} -v  $HOME/.bashlib
-${RM_COMMAND} -v  $HOME/.bashrc
-${RM_COMMAND} -v  $HOME/.inputrc
+${RM_COMMAND} -v $HOME/.bashlib
+${RM_COMMAND} -v $HOME/.bashrc
+${RM_COMMAND} -v $HOME/.inputrc
