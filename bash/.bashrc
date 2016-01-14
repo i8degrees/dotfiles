@@ -79,9 +79,6 @@ case "$(uname -s)" in
     PATH="$HOME/local/bin:$PATH"
     export PATH
 
-    PATH="$PATH:$HOME/local/bin/checker"
-    export PATH
-
     #PATH="$PATH:$HOME/local/src/emscripten"
     #export PATH
 
