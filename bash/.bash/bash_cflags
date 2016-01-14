@@ -98,6 +98,12 @@ case "$(uname -s)" in
     # qt52-dev
     export PKG_CONFIG_PATH="/usr/local/opt/qt52/lib/pkgconfig:${PKG_CONFIG_PATH}"
 
+    # Add LLVM clang module for static analysis of code to system PATH
+    STATIC_CPP_ANALYZER=/usr/local/opt/llvm/share/clang/tools/scan-build
+    if [[ -x $STATIC_CPP_ANALYZER ]]; then
+      export PATH=$STATIC_CPP_ANALYZER:$PATH
+    fi
+
     ;; # end case scorpio.local
     esac # end switch hostname
     ;; # end case Darwin
