@@ -315,3 +315,15 @@ if [[ -x $GRC_BIN ]]; then
   # alias mount='colourify mount $@'
   # alias mount='colourify mount2 $@'
 fi
+
+if [[ -x "$(which MP4Box)" ]]; then
+  alias mp4box='MP4Box $@'
+fi
+
+if [[ -x "$(which MP4Client)" ]]; then
+  alias mp4c='MP4Client $@'
+fi
+
+if [[ -x "${HOME}/Applications/Invisor Lite.app/Contents/MacOS/Invisor Lite" ]]; then
+  alias meta='open -a "Invisor Lite" $@'
+fi
