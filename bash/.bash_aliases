@@ -317,6 +317,7 @@ if [[ -x $GRC_BIN ]]; then
   # alias mount='colourify mount2 $@'
 fi
 
+<<<<<<< HEAD:bash/.bash_aliases
 alias open='xdg-open $@'
 alias o='open $@'
 alias start='open $@'
@@ -352,4 +353,16 @@ fi
 
 if [[ "$(alias video)" ]]; then
   alias v='video $@'
+=======
+if [[ -x "$(which MP4Box)" ]]; then
+  alias mp4box='MP4Box $@'
+fi
+
+if [[ -x "$(which MP4Client)" ]]; then
+  alias mp4c='MP4Client $@'
+fi
+
+if [[ -x "${HOME}/Applications/Invisor Lite.app/Contents/MacOS/Invisor Lite" ]]; then
+  alias meta='open -a "Invisor Lite" $@'
+>>>>>>> 5badf3c (bash/bash_aliases: Add optional mp4box && meta aliases):bash/bash_aliases
 fi
