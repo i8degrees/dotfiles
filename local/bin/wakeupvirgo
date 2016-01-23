@@ -1,0 +1,6 @@
+#!/bin/sh
+
+# wake up virgo.local
+wakeonlan -i 192.168.15.255 10:40:f3:80:af:0a
+wakeonlan -i 192.168.151.255 00:0c:6c:07:33:58
+
