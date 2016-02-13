@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # Jeffrey Carpenter <jeffrey.carp@gmail.com>
 #
@@ -131,18 +131,8 @@ esac
 # Apparently, PREFIX bash var conflicts with NPM (node's package manager), so
 # the quick solution was to not use this bash var anymore.
 #export PREFIX="~/local"
-
-if [ -f "$(which rbenv)" ]; then
-  eval "$(rbenv init -)"
-
-  RBENV_ROOT=${HOME}/.rbenv; export RBENV_ROOT
-
-  # NOTE: These environment variables are known to cause problems if set
-  # globally for a shell.
-  #RUBYOPT="-W2 -v"
-  #RUBYLIB="/Library/Ruby"; export RUBYLIB
-  #export RUBYLIB="/home/jeff/Projects/ruby/lib"
-fi
+# Setup our local Ruby environment
+source ./ruby_config.sh
 
 # Show GTest diagnostics output
 export CTEST_OUTPUT_ON_FAILURE=true
