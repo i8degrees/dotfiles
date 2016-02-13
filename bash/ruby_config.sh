@@ -1,9 +1,21 @@
 #!/bin/bash
 
-if [[ -x "$(which rbenv)" ]]; then
+if [[ -n "$NOM_USE_RBENV" ]]; then
+  if [[ ! (-x "$(which rbenv)") ]]; then
+    echo "ERROR: Failed to setup Ruby environment: rbenv command not found."
+  fi
+
   eval "$(rbenv init -)"
   export RBENV_ROOT=${HOME}/.rbenv
-elif [[ -x "$(which ruby)" ]]; then
+else
+  # IMPORTANT(jeff): This section is a stub out for future expansion; the
+  # environment setup is incomplete and untested!
+  echo "WARNING: Not using rbenv to setup Ruby environment; this is **not** supported!"
+
+  if [[ ! (-x "$(which ruby)") ]]; then
+    echo "ERROR: Failed to setup Ruby environment: Ruby interpretor not found."
+  fi
+
   # Try to setup our Ruby environment based on Apple's system distribution
   RUBY_MIN_VERSION=2.0.0
   RUBY_FULL_VERSION=$(ruby -e 'puts "#{RUBY_VERSION}p#{RUBY_PATCHLEVEL}"')
@@ -49,4 +61,4 @@ elif [[ -x "$(which ruby)" ]]; then
   # RUBYOPT="-W2 -v"
   # RUBYLIB="/Library/Ruby"; export RUBYLIB
   # export RUBYLIB="/home/jeff/Projects/ruby/lib"
-fi # end if a Ruby environment can be setup
+fi # end if a Ruby environment is requested

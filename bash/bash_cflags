@@ -128,11 +128,12 @@ esac
   #SDL_DEV="$(pkg-config --cflags --libs sdl SDL_image SDL_mixer SDL_ttf)"; export SDL_DEV
 #fi
 
-# Apparently, PREFIX bash var conflicts with NPM (node's package manager), so
-# the quick solution was to not use this bash var anymore.
-#export PREFIX="~/local"
-# Setup our local Ruby environment
-source ./ruby_config.sh
+# NOTE(jeff): Setup our local Ruby environment using rbenv
+NOM_USE_RBENV=true
+RUBY_RC="${HOME}/.bash/ruby_config.sh"
+if [[ -x "$RUBY_RC" ]]; then
+  source "${RUBY_RC}"
+fi
 
 # Show GTest diagnostics output
 export CTEST_OUTPUT_ON_FAILURE=true
