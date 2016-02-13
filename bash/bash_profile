@@ -1,8 +1,8 @@
-#!/bin/sh
+#!/bin/bash
 #
 # 2011-08-24: jeffrey.carp@gmail.com
 #
-#		~/.bash_profile
+#   ~/.bash_profile
 #
 # Local bash (1) profile executed for login shells.
 #
@@ -10,14 +10,14 @@
 #if [[ -z $DISPLAY && $(tty) = /dev/tty1 ]]; then
 
 #if [[ -n $(tty) ]]; then
-#	command tmux
+# command tmux
 #fi
 
-PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin";
 
 case "$(uname -s)" in
-	Darwin)
-		PATH="$PATH:$HOME/Applications:/usr/X11/bin"
+  Darwin)
+    PATH="${PATH}:${HOME}/Applications:/usr/X11/bin"
 
     # Un-hide my user's Library directory
     chflags nohidden ~/Library
@@ -45,13 +45,16 @@ case "$(uname -s)" in
 
     # Enable DVDPlayer Debug menu
     defaults write com.apple.DVDPlayer EnableDebugging -bool true
-	;;
-	Linux)
-		PATH="$PATH:$HOME/.config/feh/themes"
-	;;
-	*)
-	;;
+
+  ;;
+  Linux)
+    PATH="$PATH:$HOME/.config/feh/themes"
+  ;;
+  *)
+  ;;
 esac
+
+export PATH
 
 export XDG_DATA_HOME=${HOME}/.local/share
 export XDG_CONFIG_HOME=${HOME}/.config
@@ -61,10 +64,4 @@ if [ -f "$HOME/.bashrc" ]; then
 fi
 
 umask 022
-
-# rbenv path related variables
-if [[ -x $(which rbenv) ]]; then
-  eval "$(rbenv init -)"
-fi
-
 source /Users/jeff/.iterm2_shell_integration.bash

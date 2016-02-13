@@ -34,6 +34,9 @@ fi
 ${LINK_COMMAND} -sfT "${WORKING_DIR}/colors" "$HOME/.colors"
 
 # Bash scripts
+mkdir -p "${HOME}/.bash"
+
+# TODO(jeff): Relocate bash symlinks to the '.bash' sub-directory of $HOME
 ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bash_aliases $HOME/.bash_aliases
 ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bash_cflags $HOME/.bash_cflags
 ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bash_login $HOME/.bash_login
@@ -44,6 +47,7 @@ ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bash_syscheck $HOME/.bash_syscheck
 ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bashlib $HOME/.bashlib
 ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bashrc $HOME/.bashrc
 ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/inputrc $HOME/.inputrc
+${LINK_COMMAND} -sf ${WORKING_DIR}/bash/ruby_config $HOME/.bash/ruby_config
 
 # mplayer configuration
 #${LINK_COMMAND} -sf ${WORKING_DIR}/mplayer/ $HOME/.mplayer
