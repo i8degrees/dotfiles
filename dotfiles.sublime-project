@@ -1,17 +1,10 @@
 {
-	"folders":
-	[
-/*
-		{
-      "name": "cmake",
-      "path": "cmake"
-    },
-*/
+  "folders":
+  [
     {
-      "name": "dotfiles",
-      "path": "."
-    },
-
-    {} // placeholder
-	]
+        "name": "dotfiles.git",
+        "path": ".",
+        "folder_exclude_patterns": [ "ST3" ]
+    }
+  ]
 }
