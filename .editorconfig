@@ -1,0 +1,22 @@
+# Configuration file for EditorConfig
+#
+# See also: http://EditorConfig.org
+
+# Ignore any other files further up in the file system
+root = true
+
+# Configuration for all files
+[*]
+
+# Enforce Unix style line endings (\n only)
+end_of_line = lf
+
+# Always end files with a blank line
+insert_final_newline = true
+
+# Tabs are treated as space glyphs
+indent_style = space
+indent_size = 3
+
+# Remove whitespace characters at the end of line
+trim_trailing_whitespace = true
