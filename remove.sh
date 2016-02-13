@@ -58,9 +58,14 @@ Darwin)
     ${RM_COMMAND} -rv ${HOME}/local/bin/Marked2.sh
     ${RM_COMMAND} -rv ${HOME}/local/bin/mac-sdks.sh
 
-    # iTerm2 integration
-    if [[ -x "${HOME}/.iterm2_shell_integration.bash" ]]; then
-      ${RM_COMMAND} -rv "${HOME}/.iterm2_shell_integration.bash"
+    # Optional integration of our UNIX shell command history, current working
+    # directory and more for iTerm 2, version 3 betas and nightly builds. This works
+    # even over a SSH connection!
+    #
+    # See also: https://iterm2.com/shell_integration.html
+    ITERM_SHELL_INTEGRATION_SH=${HOME}/.iterm2_shell_integration.bash
+    if [[ -f ${ITERM_SHELL_INTEGRATION_SH} ]]; then
+      ${RM_COMMAND} -rv ${ITERM_SHELL_INTEGRATION_SH}
 
       ${RM_COMMAND} -rv ${HOME}/local/bin/imgcat
       ${RM_COMMAND} -rv ${HOME}/local/bin/imgls

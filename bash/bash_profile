@@ -46,6 +46,16 @@ case "$(uname -s)" in
     # Enable DVDPlayer Debug menu
     defaults write com.apple.DVDPlayer EnableDebugging -bool true
 
+    # Optional integration of our UNIX shell command history, current working
+    # directory and more for iTerm 2.9.x
+    #
+    # See also: https://iterm2.com/shell_integration.html
+    ITERM_SHELL_INTEGRATION_SH=${HOME}/.iterm2_shell_integration.bash
+    if [[ -x "/Applications/iTerm.app/Contents/MacOS/iTerm" ||
+          -x "${HOME}/Applications/iTerm.app/Contents/MacOS/iTerm" ]]; then
+      source ${ITERM_SHELL_INTEGRATION_SH}
+    fi
+
   ;;
   Linux)
     PATH="$PATH:$HOME/.config/feh/themes"
@@ -64,4 +74,3 @@ if [ -f "$HOME/.bashrc" ]; then
 fi
 
 umask 022
-source /Users/jeff/.iterm2_shell_integration.bash

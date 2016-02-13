@@ -133,10 +133,15 @@ Darwin)
     ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/Marked2.sh ${HOME}/local/bin/Marked2.sh
     ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/mac-sdks.sh ${HOME}/local/bin/mac-sdks.sh
 
-    # iTerm2 integration
-    CURL_BIN=$(which curl)
-    if [[ -x "${CURL_BIN}" && ! -f "${HOME}/.iterm2_shell_integration.bash" ]]; then
-      curl -L https://iterm2.com/misc/install_shell_integration.sh
+    # Optional integration of our UNIX shell command history, current working
+    # directory and more for iTerm 2, version 3 betas and nightly builds. This works
+    # even over a SSH connection!
+    #
+    # See also: https://iterm2.com/shell_integration.html
+    ITERM_SHELL_INTEGRATION_SH=${HOME}/.iterm2_shell_integration.bash
+    if [[ !( -f ${ITERM_SHELL_INTEGRATION_SH}) ]]; then
+      /usr/bin/curl -L https://iterm2.com/misc/`basename $SHELL`_startup.in >> \
+          ${ITERM_SHELL_INTEGRATION_SH}
     fi
 
     ${LINK_COMMAND} -sf ${WORKING_DIR}/iterm/bin/imgcat ${HOME}/local/bin/imgcat
