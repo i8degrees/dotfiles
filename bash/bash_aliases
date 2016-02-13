@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # 2011-07-20:jeff
 #
@@ -83,9 +83,9 @@ case "$(uname -s)" in
     alias c='pbcopy'
     alias p='pbpaste'
 
-    # coreutils package from Homebrew for GNU commands to replace Darwin BSD
-    # defaults
-    if [ "$(brew) -o $(brew list|grep coreutils)" ]; then
+    # Install the GNU core utilities command set (ls, cp, df, ...) as the
+    # default when we can do so via Homebrew package.
+    if [[ -x "$(which brew)" && ("$(which gls)") ]]; then
       alias du='gdu -csh'
       alias ls="gls --dereference-command-line --human-readable --size -l -a --color=auto"
       alias df="gdf -Th"

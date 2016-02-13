@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # 2011-07-20:jeff
 #
@@ -13,13 +13,13 @@ if [ "$(which less)" ]; then
   man()
   {
     env \
-    LESS_TERMCAP_mb=$(printf "\e[1;31m") \
-    LESS_TERMCAP_md=$(printf "\e[1;31m") \
-    LESS_TERMCAP_me=$(printf "\e[0m") \
-    LESS_TERMCAP_se=$(printf "\e[0m") \
-    LESS_TERMCAP_so=$(printf "\e[1;44;33m") \
-    LESS_TERMCAP_ue=$(printf "\e[0m") \
-    LESS_TERMCAP_us=$(printf "\e[1;32m") \
+    LESS_TERMCAP_mb="$(printf "\e[1;31m")" \
+    LESS_TERMCAP_md="$(printf "\e[1;31m")" \
+    LESS_TERMCAP_me="$(printf "\e[0m")" \
+    LESS_TERMCAP_se="$(printf "\e[0m")" \
+    LESS_TERMCAP_so="$(printf "\e[1;44;33m")" \
+    LESS_TERMCAP_ue="$(printf "\e[0m")" \
+    LESS_TERMCAP_us="$(printf "\e[1;32m")" \
     man "$@"
   }
 fi
@@ -30,8 +30,7 @@ case "$(uname -s)" in
     # https://github.com/justfielding/dotfiles
     timecap ()
     {
-      pwd_bin="$(which pwd)"
-      parent="$(pwd_bin)"
+      parent="$(which pwd)"
       filenumber=${1:-1}
       delay=${2:-5}
       scdir=${3:-$(parent)}
@@ -39,12 +38,12 @@ case "$(uname -s)" in
       screencap_bin="$(which screencapture)"
       i=$filenumber
 
-      while [ 1 ]
-        do $screencap_bin -t jpg -x ${scdir}${i}_${timestamp}.jpg
+      while "true"
+        do $screencap_bin -t jpg -x "${scdir}""${i}"_"${timestamp}".jpg
         timestamp="$($date_bin +%y-%m-%d_%s)"
         echo "Capturing to ${i}_${timestamp}.jpg"
         let i++
-        sleep $delay
+        sleep "$delay"
       done
     }
 
@@ -53,7 +52,7 @@ case "$(uname -s)" in
     if [[ -z "$1" ]]; then
       echo "Usage: tagwhere <url> <file_path>"
     else
-      xattr -w 'com.apple.metadata:kMDItemWhereFroms' $1 $2
+      xattr -w 'com.apple.metadata:kMDItemWhereFroms' "$1" "$2"
     fi
   }
   ;;
@@ -63,7 +62,7 @@ case "$(uname -s)" in
       if [[ -z "$1" ]]; then
         echo "Usage: apkg <pkg> ... where <pkg> is the AUR package name"
       else
-        command wget http://aur.archlinux.org/packages/$1/$1.tar.gz
+        command wget http://aur.archlinux.org/packages/"$1"/"$1".tar.gz
       fi
     }
 
@@ -182,30 +181,6 @@ if [ -x "$(which ssh)" ]; then
   }
 fi
 
-function sha1calc()
-{
-  if [[ -x "$(which sha1sum)" && -x "$(which openssl)" ]]; then
-    if [[ $@ ]]; then
-      openssl="$(which openssl)" # bin path
-      eval echo -n \""$@\"" | $openssl sha1
-    else
-      echo "Err: sha1calc requires textual input arguments."
-    fi
-  fi
-}
-
-function md5calc()
-{
-  if [[ -x "$(which md5)" && -x "$(which openssl)" ]]; then
-    if [[ $@ ]]; then
-      openssl="$(which openssl)" # bin path
-      eval echo -n \""$@\"" | $openssl md5
-    else
-      echo "Err: md5calc requires textual input arguments."
-    fi
-  fi
-}
-
 function osver()
 {
   if [[ -x "$(which otool)" && -x "$(which grep)" ]]; then
@@ -225,9 +200,9 @@ if [[ -x "$(which grep)" ]]; then
   function fstring()
   {
     if [[ ! "$2" ]]; then
-      grep $1 -s -I -i -R --exclude-dir \*.git . $@
+      grep "$1" -s -I -i -R --exclude-dir \*.git . "$@"
     else
-      grep $1 -s -I -i -R --exclude-dir \*.git $@
+      grep "$1" -s -I -i -R --exclude-dir \*.git "$@"
     fi
   }
 fi
@@ -248,12 +223,12 @@ if [[ -x "$(which brew)" ]]; then
     function binfo()
     {
       # $BREW_BIN info $1; $BREW_BIN desc $1
-      $BREW_BIN desc $1; $BREW_BIN info $1
+      $BREW_BIN desc "$1"; $BREW_BIN info "$1"
     }
   else # Use standard brew info
     function binfo()
     {
-      $BREW_BIN info $1
+      $BREW_BIN info "$1"
     }
   fi # end if brew-desc
 
@@ -263,13 +238,13 @@ function fullpath()
 {
   PARENT_WORKING_DIR=$(pwd)
   FILE_ARG=${1}
-  echo ${PARENT_WORKING_DIR}/${FILE_ARG}
+  echo "${PARENT_WORKING_DIR}/${FILE_ARG}"
 }
 
 function fullpathcopy()
 {
   PBCOPY_BIN=$(which pbcopy)
-  fullpath $1 | ${PBCOPY_BIN}
+  fullpath 1 | ${PBCOPY_BIN}
 }
 
 alias fullp='fullpath'

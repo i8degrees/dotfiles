@@ -70,7 +70,7 @@ export XDG_DATA_HOME=${HOME}/.local/share
 export XDG_CONFIG_HOME=${HOME}/.config
 
 if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
+  source "$HOME/.bashrc"
 fi
 
 umask 022

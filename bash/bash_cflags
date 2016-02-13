@@ -6,8 +6,6 @@
 # administration
 #
 
-export LOCAL="virgo" # Reserved bash var for future use...
-
 # convenience bash shell vars for common user paths
 export DESKTOP="$HOME/Desktop"
 export DOCUMENTS="$HOME/Documents"
@@ -23,10 +21,16 @@ export NOM="$PROJECTS/nomlib.git"
 export TT="$PROJECTS/ttcards.git"
 export CFG="$PROJECTS/dotfiles"
 export HCFG="$PROJECTS/homebrew"
-NOMDEV="${PROJECTS}/nomdev.git"
+
+# NOTE(jeff): This is the local host's installation prefix for user-land
+# applications
+LOCAL_SITE_PREFIX="/usr/local"
 
 case "$(uname -s)" in
   Darwin)
+    if [[ -x "$(which brew)" ]]; then
+      LOCAL_SITE_PREFIX=$(brew --prefix)
+    fi
 
     case "$(hostname)" in
       virgo.local) # MacBook Air Mid 2011 [Intel Core i5 1.6Ghz]
@@ -62,9 +66,8 @@ case "$(uname -s)" in
       #EMMAKEN_COMPILER="/usr/local/bin/clang++"; export EMMAKEN_COMPILER
 
       # Source: http://crossgcc.rts-software.org/doku.php?id=start
-      export PATH="$PATH:/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/bin"
-      export PATH="$NOMDEV:$PATH"
-      export PATH=$PATH:$HOME/local/opt/bin
+      # PATH="/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/bin:${PATH}"
+      # PATH="${HOME}/local/opt/bin:${PATH}"; export PATH
 
       # Additional pkg-config paths
       export PKG_CONFIG_PATH="/opt/X11/lib/pkgconfig:/usr/local/lib/pkgconfig:/usr/local/share/pkgconfig:/usr/lib/pkgconfig:/usr/local/Cellar/curl/7.42.1/lib/pkgconfig:/usr/local/Library/ENV/pkgconfig/10.10"
@@ -72,7 +75,7 @@ case "$(uname -s)" in
       # qt52-dev
       export PKG_CONFIG_PATH="/usr/local/opt/qt52/lib/pkgconfig:${PKG_CONFIG_PATH}"
 
-      export PYTHONPATH=$(brew --prefix)/lib/python2.7/site-packages:$PYTHONPATH
+      export PYTHONPATH=${LOCAL_SITE_PREFIX}/lib/python2.7/site-packages:${PYTHONPATH}
 
       #export GL_ENABLE_DEBUG_ATTACH=YES
     ;; # end case virgo.local
@@ -101,7 +104,7 @@ case "$(uname -s)" in
     # Add LLVM clang module for static analysis of code to system PATH
     STATIC_CPP_ANALYZER=/usr/local/opt/llvm/share/clang/tools/scan-build
     if [[ -x $STATIC_CPP_ANALYZER ]]; then
-      export PATH=$STATIC_CPP_ANALYZER:$PATH
+      PATH="$STATIC_CPP_ANALYZER:$PATH"; export PATH
     fi
 
     ;; # end case scorpio.local
@@ -124,10 +127,6 @@ case "$(uname -s)" in
   ;;
 esac
 
-#if [ "$(which pkg-config)" ]; then
-  #SDL_DEV="$(pkg-config --cflags --libs sdl SDL_image SDL_mixer SDL_ttf)"; export SDL_DEV
-#fi
-
 # NOTE(jeff): Setup our local Ruby environment using rbenv
 NOM_USE_RBENV=true
 RUBY_RC="${HOME}/.bash/ruby_config.sh"
@@ -140,5 +139,3 @@ export CTEST_OUTPUT_ON_FAILURE=true
 
 # Colored logging output from nomlib
 export NOM_COLOR=always
-alias nomdev='nomdev.rb $@'
-

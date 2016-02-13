@@ -76,8 +76,7 @@ fi
 
 case "$(uname -s)" in
   Darwin)
-    PATH="$HOME/local/bin:$PATH"
-    export PATH
+    PATH="${PATH}:$HOME/local/bin"; export PATH
 
     #PATH="$PATH:$HOME/local/src/emscripten"
     #export PATH
@@ -205,4 +204,6 @@ if [ -x "$HOME/.bash_aliases" ]; then
 fi
 
 ### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+if [[ $(which /usr/local/heroku/bin/heroku) ]]; then
+  PATH=$PATH:/usr/local/heroku/bin; export PATH
+fi
