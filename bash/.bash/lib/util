@@ -1,0 +1,137 @@
+#!/bin/bash
+#
+# 2016-02/14:jeff
+#
+# Internal utility functions
+
+function get_platform()
+{
+  local PATH=/bin:/sbin:/usr/bin:/usr/sbin
+  local platform="undefined"
+  PLATFORM_BIN="$(uname -s)"
+
+  case "${PLATFORM_BIN}" in
+    Darwin)
+      platform="darwin"
+    ;;
+
+    Linux)
+      platform="linux"
+    ;;
+
+    *)
+      platform="undefined"
+    ;;
+  esac
+
+  echo "$platform"
+}
+
+function get_host()
+{
+  local PATH=/bin:/sbin:/usr/bin:/usr/sbin
+  local host="localhost"
+  local SYS_HOSTNAME
+  local BASH_HOSTNAME_FILE="${HOME}/.bash_env"
+
+  if [[ -r "${BASH_HOSTNAME_FILE}" ]]; then
+    # shellcheck disable=SC1090
+    source "${BASH_HOSTNAME_FILE}"
+    if [[ -n "${BASH_HOSTNAME}" ]]; then
+      host="${BASH_HOSTNAME}"
+    fi
+  else
+    SYS_HOSTNAME="$(hostname -s)"
+
+    # Use the output of hostname
+    if [[ -n "${SYS_HOSTNAME}" ]]; then
+      host="${SYS_HOSTNAME}"
+    else
+      # IMPORTANT(jeff): This value will load a more minimal Bash environment,
+      # devoid of host-specific presets but still with the platform-specific
+      # code base; this is considered a default-platform environment.
+      host="localhost"
+    fi
+  fi
+
+  echo "$host"
+}
+
+function load_script_dir()
+{
+  local SOURCE_DIR
+  SOURCE_DIR=$(printf "%q\n" "${1}")
+
+  if [[ -d "${SOURCE_DIR}" ]]; then
+    for script in ${SOURCE_DIR}/*.sh; do
+
+      if [[ -r $script ]]; then
+        if [[ -n ${NOM_DEBUG} ]]; then
+          echo "DEBUG: Loading script source from ${script}"
+        fi
+        # shellcheck disable=SC1090
+        source "${script}"
+      fi
+    done
+
+    unset "${script}"
+  fi
+}
+
+# Locate an application and create a Bash alias from it
+#
+# find_app <app_name> <bash_alias>, i.e:
+#   $ find_app 'GIMP' photoedit
+#   $ photoedit <image_file>
+function find_app()
+{
+  local NUM_ARGUMENTS=$#  # function arguments count
+
+  if [[ -z "${NUM_ARGUMENTS}" || "${NUM_ARGUMENTS}" -lt 1 ]]; then
+    SCRIPT_NAME="./find_app"
+    echo -e "Usage: ${SCRIPT_NAME} <app_name> <bash_alias>\n"
+    echo -e "\twhere <app_name> is the name of the executable to search for"
+    echo -e "\twhere <bash_alias> is the name of the Bash alias to create"
+    echo -e
+
+    return 0
+  fi
+
+  local PATH="${HOME}/Applications/${1}.app/Contents/MacOS:"
+  PATH+="${HOME}/Applications/Developer/${1}.app/Contents/MacOS:"
+  PATH+="/Applications/${1}.app/Contents/MacOS:"
+  PATH+="/Applications/Developer/${1}.app/Contents/MacOS:"
+  PATH+="/Applications/Xcode.app/Contents/Developer/Applications/${1}.app/Contents/MacOS:"
+  PATH+="/usr/bin:/usr/local/bin:"
+  # PATH+="/Volumes/Media/Applications:/Volumes/Media/games:"
+  # PATH+="/Users/Shared/Applications:"
+
+  # Remove .app extension from app name if found
+  FIND_APP_BASE_NAME=$(basename -s .app "${1}")
+
+  FIND_APP=$(which "${FIND_APP_BASE_NAME}")
+
+  # Escape file paths with spaces in them
+  FIND_APP=$(printf "%q\n" "${FIND_APP}")
+  FIND_APP_DIR=$(dirname "${FIND_APP}")
+
+  if [[ -n "${NOM_DEBUG}" ]]; then
+    echo "DEBUG: PATH=${PATH}"
+    echo "DEBUG: FIND_APP=${FIND_APP}"
+    echo "DEBUG: FIND_APP_DIR=${FIND_APP_DIR}"
+  fi
+
+  if [[ -n "${FIND_APP}" ]]; then
+    if [[ -n "${NOM_DEBUG}" ]]; then
+      echo -e "DEBUG: Found ${FIND_APP} at ${FIND_APP_DIR}"
+    fi
+
+    alias ${2}="${FIND_APP}"
+  fi
+}
+
+
+if [[ "${NOM_DEBUG}" -gt 0 ]]; then
+  echo "PLATFORM: $(get_platform)"
+  echo "HOST: $(get_host)"
+fi

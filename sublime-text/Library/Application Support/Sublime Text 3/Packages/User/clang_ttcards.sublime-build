@@ -1,0 +1,51 @@
+{
+  "working_dir": "${project_path}/build",
+  "path": "/usr/bin:/usr/sbin:/bin:/usr/local/bin",
+  "shell": true,
+  "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+  // "cmd": [ "NUM_THREADS=2 ../bin/clang_build.sh && ../bin/xcode_install.sh Debug"],
+  "cmd": [ "NUM_THREADS=9 ../bin/clang_build.sh Debug"],
+  // "selector": "source.c, source.c++",
+
+  "variants":
+  [
+    {
+      "name": "gen",
+      "cmd": [ "../bin/configure.sh Debug" ]
+    },
+
+    {
+      "name": "gen_release",
+      "cmd": [ "../bin/configure.sh Release 'Unix Makefiles'" ]
+    },
+
+    {
+      "name": "Clean",
+      "cmd": [ "../bin/clang_uninstall.sh Debug; ../bin/clang_clean.sh Debug" ]
+    },
+
+    {
+      "name": "Install",
+      "cmd": [ "../bin/clang_install.sh Debug" ]
+    },
+
+    {
+      "name": "Uninstall",
+      "cmd": [ "../bin/clang_uninstall.sh Debug" ]
+    },
+
+    {
+      "name": "Run",
+      // Uses Terminal launch script
+      "cmd": [ "~/local/bin/Terminal Debug/ttcards.app/Contents/MacOS/ttcards" ]
+
+      // Uses library helper script
+      // "cmd": [ "Terminal /Users/jeff/local/bin/run_ttcards_from_nomlib_deps.sh" ]
+    },
+
+    {
+      "name": "LOC",
+      "cmd": [ "cloc --quiet --exclude-dir=build,build-release,third-party,tmp,wiki ${project_path}" ]
+    }
+  ]
+}

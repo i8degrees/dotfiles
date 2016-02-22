@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# 2016-02/17:jeff
+#
+# Launcher script for Sublime Text
+
+
+# NOTE(jeff): Sublime Text for Mac OS X comes with a convenience command
+# line launcher for us to use
+PATH="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
+
+subl "$@"

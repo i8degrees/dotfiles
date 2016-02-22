@@ -1,0 +1,1833 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<purple version='1.0'>
+	<blist>
+		<group name='self'>
+			<setting name='collapsed' type='bool'>0</setting>
+			<contact>
+				<buddy account='jeffrey.carp@gmail.com/Pidgin' proto='prpl-jabber'>
+					<name>jeffrey.carp@gmail.com</name>
+					<alias>Carp @ GTalk</alias>
+					<setting name='buddy_icon' type='string'>3db9ebbb34c866a08b83ac3fdcdf34b8014e2cdb.jpg</setting>
+					<setting name='icon_checksum' type='string'>3db9ebbb34c866a08b83ac3fdcdf34b8014e2cdb</setting>
+					<setting name='last_seen' type='int'>1331275964</setting>
+					<setting name='signedon' type='int'>1329069753</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees' proto='prpl-aim'>
+					<name>i8degrees</name>
+					<alias>Carp @ AIM</alias>
+					<setting name='lastsaid' type='string'>/server irc.freenode.net</setting>
+					<setting name='lastseen' type='int'>1321443481</setting>
+					<setting name='last_seen' type='int'>1331275964</setting>
+					<setting name='show_offline' type='bool'>1</setting>
+				</buddy>
+				<buddy account='i8degrees' proto='prpl-aim'>
+					<name>+14794621244</name>
+					<alias>Carp @ Mobile</alias>
+					<setting name='last_seen' type='int'>1331275964</setting>
+					<setting name='show_offline' type='bool'>1</setting>
+				</buddy>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+				<setting name='custom_buddy_icon' type='string'>abe41edb5bdf44ecda5a1bebbe728dc825ee90b7.png</setting>
+			</contact>
+		</group>
+		<group name='eq'>
+			<setting name='collapsed' type='bool'>0</setting>
+			<contact>
+				<buddy account='wizzie@irc.eqemulator.net' proto='prpl-irc'>
+					<name>sucette</name>
+					<setting name='last_seen' type='int'>1310081047</setting>
+				</buddy>
+			</contact>
+		</group>
+		<group name='GTalk'>
+			<setting name='collapsed' type='bool'>0</setting>
+			<contact>
+				<buddy account='i8degrees@gmail.com/Pidgin' proto='prpl-jabber'>
+					<name>gr4yscale@gmail.com</name>
+					<alias>Tyler Powers</alias>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@gmail.com/Pidgin' proto='prpl-jabber'>
+					<name>jeffrey.carp@gmail.com</name>
+					<alias>Jeffrey Carpenter</alias>
+					<setting name='last_seen' type='int'>1306248242</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@gmail.com/Pidgin' proto='prpl-jabber'>
+					<name>shdwdrake8@gmail.com</name>
+					<alias>Psilocybin/EQ</alias>
+				</buddy>
+			</contact>
+		</group>
+		<group name='chats'>
+			<setting name='collapsed' type='bool'>0</setting>
+			<chat proto='prpl-irc' account='i8degrees@irc.freenode.net'>
+				<alias>git</alias>
+				<component name='channel'>#git</component>
+				<setting name='gtk-autojoin' type='bool'>0</setting>
+				<setting name='core-rlaager-irchelper_topic' type='string'>Latest version: 1.7.8.4 | http://git-scm.com | Please skim http://jk.gs/git/ before asking, or at least before giving up! | Getting a &quot;Cannot send to channel&quot; error? /msg gitinfo .voice</setting>
+			</chat>
+			<chat proto='prpl-irc' account='i8degrees@irc.freenode.net'>
+				<alias>awesome</alias>
+				<component name='channel'>#awesome</component>
+				<setting name='gtk-autojoin' type='bool'>0</setting>
+				<setting name='core-rlaager-irchelper_topic' type='string'>&quot;There are over 175 awesome users on irc.oftc.net&quot;</setting>
+			</chat>
+			<chat proto='prpl-irc' account='i8degrees@irc.freenode.net'>
+				<alias>lua</alias>
+				<component name='channel'>#lua</component>
+				<setting name='gtk-autojoin' type='bool'>0</setting>
+				<setting name='core-rlaager-irchelper_topic' type='string'>http://lua-users.org/wiki/IrcChannel :: Paste on http://codepad.org/?lang=Lua :: Please consider registering with NickServ if you haven&apos;t already.</setting>
+			</chat>
+			<chat proto='prpl-irc' account='i8degrees@irc.freenode.net'>
+				<alias>debian</alias>
+				<component name='channel'>#debian</component>
+				<setting name='gtk-autojoin' type='bool'>0</setting>
+				<setting name='core-rlaager-irchelper_chanserv_join_msg' type='string'>Welcome to #Debian. This is a discussion channel; if you have a question about Debian GNU/Linux, ask and we will try our best to answer it. Newcomers should read the channel&amp;apos;s guidelines by typing &amp;quot;/msg dpkg guidelines&amp;quot;. Please do not paste in the channel; use #flood instead. Thank you.</setting>
+				<setting name='core-rlaager-irchelper_topic' type='string'>squeeze (6.0.3) released; /msg dpkg squeeze ; /msg dpkg lenny-&gt;squeeze | lenny (5.0.9) /msg dpkg 5.0.9 | NO FLOOD: /msg dpkg pastebin | /msg bots NOT people | offtopic: #debian-offtopic | wheezy/sid: #debian-next (irc.oftc.net) | FAQ: http://deb.li/IRCFAQ | channel logs: http://deb.li/yQXC</setting>
+			</chat>
+			<chat proto='prpl-irc' account='i8degrees@irc.freenode.net'>
+				<alias>gluster</alias>
+				<component name='channel'>#gluster</component>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+				<setting name='gtk-autojoin' type='bool'>1</setting>
+				<setting name='core-rlaager-irchelper_topic' type='string'>GlusterFS: http://www.gluster.org/docs | Bugs: http://bugs.gluster.com/ | Review: http://review.gluster.com | http://twitter.com/gluster | http://www.gluster.com/community/whoisusing.php | Community: http://community.gluster.org | IRC archives http://www.gluster.org/interact/chat-archives/</setting>
+			</chat>
+			<chat proto='prpl-irc' account='i8degrees@irc.freenode.net'>
+				<alias>statusnet</alias>
+				<component name='channel'>#statusnet</component>
+				<setting name='gtk-autojoin' type='bool'>0</setting>
+				<setting name='core-rlaager-irchelper_topic' type='string'>Thanks for Buggin&apos; | http://status.net/</setting>
+			</chat>
+			<chat proto='prpl-irc' account='i8degrees@irc.freenode.net'>
+				<alias>mpd</alias>
+				<component name='channel'>#mpd</component>
+				<setting name='gtk-autojoin' type='bool'>1</setting>
+				<setting name='core-rlaager-irchelper_topic' type='string'>Music Player Daemon | Latest 0.16.7 | git: http://git.musicpd.org | bugs: musicpd.org/mantis | wiki: mpd.wikia.com | pastebin: mpd.pastebin.ca | Problems? Want an answer? Ask (Give your version and details) and stick around until we come in or try using the forums at musicpd.org/forum | Don&apos;t ask if you can ask, just ask | Uesr guide: http://www.musicpd.org/doc/user/</setting>
+			</chat>
+			<chat proto='prpl-irc' account='i8degrees@irc.freenode.net'>
+				<alias>proggit</alias>
+				<component name='channel'>##proggit</component>
+				<setting name='gtk-autojoin' type='bool'>1</setting>
+				<setting name='core-rlaager-irchelper_topic' type='string'>hi proggit -- code me a sandwich | need to paste? http://gist.github.com</setting>
+			</chat>
+			<chat proto='prpl-irc' account='i8degrees@irc.freenode.net'>
+				<alias>ruby</alias>
+				<component name='channel'>#ruby</component>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+				<setting name='gtk-autojoin' type='bool'>1</setting>
+				<setting name='core-rlaager-irchelper_chanserv_join_msg' type='string'>Welcome to #ruby. || http://www.ruby-lang.org || http://www.modruby.net</setting>
+				<setting name='core-rlaager-irchelper_topic' type='string'>Ruby programming language || ruby-lang.org || RUBY SUMMER OF CODE! rubysoc.org/ || Paste &gt;3 lines of text in http://pastie.org || Para a nossa audiencia em portugues http://ruby-br.org/</setting>
+				<setting name='gtk-persistent' type='bool'>1</setting>
+			</chat>
+			<chat proto='prpl-irc' account='i8degrees@irc.freenode.net'>
+				<alias>archlinux</alias>
+				<component name='channel'>#archlinux</component>
+				<setting name='gtk-autojoin' type='bool'>1</setting>
+				<setting name='core-rlaager-irchelper_topic' type='string'>Welcome to Arch Linux World Domination, Inc. &lt;+&gt; https://www.archlinux.org/news/pacman-4-moves-to-core/ &lt;+&gt; PLEASE READ BEFORE UPGRADING https://bbs.archlinux.org/viewtopic.php?id=57205</setting>
+			</chat>
+			<chat proto='prpl-irc' account='wizzie@irc.gamesurge.net'>
+				<alias>mercs</alias>
+				<component name='channel'>#mercs</component>
+				<setting name='gtk-autojoin' type='bool'>1</setting>
+				<setting name='core-rlaager-irchelper_topic' type='string'>Welcome to &lt;Mercs o&apos; Norrath&gt; Guild Internet Relay Chat Channel -- please visit http://mon2.guildlaunch.com for guild interests, application, etc | http://www.twitter.com/mercs_norrath</setting>
+			</chat>
+			<chat proto='prpl-irc' account='wizzie@irc.eqemulator.net'>
+				<alias>eqemu</alias>
+				<component name='channel'>#eqemu</component>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+				<setting name='gtk-autojoin' type='bool'>1</setting>
+				<setting name='core-rlaager-irchelper_topic' type='string'>Welcome to #eqemu. Login Server Status: UP (PM Rogean if confirmed down) | If you did NOT recieve your confirmation email, check your spam. If it is not there, use another mail provider.</setting>
+			</chat>
+			<chat proto='prpl-irc' account='wizzie@irc.eqemulator.net'>
+				<alias>p99</alias>
+				<component name='channel'>#project1999</component>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+				<setting name='gtk-autojoin' type='bool'>1</setting>
+				<setting name='core-rlaager-irchelper_topic' type='string'>INTEG WELCOMES YOU TO FACEBOOK99 IRC</setting>
+				<setting name='gtk-persistent' type='bool'>0</setting>
+			</chat>
+		</group>
+		<group name='Skype'>
+			<setting name='collapsed' type='bool'>0</setting>
+			<setting name='skype_group_number' type='int'>9</setting>
+		</group>
+		<group name='buddies'>
+			<setting name='collapsed' type='bool'>0</setting>
+			<contact>
+				<buddy account='i8degrees' proto='prpl-aim'>
+					<name>soccerlvlonsters</name>
+					<alias>Mackenzie</alias>
+					<setting name='last_seen' type='int'>1331275964</setting>
+				</buddy>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+			</contact>
+			<contact>
+				<buddy account='i8degrees' proto='prpl-aim'>
+					<name>ThreeToedSheToad</name>
+					<alias>Laura</alias>
+					<setting name='buddy_icon' type='string'>12eaf51ba8b3d1f29dd40cd15cbcf0854b564a6f.jpg</setting>
+					<setting name='signedoff' type='int'>1329617942</setting>
+					<setting name='icon_checksum' type='string'>2b00001fb4</setting>
+					<setting name='lastsaid' type='string'>with what?</setting>
+					<setting name='lastseen' type='int'>1329377060</setting>
+					<setting name='last_seen' type='int'>1331275964</setting>
+					<setting name='signedon' type='int'>1329617990</setting>
+				</buddy>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+				<setting name='custom_buddy_icon' type='string'>6ea6df2bba769cd32dcd339215a1066bbea48fde.png</setting>
+			</contact>
+			<contact>
+				<buddy account='i8degrees' proto='prpl-aim'>
+					<name>rockstarrjames</name>
+					<alias>James Martin</alias>
+					<setting name='signedoff' type='int'>1329706369</setting>
+					<setting name='lastsaid' type='string'>see ya</setting>
+					<setting name='lastseen' type='int'>1320616923</setting>
+					<setting name='last_seen' type='int'>1331275964</setting>
+					<setting name='signedon' type='int'>1329697542</setting>
+				</buddy>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+			</contact>
+			<contact>
+				<buddy account='i8degrees' proto='prpl-aim'>
+					<name>wrlix</name>
+					<alias>William</alias>
+					<setting name='signedoff' type='int'>1327463732</setting>
+					<setting name='last_seen' type='int'>1327463732</setting>
+					<setting name='signedon' type='int'>1327453916</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees' proto='prpl-aim'>
+					<name>cloudsi</name>
+					<alias>John</alias>
+					<setting name='last_seen' type='int'>1331275964</setting>
+				</buddy>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+			</contact>
+			<contact>
+				<buddy account='i8degrees' proto='prpl-aim'>
+					<name>ilsaofthess</name>
+					<alias>Sarah</alias>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees' proto='prpl-aim'>
+					<name>adult sized</name>
+					<alias>Danny</alias>
+					<setting name='last_seen' type='int'>1311250954</setting>
+				</buddy>
+				<buddy account='jeffrey.carp@gmail.com/Pidgin' proto='prpl-jabber'>
+					<name>danny.johnston@gmail.com</name>
+					<alias>Danny</alias>
+					<setting name='buddy_icon' type='string'>117e3a01c472bb1dc7d98f5754537149658ff334.jpg</setting>
+					<setting name='signedoff' type='int'>1329634574</setting>
+					<setting name='icon_checksum' type='string'>117e3a01c472bb1dc7d98f5754537149658ff334</setting>
+					<setting name='lastsaid' type='string'>check txt msgs</setting>
+					<setting name='lastseen' type='int'>1321825166</setting>
+					<setting name='last_seen' type='int'>1329634574</setting>
+					<setting name='signedon' type='int'>1329634486</setting>
+				</buddy>
+				<buddy account='jeffrey.carp@gmail.com/Pidgin' proto='prpl-jabber'>
+					<name>fielding@justfielding.com</name>
+					<alias>Fielding</alias>
+					<setting name='servernick' type='string'>Fielding Johnston</setting>
+					<setting name='buddy_icon' type='string'>df4edc4d139a7edb85452e0d71f84a547d83d619.jpg</setting>
+					<setting name='icon_checksum' type='string'>df4edc4d139a7edb85452e0d71f84a547d83d619</setting>
+					<setting name='signedoff' type='int'>1329661033</setting>
+					<setting name='lastsaid' type='string'>CPU: Intel(R) Xeon(R) CPU           E5504  @ 2.00GHz (2000.12-MHz 686-class CPU)
+  Origin = &quot;GenuineIntel&quot;  Id = 0x106a5  Stepping = 5
+  Features=0xbfebfbff&lt;FPU,VME,DE,PSE,TSC,MSR,PAE,MCE,CX8,APIC,SEP,MTRR,PGE,MCA,CMOV,PAT,PSE36,CLFLUSH,DTS,ACPI,MMX,FXSR,SSE,SSE2,SS,HTT,TM,PBE&gt;
+  Features2=0x9ce3bd&lt;SSE3,DTES64,MON,DS_CPL,VMX,EST,TM2,SSSE3,CX16,xTPR,PDCM,DCA,SSE4.1,SSE4.2,POPCNT&gt;
+  AMD Features=0x28100000&lt;NX,RDTSCP,LM&gt;
+  AMD Features2=0x1&lt;LAHF&gt;
+  TSC: P-state invariant
+real memory  = 1073741824 (1024 MB)
+avail memory = 1040502784 (992 MB)
+gdtpfn=158ef7 pdptpfn=59484
+panic: HYPERVISOR_vcpu_op(VCPUOP_initialise, cpu, &amp;ctxt): /usr/src/sys/i386/xen/mp_machdep.c:929
+cpuid = 0
+KDB: enter: panic
+[thread pid 0 tid 0 ]
+Stopped at      kdb_enter+0x3a: movl    $0,kdb_why</setting>
+					<setting name='lastseen' type='int'>1329702236</setting>
+					<setting name='signedon' type='int'>1329661072</setting>
+					<setting name='last_seen' type='int'>1331280461</setting>
+				</buddy>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+			</contact>
+			<contact>
+				<buddy account='i8degrees' proto='prpl-aim'>
+					<name>sinoth dither</name>
+					<alias>Nick</alias>
+					<setting name='buddy_icon' type='string'>15a7391311aa51978e6292b2407f5b0d5de21ae7.gif</setting>
+					<setting name='signedoff' type='int'>1329383780</setting>
+					<setting name='icon_checksum' type='string'>21714220fc6deb5cbe70045ad5802578</setting>
+					<setting name='last_seen' type='int'>1331275964</setting>
+					<setting name='signedon' type='int'>1329400937</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1203228021@chat.facebook.com</name>
+					<alias>Charlee Kay Touchet</alias>
+					<setting name='buddy_icon' type='string'>d7636586027fedb6f80f9261ad1fe26ccdc20079.jpg</setting>
+					<setting name='icon_checksum' type='string'>d7636586027fedb6f80f9261ad1fe26ccdc20079</setting>
+					<setting name='last_seen' type='int'>1318904722</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1029570407@chat.facebook.com</name>
+					<alias>Maeghan Mitchell</alias>
+					<setting name='buddy_icon' type='string'>6f5001931b8f8ca88b18cab3611ffbded15250ba.jpg</setting>
+					<setting name='icon_checksum' type='string'>6f5001931b8f8ca88b18cab3611ffbded15250ba</setting>
+					<setting name='last_seen' type='int'>1307351463</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1022195974@chat.facebook.com</name>
+					<alias>Katelyn Ann Horton</alias>
+					<setting name='buddy_icon' type='string'>ac3a490581b595c9aa5fd468e57d01cc48b53f2d.jpg</setting>
+					<setting name='icon_checksum' type='string'>ac3a490581b595c9aa5fd468e57d01cc48b53f2d</setting>
+					<setting name='last_seen' type='int'>1318882652</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-505134809@chat.facebook.com</name>
+					<alias>Shelby James Lincks</alias>
+					<setting name='buddy_icon' type='string'>416341a95694a7b92e21c318f2daf85fcf34ab15.jpg</setting>
+					<setting name='icon_checksum' type='string'>416341a95694a7b92e21c318f2daf85fcf34ab15</setting>
+					<setting name='last_seen' type='int'>1320544107</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-55002632@chat.facebook.com</name>
+					<alias>Whitney &apos;Wee Wee&apos; Foster</alias>
+					<setting name='buddy_icon' type='string'>0756ecfc6fcffb549656c03aad394f6ac56adffa.jpg</setting>
+					<setting name='icon_checksum' type='string'>0756ecfc6fcffb549656c03aad394f6ac56adffa</setting>
+					<setting name='last_seen' type='int'>1316831963</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100000748781686@chat.facebook.com</name>
+					<alias>Michael Bartsch</alias>
+					<setting name='buddy_icon' type='string'>980400bdf0013e369034e67596a66bc5fb450332.jpg</setting>
+					<setting name='icon_checksum' type='string'>980400bdf0013e369034e67596a66bc5fb450332</setting>
+					<setting name='last_seen' type='int'>1313147290</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1282638139@chat.facebook.com</name>
+					<alias>Tyler Dressendorfer</alias>
+					<setting name='buddy_icon' type='string'>3bd1216246778be2e9cae0222f2973282e2a2c54.jpg</setting>
+					<setting name='icon_checksum' type='string'>3bd1216246778be2e9cae0222f2973282e2a2c54</setting>
+					<setting name='last_seen' type='int'>1313688716</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1242392756@chat.facebook.com</name>
+					<alias>Tori Davis</alias>
+					<setting name='buddy_icon' type='string'>4da30c825dea07a4dae2106604d3f96ec0683d49.jpg</setting>
+					<setting name='icon_checksum' type='string'>4da30c825dea07a4dae2106604d3f96ec0683d49</setting>
+					<setting name='last_seen' type='int'>1318708214</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1024800554@chat.facebook.com</name>
+					<alias>Erica Nelson</alias>
+					<setting name='buddy_icon' type='string'>8deec3bf57897ba354ddc8cf8daadfc56eb21a69.jpg</setting>
+					<setting name='icon_checksum' type='string'>8deec3bf57897ba354ddc8cf8daadfc56eb21a69</setting>
+					<setting name='last_seen' type='int'>1305766792</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-516160479@chat.facebook.com</name>
+					<alias>Stephanie Bowman</alias>
+					<setting name='buddy_icon' type='string'>9c0379d2f4078c122294fd97d299c4e09b9217ae.jpg</setting>
+					<setting name='icon_checksum' type='string'>9c0379d2f4078c122294fd97d299c4e09b9217ae</setting>
+					<setting name='last_seen' type='int'>1320372957</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124301237@chat.facebook.com</name>
+					<alias>Jayke Webb</alias>
+					<setting name='buddy_icon' type='string'>92fc8ac7e7df47bdf236ce00c1181a4776cbab71.jpg</setting>
+					<setting name='icon_checksum' type='string'>92fc8ac7e7df47bdf236ce00c1181a4776cbab71</setting>
+					<setting name='last_seen' type='int'>1318893073</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-55003616@chat.facebook.com</name>
+					<alias>CJ Pryor</alias>
+					<setting name='buddy_icon' type='string'>af870bcc4736253850fd432260c6e57f052e569f.jpg</setting>
+					<setting name='icon_checksum' type='string'>af870bcc4736253850fd432260c6e57f052e569f</setting>
+					<setting name='last_seen' type='int'>1318909882</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-20609128@chat.facebook.com</name>
+					<alias>Meagan Rogers</alias>
+					<setting name='buddy_icon' type='string'>835629487b9414c9626f98606bc38475603ee4d9.jpg</setting>
+					<setting name='icon_checksum' type='string'>835629487b9414c9626f98606bc38475603ee4d9</setting>
+					<setting name='last_seen' type='int'>1310095773</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100000847905942@chat.facebook.com</name>
+					<alias>Jessica Aguilar-Richmond</alias>
+					<setting name='buddy_icon' type='string'>b7d2ca53ae37cf3f03be952b7d44cce11f3b8852.jpg</setting>
+					<setting name='icon_checksum' type='string'>b7d2ca53ae37cf3f03be952b7d44cce11f3b8852</setting>
+					<setting name='last_seen' type='int'>1316733368</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100000071708590@chat.facebook.com</name>
+					<alias>Samantha Shelton</alias>
+					<setting name='buddy_icon' type='string'>eb2507052245b5b18fa66d3efe1f003478267f22.jpg</setting>
+					<setting name='icon_checksum' type='string'>eb2507052245b5b18fa66d3efe1f003478267f22</setting>
+					<setting name='last_seen' type='int'>1318729622</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1094208553@chat.facebook.com</name>
+					<alias>Anita Amy Sisouvong</alias>
+					<setting name='buddy_icon' type='string'>612b2008827e686d9b78cf742e659daf16ea3283.jpg</setting>
+					<setting name='signedoff' type='int'>1319348059</setting>
+					<setting name='icon_checksum' type='string'>612b2008827e686d9b78cf742e659daf16ea3283</setting>
+					<setting name='last_seen' type='int'>1319348165</setting>
+					<setting name='signedon' type='int'>1319348103</setting>
+				</buddy>
+				<setting name='custom_buddy_icon' type='string'>d9c30c38eb787a474a5de235d6a2ed65afcedd70.jpg</setting>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-616949120@chat.facebook.com</name>
+					<alias>Cody Shumate</alias>
+					<setting name='buddy_icon' type='string'>7915b9c25e5dd2bd13048694138856ed4fa61469.jpg</setting>
+					<setting name='icon_checksum' type='string'>7915b9c25e5dd2bd13048694138856ed4fa61469</setting>
+					<setting name='last_seen' type='int'>1320174544</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-505904604@chat.facebook.com</name>
+					<alias>Rebecca G.</alias>
+					<setting name='buddy_icon' type='string'>d8dbb6d62a897c9cda24550c6c5295e7926657a9.jpg</setting>
+					<setting name='signedoff' type='int'>1319348146</setting>
+					<setting name='icon_checksum' type='string'>d8dbb6d62a897c9cda24550c6c5295e7926657a9</setting>
+					<setting name='last_seen' type='int'>1319348146</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-20606732@chat.facebook.com</name>
+					<alias>Laura Avery</alias>
+					<setting name='buddy_icon' type='string'>349825f06eb0633541687bd27de04d9c79cab346.jpg</setting>
+					<setting name='servernick' type='string'>Laura Avery</setting>
+					<setting name='icon_checksum' type='string'>349825f06eb0633541687bd27de04d9c79cab346</setting>
+					<setting name='last_seen' type='int'>1320544107</setting>
+				</buddy>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100000422934596@chat.facebook.com</name>
+					<alias>Alex Clark</alias>
+					<setting name='buddy_icon' type='string'>e1606801b06ba15b162869e92959fdbb5e199b4b.jpg</setting>
+					<setting name='icon_checksum' type='string'>e1606801b06ba15b162869e92959fdbb5e199b4b</setting>
+					<setting name='last_seen' type='int'>1318895785</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-517150242@chat.facebook.com</name>
+					<alias>Reza Rashidi</alias>
+					<setting name='buddy_icon' type='string'>2a4b54d033182da0ceafed7efdbdd3391b2c4da4.jpg</setting>
+					<setting name='icon_checksum' type='string'>2a4b54d033182da0ceafed7efdbdd3391b2c4da4</setting>
+					<setting name='last_seen' type='int'>1318891639</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-73102518@chat.facebook.com</name>
+					<alias>Ryan Evans</alias>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-20618561@chat.facebook.com</name>
+					<alias>Kat  Hiatt</alias>
+					<setting name='buddy_icon' type='string'>a22d7b19089f42028a35577e5167c48cd303bfda.jpg</setting>
+					<setting name='icon_checksum' type='string'>a22d7b19089f42028a35577e5167c48cd303bfda</setting>
+					<setting name='last_seen' type='int'>1316033761</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-20615597@chat.facebook.com</name>
+					<alias>Battletron Smith</alias>
+					<setting name='buddy_icon' type='string'>2a786bad3f3fea5ea025d1302b7c4f40f599d844.jpg</setting>
+					<setting name='icon_checksum' type='string'>2a786bad3f3fea5ea025d1302b7c4f40f599d844</setting>
+					<setting name='last_seen' type='int'>1320372957</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100000166824034@chat.facebook.com</name>
+					<alias>Susie Phelps</alias>
+					<setting name='buddy_icon' type='string'>72bbe2b9731515b80733ef9fd6135c9c8b120ed5.jpg</setting>
+					<setting name='icon_checksum' type='string'>72bbe2b9731515b80733ef9fd6135c9c8b120ed5</setting>
+					<setting name='last_seen' type='int'>1318917207</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-757105452@chat.facebook.com</name>
+					<alias>Ryan Williamson</alias>
+					<setting name='buddy_icon' type='string'>2dc0a35d3545d5b57ad44fb42a29a304e01e4736.jpg</setting>
+					<setting name='icon_checksum' type='string'>2dc0a35d3545d5b57ad44fb42a29a304e01e4736</setting>
+					<setting name='last_seen' type='int'>1318873626</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-610200455@chat.facebook.com</name>
+					<alias>Ashley Grace Elmore</alias>
+					<setting name='buddy_icon' type='string'>33eec32caabecbd7c6cb6e390071e2e50f7df4c3.jpg</setting>
+					<setting name='icon_checksum' type='string'>33eec32caabecbd7c6cb6e390071e2e50f7df4c3</setting>
+					<setting name='last_seen' type='int'>1321159324</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124303421@chat.facebook.com</name>
+					<alias>Daniel Fielding Johnston</alias>
+					<setting name='buddy_icon' type='string'>62d8f53a94955740c5193310eb9d3bc6b654d51f.jpg</setting>
+					<setting name='icon_checksum' type='string'>62d8f53a94955740c5193310eb9d3bc6b654d51f</setting>
+					<setting name='last_seen' type='int'>1318660247</setting>
+				</buddy>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-20616142@chat.facebook.com</name>
+					<alias>Whitney Gaskell</alias>
+					<setting name='buddy_icon' type='string'>a45ce4f08318b0191ebc7e6121985731f901b830.jpg</setting>
+					<setting name='icon_checksum' type='string'>a45ce4f08318b0191ebc7e6121985731f901b830</setting>
+					<setting name='last_seen' type='int'>1315258207</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124300938@chat.facebook.com</name>
+					<alias>Mason Loyd</alias>
+					<setting name='buddy_icon' type='string'>1e9f74782ed0ab18e33b5373785865ebd6edde88.jpg</setting>
+					<setting name='icon_checksum' type='string'>1e9f74782ed0ab18e33b5373785865ebd6edde88</setting>
+					<setting name='last_seen' type='int'>1318907159</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124300069@chat.facebook.com</name>
+					<alias>Ashton Pogue</alias>
+					<setting name='buddy_icon' type='string'>7a376735fd6c5e837697f34a048ba9f8c58ba54b.jpg</setting>
+					<setting name='icon_checksum' type='string'>7a376735fd6c5e837697f34a048ba9f8c58ba54b</setting>
+					<setting name='last_seen' type='int'>1313148686</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-20609451@chat.facebook.com</name>
+					<alias>Jesse Lane</alias>
+					<setting name='buddy_icon' type='string'>92937d01d2a2c7227d6f17c0f679f01c3eb0d85c.jpg</setting>
+					<setting name='icon_checksum' type='string'>92937d01d2a2c7227d6f17c0f679f01c3eb0d85c</setting>
+					<setting name='last_seen' type='int'>1318909113</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-20607004@chat.facebook.com</name>
+					<alias>Juan A Garcia</alias>
+					<setting name='buddy_icon' type='string'>226c0c29d4b9230666cb41451568e7f3e7314a01.jpg</setting>
+					<setting name='icon_checksum' type='string'>226c0c29d4b9230666cb41451568e7f3e7314a01</setting>
+					<setting name='last_seen' type='int'>1318910825</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-20603729@chat.facebook.com</name>
+					<alias>Kim Blew</alias>
+					<setting name='buddy_icon' type='string'>3b0cba7d66b65bb68323d5aca16ffc660e22372b.jpg</setting>
+					<setting name='icon_checksum' type='string'>3b0cba7d66b65bb68323d5aca16ffc660e22372b</setting>
+					<setting name='last_seen' type='int'>1320372957</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1664405109@chat.facebook.com</name>
+					<alias>Stephanie Elmore Self</alias>
+					<setting name='buddy_icon' type='string'>6073f35f6eb2e201a8fb8a18775602336651ba1c.jpg</setting>
+					<setting name='icon_checksum' type='string'>6073f35f6eb2e201a8fb8a18775602336651ba1c</setting>
+					<setting name='last_seen' type='int'>1317446978</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1539367151@chat.facebook.com</name>
+					<alias>Paul Stevens</alias>
+					<setting name='buddy_icon' type='string'>00f0f5002b4bb58203bc9e571dbffc3084cdbad5.jpg</setting>
+					<setting name='icon_checksum' type='string'>00f0f5002b4bb58203bc9e571dbffc3084cdbad5</setting>
+					<setting name='last_seen' type='int'>1300252623</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-560607144@chat.facebook.com</name>
+					<alias>Cassie Lee Palmer</alias>
+					<setting name='buddy_icon' type='string'>b3c49e2df7d6fe3d4a737965b048328732750584.jpg</setting>
+					<setting name='icon_checksum' type='string'>b3c49e2df7d6fe3d4a737965b048328732750584</setting>
+					<setting name='last_seen' type='int'>1313349352</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1665752476@chat.facebook.com</name>
+					<alias>Keith Simmons</alias>
+					<setting name='buddy_icon' type='string'>9985e9f4106cd677929d3460e50b147dfd1608bd.jpg</setting>
+					<setting name='icon_checksum' type='string'>9985e9f4106cd677929d3460e50b147dfd1608bd</setting>
+					<setting name='last_seen' type='int'>1321159324</setting>
+					<setting name='signedon' type='int'>1321158852</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-719733244@chat.facebook.com</name>
+					<alias>Erin Fowler</alias>
+					<setting name='buddy_icon' type='string'>554d28f9b6855bd0bee4eace810d8eb741835889.jpg</setting>
+					<setting name='icon_checksum' type='string'>554d28f9b6855bd0bee4eace810d8eb741835889</setting>
+					<setting name='last_seen' type='int'>1318917207</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124303629@chat.facebook.com</name>
+					<alias>Joel Michael Southern</alias>
+					<setting name='buddy_icon' type='string'>f95c77c1bc9002f946afd9626c1a4e7684a2beca.jpg</setting>
+					<setting name='icon_checksum' type='string'>f95c77c1bc9002f946afd9626c1a4e7684a2beca</setting>
+					<setting name='last_seen' type='int'>1316576396</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-116100017@chat.facebook.com</name>
+					<alias>Lt Lt Lt</alias>
+					<setting name='buddy_icon' type='string'>cad8e0535c72d5cc0783afca87a5eac9446a64cc.jpg</setting>
+					<setting name='signedoff' type='int'>1321159260</setting>
+					<setting name='icon_checksum' type='string'>cad8e0535c72d5cc0783afca87a5eac9446a64cc</setting>
+					<setting name='last_seen' type='int'>1321159260</setting>
+					<setting name='signedon' type='int'>1321159217</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100000017220569@chat.facebook.com</name>
+					<alias>Debi D. Elmore</alias>
+					<setting name='buddy_icon' type='string'>0a61405eaf80f8cb0031dc93fa557c0657de8487.jpg</setting>
+					<setting name='icon_checksum' type='string'>0a61405eaf80f8cb0031dc93fa557c0657de8487</setting>
+					<setting name='last_seen' type='int'>1318908974</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1025190266@chat.facebook.com</name>
+					<alias>Tara Satterfield</alias>
+					<setting name='buddy_icon' type='string'>5becdeae97a81a4ee753070f99e7010daad862e8.jpg</setting>
+					<setting name='icon_checksum' type='string'>5becdeae97a81a4ee753070f99e7010daad862e8</setting>
+					<setting name='last_seen' type='int'>1318885802</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-761425446@chat.facebook.com</name>
+					<alias>Cesar Casillas</alias>
+					<setting name='buddy_icon' type='string'>1eaba9053501fb12e26c20def97c28fb3630df0a.jpg</setting>
+					<setting name='icon_checksum' type='string'>1eaba9053501fb12e26c20def97c28fb3630df0a</setting>
+					<setting name='last_seen' type='int'>1316637507</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100001973851319@chat.facebook.com</name>
+					<alias>Patrick Donovan</alias>
+					<setting name='buddy_icon' type='string'>d1c03f279fd441f7f17a8422ed0aea03d76971e9.jpg</setting>
+					<setting name='icon_checksum' type='string'>d1c03f279fd441f7f17a8422ed0aea03d76971e9</setting>
+					<setting name='last_seen' type='int'>1314045932</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1390191740@chat.facebook.com</name>
+					<alias>Sarah Ann Koval</alias>
+					<setting name='buddy_icon' type='string'>5cff0bcd75bf9e34517ae65bbfa722081ffc55e6.jpg</setting>
+					<setting name='icon_checksum' type='string'>5cff0bcd75bf9e34517ae65bbfa722081ffc55e6</setting>
+					<setting name='last_seen' type='int'>1309850317</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-728485060@chat.facebook.com</name>
+					<alias>Kenna Gramlich</alias>
+					<setting name='buddy_icon' type='string'>8ba72cde410ed5f14265584108b1a8f0f652464d.jpg</setting>
+					<setting name='icon_checksum' type='string'>8ba72cde410ed5f14265584108b1a8f0f652464d</setting>
+					<setting name='last_seen' type='int'>1318886699</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-585692240@chat.facebook.com</name>
+					<alias>Terra LaShelle Patton</alias>
+					<setting name='buddy_icon' type='string'>90f0c7f6554b003490658eee72b5c9427d117eb6.jpg</setting>
+					<setting name='icon_checksum' type='string'>90f0c7f6554b003490658eee72b5c9427d117eb6</setting>
+					<setting name='last_seen' type='int'>1315525171</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124303503@chat.facebook.com</name>
+					<alias>ShaRay Clifton</alias>
+					<setting name='buddy_icon' type='string'>99882e43df5cf6fe09d1f8959d4ad6cf72b523ec.jpg</setting>
+					<setting name='icon_checksum' type='string'>99882e43df5cf6fe09d1f8959d4ad6cf72b523ec</setting>
+					<setting name='last_seen' type='int'>1315518511</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1555763752@chat.facebook.com</name>
+					<alias>Sam Cockram</alias>
+					<setting name='buddy_icon' type='string'>d51e3efbadc353d98fbb6805089cd54f902b4f1e.jpg</setting>
+					<setting name='icon_checksum' type='string'>d51e3efbadc353d98fbb6805089cd54f902b4f1e</setting>
+					<setting name='last_seen' type='int'>1316575091</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-503632637@chat.facebook.com</name>
+					<alias>Nadia Plunkett</alias>
+					<setting name='buddy_icon' type='string'>ccf243ce33caba0857e3cf11d774127eb44feace.jpg</setting>
+					<setting name='icon_checksum' type='string'>ccf243ce33caba0857e3cf11d774127eb44feace</setting>
+					<setting name='last_seen' type='int'>1321328553</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124300549@chat.facebook.com</name>
+					<alias>Courtney Boze</alias>
+					<setting name='buddy_icon' type='string'>a1134abe75a46a618df1b0077dbe9fada1ea5c03.jpg</setting>
+					<setting name='icon_checksum' type='string'>a1134abe75a46a618df1b0077dbe9fada1ea5c03</setting>
+					<setting name='last_seen' type='int'>1316307785</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124300334@chat.facebook.com</name>
+					<alias>Wade King</alias>
+					<setting name='buddy_icon' type='string'>950d7c0a51c40e8e46515cfcb60c95947e1ee47c.jpg</setting>
+					<setting name='icon_checksum' type='string'>950d7c0a51c40e8e46515cfcb60c95947e1ee47c</setting>
+					<setting name='last_seen' type='int'>1318916139</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100001536612546@chat.facebook.com</name>
+					<alias>Kelsey Scott</alias>
+					<setting name='buddy_icon' type='string'>bc838748de274371031c84d80204723971c26ca9.jpg</setting>
+					<setting name='signedoff' type='int'>1320174531</setting>
+					<setting name='icon_checksum' type='string'>bc838748de274371031c84d80204723971c26ca9</setting>
+					<setting name='last_seen' type='int'>1320174531</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100000940405661@chat.facebook.com</name>
+					<alias>Andrw Young</alias>
+					<setting name='buddy_icon' type='string'>d617b35dec3591342f6ebbbffe04725c4f3e3612.jpg</setting>
+					<setting name='icon_checksum' type='string'>d617b35dec3591342f6ebbbffe04725c4f3e3612</setting>
+					<setting name='last_seen' type='int'>1315593122</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1024800077@chat.facebook.com</name>
+					<alias>John Coleman</alias>
+					<setting name='buddy_icon' type='string'>9e6d0595165758740aaf49b01930adc9eec6059d.jpg</setting>
+					<setting name='icon_checksum' type='string'>9e6d0595165758740aaf49b01930adc9eec6059d</setting>
+					<setting name='last_seen' type='int'>1318906666</setting>
+				</buddy>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-780532789@chat.facebook.com</name>
+					<alias>Aaron Spence</alias>
+					<setting name='buddy_icon' type='string'>367ced3f031d7892f762ea6759068607d6f6c72d.jpg</setting>
+					<setting name='signedoff' type='int'>1321328541</setting>
+					<setting name='icon_checksum' type='string'>367ced3f031d7892f762ea6759068607d6f6c72d</setting>
+					<setting name='last_seen' type='int'>1321328541</setting>
+					<setting name='signedon' type='int'>1321328241</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-719339873@chat.facebook.com</name>
+					<alias>Wumbles Lee Jamieeson</alias>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124300353@chat.facebook.com</name>
+					<alias>Tyler Powers</alias>
+					<setting name='buddy_icon' type='string'>f582fbe70c58a6cfb3903a84c81980a23dd401a4.jpg</setting>
+					<setting name='icon_checksum' type='string'>f582fbe70c58a6cfb3903a84c81980a23dd401a4</setting>
+					<setting name='last_seen' type='int'>1318912184</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124300042@chat.facebook.com</name>
+					<alias>Lam Michael Nguyen</alias>
+					<setting name='buddy_icon' type='string'>8b86bd56c2d0d6778e4ae3f7ffb58c2ec49b1bad.jpg</setting>
+					<setting name='icon_checksum' type='string'>8b86bd56c2d0d6778e4ae3f7ffb58c2ec49b1bad</setting>
+					<setting name='last_seen' type='int'>1320544107</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1308935313@chat.facebook.com</name>
+					<alias>Mark Bliss</alias>
+					<setting name='buddy_icon' type='string'>378376a0c51b1a489f62f215f809d1e38ff6f377.jpg</setting>
+					<setting name='icon_checksum' type='string'>378376a0c51b1a489f62f215f809d1e38ff6f377</setting>
+					<setting name='last_seen' type='int'>1318819958</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-55002687@chat.facebook.com</name>
+					<alias>Patrick Upchurch</alias>
+					<setting name='buddy_icon' type='string'>f27401ea8689e3705035c23b44d286a3cc0ae1f0.jpg</setting>
+					<setting name='icon_checksum' type='string'>f27401ea8689e3705035c23b44d286a3cc0ae1f0</setting>
+					<setting name='last_seen' type='int'>1318904991</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-20610893@chat.facebook.com</name>
+					<alias>Anna Fiori</alias>
+					<setting name='buddy_icon' type='string'>156a7000808378f40f9abd4ae10ae6e24fdfc3f5.jpg</setting>
+					<setting name='icon_checksum' type='string'>156a7000808378f40f9abd4ae10ae6e24fdfc3f5</setting>
+					<setting name='last_seen' type='int'>1318911781</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1367211224@chat.facebook.com</name>
+					<alias>Danny Coleman</alias>
+					<setting name='buddy_icon' type='string'>be0b115d9ce97cbbbcec115c2154bce629ebabc0.jpg</setting>
+					<setting name='icon_checksum' type='string'>be0b115d9ce97cbbbcec115c2154bce629ebabc0</setting>
+					<setting name='last_seen' type='int'>1318904088</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-502872953@chat.facebook.com</name>
+					<alias>Seth Freeman</alias>
+					<setting name='buddy_icon' type='string'>5f4598326eb7f898b67196b25802c17acb0b1286.jpg</setting>
+					<setting name='icon_checksum' type='string'>5f4598326eb7f898b67196b25802c17acb0b1286</setting>
+					<setting name='last_seen' type='int'>1316825078</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1346626614@chat.facebook.com</name>
+					<alias>Tracy Anne Dressendorfer</alias>
+					<setting name='buddy_icon' type='string'>9f9bd063bb62aaf20f93f844f4ba55ded3bebe0a.jpg</setting>
+					<setting name='icon_checksum' type='string'>9f9bd063bb62aaf20f93f844f4ba55ded3bebe0a</setting>
+					<setting name='last_seen' type='int'>1318913434</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1735337708@chat.facebook.com</name>
+					<alias>LaRissa Flanagan</alias>
+					<setting name='buddy_icon' type='string'>d9d509bbd73f438bf2294c7fcd2009b3118f266c.jpg</setting>
+					<setting name='icon_checksum' type='string'>d9d509bbd73f438bf2294c7fcd2009b3118f266c</setting>
+					<setting name='last_seen' type='int'>1320372957</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1407709175@chat.facebook.com</name>
+					<alias>Rodney Hardy</alias>
+					<setting name='buddy_icon' type='string'>3c54a403fa3e0294d1c09dd0a3be778a289a5a28.jpg</setting>
+					<setting name='icon_checksum' type='string'>3c54a403fa3e0294d1c09dd0a3be778a289a5a28</setting>
+					<setting name='last_seen' type='int'>1317614471</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-727780233@chat.facebook.com</name>
+					<alias>Ryan Orsbun</alias>
+					<setting name='buddy_icon' type='string'>ae883c183cbec67b55f838cc88327719c73b80a2.jpg</setting>
+					<setting name='icon_checksum' type='string'>ae883c183cbec67b55f838cc88327719c73b80a2</setting>
+					<setting name='last_seen' type='int'>1318789712</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-677100330@chat.facebook.com</name>
+					<alias>Ashley Landers</alias>
+					<setting name='buddy_icon' type='string'>6a197ca6c3f407f8c5b6d55fb5719ecd2711b378.jpg</setting>
+					<setting name='icon_checksum' type='string'>6a197ca6c3f407f8c5b6d55fb5719ecd2711b378</setting>
+					<setting name='last_seen' type='int'>1310676697</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1447376299@chat.facebook.com</name>
+					<alias>Christina Martin</alias>
+					<setting name='buddy_icon' type='string'>255ebb26482b3f0fcd055a2ed486bd5ad515d5e5.jpg</setting>
+					<setting name='icon_checksum' type='string'>255ebb26482b3f0fcd055a2ed486bd5ad515d5e5</setting>
+					<setting name='last_seen' type='int'>1318910736</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1246047121@chat.facebook.com</name>
+					<alias>Quinn Mitchell</alias>
+					<setting name='buddy_icon' type='string'>1e51fdc8af8203736aaba59b95b464011d96cae2.jpg</setting>
+					<setting name='icon_checksum' type='string'>1e51fdc8af8203736aaba59b95b464011d96cae2</setting>
+					<setting name='last_seen' type='int'>1310086233</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124302950@chat.facebook.com</name>
+					<alias>Stewart James Martin</alias>
+					<setting name='buddy_icon' type='string'>ececfd3ba344ce21bc5b2a50905afa243fd37d28.jpg</setting>
+					<setting name='icon_checksum' type='string'>ececfd3ba344ce21bc5b2a50905afa243fd37d28</setting>
+					<setting name='last_seen' type='int'>1318917207</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1463887161@chat.facebook.com</name>
+					<alias>Gavin Carson</alias>
+					<setting name='buddy_icon' type='string'>4ef06d7ee881fba26f92eff675473abdb2056faf.jpg</setting>
+					<setting name='icon_checksum' type='string'>4ef06d7ee881fba26f92eff675473abdb2056faf</setting>
+					<setting name='last_seen' type='int'>1316811218</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1024770093@chat.facebook.com</name>
+					<alias>Jessica Marie</alias>
+					<setting name='buddy_icon' type='string'>457aa142faa38e67dd9173c3c128ba9b8d1c93f5.jpg</setting>
+					<setting name='icon_checksum' type='string'>457aa142faa38e67dd9173c3c128ba9b8d1c93f5</setting>
+					<setting name='last_seen' type='int'>1315883561</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-518039648@chat.facebook.com</name>
+					<alias>Milton Tu</alias>
+					<setting name='buddy_icon' type='string'>536efad1c4c0a65f0cb727cc2812807b1d9d4db8.jpg</setting>
+					<setting name='icon_checksum' type='string'>536efad1c4c0a65f0cb727cc2812807b1d9d4db8</setting>
+					<setting name='last_seen' type='int'>1315818264</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124302475@chat.facebook.com</name>
+					<alias>Katie Tran</alias>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124300188@chat.facebook.com</name>
+					<alias>Chris Cates</alias>
+					<setting name='buddy_icon' type='string'>d863c7b04c76450675491fda4c8282e1600a1462.jpg</setting>
+					<setting name='icon_checksum' type='string'>d863c7b04c76450675491fda4c8282e1600a1462</setting>
+					<setting name='last_seen' type='int'>1316137681</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-20602517@chat.facebook.com</name>
+					<alias>Zach Bliss</alias>
+					<setting name='buddy_icon' type='string'>21e8fe971a298479b607dad8bbfdc098b3c921c8.jpg</setting>
+					<setting name='icon_checksum' type='string'>21e8fe971a298479b607dad8bbfdc098b3c921c8</setting>
+					<setting name='last_seen' type='int'>1318900453</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-9634282@chat.facebook.com</name>
+					<alias>Aubrey Gamble</alias>
+					<setting name='buddy_icon' type='string'>674e61ac15714e8a24ddb1f4df8150018ee50f23.jpg</setting>
+					<setting name='icon_checksum' type='string'>674e61ac15714e8a24ddb1f4df8150018ee50f23</setting>
+					<setting name='last_seen' type='int'>1318906622</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100000203267556@chat.facebook.com</name>
+					<alias>Jeff Hickey</alias>
+					<setting name='buddy_icon' type='string'>0495e813a76ac29d3142d9248fde5589b249f0a7.jpg</setting>
+					<setting name='signedoff' type='int'>1321328361</setting>
+					<setting name='icon_checksum' type='string'>0495e813a76ac29d3142d9248fde5589b249f0a7</setting>
+					<setting name='last_seen' type='int'>1321328553</setting>
+					<setting name='signedon' type='int'>1321328451</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1842289865@chat.facebook.com</name>
+					<alias>Kara Kennel</alias>
+					<setting name='buddy_icon' type='string'>0ed8f4945280f5aea0555f9cfaff669618ce54e6.jpg</setting>
+					<setting name='icon_checksum' type='string'>0ed8f4945280f5aea0555f9cfaff669618ce54e6</setting>
+					<setting name='last_seen' type='int'>1318734056</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-674905506@chat.facebook.com</name>
+					<alias>Lyn Garcia</alias>
+					<setting name='buddy_icon' type='string'>866afa2bcb75efc08d502c84bab8dbe578d5ff2e.jpg</setting>
+					<setting name='icon_checksum' type='string'>866afa2bcb75efc08d502c84bab8dbe578d5ff2e</setting>
+					<setting name='last_seen' type='int'>1313857845</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100000712956116@chat.facebook.com</name>
+					<alias>Ben Dobbs</alias>
+					<setting name='buddy_icon' type='string'>f2b45a7ea096d9293b4eef16f479c664425afd13.jpg</setting>
+					<setting name='icon_checksum' type='string'>f2b45a7ea096d9293b4eef16f479c664425afd13</setting>
+					<setting name='last_seen' type='int'>1320544107</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-529705426@chat.facebook.com</name>
+					<alias>Justin Brown</alias>
+					<setting name='buddy_icon' type='string'>4684a9c420779c7a0ed1fffe37a2a57674a97ea2.jpg</setting>
+					<setting name='icon_checksum' type='string'>4684a9c420779c7a0ed1fffe37a2a57674a97ea2</setting>
+					<setting name='last_seen' type='int'>1318807431</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-20607065@chat.facebook.com</name>
+					<alias>Justin Quoss</alias>
+					<setting name='buddy_icon' type='string'>55b056141ab39e43ad69eae2ad9841db6f98f5bb.jpg</setting>
+					<setting name='icon_checksum' type='string'>55b056141ab39e43ad69eae2ad9841db6f98f5bb</setting>
+					<setting name='last_seen' type='int'>1320544107</setting>
+				</buddy>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-686502538@chat.facebook.com</name>
+					<alias>Nick Post</alias>
+					<setting name='buddy_icon' type='string'>388b67d5100d14f092d0ffc0d8b76d07af7be912.jpg</setting>
+					<setting name='icon_checksum' type='string'>388b67d5100d14f092d0ffc0d8b76d07af7be912</setting>
+					<setting name='last_seen' type='int'>1318915016</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-593289750@chat.facebook.com</name>
+					<alias>Debi Johnson</alias>
+					<setting name='buddy_icon' type='string'>5b8b0ce269947c28e2fad4242028bfb6cb25b047.jpg</setting>
+					<setting name='icon_checksum' type='string'>5b8b0ce269947c28e2fad4242028bfb6cb25b047</setting>
+					<setting name='last_seen' type='int'>1316823458</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1743560775@chat.facebook.com</name>
+					<alias>Jeremy Doering</alias>
+					<setting name='buddy_icon' type='string'>086633d018184e22c9168206aa8eb51dd9921abd.jpg</setting>
+					<setting name='icon_checksum' type='string'>086633d018184e22c9168206aa8eb51dd9921abd</setting>
+					<setting name='last_seen' type='int'>1318898536</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-500042341@chat.facebook.com</name>
+					<alias>Max Rodriguez</alias>
+					<setting name='buddy_icon' type='string'>d0056cf6844a7bf769f6b3be9e67143c8b0fe933.jpg</setting>
+					<setting name='icon_checksum' type='string'>d0056cf6844a7bf769f6b3be9e67143c8b0fe933</setting>
+					<setting name='lastsaid' type='string'>lol</setting>
+					<setting name='lastseen' type='int'>1321328392</setting>
+					<setting name='last_seen' type='int'>1321328553</setting>
+				</buddy>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-55003782@chat.facebook.com</name>
+					<alias>Michael Watson</alias>
+					<setting name='buddy_icon' type='string'>a04e9f08f618d563d1f3e3bf3a93977e2ca3f5ac.jpg</setting>
+					<setting name='icon_checksum' type='string'>a04e9f08f618d563d1f3e3bf3a93977e2ca3f5ac</setting>
+					<setting name='last_seen' type='int'>1309968220</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1365696495@chat.facebook.com</name>
+					<alias>Kelly Robison</alias>
+					<setting name='buddy_icon' type='string'>1903a25f6e57d6d9bf56875eec4b000638e33f78.jpg</setting>
+					<setting name='icon_checksum' type='string'>1903a25f6e57d6d9bf56875eec4b000638e33f78</setting>
+					<setting name='last_seen' type='int'>1308964319</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-502210314@chat.facebook.com</name>
+					<alias>Nic Mayville</alias>
+					<setting name='buddy_icon' type='string'>6280466370951edc5879387a3bfd0b57c1f85fd4.jpg</setting>
+					<setting name='icon_checksum' type='string'>6280466370951edc5879387a3bfd0b57c1f85fd4</setting>
+					<setting name='last_seen' type='int'>1320544107</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124303837@chat.facebook.com</name>
+					<alias>Emily Qualls</alias>
+					<setting name='buddy_icon' type='string'>ade0ec110cfe985f3d88e84efa5f2bc1fc41acbe.jpg</setting>
+					<setting name='icon_checksum' type='string'>ade0ec110cfe985f3d88e84efa5f2bc1fc41acbe</setting>
+					<setting name='last_seen' type='int'>1316845239</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124301303@chat.facebook.com</name>
+					<alias>Rachael Choate</alias>
+					<setting name='buddy_icon' type='string'>2c9dee75110355593efe7bca22c87b22b44047f7.jpg</setting>
+					<setting name='icon_checksum' type='string'>2c9dee75110355593efe7bca22c87b22b44047f7</setting>
+					<setting name='last_seen' type='int'>1316141551</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124300498@chat.facebook.com</name>
+					<alias>Reece Jones</alias>
+					<setting name='buddy_icon' type='string'>cf46b0eae4a302b0cc91710f934c7e22199f622e.jpg</setting>
+					<setting name='icon_checksum' type='string'>cf46b0eae4a302b0cc91710f934c7e22199f622e</setting>
+					<setting name='last_seen' type='int'>1316459304</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124300434@chat.facebook.com</name>
+					<alias>Brian Shepherd</alias>
+					<setting name='buddy_icon' type='string'>9eb2e56f396695163fb7cd78d145db3d8b265696.jpg</setting>
+					<setting name='icon_checksum' type='string'>9eb2e56f396695163fb7cd78d145db3d8b265696</setting>
+					<setting name='last_seen' type='int'>1321328553</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124300059@chat.facebook.com</name>
+					<alias>Nic &apos;Show Stoppa&apos; Brown</alias>
+					<setting name='buddy_icon' type='string'>8614b6d9b6067f523ffc228635214411526fd9e1.jpg</setting>
+					<setting name='signedoff' type='int'>1321158942</setting>
+					<setting name='icon_checksum' type='string'>8614b6d9b6067f523ffc228635214411526fd9e1</setting>
+					<setting name='last_seen' type='int'>1321328553</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1024801014@chat.facebook.com</name>
+					<alias>Becca R.</alias>
+					<setting name='buddy_icon' type='string'>ba75de3f592b06d9f1d1473ebb2c4690aa0a366d.jpg</setting>
+					<setting name='icon_checksum' type='string'>ba75de3f592b06d9f1d1473ebb2c4690aa0a366d</setting>
+					<setting name='last_seen' type='int'>1318904722</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-630709201@chat.facebook.com</name>
+					<alias>Sara Smith</alias>
+					<setting name='buddy_icon' type='string'>c862f2cc2616b7f4c4d32d0152ddb2c37e9a88d6.jpg</setting>
+					<setting name='icon_checksum' type='string'>c862f2cc2616b7f4c4d32d0152ddb2c37e9a88d6</setting>
+					<setting name='last_seen' type='int'>1297091377</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124301043@chat.facebook.com</name>
+					<alias>April Jones</alias>
+					<setting name='buddy_icon' type='string'>290454ac5baad0f1cfb20425c43a627d7124d6ce.jpg</setting>
+					<setting name='icon_checksum' type='string'>290454ac5baad0f1cfb20425c43a627d7124d6ce</setting>
+					<setting name='last_seen' type='int'>1318904947</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124301011@chat.facebook.com</name>
+					<alias>Sam Horne</alias>
+					<setting name='buddy_icon' type='string'>b485c2c17193459f7a981943b62948a855fa4b74.jpg</setting>
+					<setting name='icon_checksum' type='string'>b485c2c17193459f7a981943b62948a855fa4b74</setting>
+					<setting name='last_seen' type='int'>1320544107</setting>
+					<setting name='signedon' type='int'>1319348059</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-20610942@chat.facebook.com</name>
+					<alias>Jennaay Dobbins Smith</alias>
+					<setting name='buddy_icon' type='string'>eddede6a1c3b755ac4a002f0d245c5714bed83be.jpg</setting>
+					<setting name='signedoff' type='int'>1321328361</setting>
+					<setting name='icon_checksum' type='string'>eddede6a1c3b755ac4a002f0d245c5714bed83be</setting>
+					<setting name='last_seen' type='int'>1321328361</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-787385292@chat.facebook.com</name>
+					<alias>Alice Patton Carpenter</alias>
+					<setting name='buddy_icon' type='string'>f1cce4c8a1ace4d180410e476ace50ee78cc0b5b.jpg</setting>
+					<setting name='icon_checksum' type='string'>f1cce4c8a1ace4d180410e476ace50ee78cc0b5b</setting>
+					<setting name='last_seen' type='int'>1320544107</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-646386005@chat.facebook.com</name>
+					<alias>Jake Coleman</alias>
+					<setting name='buddy_icon' type='string'>3cfe0c8abced2b3bcb55375a253fb2dba9fb7cfd.jpg</setting>
+					<setting name='icon_checksum' type='string'>3cfe0c8abced2b3bcb55375a253fb2dba9fb7cfd</setting>
+					<setting name='last_seen' type='int'>1318899688</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-634490248@chat.facebook.com</name>
+					<alias>Adam Lee Fields</alias>
+					<setting name='buddy_icon' type='string'>c38e9ae79b1551b5e63850706efae0def209ff84.jpg</setting>
+					<setting name='icon_checksum' type='string'>c38e9ae79b1551b5e63850706efae0def209ff84</setting>
+					<setting name='last_seen' type='int'>1318899249</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-618323384@chat.facebook.com</name>
+					<alias>Natasha Lee Ann Tilton</alias>
+					<setting name='buddy_icon' type='string'>048f32bb4be5a0e1f2f1d6eb7ab14a4b700d5f7e.jpg</setting>
+					<setting name='icon_checksum' type='string'>048f32bb4be5a0e1f2f1d6eb7ab14a4b700d5f7e</setting>
+					<setting name='last_seen' type='int'>1321328553</setting>
+					<setting name='signedon' type='int'>1321159125</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1238978397@chat.facebook.com</name>
+					<alias>Stephanie Rain Raney</alias>
+					<setting name='buddy_icon' type='string'>e555457e6b6398b5700a4c83dd8da022604a4e3c.jpg</setting>
+					<setting name='icon_checksum' type='string'>e555457e6b6398b5700a4c83dd8da022604a4e3c</setting>
+					<setting name='last_seen' type='int'>1316572976</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1137555104@chat.facebook.com</name>
+					<alias>Hannah Ross</alias>
+					<setting name='buddy_icon' type='string'>7158d1680ead980a91ba51325c9d5e863be58156.jpg</setting>
+					<setting name='icon_checksum' type='string'>7158d1680ead980a91ba51325c9d5e863be58156</setting>
+					<setting name='last_seen' type='int'>1318898982</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100000421059222@chat.facebook.com</name>
+					<alias>Kristie Avery</alias>
+					<setting name='buddy_icon' type='string'>1d1af308a4b5cce3124d2dd318e600dc246326c9.jpg</setting>
+					<setting name='signedoff' type='int'>1321328361</setting>
+					<setting name='icon_checksum' type='string'>1d1af308a4b5cce3124d2dd318e600dc246326c9</setting>
+					<setting name='last_seen' type='int'>1321328553</setting>
+					<setting name='signedon' type='int'>1321328541</setting>
+				</buddy>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-625525633@chat.facebook.com</name>
+					<alias>Chadd Brown</alias>
+					<setting name='buddy_icon' type='string'>77a10883b8f748777cafdae78e282b4d0785b1b4.jpg</setting>
+					<setting name='icon_checksum' type='string'>77a10883b8f748777cafdae78e282b4d0785b1b4</setting>
+					<setting name='last_seen' type='int'>1316783364</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124300016@chat.facebook.com</name>
+					<alias>Debbie Russell</alias>
+					<setting name='buddy_icon' type='string'>307b6bcf8654a0a0f79d8d95aea3efd26a355d91.jpg</setting>
+					<setting name='icon_checksum' type='string'>307b6bcf8654a0a0f79d8d95aea3efd26a355d91</setting>
+					<setting name='last_seen' type='int'>1318715009</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100000466964540@chat.facebook.com</name>
+					<alias>Kami Young</alias>
+					<setting name='buddy_icon' type='string'>e355defa977f88da6d592b243040afe4c734258e.jpg</setting>
+					<setting name='icon_checksum' type='string'>e355defa977f88da6d592b243040afe4c734258e</setting>
+					<setting name='last_seen' type='int'>1311772120</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1585388667@chat.facebook.com</name>
+					<alias>Buckley Blew</alias>
+					<setting name='buddy_icon' type='string'>915cf019463ed55d6f067cb74f104d5303714edb.jpg</setting>
+					<setting name='icon_checksum' type='string'>915cf019463ed55d6f067cb74f104d5303714edb</setting>
+					<setting name='last_seen' type='int'>1318905255</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1527757878@chat.facebook.com</name>
+					<alias>Leon Palmer</alias>
+					<setting name='buddy_icon' type='string'>d2025aa06380eefb2d6bcf8b5593a4ddbc703f48.jpg</setting>
+					<setting name='icon_checksum' type='string'>d2025aa06380eefb2d6bcf8b5593a4ddbc703f48</setting>
+					<setting name='last_seen' type='int'>1313026290</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1196560172@chat.facebook.com</name>
+					<alias>Matt Poe</alias>
+					<setting name='buddy_icon' type='string'>e1fc93f22f29683262a060dcd86ca75daf6e8f7a.jpg</setting>
+					<setting name='icon_checksum' type='string'>e1fc93f22f29683262a060dcd86ca75daf6e8f7a</setting>
+					<setting name='last_seen' type='int'>1318900589</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-635963065@chat.facebook.com</name>
+					<alias>Katie Bauman</alias>
+					<setting name='buddy_icon' type='string'>1f04e8c0b260a020a40df031573aec223528e599.jpg</setting>
+					<setting name='icon_checksum' type='string'>1f04e8c0b260a020a40df031573aec223528e599</setting>
+					<setting name='last_seen' type='int'>1315247346</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100000598576092@chat.facebook.com</name>
+					<alias>Shannon Moudy</alias>
+					<setting name='buddy_icon' type='string'>81c4bd84b7366cfa141891fa91d3d9d782060a15.jpg</setting>
+					<setting name='icon_checksum' type='string'>81c4bd84b7366cfa141891fa91d3d9d782060a15</setting>
+					<setting name='last_seen' type='int'>1316635977</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100000011901217@chat.facebook.com</name>
+					<alias>Danielle Dollar</alias>
+					<setting name='buddy_icon' type='string'>9d78a34f8e8ba617d0c9efb7299ab866dc505151.jpg</setting>
+					<setting name='icon_checksum' type='string'>9d78a34f8e8ba617d0c9efb7299ab866dc505151</setting>
+					<setting name='last_seen' type='int'>1318786799</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1442391524@chat.facebook.com</name>
+					<alias>Michele Rusin</alias>
+					<setting name='buddy_icon' type='string'>19126de080d1a9a537123a7fb197458e0bb4f598.jpg</setting>
+					<setting name='icon_checksum' type='string'>19126de080d1a9a537123a7fb197458e0bb4f598</setting>
+					<setting name='last_seen' type='int'>1316102024</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1305922043@chat.facebook.com</name>
+					<alias>Aja Burns</alias>
+					<setting name='buddy_icon' type='string'>993e71d52a43c5c275073316781cf1d340dda055.jpg</setting>
+					<setting name='icon_checksum' type='string'>993e71d52a43c5c275073316781cf1d340dda055</setting>
+					<setting name='last_seen' type='int'>1318899558</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1029210417@chat.facebook.com</name>
+					<alias>Morgan Smith</alias>
+					<setting name='buddy_icon' type='string'>86d49f2b1456aae24107e174573638590f0bd254.jpg</setting>
+					<setting name='icon_checksum' type='string'>86d49f2b1456aae24107e174573638590f0bd254</setting>
+					<setting name='last_seen' type='int'>1314551948</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-511303449@chat.facebook.com</name>
+					<alias>Amber Scroggins</alias>
+					<setting name='buddy_icon' type='string'>30b0f3fe0a886cc840ca089508f4dbde184c07b5.jpg</setting>
+					<setting name='signedoff' type='int'>1321159032</setting>
+					<setting name='icon_checksum' type='string'>30b0f3fe0a886cc840ca089508f4dbde184c07b5</setting>
+					<setting name='last_seen' type='int'>1321159032</setting>
+					<setting name='signedon' type='int'>1321158988</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124303105@chat.facebook.com</name>
+					<alias>Darron Campbell</alias>
+					<setting name='buddy_icon' type='string'>344fda3cee304fc6cce24e71fb080a4e571c3468.jpg</setting>
+					<setting name='icon_checksum' type='string'>344fda3cee304fc6cce24e71fb080a4e571c3468</setting>
+					<setting name='last_seen' type='int'>1316845239</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124302986@chat.facebook.com</name>
+					<alias>A.J. Cook</alias>
+					<setting name='buddy_icon' type='string'>022413ed7cde923419a242474b7fcca11bf273b5.jpg</setting>
+					<setting name='icon_checksum' type='string'>022413ed7cde923419a242474b7fcca11bf273b5</setting>
+					<setting name='last_seen' type='int'>1320544107</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124301344@chat.facebook.com</name>
+					<alias>Emily Brown</alias>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1540818682@chat.facebook.com</name>
+					<alias>John Mazurkiewicz</alias>
+					<setting name='buddy_icon' type='string'>2b8ebe71b10d74b282ffe0a45ae14b59d2eff9a7.jpg</setting>
+					<setting name='icon_checksum' type='string'>2b8ebe71b10d74b282ffe0a45ae14b59d2eff9a7</setting>
+					<setting name='last_seen' type='int'>1297458269</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1024800561@chat.facebook.com</name>
+					<alias>Brent Shook</alias>
+					<setting name='buddy_icon' type='string'>a8bc6a622f4405e6868503311857b056cf11a4ed.jpg</setting>
+					<setting name='icon_checksum' type='string'>a8bc6a622f4405e6868503311857b056cf11a4ed</setting>
+					<setting name='last_seen' type='int'>1316805908</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-881245412@chat.facebook.com</name>
+					<alias>Chelsea Higgins</alias>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-714650589@chat.facebook.com</name>
+					<alias>Alexis McDonald</alias>
+					<setting name='buddy_icon' type='string'>8c04341685564b2a07b9a9776a746ae32d6aa045.jpg</setting>
+					<setting name='icon_checksum' type='string'>8c04341685564b2a07b9a9776a746ae32d6aa045</setting>
+					<setting name='last_seen' type='int'>1315847065</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-705385553@chat.facebook.com</name>
+					<alias>Stephanie Crovella</alias>
+					<setting name='buddy_icon' type='string'>74d3407ca902d415c22d43dddce7683c00b60bf4.jpg</setting>
+					<setting name='icon_checksum' type='string'>74d3407ca902d415c22d43dddce7683c00b60bf4</setting>
+					<setting name='last_seen' type='int'>1319348165</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-141500842@chat.facebook.com</name>
+					<alias>Michella Cook</alias>
+					<setting name='buddy_icon' type='string'>7ca0641b38822be7616283058dcc25df899a5da7.jpg</setting>
+					<setting name='icon_checksum' type='string'>7ca0641b38822be7616283058dcc25df899a5da7</setting>
+					<setting name='last_seen' type='int'>1320372957</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1446990059@chat.facebook.com</name>
+					<alias>Shawn Thompson</alias>
+					<setting name='buddy_icon' type='string'>61dbe3044a91178338d44e0a5cb3406857e0f257.jpg</setting>
+					<setting name='icon_checksum' type='string'>61dbe3044a91178338d44e0a5cb3406857e0f257</setting>
+					<setting name='last_seen' type='int'>1297993359</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1024800975@chat.facebook.com</name>
+					<alias>Stacy Hall</alias>
+					<setting name='buddy_icon' type='string'>9c9ad93ff3d938fd690a57676445f08d36796dae.jpg</setting>
+					<setting name='icon_checksum' type='string'>9c9ad93ff3d938fd690a57676445f08d36796dae</setting>
+					<setting name='last_seen' type='int'>1315836084</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1024800138@chat.facebook.com</name>
+					<alias>Valerie Duty</alias>
+					<setting name='buddy_icon' type='string'>ba62dfa64e51095e821d65fcb4bda0ee8e45132c.jpg</setting>
+					<setting name='icon_checksum' type='string'>ba62dfa64e51095e821d65fcb4bda0ee8e45132c</setting>
+					<setting name='last_seen' type='int'>1302645958</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100001834090605@chat.facebook.com</name>
+					<alias>Jamaican Jamie</alias>
+					<setting name='buddy_icon' type='string'>8fc3e41c91761f4526fbe771fdeb8656e01e408b.jpg</setting>
+					<setting name='icon_checksum' type='string'>8fc3e41c91761f4526fbe771fdeb8656e01e408b</setting>
+					<setting name='last_seen' type='int'>1318801197</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100002013449176@chat.facebook.com</name>
+					<alias>Bex Drummonds</alias>
+					<setting name='buddy_icon' type='string'>40143f7231941afbaeadda70b8b1df874651d91a.jpg</setting>
+					<setting name='icon_checksum' type='string'>40143f7231941afbaeadda70b8b1df874651d91a</setting>
+					<setting name='last_seen' type='int'>1318741347</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-905535252@chat.facebook.com</name>
+					<alias>Derek Tong</alias>
+					<setting name='buddy_icon' type='string'>0032ef64b6fc0e6b4aebc6b81511e48bd2b7d11f.jpg</setting>
+					<setting name='signedoff' type='int'>1321159305</setting>
+					<setting name='icon_checksum' type='string'>0032ef64b6fc0e6b4aebc6b81511e48bd2b7d11f</setting>
+					<setting name='last_seen' type='int'>1321159305</setting>
+					<setting name='signedon' type='int'>1321159260</setting>
+				</buddy>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1102174464@chat.facebook.com</name>
+					<alias>Glenda Lea Hoover</alias>
+					<setting name='buddy_icon' type='string'>62ef303e52fe9389f0be8643737f5f1413d82a5a.jpg</setting>
+					<setting name='icon_checksum' type='string'>62ef303e52fe9389f0be8643737f5f1413d82a5a</setting>
+					<setting name='last_seen' type='int'>1316200143</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100001815121967@chat.facebook.com</name>
+					<alias>Krishna Bragg</alias>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124302210@chat.facebook.com</name>
+					<alias>Sara Shores</alias>
+					<setting name='buddy_icon' type='string'>750f936995fbfb1886e3873d8d4519ec357a837b.jpg</setting>
+					<setting name='icon_checksum' type='string'>750f936995fbfb1886e3873d8d4519ec357a837b</setting>
+					<setting name='last_seen' type='int'>1318905614</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100002133872050@chat.facebook.com</name>
+					<alias>Sarah March</alias>
+					<setting name='buddy_icon' type='string'>e71a3cceba1444d8e3453a7b6aac406c54119f6c.jpg</setting>
+					<setting name='icon_checksum' type='string'>e71a3cceba1444d8e3453a7b6aac406c54119f6c</setting>
+					<setting name='last_seen' type='int'>1318900406</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-535936414@chat.facebook.com</name>
+					<alias>Daniel Flores</alias>
+					<setting name='buddy_icon' type='string'>706cdc4d8878fdbe59eddb9005ec7d200b0e16b5.jpg</setting>
+					<setting name='icon_checksum' type='string'>706cdc4d8878fdbe59eddb9005ec7d200b0e16b5</setting>
+					<setting name='last_seen' type='int'>1310089158</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-755535113@chat.facebook.com</name>
+					<alias>Aaron-Hollywood Harper</alias>
+					<setting name='buddy_icon' type='string'>fb776d93867c654fe87b0f05c37de40b9bc09430.jpg</setting>
+					<setting name='icon_checksum' type='string'>fb776d93867c654fe87b0f05c37de40b9bc09430</setting>
+					<setting name='last_seen' type='int'>1321328553</setting>
+					<setting name='signedon' type='int'>1321328409</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100000467124586@chat.facebook.com</name>
+					<alias>Steven Sanders</alias>
+					<setting name='buddy_icon' type='string'>70cbdbcc228de60af5a4986e3c5f5b5e7a8ef0da.jpg</setting>
+					<setting name='icon_checksum' type='string'>70cbdbcc228de60af5a4986e3c5f5b5e7a8ef0da</setting>
+					<setting name='last_seen' type='int'>1318896413</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-73103642@chat.facebook.com</name>
+					<alias>Lindsey Samo</alias>
+					<setting name='buddy_icon' type='string'>6192f2cd6dbb5c493c497a8cb84ed4ad074f7ff5.jpg</setting>
+					<setting name='signedoff' type='int'>1321328496</setting>
+					<setting name='icon_checksum' type='string'>6192f2cd6dbb5c493c497a8cb84ed4ad074f7ff5</setting>
+					<setting name='last_seen' type='int'>1321328496</setting>
+					<setting name='signedon' type='int'>1321328451</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-616165292@chat.facebook.com</name>
+					<alias>Stevie Faulkenberry</alias>
+					<setting name='buddy_icon' type='string'>b8e5f162fc3dab1723ded7f16bc5de11401792cf.jpg</setting>
+					<setting name='icon_checksum' type='string'>b8e5f162fc3dab1723ded7f16bc5de11401792cf</setting>
+					<setting name='last_seen' type='int'>1318904271</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@gmail.com/Pidgin' proto='prpl-jabber'>
+					<name>jquoss@gmail.com</name>
+					<setting name='buddy_icon' type='string'>5c5573328d336ccd08afc3170bc35e16f0387d93.jpg</setting>
+					<setting name='icon_checksum' type='string'>5c5573328d336ccd08afc3170bc35e16f0387d93</setting>
+					<setting name='last_seen' type='int'>1306248242</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@gmail.com/Pidgin' proto='prpl-jabber'>
+					<name>shdwdrake8@gmail.com</name>
+					<alias>Psilocybin/EQ</alias>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1028760256@chat.facebook.com</name>
+					<alias>Gabe Martinez</alias>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-860195296@chat.facebook.com</name>
+					<alias>Cady Tweeddale</alias>
+					<setting name='buddy_icon' type='string'>1ab284201ebb10746e2b8f6863ca1d97c98af8d1.jpg</setting>
+					<setting name='icon_checksum' type='string'>1ab284201ebb10746e2b8f6863ca1d97c98af8d1</setting>
+					<setting name='last_seen' type='int'>1318807164</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124300077@chat.facebook.com</name>
+					<alias>Emily Martin</alias>
+					<setting name='buddy_icon' type='string'>828bd2df9ac7b5e70e66403953e77380c7914e83.jpg</setting>
+					<setting name='icon_checksum' type='string'>828bd2df9ac7b5e70e66403953e77380c7914e83</setting>
+					<setting name='last_seen' type='int'>1316765139</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-20608281@chat.facebook.com</name>
+					<alias>Callie Moll</alias>
+					<setting name='buddy_icon' type='string'>20358e429a52650678031e25dd3e7490e3de8387.jpg</setting>
+					<setting name='icon_checksum' type='string'>20358e429a52650678031e25dd3e7490e3de8387</setting>
+					<setting name='last_seen' type='int'>1316658433</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-513078208@chat.facebook.com</name>
+					<alias>Josh Ferrell</alias>
+					<setting name='buddy_icon' type='string'>e6bda5b048bc7935b55468ab5e618c71d292bc5a.jpg</setting>
+					<setting name='icon_checksum' type='string'>e6bda5b048bc7935b55468ab5e618c71d292bc5a</setting>
+					<setting name='last_seen' type='int'>1318819054</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1333785516@chat.facebook.com</name>
+					<alias>Tyler Staggs</alias>
+					<setting name='buddy_icon' type='string'>e5ca92c6dec2c801cf1c1f357f348195c1fbf7ad.jpg</setting>
+					<setting name='icon_checksum' type='string'>e5ca92c6dec2c801cf1c1f357f348195c1fbf7ad</setting>
+					<setting name='last_seen' type='int'>1316825888</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100001958615866@chat.facebook.com</name>
+					<alias>Daniel Rexford</alias>
+					<setting name='buddy_icon' type='string'>cecf9de0e1973d198399980e4e27c7493036bb61.jpg</setting>
+					<setting name='icon_checksum' type='string'>cecf9de0e1973d198399980e4e27c7493036bb61</setting>
+					<setting name='last_seen' type='int'>1318903466</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100001788330388@chat.facebook.com</name>
+					<alias>Nick Burtenshaw</alias>
+					<setting name='buddy_icon' type='string'>09c92d2d3d5320fa59477078a0544e586fab980b.jpg</setting>
+					<setting name='icon_checksum' type='string'>09c92d2d3d5320fa59477078a0544e586fab980b</setting>
+					<setting name='last_seen' type='int'>1314696086</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100002632424128@chat.facebook.com</name>
+					<alias>Jessica Marie</alias>
+					<setting name='buddy_icon' type='string'>40487e4b5a7aac4fdccc3356875672e14f68f401.jpg</setting>
+					<setting name='signedoff' type='int'>1321328496</setting>
+					<setting name='icon_checksum' type='string'>40487e4b5a7aac4fdccc3356875672e14f68f401</setting>
+					<setting name='last_seen' type='int'>1321328496</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-505913875@chat.facebook.com</name>
+					<alias>Christopher Patrick Feeny</alias>
+					<setting name='buddy_icon' type='string'>02fc171792935a794ea9c9b77cb9c92153c421e8.jpg</setting>
+					<setting name='icon_checksum' type='string'>02fc171792935a794ea9c9b77cb9c92153c421e8</setting>
+					<setting name='last_seen' type='int'>1318911551</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-548075782@chat.facebook.com</name>
+					<alias>D.j. Hurlocker</alias>
+					<setting name='buddy_icon' type='string'>b7cb88f2ad4410981ad537cd91cb17a608e660c7.jpg</setting>
+					<setting name='icon_checksum' type='string'>b7cb88f2ad4410981ad537cd91cb17a608e660c7</setting>
+					<setting name='last_seen' type='int'>1315251036</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-100002271859173@chat.facebook.com</name>
+					<alias>Derek Allen</alias>
+					<setting name='buddy_icon' type='string'>7a81d1fe88d2fecab0667ad409a0f1dc2d921ec9.jpg</setting>
+					<setting name='icon_checksum' type='string'>7a81d1fe88d2fecab0667ad409a0f1dc2d921ec9</setting>
+					<setting name='last_seen' type='int'>1318852293</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1256602107@chat.facebook.com</name>
+					<alias>Megan Parochka</alias>
+					<setting name='buddy_icon' type='string'>4eef481c0215335fa6ec9d0ba6a849d83d29843d.jpg</setting>
+					<setting name='icon_checksum' type='string'>4eef481c0215335fa6ec9d0ba6a849d83d29843d</setting>
+					<setting name='last_seen' type='int'>1318897137</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-1111970272@chat.facebook.com</name>
+					<alias>Mackenzie J McGehee</alias>
+					<setting name='buddy_icon' type='string'>fd8486648c80b4639762ce05a4c5a1035f62e422.jpg</setting>
+					<setting name='icon_checksum' type='string'>fd8486648c80b4639762ce05a4c5a1035f62e422</setting>
+					<setting name='last_seen' type='int'>1321159324</setting>
+					<setting name='signedon' type='int'>1319348146</setting>
+				</buddy>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-124302312@chat.facebook.com</name>
+					<alias>Brittany Mitchell</alias>
+					<setting name='buddy_icon' type='string'>09d4fd66087163e5be005c1875529f835806f133.jpg</setting>
+					<setting name='signedoff' type='int'>1321159171</setting>
+					<setting name='icon_checksum' type='string'>09d4fd66087163e5be005c1875529f835806f133</setting>
+					<setting name='last_seen' type='int'>1321328553</setting>
+					<setting name='signedon' type='int'>1321328136</setting>
+				</buddy>
+				<setting name='gtk-mute-sound' type='bool'>0</setting>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-608255356@chat.facebook.com</name>
+					<alias>William Lix</alias>
+					<setting name='buddy_icon' type='string'>cf0a7f7d51d1504aef1884d6339983f2062e5fb1.jpg</setting>
+					<setting name='icon_checksum' type='string'>cf0a7f7d51d1504aef1884d6339983f2062e5fb1</setting>
+					<setting name='last_seen' type='int'>1320372957</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-706765884@chat.facebook.com</name>
+					<alias>Mason Carr</alias>
+					<setting name='buddy_icon' type='string'>e24faa310015d7b64eb84a3da9102389c9b2329a.jpg</setting>
+					<setting name='icon_checksum' type='string'>e24faa310015d7b64eb84a3da9102389c9b2329a</setting>
+					<setting name='last_seen' type='int'>1318786938</setting>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='jeffrey.carp@gmail.com/Pidgin' proto='prpl-jabber'>
+					<name>i8degrees@gmail.com</name>
+					<alias>Jeff Carpenter</alias>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='i8degrees@chat.facebook.com/pidgin' proto='prpl-jabber'>
+					<name>-622530213@chat.facebook.com</name>
+					<alias>Rhiannon Weldon Ⓥ</alias>
+				</buddy>
+			</contact>
+			<contact>
+				<buddy account='jeffrey.carp@gmail.com/Pidgin' proto='prpl-jabber'>
+					<name>ak.osterman.ii@gmail.com</name>
+					<alias>Amanda</alias>
+					<setting name='buddy_icon' type='string'>2dd5d87f52b89ce8125f762549ab65d0635b08b1.jpg</setting>
+					<setting name='signedoff' type='int'>1327077199</setting>
+					<setting name='icon_checksum' type='string'>2dd5d87f52b89ce8125f762549ab65d0635b08b1</setting>
+					<setting name='last_seen' type='int'>1327077199</setting>
+					<setting name='signedon' type='int'>1327076958</setting>
+				</buddy>
+			</contact>
+		</group>
+	</blist>
+	<privacy>
+		<account proto='prpl-jabber' name='i8degrees@chat.facebook.com/pidgin' mode='1'/>
+		<account proto='prpl-aim' name='i8degrees' mode='4'>
+			<block>curlykayak</block>
+			<block>chrisudw3</block>
+			<block>bballchick111313</block>
+			<block>alabamaval51</block>
+			<block>boltz21</block>
+			<block>jerknxbab3</block>
+			<block>allstarwideout83</block>
+			<block>sueannbukaxogz</block>
+			<block>lilknight18</block>
+			<block>xllokatieollx</block>
+		</account>
+		<account proto='prpl-irc' name='wizzie@irc.eqemulator.net' mode='1'/>
+		<account proto='prpl-jabber' name='i8degrees@gmail.com/Pidgin' mode='1'/>
+		<account proto='prpl-irc' name='wizzie@irc.gamesurge.net' mode='1'/>
+		<account proto='prpl-yahoo' name='i8degrees' mode='1'/>
+		<account proto='prpl-jabber' name='jeffrey.carp@gmail.com/Pidgin' mode='1'/>
+		<account proto='prpl-irc' name='i8degrees@irc.freenode.net' mode='1'/>
+		<account proto='prpl-irc' name='i8degrees@justfielding.com' mode='1'/>
+	</privacy>
+</purple>

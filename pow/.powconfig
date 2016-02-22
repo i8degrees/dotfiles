@@ -1,0 +1,43 @@
+# 2016-02/12:jeff
+#
+#   .powconfig
+#
+# SYNOPSIS: The default system environment for web apps hosted by Pow.
+#
+# IMPORTANT(jeff): Changes made to this file will not be reflected until Pow
+# has been restarted.
+#
+# IMPORTANT(jeff): Customize the local environment for the web app by
+# provisioning an app-specific .powconfig in the root directory of the app.
+#
+#   SEE ALSO
+# 1. http://pow.cx/
+# 2. https://github.com/37signals/pow/wiki/Running-Pow-with-Apache
+#
+#     ADDITIONAL NOTES
+#   e1) The first time that the web application being hosted by pow is
+# visited, the app is in "stand by" mode and must be cold booted. Once the
+# initial request has received its response back to the end-user, it remains in
+# an active process until the number of seconds specified has elapsed.
+#
+#   e2) This number controls the number of worker threads being executed
+# in parallel. The number of threads should stay at or below the total number
+# of logical cores available to a host. Tune upwards to improve site
+# responsiveness when under load from multiple requests being made to it.
+#
+#   e3) The local environment to setup for Pow, i.e.: Ruby, Node.JS, PHP
+# configuration.
+
+# Host serving options
+# export POW_DST_PORT=88  # See note two (2)
+export POW_DOMAINS=dev,local
+export POW_EXT_DOMAINS=
+
+# NOTE(jeff): Resource limits; performance tuning
+export POW_TIMEOUT=60   # 1m [e1]
+export POW_WORKERS=1    # Total number of job threads per app instance [e2]
+
+# NOTE(jeff): Local site environment [e3]
+RUBY_ENV="${HOME}/.rbenv/shims"
+export PATH="${RUBY_ENV}:${PATH}"
+

@@ -1,0 +1,433 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<account version='1.0'>
+	<account>
+		<protocol>prpl-jabber</protocol>
+		<name>i8degrees@chat.facebook.com/pidgin</name>
+		<password>inferno</password>
+		<alias>Carp</alias>
+		<statuses>
+			<status type='available' name='Available' active='true'>
+				<attributes>
+					<attribute id='message' value='Run-away nova?'/>
+				</attributes>
+			</status>
+			<status type='freeforchat' name='Chatty' active='false'>
+				<attributes/>
+			</status>
+			<status type='away' name='Away' active='false'>
+				<attributes/>
+			</status>
+			<status type='extended_away' name='Extended away' active='false'>
+				<attributes/>
+			</status>
+			<status type='dnd' name='Do Not Disturb' active='false'>
+				<attributes/>
+			</status>
+			<status type='offline' name='Offline' active='false'>
+				<attributes/>
+			</status>
+		</statuses>
+		<userinfo>&lt;vCard xmlns=&apos;vcard-temp&apos;&gt;&lt;FN&gt;Jeffrey A Carpenter&lt;/FN&gt;&lt;PHOTO&gt;&lt;TYPE&gt;image/jpeg&lt;/TYPE&gt;&lt;BINVAL&gt;/9j/4AAQSkZJRgABAQAAAQABAAD//gA7Q1JFQVRPUjogZ2QtanBlZyB2MS4wICh1c2luZyBJSk
+cgSlBFRyB2NjIpLCBxdWFsaXR5ID0gOTUK/9sAQwACAQEBAQECAQEBAgICAgIEAwICAgIFBAQD
+BAYFBgYGBQYGBgcJCAYHCQcGBggLCAkKCgoKCgYICwwLCgwJCgoK/9sAQwECAgICAgIFAwMFCg
+cGBwoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoK/8AA
+EQgAMgAyAwEiAAIRAQMRAf/EAB8AAAEFAQEBAQEBAAAAAAAAAAABAgMEBQYHCAkKC//EALUQAA
+IBAwMCBAMFBQQEAAABfQECAwAEEQUSITFBBhNRYQcicRQygZGhCCNCscEVUtHwJDNicoIJChYX
+GBkaJSYnKCkqNDU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6g4SFhoeIiY
+qSk5SVlpeYmZqio6Slpqeoqaqys7S1tre4ubrCw8TFxsfIycrS09TV1tfY2drh4uPk5ebn6Onq
+8fLz9PX29/j5+v/EAB8BAAMBAQEBAQEBAQEAAAAAAAABAgMEBQYHCAkKC//EALURAAIBAgQEAw
+QHBQQEAAECdwABAgMRBAUhMQYSQVEHYXETIjKBCBRCkaGxwQkjM1LwFWJy0QoWJDThJfEXGBka
+JicoKSo1Njc4OTpDREVGR0hJSlNUVVZXWFlaY2RlZmdoaWpzdHV2d3h5eoKDhIWGh4iJipKTlJ
+WWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uLj5OXm5+jp6vLz9PX2
+9/j5+v/aAAwDAQACEQMRAD8A/PfWdL+FdpqtnpPhWbX1nnQSTLp1yyCMY4JD9TjJyD0HvX1B8C
+v2bv2hfFvwG1f4i/DfxDAmnxRyW9vauGkuL10Cgs8gy2VJPUqOMZPSvjDwhrUcesnWE0ZXWFJC
+5mcOinaQDgjruII9/pX3b8B/ib+1J4d/ZM8H+FPhV4ZvRpOpXd61xqlhZeY10wmYurnqqLnywQ
+RkoxPYDnxFScUvZuz8zvyvD0K1ZqsrryPkP4lfBH47eG4rjV/F3hO7EMRJknVVbA9flJOPrXAe
+G/El1p13JaC5eLzOGZeme3FffPx2/wCFmeEfiHqnw68eabrMM1jH5EtvpsdsyR3BVT+8Z1csvL
+A7T24r4w+NPgmDQPEV1rElxHHONRSFrWCIKpzGHJA9cnBrHD1ZOKU7X8jszLLadC7pXsu/6Mt2
+N/cXReK5ibCABZiMeYevTtXMfEJ8XFquBx5r4+iH/GoJvDnxBUrfNM6JIqyRebNtG0jIO3twfS
+qGuDXYSsOuNG0sdpIysrE5Viq8nvzmuuKW9z5+WktEYS2zFQdo6UVcjjGxfk7DtRSvEVp/0z6W
+/aP/AGGfFn7JHwi0PxD8SPiT4Uu9d1w7rzwzoGpG8n0xXXcouHjXylfrlVducYyMmu5/Z8/ag8
+d2vwT0j4badqFyW8PTTT6XHaSCN4sHdFNnBBZXIbH19ax/2pNe8SeOZ5Ph7pmqQ2+imzjvbWwE
+hlDzoixyStLnJLklye7SOTknNeSaff8Ajz4MWEGvWUr28ztNa5khDKyGNGK8jB+/jHUEeorx6G
+JjjKK5nq3dL8v619T3MJUq5biFO2nWx9Kaf8ffGMy6t498f3EuoreJ++1e5kBbKrjBGST0NfJf
+jnx4fHnjq6kubmHyH1KSSyjmIRMsVXczHH8Kjr0x2qLWvi7448V6SfD97rc32ZnJ+zRthCc+gr
+Bj0a9gu4DdWLSfaZB5KlOJCGxgH8D0rto01Qm5Pc3zbNJ5jTUYX5fM7TVfAusvpsvj7XNM1SHT
+iY4zeWdibi0TbGFAMyMVBwBwT1rifiTdBfEcllao7RQWcEIYjnAVWOR9c19K/Db4jat4WtoPB2
+sX8V/oKQy3V5aGMCSMoCNiOTk9fuk87QM4JFeT/tQ+ANK8K/ES58R+ELedbG6l3FZuRGx6dMbe
+P4QTgg4OMCoo5hGrW5Wrb27f8OeRPCSpxueTC8lAGCv/AHyaKHaZnLGyTJPPFFdnu90Y3l2PoP
+xJrVxqmtWtnquyaRGktrCSaaQqbb7gTDZxtYYx179CDWfrWuz+MPD0XhXWCY1V0uYmRWZRJLvM
+rs5Y7VBI4Axlx0AFUvFes+FdQewTw7eZeERkIZQzeZ8xdsrjGTtPJBOM9qyhq00USPaXksV4sr
+RSs0mAAwKkYycjOOOmBXi06ErKys0ehKrHm8hmlfDiG11QXEF1Gyp1bPQevv0/Wp729urqySwL
+xT/YpXW3EYw+Shyw6YIZ+vPT847nV7czW93p9w1tvzFc2KBiqgHGEzkrz2PTt6CudQmTUIXulW
+2EMm9o1iyGZznJwecV0Tc6lrhUqUfZ8sUdJHd3FjdL5lndBls4WnZ7xgPmlO8kh+hGRSy6ofHl
+/eaf4n1CaeSQyiSQtxIvLIwJ6lcseT2b0rl9Z8WK+rlWu96NbxsV2MA+xj8vJPUE1ozeItOuFW
+QyC4FxCsYgQEGJxny5C31PT9eorn9lJWuv+AJVFfQ4OfR9WgmeD7DI2xiu4RMQcHrRXeQm4miW
+Z77DOoYjB4Jors9u+34Gd33OO0YAW82Bj/SE/k1dNe29uJNNUQJiU5kG0fOeeT60UV6FX/l3/X
+RHnVv0NbQoIZfGNtbywq0YJIjZQRnJ7VS+KKqGmYKMgtg46UUVk/8AkYf9u/qcFL/dP+3jze7Z
+hc27BjnPXPvXYL+709mj+U+fnI45DcGiisMV8MD2MP8AHI14gJIlkkG5mUFmbkk+tFFFcZp1P/
+/Z&lt;/BINVAL&gt;&lt;/PHOTO&gt;&lt;/vCard&gt;</userinfo>
+		<settings>
+			<setting name='use-global-buddyicon' type='bool'>1</setting>
+			<setting name='check-mail' type='bool'>0</setting>
+			<setting name='connect_server' type='string'>chat.facebook.com</setting>
+			<setting name='auth_plain_in_clear' type='bool'>0</setting>
+			<setting name='port' type='int'>5222</setting>
+			<setting name='connection_security' type='string'>opportunistic_tls</setting>
+			<setting name='custom_smileys' type='bool'>1</setting>
+		</settings>
+		<settings ui='gtk-gaim'>
+			<setting name='auto-login' type='bool'>0</setting>
+		</settings>
+		<current_error/>
+	</account>
+	<account>
+		<protocol>prpl-aim</protocol>
+		<name>i8degrees</name>
+		<password>inferno820i</password>
+		<alias>Carp</alias>
+		<statuses>
+			<status type='available' name='Available' active='true'>
+				<attributes>
+					<attribute id='message' value='...shit. She&apos;s gone super-nova.'/>
+				</attributes>
+			</status>
+			<status type='free4chat' name='Free For Chat' active='false'>
+				<attributes/>
+			</status>
+			<status type='away' name='Away' active='false'>
+				<attributes/>
+			</status>
+			<status type='invisible' name='Invisible' active='false'>
+				<attributes/>
+			</status>
+			<status type='occupied' name='Occupied' active='false'>
+				<attributes/>
+			</status>
+			<status type='dnd' name='Do Not Disturb' active='false'>
+				<attributes/>
+			</status>
+			<status type='na' name='Not Available' active='false'>
+				<attributes/>
+			</status>
+			<status type='offline' name='Offline' active='false'>
+				<attributes/>
+			</status>
+		</statuses>
+		<settings>
+			<setting name='use-global-buddyicon' type='bool'>1</setting>
+			<setting name='check-mail' type='bool'>0</setting>
+			<setting name='always_use_rv_proxy' type='bool'>0</setting>
+			<setting name='server' type='string'>login.messaging.aol.com</setting>
+			<setting name='buddy_icon_timestamp' type='int'>0</setting>
+			<setting name='port' type='int'>5190</setting>
+			<setting name='use_clientlogin' type='bool'>0</setting>
+			<setting name='allow_multiple_logins' type='bool'>1</setting>
+			<setting name='encryption' type='string'>opportunistic_encryption</setting>
+		</settings>
+		<settings ui='gtk-gaim'>
+			<setting name='auto-login' type='bool'>1</setting>
+		</settings>
+		<current_error/>
+	</account>
+	<account>
+		<protocol>prpl-irc</protocol>
+		<name>wizzie@irc.eqemulator.net</name>
+		<alias>Carp</alias>
+		<statuses>
+			<status type='available' name='Available' active='true'>
+				<attributes/>
+			</status>
+			<status type='away' name='Away' active='false'>
+				<attributes/>
+			</status>
+			<status type='offline' name='Offline' active='false'>
+				<attributes/>
+			</status>
+		</statuses>
+		<settings>
+			<setting name='autodetect_utf8' type='bool'>0</setting>
+			<setting name='username' type='string'>wizzie</setting>
+			<setting name='encoding' type='string'>UTF-8</setting>
+			<setting name='ctcp-message' type='string'>Purple IRC</setting>
+			<setting name='part-message' type='string'>Good-bye!</setting>
+			<setting name='setumodes' type='string'>i</setting>
+			<setting name='realname' type='string'>Wizzie Gunderson</setting>
+			<setting name='quit-message' type='string'>Good-bye!</setting>
+			<setting name='ssl' type='bool'>0</setting>
+			<setting name='port' type='int'>6667</setting>
+			<setting name='core-rlaager-irchelper_disconnectghosts' type='bool'>1</setting>
+		</settings>
+		<settings ui='gtk-gaim'>
+			<setting name='auto-login' type='bool'>0</setting>
+		</settings>
+		<current_error/>
+	</account>
+	<account>
+		<protocol>prpl-jabber</protocol>
+		<name>i8degrees@gmail.com/Pidgin</name>
+		<password>inferno820i</password>
+		<alias>Carp</alias>
+		<statuses>
+			<status type='available' name='Available' active='true'>
+				<attributes>
+					<attribute id='message' value='[!] qua-sar this [!]'/>
+				</attributes>
+			</status>
+			<status type='freeforchat' name='Chatty' active='false'>
+				<attributes/>
+			</status>
+			<status type='away' name='Away' active='false'>
+				<attributes/>
+			</status>
+			<status type='extended_away' name='Extended away' active='false'>
+				<attributes/>
+			</status>
+			<status type='dnd' name='Do Not Disturb' active='false'>
+				<attributes/>
+			</status>
+			<status type='offline' name='Offline' active='false'>
+				<attributes/>
+			</status>
+		</statuses>
+		<userinfo>&lt;vCard xmlns=&apos;vcard-temp&apos;&gt;&lt;FN&gt;Jeff Carpenter&lt;/FN&gt;&lt;/vCard&gt;</userinfo>
+		<settings>
+			<setting name='ft_proxies' type='string'>gmail.google.com</setting>
+			<setting name='use-global-buddyicon' type='bool'>1</setting>
+			<setting name='check-mail' type='bool'>0</setting>
+			<setting name='auth_plain_in_clear' type='bool'>0</setting>
+			<setting name='buddy_icon_timestamp' type='int'>0</setting>
+			<setting name='port' type='int'>5222</setting>
+			<setting name='connection_security' type='string'>require_tls</setting>
+			<setting name='custom_smileys' type='bool'>1</setting>
+		</settings>
+		<settings ui='gtk-gaim'>
+			<setting name='auto-login' type='bool'>0</setting>
+		</settings>
+		<current_error/>
+	</account>
+	<account>
+		<protocol>prpl-irc</protocol>
+		<name>wizzie@irc.gamesurge.net</name>
+		<alias>wizzie</alias>
+		<statuses>
+			<status type='available' name='Available' active='true'>
+				<attributes/>
+			</status>
+			<status type='away' name='Away' active='false'>
+				<attributes/>
+			</status>
+			<status type='offline' name='Offline' active='false'>
+				<attributes/>
+			</status>
+		</statuses>
+		<settings>
+			<setting name='autodetect_utf8' type='bool'>0</setting>
+			<setting name='encoding' type='string'>UTF-8</setting>
+			<setting name='ctcp-message' type='string'>PurpleIM</setting>
+			<setting name='part-message' type='string'>/me fades away</setting>
+			<setting name='core-rlaager-irchelper_authname' type='string'>wizzie</setting>
+			<setting name='setumodes' type='string'>i</setting>
+			<setting name='realname' type='string'>Wizzie Gunderson</setting>
+			<setting name='quit-message' type='string'>/me steps into the shadows and vanishes</setting>
+			<setting name='core-rlaager-irchelper_nickpassword' type='string'>McGhee</setting>
+			<setting name='ssl' type='bool'>0</setting>
+			<setting name='port' type='int'>6667</setting>
+			<setting name='core-rlaager-irchelper_disconnectghosts' type='bool'>0</setting>
+		</settings>
+		<settings ui='gtk-gaim'>
+			<setting name='auto-login' type='bool'>0</setting>
+		</settings>
+		<current_error/>
+	</account>
+	<account>
+		<protocol>prpl-yahoo</protocol>
+		<name>i8degrees</name>
+		<password>inferno</password>
+		<alias>Carp</alias>
+		<statuses>
+			<status type='available' name='Available' active='true'>
+				<attributes>
+					<attribute id='message' value='[!] &amp;lt;3 [!] (wtf?)'/>
+				</attributes>
+			</status>
+			<status type='away' name='Away' active='false'>
+				<attributes/>
+			</status>
+			<status type='brb' name='Be Right Back' active='false'>
+				<attributes/>
+			</status>
+			<status type='busy' name='Busy' active='false'>
+				<attributes/>
+			</status>
+			<status type='notathome' name='Not at Home' active='false'>
+				<attributes/>
+			</status>
+			<status type='notatdesk' name='Not at Desk' active='false'>
+				<attributes/>
+			</status>
+			<status type='notinoffice' name='Not in Office' active='false'>
+				<attributes/>
+			</status>
+			<status type='onphone' name='On the Phone' active='false'>
+				<attributes/>
+			</status>
+			<status type='onvacation' name='On Vacation' active='false'>
+				<attributes/>
+			</status>
+			<status type='outtolunch' name='Out to Lunch' active='false'>
+				<attributes/>
+			</status>
+			<status type='steppedout' name='Stepped Out' active='false'>
+				<attributes/>
+			</status>
+			<status type='invisible' name='Invisible' active='false'>
+				<attributes/>
+			</status>
+			<status type='offline' name='Offline' active='false'>
+				<attributes/>
+			</status>
+		</statuses>
+		<settings>
+			<setting name='use-global-buddyicon' type='bool'>1</setting>
+			<setting name='check-mail' type='bool'>0</setting>
+			<setting name='xfer_port' type='int'>80</setting>
+			<setting name='picture_checksum' type='int'>0</setting>
+			<setting name='local_charset' type='string'>UTF-8</setting>
+			<setting name='ignore_invites' type='bool'>0</setting>
+			<setting name='room_list_locale' type='string'>us</setting>
+			<setting name='picture_expire' type='int'>0</setting>
+			<setting name='buddy_icon_timestamp' type='int'>0</setting>
+			<setting name='port' type='int'>5050</setting>
+			<setting name='xfer_host' type='string'>filetransfer.msg.yahoo.com</setting>
+			<setting name='proxy_ssl' type='bool'>1</setting>
+		</settings>
+		<settings ui='gtk-gaim'>
+			<setting name='auto-login' type='bool'>0</setting>
+		</settings>
+		<proxy>
+			<type>none</type>
+		</proxy>
+		<current_error/>
+	</account>
+	<account>
+		<protocol>prpl-jabber</protocol>
+		<name>jeffrey.carp@gmail.com/Pidgin</name>
+		<password>!inferno820i</password>
+		<alias>Carp</alias>
+		<statuses>
+			<status type='available' name='Available' active='true'>
+				<attributes>
+					<attribute id='message' value='...shit. She&apos;s gone super-nova.'/>
+				</attributes>
+			</status>
+			<status type='freeforchat' name='Chatty' active='false'>
+				<attributes/>
+			</status>
+			<status type='away' name='Away' active='false'>
+				<attributes/>
+			</status>
+			<status type='extended_away' name='Extended away' active='false'>
+				<attributes/>
+			</status>
+			<status type='dnd' name='Do Not Disturb' active='false'>
+				<attributes/>
+			</status>
+			<status type='offline' name='Offline' active='false'>
+				<attributes/>
+			</status>
+		</statuses>
+		<userinfo>&lt;vCard xmlns=&apos;vcard-temp&apos;&gt;&lt;FN&gt;Jeff Carpenter&lt;/FN&gt;&lt;PHOTO&gt;&lt;TYPE&gt;image/jpeg&lt;/TYPE&gt;&lt;BINVAL&gt;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&lt;/BINVAL&gt;&lt;/PHOTO&gt;&lt;/vCard&gt;</userinfo>
+		<settings>
+			<setting name='ft_proxies' type='string'>talk.google.com</setting>
+			<setting name='use-global-buddyicon' type='bool'>1</setting>
+			<setting name='check-mail' type='bool'>0</setting>
+			<setting name='connect_server' type='string'>talk.google.com</setting>
+			<setting name='auth_plain_in_clear' type='bool'>0</setting>
+			<setting name='silence-suppression' type='bool'>0</setting>
+			<setting name='buddy_icon_timestamp' type='int'>0</setting>
+			<setting name='port' type='int'>5222</setting>
+			<setting name='connection_security' type='string'>opportunistic_tls</setting>
+			<setting name='custom_smileys' type='bool'>1</setting>
+		</settings>
+		<settings ui='gtk-gaim'>
+			<setting name='auto-login' type='bool'>1</setting>
+		</settings>
+		<proxy>
+			<type>none</type>
+		</proxy>
+		<current_error/>
+	</account>
+	<account>
+		<protocol>prpl-irc</protocol>
+		<name>i8degrees@irc.freenode.net</name>
+		<password>inferno</password>
+		<alias>Carp</alias>
+		<statuses>
+			<status type='available' name='Available' active='true'>
+				<attributes/>
+			</status>
+			<status type='away' name='Away' active='false'>
+				<attributes/>
+			</status>
+			<status type='offline' name='Offline' active='false'>
+				<attributes/>
+			</status>
+		</statuses>
+		<settings>
+			<setting name='autodetect_utf8' type='bool'>1</setting>
+			<setting name='username' type='string'>i8degrees</setting>
+			<setting name='encoding' type='string'>UTF-8</setting>
+			<setting name='ctcp-message' type='string'>libpurple</setting>
+			<setting name='part-message' type='string'>/me fades away</setting>
+			<setting name='core-rlaager-irchelper_authname' type='string'>i8degrees</setting>
+			<setting name='setumodes' type='string'>i</setting>
+			<setting name='realname' type='string'>Carp</setting>
+			<setting name='quit-message' type='string'>/me steps into the shadows and vanishes</setting>
+			<setting name='core-rlaager-irchelper_nickpassword' type='string'>INFERNO</setting>
+			<setting name='ssl' type='bool'>0</setting>
+			<setting name='port' type='int'>6667</setting>
+			<setting name='core-rlaager-irchelper_disconnectghosts' type='bool'>1</setting>
+		</settings>
+		<settings ui='gtk-gaim'>
+			<setting name='auto-login' type='bool'>0</setting>
+		</settings>
+		<proxy>
+			<type>none</type>
+		</proxy>
+		<current_error/>
+	</account>
+	<account>
+		<protocol>prpl-irc</protocol>
+		<name>i8degrees@justfielding.com</name>
+		<statuses>
+			<status type='available' name='Available' active='true'>
+				<attributes/>
+			</status>
+			<status type='away' name='Away' active='false'>
+				<attributes/>
+			</status>
+			<status type='offline' name='Offline' active='false'>
+				<attributes/>
+			</status>
+		</statuses>
+		<settings>
+			<setting name='autodetect_utf8' type='bool'>0</setting>
+			<setting name='username' type='string'>jeff</setting>
+			<setting name='encoding' type='string'>UTF-8</setting>
+			<setting name='ctcp-message' type='string'>Purple IRC</setting>
+			<setting name='part-message' type='string'>/me fades away</setting>
+			<setting name='setumodes' type='string'>i</setting>
+			<setting name='realname' type='string'>Carp</setting>
+			<setting name='quit-message' type='string'>/me steps into the shadows and vanishes</setting>
+			<setting name='ssl' type='bool'>0</setting>
+			<setting name='port' type='int'>6667</setting>
+			<setting name='core-rlaager-irchelper_disconnectghosts' type='bool'>0</setting>
+		</settings>
+		<settings ui='gtk-gaim'>
+			<setting name='auto-login' type='bool'>0</setting>
+		</settings>
+		<current_error/>
+	</account>
+</account>

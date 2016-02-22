@@ -1,0 +1,9 @@
+{
+  "working_dir": "${project_path:${folder}:${file_path}:${file}}",
+  "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+  "selector": "source.js",
+  "path": "/usr/local/bin",
+  // Default build command
+  "cmd": ["node --check $file"],
+  "shell": true
+}

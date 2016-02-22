@@ -1,0 +1,283 @@
+
+
+url,username,password,extra,name,grouping,fav
+http://sn,,,"Linksys WRT54G v8.00.2
+
+
+  [http://192.168.1.1]
+
+Username  admin
+(*)Password bev!x5c
+----------------------------------------------------------------
+SUBNET    255.255.255.0
+GW    192.168.1.1
+NET   192.168.1.0/24
+DHCP    192.168.1.100 - 192.168.1.254
+DNS1    68.105.28.12
+DNS2    68.105.29.12
+DNS3    68.105.28.11
+----------------------------------------------------------------
+WiFi Net    bevnet
+(*)WiFi Password  netBEV555x!
+
+[*] Passwords are CASE SenSiTIVE",Beverly's Wireless Network Configuration,carpnet.local,0
+http://sn,,,"NoteType:Server
+Hostname:justfielding.com
+Username:root
+Password:B00bs.pass!
+Notes:user root on Jasmine web host | localhost user root for mysql admin
+",Jasmine,remote/web\jasmine,0
+http://sn,,,"NoteType:Server
+Hostname:http://www.knesekguns.com:2082/
+Username:kn353k
+Password:D1rtylarry!
+Notes:knesekguns.com admin access credentials
+
+[2012-02/12] 211_Thor / Max Rodriguez
+",knesekguns.com,remote/web,0
+http://www.nwatactical.com:2082/,kn353k,D1rtylarry!,"nwatactical.com admin access credentials
+
+[2012-02/12] 211_Thor / Max Rodriguez",nwatactical.com,remote/web,0
+http://www.name.com/,i8degrees,!inferno820i,,syn.im,remote/web,0
+https://www.mndigital.com/portal/secure-login.aspx,bonefish,Tampa11,,mndigital.com,,0
+https://my.screenname.aol.com/_cqr/login/login.psp?sitedomain=sns.webmail.aol.com&lang=en&seamless=novl&offerId=newmail-en-us-v2&authLev=0&siteState=ver%3A4%7Crt%3ASTANDARD%7Cat%3ASNS%7Cld%3Amail.aol.com%7Cuv%3AAOL%7Clc%3Aen-us%7Cmt%3AANGELIA%7Csnt%3AScreenName%7Csid%3Af21ae5cf-9e98-4dd2-8009-4ee3ac89b7b2&locale=us,alice8200,america,,my.screenname.aol.com,,0
+https://signup.netflix.com/Login,alice8200@aol.com,america,,signup.netflix.com,,0
+https://daw.apple.com/cgi-bin/WebObjects/DSAuthWeb.woa/wa/login?appIdKey=4a75046cda87eab6386a9eae8caabb9824e328b9abc988119b39296495ec184c&path=/login.jspa,jeffrey.carp@gmail.com,inferno820i,,daw.apple.com,,0
+http://www.project1999.org/forums/search.php,i8degrees,inferno,,project1999.org,,0
+https://bonefish.campfirenow.com/id/invitations/2b75e36fa32b5bf1cd29753aa298d496/rsvp/new,i8degrees,inferno820i,,bonefish.campfirenow.com,,0
+https://bonefish.basecamp.com/id/invitations/c1db994b0fc160285e948d96d004d2ed/rsvp/claim,i8degrees,inferno820i,,bonefish.basecamp.com,,0
+http://help.name.com/access/unauthenticated?return_to=http%3A%2F%2Fhelp.name.com%2Ftickets%2F93603,jeffrey.carp@gmail.com,!inferno820i,,help.name.com,,0
+https://login.skype.com/account/login-form?return_url=http%3A%2F%2Fwww.skype.com%2Fgo%2Fdownloading-page&application=download,i8degrees,inferno820i,,login.skype.com,,0
+https://www.dropbox.com/login?cont=https%3A//www.dropbox.com/photos,jeffrey.carp@gmail.com,!inferno820i,,dropbox.com,,0
+http://aktactical.com:2082/,aktactical@akleds.com,ARstalker0033,,aktactical.com,,0
+https://twitter.com/#!/login/error?redirect_after_login=%2F%23%21%2Fi8degrees,i8degrees,inferno820i,,twitter.com,,0
+https://my.screenname.aol.com/_cqr/login/login.psp?sitedomain=www.aim.com,i8degrees,inferno820i,,my.screenname.aol.com,,0
+http://www.knesekguns.dev/commercial/admin/login.php?osCAdminID=5oe8cffojf691rlogfnhuqr6e5,jeffrey.carp@gmail.com,!inferno820isyn,,knesekguns.dev,,0
+https://bitbucket.org/account/signin/?next=/i8degrees,jeffrey.carp,!inferno820i,,bitbucket.org,,0
+https://bitbucket.org/account/signin/,i8degrees,inferno820i,,bitbucket.org,,0
+https://bitbucket.org/account/password/change/,,inferno,,bitbucket.org,,0
+https://bitbucket.org/account/signin/,i8degrees,!inferno820i,,bitbucket.org,,0
+https://github.com/login,i8degrees,!inferno820isyn,,github.com,,0
+https://www.no-ip.com/login/,jeffrey.carp@gmail.com,inferno820i,,no-ip.com,,0
+https://launchpad.37signals.com/basecamp/1753816/signin?failed_authentication=true,i8degrees,inferno820i,,launchpad.37signals.com,,0
+https://bonefish.campfirenow.com/login,i8degrees,!inferno820i,,bonefish.campfirenow.com,,0
+http://www.codecademy.com/register/sign_up,i8degrees,inferno,,codecademy.com,,0
+http://www.myfreecams.com/mfc2/php/signup.php?username=i8degrees&email=i8degrees%40gmail.com&terms=1&tz=-5&ss=1440x900&uid=&model_id=&mode=&submit_login=3&submit_signup=1,i8degrees@gmail.com,b00bs666,,myfreecams.com,,0
+https://www.zagg.com/login.php?intcmp=account_manager#accountcreate,Carpenter,inferno,iPhone Silicone Case,zagg.com,,0
+http://www.instapaper.com/user/login,jeffrey.carp@gmail.com,inferno820i,Instapaper account for mobile,instapaper.com,,0
+https://www.prowlapp.com/login.php,i8degrees,inferno,,prowlapp.com,,0
+https://www.last.fm/login,i8degrees,inferno,,last.fm,,0
+http://www.tonymacx86.com/ucp.php?mode=login&sid=bac0abc97203c242e521f470186fcf74,i8degrees,inferno,,tonymacx86.com,,0
+http://www.reddit.com/r/gonewild/over18?dest=%2Fr%2Fgonewild,i8degrees,inferno,,reddit.com,,0
+https://apigee.com/sign_in/-1/embed?action=signup,jeffrey.carp@gmail.com,inferno820i,HTTP RESTFUL API References,apigee.com,,0
+https://vpn.cjb.net/pages/client-support/,cjb1203526,inferno820i,CJB VPN ,vpn.cjb.net,,0
+https://imgur.com/register,jeffrey.carp@gmail.com,inferno820i,,imgur.com,,0
+http://www.showeq.net/forums/showthread.php?6479-EQEMU-Showeq,i8degrees,inferno,,showeq.net,,0
+https://us.battle.net/login/en/?ref=https%3A%2F%2Fus.battle.net%2Faccount%2Fmanagement%2Fbattletag-create.html&app=bam&cr=true,jeffrey.carp@gmail.com,inferno820i,,us.battle.net,,0
+https://simple-note.appspot.com/signin,jeffrey.carp@gmail.com,inferno820i,,simple-note.appspot.com,,0
+https://secure.modelmayhem.com,i8degrees@gmail.com,!inferno820i,,secure.modelmayhem.com,,0
+http://xhamster.com,i8degrees,inferno,,xhamster.com,,0
+http://eq.magelo.com,i8degrees,inferno,,eq.magelo.com,,0
+http://www.osx86.net/login.php?do=login,i8degrees,inferno,,osx86.net,,0
+http://www.aqua-soft.org/forum/index.php?app=core&module=global&section=login,i8degrees,inferno,,aqua-soft.org,,0
+http://ubuntuforums.org/showthread.php?p=4387032#post4387032,i8degrees,inferno,,ubuntuforums.org,,0
+http://www.epforums.org/login.php?do=login,i8degrees,inferno820i,,epforums.org,,0
+http://p99vv.guildlaunch.com/recruiting/app_account.php?type=app&gid=259392,i8degrees@gmail.com,inferno820i,,p99vv.guildlaunch.com,,0
+http://p99vv.guildlaunch.com/recruiting/app_account.php?type=&gid=259392,jeffrey.carp@gmail.com,inferno820i,,p99vv.guildlaunch.com,,0
+http://wiki.project1999.org/index.php?title=Special:UserLogin&returnto=Kelin%27s_Lugubrious_Lament,I8degrees,inferno,,wiki.project1999.org,,0
+http://www.mmobugs.com/forums/everquest-server-emulator/25314-how-project-1999-mq2-detection-system-works.html,i8degrees,inferno,,mmobugs.com,,0
+http://www.eqemulator.org,i8degrees,b00bs666,,eqemulator.org,,0
+http://,i8degrees,b00bs666!x,login account,EverQuest Login,games,0
+http://,i8degrees_EQ,b00bs666,login account,EverQuest Login,games,0
+http://,i8degrees_EQ3,b00bs!666,,EverQuest Login,games,0
+https://192.168.151.1/,admin,!inferno820i,,192.168.151.1,,0
+https://192.168.151.3/,admin,!inferno820i,,192.168.151.3,,0
+https://auth.station.sony.com/login?service=http://www.soe.com/support/index.vm&theme=soe,i8degreesEQ,b00bs666,,auth.station.sony.com,,0
+http://www.eqemulator.org,i8degrees_EQ2,b00bs666!x,2nd login account server / eqgamer768@gmail.com,eqemulator.org,games,0
+http://mail.google.com,eqgamer768,!inferno820i,2nd login account,eqemu_login,games,0
+http://,i8degrees_EQ4,b00bs666,,EverQuest Login,games,0
+https://us.battle.net/login/en/?ref=https%3A%2F%2Fus.battle.net%2Faccount%2Fmanagement%2Fclaim-code.html%3Fkey%3DPYJ79WV7HFHZP6DY6ZBT79GW9F&app=bam&cr=true,jeffrey.carp@gmail.com,!inferno820isyn,,us.battle.net,games,1
+https://www.wowhead.com/account=signin,i8degrees@gmail.com,inferno820i,,wowhead.com,,0
+https://us.battle.net/account/management/wow-account-conversion.html,WoW,!inferno820i,,us.battle.net,,0
+http://plentycom.jp/en/steermouse/,alice8200@aol.com,,"
+ID:   100300-500600-051
+CODE: KMHX-JDEE-RMJM-NEGR-IXHH-LREJ-POJK-BBDA-HLHH-LRDE
+",SteerMouse License Key,software,1
+http://www.kongregate.com/games/TadeuBAS/the-7-elders,jeffrey_carp,inferno820i,Based on Triple Triad,kongregate.com,games,0
+https://ordering.wingstop.com/onlineordering/customer/login,i8degrees@gmail.com,inferno,,ordering.wingstop.com,,0
+http://ideone.com/account/login,i8degrees,inferno,,ideone.com,,0
+https://github.com/login/oauth/authorize,i8degrees,!inferno820isyn,,github.com,,0
+https://www.sourcelair.com/,i8degrees,inferno820i,,sourcelair.com,,0
+https://sourceforge.net/account/login.php?return_to=%2Faccount%2F,ttcards,!inferno820isyn,,sourceforge.net,,0
+https://login.live.com/ppsecure/post.srf?wa=wsignin1.0&wtrealm=https%3a%2f%2faccesscontrol.windows.net%2f&wreply=https%3a%2f%2ftfsprodch1acs01.accesscontrol.windows.net%2fv2%2fwsfederation&wp=MBI_FED_SSL&wctx=cHI9d3NmZWRlcmF0aW9uJnJtPWh0dHBzJTNhJTJmJTJmYXBwLnZzc3BzLnZpc3VhbHN0dWRpby5jb20lMmYmcnk9aHR0cHMlM2ElMmYlMmZhcHAudnNzcHMudmlzdWFsc3R1ZGlvLmNvbSUyZl9zaWduZWRpbiUzZnJlYWxtJTNkYXBwLnZzc3BzLnZpc3VhbHN0dWRpby5jb20lMjZwcm90b2NvbCUzZHdzZmVkZXJhdGlvbiUyNnJlcGx5X3RvJTNkaHR0cHMlMjUzQSUyNTJGJTI1MkZhcHAudnNzcHMudmlzdWFsc3R1ZGlvLmNvbSUyNTJGcHJvZmlsZSUyNTJGY3JlYXRlJTI1M0Zjb21wYWN0JTI1M0QwJTI1MjZkb3dubG9hZCUyNTNEVHJ1ZSUyNTI2cmVsZWFzZSUyNTNEVmlzdWFsU3R1ZGlvMjAxM1ByZXZpZXclMjUyNmZhbWlseSUyNTNEVmlzdWFsU3R1ZGlvRXhwcmVzc0Rlc2t0b3AlMjUyNmFjY2VwdC1sYW5ndWFnZSUyNTNEZW4tdXMlMjUyNnNsY2lkJTI1M0QweDQwOSUyNTI2dHlwZSUyNTNEd2Vi0&bk=1380967301,i8degrees@gmail.com,inferno820i,,login.live.com,,0
+https://www.tiberiumalliances.com,i8degrees@gmail.com,Mp3r00t5018,,tiberiumalliances.com,,0
+http://localhost:5280/,jeff@wonderland.init,b00bs666,,localhost,,0
+https://www.do.com/login,jeffrey.carp@gmail.com,inferno820i,,do.com,,0
+https://checkout.paddle.com,jeffrey.carp@gmail.com,!inferno820i,,checkout.paddle.com,,0
+http://bugzilla.mplayerhq.hu,jeffrey.carp@gmail.com,inferno820i,,bugzilla.mplayerhq.hu,,0
+https://bugzilla.libsdl.org,Jeffrey Carpenter,inferno820i,,bugzilla.libsdl.org,,0
+https://edit.yahoo.com,i8degrees,Mp3r00t5018,,edit.yahoo.com,,0
+https://bitbucket.org,,inferno820i,registered to jeffrey.carp@gmail.com,bitbucket.org,,0
+https://bitbucket.org/account/signin/,i8degrees,inferno820i,,bitbucket.org,,0
+http://www.pandora.com/account/sign-in,i8degrees@gmail.com,inferno,,pandora.com,,0
+https://my.screenname.aol.com/_cqr/login/login.psp,i8degrees,inferno820i,,my.screenname.aol.com,,0
+my.plexapp.com/users/sign_in,jeffrey.carp@gmail.com,!inferno820isyn,,my.plexapp.com,,0
+http://virgo.local:32400/web/index.html#!/login,i8degrees,!inferno820isyn,,virgo.local,,0
+http://127.0.0.1:32400/web/index.html#!/dashboard,jeffrey.carp@gmail.com,!inferno820isyn,,127.0.0.1,,0
+https://habitrpg.com/static/front,testercules,tester,,habitrpg.com,,0
+https://app.simplenote.com/signin,jeffrey.carp@gmail.com,inferno820i,,app.simplenote.com,,0
+https://www.amazon.com,i8degrees@gmail.com,!inferno820isyn,,amazon.com,,0
+https://my.screenname.aol.com/_cqr/login/login.psp?sitedomain=sns.webmail.aol.com&lang=en&seamless=novl&offerId=newmail-en-us-v2&authLev=0&siteState=ver%3A4%7Crt%3ASTANDARD%7Cat%3ASNS%7Cld%3Amail.aol.com%7Cuv%3AAOL%7Clc%3Aen-us%7Cmt%3AANGELIA%7Csnt%3AScreenName%7Csid%3A9f1fc63c-7c4d-4638-9654-479a01e41cb8&locale=us,alice8200@aol.com,mema2911,,mail.aol.com,,0
+http://www.newegg.com,jeffrey.carp@gmail.com,!inferno820isyn,,newegg.com,,0
+http://www.modelmayhem.com,,inferno,,modelmayhem.com,,0
+https://testflightapp.com,jeffrey.carp@gmail.com,inferno820i,,testflightapp.com,,0
+https://www.testflightapp.com,i8degrees@gmail.com,anonymous,,testflightapp.com,,0
+https://workflowy.com/,i8degrees@gmail.com,!inferno820i,,workflowy.com,,0
+https://www.onereceipt.com/accounts/profile/password/,,!inferno820isyn,,onereceipt.com,,0
+https://westerndigital.secure.force.com,72903,Mp3r00t5018,,westerndigital.secure.force.com,,0
+https://westerndigital.secure.force.com,72903,Mp3r00t5018,,westerndigital.secure.force.com,,0
+http://www.tonymacx86.com,jeffrey.carp@gmail.com,inferno,,tonymacx86.com,,0
+http://www.pogdesign.co.uk,i8degrees@gmail.com,inferno820i,,pogdesign.co.uk,,0
+https://adobeid-na1.services.adobe.com/renga-idprovider/pages/login.do,i8degrees@gmail.com,reabyelprnm,,adobeid.services.adobe.com,(none),0
+https://www.codeproject.com,i8degrees@gmail.com,,,codeproject.com,,0
+https://fafsa.ed.gov,,inferno8,,fafsa.ed.gov,,0
+https://fafsa.ed.gov/FAFSA/app/fafsa?execution=e1s15,09/23/1986,8018,,fafsa.ed.gov,,0
+https://www.linkedin.com/reg/join-pprofile?fromEmail=fromEmail&ut=15FI_jwRBTnmk1,i8degrees@gmail.com,!inferno820isyn,,linkedin.com,,0
+https://www.okcupid.com/login?p=/mailbox,i8degrees@gmail.com,inferno820i,,okcupid.com,,0
+https://www.noip.com/login,jeffrey.carp@gmail.com,inferno820i,,noip.com,,0
+https://account.dyn.com,i8degrees,inferno820i,i8degrees@gmail.com,account.dyn.com,(none),0
+https://signup.heroku.com,,!inferno820isyn,,signup.heroku.com,Business,0
+https://www.nodejitsu.com/signup/?product=,i8degrees@gmail.com,inferno820i,,nodejitsu.com,,0
+https://sendgrid.com,i8degrees@gmail.com,susankittycat2014,,sendgrid.com,,0
+https://sendgrid.com/account/wizard?page=1&utm_campaign=website&utm_source=sendgrid.com&utm_medium=email,i8degrees,susankittycat2014,,sendgrid.com,,0
+https://idm.east.cox.net/coxlogin/ui/internettools?TYPE=33554432&REALMOID=06-b6c69bf3-75c3-1017-a6a3-84a733520cb3&GUID=1&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-i59uFiEtkJE5yKQZE4mFobHpdALvSTYp4t6H3ANaoWO%2bx%2fNWuFrTSXMdqFBy6rwY&TARGET=-SM-https%3a%2f%2fmyaccount%2ecox%2enet%2finternettools%2foptout%2foptout%2ecox,i8degrees@cox.net,Mp3r00t5018,"Parent’s Cox Comm. Account Info
+
+LARRY D CARPENTER
+2911 S 59TH ST
+FORT SMITH, AR 72903-4864
+
+REGISTERED PHONE NUMBER
+(479) 484-0850
+
+ACCOUNT
+  00 10 80 77 02 37 18 01
+
+PIN
+  02 23
+
+COX WEB USER ID
+  i8degrees
+
+Password
+  Mp3r00t5018
+
+Security Question
+  What is your maternal grandmother's maiden name?
+
+Security Answer
+  Patton
+
+
+https://idm.east.cox.net/coxlogin/ui/internettools
+
+NOTE: This is a duplicate copy of 'Parent's Cox Account Info', stored under my account -- jeffrey.carp@gmail.com.",idm.east.cox.net,networks,0
+https://my.sublimevideo.net/signup,i8degrees@gmail.com,inferno820i,,my.sublimevideo.net,,0
+http://localhost:3000/static/front,testercules,tester,"HabitRPG dev setup on virgo-OSX
+
+http://localhost:3000",localhost,,0
+https://www.openhub.net,i8degrees,!inferno820i,,openhub.net,,0
+https://gitlab.com,i8degrees,!inferno820isyn,,gitlab.com,,0
+https://gitlab.com/users/sign_in,i8degrees@gmail.com,!inferno820isyn,,gitlab.com,,0
+http://www.cmake.org/Bug/login_page.php?return=%2FBug%2Fmy_view_page.php%3F,i8degrees,inferno820i,,cmake.org,,0
+https://www.codeproject.com/script/Membership/LogOn.aspx?rp=%2fResearchLibrary%2f93%2fAbstract.aspx,i8degrees@gmail.com,inferno,,codeproject.com,Productivity Tools,0
+https://forums.libsdl.org/login.php?redirect=,i8degrees,inferno820i,,forums.libsdl.org,,0
+https://forums.handmadehero.org,i8degrees,inferno820i,,forums.handmadehero.org,,0
+https://bugzilla.libsdl.org/show_bug.cgi?id=2779,i8degrees@gmail.com,inferno820i,,bugzilla.libsdl.org,,0
+https://www.startech.com,i8degrees@gmail.com,inferno,,startech.com,,0
+https://logentries.com,,inferno820i,,logentries.com,,0
+https://id.atlassian.com/login?continue=https://jira.atlassian.com/secure/Dashboard.jspa&application=jac,i8degrees@gmail.com,inferno,,id.atlassian.com,Business,0
+https://forums.handmadehero.org/index.php/forum?view=category&catid=4&limitstart=0,i8degrees,inferno820i,,forums.handmadehero.org,,0
+http://192.168.15.1/,admin,carp!5net,,192.168.15.1,,0
+http://192.168.15.1/,admin,carp!5net,,192.168.15.1,,0
+http://192.168.15.1/,admin,carp!5net,,192.168.15.1,,0
+https://readthedocs.org,i8degrees,!inferno820i,,readthedocs.org,,0
+http://www.drdobbs.com/cpp/message-handling-without-dependencies/cpp/sourcecode/message-handling-without-dependencies/30100154,i8degrees@gmail.com,inferno820i,,drdobbs.com,,0
+https://www.facebook.com/?_rdr,i8degrees@gmail.com,!inferno820i,"Jabber (XMPP):
+
+i8degrees@gmail.com
+chat.facebook.com:5222
+(Do not use SSL)",facebook.com,web,1
+https://www.icloud.com,jeffrey.carp@gmail.com,Mp3r00t5018,,Apple ID,accounts/apple,1
+https://arstechnica.com/civis/ucp.php?mode=register,,RrzDR2wG08yB,,Generated Password for arstechnica.com,,0
+https://arstechnica.com/civis/ucp.php?mode=register,,enwhinickyea,,Generated Password for arstechnica.com,,0
+https://account.sonyentertainmentnetwork.com/liquid/reg/account/create-account!input.action,19xxsm+3dk7uld5xghqc@sharklasers.com,teddyhasaudibleFarts5,,auth.api.sonyentertainmentnetwork.com,services/sony-psn-spotify,0
+https://www.spotify.com/us/login/?forward_url=https%3A%2F%2Fwww.spotify.com%2Fus%2Faccount%2Foverview%2F,i8degrees,inferno820i,,spotify.com,services/spotify,0
+https://www.spotify.com/us/login/?forward_url=https%3A%2F%2Fwww.spotify.com%2Fus%2Faccount%2Foverview%2F,i8degrees2,teddyhasaudibleFarts5,"19xxsm+3dk7uld5xghqc@sharklasers.com
+teddyhasaudibleFarts5
+09/14/1950",spotify.com,services/sony-psn-spotify,0
+http://sn,,,"jeffrey.carp@gmail.com
+RK-MH7C-SC63-6MLF",Apple Recovery Key,Secure Notes,0
+http://sn,,," github/i8degrees@gmail.com
+
+30e66-86d91
+12f46-f7741
+d4f02-a4937
+3df50-eece3
+1bcfc-3a72d
+db018-f9641
+69e03-b4663
+fa241-d478f
+bd927-ea815
+fcb79-9d32c
+e99d5-510b7
+e847b-d8d29
+c8670-0482d
+cba83-dbe51
+8d55f-684f1
+7e710-17f3e
+",github-recovery-codes,Secure Notes,1
+http://sn,,,"    GitHub Personal Access Token for keychain / shell
+9ec767ce7aab31831f51db03469c89c205319ca4",github.com,Secure Notes,0
+https://www.diigo.com/sign-in?referInfo=https%3A%2F%2Fwww.diigo.com,jeffrey.carp@gmail.com,inferno820i,,diigo.com,,1
+https://bugzilla.mozilla.org,Jeffrey Carpenter,teddyhasaudibleFarts5,,bugzilla.mozilla.org,,0
+https://accounts.firefox.com/force_auth?service=sync&context=fx_desktop_v1&email=jeffrey.carp%40gmail.com&entrypoint=preferences#/force_auth,jeffrey.carp@gmail.com,!inferno820isyn,,accounts.firefox.com,(none),1
+https://login.xmarks.com,i8degrees,!inferno820isyn,,login.xmarks.com,,0
+https://getpocket.com/,i8degrees@gmail.com,inferno820i,,getpocket.com,,0
+http://s10a9602.co.sebastian.ar.us:2020/webaccess/iWA5250?access=*PUBLIC&sessname=websessa,public,password,,s10a9602.co.sebastian.ar.us,,0
+http://upload.xvideos.com/account,i8degrees@gmail.com,inferno820i,,upload.xvideos.com,,0
+http://reportallusa.com/login.php,i8degrees,survey,Parlay GIS,reportallusa.com,(none),0
+https://www.dropbox.com/login,carp@blewinc.com,Ms9621,,dropbox.com,Productivity Tools,1
+http://192.168.15.1/,admin,carp!5net,,NETGEAR WNDR3700v3 192.168.15.1,,0
+https://www.123rf.com/stock-photo/cleaning_lady.html,mfr67545@pooae.com,inferno820i,,123rf.com,,0
+http://www.elevatesoft.com/user?action=register,viu33299,inferno,,elevatesoft.com,,0
+chrome://lastpass/content/home2.xul,,GFKC4qmt5jS4,,Generated Password for lastpass,,0
+https://registration.analog.com/login/accountregistration.aspx?locale=en,qgv45123@kloap.com,GFKC4qmt5jS4,,analog.com,,0
+https://web-eam-msp.crashplanpro.com/login/#/?to=%2Fconsole%2Fapp.html,carp@blewinc.com,Ms19621,,crashplanpro.com,,0
+http://scorpio.local:3000/users/login,admin,admin,,scorpio.local,,0
+http://www.theaudiodb.com/forum/ucp.php?mode=login,i8degrees,inferno,,theaudiodb.com,,0
+http://scorpio.local:3000/users/login,testme,testme,,scorpio.local,,0
+https://codepen.io/login,i8degrees@gmail.com,inferno820i,,codepen.io,,0
+https://www.genymotion.com/#!/auth/signin,i8degrees@gmail.com,inferno,,genymotion.com,,0
+https://app.getpostman.com/signup?redirect=web,i8degrees@gmail.com,inferno820i,,app.getpostman.com,,0
+http://smutty.com/h/LoniEvans/,i8degrees,inferno,,smutty.com,,0
+https://www.facebook.com/?_rdr=p,i8degrees@cox.net,inferno820i,"# Alternative Facebook account
+
+[i8degrees@cox.net: Cee Null](https://www.facebook.com/profile.php?id=100011073605402)",facebook.com,(none),1
+https://connect.garmin.com/en-US/signin,i8degrees@gmail.com,teddyhasaudibleFarts5,,connect.garmin.com,,1
+https://www.instagram.com/accounts/login/?next=%2Faccounts%2Fconfirm_email%2Fod4Lg5z7%2FaThkZWdyZWVzQGdtYWlsLmNvbQ%2F%3Fapp_redirect%3DFalse,i8degrees,inferno820i,,instagram.com,Social,0
+https://www.instagram.com/accounts/login/?next=%2Faccounts%2Fconfirm_email%2Fod4Lg5z7%2FaThkZWdyZWVzQGdtYWlsLmNvbQ%2F%3Fapp_redirect%3DFalse,i8degrees,inferno820i,,instagram.com,Social,0
+https://tapiriik.com/#/auth/garminconnect,i8degrees@gmail.com,teddyhasaudibleFarts5,,tapiriik.com,(none),0
+https://en.wordpress.com/wp-login.php,jeffrey.carp@gmail.com,inferno820i,,en.wordpress.com,,0
+https://my.netgear.com/Community/?referer=https%3A%2F%2Fcommunity.netgear.com%2Ft5%2FAll-Communities%2Fct-p%2FEnglish%3Flang%3Den,dcc49330@iaoss.com,Ku3Vd3Rg,10minutemail,my.netgear.com,autogen,0
+https://plex.tv/users/sign_in,i8degrees,inferno820i,,plex.tv,Entertainment,0
+https://login.xmarks.com,i8degrees@gmail.com,!inferno820isyn,,login.xmarks.com,,0
+http://www.insanelymac.com/forum/files/download/79-bcm5722d/,i8degrees,inferno,,insanelymac.com,,0
+https://nomlib.atlassian.net/login,i8degrees@gmail.com,inferno,,nomlib.atlassian.net,Business,0
+https://nomlib.atlassian.net/login?dest-url=/admin/users/view?username%3Dadmin,i8degrees@gmail.com,inferno820i,,nomlib.atlassian.net,Business,0
+https://www.taxact.com/myaccount/?t=80600.66/#/signin,i8degrees,teddyhasaudibleFarts10!,"i8degrees@gmail.com
++1 (479) 462-1244",taxact.com,Finance,0
+chrome://lastpass/content/home2.xul,carp@blewinc.com,teddyhasaudibleFarts10,Blew & Associates e-mail account (disabled),lastpass,,0
+http://www.routerlogin.net/,admin,carp!5net,,NETGEAR WNDR3700v3 routerlogin.net,,0
+https://weborder4.microworks.com/razorback/Register/Register?Store=2036&ReturnURL=%2Frazorback%2FCheckout,i8degrees@gmail.com,inferno,,weborder4.microworks.com,,0
+https://forum.sublimetext.com/t/build-systems/14435/47,Carp,cd4f61b96b6978b,,forum.sublimetext.com,,0
+

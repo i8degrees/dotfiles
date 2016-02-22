@@ -1,0 +1,29 @@
+{
+	// Use output of file to determine type?
+	"check_magic": false,
+	// Location of file command
+	"check_magic_command": "/usr/bin/file",
+	// If the file command says it's SGML, can we assume it's really XML?
+	"check_magic_sgml_ok": true,
+	// Use xml.sax to attempt parsing the view as a validation method?
+	"check_parser": false,
+	// Look for an xml declaration at the beginning of the view
+	// as a validation method?
+	"check_xml_declaration": true,
+	// Limit looking for a declaration in the first N lines
+	// (set to 0 to scan the entire view)
+	"check_xml_declaration_lines": 2,
+	// How big can the view be before we don't try and guess?
+	// (loading may be really slow on big files, set to 0 to disable)
+	"check_maximum_size": 131072, // 128 KB
+	// XML syntax to set if we think it's XML
+	"syntax_file": "Packages/XML/XML.tmLanguage",
+	// Only check files with these syntaxes - as an example, if Sublime
+	// already knows it's Python, we shouldn't need to see if it's also
+	// XML
+	// (empty out or set to false to check all files)
+	"syntaxes_to_check":
+	[
+		"Plain text.tmLanguage"
+	]
+}

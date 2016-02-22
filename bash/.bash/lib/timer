@@ -1,0 +1,25 @@
+#!/bin/bash
+#
+# 2016-02/21:jeff
+#
+# Internal utility functions
+
+# Performance timing functions
+
+declare -i ELAPSED_TICKS=0
+
+function start_timer()
+{
+  ELAPSED_TICKS=$SECONDS
+
+  if [[ "${NOM_DEBUG}" -gt 0 ]]; then
+    echo "ELAPSED_TICKS: ${ELAPSED_TICKS}"
+  fi
+}
+
+function ticks()
+{
+  let result=$SECONDS-$ELAPSED_TICKS
+
+  echo "${result}"
+}

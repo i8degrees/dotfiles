@@ -1,0 +1,1 @@
+--verbose=yes --recurse=yes --exclude=.git --exclude=build --tag-relative=yes

@@ -4,7 +4,9 @@
     {
         "name": "dotfiles.git",
         "path": ".",
-        "folder_exclude_patterns": [ "ST3" ]
+        "folder_exclude_patterns": [
+          "ST3", "vim/.vim/backup", "vim/.vim/tmp"
+        ]
     }
   ]
 }

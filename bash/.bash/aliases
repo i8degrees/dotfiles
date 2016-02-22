@@ -1,0 +1,157 @@
+#!/bin/bash
+#
+# 2016-02/18:jeff
+#
+# Common Bash (1) aliases
+
+alias rbash='source ${HOME}/.bash_profile'
+
+# Clear BASH history; zero out, flush immediately && reload shell
+alias chistory='cat /dev/null > ~/.bash/history && history -cw && rbash'
+
+alias ncdu='ncdu -x $@'
+
+if [ "$(which md5deep)" ]; then
+  alias md5='md5deep -re' # recursive, progress
+else
+  alias md5='md5sum'
+fi
+
+if [ "$(which colormake)" ]; then
+  alias make='colormake'
+fi
+
+if [ "$(which cmake)" ]; then
+  alias cmakeclean='make clean; make uninstall; rm -rf CMakeFiles CMakeCache.txt cmake_install.cmake cmake_uninstall.cmake CPackConfig.cmake CPackSourceConfig.cmake Makefile'
+fi
+
+if [ "$(which git)" ]; then
+  alias gpush='git push -u $@'
+  alias gcheckout='git checkout $@'
+  alias gmerge='git merge --no-ff $@'
+  alias gclone='git clone $@'
+  # Compare branches to determine which branch <source> is based from
+  # $1 = <source>
+  # $2 = <relation>
+  alias gbase='git show-branch $@'
+  #alias gbase='git show --summary `git merge-base branch $1`'
+  alias grev='git rev-parse --short HEAD'
+fi
+
+# TODO: combine tar, zip, ... creation and listing as one do-it-all function
+if [[ "$(which tar)" ]]; then
+  if [[ "$(which tarcolor)" ]]; then # lesspipe bash script
+    alias listtar='tar -tvf $@ | tarcolor'
+  else
+    alias listtar='tar -tvf $@'
+  fi
+
+  alias createtar='tar -cvf $@'
+  alias creategtar='tar -czvf $@' # tar + gzip
+  # FIXME: alias createtar='tar -czvf $1 --exclude=*.DS_Store $2'
+fi
+
+if [[ "$(which zip)" ]]; then
+  alias createzip='zip -r $@'
+fi
+
+if [[ "$(which wget)" ]]; then
+  alias dl='wget $@'
+fi
+
+if [[ "$(which valgrind)" ]]; then
+  alias memleaks=' valgrind --tool=memcheck --leak-check=full --num-callers=40 $@'
+fi
+
+# Quick access to comparing nomlib's screen-shots from visual unit tests
+if [[ "$(which md5)" ]]; then
+  alias dupe='md5 $@'
+fi
+
+
+#alias ls="ls -lhas --color=never"
+#alias lsr="ls -lRa --color=never"
+
+alias tree='tree -Chu'
+alias killall='killall -9 $@'
+
+alias pid='ps aux|pgrep'
+alias watch='watch -n 1.0'
+alias iostat='iostat -d 1'
+alias ifstat='clear && $(which ifstat) -z -i en2 -w -S $@'
+
+alias cls='reset'
+alias kpatch='patch -p1 < $@'
+
+# TODO/FIXME
+#alias 'shutdown_vbox'="VBoxManage controlvm $@ poweroff"
+
+#if [[ "${COLORTERM}" && -x "$(which colorgcc)" ]]; then
+  #alias gcc="$(which colorgcc)"
+  #alias g++="$(which colorgcc)"
+#else
+  #alias gcc="$(which gcc)"
+  #alias g++="$(which g++)"
+  #alias gcc="/usr/bin/gcc"
+  #alias g++="/usr/bin/gcc"
+#fi
+
+if [ -x "$(which colordiff)" ]; then
+#if [[ "$COLORTERM" && -x "/usr/bin/colordiff" ]]; then
+  alias diff="$(which colordiff) -r $@" # recursive
+  #alias diff="$(which colordiff) -uNr $@"
+else
+  alias diff="$(which diff) -r $@" # recursive
+fi
+
+# Grep options: silent mode (do not show errors), ignore binary files, case
+# in-sensitive, recursive
+alias g='grep $@'
+alias ip='echo "Public IP: "; curl icanhazip.com; echo "Internal IPs: "; ifconfig|grep "192.168.151.\|192.168.15."'
+#alias findfile='find $1 -name $2'
+
+# Generic Colourizer for terminal apps
+GRC_BIN=$(which grc)
+if [[ -x $GRC_BIN ]]; then
+
+  # Default grc cfg
+  alias colourify='${GRC_BIN} -es --colour=auto'
+  alias configure='colourify ./configure'
+  # TODO: Swap out colordiff alias with grc variant?
+  # alias diff='colourify diff'
+  alias make='colourify make'
+  alias gcc='colourify gcc'
+  alias g++='colourify g++'
+  alias as='colourify as'
+  alias gas='colourify gas'
+  alias ld='colourify ld'
+  alias netstat='colourify netstat'
+  alias ping='colourify ping'
+  alias traceroute='colourify /usr/sbin/traceroute'
+  alias tail='colourify tail $@'
+  # alias df='colourify gdf -Th $@'
+  alias cvs='colourify cvs $@'
+  # TODO: Swap out gls colorize with grc variant?
+  # See https://github.com/justfielding/dotfiles/commit/b66ee9468e77dea912bbf21a4866d7a89bb1d749
+  # alias ls='colourify ls $@'
+  # alias mount='colourify mount $@'
+  # alias mount='colourify mount2 $@'
+fi
+
+# Multimedia apps
+
+find_app 'MP4Box' mp4box
+find_app 'MP4Client' mp4client
+find_app 'GIMP' photoedit
+find_app 'Invisor Lite' meta
+
+PLAT_CFG="${HOME}/.bash/aliases.d/${NOM_PLATFORM}.sh"
+HOST_CFG="${HOME}/.bash/aliases.d/${NOM_HOST}.sh"
+
+if [[ -r "${PLAT_CFG}" ]]; then
+  source "${PLAT_CFG}"
+fi
+
+if [[ -r "${HOST_CFG}" ]]; then
+  source "${HOST_CFG}"
+fi

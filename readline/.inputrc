@@ -1,0 +1,57 @@
+#!/bin/sh
+# Jeffrey Carpenter <jefffrey.carp@gmail.com>
+#
+
+"\e[1~"	beginning-of-line # ^A
+"\e[4~"	end-of-line # ^E
+"\e[1;5D"	backward-word
+"\e[1;5C"	forward-word
+
+# Use the text that has already been typed as the prefix for searching through
+# commands (i.e. more intelligent Up/Down behavior)
+"\e[B": history-search-forward
+"\e[A": history-search-backward
+
+#"\e[3~": delete-char
+# this is actually equivalent to "\C-?": delete-char
+
+# Use Alt/Meta + Delete to delete the preceding word
+"\e[3;3~": kill-word
+
+# Replace all occurrences of the tilde glyph, '~', with the user home
+# directory, i.e.: /Users/jeff
+set expand-tilde on
+
+# Make Tab auto-complete regardless of filename case; this especially matters
+# to me since Mac OS X HFS is not case sensitive by default.
+set completion-ignore-case on
+
+# Immediately add a trailing slash when auto-completing symlinks to directories
+set mark-symlinked-directories on
+
+# List all matches in case multiple possible completions are possible
+set show-all-if-ambiguous on
+
+# Do not autocomplete hidden files unless the pattern explicitly begins with a
+# dot
+set match-hidden-files off
+
+# Show all auto-complete results at once
+set page-completions off
+
+# Set the total number of possible completions before prompting to show them or
+# not
+set completion-query-items 100
+
+# Be more intelligent when auto-completing by also looking at the text after
+# the cursor. For example, when the current line is "cd ~/src/mozil", and
+# the cursor is on the "z", pressing Tab will not auto-complete it to "cd
+# ~/src/mozillail", but to "cd ~/src/mozilla". (This is supported by the
+# Readline used by Bash 4.)
+set skip-completed-text on
+
+# Allow UTF-8 input and output, instead of showing stuff like $'\0123\0456'
+# See http://code.google.com/p/iterm2/wiki/Keybindings
+set input-meta on
+set output-meta on
+set convert-meta off

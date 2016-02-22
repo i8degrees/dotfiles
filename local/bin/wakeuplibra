@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# wake up libra.local
-wakeonlan -i 192.168.151.255 00:40:45:34:b0:0b

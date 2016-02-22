@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/Volumes/Media/Projects/nomlib.git/src'
+let g:netrw_dirhist_2='/Volumes/Media/Projects/nomlib.git/src/actions'
+let g:netrw_dirhist_3='/mnt/tmp/2010-06-19_libra/videos/The Boondocks-(Uncut)-Season 1 and 2+Season 2 (Extras)-MILLIONDOLLAMAN1/The Boondocks-Season /The Boondocks-Season 1/The Boondocks-Season 1/The Boondocks-Season 2/The Boondocks-Season 2'
+let g:netrw_dirhist_4='/Users/jeff/Library/Application Support/Sublime Text 3/Packages/SublimeLinter-contrib-clang'
+let g:netrw_dirhist_5='/Users/jeff'
+let g:netrw_dirhist_6='/Volumes/Media/Projects/frameworks/rack-skeletons/proxy'
+let g:netrw_dirhist_7='/Users/jeff'
+let g:netrw_dirhist_8='/Users/jeff/.config/pianobar'

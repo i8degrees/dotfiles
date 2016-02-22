@@ -1,0 +1,16 @@
+#!/bin/bash
+# 2016-02/19:jeff
+#
+# Wake on LAN for scorpio.local
+
+PATH=/usr/local/bin:/usr/bin:/bin
+
+# en0; primary access
+wakeonlan -i 192.168.151.255 fc:aa:14:e0:db:80
+
+# en1 (WiFi); untested!
+wakeonlan -i 192.168.15.255 c8:e0:eb:55:82:f9
+
+# en3; alternative access to my subnet
+wakeonlan -i 192.168.151.255 fc:aa:14:e0:e3:0d
+

@@ -1,0 +1,18 @@
+#!/bin/bash
+# 2016-02/19:jeff
+#
+# Wake on LAN for virgo.local
+
+# TODO(jeff): Acquire MAC addresses of: 
+#   en3 (Gigabit Ethernet via Thunderbolt dock) 
+#   en4 (Apple USB Ethernet Adapter)
+
+# en0 (WiFi)
+wakeonlan -i 192.168.15.255 10:40:f3:80:af:0a
+
+# en3 (gigabit; wired)
+# wakeonlan -i 192.168.151.255 xx:xx
+
+# en4 (wired)
+# wakeonlan -i 192.168.151.255 xx:xx
+

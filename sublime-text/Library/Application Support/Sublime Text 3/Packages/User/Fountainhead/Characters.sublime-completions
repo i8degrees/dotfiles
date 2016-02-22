@@ -1,0 +1,6 @@
+{
+		"scope": "text.fountain - comment - foreground - dialogue - lyrics - string - entity.other.inherited-class - variable.parameter - entity.name.function - entity.name.filename - meta.diff - support.function - constant.numeric - foreground - entity.name.tag",
+
+		"completions":
+		["JEFF","KT","KT ^"]
+}

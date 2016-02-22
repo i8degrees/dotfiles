@@ -1,76 +1,89 @@
 #!/bin/bash
 
+# TODO(jeff): Add --ignore=.DS_Store* onto all of the stow commands!
+
+# IMPORTANT(jeff): Setup system PATH and user environment, i.e.:
+# $XDG_CONFIG_HOME
+# BASH_PROFILE="bash/bash_profile"
+# shellcheck source=bash/bash_profile
+# source "${BASH_PROFILE}"
+XDG_CONFIG_HOME="${HOME}/.config"
+XDG_MUSIC_DIR="/Volumes/Media/Music"
+PATH="/usr/bin:/usr/local/bin:/bin"
 WORKING_DIR=$(pwd)
+
+STOW_IGNORE_LIST=".DS_Store*"
+
+# FIXME(jeff): We should not be removing top-level directories at all, in case
+# we accidentally start editing a file in one of these directories and then
+# later run this command -- unexpectedly losing work!
+
+# FIXME(jeff): We musn't rely on non-standard variants of user-space
+# filesystem utility binaries, i.e.: GNU rm from the coreutils package.
+#
+#   In summary, none of the options listed under the COMPATIBILITY section of
+# the applicable man pages should be used when stated as non-standard.
+#
+#   See also,
+#     rm(1), rmdir(1)
 RM_COMMAND=$(which rm)
 
+# wget configuration
+stow -v -D wget
+
+# curl configuration
+stow -v -D curl
+
+# ruby gems configuration
+stow -v -D ruby
+
+# git configuration
+stow --ignore="${STOW_IGNORE_LIST}" -v -D git
+
+# htop configuration
+stow --ignore="${STOW_IGNORE_LIST}" -v -D htop
+
 # vim configuration
-${RM_COMMAND} -v $HOME/.vim/autoload
-${RM_COMMAND} -v $HOME/.vim/bundle
-${RM_COMMAND} -v $HOME/.vim/colors
-${RM_COMMAND} -v $HOME/.vimrc
+stow -v --ignore="${STOW_IGNORE_LIST}" -D vim
 
 # mplayer configuration
 ${RM_COMMAND} -rv ${HOME}/.mplayer
 
 # mpv configuration
-${RM_COMMAND} -rv ${HOME}/.mpv
-
-# git configuration
-${RM_COMMAND} -rv $HOME/.gitattributes
-${RM_COMMAND} -rv $HOME/.gitconfig
-${RM_COMMAND} -rv $HOME/.gitignore_global
-${RM_COMMAND} -rv $HOME/.gitk
-${RM_COMMAND} -rv $HOME/.git_template
+declare MPV_IGNORE_LIST=STOW_IGNORE_LIST
+MPV_IGNORE_LIST+="watch_later/*"
+stow --ignore="${MPV_IGNORE_LIST}" -v -D mpv
 
 # hg configuration
-${RM_COMMAND} -rv $HOME/.hgignore_global
+stow -v -d "${WORKING_DIR}" -t "${HOME}" -D hg
 
 # tmux configuration
-${RM_COMMAND} -rv $HOME/.tmux.conf
+stow -v -d "${WORKING_DIR}" -t "${HOME}" -D tmux
 
 # gtk configuration
-${RM_COMMAND} -rv $HOME/.gtkrc-2.0
-${RM_COMMAND} -rv $HOME/.gtkrc-2.0.mine
-
-# X11 configuration
-${RM_COMMAND} -rv $HOME/.Xresources
+stow -v -D gtk
 
 # pianobar cfg
-${RM_COMMAND} -rv ${HOME}/.config/pianobar
+stow -v -D pianobar
 
 # emacs cfg
-${RM_COMMAND} -rv ${HOME}/.emacs
+# ${RM_COMMAND} -rv ${HOME}/.emacs
+stow -v --ignore="${STOW_IGNORE_LIST}" -D emacs
 
 # grc cfg
-${RM_COMMAND} -rv ${HOME}/.grc
+stow -v --ignore="${STOW_IGNORE_LIST}" -D grc
 
 case "$(uname -s)" in
 Darwin)
 
-  if [[ -x "${HOME}/local/bin" ]]; then
-    # local support bins
-    ${RM_COMMAND} -rv ${HOME}/local/bin/dotfiles
-    ${RM_COMMAND} -rv ${HOME}/local/bin/gen-ssh-key
-    ${RM_COMMAND} -rv ${HOME}/local/bin/subl
-    ${RM_COMMAND} -rv ${HOME}/local/bin/Terminal
-    ${RM_COMMAND} -rv ${HOME}/local/bin/wakeuplibra
-    ${RM_COMMAND} -rv ${HOME}/local/bin/wakeupwindev
-    ${RM_COMMAND} -rv ${HOME}/local/bin/Marked2.sh
-    ${RM_COMMAND} -rv ${HOME}/local/bin/mac-sdks.sh
-
-    # Optional integration of our UNIX shell command history, current working
-    # directory and more for iTerm 2, version 3 betas and nightly builds. This works
-    # even over a SSH connection!
-    #
-    # See also: https://iterm2.com/shell_integration.html
-    ITERM_SHELL_INTEGRATION_SH=${HOME}/.iterm2_shell_integration.bash
-    if [[ -f ${ITERM_SHELL_INTEGRATION_SH} ]]; then
-      ${RM_COMMAND} -rv ${ITERM_SHELL_INTEGRATION_SH}
-
-      ${RM_COMMAND} -rv ${HOME}/local/bin/imgcat
-      ${RM_COMMAND} -rv ${HOME}/local/bin/imgls
-    fi
+  if [[ -n "${FIREFOX_CONFIG}" ]]; then
+    # TODO
   fi
+
+  stow -v --ignore="${STOW_IGNORE_LIST}" -D wakeonlan
+
+  # iTerm configuration
+  stow --ignore="${STOW_IGNORE_LIST}" -v iterm2.9
 
   # Mac OS X Automator Services
   # ${RM_COMMAND} -rv "${HOME}/Library/Services/Duplicate Tab.workflow"
@@ -79,23 +92,35 @@ Darwin)
   # ${RM_COMMAND} -rv "${HOME}/Library/Services/Zoom In.workflow"
   # ${RM_COMMAND} -rv "${HOME}/Library/Services/Zoom Out.workflow"
 
-  # mpd, mpdscribble configuration
-  #${RM_COMMAND} -rv ${HOME}/.config/mpd
-  #${RM_COMMAND} -rv ${HOME}/.ncmpcpp
-  if [[ $(which mpd) ]]; then
-    launchctl stop ${HOME}/Library/LaunchAgents/org.local.mpd.plist
-    launchctl unload ${HOME}/Library/LaunchAgents/org.local.mpd.plist
+  # ncmcpp configuration
+  stow --ignore="${STOW_IGNORE_LIST}" -v -D ncmpcpp
+
+  # mpd daemon configuration
+  if [[ "$(which mpd)" ]]; then
+    launchctl stop "${HOME}/Library/LaunchAgents/org.local.mpd.plist"
+    launchctl unload "${HOME}/Library/LaunchAgents/org.local.mpd.plist"
+
+    # mpdscribble configuration
+    if [[ "$(which mpdscribble)" ]]; then
+      launchctl stop "${HOME}/Library/LaunchAgents/org.local.mpdscribble.plist"
+      launchctl unload "${HOME}/Library/LaunchAgents/org.local.mpdscribble.plist"
+    fi
+
+    rm -rv "${XDG_CONFIG_HOME}/mpd/music"
+    rm -rv "${XDG_CONFIG_HOME}/mpd/playlists"
   fi
 
-  if [[ $(which mpdscribble) ]]; then
-    launchctl stop ${HOME}/Library/LaunchAgents/org.local.mpdscribble.plist
-    launchctl unload ${HOME}/Library/LaunchAgents/org.local.mpdscribble.plist
-  fi
+  # mpd configuration
+  stow --ignore="${STOW_IGNORE_LIST}" -v -D mpd
+  stow --ignore="${STOW_IGNORE_LIST}" -v -D mpd-osx
+
+  # mpdscribble configuration
+  stow --ignore="${STOW_IGNORE_LIST}" -v -D mpdscribble
+  stow --ignore="${STOW_IGNORE_LIST}" -v -D mpdscribble-osx
 
   # synergys configuration
-  # ${RM_COMMAND} -rv ${HOME}/.synergy.conf
-  # ${RM_COMMAND} -rv ${HOME}/Library/LaunchAgents/org.local.synergys.plist
-  ${RM_COMMAND} -rv ${HOME}/local/bin/synergys.sh
+  # stow --ignore="${STOW_IGNORE_LIST}" -v -D synergy
+  # stow --ignore="${STOW_IGNORE_LIST}" -v -D synergy-osx
 
   # unison configuration
   launchctl unload ~/Library/LaunchAgents/org.local.unison_nomlib.plist
@@ -103,52 +128,45 @@ Darwin)
   launchctl unload ~/Library/LaunchAgents/org.local.unison_ttcards.plist
   launchctl unload ~/Library/LaunchAgents/org.local.unison_third-party.plist
 
-  ${RM_COMMAND} -rv ${HOME}/Library/LaunchAgents/org.local.unison_nomlib.plist
-  ${RM_COMMAND} -rv ${HOME}/Library/LaunchAgents/org.local.unison_nomdev.plist
-  ${RM_COMMAND} -rv ${HOME}/Library/LaunchAgents/org.local.unison_ttcards.plist
-  ${RM_COMMAND} -rv ${HOME}/Library/LaunchAgents/org.local.unison_third-party.plist
-
-  ${RM_COMMAND} -rv ${HOME}/local/bin/unison_nomlib.sh
-  ${RM_COMMAND} -rv ${HOME}/local/bin/unison_nomdev.sh
-  ${RM_COMMAND} -rv ${HOME}/local/bin/unison_ttcards.sh
-  ${RM_COMMAND} -rv ${HOME}/local/bin/unison_third-party.sh
+  stow -v --ignore="${STOW_IGNORE_LIST}" -D unison
+  stow -v --ignore="${STOW_IGNORE_LIST}" -D unison-osx
 
   # pow configuration
-  ${RM_COMMAND} -rv ${HOME}/.powconfig
+  stow -v --ignore="${STOW_IGNORE_LIST}" -D pow
 
-  # AppleScripts
-  ${RM_COMMAND} -rv $HOME/local/bin/setaudio.applescript
-  ${RM_COMMAND} -rv ${HOME}/local/bin/audiodevice
-  ${RM_COMMAND} -rv $HOME/local/bin/AppleTV.applescript
-  ${RM_COMMAND} -rv $HOME/local/bin/hermes
+  # Hermes app helper script
+  stow -v --ignore="${STOW_IGNORE_LIST}" -D hermes
 
-  # My registered GitHub API token for use on behalf of HomeBrew requests,
-  # i.e.: brew search
-  ${RM_COMMAND} -rv ${HOME}/.github_token
+  # Marked 2
+  stow -v --ignore="${STOW_IGNORE_LIST}" -D marked
+
+  # Sublime Text
+  stow -v --ignore="${STOW_IGNORE_LIST}" -D sublime-text
 
   # OpenAL-soft configuration
-  ${RM_COMMAND} -v ${HOME}/.alsoftrc
+  stow -v --ignore="${STOW_IGNORE_LIST}" -D openal
+
+  # ssh && sshd
+  stow -v --ignore="${STOW_IGNORE_LIST}" ssh
+
+  # API token keys
+  rm -rv "${HOME}/.api_tokens"
+
+  stow -v --ignore="${STOW_IGNORE_LIST}" -D osx
 
   ;;
 Linux)
-  exit 0
+  # stow -v --ignore="${STOW_IGNORE_LIST}" -D samba
+
+  stow -v --ignore="${STOW_IGNORE_LIST}" -D X11
   ;;
 *)
-  exit 0
+  # Catch-all
   ;;
 esac
 
-# Bash supporting configuration
-${RM_COMMAND} -v $HOME/.colors
-
 # Bash configuration
-${RM_COMMAND} -v $HOME/.bash_aliases
-${RM_COMMAND} -v $HOME/.bash_cflags
-${RM_COMMAND} -v $HOME/.bash_login
-${RM_COMMAND} -v $HOME/.bash_logout
-${RM_COMMAND} -v $HOME/.bash_profile
-${RM_COMMAND} -v $HOME/.bash_prompt
-${RM_COMMAND} -v $HOME/.bash_syscheck
-${RM_COMMAND} -v $HOME/.bashlib
-${RM_COMMAND} -v $HOME/.bashrc
-${RM_COMMAND} -v $HOME/.inputrc
+stow --ignore="${STOW_IGNORE_LIST}" -v -D bash
+
+# readline configuration
+stow -v -D readline

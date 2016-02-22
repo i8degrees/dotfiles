@@ -1,0 +1,14 @@
+{
+	"extensions":
+	[
+		"mmd",
+		"mdown",
+		"note",
+		"md",
+		"md"
+	],
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"word_wrap": true,
+	"wrap_width": 0
+}

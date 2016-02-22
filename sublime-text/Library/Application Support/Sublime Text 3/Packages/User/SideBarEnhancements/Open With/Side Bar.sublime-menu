@@ -1,0 +1,57 @@
+[
+	{"id": "side-bar-files-open-with",
+		"children":
+		[
+
+			{
+				"caption": "GIMP",
+				"id": "side-bar-files-open-with-gimp",
+
+				"command": "side_bar_files_open_with",
+				"args": {
+									"paths": [],
+									"application": "/Users/jeff/Applications/GIMP.app",
+									"extensions":"psd|png|jpg|jpeg"  //any file with these extensions
+								}
+			},
+
+      {
+        "caption": "mpv",
+        "id": "side-bar-files-open-with-mpv",
+
+        "command": "side_bar_files_open_with",
+        "args": {
+                  "paths": [],
+                  "application": "/usr/local/Cellar/mpv/0.7.0/mpv.app",
+                  "extensions":".*" //any file with extension
+                }
+      },
+
+			{"caption":"-"},
+
+			{
+				"caption": "Google Chrome",
+				"id": "side-bar-files-open-with-chrome",
+
+				"command": "side_bar_files_open_with",
+				"args": {
+									"paths": [],
+									"application": "/Users/jeff/Applications/Google Chrome.app",
+									"extensions":".*" //any file with extension
+								}
+			},
+
+      {
+        "caption": "Marked 2",
+        "id": "side-bar-files-open-with-marked2",
+
+        "command": "side_bar_files_open_with",
+        "args": {
+                  "paths": [],
+                  "application": "/Users/jeff/Applications/Marked 2.app",
+                  "extensions":".*" //any file with extension
+                }
+      }
+		]
+	}
+]

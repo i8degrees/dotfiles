@@ -1,0 +1,29 @@
+{
+  "path": "/Users/jeff/Projects/dotfiles.git:/Users/jeff/local/bin:/usr/local/bin:/usr/bin",
+  "working_dir": "${file_path}",
+  "shell": true,
+  "cmd": [ "echo 'Select one of the build variants, i.e.: Lint, Run'" ],
+
+  "variants":
+  [
+    {
+      "name": "Lint",
+      "cmd": [ "shellcheck -x ${file}" ]
+    },
+
+    {
+      "name": "Run",
+      "cmd": [ "${file}" ]
+    },
+
+    {
+      "name": "Install",
+      "cmd": [ "./install.sh" ]
+    },
+
+    {
+      "name": "Uninstall",
+      "cmd": [ "./uninstall.sh" ]
+    }
+  ]
+}

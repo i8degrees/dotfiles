@@ -1,0 +1,17 @@
+{
+  "selector": "source.pde",
+  "file_regex": "^(...*?):([0-9]*)",
+  "working_dir": "${folder:${file_path}}",
+  "path": "/usr/bin:/usr/local/bin:/bin",
+  "shell": true,
+  "cmd": [ "processing-java --sketch=${file_path} --build --output=/private/tmp/${file_path} --force" ],
+  "encoding": "ISO8859-1",
+  
+  "variants":
+  [
+    {
+      "name": "Run",
+      "cmd": [ "processing-java --sketch=${file_path} --output=/private/tmp/${file_path} --force --run" ]
+    }
+  ]
+}

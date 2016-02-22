@@ -1,0 +1,38 @@
+# 2016-02/15:jeff
+#
+#		git/attributes
+#
+# Global (user-scoped) git attributes configuration
+#
+# See also,
+#   git(1), gitattributes(5)
+
+# Plain text; ASCII, UTF
+*.txt text
+
+# Apple Xcode
+# *.pbxproj eol=crlf
+*.pbxproj -crlf -diff -merge
+
+# MS Visual Studio
+*.vcproj eol=crlf
+
+# BASH
+*.sh eol=lf
+
+# Sublime Text
+*.sublime-project eol=crlf
+
+# *.jpg -text
+*.png -text -eol
+*.jpg -text -eol
+*.wav -text -eol
+*.ogg -text -eol
+*.flac -text -eol
+*.tff -text -eol
+*.icns -text -eol
+*.rtf -text -eol
+
+# Normalize line endings to LF (Unix) on check-in and prevents
+# conversion to CRLF (Windows) when the file is checked out.
+text eol=lf

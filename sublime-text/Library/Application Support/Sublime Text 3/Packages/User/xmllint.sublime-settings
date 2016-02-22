@@ -1,0 +1,8 @@
+{
+    // string that is used to ident the XML file when reformating
+    "ident": "  ",
+
+    // path to the xmllint application
+    // if xmllint is not in your PATH variable, an absolute path should be supplied
+    "path": "/usr/bin/xmllint"
+}

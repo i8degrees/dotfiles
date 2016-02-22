@@ -1,0 +1,13 @@
+{
+	"draw_centered": true,
+	"ensure_newline_at_eof_on_save": true,
+	"extensions":
+	[
+		"srt"
+	],
+	"font_face": "Ubuntu Mono",
+  // "font_face": "Helvetica Neue Light",
+  // "font_face": "Arial",
+	"font_size": 16,
+	"line_numbers": false,
+}

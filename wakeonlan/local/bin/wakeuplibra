@@ -1,0 +1,8 @@
+#!/bin/bash
+# 2016-02/19:jeff
+#
+# Wake on LAN for libra.local
+
+PATH=/usr/local/bin:/usr/bin:/bin
+
+wakeonlan -i 192.168.151.255 00:40:45:34:b0:0b

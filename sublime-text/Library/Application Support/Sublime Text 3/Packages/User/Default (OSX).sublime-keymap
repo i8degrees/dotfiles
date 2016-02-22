@@ -1,0 +1,171 @@
+[
+    // Resize Group w/ Keyboard Package
+/*
+    { "keys": ["super+shift+left"], "command": "resize_active_group", "args" : { "direction" : "left" } },
+    { "keys": ["super+shift+right"], "command": "resize_active_group", "args" : { "direction" : "right" } },
+    { "keys": ["super+shift+up"], "command": "resize_active_group", "args" : { "direction" : "up" } },
+    { "keys": ["super+shift+down"], "command": "resize_active_group", "args" : { "direction" : "down" } },
+*/
+
+    // Synchronized Page Scrolling Package
+/*
+    { "keys": ["shift+up"], "command": "synchro_scroll", "args": {"cmd": "move", "by": "lines", "forward": false} },
+    { "keys": ["shift+down"], "command": "synchro_scroll", "args": {"cmd": "move", "by": "lines", "forward": true} },
+    { "keys": ["shift+pageup"], "command": "synchro_scroll", "args": {"cmd": "move", "by": "pages", "forward": false} },
+    { "keys": ["shift+pagedown"], "command": "synchro_scroll", "args": {"cmd": "move", "by": "pages", "forward": true} },
+    { "keys": ["shift+home"], "command": "synchro_scroll", "args": {"cmd": "move_to", "to": "bof", "extend": false} },
+    { "keys": ["shift+end"], "command": "synchro_scroll", "args": {"cmd": "move_to", "to": "eof", "extend": false} },
+*/
+
+    // Goto Open File Package
+/*
+    { "keys":["super+shift+o"], "command": "goto_open_file", "args": {"active_group": false } },
+    { "keys":["alt+shift+o"], "command": "goto_open_file", "args": {"active_group": true } },
+*/
+
+    // Markdown Preview Package
+    { "keys": [ "super+shift+m" ], "command": "markdown_preview" },
+
+    // { "keys": ["alt+o"], "command": "switch_script" },
+
+    // Switch File Deluxe Package
+    // { "keys": ["super+alt+up"], "command": "switch_file_deluxe", "args": {"extensions": [".cpp", ".cxx", ".cc", ".c", ".hpp", ".hxx", ".h", ".ipp", ".inl", ".m", ".mm"]} }
+    { "keys": ["alt+o"], "command": "switch_file_deluxe", "args": {"extensions": [".c", ".cpp", ".cxx", ".h", ".hpp", ".hxx", ".inl", ".in", ".m", ".mm"]} },
+
+    // SublimeAStyle Package
+    { "keys": ["super+k"], "command": "astyleformat", "args": {"selection_only": true} },
+
+    // These grouped key bindings are bound to my Logitech G300 mouse using SteerMouse
+    { "keys": ["super+alt+s"], "command": "toggle_side_bar" },
+    { "keys": ["super+alt+space"], "command": "show_panel", "args": {"panel": "console", "toggle": true} },
+    { "keys": ["super+alt+q"], "command": "indent" },
+    { "keys": ["super+alt+z"], "command": "unindent" },
+    //{ "keys": ["super+alt+["], "command": "fold" },
+    //{ "keys": ["super+alt+]"], "command": "unfold" },
+
+    // Default build command
+    { "keys": ["super+b"], "command": "build" },
+    //{ "keys": ["super+b"], "command": "build", "args": {"variant": "Debug"} },
+
+    // Cancel current build
+    { "keys": ["super+shift+c"], "command": "exec", "args": {"kill": "cancel"} },
+
+    // Default run target
+    { "keys": ["super+r"], "command": "build", "args": {"variant": "Run"} },
+
+    // Show build results (console view)
+    { "keys": ["ctrl+b"], "command": "show_panel", "args": { "panel": "output.exec", "toggle": true } },
+
+    // Next build error
+    { "keys": ["ctrl+b", "enter"], "command": "next_result" },
+
+    // Prev build error
+    { "keys": ["ctrl+b", "`"], "command": "prev_result" },
+
+    //{ "keys": ["super+shift+p"], "command": "build", "args": {"variant": "Release-POSIX"} },
+    //{ "keys": ["super+t"], "command": "build", "args": {"variant": "Debug-POSIX"} },
+
+    // FIXME(jeff): Conflicting with goto line
+    // { "keys": ["ctrl+b, ctrl+g"], "command": "build", "args": {"variant": "gen"} },
+    { "keys": ["ctrl+b, ctrl+c"], "command": "build", "args": {"variant": "clean"} },
+    { "keys": ["ctrl+b, ctrl+i"], "command": "build", "args": {"variant": "Install"} },
+    { "keys": ["ctrl+b, ctrl+u"], "command": "build", "args": {"variant": "Uninstall"} },
+    { "keys": ["ctrl+b, ctrl+t"], "command": "build", "args": {"variant": "Test"} },
+    { "keys": ["ctrl+b, ctrl+p"], "command": "build", "args": {"variant": "Package"} },
+    { "keys": ["ctrl+b, ctrl+a"], "command": "build", "args": {"variant": "Analyze"} },
+    { "keys": ["ctrl+b, ctrl+d"], "command": "build", "args": {"variant": "docs"} },
+
+    // Layouts control
+
+    { "keys": ["ctrl+shift+tab"], "command": "prev_view" },
+    { "keys": ["ctrl+tab"], "command": "next_view" },
+
+    { "keys": ["alt+1"], "command": "focus_group", "args": { "group": 0 } },
+    { "keys": ["alt+2"], "command": "focus_group", "args": { "group": 1 } },
+    { "keys": ["alt+3"], "command": "focus_group", "args": { "group": 2 } },
+    { "keys": ["alt+4"], "command": "focus_group", "args": { "group": 3 } },
+
+    { "keys": ["alt+1"], "command": "move_to_group", "args": { "group": 0 } },
+    { "keys": ["alt+2"], "command": "move_to_group", "args": { "group": 1 } },
+    { "keys": ["alt+3"], "command": "move_to_group", "args": { "group": 2 } },
+    { "keys": ["alt+4"], "command": "move_to_group", "args": { "group": 3 } },
+
+    { "keys": ["super+1"], "command": "select_by_index", "args": { "index": 0 } },
+    { "keys": ["super+2"], "command": "select_by_index", "args": { "index": 1 } },
+    { "keys": ["super+3"], "command": "select_by_index", "args": { "index": 2 } },
+    { "keys": ["super+4"], "command": "select_by_index", "args": { "index": 3 } },
+    { "keys": ["super+5"], "command": "select_by_index", "args": { "index": 4 } },
+    { "keys": ["super+6"], "command": "select_by_index", "args": { "index": 5 } },
+    { "keys": ["super+7"], "command": "select_by_index", "args": { "index": 6 } },
+    { "keys": ["super+8"], "command": "select_by_index", "args": { "index": 7 } },
+    { "keys": ["super+9"], "command": "select_by_index", "args": { "index": 8 } },
+    { "keys": ["super+0"], "command": "select_by_index", "args": { "index": 9 } },
+    { "keys": ["super+_"], "command": "select_by_index", "args": { "index": 10 } },
+    { "keys": ["super++"], "command": "select_by_index", "args": { "index": 11 } },
+
+    // Misc
+    { "keys": ["alt+shift+f"], "command": "show_panel", "args": {"panel": "find_in_files"} },
+
+    // Swap line moving with line scrolling key bindings
+    { "keys": ["ctrl+alt+up"], "command": "swap_line_up" },
+    { "keys": ["ctrl+alt+down"], "command": "swap_line_down" },
+
+    { "keys": ["ctrl+super+up"], "command": "scroll_lines", "args": {"amount": 1.0} },
+    { "keys": ["ctrl+super+down"], "command": "scroll_lines", "args": {"amount": -1.0} },
+
+    // Super Calculator
+    // { "keys": ["super+shift+y"], "command": "super_calculator" },
+
+    // Open-Include (Sublime Text 3)
+    { "keys": ["alt+d"], "command": "open_include" },
+    { "keys": ["super+ctrl+o"], "command": "open_file_from_env" },
+
+    // SublimeLinter binding defaults
+    // { "keys": ["ctrl+super+l"], "command": "sublimelinter_lint" },
+    // { "keys": ["ctrl+super+e"], "command": "sublimelinter_goto_error", "args": {"direction": "next"} },
+    // { "keys": ["ctrl+super+shift+e"], "command": "sublimelinter_goto_error", "args": {"direction": "previous"} },
+
+    // We **need** to reserve the following key binding for Afloat
+    // { "keys": ["ctrl+super+a"], "command": "sublimelinter_show_all_errors" }
+
+    { "keys": ["ctrl+super+e"], "command": "sublimelinter_show_all_errors" },
+
+    // GitGutter
+    { "keys": ["super+shift+k"], "command": "git_gutter_next_change" },
+    { "keys": ["super+shift+y"], "command": "git_gutter_prev_change" },
+
+    { "keys": ["super+ctrl+shift+c", "1"], "command": "clipboard_manager_copy_to_register", "args": { "register": "1" } },
+    { "keys": ["super+ctrl+shift+c", "2"], "command": "clipboard_manager_copy_to_register", "args": { "register": "2" } },
+    { "keys": ["super+ctrl+shift+c", "3"], "command": "clipboard_manager_copy_to_register", "args": { "register": "3" } },
+    { "keys": ["super+ctrl+shift+c", "4"], "command": "clipboard_manager_copy_to_register", "args": { "register": "4" } },
+
+    { "keys": ["super+ctrl+shift+v", "1"], "command": "clipboard_manager_paste_from_register", "args": { "register": "1" } },
+    { "keys": ["super+ctrl+shift+v", "2"], "command": "clipboard_manager_paste_from_register", "args": { "register": "2" } },
+    { "keys": ["super+ctrl+shift+v", "3"], "command": "clipboard_manager_paste_from_register", "args": { "register": "3" } },
+    { "keys": ["super+ctrl+shift+v", "4"], "command": "clipboard_manager_paste_from_register", "args": { "register": "4" } },
+
+    // FileSystem AutoCompletion
+    // https://packagecontrol.io/packages/FileSystem%20Autocompletion
+    { "keys": ["ctrl+x","ctrl+f"], "command": "file_system_comp_trigger"},
+
+    // QuickSimpleNote
+    // { "keys": ["super+shift+s", "super+shift+s"], "command": "show_quick_simplenote_notes" },
+    // { "keys": ["super+shift+s", "super+shift+n"], "command": "create_quick_simplenote_note" },
+    // { "keys": ["super+shift+s", "super+shift+d"], "command": "delete_quick_simplenote_note" }
+
+    // sublime-devdocs
+    { "keys": ["ctrl+shift+p"], "command": "dev_docs_search_selection" },
+
+    // Goto Definition (Sublime Text 3)
+    { "keys":["super+shift+g"], "command": "goto_definition" },
+
+    // Reset tab size shortcut
+    {
+      "keys": ["ctrl+k", "ctrl+t"],
+      "command": "set_setting",
+      "args": {
+        "setting": "tab_size",
+        "value": 2
+      }
+    }
+]

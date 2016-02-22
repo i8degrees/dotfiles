@@ -1,0 +1,16 @@
+{
+  "path": "/Users/jeff/local/bin",
+  "working_dir": "${file_path}",
+  "cmd": [ "Marked2.sh \"${file}\"" ],
+  "shell": true,
+  // See Markdown.tmLanguage for supported file extensions
+  "selector": "text.html.markdown",
+
+  "variants":
+  [
+    {
+      "name": "Run",
+      "cmd": [ "Marked2.sh \"${file}\"" ]
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+		"scope": "text.fountain - comment - foreground - dialogue - lyrics - string - entity.other.inherited-class - variable.parameter - entity.name.function - entity.name.filename - meta.diff - support.function - constant.numeric - foreground - entity.name.tag",
+
+		"completions":
+		["INT. Awesome BLOW JOB","INT. COWGIRL","INT. DOGGY STYLE","INT. GOODBYE BLOWJOB","INT. INTERMISSION","INT. SIDE JAM LOVE","INT. TIME BOMB"]
+}

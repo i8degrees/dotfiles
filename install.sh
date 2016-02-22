@@ -1,152 +1,183 @@
 #!/bin/bash
 
+# TODO(jeff): Add --ignore=.DS_Store* onto all of the stow commands!
+
+# IMPORTANT(jeff): Setup system PATH and user environment, i.e.:
+# $XDG_CONFIG_HOME
+# BASH_PROFILE="bash/bash_profile"
+# shellcheck source=bash/bash_profile
+# source "${BASH_PROFILE}"
+XDG_CONFIG_HOME="${HOME}/.config"
+XDG_MUSIC_DIR="/Volumes/Media/Music"
+PATH="/usr/bin:/usr/local/bin:/bin"
 WORKING_DIR=$(pwd)
-MKDIR_COMMAND=$(which mkdir)
-# FIXME: Do **not** use BSD ln, as it does not have the -T switch, which
-# means some of these symbolic links will not be installed correctly!
+
+STOW_IGNORE_LIST=".DS_Store*"
+
+# FIXME(jeff): We musn't rely on non-standard variants of user-space
+# filesystem utility binaries, i.e.: GNU ln from the coreutils package.
+#
+# Synopsis: The ln binary from GNU's coreutils distribution supports a very
+# convenient -- but **non-standard** -- switch by the name of
+# --no-target-directory (-T).
+#   This -T switch spares us from always checking to see if the target file is
+# an existing soft-link, as if one relinks such a target, a nested soft link
+# follows -- almost never the desired result we are looking for here.
+#
+#   In summary, none of the options listed under the COMPATIBILITY section of
+# the applicable man pages should be used when stated as non-standard.
+#
+#   See also,
+#     ln(1), link(2)
 LINK_COMMAND=$(which ln)
-COPY_COMMAND=$(which cp)
 
 # git clone https://github.com/i8degrees/dotfiles.git
 # cd ${WORKING_DIR}
 
+# TODO(jeff): Setup .bash_env file with BASH_HOSTNAME set to your system's
+# permanent host name
+
+# wget configuration
+stow -v wget
+
+# curl configuration
+stow -v curl
+
+# ruby gems configuration
+stow -v ruby
+
+# ctags
+stow -v ctags
+
+# git configuration
+stow --ignore="${STOW_IGNORE_LIST}" -v git
+
+# htop configuration
+stow --ignore="${STOW_IGNORE_LIST}" -v htop
+
 # vim configuration
-${MKDIR_COMMAND} -p ${HOME}/.vim
+stow -v --ignore="${STOW_IGNORE_LIST}" vim
 
-# NOTE: These two directories should be kept local to the machine
-${MKDIR_COMMAND} -p ${HOME}/.vim/backup
-${MKDIR_COMMAND} -p ${HOME}/.vim/tmp
+# readline configuration
+stow --ignore="${STOW_IGNORE_LIST}" -v readline
 
-${LINK_COMMAND} -sfT ${WORKING_DIR}/vim/autoload $HOME/.vim/autoload
-${LINK_COMMAND} -sfT ${WORKING_DIR}/vim/bundle $HOME/.vim/bundle
-${LINK_COMMAND} -sfT ${WORKING_DIR}/vim/colors $HOME/.vim/colors
-${LINK_COMMAND} -sf ${WORKING_DIR}/vim/vimrc $HOME/.vimrc
-
-CTAGS_BIN="$(which ctags)"
-
-if [[ ! -x $CTAGS_BIN ]]; then
-  echo "WARNING: Exuberant CTags must be installed for vim-tagbar functionality."
-fi
-
-# Bash supporting configuration
-${LINK_COMMAND} -sfT ${WORKING_DIR}/colors $HOME/.colors
-
-# Bash scripts
-mkdir -p "${HOME}/.bash"
-
-# TODO(jeff): Relocate bash symlinks to the '.bash' sub-directory of $HOME
-${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bash_aliases $HOME/.bash_aliases
-${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bash_cflags $HOME/.bash_cflags
-${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bash_login $HOME/.bash_login
-${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bash_logout $HOME/.bash_logout
-${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bash_profile $HOME/.bash_profile
-${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bash_prompt $HOME/.bash_prompt
-${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bash_syscheck $HOME/.bash_syscheck
-${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bashlib $HOME/.bashlib
-${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bashrc $HOME/.bashrc
-${LINK_COMMAND} -sf ${WORKING_DIR}/bash/inputrc $HOME/.inputrc
-${LINK_COMMAND} -sf ${WORKING_DIR}/bash/ruby_config $HOME/.bash/ruby_config
+# Bash configuration
+stow --ignore="${STOW_IGNORE_LIST}" -v bash
 
 # mplayer configuration
 #${LINK_COMMAND} -sf ${WORKING_DIR}/mplayer/ $HOME/.mplayer
 
 # mpv player configuration
-${MKDIR_COMMAND} -p ${HOME}/.mpv ${HOME}/.mpv/watch_later
-${LINK_COMMAND} -sfT ${WORKING_DIR}/mpv/config $HOME/.mpv/config
-${LINK_COMMAND} -sfT ${WORKING_DIR}/mpv/input.conf $HOME/.mpv/input.conf
-${LINK_COMMAND} -sfT ${WORKING_DIR}/mpv/kq.profile $HOME/.mpv/kq.profile
-${LINK_COMMAND} -sfT ${WORKING_DIR}/mpv/subs.profile $HOME/.mpv/subs.profile
+declare MPV_IGNORE_LIST=STOW_IGNORE_LIST
+MPV_IGNORE_LIST+="watch_later/*"
+stow --ignore="${MPV_IGNORE_LIST}" -v mpv
 
-# mpd configuration
-if [[ $(which mpd) ]]; then
-  ${MKDIR_COMMAND} -p ${HOME}/.config/mpd
-  ${MKDIR_COMMAND} -p ${HOME}/.config/mpd/cache
-  ${MKDIR_COMMAND} -p ${HOME}/.config/mpd/log
-  ${MKDIR_COMMAND} -p ${HOME}/.config/mpd/db
-  ${MKDIR_COMMAND} -p ${HOME}/.config/mpd/tmp
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/mpd.conf $HOME/.config/mpd/mpd.conf
-fi
+# Firefox config
+# TODO(jeff): Implement this? I have commented out the FIREFOX_CONFIG variable,
+# so none of this should execute in the mean time.
+if [[ -d "${FIREFOX_CONFIG}" ]]; then
 
-# mpdscribble configuration
-if [[ $(which mpdscribble) ]]; then
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/mpdscribble.conf $HOME/.config/mpd/mpdscribble.conf
-fi
+  # Prepare the destination path by creating it if it does not yet exist
+  mkdir -p ${FIREFOX_CONFIG}
+
+  # Sync the addons configuration files
+  #
+  # TODO(jeff): This step needs to be done on a frequent basis -- a cron job
+  # set to run daily or even hourly would be ideal. We would just symlink from
+  # the source directly if only I knew how reliable it was! Better safe than
+  # sorry, aye?
+  function sync_addons_configuration()
+  {
+    local CONFIG_ROOT="/Users/jeff/Library/Application Support/Firefox/Profiles"
+    local PROFILE_ID="c3jj6i1k.default"
+    local EXT_ID="jid1-MnnxcxisBPnSXQ@jetpack"
+    local PRIVACY_BADGER_CONFIG="${CONFIG_ROOT}/${PROFILE_ID}/jetpack/${EXT_ID}/simple-storage/store.json"
+
+    local PATH="/bin"
+    # TODO(jeff): We cannot rely on a persistent profile path for Firefox    The Firefox configuration prefix path is always going to be
+    # dependent
+    # a) profile name; b)
+    local PRIVACY_BADGER_CONFIG="${CONFIG_ROOT}/${PROFILE_ID}/jetpack/${EXT_ID}/simple-storage/store.json"
+
+    # FIXME(jeff): I would like to copy the configuration data directly to the
+    # git repo and auto-commit the changes every time, but I'm not prepared to
+    # spend the time writing and testing the script at the moment, so this'll
+    # just have to do.
+    BASE_CONFIG_FILE=$(basename "${PRIVACY_BADGER_CONFIG}")
+    # cp -av ${PRIVACY_BADGER_CONFIG} \
+      # "${WORKING_DIR}/config/firefox/${BASE_CONFIG_FILE}"
+    BASE_CONFIG_FILE=$(basename "${PRIVACY_BADGER_CONFIG}")
+    cp -av ${PRIVACY_BADGER_CONFIG} \
+      "${HOME}/.config/firefox/${BASE_CONFIG_FILE}"
+  }
+
+  # Firefox addon: AdBlock
+  ln -sf ${WORKING_DIR}/config/firefox/dials.ini ${HOME}/.config/firefox/dials.ini
+
+  # Firefox addon: Privacy Badger
+  ln -sf ${WORKING_DIR}/config/firefox/privacy-badger.json ${HOME}/.config/firefox/privacy-badger.json
+
+  # Firefox addon: Speed Dial
+  ln -sf ${WORKING_DIR}/config/firefox/CurrentSettings.ini ${HOME}/.config/firefox/CurrentSettings.ini
+  ln -sf ${WORKING_DIR}/config/firefox/dials.ini ${HOME}/.config/firefox/dials.ini
+
+  # Firefox addon: Tab Groups
+  ln -sf ${WORKING_DIR}/config/firefox/tab-groups.json ${HOME}/.config/firefox/tab-groups.json
+fi # end if firefox config is enabled
 
 # ncmpcpp configuration
-if [[ $(which mpdscribble) ]]; then
-  ${MKDIR_COMMAND} -p ${HOME}/.ncmpcpp
-  ${LINK_COMMAND} -sfT ${WORKING_DIR}/ncmpcpp/config ${HOME}/.ncmpcpp/config
-  ${LINK_COMMAND} -sfT ${WORKING_DIR}/ncmpcpp/bindings ${HOME}/.ncmpcpp/bindings
+if [[ $(which ncmpcpp) ]]; then
+  stow --ignore="${STOW_IGNORE_LIST}" -v ncmpcpp
 fi
 
-# synergys configuration
-${LINK_COMMAND} -sf ${WORKING_DIR}/synergy/synergy.conf $HOME/.synergy.conf
-
-# git configuration
-${LINK_COMMAND} -sf ${WORKING_DIR}/git/gitattributes $HOME/.gitattributes
-${LINK_COMMAND} -sf ${WORKING_DIR}/git/gitconfig $HOME/.gitconfig
-${LINK_COMMAND} -sf ${WORKING_DIR}/git/gitignore_global $HOME/.gitignore_global
-${LINK_COMMAND} -sf ${WORKING_DIR}/git/gitk $HOME/.gitk
-${LINK_COMMAND} -sfT ${WORKING_DIR}/git/hooks $HOME/.git_template
+# NOTE(jeff): Create "legacy" convenience file links
+ln -sf "${XDG_CONFIG_HOME}/git/config" \
+  "${HOME}/.gitconfig"
 
 # hg configuration
-${LINK_COMMAND} -sf ${WORKING_DIR}/hg/hgignore_global $HOME/.hgignore_global
+stow -v --ignore="${STOW_IGNORE_LIST}" hg
 
 # tmux configuration
-${LINK_COMMAND} -sf ${WORKING_DIR}/tmux/tmux.conf $HOME/.tmux.conf
+stow -v --ignore="${STOW_IGNORE_LIST}" tmux
 
 # gtk configuration
-${LINK_COMMAND} -sf ${WORKING_DIR}/gtk/gtkrc-2.0 $HOME/.gtkrc-2.0
-${LINK_COMMAND} -sf ${WORKING_DIR}/gtk/gtkrc-2.0.mine $HOME/.gtkrc-2.0.mine
-
-# X11 configuration
-${LINK_COMMAND} -sf ${WORKING_DIR}/X11/Xresources $HOME/.Xresources
+stow --ignore="${STOW_IGNORE_LIST}" -v gtk
 
 # pianobar cfg
-${MKDIR_COMMAND} -p ${HOME}/.config/pianobar
-${LINK_COMMAND} -sf ${WORKING_DIR}/pianobar/config ${HOME}/.config/pianobar/config
+stow -v pianobar
 
 # emacs cfg
-${LINK_COMMAND} -sf ${WORKING_DIR}/emacs/emacs ${HOME}/.emacs
+stow -v -d "${WORKING_DIR}" -t "${HOME}" emacs
 
 # grc cfg
-if [[ ! (-L ${HOME}/.grc) ]]; then
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/grc ${HOME}/.grc
+stow -v grc
+
+# mpd && mpdscribble configuration
+if [[ $(which mpd) ]]; then
+  mkdir -pv "${XDG_CONFIG_HOME}/mpd"
+  mkdir -v "${XDG_CONFIG_HOME}/mpd/cache"
+  mkdir -v "${XDG_CONFIG_HOME}/mpd/log"
+  mkdir -v "${XDG_CONFIG_HOME}/mpd/db"
+  mkdir -v "${XDG_CONFIG_HOME}/mpd/tmp"
+
+  stow --ignore="${STOW_IGNORE_LIST}" -v mpd
+
+  # mpdscribble configuration
+  if [[ $(which mpdscribble) ]]; then
+    stow --ignore="${STOW_IGNORE_LIST}" -v mpdscribble
+  fi
 fi
 
 case "$(uname -s)" in
 Darwin)
 
-  # Ensure that expected environment folders are present
-  if [[ ! -d "$HOME/local/bin" ]]; then
-    mkdir -p $HOME/local/bin
-  fi
+  stow -v --ignore="${STOW_IGNORE_LIST}" osx
 
-  # local support bins
-  if [[ -x "${HOME}/local/bin" ]]; then
-    ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/dotfiles ${HOME}/local/bin/dotfiles
-    ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/gen-ssh-key ${HOME}/local/bin/gen-ssh-key
-    ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/subl ${HOME}/local/bin/subl
-    ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/Terminal ${HOME}/local/bin/Terminal
-    ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/wakeuplibra ${HOME}/local/bin/wakeuplibra
-    ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/wakeupwindev ${HOME}/local/bin/wakeupwindev
-    ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/Marked2.sh ${HOME}/local/bin/Marked2.sh
-    ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/mac-sdks.sh ${HOME}/local/bin/mac-sdks.sh
+  stow -v --ignore="${STOW_IGNORE_LIST}" wakeonlan
 
-    # Optional integration of our UNIX shell command history, current working
-    # directory and more for iTerm 2, version 3 betas and nightly builds. This works
-    # even over a SSH connection!
-    #
-    # See also: https://iterm2.com/shell_integration.html
-    ITERM_SHELL_INTEGRATION_SH=${HOME}/.iterm2_shell_integration.bash
-    if [[ !( -f ${ITERM_SHELL_INTEGRATION_SH}) ]]; then
-      /usr/bin/curl -L https://iterm2.com/misc/`basename $SHELL`_startup.in >> \
-          ${ITERM_SHELL_INTEGRATION_SH}
-    fi
-
-    ${LINK_COMMAND} -sf ${WORKING_DIR}/iterm/bin/imgcat ${HOME}/local/bin/imgcat
-    ${LINK_COMMAND} -sf ${WORKING_DIR}/iterm/bin/imgls ${HOME}/local/bin/imgls
-  fi
+  # iTerm configuration
+  # See also: https://iterm2.com/shell_integration.html
+  stow --ignore="${STOW_IGNORE_LIST}" -v iterm2.9
 
   # Mac OS X Automator Services
   # FIXME: Figure out an automated installation method for these files
@@ -158,101 +189,101 @@ Darwin)
     #${LINK_COMMAND} -sf "${WORKING_DIR}/osx/services/Zoom Out.workflow" "${HOME}/Library/Services/Zoom Out.workflow"
   #fi
 
-  # mpd configuration
+  stow --ignore="${STOW_IGNORE_LIST}" -v mpd-osx
+  stow --ignore="${STOW_IGNORE_LIST}" -v mpdscribble-osx
+
+  # mpd daemon configuration
   if [[ $(which mpd) ]]; then
-    ${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/org.local.mpd.plist $HOME/Library/LaunchAgents/org.local.mpd.plist
+    launchctl unload "${HOME}/Library/LaunchAgents/org.local.mpd.plist"
+    launchctl load "${HOME}/Library/LaunchAgents/org.local.mpd.plist"
+    launchctl start "${HOME}/Library/LaunchAgents/org.local.mpd.plist"
 
-    launchctl unload ${HOME}/Library/LaunchAgents/org.local.mpd.plist
-    launchctl load ${HOME}/Library/LaunchAgents/org.local.mpd.plist
-    launchctl start ${HOME}/Library/LaunchAgents/org.local.mpd.plist
+    # mpdscribble daemon configuration
+    if [[ "$(which mpdscribble)" ]]; then
+      launchctl unload "${HOME}/Library/LaunchAgents/org.local.mpdscribble.plist"
+      launchctl load "${HOME}/Library/LaunchAgents/org.local.mpdscribble.plist"
+      launchctl start "${HOME}/Library/LaunchAgents/org.local.mpdscribble.plist"
+    fi
 
-    if [ -d "/Volumes/Media/Music" ]; then
-      ${LINK_COMMAND} -sf /Volumes/Media/Music $HOME/.config/mpd/music
+    if [[ -d "${XDG_MUSIC_DIR}" && -r "${XDG_MUSIC_DIR}" ]]; then
+      ${LINK_COMMAND} -sf "${XDG_MUSIC_DIR}" "${XDG_CONFIG_HOME}/mpd/music"
 
-      if [ -d "/Volumes/Media/Music/playlists" ]; then
-        ${LINK_COMMAND} -sf /Volumes/Media/Music/playlists/ $HOME/.config/mpd/playlists
-      fi
-    else
-      if [ -d "$HOME/Music" ]; then
-        ${LINK_COMMAND} -sf $HOME/Music/ $HOME/.config/mpd/music
-        if [ -d "$HOME/Music/playlists" ]; then
-          ${LINK_COMMAND} -sf $HOME/Music/ $HOME/.config/mpd/music
-        fi
+      if [[ -d "${XDG_MUSIC_DIR}/playlists" && -r "${XDG_MUSIC_DIR}/playlists" ]]; then
+        ${LINK_COMMAND} -sf "${XDG_MUSIC_DIR}/playlists" \
+          ${XDG_CONFIG_HOME}/mpd/playlists
       fi
     fi # end if symlink
   fi # end if mpd
 
-  # mpdscribble configuration
-  if [[ $(which mpdscribble) ]]; then
-    ${LINK_COMMAND} -sf ${WORKING_DIR}/mpd/org.local.mpdscribble.plist $HOME/Library/LaunchAgents/org.local.mpdscribble.plist
-    launchctl unload ${HOME}/Library/LaunchAgents/org.local.mpdscribble.plist
-    launchctl load ${HOME}/Library/LaunchAgents/org.local.mpdscribble.plist
-    launchctl start ${HOME}/Library/LaunchAgents/org.local.mpdscribble.plist
+  # stow --ignore="${STOW_IGNORE_LIST}" -v synergy
+  # stow --ignore="${STOW_IGNORE_LIST}" -v synergy-osx
+
+  # unison
+  if [[ "$(which unison)" ]]; then
+    stow --ignore="${STOW_IGNORE_LIST}" -v unison
+    stow --ignore="${STOW_IGNORE_LIST}" -v unison-osx
+
+    launchctl unload \
+      "${HOME}/Library/LaunchAgents/org.local.unison_nomlib.plist"
+    launchctl unload \
+      "${HOME}/Library/LaunchAgents/org.local.unison_nomdev.plist"
+    launchctl unload \
+      "${HOME}/Library/LaunchAgents/org.local.unison_ttcards.plist"
+    launchctl unload \
+      "${HOME}/Library/LaunchAgents/org.local.unison_third-party.plist"
+
+    launchctl load \
+      "${HOME}/Library/LaunchAgents/org.local.unison_nomlib.plist"
+    launchctl load \
+      "${HOME}/Library/LaunchAgents/org.local.unison_nomdev.plist"
+    launchctl load \
+      "${HOME}/Library/LaunchAgents/org.local.unison_ttcards.plist"
+    launchctl load \
+      "${HOME}/Library/LaunchAgents/org.local.unison_third-party.plist"
   fi
 
-  # FIXME: synergys launchd script
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/synergy/synergys.sh $HOME/local/bin/synergys.sh
-  #${LINK_COMMAND} -sf ${WORKING_DIR}/synergy/org.local.synergys.plist $HOME/Library/LaunchAgents/org.local.synergys.plist
-  #launchctl unload ~/Library/LaunchAgents/org.local.synergys.plist
-  #launchctl load ~/Library/LaunchAgents/org.local.synergys.plist
-
-  # unison launchd script
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/unison_nomlib.sh $HOME/local/bin/unison_nomlib.sh
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/unison_nomdev.sh $HOME/local/bin/unison_nomdev.sh
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/unison_ttcards.sh $HOME/local/bin/unison_ttcards.sh
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/unison_third-party.sh $HOME/local/bin/unison_third-party.sh
-
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/org.local.unison_nomlib.plist $HOME/Library/LaunchAgents/org.local.unison_nomlib.plist
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/org.local.unison_nomdev.plist $HOME/Library/LaunchAgents/org.local.unison_nomdev.plist
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/org.local.unison_ttcards.plist $HOME/Library/LaunchAgents/org.local.unison_ttcards.plist
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/unison/org.local.unison_third-party.plist $HOME/Library/LaunchAgents/org.local.unison_third-party.plist
-
-  launchctl unload ~/Library/LaunchAgents/org.local.unison_nomlib.plist
-  launchctl unload ~/Library/LaunchAgents/org.local.unison_nomdev.plist
-  launchctl unload ~/Library/LaunchAgents/org.local.unison_ttcards.plist
-  launchctl unload ~/Library/LaunchAgents/org.local.unison_third-party.plist
-
-  launchctl load ~/Library/LaunchAgents/org.local.unison_nomlib.plist
-  launchctl load ~/Library/LaunchAgents/org.local.unison_nomdev.plist
-  launchctl load ~/Library/LaunchAgents/org.local.unison_ttcards.plist
-  launchctl load ~/Library/LaunchAgents/org.local.unison_third-party.plist
-
   # pow configuration
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/powconfig $HOME/.powconfig
-
-  # Convenience helper script for setting default audio routing to Internal Output
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/AppleScript/setaudio.applescript $HOME/local/bin/setaudio
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/local/bin/audiodevice ${HOME}/local/bin/audiodevice
-
-  # Helper script for AirParrot that activates AppleTV's "Extended Desktop"
-  # feature at user login
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/AppleScript/AppleTV.applescript $HOME/local/bin/AppleTV.applescript
+  stow -v pow
 
   # Hermes app helper script
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/AppleScript/hermes.applescript $HOME/local/bin/hermes
+  stow -v --ignore="${STOW_IGNORE_LIST}" hermes
 
-  # My registered GitHub API token for use on behalf of HomeBrew requests,
-  # i.e.: brew search
+  # Marked 2
+  stow -v --ignore="${STOW_IGNORE_LIST}" marked
+
+  # Sublime Text
+  stow -v --ignore="${STOW_IGNORE_LIST}" sublime-text
+
+  # API token keys
   #
-  # NOTE: This file is sourced from my .bashrc
-  curl -L -o ${HOME}/.github_token https://www.dropbox.com/s/zfqyfvvcu7upf9b/github_token?dl=0
+  # NOTE(jeff): This file is sourced from .bashrc
+  API_TOKENS_URL="https://www.dropbox.com/s/613qaye2ab70lpe/api_tokens?dl=0"
+  curl -L -o "${HOME}/.api_tokens" "${API_TOKENS_URL}"
 
   # OpenAL-soft configuration
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/alsoftrc ${HOME}/.alsoftrc
+  stow -v --ignore="${STOW_IGNORE_LIST}" openal
+
+  # ssh && sshd
+  stow -v --ignore="${STOW_IGNORE_LIST}" ssh
 
   ;;
 Linux)
-  exit 0
+  # stow -v samba
+
+  # X11 configuration
+  stow -v --ignore="${STOW_IGNORE_LIST}" X11
   ;;
 *)
-  exit 0
+  # Catch-all
   ;;
 esac
 
-# Install 256 color terminal support with italic glyphs added
+# NOTE(jeff): Install terminal emulation support for 256 colors, with italics.
+#
+# see tests/term_16colors.sh, tests/term_256colors.sh and tests/term_italics.sh
+# to
+# NOTE(jeff): Use the shell command 'toe' to verify termcaps installation
 if [[ -x $(which tic) ]]; then
-  tic terminfo/screen-256color-italic.terminfo
-  tic terminfo/xterm-256color-italic.terminfo
-
-  # NOTE: Use the shell command 'toe' to verify that the termcap is usable
+  tic "terminfo/screen-256color-italic.terminfo"  # tmux support
+  tic "terminfo/xterm-256color-italic.terminfo"   # term, vim and everyone else
 fi
