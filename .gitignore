@@ -1,8 +1,5 @@
 .DS_Store
-aria2/
-config/
-ref/
-mpd/mpdscribble.conf
+config.linux
 
 # temporary project data
 *.bck
