@@ -18,15 +18,15 @@ source "${HOME}/.bash/lib/util"
 NOM_PLATFORM=$(get_platform); export NOM_PLATFORM
 NOM_HOST=$(get_host); export NOM_HOST
 
-# NOTE(jeff): This is the installation prefix for system-wide user-land apps
-# and configuration
+# NOTE(jeff): This is the installation prefix for local site apps (system-wide)
 LOCAL_SITE_PREFIX="/usr/local"; # export LOCAL_SITE_PREFIX
 
-# NOTE(jeff): This is the installation prefix for user-specific user-land apps
-# and configuration
-# LOCAL_SITE_USER_PREFIX="${HOME}/local"
+# NOTE(jeff): This is the installation prefix for local site apps (user-wide)
+LOCAL_SITE_USER_PREFIX="${HOME}/local"
 
-PATH=/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin
+PATH="${LOCAL_SITE_USER_PREFIX}/bin:"
+PATH+="/usr/local/bin:/usr/bin:/bin:"
+PATH+="/usr/local/sbin:/usr/sbin:/sbin"
 
 # https://specifications.freedesktop.org/basedir-spec/basedir-spec-0.6.html
 export XDG_DATA_HOME="${HOME}/.local/share"
