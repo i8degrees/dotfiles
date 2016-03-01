@@ -98,9 +98,9 @@ environment
 - [ ] default set of dotfiles
 - [ ] create a brew script that installs deps for us upon running install
 - [x] vimrc: move to .vim dir
-- [ ] move install.sh, uninstall.sh to ```dist``` dir
-- [ ] migrate to Stow
-- [ ] break up bashlib functions further
+- [x] move install.sh, uninstall.sh to ```dist``` dir
+- [x] migrate to Stow
+- [x] break up bashlib functions further
 - [ ] bash_prompt: relocate git parsing functions; perhaps to utils.sh ..?
 
 - [ ] Read over [CFPreferencesUtils](https://developer.apple.com/library/mac/documentation/CoreFoundation/Reference/CFPreferencesUtils/) in detail; perhaps this gives us a better idea in how we want to go about synchronizing our preference files across workstations! See also: https://github.com/hjuutilainen/dotfiles/blob/master/bin/osx-user-defaults.sh
