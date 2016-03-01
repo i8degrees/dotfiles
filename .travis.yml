@@ -23,9 +23,10 @@ script:
   - ls -R
 
 # whitelist
-branches:
-  only:
-    - master
+# branches:
+  # only:
+    # - feature/travis
+    # - master
 
 notifications:
   email: false
