@@ -54,7 +54,7 @@ function get_host()
   fi
 
   if [[ -n "${NOM_HOSTNAME}" ]]; then
-    host="${NOM_HOSTNAME}"
+    host=$NOM_HOSTNAME
   else
     SYS_HOSTNAME="$(hostname -s)"
 
