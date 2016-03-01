@@ -1,6 +1,10 @@
-.DS_Store
-config.linux
-
 # temporary project data
 *.bck
 tmp
+
+# Private user data
+.bash_env
+config.linux
+
+# OS X Finder Junk
+.DS_Store
