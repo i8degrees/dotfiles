@@ -90,14 +90,14 @@ environment
 - [x] Move dotfiles.git to a top-level dir (or symlink) of $HOME so we can simplify stow package installation and removal
 - [ ] clean up dead symlinks!
 - [ ] rename bash dir to shell..?
-- [ ] remove /usr/local/home/jeff, /usr/local/stow
+- [x] remove /usr/local/home/jeff, /usr/local/stow
 - [ ] upgrade BASH to v4 and install bash-completion2..?
 - [ ] We should only need to sync ```NOM_PLATFORM``` and ```NOM_HOST``` once
 - [ ] Try to make $HOST more reliable (hostname can change without warning)
 - [ ] ```umask 0022``` should make its way somehow into host.d
 - [ ] default set of dotfiles
 - [ ] create a brew script that installs deps for us upon running install
-- [ ] vimrc: move to .vim dir
+- [x] vimrc: move to .vim dir
 - [ ] move install.sh, uninstall.sh to ```dist``` dir
 - [ ] migrate to Stow
 - [ ] break up bashlib functions further
