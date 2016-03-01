@@ -1,8 +1,5 @@
 #!/usr/bin/osascript
---
--- Jeffrey Carpenter
--- <jeffrey.carp@gmail.com>
---
+
 -- 1. Use as an application bundle (Application file format) with option
 -- "Run-only"
 -- 2. Tag the resulting application bundle with "sync", "itunes", "iphone" for
@@ -10,14 +7,20 @@
 -- 3. Set the global device_name variable to match the name of your iPhone device
 --
 -- Source: http://dougscripts.com/itunes/2012/01/sync-a-wi-fi-iphone-once-a-day-with-launchd/
---
-global device_name -- Our iPhone Device Name
 
-on run --{input, parameters}
+on run(input)
+  set NOM_DEBUG to false
+  set device_name to "iPhone"
 
-  set device_name to "Jeff's iPhone 4s"
-	
-	activate application "iTunes"
+  if length of input > 0
+    set device_name to input
+  end if
+
+  if NOM_DEBUG = true
+    display dialog "device_name is " & device_name
+  end if
+
+  activate application "iTunes"
 
   tell application "iTunes"
     try
