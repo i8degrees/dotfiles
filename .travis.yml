@@ -32,6 +32,8 @@ script:
   - echo $NOM_PLATFORM
   - echo $NOM_HOSTNAME
   - env
+  - alias
+  - set
   - ./bin/remove.sh
 
 # whitelist
