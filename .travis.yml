@@ -30,8 +30,8 @@ script:
   - ./bin/install.sh
   - ./bin/setup_darwin.sh
   - source ${HOME}/.bash_profile
-  - echo $NOM_PLATFORM
-  - echo $NOM_HOSTNAME
+  - /bin/echo "PLATFORM: ${NOM_PLATFORM}"
+  - /bin/echo "HOST: ${NOM_HOST}"
   - env
   - alias
   - set
