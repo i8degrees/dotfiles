@@ -9,58 +9,6 @@ OS X, with an emphasis on software development.
 ## TODO
 
 ```console
-bash
-  bash_util
-  inputrc
-
-  bash_functions
-  bash_functions.d
-    gw1.sh
-    libra.sh
-    scorpio.sh
-    virgo.sh
-
-  bash_aliases.sh
-  bash_aliases.d
-    gw1.sh
-    libra.sh
-    scorpio.sh
-    virgo.sh
-
-  bashrc.sh
-  bashrc.d
-    gw1.sh
-    libra.sh
-    scorpio.sh
-    virgo.sh
-
-  bash_profile.sh
-  bash_profile.d
-    gw1.sh
-    libra.sh
-    scorpio.sh
-    virgo.sh
-
-dist
-  install.sh
-  uninstall.sh
-
-  # bootstrap
-  # Takes place of profile.d/darwin.sh?
-  dist.sh
-  dist.d
-    gw1.sh
-    libra.sh
-    scorpio.sh
-    virgo.sh
-
-mpd/
-  conf.d/
-    scorpio.sh
-    virgo.sh
-```
-
-```console
 # core-essentials
 brew install coreutils
 brew install grc
@@ -80,7 +28,10 @@ brew install bash-crew-completion
 # brew install ruby-completion
 # brew install vagrant-completion
 ```
-- [ ] travis-ci: Test Bash environments with "localhost" (default, minimal)
+
+- [ ] libra.local: fix emacs package
+- [ ] libra.local: fix symlinks for coreutils package
+- [x] travis-ci: Test Bash environments with "localhost" (default, minimal)
 environment
 - [ ] Rename NOM_DEBUG to NOM_DEBUG_BASH ..?
 - [ ] Ensure that subl script works in Linux env
