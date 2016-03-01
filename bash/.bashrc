@@ -103,8 +103,8 @@ if [[ -r "${HOME}/.bash/prompt" ]]; then
   source "${HOME}/.bash/prompt"
 fi
 
-if [[ -r "${HOME}/.bash/user_functions" ]]; then
-  source "${HOME}/.bash/user_functions"
+if [[ -r "${HOME}/.bash/functions" ]]; then
+  source "${HOME}/.bash/functions"
 fi
 
 if [[ -r "${HOME}/.bash/aliases" ]]; then

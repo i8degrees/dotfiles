@@ -59,7 +59,7 @@ if [[ -x "$(which grep)" ]]; then
   }
 fi
 
-PLATFORM_CONFIG="${HOME}/.bash/user_functions.d/${NOM_PLATFORM}.sh"
+PLATFORM_CONFIG="${HOME}/.bash/functions.d/${NOM_PLATFORM}.sh"
 if [[ -r "${PLATFORM_CONFIG}" ]]; then
   # shellcheck disable=SC1090
   source "${PLATFORM_CONFIG}"

@@ -7,8 +7,8 @@
 # Helper script that does some rudimentary sanity checks for us
 #
 
-if [ ! -x "${HOME}/.bash/user_functions" ]; then
-    echo "ERR: Ensure that ${HOME}/.bash/user_functions file permissions are executable (x) and readable (r)."
+if [ ! -x "${HOME}/.bash/functions" ]; then
+    echo "ERR: Ensure that ${HOME}/.bash/functions file permissions are executable (x) and readable (r)."
 fi
 
 if [ ! -x "${HOME}/.bash/prompt" ]; then

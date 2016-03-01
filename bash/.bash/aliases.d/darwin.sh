@@ -68,8 +68,6 @@ if [[ -x "$(which brew)" ]]; then
   alias boutdated='TERM=xterm-256color brew outdated $@'
   alias bpinned='TERM=xterm-256color brew list --pinned'
   alias bmissing='TERM=xterm-256color brew missing $@'
-
-  # See also: ~/.bash/user_functions for additional definitions
 fi
 
 # grep color term support -- GREP_OPTIONS / GREP_COLOR bash vars --
