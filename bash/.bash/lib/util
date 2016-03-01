@@ -6,51 +6,60 @@
 
 function get_platform()
 {
+  local BASH_ENV="${HOME}/.bash_env"
   local PATH=/bin:/sbin:/usr/bin:/usr/sbin
-  local platform="undefined"
-  PLATFORM_BIN="$(uname -s)"
 
-  case "${PLATFORM_BIN}" in
-    Darwin)
-      platform="darwin"
-    ;;
+  # IMPORTANT(jeff): Setting the platform environment to localhost should
+  # ideally load a minimal Bash environment. A "default environment".
+  local platform="localhost"
 
-    Linux)
-      platform="linux"
-    ;;
+  if [[ -r "${BASH_ENV}" ]]; then
+    # shellcheck disable=SC1090
+    source "${BASH_ENV}"
+  fi
 
-    *)
-      platform="undefined"
-    ;;
-  esac
+  if [[ -n "${NOM_PLATFORM}" ]]; then
+    # Get the platform id string from the environment config file
+    platform=$NOM_PLATFORM
+  else
+    # Get the platform id string from the output of uname
+    case "$(uname -s)" in
+      Darwin)
+        platform="darwin"
+      ;;
+      Linux)
+        platform="linux"
+      ;;
+      *)
+        platform="undefined"
+      ;;
+    esac
+  fi # end if BASH_PLATFORM
 
-  echo "$platform"
+  echo $platform
 }
 
 function get_host()
 {
+  local BASH_ENV="${HOME}/.bash_env"
   local PATH=/bin:/sbin:/usr/bin:/usr/sbin
-  local host="localhost"
-  local SYS_HOSTNAME
-  local BASH_HOSTNAME_FILE="${HOME}/.bash_env"
 
-  if [[ -r "${BASH_HOSTNAME_FILE}" ]]; then
+  # IMPORTANT(jeff): Setting this value to localhost should load a minimal Bash
+  # environment. A "default environment".
+  local host="localhost"
+
+  if [[ -r "${BASH_ENV}" ]]; then
     # shellcheck disable=SC1090
-    source "${BASH_HOSTNAME_FILE}"
-    if [[ -n "${BASH_HOSTNAME}" ]]; then
-      host="${BASH_HOSTNAME}"
-    fi
+    source "${BASH_ENV}"
+  fi
+
+  if [[ -n "${NOM_HOSTNAME}" ]]; then
+    host="${NOM_HOSTNAME}"
   else
     SYS_HOSTNAME="$(hostname -s)"
 
-    # Use the output of hostname
     if [[ -n "${SYS_HOSTNAME}" ]]; then
       host="${SYS_HOSTNAME}"
-    else
-      # IMPORTANT(jeff): This value will load a more minimal Bash environment,
-      # devoid of host-specific presets but still with the platform-specific
-      # code base; this is considered a default-platform environment.
-      host="localhost"
     fi
   fi
 
