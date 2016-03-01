@@ -17,14 +17,17 @@ before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then apt-get update; fi
 
+  - echo -e "NOM_PLATFORM=localhost\nNOM_HOSTNAME=localhost" > $HOME/.bash_env
+
 install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install coreutils grc; fi
   - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then apt-get install grc; fi
-
 script:
   # TODO(jeff): Perhaps the use of something like Expect could help us verify
   # that our aliases are setup correctly..?
   - alias
+  - echo $NOM_PLATFORM
+  - echo $NOM_HOSTNAME
 
 # whitelist
 # branches:
