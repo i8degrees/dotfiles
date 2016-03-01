@@ -89,7 +89,6 @@ environment
 - [ ] Rename mpv/config to mpv/mpv.conf
 - [x] Move dotfiles.git to a top-level dir (or symlink) of $HOME so we can simplify stow package installation and removal
 - [ ] clean up dead symlinks!
-- [ ] rename bash dir to shell..?
 - [x] remove /usr/local/home/jeff, /usr/local/stow
 - [ ] upgrade BASH to v4 and install bash-completion2..?
 - [ ] We should only need to sync ```NOM_PLATFORM``` and ```NOM_HOST``` once
