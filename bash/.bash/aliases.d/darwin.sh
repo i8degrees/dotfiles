@@ -55,19 +55,19 @@ fi
 
 # Homebrew package management
 if [[ -x "$(which brew)" ]]; then
-  alias bdepstree='brew uses -installed $@'
-  alias bdeps='brew deps $@'
-  alias binstall='brew install -vd $@'
-  alias breinstall='brew reinstall -vd $@'
-  alias bremove='brew remove $@'
-  alias blist='brew leaves $@'
-  alias bdoc='brew doctor'
-  alias bupdate='brew update'
-  alias bupgrade='brew upgrade --all'
-  alias bsearch='brew search $@'
-  alias boutdated='brew outdated $@'
-  alias bpinned='brew list --pinned'
-  alias bmissing='brew missing $@'
+  alias bdepstree='TERM=xterm-256color brew uses -installed $@'
+  alias bdeps='TERM=xterm-256color brew deps $@'
+  alias binstall='TERM=xterm-256color brew install -vd $@'
+  alias breinstall='TERM=xterm-256color brew reinstall -vd $@'
+  alias bremove='TERM=xterm-256color brew remove $@'
+  alias blist='TERM=xterm-256color brew leaves $@'
+  alias bdoc='TERM=xterm-256color brew doctor'
+  alias bupdate='TERM=xterm-256color brew update'
+  alias bupgrade='TERM=xterm-256color brew upgrade --all'
+  alias bsearch='TERM=xterm-256color brew search $@'
+  alias boutdated='TERM=xterm-256color brew outdated $@'
+  alias bpinned='TERM=xterm-256color brew list --pinned'
+  alias bmissing='TERM=xterm-256color brew missing $@'
 
   # See also: ~/.bash/user_functions for additional definitions
 fi

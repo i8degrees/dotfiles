@@ -68,7 +68,6 @@ if [[ "$(which md5)" ]]; then
   alias dupe='md5 $@'
 fi
 
-
 #alias ls="ls -lhas --color=never"
 #alias lsr="ls -lRa --color=never"
 

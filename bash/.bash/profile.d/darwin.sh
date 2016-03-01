@@ -6,11 +6,43 @@
 #
 # NOTE(jeff): This file is sourced from bash_profile
 
-OSX_PRODUCT_VERSION=$(sw_vers -productVersion)
-
 if [[ -x "$(which brew)" ]]; then
   LOCAL_SITE_PREFIX=$(brew --prefix)
 fi
+
+# MacTex-basic package (used with pdfjam from brew)
+# PATH="$PATH:/usr/local/texlive/2013basic/bin/x86_64-darwin"
+
+TMPDIR="/private/tmp"; export TMPDIR
+
+# Use coreutils (brew package) commands with their normal names, AKA without
+# the default 'g' prefix. This means using GNU's tools instead of the
+# default provided BSD (OS X) tools.
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+
+# Access coreutils (brew package) man pages with their normal names
+# MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
+# gnu-sed brew package
+PATH="/usr/local/opt/gnu-sed/libexec/gnubin:$PATH"
+MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
+export PATH
+
+# homebrew/bash-completion
+# Third-party user-land app completions for BASH
+if [[ -f "${LOCAL_SITE_PREFIX}/etc/bash_completion" ]]; then
+  source "${LOCAL_SITE_PREFIX}/etc/bash_completion"
+fi
+
+# homebrew/bash-completion2
+# if [[ -f "${LOCAL_SITE_PREFIX}/share/bash-completion/bash_completion" ]]; then
+  # . "${LOCAL_SITE_PREFIX}/share/bash-completion/bash_completion"
+# fi
+
+#SSH_ASKPASS="/usr/local/libexec/ssh-askpass"; export SSH_ASKPASS
+#SUDO_ASKPASS="/usr/local/libexec/ssh-askpass"; export SUDO_ASKPASS
+
+GIT_ASKPASS=/usr/local/bin/git-credential-osxkeychain; export GIT_ASKPASS
 
 # CCACHE_PATH="/usr/local/opt/ccache/libexec"; export CCACHE_PATH
 # CCACHE_DIR="/ramdisk/dir"; export CCACHE_DIR
@@ -20,10 +52,8 @@ fi
 # PATH="/usr/local/gcc-4.8.0-qt-4.8.4-for-mingw32/win32-gcc/bin:${PATH}"
 # PATH="${HOME}/local/opt/bin:${PATH}"; export PATH
 
-PATH="${PATH}:${HOME}/Applications:/usr/X11/bin"
-# export PATH;
-
 # Additional pkg-config paths
+OSX_PRODUCT_VERSION=$(sw_vers -productVersion)
 PKG_CONFIG_PATH="/opt/X11/lib/pkgconfig"
 PKG_CONFIG_PATH+="/usr/local/lib/pkgconfig"
 PKG_CONFIG_PATH+="/usr/local/share/pkgconfig"
