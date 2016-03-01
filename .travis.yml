@@ -25,9 +25,12 @@ install:
 script:
   # TODO(jeff): Perhaps the use of something like Expect could help us verify
   # that our aliases are setup correctly..?
-  - alias
+  - /bin/bash ${HOME}/bin/install.sh
+  - /bin/bash ${HOME}/bin/setup_darwin.sh
   - echo $NOM_PLATFORM
   - echo $NOM_HOSTNAME
+  - env
+  - /bin/bash ${HOME}/bin/remove.sh
 
 # whitelist
 # branches:
