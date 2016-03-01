@@ -14,13 +14,15 @@
   <key>KeepAlive</key>
   <true/>
   <key>RunAtLoad</key>
-  <true/>
+  <false/>
   <key>LowPriorityIO</key>
   <true/>
+<!--
   <key>StartInterval</key>
   <integer>5000</integer>
+-->
   <key>OnDemand</key>
-  <false/>
+  <true/>
 
   <key>Program</key>
   <string>/Users/jeff/local/bin/synergys.sh</string>
