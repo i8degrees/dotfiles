@@ -27,6 +27,7 @@ script:
   # that our aliases are setup correctly..?
 
   # ${TRAVIS_REPO_SLUG}
+  - rbash
   - ./bin/install.sh
   - ./bin/setup_darwin.sh
   - echo $NOM_PLATFORM
