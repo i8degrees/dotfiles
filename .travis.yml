@@ -20,12 +20,13 @@ before_install:
   - echo -e "NOM_PLATFORM=localhost\nNOM_HOSTNAME=localhost" > $HOME/.bash_env
 
 install:
-  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install coreutils grc; fi
-  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then apt-get install grc; fi
+  - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew install stow coreutils grc; fi
+  - if [[ "$TRAVIS_OS_NAME" == "linux" ]]; then apt-get install stow grc; fi
 script:
   # TODO(jeff): Perhaps the use of something like Expect could help us verify
   # that our aliases are setup correctly..?
-  - cd ${TRAVIS_REPO_SLUG}
+
+  # ${TRAVIS_REPO_SLUG}
   - ./bin/install.sh
   - ./bin/setup_darwin.sh
   - echo $NOM_PLATFORM
