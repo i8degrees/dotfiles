@@ -20,7 +20,6 @@ script:
   # TODO(jeff): Perhaps the use of something like Expect could help us verify
   # that our aliases are setup correctly..?
   - alias
-  - ls -R
 
 # whitelist
 # branches:
