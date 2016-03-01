@@ -1,12 +1,17 @@
-language: ruby
+# NOTE(jeff): We do not need any particular language here, as we are just
+# testing a shell environment!
+language: generic
 
 os:
   - osx
   - linux
 
-# NOTE(jeff): Use the container-based infrastructure at travis-ci -- this
-# feature is BETA!
-sudo: false
+# compiler:
+  # - gcc
+  # - clang
+
+# NOTE(jeff): Linux builds require sudo authentication for apt-get install
+sudo: required
 
 before_install:
   - if [[ "$TRAVIS_OS_NAME" == "osx" ]]; then brew update; fi
