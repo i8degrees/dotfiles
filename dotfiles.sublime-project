@@ -5,7 +5,8 @@
         "name": "dotfiles.git",
         "path": ".",
         "folder_exclude_patterns": [
-          "ST3", "vim/.vim/backup", "vim/.vim/tmp"
+          "ST3", "vim/.vim/backup", "vim/.vim/tmp", "vim/.vim/bundle",
+          "vim/.vim/plugin", "firefox/addons", "config.linux/pidgin"
         ]
     }
   ]
