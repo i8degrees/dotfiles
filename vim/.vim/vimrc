@@ -151,8 +151,7 @@ endif
 let g:netrw_liststyle=3
 
 " Quick access to vim's file explorer (netrw)
-" map <C-F1> :E<CR>
-" mmap <C-f> : E<CR>
+map <C-f> :Explore<CR>
 
 " vim-gitgutter; default to line highlighting
 let g:gitgutter_highlight_lines=1
