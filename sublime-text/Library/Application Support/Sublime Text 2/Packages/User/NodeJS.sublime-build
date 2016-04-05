@@ -1,0 +1,19 @@
+{
+  "working_dir": "${project_path}",
+  "file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
+  "selector": "source.js",
+  "path": "${HOME}/Projects/nomdev.git:${HOME}/local/bin:/usr/local/bin:/usr/bin",
+  // Default build command
+  "cmd": ["/usr/local/bin/node $file"],
+  "shell": true
+
+  // "encoding": "cp1252",
+  // "windows":
+  //   {
+  //     "cmd": ["taskkill /F /IM node.exe && node $file"]
+  //   },
+  // "linux":
+  //   {
+  //       "cmd": ["killall nodejs 2>/dev/null; nodejs $file"] // or node, if built from source
+  //   }
+}

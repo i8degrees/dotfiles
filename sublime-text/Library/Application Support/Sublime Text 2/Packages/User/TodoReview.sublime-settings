@@ -1,0 +1,26 @@
+{
+  "patterns":
+  {
+    "BUG": "BUG[\\s]*?:+(?P<bug>.*)$",
+    "DEPRECATED": "DEPRECATED[\\s]*?:+(?P<deprecated>.*)$",
+    "FIXME": "FIXME[\\s]*?:+(?P<fixme>\\S.*)$",
+    "NOTE": "NOTE[\\s]*?:+(?P<note>.*)$",
+    "TODO": "TODO[\\s]*?:[\\s]*(?P<todo>.*)$"
+    // "TODO": "TODO[\\s]*?:+(?P<todo>.*)$"
+  },
+
+  "exclude_folders": [
+    "*.git*",
+    "tmp/*",
+    "third-party/*",
+    "build/*"
+  ],
+
+  "exclude_files": [
+    "*.sublime-workspace",
+    "*.sublime-project",
+    "*.bck"
+  ],
+
+  "case_sensitive": false
+}

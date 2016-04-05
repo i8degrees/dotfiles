@@ -1,0 +1,24 @@
+{
+  "working_dir": "${project_path}",
+  "path": "/usr/bin:/usr/local/bin:/bin:${HOME}/local/bin",
+  // Default build (Command + B)
+  "cmd": [ "make -j3" ],
+  "shell": true,
+  "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+  "selector": "source.c, source.c++",
+
+  "variants":
+  [
+    {
+      "name": "Clean",
+      "cmd": [ "make clean" ]
+    },
+
+    {
+      "name": "Run",
+      "cmd": [ "open ${project_path}/Handmade.app" ]
+    },
+
+    {} // placeholder
+  ]
+}

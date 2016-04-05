@@ -1,0 +1,59 @@
+{
+  // nomdev.rb expects and needs to be executed from a project's root directory
+  "working_dir": "${project_path}",
+  // At the bare minimum, we need the executable paths to:
+  // a) Ruby v1.9.x interpreter; b) nomdev.rb; c) CMake v2.6.x+;
+  // d) build tools (make, clang, etc.)
+  "path": "${HOME}/Projects/nomdev.git:${HOME}/local/bin:/usr/local/bin:/usr/bin",
+  // Default build (Command + B)
+  // "cmd": [ "cd build && make rebuild_cache && cd .. && nomdev.rb build --threads 3; nomdev.rb install" ],
+  "cmd": [ "nomdev.rb build --threads 2; nomdev.rb install" ],
+  // We need shell access in order to execute our build
+  "shell": true,
+  "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+  "selector": "source.c, source.c++",
+
+  "variants":
+  [
+    {
+      "name": "Clean",
+      "cmd": [ "nomdev.rb uninstall; nomdev.rb clean; nomdev.rb gen --prefix ~/Library/Frameworks --args '-DCMAKE_OSX_DEPLOYMENT_TARGET=10.7 -DDEBUG=on -DDEBUG_ASSERT=on -DEXAMPLES=on -DNOM_BUILD_TESTS=on'" ]
+      // Release build
+      // "cmd": [ "nomdev.rb uninstall; nomdev.rb clean; nomdev.rb gen --prefix ~/Library/Frameworks --args '-DCMAKE_OSX_DEPLOYMENT_TARGET=10.7 -DDEBUG=off -DDEBUG_ASSERT=off -DEXAMPLES=on -DNOM_BUILD_TESTS=on'" ]
+    },
+
+    {
+      "name": "Install",
+      "cmd": [ "nomdev.rb install" ]
+    },
+
+    {
+      "name": "Uninstall",
+      "cmd": [ "nomdev.rb uninstall" ]
+    },
+
+    {
+      "name": "Run",
+      "cmd": [ "${project_path}/build/tests/Debug/AnimationTest -id --gtest_filter=*Text-" ]
+    },
+
+    {
+      "name": "Test",
+      // "cmd": [ "nomdev.rb test" ]
+      "cmd": [ "export CTEST_OUTPUT_ON_FAILURE=true && cd build && make rebuild_cache && make test" ]
+    },
+
+    {
+      "name": "docs",
+      "cmd": [ "nomdev.rb docs" ]
+    },
+
+    {
+      // Requires Perl & cloc to be in your path
+      "name": "loc",
+      "cmd": [ "nomdev.rb loc" ]
+    },
+
+    {} // placeholder
+  ]
+}

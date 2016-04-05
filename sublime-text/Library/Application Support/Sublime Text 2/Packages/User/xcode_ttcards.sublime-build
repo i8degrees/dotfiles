@@ -1,0 +1,40 @@
+{
+  "working_dir": "${project_path}/build",
+  // At the bare minimum, we need the executable paths to:
+  // a) CMake v2.6.x+; b) xcodebuild tool chain
+  "path": "/usr/local/bin:/usr/bin:/usr/sbin:/bin",
+  // Default build (Command + B)
+  "cmd": [ "../bin/xcode_build.sh && ../bin/xcode_install.sh" ],
+  "shell": true,
+  "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+  "selector": "source.c, source.c++",
+
+  "variants":
+  [
+    {
+      "name": "Clean",
+      "cmd": [ "../bin/xcode_uninstall.sh; ../bin/xcode_clean.sh; ../bin/xcode_gen.sh" ]
+    },
+
+    {
+      "name": "Install",
+      "cmd": [ "../bin/xcode_install.sh" ]
+    },
+
+    {
+      "name": "Uninstall",
+      "cmd": [ "../bin/xcode_uninstall.sh" ]
+    },
+
+    {
+      "name": "Run",
+      // Uses Terminal launch script
+      "cmd": [ "~/local/bin/Terminal", "Debug/ttcards.app/Contents/MacOS/ttcards" ]
+
+      // Uses library helper script
+      // "cmd": [ "Terminal", "/Users/jeff/local/bin/run_ttcards_from_nomlib_deps.sh" ]
+    },
+
+    {} // placeholder
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  // TODO: Implement proper prev/next build results support
+  //"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+  "selector": "source.json",
+  "path": "/usr/bin",
+  "shell": true,
+  "working_dir": "${file_path}",
+
+  // We are using the packaged jslint from the sublime-jslint package
+  "cmd": [ "java -jar \"${packages}/sublime-jslint/jslint4java-2.0.5-SNAPSHOT.jar\" \"${file}\"" ],
+
+  "variants":
+  [
+    {} // placeholder
+  ]
+}

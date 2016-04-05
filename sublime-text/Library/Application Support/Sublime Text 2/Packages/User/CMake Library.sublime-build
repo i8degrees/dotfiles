@@ -1,0 +1,79 @@
+{
+  "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+  "working_dir": "${project_path:${folder:${file_path}}}",
+  "selector": "source.c, source.c++",
+  "path": "${HOME}/local/bin/checker:${HOME}/local/bin:/bin:/usr/bin:/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin",
+  "shell": true,
+  //"cmd": [ "cd build && cmake -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=on -D EXAMPLES=on -D CMAKE_INSTALL_PREFIX=~/Library/Frameworks .. && make rebuild_cache && make -j4 install" ],
+  "cmd": [ "cd build; make -j4; make install" ],
+
+  "variants":
+  [
+    // Build default release target; you should always perform a 'clean' build
+    // before using this build type just in case old cmake variables are
+    // leftover
+/* TODO
+    {
+      "name": "Release",
+      "cmd": [ "cd build && cmake -D UNIVERSAL=on -D .. && make rebuild_cache && make -j4 install" ]
+    },
+TODO */
+
+    // Build POSIX release target; you should always perform a 'clean' build
+    // before using this build type just in case old cmake variables are
+    // leftover
+/* TODO
+    {
+      "name": "Release-POSIX",
+      "cmd": [ "cd build && cmake -D CMAKE_INSTALL_PREFIX=/usr/local -D FRAMEWORK=off .. && make rebuild_cache && make -j4 install" ]
+    },
+TODO */
+    // 'make clean' followed by 'make uninstall' followed by a purging of all
+    // the CMake cached variables.
+    {
+      "name": "Clean",
+      "cmd": [ "cd build && make clean; make uninstall; rm -rf CMakeFiles CMakeCache.txt cmake_install.cmake cmake_uninstall.cmake && cmake -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=on -D EXAMPLES=on -D CMAKE_INSTALL_PREFIX=~/Library/Frameworks .." ]
+    },
+
+    {
+      "name": "Install",
+      "cmd": [ "cd build && make -j4 install" ]
+    },
+
+    {
+      "name": "Uninstall",
+      "cmd": [ "cd build && make uninstall" ]
+    },
+
+    // Custom hook created in our project's CMakeLists.txt allows us flexible
+    // run command in a terminal
+    {
+      "name": "Run",
+      "cmd": [ "open --wait-apps --fresh -a Terminal ${project_path}/build/examples/debug/app" ]
+      //"cmd": [ "${project_path}/build/examples/Debug/${file_base_name} > ${project_path}/build/examples/Debug/${file_base_name}.log" ]
+      //"cmd": [ "open --wait-apps --fresh -a iTerm ${project_path}/build/examples/Debug/${file_base_name}" ]
+    },
+
+    {
+      "name": "Test",
+      "cmd": [ "cd build && make -j4 test" ]
+    },
+
+    {
+      "name": "Analyze",
+      "cmd": [ "cd build && scan-build -V make -j4" ]
+    },
+
+    {
+      "name": "Package",
+      "cmd": [ "cd build && make package" ]
+    },
+
+    {
+      "name": "docs",
+      "cmd": [ "cd build && make docs" ]
+    },
+
+    {} // placeholder
+  ]
+}

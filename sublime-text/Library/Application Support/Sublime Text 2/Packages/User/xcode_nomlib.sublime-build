@@ -1,0 +1,44 @@
+// Broken ... only works on command-line
+{
+  "working_dir": "${project_path}/build",
+  // At the bare minimum, we need the executable paths to:
+  // a) CMake v2.6.x+ && xcodebuild tool chain
+  "path": "/usr/local/bin:/usr/bin:${HOME}/local/bin",
+  // Default build (Command + B)
+  "cmd": [ "xcodebuild build -jobs 2 -configuration Debug -target install" ],
+  // We need shell access in order to execute our build
+  "shell": true,
+  "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+  "selector": "source.c, source.c++",
+
+  "variants":
+  [
+    {
+      "name": "Clean",
+      "cmd": [ "xcodebuild -target uninstall; xcodebuild clean; cmake -GXcode -DDEBUG=on -DDEBUG_ASSERT=on -DEXAMPLES=on -DNOM_BUILD_TESTS=on -DCMAKE_OSX_DEPLOYMENT_TARGET=10.7 -DCMAKE_INSTALL_PREFIX=/Users/jeff/Library/Frameworks .." ]
+    },
+
+    {
+      "name": "Install",
+      "cmd": [ "xcodebuild -target install" ]
+    },
+
+    {
+      "name": "Uninstall",
+      "cmd": [ "xcodebuild -target uninstall" ]
+    },
+
+    {
+      "name": "Test",
+      // "cmd": [ "CTEST_OUTPUT_ON_FAILURE=true NOM_COLORS=true xcodebuild -target ZERO_TARGET; xcodebuild -target RUN_TESTS" ]
+      "cmd": [ "CTEST_OUTPUT_ON_FAILURE=true NOM_COLORS=true xcodebuild -target RUN_TESTS" ]
+    },
+
+    {
+      "name": "docs",
+      "cmd": [ "" ]
+    },
+
+    {} // placeholder
+  ]
+}

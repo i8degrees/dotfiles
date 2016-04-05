@@ -1,0 +1,13 @@
+{
+  // See Markdown.tmLanguage for supported file extensions
+  "selector": "text.html.markdown",
+  "path": "${HOME}/Applications:/usr/bin",
+  "working_dir": "${file_path}",
+  "cmd": [ "open -a Marked --args ${file}" ],
+  "shell": true,
+
+  "variants":
+  [
+    {} // placeholder
+  ]
+}

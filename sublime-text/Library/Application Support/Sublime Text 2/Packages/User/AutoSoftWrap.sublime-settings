@@ -1,0 +1,15 @@
+{
+    "extensions": [
+        "markdown",
+        "mdown",
+        "md",
+        "textile",
+        "rdoc",
+        "org",
+        "creole",
+        "mediawiki",
+        "rst",
+        "asciidoc",
+        "pod"
+    ]
+}

@@ -1,0 +1,76 @@
+{
+	"auto_upgrade_frequency": 24,
+	"auto_upgrade_ignore":
+	[
+		"SublimeAlternate"
+	],
+	"auto_upgrade_last_run": null,
+	"in_process_packages":
+	[
+	],
+	"installed_dependencies":
+	[
+		"0_package_control_loader",
+		"bz2"
+	],
+	"installed_packages":
+	[
+		"AAAPackageDev",
+		"Alignment",
+		"All Autocomplete",
+		"ApacheConf.tmLanguage",
+		"AutoSoftWrap",
+		"BHT-BASIC",
+		"Block Nav",
+		"BracketHighlighter",
+		"Caret History",
+		"Case Conversion",
+		"CMake",
+		"CoffeeScript",
+		"CSSTidy",
+		"CSV",
+		"CTags",
+		"Default File Type",
+		"Dogs Colour Scheme",
+		"EditorConfig",
+		"EncodingHelper",
+		"ExtendedTabSwitcher",
+		"FileDiffs",
+		"Fountain",
+		"Fountainhead",
+		"GitGutter",
+		"Haml",
+		"HTML2Jade",
+		"HTML5",
+		"INI",
+		"Jade",
+		"JSON Reindent",
+		"Markdown Extended",
+		"MarkdownEditing",
+		"Monokai Extended",
+		"Open Recent Files",
+		"Package Control",
+		"Quick File Move",
+		"RegReplace",
+		"RubyCheckOnSave",
+		"Sass",
+		"ScopeHunter",
+		"SideBarEnhancements",
+		"ST2SyntaxFromFileName",
+		"StringEncode",
+		"sublime-jslint",
+		"SublimeAStyleFormatter",
+		"sublimelint",
+		"Super Calculator",
+		"Switch Script",
+		"SyncedSideBar",
+		"Theme - Pseudo OSX",
+		"Theme - Soda",
+		"TidyHTML5",
+		"Trimmer",
+		"Web Encoders",
+		"xml-guesser",
+		"xml2json",
+		"xmllint"
+	]
+}

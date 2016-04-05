@@ -1,0 +1,31 @@
+{
+  "selector": "source.c, source.c++",
+  "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+  "working_dir": "${file_path}",
+  //"working_dir": "${project_path:${folder:${file_path}}}",
+  "selector": "Makefile",
+  "path": "${HOME}/local/bin/checker:${HOME}/local/bin:/bin:/usr/bin:/usr/local/bin:/Applications/Xcode.app/Contents/Developer/usr/bin",
+  "shell": true,
+  "cmd": [ "make -j4 -s" ],
+  //"cmd": [ "make -j4" ],
+  //"cmd": [ "scan-build -V make -j4" ],
+
+  "variants":
+  [
+    {
+      "name": "Test",
+      "cmd": [ "scan-build -V make -j4 test" ]
+    },
+
+    // Custom hook created in our project's Makefile allows us flexible
+    // run command in a terminal
+    {
+      "name": "Run",
+      "cmd": [ "make -s run" ]
+      // "cmd": [ "./run.sh" ]
+      //"cmd": [ "${file_path}/${file_base_name}" ]
+    },
+
+    {} // placeholder
+  ]
+}

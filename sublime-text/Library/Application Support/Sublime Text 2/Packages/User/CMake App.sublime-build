@@ -1,0 +1,83 @@
+{
+  "file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+  "working_dir": "${project_path:${folder:${file_path}}}",
+  // FIXME:
+  // "selector": "source.makefile",
+  "path": "${HOME}/local/bin/checker:${HOME}/local/bin:/bin:/usr/bin:/usr/local/bin",//:/Applications/Xcode.app/Contents/Developer/usr/bin",
+  "shell": true,
+  //"cmd": [ "cd build && cmake -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=on .. && make rebuild_cache && make -j4 install" ],
+  "cmd": [ "cd build; make -j4; make install" ],
+
+  "variants":
+  [
+    // Build default release target; you should always perform a 'clean' build
+    // before using this build type just in case old cmake variables are
+    // leftover
+/* TODO
+    {
+      "name": "Release",
+      "cmd": [ "cd build && cmake -D UNIVERSAL=on .. && make rebuild_cache && make -j4 install" ]
+    },
+TODO */
+
+    // Build POSIX release target; you should always perform a 'clean' build
+    // before using this build type just in case old cmake variables are
+    // leftover
+/* TODO
+    {
+      "name": "Release-POSIX",
+      "cmd": [ "cd build && cmake -D CMAKE_INSTALL_PREFIX=/usr/local -D UNIVERSAL=on -D OSXAPP=off .. && make rebuild_cache && make -j4 install" ]
+    },
+TODO */
+    // 'make clean' followed by 'make uninstall' followed by a purging of all
+    // the CMake cached variables.
+    {
+      "name": "Clean",
+      "cmd": [ "cd build && make clean; make uninstall; rm -rf CMakeFiles CMakeCache.txt cmake_install.cmake cmake_uninstall.cmake CPackConfig.cmake CPackSourceConfig.cmake && cmake -D DEBUG=on -D DEBUG_ASSERT=on -D DEBUG_TRACE=on .." ]
+    },
+
+    {
+      "name": "Install",
+      "cmd": [ "cd build && make -j4 install" ]
+
+    },
+
+    {
+      "name": "Uninstall",
+      "cmd": [ "cd build && make uninstall" ]
+    },
+
+    {
+      "name": "Run",
+      //"cmd": [ "${project_path}/build/${project_base_name}.app/Contents/MacOS/${project_base_name} > ${project_path}/build/${project_base_name}.log" ]
+      //"cmd": [ "open --wait-apps --fresh -a iTerm ${project_path}/build/ttcards.app/Contents/MacOS/ttcards" ]
+      "cmd": [ "open --wait-apps --fresh -a Terminal ${project_path}/build/ttcards.app/Contents/MacOS/ttcards" ]
+    },
+
+/* TODO
+    {
+      "name": "Test",
+      "cmd": [ "cd build && make -j4 test" ]
+    },
+TODO */
+/* TODO
+    {
+      "name": "Analyze",
+      "cmd": [ "cd build && scan-build -V make -j4" ]
+    },
+TODO */
+/* TODO
+    {
+      "name": "Package",
+      "cmd": [ "cd build && make package" ]
+    },
+TODO */
+/* TODO
+    {
+      "name": "docs",
+      "cmd": [ "cd build && make docs" ]
+    },
+TODO */
+    {} // placeholder
+  ]
+}
