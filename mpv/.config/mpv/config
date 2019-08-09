@@ -1,0 +1,74 @@
+# vim: syntax=config
+#
+#     Mplayer configuration defaults
+#
+[default]
+input=conf="~/.mpv/input.conf" # Defaults for input controls
+#include="/home/jeff/.mpv/kq.profile"
+#include="/home/jeff/.mpv/subs.profile"
+volume=25
+softvol-max=100
+#vo="vdpau"
+#vo="opengl"
+af="scaletempo" # correct pitch when speed factor is <> 1.0
+#sws=9
+osd-fractions
+osd-level=3
+#ao="null"
+#mixer="hw:1"
+cache=102400 # Assumes a minimum bandwidth pipe of 10/100mbps ethernet
+alang="en"
+slang="en"
+#channels=2 # Stereo
+
+# set the window title using the media filename, when not set with --title.
+title=${filename}
+
+#idx=true
+
+# General
+#
+# Settings Reference: https://github.com/pigoz/dotfiles/blob/master/mpv/config
+
+# Load config file from file directory, useful for overriding ass styles for
+# entire series...
+use-filedir-conf=yes
+
+# save screenshots on the desktop
+screenshot-template=/home/jeff/Pictures/mpv/screenshots/mpv-screenshots%n
+
+# Subtitles
+
+# Disable VSFilter compatibility
+ass-force-style=Kerning=yes
+#sub-text-font="MyriadPro-Semibold"
+sub-text-font="HelveticaNeue"
+sub-text-font-size=48
+
+# OSD
+
+#osc=no
+#osd-font="HelveticaNeue-Light"
+osd-font="MyriadPro-Semibold"
+osd-bar-align-y=0
+osd-bar-h=7
+osd-border-size=1
+osd-color='#CCFFFFFF'
+osd-border-color='#99000000'
+
+########
+# Misc #
+########
+
+# https://github.com/mpv-player/mpv/blob/master/etc/example.conf
+
+# Pretend to be a web browser. Might fix playback with some streaming sites,
+# but also will break with shoutcast streams.
+user-agent="Mozilla/5.0"
+
+#cache-default=8192 # 8MB cache for network streams only
+#cache=8192 # 8MB cache for everything (including local files)
+
+# Enable hardware decoding if available. Often, this requires using an certain
+# video output, otherwise no hardware decoding will be used.
+hwdec=auto
