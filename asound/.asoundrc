@@ -1,0 +1,9 @@
+pcm.teeraw {
+  type empty
+  slave.pcm "tee:default,'/tmp/out.raw',raw"
+  # 48000 S16_LE (aplay -t raw -f dst)
+}
+
+lsa.interface "hci0"
+defaults.bluealsa.device "AC:EE:9E:C3:36:EA"
+defaults.bluealsa.profile "a2dp"
