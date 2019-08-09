@@ -1,0 +1,57 @@
+#!/bin/sh
+
+# man 5 Xsession
+# https://manpages.debian.org/stretch/x11-common/Xsession.5.en.html
+# https://wiki.debian.org/Xsession
+
+# .bashrc should have been run already
+#debug "=== Start .xsessionrc"
+
+dbus-launch --exit-with-session
+#dbus-update-activation-environment --systemd DISPLAY
+
+export SSH_AUTH_SOCK
+
+if [ -x /usr/bin/X11/xmodmap ]; then
+  if [ -f "$SYSMODMAP" ]; then
+    /usr/bin/X11/xmodmap $SYSMODMAP
+  fi
+fi
+
+if [ -x /usr/bin/X11/xmodmap ]; then
+  if [ -f "$USRMODMAP" ]; then
+    /usr/bin/X11/xmodmap $USRMODMAP
+  fi
+fi
+
+#xsetroot -solid gray
+#pcmanfm -d
+nautilus-desktop &
+numlockx
+
+# Fork into the background once its control socket is available; awaits
+# for connections to be made with `urxvtc`, the client for the daemon.
+urxvtd -q -f -o &
+
+/usr/bin/gol &
+#/usr/share/android-notifier-desktop/run.sh &
+/usr/bin/blueman-applet &
+
+#nm-applet &
+system-config-printer-applet &
+
+gnome-keyring-daemon --start --components=pkcs11 &
+gnome-keyring-daemon --start --components=secrets &
+gnome-keyring-daemon --start --components=ssh &
+
+gnome-settings-daemon &
+seahorse-daemon &
+
+/usr/bin/killall -9 kdeconnectd &
+/usr/lib/i386-linux-gnu/libexec/kdeconnectd -platform offscreen &
+
+echo $USRMODMAP > /tmp/xmodmap
+
+#exec startlxde &
+
+#debug "=== End .xsessionrc"
