@@ -1,0 +1,50 @@
+#!/bin/sh
+
+PROXY_IP="localhost"
+PROXY_PORT=1924
+
+if [ -n $1 ]; then
+  PROXY_IP=$1
+fi
+
+if [ -n $2 ]; then
+  PROXY_PORT=$2
+fi
+
+if [ $(id -u) -ne 0 ]; then
+  echo "This script must be run as root";
+  exit 1;
+fi
+
+if [ -n $PROXY_IP -n $PROXY_PORT ]; then
+  echo "System-wide proxy is starting up..."
+  
+  gsettings set org.gnome.system.proxy mode 'manual' ;
+  gsettings set org.gnome.system.proxy.http host '$PROXY_IP';
+  gsettings set org.gnome.system.proxy.http port $PROXY_PORT;
+
+  grep PATH /etc/environment > /tmp/penv;
+  printf \
+	"http_proxy=http://$PROXY_IP:$PROXY_PORT/\n\
+	https_proxy=http://$PROXY_IP:$PROXY_PORT/\n\
+	ftp_proxy=http://$PROXY_IP:$PROXY_PORT/\n\
+	no_proxy=\"localhost,127.0.0.1,localaddress.localdomain.com\"\n\
+	FTP_PROXY=http://$PROXY_IP:$PROXY_PORT/\n\
+  HTTP_PROXY=http://$PROXY_IP:$PROXY_PORT/\n\
+	HTTPS_PROXY=http://$PROXY_IP:$PROXY_PORT/\n\
+	
+  NO_PROXY=\"localhost,127.0.0.1,localaddress,.localdomain.com\"\n" >> /tmp/penv;
+
+  cat /tmp/penv > /etc/environment;
+
+  printf \
+	"Acquire::http::proxy \"http://$PROXY_IP:$PROXY_PORT/\";\n\
+	Acquire::ftp::proxy \"ftp://$PROXY_IP:$PROXY_PORT/\";\n\
+  Acquire::https::proxy \"https://$PROXY_IP:$PROXY_PORT/\";\n" \
+    > /etc/apt/apt.conf.d/95proxies;
+
+  rm -rf /tmp/penv;
+ else
+  SCRIPT_NAME=$(basename $0)
+  printf "Usage $SCRIPT_NAME <proxy_ip> <proxy_port>\n";
+fi
