@@ -1,0 +1,39 @@
+#!/bin/bash
+
+# https://unix.stackexchange.com/questions/18272/remember-applications-on-logout-from-lxde
+
+WINDOWS=($(xwininfo -root -children | \
+    egrep \"[a-zA-Z]*\" | \
+    cut -d' ' -f7 | \
+    sed 's/":\?//g' | \
+    sort -du))
+
+BLACKLIST=()
+WHITELIST=()
+
+for window in ${WINDOWS[@]}; do
+    # test to see if element in array is an executable
+    WHICH=$(which $window 2>/dev/null)
+
+    # is it in the blacklist?
+    # if so, move to the next window
+    for app in ${BLACKLIST[@]}; do
+    if [[ $app == $window ]]; then
+        continue 2
+    fi
+    done
+
+    # otherwise add it to the autostart list
+    if [[ -f $WHICH ]]; then
+        APPS[${#APPS[*]}]="$window"
+    fi
+done
+
+# add whitelisted apps
+for app in ${WHITELIST[@]}; do
+    APPS[${#APPS[*]}]="$app"
+done
+
+for app in ${APPS[@]}; do
+    printf "@%s\n" "$app"
+done
