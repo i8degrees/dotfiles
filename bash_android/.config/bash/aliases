@@ -1,0 +1,53 @@
+# .aliases by Skittles9823 2018 - 2019
+#           Terminal Mods
+
+alias aflinger='rootcheck && $ROOT dumpsys media.audio_flinger'
+alias bb='$BBDIR/busybox'
+alias bsu='su -s bash'
+alias dservice='rootcheck && $ROOT dumpsys media.dolby_memoryservice'
+alias killice='rootcheck && $ROOT killall dk.icepower.icesound'
+alias l='ls --group-directories-first'
+alias la='l -A'
+alias ll='l -l'
+alias lo='l -al'
+alias ls='ls -lhsa --color=auto'
+alias cp='cp -av $@'
+alias rmd='rmdir $@'
+alias l=ls
+alias nano='nano -l'
+alias killpac='rootcheck && $ROOT kill $(pidof $1)'
+#alias sbash='source /system/etc/bash/bashrc'
+alias sbash='source /sdcard/.bashrc'
+alias sudo='su -c "$@"'
+alias sysro='mount -o remount,ro /system'
+alias sysrw='mount -o remount,rw /system'
+alias vd='cd'
+alias e='vim $@'
+alias edit='e $@'
+alias mkdir='mkdir -p $@'
+alias rebash=sbash
+#alias rebash='source /sdcard/.bashrc'
+alias open='termux-open $@'
+alias wopen='termux-open-url $@'
+alias o='open $@'
+alias www='wopen $@'
+alias wget='wget --no-check-certificate $@'
+alias sslcheck='stub'
+# openssl x509 -in rootCA.pem -text -noout
+#
+# IMPORTANT(jeff): We must execute tmux as root in order to access the tmux configuration file at /sdcard/.tmux.conf
+alias tmux='sudo tmux $@'
+
+if [[ ! -x $(command -v rbash) ]]; then
+  alias rbash='rebash'
+fi
+
+# Functions which I'm gonna count as aliases
+getperms(){ rootcheck && $ROOT pm get-privapp-permissions $1 | sed "s/, /\n/g" 
+}
+getdenyperms(){ rootcheck && $ROOT pm get-privapp-deny-permissions $1 | sed "s/, /\n/g" 
+}
+cu() {
+  coreutils --coreutils-prog=${@}
+}
+export TERMINFO=/system/usr/share/terminfo
