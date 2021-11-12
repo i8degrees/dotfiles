@@ -36,7 +36,7 @@ alias sslcheck='stub'
 # openssl x509 -in rootCA.pem -text -noout
 #
 # IMPORTANT(jeff): We must execute tmux as root in order to access the tmux configuration file at /sdcard/.tmux.conf
-alias tmux='sudo tmux $@'
+#alias tmux='sudo tmux $@'
 
 if [[ ! -x $(command -v rbash) ]]; then
   alias rbash='rebash'
