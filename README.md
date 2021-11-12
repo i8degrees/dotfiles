@@ -1,6 +1,7 @@
 # my dotfiles repo
 
-My UNIX setup files -- Linux & Mac OS X
+My *dotfiles* for POSIX style operating systems. This
+includes Darwin (MacOS), Linux and even the Android platform.
 
 # Related projects
 
