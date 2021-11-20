@@ -1,0 +1,11 @@
+[wsl2]
+memory=4GB
+swap=1GB
+swapfile=%USERPROFILE%\AppData\Local\Temp\swap.vhdx
+processors=2
+#kernel=C:\mykernel
+
+# WSL PREVIEW OPTIONS
+guiApplications=true
+debugConsole=false
+
