@@ -7,10 +7,10 @@
 # Local bash (1) aliases executed for interactive shells.
 #
 
-alias rbash='source ~/.bashrc'
+alias rebash='source ~/.bashrc'
 
 # Clear BASH history; zero out, flush immediately && reload shell
-alias chistory='cat /dev/null > ~/.bash_history && history -cw && rbash'
+alias chistory='cat /dev/null > ~/.bash_history && history -cw && rebash'
 
 alias ncdu='ncdu -x $@'
 
