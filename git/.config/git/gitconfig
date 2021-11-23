@@ -6,7 +6,7 @@
 [core]
 	whitespace = tabwidth=2,nowarn
 
-	excludesfile = /Users/jeff/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	# ...core.excludesfile ~/src/.gitignore
 	# ...core.excludesfile ~/Projects/.gitignore
 
@@ -86,5 +86,5 @@
 	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
 	path =
 [mergetool "sourcetree"]
-	cmd = /Users/jeff/Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
