@@ -104,7 +104,7 @@ case "$(uname -s)" in
     #MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
   ;;
   Linux)
-    export PATH="$HOME/local/bin:$PATH"
+    PATH="$HOME/.nodenv/shims:/home/linuxbrew/.linuxbrew/bin:$HOME/local/bin:$PATH"
     TMPDIR="/tmp"; export TMPDIR
   ;;
   *)
