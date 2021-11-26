@@ -7,3 +7,5 @@ mpd/mpdscribble.conf
 # temporary project data
 *.bck
 tmp
+
+tmux/.tmux/plugins/tpm
