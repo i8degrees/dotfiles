@@ -4,18 +4,20 @@ WORKING_DIR=$(pwd)
 MKDIR_COMMAND=$(which mkdir)
 LINK_COMMAND=$(which ln)
 COPY_COMMAND=$(which cp)
+TMUX_COMMAND=$(which tmux)
+GRC_COMMAND=$(which grc)
 
 # vim configuration
-${MKDIR_COMMAND} -p ${HOME}/.vim
+${MKDIR_COMMAND} -p "${HOME}/.vim"
 
 # NOTE: These two directories should be kept local to the machine
-${MKDIR_COMMAND} -p ${HOME}/.vim/backup
-${MKDIR_COMMAND} -p ${HOME}/.vim/tmp
+${MKDIR_COMMAND} -p "${HOME}/.vim/backup"
+${MKDIR_COMMAND} -p "${HOME}/.vim/tmp"
 
-${LINK_COMMAND} -sfT ${WORKING_DIR}/vim/autoload $HOME/.vim/autoload
-${LINK_COMMAND} -sfT ${WORKING_DIR}/vim/bundle $HOME/.vim/bundle
-${LINK_COMMAND} -sfT ${WORKING_DIR}/vim/colors $HOME/.vim/colors
-${LINK_COMMAND} -sf ${WORKING_DIR}/vim/vimrc $HOME/.vimrc
+${LINK_COMMAND} -sfT "${WORKING_DIR}/vim/autoload $HOME/.vim/autoload"
+${LINK_COMMAND} -sfT "${WORKING_DIR}/vim/bundle $HOME/.vim/bundle"
+${LINK_COMMAND} -sfT "${WORKING_DIR}/vim/colors $HOME/.vim/colors"
+${LINK_COMMAND} -sf "${WORKING_DIR}/vim/vimrc $HOME/.vimrc"
 
 CTAGS_BIN="$(which ctags)"
 
@@ -24,7 +26,7 @@ if [[ ! -x $CTAGS_BIN ]]; then
 fi
 
 # Bash supporting configuration
-${LINK_COMMAND} -sfT ${WORKING_DIR}/colors $HOME/.colors
+${LINK_COMMAND} -sfT "${WORKING_DIR}/colors" "$HOME/.colors"
 
 # Bash scripts
 ${LINK_COMMAND} -sf ${WORKING_DIR}/bash/bash_aliases $HOME/.bash_aliases
@@ -64,21 +66,37 @@ ${LINK_COMMAND} -sfT ${WORKING_DIR}/ncmpcpp/bindings ${HOME}/.ncmpcpp/bindings
 ${LINK_COMMAND} -sf ${WORKING_DIR}/synergy/synergy.conf $HOME/.synergy.conf
 
 # git configuration
-${LINK_COMMAND} -sf ${WORKING_DIR}/git/gitattributes $HOME/.gitattributes
-${LINK_COMMAND} -sf ${WORKING_DIR}/git/gitconfig $HOME/.gitconfig
-${LINK_COMMAND} -sf ${WORKING_DIR}/git/gitignore_global $HOME/.gitignore_global
-${LINK_COMMAND} -sf ${WORKING_DIR}/git/gitk $HOME/.gitk
-${LINK_COMMAND} -sfT ${WORKING_DIR}/git/hooks $HOME/.git_template
+${LINK_COMMAND} -sf "${WORKING_DIR}/git/gitattributes" "$HOME/.gitattributes"
+${LINK_COMMAND} -sf "${WORKING_DIR}/git/gitconfig" "$HOME/.gitconfig"
+${LINK_COMMAND} -sf "${WORKING_DIR}/git/gitignore_global" "$HOME/.gitignore_global"
+${LINK_COMMAND} -sf "${WORKING_DIR}/git/gitk" "$HOME/.gitk"
+${LINK_COMMAND} -sfT "${WORKING_DIR}/git/hooks" "$HOME/.git_template"
 
 # hg configuration
-${LINK_COMMAND} -sf ${WORKING_DIR}/hg/hgignore_global $HOME/.hgignore_global
+${LINK_COMMAND} -sf "${WORKING_DIR}/hg/hgignore_global" "$HOME/.hgignore_global"
 
 # tmux configuration
-${LINK_COMMAND} -sf ${WORKING_DIR}/tmux/tmux.conf $HOME/.tmux.conf
+if [[ -x "${TMUX_COMMAND" ]]; then
+  ${MKDIR_COMMAND} -p "${HOME}/.tmux/plugins"
+  ${GIT_COMMAND} clone "https://github.com/tmux-plugins/tpm" "${HOME}/.tmux/plugins/tpm"
+  ${LINK_COMMAND} -sf "${WORKING_DIR}/tmux/.tmux.conf" "$HOME/.tmux.conf"
+  if [[ ( -n "${TMUX}") && ( -x "${TMUX_COMMAND}") && ( -f "${HOME}/.tmux.conf") ]]; then
+    "${TMUX_COMMAND}" source "${HOME}/.tmux.conf"
+  fi
+else
+  echo "INFO(jeff): The tmux package is not installed. 
+  echo "\t sudo apt install tmux tmux-plugin-manager"
+  echo
+  echo "This script will not link the configuration files until the binary can be found."
+fi
 
-# gtk configuration
-${LINK_COMMAND} -sf ${WORKING_DIR}/gtk/gtkrc-2.0 $HOME/.gtkrc-2.0
-${LINK_COMMAND} -sf ${WORKING_DIR}/gtk/gtkrc-2.0.mine $HOME/.gtkrc-2.0.mine
+# gtk2 configuration
+${LINK_COMMAND} -sf "${WORKING_DIR}/gtk2/gtkrc-2.0" "$HOME/.gtkrc-2.0"
+${LINK_COMMAND} -sf "${WORKING_DIR}/gtk2/gtkrc-2.0.mine" "$HOME/.gtkrc-2.0.mine"
+
+# gtk3 configuration
+${MKDIR_COMMAND} -p "${HOME}/.config/gtk-3.0/"
+${LINK_COMMAND} -sf ${WORKING_DIR}/gtk3/.config/gtk-3.0/ $HOME/.config/gtk-3.0/
 
 # X11 configuration
 ${LINK_COMMAND} -sf ${WORKING_DIR}/X11/Xresources $HOME/.Xresources
@@ -91,8 +109,15 @@ ${LINK_COMMAND} -sf ${WORKING_DIR}/pianobar/config ${HOME}/.config/pianobar/conf
 ${LINK_COMMAND} -sf ${WORKING_DIR}/emacs/emacs ${HOME}/.emacs
 
 # grc cfg
-if [[ ! (-L ${HOME}/.grc) ]]; then
-  ${LINK_COMMAND} -sf ${WORKING_DIR}/grc ${HOME}/.grc
+if [[ -x "${GRC_COMMAND}" ]]; then
+  if [[ ! (-L "${HOME}/.grc") ]]; then
+    ${LINK_COMMAND} -sf "${WORKING_DIR}/grc" "${HOME}/.grc"
+  fi
+else
+  echo "INFO(jeff): The grc package is not installed. 
+  echo "\t sudo apt install grc"
+  echo
+  echo "This script will not link the configuration files until the binary can be found."
 fi
 
 case "$(uname -s)" in
