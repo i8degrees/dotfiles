@@ -8,4 +8,6 @@ mpd/mpdscribble.conf
 *.bck
 tmp
 
-tmux/.tmux/plugins/tpm
+tmux/.tmux/
+tmux/.tmux/plugins
+vim/bundle
