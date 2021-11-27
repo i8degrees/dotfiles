@@ -11,3 +11,9 @@ tmp
 tmux/.tmux/
 tmux/.tmux/plugins
 vim/bundle
+
+# Atom sync
+/.atom/blob-store/
+/.atom/compile-cache/
+/.atom/packages/
+/.atom/storage/
