@@ -1,5 +1,9 @@
 # Atom sync
+/.atom/.apm/
+!/.atom/.apm/.apmrc
 /.atom/blob-store/
 /.atom/compile-cache/
 /.atom/packages/
 /.atom/storage/
+/.atom/.node-gyp/
+/.atom/nohup.out
