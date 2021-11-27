@@ -1,0 +1,12 @@
+# 2021-11-27:virgo
+#
+# /etc/fstab: static file system information.
+
+# rclone v1.57+ mounts
+#
+# 1. https://rclone.org/commands/rclone_mount/
+gdrive_jeffrey-carp:/ /home/jeff/Cloud/gdrive/jeffrey-carp rclone allow-other,uid=1000,gid=50,rw,noauto,nofail,x-systemd.automount,args2env,vfs_cache_mode=writes,config=/home/jeff/.config/rclone/rclone.conf,cache_dir=/var/cache/rclone 0 0
+gdrive_i8degrees:/ /home/jeff/Cloud/gdrive/i8degrees rclone allow-other,uid=1000,gid=50,rw,noauto,nofail,x-systemd.automount,args2env,vfs_cache_mode=writes,config=/home/jeff/.config/rclone/rclone.conf,cache_dir=/var/cache/rclone 0 0
+gdrive_ngirl-dev:/ /home/jeff/Cloud/gdrive/ngirl-dev rclone allow-other,uid=1000,gid=50,rw,noauto,nofail,x-systemd.automount,args2env,vfs_cache_mode=writes,config=/home/jeff/.config/rclone/rclone.conf,cache_dir=/var/cache/rclone 0 0
+dropbox_imbue:/ /home/jeff/Cloud/dropbox/imbue rclone allow-other,uid=1000,gid=50,ro,noauto,nofail,x-systemd.automount,args2env,vfs_cache_mode=writes,config=/home/jeff/.config/rclone/rclone.conf,cache_dir=/var/cache/rclone 0 0
+dropbox_personal:/ /home/jeff/Cloud/dropbox/personal rclone allow-other,uid=1000,gid=50,rw,noauto,nofail,x-systemd.automount,args2env,vfs_cache_mode=writes,config=/home/jeff/.config/rclone/rclone.conf,cache_dir=/var/cache/rclone 0 0
