@@ -1,0 +1,59 @@
+"*":
+  core:
+    audioBeep: false
+    automaticallyUpdate: false
+    colorProfile: "srgb"
+    disabledPackages: [
+      "node-debug"
+      "node-requirer"
+      "autocomplete-snippets"
+      "snippets"
+      "sync-settings-git-location"
+    ]
+    packagesWithSnippetsDisabled: [
+      "language-powershell"
+    ]
+    projectHome: "~/Projects"
+    reopenProjectMenuCount: 8
+    telemetryConsent: "no"
+    themes: [
+      "one-dark-ui"
+      "solarized-dark-syntax"
+    ]
+    uriHandlerRegistration: "always"
+  editor:
+    fontFamily: "Source Code Pro"
+    invisibles: {}
+    lineHeight: 1.4
+    showIndentGuide: true
+    showInvisibles: true
+    tabType: "soft"
+    zoomFontWhenCtrlScrolling: false
+  "exception-reporting":
+    userId: "5f0033ff-3917-46e8-a8a6-b38030f36e8d"
+  "ide-powershell":
+    developer: {}
+  "markdown-preview":
+    breakOnSingleNewline: true
+  "project-plus":
+    newWindow: true
+    projectHome: " ~/Projects"
+    showPath: true
+  "save-session":
+    dataSaveFolder: "~/.atom/packages/save-session/projects"
+  "sync-settings":
+    autoCheckForUpdatedBackup: "backup"
+    gistId: "b741c86a039f977d48542fb32ed401eb"
+    hiddenSettings:
+      _lastBackupTime: "2021-11-27T07:01:23Z"
+    ignoreEol: true
+    personalAccessToken: "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"
+    quietUpdateCheck: true
+  "sync-settings-git-location": {}
+  "tree-view": {}
+  welcome:
+    showOnStartup: false
+".powershell.source":
+  editor:
+    softWrapAtPreferredLineLength: true
+    softWrapHangingIndent: 2

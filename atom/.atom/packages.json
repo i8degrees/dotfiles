@@ -1,0 +1,335 @@
+{
+	"about": {
+		"version": "1.9.1"
+	},
+	"archive-view": {
+		"version": "0.66.0"
+	},
+	"atom-dark-syntax": {
+		"version": "0.29.1",
+		"theme": "syntax"
+	},
+	"atom-dark-ui": {
+		"version": "0.53.3",
+		"theme": "ui"
+	},
+	"atom-finder": {
+		"version": "0.3.0"
+	},
+	"atom-ide-debugger-node": {
+		"version": "0.7.3"
+	},
+	"atom-ide-ui": {
+		"version": "0.13.0"
+	},
+	"atom-light-syntax": {
+		"version": "0.29.1",
+		"theme": "syntax"
+	},
+	"atom-light-ui": {
+		"version": "0.46.3",
+		"theme": "ui"
+	},
+	"atom-node-v8-inspector": {
+		"version": "0.1.1"
+	},
+	"autocomplete-atom-api": {
+		"version": "0.10.7"
+	},
+	"autocomplete-css": {
+		"version": "0.17.5"
+	},
+	"autocomplete-html": {
+		"version": "0.8.8"
+	},
+	"autocomplete-plus": {
+		"version": "2.42.4"
+	},
+	"autocomplete-snippets": {
+		"version": "1.12.1"
+	},
+	"autoflow": {
+		"version": "0.29.4"
+	},
+	"autosave": {
+		"version": "0.24.6"
+	},
+	"background-tips": {
+		"version": "0.28.0"
+	},
+	"base16-tomorrow-dark-theme": {
+		"version": "1.6.0",
+		"theme": "syntax"
+	},
+	"base16-tomorrow-light-theme": {
+		"version": "1.6.0",
+		"theme": "syntax"
+	},
+	"bookmarks": {
+		"version": "0.46.0"
+	},
+	"bracket-matcher": {
+		"version": "0.92.0"
+	},
+	"command-palette": {
+		"version": "0.43.5"
+	},
+	"dalek": {
+		"version": "0.2.2"
+	},
+	"deprecation-cop": {
+		"version": "0.56.9"
+	},
+	"dev-live-reload": {
+		"version": "0.48.1"
+	},
+	"editorconfig": {
+		"version": "2.6.1"
+	},
+	"encoding-selector": {
+		"version": "0.23.9"
+	},
+	"exception-reporting": {
+		"version": "0.43.1"
+	},
+	"find-and-replace": {
+		"version": "0.219.8"
+	},
+	"fuzzy-finder": {
+		"version": "1.14.3"
+	},
+	"git-diff": {
+		"version": "1.3.9"
+	},
+	"github": {
+		"version": "0.36.9"
+	},
+	"go-to-line": {
+		"version": "0.33.0"
+	},
+	"grammar-selector": {
+		"version": "0.50.1"
+	},
+	"image-view": {
+		"version": "0.64.0"
+	},
+	"incompatible-packages": {
+		"version": "0.27.3"
+	},
+	"keybinding-resolver": {
+		"version": "0.39.0"
+	},
+	"language-c": {
+		"version": "0.60.19"
+	},
+	"language-clojure": {
+		"version": "0.22.8"
+	},
+	"language-coffee-script": {
+		"version": "0.50.0"
+	},
+	"language-csharp": {
+		"version": "1.1.0"
+	},
+	"language-css": {
+		"version": "0.44.4"
+	},
+	"language-gfm": {
+		"version": "0.90.8"
+	},
+	"language-git": {
+		"version": "0.19.1"
+	},
+	"language-go": {
+		"version": "0.47.2"
+	},
+	"language-html": {
+		"version": "0.53.1"
+	},
+	"language-hyperlink": {
+		"version": "0.17.1"
+	},
+	"language-java": {
+		"version": "0.32.1"
+	},
+	"language-javascript": {
+		"version": "0.134.1"
+	},
+	"language-json": {
+		"version": "1.0.5"
+	},
+	"language-less": {
+		"version": "0.34.3"
+	},
+	"language-make": {
+		"version": "0.23.0"
+	},
+	"language-mustache": {
+		"version": "0.14.5"
+	},
+	"language-objective-c": {
+		"version": "0.16.0"
+	},
+	"language-perl": {
+		"version": "0.38.1"
+	},
+	"language-php": {
+		"version": "0.47.0"
+	},
+	"language-powershell": {
+		"version": "5.0.0"
+	},
+	"language-property-list": {
+		"version": "0.9.1"
+	},
+	"language-python": {
+		"version": "0.53.6"
+	},
+	"language-ruby": {
+		"version": "0.72.23"
+	},
+	"language-ruby-on-rails": {
+		"version": "0.25.3"
+	},
+	"language-rust-bundled": {
+		"version": "0.1.0"
+	},
+	"language-sass": {
+		"version": "0.62.1"
+	},
+	"language-shellscript": {
+		"version": "0.28.2"
+	},
+	"language-source": {
+		"version": "0.9.0"
+	},
+	"language-sql": {
+		"version": "0.25.10"
+	},
+	"language-text": {
+		"version": "0.7.4"
+	},
+	"language-todo": {
+		"version": "0.29.4"
+	},
+	"language-toml": {
+		"version": "0.20.0"
+	},
+	"language-typescript": {
+		"version": "0.6.3"
+	},
+	"language-xml": {
+		"version": "0.35.3"
+	},
+	"language-yaml": {
+		"version": "0.32.0"
+	},
+	"line-ending-selector": {
+		"version": "0.7.7"
+	},
+	"link": {
+		"version": "0.31.6"
+	},
+	"markdown-preview": {
+		"version": "0.160.2"
+	},
+	"metrics": {
+		"version": "1.8.1"
+	},
+	"node-debug": {
+		"version": "0.1.7"
+	},
+	"node-on-fire": {
+		"version": "0.1.0"
+	},
+	"node-repl": {
+		"version": "0.5.0"
+	},
+	"node-requirer": {
+		"version": "0.1.12"
+	},
+	"notifications": {
+		"version": "0.71.0"
+	},
+	"one-dark-syntax": {
+		"version": "1.8.4",
+		"theme": "syntax"
+	},
+	"one-dark-ui": {
+		"version": "1.12.5",
+		"theme": "ui"
+	},
+	"one-light-syntax": {
+		"version": "1.8.4",
+		"theme": "syntax"
+	},
+	"one-light-ui": {
+		"version": "1.12.5",
+		"theme": "ui"
+	},
+	"open-on-github": {
+		"version": "1.3.2"
+	},
+	"package-generator": {
+		"version": "1.3.0"
+	},
+	"recent-project-switcher": {
+		"version": "0.2.0"
+	},
+	"set-syntax": {
+		"version": "0.4.0"
+	},
+	"settings-view": {
+		"version": "0.261.8"
+	},
+	"snippets": {
+		"version": "1.5.1"
+	},
+	"solarized-dark-syntax": {
+		"version": "1.3.0",
+		"theme": "syntax"
+	},
+	"solarized-light-syntax": {
+		"version": "1.3.0",
+		"theme": "syntax"
+	},
+	"spell-check": {
+		"version": "0.77.1"
+	},
+	"status-bar": {
+		"version": "1.8.17"
+	},
+	"styleguide": {
+		"version": "0.49.12"
+	},
+	"symbols-view": {
+		"version": "0.118.4"
+	},
+	"sync-settings": {
+		"version": "5.2.15"
+	},
+	"tabs": {
+		"version": "0.110.0"
+	},
+	"terminal-tab": {
+		"version": "0.6.0"
+	},
+	"timecop": {
+		"version": "0.36.2"
+	},
+	"tree-view": {
+		"version": "0.228.3"
+	},
+	"update-package-dependencies": {
+		"version": "0.13.1"
+	},
+	"welcome": {
+		"version": "0.36.9"
+	},
+	"whitespace": {
+		"version": "0.37.8"
+	},
+	"wrap-guide": {
+		"version": "0.41.0"
+	}
+}
