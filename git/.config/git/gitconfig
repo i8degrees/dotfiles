@@ -96,3 +96,5 @@
 [credential "https://github.com"]
 	helper = "store --file ~/.git-credentials"
 
+[init]
+	defaultBranch = dev
