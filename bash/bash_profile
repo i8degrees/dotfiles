@@ -20,7 +20,7 @@ case "$(uname -s)" in
 		PATH="$PATH:$HOME/Applications:/usr/X11/bin"
 	;;
 	Linux)
-		PATH="$PATH:$HOME/.config/feh/themes"
+		PATH="/snap/bin:${HOME}/.config/feh/themes:$PATH"
 	;;
 	*)
 	;;
@@ -37,3 +37,15 @@ if [[ -x $(which rbenv) ]]; then
   eval "$(rbenv init -)"
 fi
 
+# golang env
+GOPATH="${HOME}/local/src/golang"; export GOPATH
+
+if [[ ! (-d "${GOPATH}") ]]; then
+  mkdir -p "${GOPATH}/bin" || exit 255
+fi
+
+GOBIN="${GOPATH}/bin"; export GOBIN
+PATH="$GOBIN:$PATH"
+
+# mkcert
+CAROOT="${HOME}/pki"; export CAROOT
