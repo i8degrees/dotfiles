@@ -1,0 +1,14 @@
+vsftpd:
+  image: vimagick/vsftpd
+    net: host
+    # ports:
+    #   - "20:20"
+    #   - "21:21"
+    #   - "30000-30010:30000-30010"
+      volumes:
+          - ./vsftpd:/etc/vsftpd
+              - ./ftp:/var/lib/ftp
+              #   - ./pam.d/vsftpd:/etc/pam.d/vsftpd
+              #   - ./virtual:/home/virtual
+                privileged: true
+                  restart: always
