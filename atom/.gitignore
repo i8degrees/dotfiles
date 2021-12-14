@@ -1,4 +1,5 @@
 # Atom sync
+.atom-socket-secret-jeff-1.58.0
 /.atom/.apm/
 !/.atom/.apm/.apmrc
 /.atom/blob-store/
