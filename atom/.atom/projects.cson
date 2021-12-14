@@ -1,0 +1,22 @@
+[
+  {
+    title: "robocopy"
+    paths: [
+      "/home/jeff/Projects/i8degrees-net/robocopy.git"
+    ]
+    color: "pink"
+  },
+  {
+    title: "notes"
+    paths: [
+      "/home/jeff/Projects/i8degrees/Notes.git"
+    ]
+    color: "grey",
+  },
+  {
+    title: "messagebin",
+    paths: [
+      "/home/jeff/Projects/i8degrees-net/messagebin.git"
+    ]
+  }
+]
