@@ -1,4 +1,12 @@
 {
+  "windows": {
+    "core": {
+      "projectHome": "C:\\Users\i8deg\Projects"
+		  "save-session": {
+			  "dataSaveFolder": "C:\\Users\\i8deg\\.atom\\packages\\save-session\\projects"
+		  }
+    }
+  },
 	"*": {
 		"core": {
 			"audioBeep": false,
@@ -13,7 +21,7 @@
 			"packagesWithSnippetsDisabled": [
 				"language-powershell"
 			],
-			"projectHome": "C:\\Users\\i8deg\\Projects",
+			"projectHome": "~/Projects",
 			"reopenProjectMenuCount": 8,
 			"telemetryConsent": "no",
 			"themes": [
@@ -41,7 +49,7 @@
 			"breakOnSingleNewline": true
 		},
 		"save-session": {
-			"dataSaveFolder": "C:\\Users\\i8deg\\.atom\\packages\\save-session\\projects"
+			"dataSaveFolder": "~/.atom/packages/save-session/projects"
 		},
 		"sync-settings": {
 			"autoCheckForUpdatedBackup": "backup",
