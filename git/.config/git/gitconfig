@@ -89,8 +89,8 @@
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
 [credential "https://github.com"]
-	helper = "store --file ~/.git-credentials"
-
+	username = i8degrees
+  helper = "store --file ~/.git-credentials"
 [init]
 	defaultBranch = dev
 [lfs]
