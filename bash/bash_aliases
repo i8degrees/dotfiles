@@ -315,3 +315,17 @@ if [[ -x $GRC_BIN ]]; then
   # alias mount='colourify mount $@'
   # alias mount='colourify mount2 $@'
 fi
+
+alias open='xdg-open $@'
+alias o='open $@'
+alias start='open $@'
+
+alias edit='atom $@'
+alias e='edit $@'
+
+alias www='gnome-www-browser $@'
+alias image='timg $@'
+alias img='image $@'
+alias video='timg $@'
+alias v='video $@'
+
