@@ -111,23 +111,37 @@ case "$(uname -s)" in
   ;;
 esac
 
-# export EDITOR='subl -w' # Do not exit editor until file is closed
-if [[ $(which vim) ]]; then
-  export EDITOR=$(which vim)
-  export VISUAL=$EDITOR
+VIM_BIN="$(command -v vim)"
+VIMTINY_BIN="$(command -v vim.tiny)"
+NEOVIM_BIN="$(command -v nvim)"
+SUBL_BIN="$(command -v subl)"
+ATOM_BIN="$(command -v atom)"
+
+if [[ -x "$VIMTINY_BIN" ]]; then
+  EDITOR=$VIMTINY_BIN; export EDITOR
+elif [[ -x "$NEOVIM_BIN" ]]; then
+  EDITOR=$NEOVIM_BIN; export EDITOR
+elif [[ -x "$VIM_BIN" ]]; then
+  EDITOR=$VIM_BIN; export EDITOR
+fi
+
+if [[ -x "$ATOM_BIN" ]]; then
+  VISUAL=$ATOM_BIN; export VISUAL
+elif [[ -x "$SUBL_BIN" ]]; then
+  # VISUAL="subl -w" # Do not exit editor until file is closed
+  VISUAL=$SUBL_BIN; export VISUAL
 fi
 
 #eval "$(resize)"
 
 #export USECOLOR=true
 #export TERM=xterm-256color
-export TERM=screen-256color-italic
-#TMPDIR="$HOME/tmp"; export TMPDIR
+TERM="screen-256color-italic"; export TERM
+TMPDIR="/tmp"; export TMPDIR
 BLOCKSIZE=K; export BLOCKSIZE
-export INPUTRC="$HOME/.inputrc"
+INPUTRC="$HOME/.inputrc"; export INPUTRC
 
 #if [ "$(which vimpager)" ]; then
-  # ...
 #fi
 
 BROWSER="google-chrome"; export BROWSER
