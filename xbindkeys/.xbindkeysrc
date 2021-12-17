@@ -29,16 +29,16 @@
 
 
 
-#keystate_numlock = enable
-#keystate_scrolllock = enable
-keystate_capslock = disable
+keystate_numlock = enable
+keystate_scrolllock = enable
+keystate_capslock = enable
 
 
 
-#test
-#"/home/jeff/local/bin/test.sh"
-#    m:0x2 + c:66
-#    Caps_Lock 
+#tilde
+"~/local/bin/capslock-to-tilde.sh"
+    m:0x12 + c:66
+    Mod2 + Caps_Lock 
 
 #
 # End of xbindkeys configuration
