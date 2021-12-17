@@ -259,7 +259,7 @@ alias watch="watch -n 1.0"
 alias iostat="iostat -d 1"
 alias ifstat="clear && $(which ifstat) -z -i en2 -w -S $@"
 
-alias cls="reset"
+alias cls="clear"
 alias kpatch="patch -p1 < $@"
 
 # TODO/FIXME
