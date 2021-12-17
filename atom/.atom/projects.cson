@@ -5,40 +5,41 @@
       "/home/jeff/Projects/i8degrees/dotfiles.git"
     ]
     color: "grey"
-  },
+  }
   {
     title: "robocopy"
     paths: [
       "/home/jeff/Projects/i8degrees-net/robocopy.git"
     ]
     color: "pink"
-  },
+  }
   {
     title: "notes"
     paths: [
       "/home/jeff/Projects/i8degrees/Notes.git"
     ]
-    color: "grey",
-  },
+    color: "grey"
+  }
   {
     title: "ttcards"
     paths: [
       "/home/jeff/Projects/i8degrees/ttcards.git"
     ]
-    color: "grey",
-  },
+    color: "grey"
+  }
   {
     title: "nomlib"
     paths: [
       "/home/jeff/Projects/i8degrees/nomlib.git"
     ]
-    color: "grey",
-  },
+    color: "grey"
+  }
   {
-    title: "messagebin",
+    title: "messagebin"
+    group: "git/i8degrees-net"
     paths: [
       "/home/jeff/Projects/i8degrees-net/messagebin.git"
-    ],
+    ]
     color: "pink"
   }
 ]
