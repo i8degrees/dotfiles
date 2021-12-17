@@ -150,7 +150,7 @@ case "$(uname -s)" in
     # apparently does not work under OS X (v10.7.x+)
     # http://www.askdavetaylor.com/force_mac_os_x_grep_to_always_output_in_color/
     if [ "$(which grep)" ]; then # /usr/local/bin/grep (homebrew package)
-      alias grep='grep --color=always $@'
+      alias grep='grep --color=always -I $@'
     fi
 
     # iOS Simulator
@@ -238,7 +238,8 @@ case "$(uname -s)" in
     fi # end ArchLinux-tailored configuration
 
     # grep color term support
-    export GREP_OPTIONS="--color=always -I"; # -I = --binary-files-without-match
+    #export GREP_OPTIONS="--color=always -I"; # -I = --binary-files-without-match
+    alias grep='grep --color=always -I $@'
 
     if [[ $(which xdg-open) ]]; then
       alias open='xdg-open $@'
