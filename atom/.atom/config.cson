@@ -1,4 +1,7 @@
 "*":
+  "bracket-matcher":
+    autocompleteBrackets: false
+    highlightMatchingLineNumber: true
   core:
     audioBeep: false
     automaticallyUpdate: false
