@@ -321,12 +321,35 @@ alias open='xdg-open $@'
 alias o='open $@'
 alias start='open $@'
 
-alias edit='atom $@'
-alias e='edit $@'
+if [[ -n "$VISUAL" ]]; then
+  alias edit="$VISUAL $*"
+elif [[ -n "$EDITOR" ]]; then
+  alias edit="$EDITOR $*"
+fi
 
-alias www='gnome-www-browser $@'
-alias image='timg $@'
-alias img='image $@'
-alias video='timg $@'
-alias v='video $@'
+if [[ "$(alias edit)" ]]; then
+  alias e='edit $@'
+fi
 
+if [[ -x "$(command -v gnome-www-browser)" ]]; then
+  alias www='gnome-www-browser $@'
+fi
+
+TIMG_BIN=$(which timg)
+TIV_BIN=$(which tiv)
+
+if [[ -x "$TIMG_BIN" ]]; then
+  alias image='timg $@'
+  alias video='timg $@'
+elif [[ -x "$TIV_BIN" ]]; then
+  alias image='tiv $@'
+  alias video='echo Please install the timg package for video support.'
+fi
+
+if [[ "$(alias image)" ]]; then
+  alias img='image $@'
+fi
+
+if [[ "$(alias video)" ]]; then
+  alias v='video $@'
+fi
