@@ -3,9 +3,9 @@
 #     Mplayer configuration defaults
 #
 [default]
-input=conf="~/.mpv/input.conf" # Defaults for input controls
-#include="/home/jeff/.mpv/kq.profile"
-#include="/home/jeff/.mpv/subs.profile"
+input-conf="~/.config/mpv/input.conf" # Defaults for input controls
+#include="/home/jeff/.config/mpv/kq.profile"
+#include="/home/jeff/.config/mpv/subs.profile"
 volume=25
 softvol-max=100
 #vo="vdpau"
@@ -16,7 +16,7 @@ osd-fractions
 osd-level=3
 #ao="null"
 #mixer="hw:1"
-cache=102400 # Assumes a minimum bandwidth pipe of 10/100mbps ethernet
+#cache=102400 # Assumes a minimum bandwidth pipe of 10/100mbps ethernet
 alang="en"
 slang="en"
 #channels=2 # Stereo
