@@ -1,0 +1,127 @@
+#!/bin/bash
+
+FILE=$1
+LABEL=$2
+FILE_SIZE=$3
+FILESYSTEM=$4
+
+
+# create_dmg(label, file, filesystem)
+create_dmg() {
+  case "${3}" in
+    hfs*)
+      if [[ ! "$(command -v mkfs.hfsplus)" ]]; then
+        echo "CRITICAL: The binary mkfs.hfsplus was not found. Please install"
+        echo "this package and then run this command again."  
+        echo
+        exit 1
+      fi
+
+      mkfs.hfsplus -v ${1} ${2}
+    ;;
+    ext2)
+      if [[ ! "$(command -v mkfs.ext2)" ]]; then
+        echo "CRITICAL: The binary mkfs.ext2 was not found. Please install"
+        echo "this package and then run this command again."  
+        echo
+        exit 1
+      fi
+
+      mkfs.ext2 -L ${1} ${2}
+    ;;
+    ext4)
+      if [[ ! "$(command -v mkfs.ext4)" ]]; then
+        echo "CRITICAL: The binary mkfs.ext4 was not found. Please install"
+        echo "this package and then run this command again."  
+        echo
+        exit 1
+      fi
+
+      mkfs.ext4 -L ${1} ${2}
+    ;;
+    msdos|dos)
+      if [[ ! "$(command -v mkfs.msdos)" ]]; then
+        echo "CRITICAL: The binary mkfs.msdos was not found. Please install"
+        echo "this package and then run this command again."  
+        echo
+        exit 1
+      fi
+
+      mkfs.msdos -n ${1} ${2}
+    ;;
+    vfat|fat|fat16|fat32)
+      if [[ ! "$(command -v mkfs.fat)" ]]; then
+        echo "CRITICAL: The binary mkfs.fat was not found. Please install"
+        echo "this package and then run this command again."  
+        echo
+        exit 1
+      fi
+
+      mkfs.fat -n ${1} ${2}
+    ;;
+    exfat)
+      if [[ ! "$(command -v mkfs.exfat)" ]]; then
+        echo "CRITICAL: The binary mkfs.exfat was not found. Please install"
+        echo "this package and then run this command again."  
+        echo
+        exit 1
+      fi
+
+      mkfs.exfat -L ${1} ${2}
+    ;;
+    apfs)
+      if [[ ! "$(command -v mkfs.apfs)" ]]; then
+        echo "CRITICAL: The binary mkfs.ext2 was not found. Please install"
+        echo "this package and then run this command again."  
+        echo
+        exit 1
+      fi
+
+      mkfs.apfs -L ${1} ${2}
+    ;;
+  esac
+
+}
+
+usage() {
+  BASENAME=$0
+  echo "Usage: $BASENAME <file> <label> <size> <filesystem>"
+  echo ""
+  echo "Create a DMG disk image."
+  echo ""
+  echo "The file parameter is mandatory."
+  echo
+  echo "The label parameter is optional; defaults to DiskImage."
+  echo "The size parameter is optional; defaults to 1024M."
+  echo "The filesystem parameter is optional; defaults to hfsplus."
+}
+
+if [[ -z "${FILESYSTEM}" ]]; then
+  FILE_SIZE="hfsplus"
+fi
+
+if [[ -z "${FILE_SIZE}" ]]; then
+  FILE_SIZE="1024M"
+fi
+
+if [[ -z "${LABEL}" ]]; then
+  LABEL="DiskImage"
+fi
+
+if [[ -z "${FILE}" ]]; then
+  echo "CRITICAL: A file must be specified as the first argument."
+  echo
+  exit 255
+fi
+
+if [[ ! "$(command -v truncate)" ]]; then
+  echo "CRITICAL: The binary truncate was not found. Please install"
+  echo "this package and then run this command again."  
+  echo
+  exit 1
+fi
+
+truncate -s "$FILE_SIZE" "$FILE"
+create_dmg "$LABEL" "$FILE" "$FILESYSTEM"
+
+exit 0
