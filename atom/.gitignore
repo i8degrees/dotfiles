@@ -5,6 +5,7 @@
 /.atom/blob-store/
 /.atom/compile-cache/
 /.atom/packages/
+/.atom/recovery/
 /.atom/storage/
 /.atom/.node-gyp/
 /.atom/nohup.out
