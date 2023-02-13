@@ -1,0 +1,19 @@
+# KDE Plasma Keyboard Shortcuts
+
+My personal keyboard mappings for the KDE Plasma environment. I try to keep
+as many of the same key mappings across environments as possible.
+
+These particular key mapping combinations derive from my many years
+time in the MacOS environment. Before that, I was an exclusive Linux user for
+many years. Nowadays I can be found going back and forth between the two 
+environments in my every day use.
+
+## usage
+
+`~/.config/kglobalshortcutsrc`
+
+**TODO:** Verify whether I should overwrite the above file mention or what. I 
+am not certain of where I should put this customization file, but I do wish
+to do so in a manner that is automated, i.e.: I do not have to import the list
+myself via GUI.
+
