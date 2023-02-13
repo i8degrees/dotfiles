@@ -1,0 +1,5 @@
+# stow
+
+If you are reading this file from within the base of your home directory, then you did not follow my instructions as laid out in my dotfiles repository: you should stow the `stow` directory within my dotfiles repository! This contains my `stowrc` configuration and prevents files like `README.stow` from ending up in the target directory.
+
+
