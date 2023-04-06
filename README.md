@@ -19,7 +19,7 @@ My personal customization files and scripts for my environments. Friendly toward
 - FreeBSD
   * It has been some time since I have used this OS and honestly cannot even remember the last version it was on. I do not recall any specific problems here.
 
-- [GNU Stow](https://www.gnu.org/software/stow/) must be installed beforehand. The software is a simple (one file) Perl script without external dependencies. It can also be found in the [CPAN modules repository](https://metacpan.org/dist/Stow/view/bin/stow).
+- [GNU Stow](https://www.gnu.org/software/stow/) must be installed beforehand. The software is a simple (one file) Perl script without external dependencies. It can also be found in the [CPAN modules repository](https://metacpan.org/dist/Stow/view/bin/stow). ```shell cpan install Stow``` and append `$HOME/perl5/bin` to your system `PATH`.
 
 ```shell
 git clone https://github.com/i8degrees/dotfiles.git $HOME/dotfiles.git
