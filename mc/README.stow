@@ -1,0 +1,49 @@
+
+# Midnight Commander
+
+**GNU Midnight Commander** -- `mc` -- is a directory
+browser/file manager for *Unix-like* operating systems.
+
+## usage
+
+1. Use **GNU Stow** on the root of this directory path.
+
+```shell
+# cd ~/dotfiles.git
+stow mc
+```
+
+Now, let's run **Midnight Commander** for the first time.
+
+```shell
+mc
+```
+
+### configuration layout
+
+#### user
+
+    $HOME/.config/mc
+
+```shell
+# main setup
+~/.config/mc/ini
+# possible layouts for your panels
+~/.config/mc/panels.ini
+# key bindings
+~/.config/mc/mc.keymap
+```
+
+#### system-wide
+
+```shell
+# vendor defaults
+/usr/share/mc
+# distribution defaults
+/etc/mc
+```
+
+## TODO
+
+- [ ] Consider relocating some of this information to our private
+Notes git repository?
