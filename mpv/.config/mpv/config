@@ -59,6 +59,10 @@ osd-border-color='#99000000'
 ########
 # Misc #
 ########
+volume-max=200
+on-top=1
+loop-file=inf
+loop-playlist=inf
 
 # https://github.com/mpv-player/mpv/blob/master/etc/example.conf
 
