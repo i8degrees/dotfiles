@@ -1,0 +1,15 @@
+# kde
+
+Base directory for KDE5 workplace.
+
+## usage
+
+	kdebindings
+  	kdeplasma
+	kde-windowrules
+
+**STUB**: Finish documenting
+
+**TODO**: Attempt to symlink `kdebindings/.config` and `kdeplasma/.config` 
+dirs so that we can `stow -R kde` for both if we so choose
+

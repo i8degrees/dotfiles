@@ -10,10 +10,14 @@ environments in my every day use.
 
 ## usage
 
-`~/.config/kglobalshortcutsrc`
+	~/.config/kglobalshortcutsrc
 
 **TODO:** Verify whether I should overwrite the above file mention or what. I 
 am not certain of where I should put this customization file, but I do wish
 to do so in a manner that is automated, i.e.: I do not have to import the list
 myself via GUI.
+
+### KTile
+
+- <https://store.kde.org/p/1958305>
 
