@@ -9,6 +9,9 @@
 #	1.	https://github.com/github/gitignore#readme
 #
 
+# Dolphin file manager
+.directory
+
 # OSX Finder
 .DS_Store*
 
