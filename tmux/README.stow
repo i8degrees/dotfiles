@@ -1,0 +1,10 @@
+# tmux
+
+## usage
+
+Once you have `tpm`, the tmux-plugin-manager installed, run the following:
+
+```shell
+/usr/share/tmux-plugin-manager/bin/install_plugins
+```
+
