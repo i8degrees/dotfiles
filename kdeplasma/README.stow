@@ -1,0 +1,11 @@
+# KDE Plasma Panels
+
+My personal panel setup in the KDE Plasma environment. I am still figuring
+out which configuration files are which and what is necessary and what is not.
+
+**WIP**
+
+## usage
+
+    ~/.config/plasmashellrc
+    ~/.config/plasma-org.kde.plasma.desktop-appletsrc

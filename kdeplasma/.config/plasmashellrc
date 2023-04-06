@@ -1,0 +1,58 @@
+[ActionsWidget]
+ColumnState=AAAA/wAAAAAAAAABAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAkYAAAACAQAAAQAAAAAAAAAAAAAAAGT/////AAAAgQAAAAAAAAACAAAA+gAAAAEAAAAAAAABTAAAAAEAAAAAAAAD6AAAAABk
+
+[ConfigDialog]
+eDP-1 Height 1280x720 eDP-1=510
+eDP-1 Width 1280x720 eDP-1=768
+
+[FileDialogSize]
+eDP-1 HDMI-1 Height 1280x1024 HDMI-1=540
+eDP-1 HDMI-1 Width 1280x1024 HDMI-1=884
+
+[General]
+Number of Actions=0
+
+[KFileDialog Settings]
+Recent Files[$e]=bending-over-lingerie-anita.png,file:$HOME/Pictures/wallpapers/christine.jpg,file:$HOME/Pictures/wallpapers/latest_1920p.png,file:$HOME/Pictures/wallpapers/tanktop.jpg,file:$HOME/Pictures/wallpapers/happy-birthday-anita-2.png,file:$HOME/Pictures/wallpapers/bending-over-lingerie-anita.png
+Recent URLs[$e]=file:$HOME/Pictures/wallpapers/,file:$HOME/Pictures/
+detailViewIconSize=16
+iconViewIconSize=64
+listViewIconSize=128
+
+[KPropertiesDialog]
+eDP-1 Height 1280x720 eDP-1=541
+eDP-1 Width 1280x720 eDP-1=408
+
+[PlasmaTransientsConfig]
+PreloadWeight=0
+
+[PlasmaViews][Panel 2]
+alignment=132
+floating=0
+panelOpacity=1
+panelVisibility=0
+
+[PlasmaViews][Panel 2][Defaults]
+thickness=36
+
+[PlasmaViews][Panel 2][Horizontal1280]
+thickness=36
+
+[PlasmaViews][Panel 2][Horizontal1366]
+thickness=36
+
+[PlasmaViews][Panel 41]
+alignment=132
+
+[PlasmaViews][Panel 41][Defaults]
+thickness=36
+
+[PlasmaViews][Panel 41][Horizontal1280]
+thickness=36
+
+[ScreenConnectors]
+0=eDP-1
+1=HDMI-1
+
+[Updates]
+performed=/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/move_desktop_layout_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/systemloadviewer_systemmonitor.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/obsolete_kickoffrc.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/unlock_widgets.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/maintain_existing_desktop_icon_sizes.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/no_middle_click_paste_on_panels.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/klipper_clear_config.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/containmentactions_middlebutton.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/digitalclock_rename_timezonedisplay_key.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/keyboardlayout_migrateiconsetting.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/digitalclock_migrate_font_settings.js,/usr/share/plasma/shells/org.kde.plasma.desktop/contents/updates/keyboardlayout_remove_shortcut.js
