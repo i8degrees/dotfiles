@@ -1,6 +1,6 @@
 [user]
 	name = Jeffrey Carpenter
-	email = i8degrees@gmail.com
+	email = 1329364+i8degrees@users.noreply.github.com
 	signingkey = F38DCE7F835748F9
 
 [core]
@@ -13,8 +13,8 @@
 	# ignorednore file perms (chmods)
 	# Source: http://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-mode-changes-chmod
 	# filemode = false
-    autocrlf = input
-    #safecrlf = true
+    	autocrlf = input
+    	#safecrlf = true
 
 [advice]
     statusHints = false
@@ -88,9 +88,13 @@
 [mergetool "sourcetree"]
 	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
 	trustExitCode = true
+
+# ~/.git-credentials
+# 
+#   SYNTAX,
+# protocol://username:token@domain
 [credential "https://github.com"]
-	username = i8degrees
-  helper = "store --file ~/.git-credentials"
+  	helper = "store --file ~/.git-credentials"
 [init]
 	defaultBranch = dev
 [lfs]
@@ -100,3 +104,4 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
