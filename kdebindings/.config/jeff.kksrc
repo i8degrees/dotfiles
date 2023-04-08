@@ -11,17 +11,17 @@ Activate Next Tab=Ctrl+]; Ctrl+PgDown
 Activate Previous Tab=Ctrl+[; Ctrl+PgUp
 ActualSize=Ctrl+0
 AddBookmark=Ctrl+B
-Back=Back; Alt+Left
+Back=Alt+Left; Back
 BackwardWord=Ctrl+Left
 Begin=Ctrl+Home
 BeginningOfLine=Home
 Clear=
-Close=Ctrl+W; Meta+W
+Close=Meta+W; Ctrl+W
 ConfigureNotifications=
 ConfigureToolbars=
-Copy=Ctrl+C; Ctrl+Ins
+Copy=Ctrl+Ins; Ctrl+C
 CreateFolder=F10
-Cut=Ctrl+X; Shift+Del
+Cut=Shift+Del; Ctrl+X
 DeleteFile=Shift+Del
 DeleteWordBack=Ctrl+Backspace
 DeleteWordForward=Ctrl+Del
@@ -38,7 +38,7 @@ FindPrev=Shift+F3
 FitToHeight=
 FitToPage=
 FitToWidth=
-Forward=Alt+Right; Forward
+Forward=Forward; Alt+Right
 ForwardWord=Ctrl+Right
 FullScreen=Ctrl+Shift+F
 Goto=
@@ -54,7 +54,7 @@ Next=PgDown
 NextCompletion=Ctrl+Down
 Open=Ctrl+O
 OpenRecent=
-Paste=Ctrl+V; Shift+Ins
+Paste=Shift+Ins; Ctrl+V
 Paste Selection=Ctrl+Shift+Ins
 Preferences=Ctrl+,
 PrevCompletion=Ctrl+Up
@@ -63,7 +63,7 @@ PrintPreview=
 Prior=PgUp
 Quit=Ctrl+Q
 Redo=Ctrl+Shift+Z
-Reload=Refresh; F5
+Reload=F5; Refresh
 RenameFile=F2
 Replace=Ctrl+R
 ReportBug=
@@ -74,7 +74,7 @@ Save=Ctrl+S
 SaveAs=Ctrl+Shift+S
 SaveOptions=
 SelectAll=Ctrl+A
-ShowHideHiddenFiles=Ctrl+H; Ctrl+>; Alt+.
+ShowHideHiddenFiles=Ctrl+H; Alt+.; Ctrl+>
 ShowMenubar=Ctrl+M
 ShowStatusbar=
 ShowToolbar=
@@ -87,7 +87,7 @@ Undo=Ctrl+Z
 Up=Alt+Up
 WhatsThis=
 Zoom=
-ZoomIn=Ctrl++; Ctrl+=
+ZoomIn=Ctrl+=; Ctrl++
 ZoomOut=Ctrl+-
 
 [chrome-dobijdaempibgjjmnmngobhnegdlhbil-Default.desktop][Global Shortcuts]
@@ -126,7 +126,7 @@ Enable Touchpad=Touchpad On
 Toggle Touchpad=Touchpad Toggle
 
 [kded5][Global Shortcuts]
-Show System Activity=Ctrl+Alt+0; Ctrl+Esc
+Show System Activity=Ctrl+Esc; Ctrl+Alt+0
 display=
 
 [khotkeys][Global Shortcuts]
@@ -142,7 +142,7 @@ mute=Volume Mute
 
 [ksmserver][Global Shortcuts]
 Halt Without Confirmation=
-Lock Session=Meta+L; Ctrl+Alt+L; Screensaver
+Lock Session=Ctrl+Alt+L; Meta+L; Screensaver
 Log Out=Ctrl+Alt+Del
 Log Out Without Confirmation=
 Reboot Without Confirmation=
@@ -165,7 +165,7 @@ AutotileSwapRight=Meta+Ctrl+L
 Decrease Opacity=
 Edit Tiles=Meta+T
 Expose=Ctrl+F9
-ExposeAll=Ctrl+F10; Launch (C)
+ExposeAll=Launch (C); Ctrl+F10
 ExposeClass=Ctrl+F7
 ExposeClassCurrentDesktop=
 Increase Opacity=
@@ -201,14 +201,14 @@ Switch to Desktop 16=
 Switch to Desktop 17=
 Switch to Desktop 18=
 Switch to Desktop 19=
-Switch to Desktop 2=Meta+Shift+F2; Meta+@
+Switch to Desktop 2=Meta+@; Meta+Shift+F2
 Switch to Desktop 20=
-Switch to Desktop 3=Meta+#; Meta+Shift+F3
+Switch to Desktop 3=Meta+Shift+F3; Meta+#
 Switch to Desktop 4=Meta+Shift+F4; Meta+$
 Switch to Desktop 5=Meta+%; Meta+Shift+F5
 Switch to Desktop 6=Meta+Shift+F6; Meta+^
-Switch to Desktop 7=Meta+Shift+F7; Meta+&
-Switch to Desktop 8=Meta+*; Meta+Shift+F8
+Switch to Desktop 7=Meta+&; Meta+Shift+F7
+Switch to Desktop 8=Meta+Shift+F8; Meta+*
 Switch to Desktop 9=
 Switch to Next Desktop=
 Switch to Next Screen=
@@ -315,13 +315,13 @@ Window to Screen 5=
 Window to Screen 6=
 Window to Screen 7=
 kTile=Ctrl+.
-kTile Position 1=Meta+Alt+Right
+kTile Position 1=
 kTile Position 10=
 kTile Position 11=
 kTile Position 12=
-kTile Position 2=Meta+Alt+Left
-kTile Position 3=Meta+Alt+Up
-kTile Position 4=Meta+Alt+Down
+kTile Position 2=
+kTile Position 3=
+kTile Position 4=
 kTile Position 5=
 kTile Position 6=Meta+Shift+C
 kTile Position 7=
@@ -349,7 +349,7 @@ _launch=
 
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=
-_launch=Meta+Space; Search; Alt+Space; Meta+R
+_launch=Meta+R; Alt+Space; Meta+Space; Search
 
 [org.kde.plasma.emojier.desktop][Global Shortcuts]
 _launch=
