@@ -42,16 +42,20 @@ desktopsrule=3
 wmclass=bitwarden
 wmclassmatch=1
 
-[dolphin]
-Description=dolphin
+[polkit-kde-authentication-agent]
+Description=polkit-kde-authentication-agent
+above=true
+aboverule=3
 clientmachine=localhost
-desktops=017f4836-2090-47a0-9ad7-21a537a3d562
+desktops=\\0
 desktopsrule=3
-position=1280,36
-size=640,1024
-sizerule=3
-wmclass=dolphin
-wmclassmatch=1
+position=1920,36
+size=640,684
+title=Authentication Required — PolicyKit1 KDE Agent
+titlematch=1
+types=32
+wmclass=polkit-kde-authentication-agent
+wmclassmatch=2
 
 [scrcpy]
 Description=scrcpy
@@ -64,8 +68,7 @@ wmclassmatch=1
 [xfce4-terminal]
 Description=xfce4-terminal
 clientmachine=localhost
-desktops=017f4836-2090-47a0-9ad7-21a537a3d562
-desktopsrule=3
+desktops=a9e1db14-eacb-44d6-b927-8c54ad6a62d7
 position=640,0
 positionrule=3
 size=640,1024
