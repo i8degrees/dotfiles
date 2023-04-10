@@ -1,78 +1,163 @@
 # vim: syntax=config
 #
-#     Mplayer configuration defaults
+# config:jeff
 #
+# mpv environment defaults
+#
+# References,
+#   https://github.com/pigoz/dotfiles/blob/master/mpv/config
+#   input.dist.conf
+
 [default]
-input-conf="~/.config/mpv/input.conf" # Defaults for input controls
-#include="/home/jeff/.config/mpv/kq.profile"
-#include="/home/jeff/.config/mpv/subs.profile"
-volume=25
-softvol-max=100
-#vo="vdpau"
-#vo="opengl"
-af="scaletempo" # correct pitch when speed factor is <> 1.0
-#sws=9
-osd-fractions
-osd-level=3
-#ao="null"
-#mixer="hw:1"
-#cache=102400 # Assumes a minimum bandwidth pipe of 10/100mbps ethernet
-alang="en"
-slang="en"
-#channels=2 # Stereo
+use-filedir-conf
+include=~/.config/mpv/profiles.conf
+script=~/.config/mpv/scripts/fs.lua
+script=~/.config/mpv/scripts/image.lua
+script=~/.config/mpv/scripts/mpv-cut/main.lua
+# sws-scaler="spline"
+# vf="scale"
+volume=50
+volume-max=200
 
-# set the window title using the media filename, when not set with --title.
-title=${filename}
+no-border
 
-#idx=true
+# Keep video output window above all other windows, i.e.: sticky.
+ontop="yes"
 
-# General
+# Rescan external files according to the current --sub-auto and
+# --audio-file-auto settings. This can be used to auto-load
+# external files after the file was loaded.
+# sub-auto="all"
+# audio-file-auto="all"
+
 #
-# Settings Reference: https://github.com/pigoz/dotfiles/blob/master/mpv/config
+# One of two modes: "reselect" (default) and "keep-selection"
+# rescan-external-files="reselect"
 
-# Load config file from file directory, useful for overriding ass styles for
-# entire series...
-use-filedir-conf=yes
+# Default is to loop media playback forever
+loop-file=inf
 
-# save screenshots on the desktop
-screenshot-template=/home/jeff/Pictures/mpv/screenshots/mpv-screenshots%n
-
+#
 # Subtitles
+#
 
 # Disable VSFilter compatibility
-ass-force-style=Kerning=yes
-#sub-text-font="MyriadPro-Semibold"
-sub-text-font="HelveticaNeue"
-sub-text-font-size=48
+sub-ass-force-style=Kerning=yes
+sub-font="Helvetica Neue"
+sub-font-size=24
+slang="en"
 
+#
 # OSD
+#
 
-#osc=no
+# set the window title using the media filename, when not set with --title.
+title="${filename}"
+osd-playing-msg="${media-title} @ ${=time-pos}"
+term-playing-msg="Reported Video Framerate (FPS): ${fps}"
+
+# no-osc
 #osd-font="HelveticaNeue-Light"
 osd-font="MyriadPro-Semibold"
-osd-bar-align-y=0
+#osd-align-x=center
+#osd-align-y=center
+#osd-bar-align-y=0.5
+#osd-bar-align-x=0.0
 osd-bar-h=7
 osd-border-size=1
 osd-color='#CCFFFFFF'
 osd-border-color='#99000000'
 
+osd-fractions
+osd-duration=2500
+osd-level=1
+# Add current time; visible by default
+# osd-level=2
+# Add status; visible by default
+# osd-level=3
+
+#
+# Audio
+#
+
+ao="pulse"
+#mixer="hw:1"
+audio-channels=2
+# volume=50
+# correct pitch when speed factor is <> 1.0
+af="scaletempo"
+alang="en"
+
 ########
 # Misc #
 ########
-volume-max=200
-on-top=1
-loop-file=inf
-loop-playlist=inf
 
-# https://github.com/mpv-player/mpv/blob/master/etc/example.conf
+# Try to load config file from the media file's directory path, i.e.:
+# file-based profiles
+use-filedir-conf=yes
+
+# save screenshots on the desktop
+screenshot-directory=~/Pictures/mpv/screenshots
+
+screenshot-format=png
+screenshot-jpeg-quality=85
+screenshot-png-compression=9
+# ${frame}-${hours}-${minutes}-${seconds}-${milliseconds}_${filename}.png
+screenshot-template="%wH-%wM-%wS-%wT_%F"
+# screenshot-template="s%03n-%F-%wH-%wM-%wS-%wT"
+screenshot-tag-colorspace=yes
 
 # Pretend to be a web browser. Might fix playback with some streaming sites,
 # but also will break with shoutcast streams.
 user-agent="Mozilla/5.0"
 
-#cache-default=8192 # 8MB cache for network streams only
-#cache=8192 # 8MB cache for everything (including local files)
+# NOTE(jeff): Use precise seeking, i.e.: per frame whenever possible; the
+# default seek behavior relies on key frames.
+hr-seek="yes"
 
-# Enable hardware decoding if available. Often, this requires using an certain
-# video output, otherwise no hardware decoding will be used.
-hwdec=auto
+#
+# Video
+#
+
+# Slow but accurate
+# framedrop="no"
+
+# Default video aspect ratio is to try to use the header data in the media
+# container
+video-aspect=-1
+
+vo="gpu"
+hwdec="auto"
+# IMPORTANT(jeff): Requires tapping i8degrees/Formulae/mpv formula built
+# with `--enable-vda`. Remove or comment out if this is not the case, as
+# `opengl` video output is incompatible with this option!
+#hwdec="vdpau"
+#hwdec="auto"
+
+# Enable hardware decoding if available. Often, this requires using an
+# certain video output, otherwise no hardware decoding will be used.
+# vo=opengl
+# Automatically select and load the appropriate ICC profile for RGB
+# calibration
+# vo=opengl-hq:scale=lanczos
+
+# Last used
+# vo=opengl-hq:icc-profile-auto:icc-contrast=1000
+
+# vo=opengl-hq:icc-profile-auto:icc-contrast=1000:scale=lanczos
+# vo=opengl-hq:icc-profile-auto:icc-contrast=0:scale=ewa_lanczos
+# vo=opengl-hq:icc-profile-auto:icc-contrast=0:scale=ewa_lanczossharp
+# vo=opengl-hq:icc-profile-auto:icc-contrast=0:scale=mitchell
+
+# VSYNC
+# video-sync=display-resample
+
+#
+# Cache
+#
+
+[LAN]
+# cache=102400
+
+[stream]
+# cache=8192

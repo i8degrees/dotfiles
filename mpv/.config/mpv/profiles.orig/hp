@@ -1,0 +1,11 @@
+# hp:jeff
+#
+# Headphones audio via built-in Realtek chipset on scorpio
+
+[hp]
+profile-desc="Headphones"
+volume=50
+# volume-max=100
+# audio-device="coreaudio/com_CMI8738AudioEngine:0"
+audio-device="coreaudio/AppleHDAEngineOutput:1B,2,1,2:0"
+# audio-device="coreaudio/SoundflowerEngine:0"
