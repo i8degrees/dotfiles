@@ -22,10 +22,13 @@ My personal customization files and scripts for my environments. Friendly toward
 - [GNU Stow](https://www.gnu.org/software/stow/) must be installed beforehand. The software is a simple (one file) Perl script without external dependencies. It can also be found in the [CPAN modules repository](https://metacpan.org/dist/Stow/view/bin/stow). ```shell cpan install Stow``` and append `$HOME/perl5/bin` to your system `PATH`.
 
 ```shell
-git clone https://github.com/i8degrees/dotfiles.git $HOME/dotfiles.git
+# --recursive takes care of git submodules
+git clone --recursive https://github.com/i8degrees/dotfiles.git $HOME/dotfiles.git
 cd $HOME/dotfiles || exit 255
+#git submodule init
+#git submodule update --init --recursive
 cpan stow
-stow stow # Important that you do this before any other package! See below.
+stow stow
 ```
 
 **IMPORTANT:** The very first package you should stow is the `stow` package, as it contains my `stowrc` options file. This configuration
