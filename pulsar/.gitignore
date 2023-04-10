@@ -1,6 +1,7 @@
 # Atom sync
 /.pulsar/.apm/
 !/.pulsar/.apm/.apmrc
+/.pulsar/.pulsar-socket-secret*
 /.pulsar/blob-store/
 /.pulsar/compile-cache/
 /.pulsar/packages/
