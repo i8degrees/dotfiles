@@ -33,3 +33,10 @@ stow stow
 
 **IMPORTANT:** The very first package you should stow is the `stow` package, as it contains my `stowrc` options file. This configuration
 has ignore filters in place that are important. Without these ignored files in play, you may find metadata files that are intended only be read in-place end up in directories where they should not be.
+
+```shell
+# Manual git submodule initialization
+git submodule init
+git submodule update --init --recursive
+```
+
