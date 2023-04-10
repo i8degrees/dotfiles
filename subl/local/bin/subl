@@ -1,0 +1,28 @@
+#!/bin/bash
+#
+# subl:jeff
+#
+# Find And execute the best Visual text editor I am to likely have running
+# at the moment (depending on the operating system and all!)
+#
+# TODO(jeff): Add branching based on existing EDITOR, VISUAL environments that
+# we can glean
+NOM_DEBUG=0
+
+if [[ -n "$NOM_DEBUG" && $NOM_DEBUG -gt 0 ]]; then
+  echo "$0: $@"
+fi
+
+# STUB(jeff): Need to flesh this implementation out. Surely, the branch code
+# as-is does not even work!
+if [[ -x "$(command -v flatpak)" && $(flatpak info com.sublimetext.three) = 0 ]]; then
+  flatpak run --branch=stable --arch=x86_64 --command=subl --file-forwarding com.sublimetext.three @@ "$@" @@
+elif [[ -x "$(command -v pulsar)" ]]; then
+  pulsar "$@"
+elif [[ -x "$(command -v atom)" ]]; then
+  atom "$@"
+elif [[ -x "$(command -v vim)" ]]; then
+  vim "$@"
+fi
+
+exit $?
