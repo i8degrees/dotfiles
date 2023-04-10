@@ -4,6 +4,7 @@
 /.pulsar/blob-store/
 /.pulsar/compile-cache/
 /.pulsar/packages/
+!/.pulsar/packages/README.md
 /.pulsar/recovery/
 /.pulsar/storage/
 /.pulsar/.node-gyp/
