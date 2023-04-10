@@ -3,7 +3,7 @@
     "core": {
       "projectHome": "C:\\Users\i8deg\Projects"
 		  "save-session": {
-			  "dataSaveFolder": "C:\\Users\\i8deg\\.atom\\packages\\save-session\\projects"
+			  "dataSaveFolder": "C:\\Users\\i8deg\\.pulsar\\packages\\save-session\\projects"
 		  }
     }
   },
@@ -49,7 +49,7 @@
 			"breakOnSingleNewline": true
 		},
 		"save-session": {
-			"dataSaveFolder": "~/.atom/packages/save-session/projects"
+			"dataSaveFolder": "~/.pulsar/packages/save-session/projects"
 		},
 		"sync-settings": {
 			"autoCheckForUpdatedBackup": "backup",

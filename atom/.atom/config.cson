@@ -44,7 +44,7 @@
     projectHome: " ~/Projects"
     showPath: true
   "save-session":
-    dataSaveFolder: "~/.atom/packages/save-session/projects"
+    dataSaveFolder: "~/.pulsar/packages/save-session/projects"
   "sync-settings":
     autoCheckForUpdatedBackup: "backup"
     gistId: "b741c86a039f977d48542fb32ed401eb"
