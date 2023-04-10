@@ -27,7 +27,7 @@ git clone --recursive https://github.com/i8degrees/dotfiles.git $HOME/dotfiles.g
 cd $HOME/dotfiles || exit 255
 #git submodule init
 #git submodule update --init --recursive
-cpan stow
+cpan Stow # Stow here, NOT stow
 stow stow
 ```
 
