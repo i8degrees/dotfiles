@@ -2,3 +2,7 @@
 	path = mpv/.config/mpv/scripts/mpv-cut
 	url = https://github.com/familyfriendlymikey/mpv-cut
 	branch = main
+[submodule "tpm"]
+	path = tmux/.tmux/plugins/tpm
+	url = https://github.com/tmux-plugins/tpm.git
+	branch = master

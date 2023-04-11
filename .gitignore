@@ -7,8 +7,6 @@ mpd/mpdscribble.conf
 *.bck
 tmp
 
-tmux/.tmux/
-tmux/.tmux/plugins
 vim/bundle
 
 # Dolphin file manager
