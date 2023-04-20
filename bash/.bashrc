@@ -135,8 +135,7 @@ fi
 #eval "$(resize)"
 
 #export USECOLOR=true
-#export TERM=xterm-256color
-TERM="screen-256color-italic"; export TERM
+TERM="tmux-256color"; export TERM
 TMPDIR="/tmp"; export TMPDIR
 BLOCKSIZE=K; export BLOCKSIZE
 INPUTRC="$HOME/.inputrc"; export INPUTRC
@@ -217,5 +216,8 @@ if [ -x "$HOME/.bash_aliases" ]; then
   . $HOME/.bash_aliases
 fi
 
-### Added by the Heroku Toolbelt
-export PATH="/usr/local/heroku/bin:$PATH"
+# PATH="/home/jeff/perl5/bin${PATH:+:${PATH}}"; export PATH;
+# PERL5LIB="/home/jeff/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+# PERL_LOCAL_LIB_ROOT="/home/jeff/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+# PERL_MB_OPT="--install_base \"/home/jeff/perl5\""; export PERL_MB_OPT;
+# PERL_MM_OPT="INSTALL_BASE=/home/jeff/perl5"; export PERL_MM_OPT;
