@@ -1,0 +1,7 @@
+# kdeplasma/.gitignore:jeff
+#
+#
+
+# KDE Plasma configuration that is unique to every computer
+.config/plasmashellrc
+
