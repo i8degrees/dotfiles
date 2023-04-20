@@ -1,0 +1,6 @@
+.vim/.netrwhist
+
+.vim/autoload/*
+.vim/backup/*
+.vim/bundle/*
+.vim/tmp/*
