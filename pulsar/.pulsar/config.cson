@@ -61,3 +61,6 @@
   editor:
     softWrapAtPreferredLineLength: true
     softWrapHangingIndent: 2
+".source.tmux":
+  editor:
+    preferredLineLength: 78
