@@ -1,0 +1,10 @@
+# aria2
+
+## usage
+
+My configuration file for `aria2c` enables daemon mode. For use with the Google Chrome extension [Aria2 Explorer](https://www.aria2e.ga/).
+
+## TODO
+
+- [ ] Write systemd *user* script for forking this daemon at system startup!
+
