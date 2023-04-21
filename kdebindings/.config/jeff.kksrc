@@ -7,7 +7,7 @@ Switch to Next Keyboard Layout=
 [StandardShortcuts]
 AboutApp=
 AboutKDE=
-Activate Next Tab=Ctrl+]; Ctrl+PgDown
+Activate Next Tab=Ctrl+PgDown; Ctrl+]
 Activate Previous Tab=Ctrl+[; Ctrl+PgUp
 ActualSize=Ctrl+0
 AddBookmark=Ctrl+B
@@ -16,7 +16,7 @@ BackwardWord=Ctrl+Left
 Begin=Ctrl+Home
 BeginningOfLine=Home
 Clear=
-Close=Ctrl+W; Meta+W
+Close=Meta+W; Ctrl+W
 ConfigureNotifications=
 ConfigureToolbars=
 Copy=Ctrl+C; Ctrl+Ins
@@ -38,14 +38,14 @@ FindPrev=Shift+F3
 FitToHeight=
 FitToPage=
 FitToWidth=
-Forward=Alt+Right; Forward
+Forward=Forward; Alt+Right
 ForwardWord=Ctrl+Right
-FullScreen=Ctrl+Shift+F
+FullScreen=Meta+Ctrl+Shift+F; Ctrl+Shift+F
 Goto=
 GotoLine=Ctrl+G
 GotoPage=
 Help=
-Home=Home Page; Alt+Home
+Home=Alt+Home; Home Page
 KeyBindings=Ctrl+<
 Mail=
 MoveToTrash=Del
@@ -63,7 +63,7 @@ PrintPreview=
 Prior=PgUp
 Quit=Ctrl+Q
 Redo=Ctrl+Shift+Z
-Reload=Refresh; F5
+Reload=F5; Refresh
 RenameFile=F2
 Replace=Ctrl+R
 ReportBug=
@@ -74,7 +74,7 @@ Save=Ctrl+S
 SaveAs=Ctrl+Shift+S
 SaveOptions=
 SelectAll=Ctrl+A
-ShowHideHiddenFiles=Ctrl+>; Alt+.; Ctrl+H
+ShowHideHiddenFiles=Ctrl+H; Ctrl+>; Alt+.
 ShowMenubar=Ctrl+M
 ShowStatusbar=
 ShowToolbar=
@@ -87,7 +87,7 @@ Undo=Ctrl+Z
 Up=Alt+Up
 WhatsThis=
 Zoom=
-ZoomIn=Ctrl++; Ctrl+=
+ZoomIn=Ctrl+=; Ctrl++
 ZoomOut=Ctrl+-
 
 [chrome-dobijdaempibgjjmnmngobhnegdlhbil-Default.desktop][Global Shortcuts]
@@ -123,10 +123,10 @@ stopAudio=
 [kcm_touchpad][Global Shortcuts]
 Disable Touchpad=Touchpad Off
 Enable Touchpad=Touchpad On
-Toggle Touchpad=Meta+P; Touchpad Toggle
+Toggle Touchpad=Touchpad Toggle; Meta+P
 
 [kded5][Global Shortcuts]
-Show System Activity=Ctrl+Alt+0; Ctrl+Esc
+Show System Activity=Ctrl+Esc; Ctrl+Alt+0
 display=
 
 [khotkeys][Global Shortcuts]
@@ -142,7 +142,7 @@ mute=Volume Mute
 
 [ksmserver][Global Shortcuts]
 Halt Without Confirmation=
-Lock Session=Screensaver; Ctrl+Alt+L; Meta+L
+Lock Session=Meta+L; Screensaver; Ctrl+Alt+L
 Log Out=Ctrl+Alt+Del
 Log Out Without Confirmation=
 Reboot Without Confirmation=
@@ -165,7 +165,7 @@ AutotileSwapRight=
 Decrease Opacity=
 Edit Tiles=Meta+T
 Expose=Ctrl+F9
-ExposeAll=Launch (C); Ctrl+F10
+ExposeAll=Ctrl+F10; Launch (C)
 ExposeClass=Ctrl+F7
 ExposeClassCurrentDesktop=
 Increase Opacity=
@@ -190,7 +190,7 @@ Switch Window Down=
 Switch Window Left=
 Switch Window Right=
 Switch Window Up=
-Switch to Desktop 1=Meta+!; Meta+Shift+F1
+Switch to Desktop 1=Meta+Shift+F1; Meta+!
 Switch to Desktop 10=
 Switch to Desktop 11=
 Switch to Desktop 12=
@@ -201,11 +201,11 @@ Switch to Desktop 16=
 Switch to Desktop 17=
 Switch to Desktop 18=
 Switch to Desktop 19=
-Switch to Desktop 2=Meta+@; Meta+Shift+F2
+Switch to Desktop 2=Meta+Shift+F2; Meta+@
 Switch to Desktop 20=
-Switch to Desktop 3=Meta+Shift+F3; Meta+#
+Switch to Desktop 3=Meta+#; Meta+Shift+F3
 Switch to Desktop 4=Meta+Shift+F4; Meta+$
-Switch to Desktop 5=Meta+Shift+F5; Meta+%
+Switch to Desktop 5=Meta+%; Meta+Shift+F5
 Switch to Desktop 6=Meta+Shift+F6; Meta+^
 Switch to Desktop 7=Meta+&; Meta+Shift+F7
 Switch to Desktop 8=Meta+*; Meta+Shift+F8
@@ -243,7 +243,7 @@ Walk Through Windows of Current Application Alternative=
 Walk Through Windows of Current Application Alternative (Reverse)=
 Window Above Other Windows=
 Window Below Other Windows=
-Window Close=Meta+Q; Alt+F4
+Window Close=Alt+F4; Meta+Q
 Window Fullscreen=
 Window Grow Horizontal=
 Window Grow Vertical=
@@ -349,13 +349,13 @@ _launch=
 
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=
-_launch=Meta+Space; Search; Alt+Space; Meta+R
+_launch=Alt+Space; Search; Meta+R; Meta+Space
 
 [org.kde.plasma.emojier.desktop][Global Shortcuts]
 _launch=
 
 [org.kde.spectacle.desktop][Global Shortcuts]
-ActiveWindowScreenShot=Print; Meta+Print
+ActiveWindowScreenShot=Meta+Print; Print
 CurrentMonitorScreenShot=Ctrl+Print
 FullScreenScreenShot=
 OpenWithoutScreenshot=
@@ -388,7 +388,7 @@ activate task manager entry 8=
 activate task manager entry 9=
 activate widget 111=
 activate widget 29=
-activate widget 3=
+activate widget 3=Alt+F1
 activate widget 31=
 activate widget 40=
 activate widget 42=
