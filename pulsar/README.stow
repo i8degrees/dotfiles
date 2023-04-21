@@ -105,9 +105,8 @@ based on `npm`.
 - Linux
   * Manjaro
     * `pulsar-bin` package
-      * `ppm` is bundled at `/opt/Pulsar/resources/app/ppm`
-      - install ppm package as a global package
-        * `cd "/opt/Pulsar/resources/app/ppm"; npm install -g`
+      - add ppm bin path to environment PATH
+        * `PATH="/opt/Pulsar/resources/app/ppm/bin:$PATH"`
 
 ## see also
 
