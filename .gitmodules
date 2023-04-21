@@ -12,3 +12,7 @@
 [submodule "tmux-continuum"]
 	path = tmux/.tmux/plugins/tmux-continuum
 	url = https://git::@github.com/tmux-plugins/tmux-continuum
+[submodule "tmux/.tmux/plugins/tmuxinator"]
+	path = tmux/.tmux/plugins/tmuxinator
+	url = https://git::@github.com/tmuxinator/tmuxinator
+	branch = master
