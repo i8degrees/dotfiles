@@ -1,0 +1,114 @@
+# Pulsar
+
+A visual text editor that derives from Atom.
+
+## usage
+
+**STUB**: Flesh out documentation regarding post-setup of this text editor for my environments.
+
+```shell
+Pulsar Editor v1.104.0
+
+Usage:
+pulsar
+pulsar [options] [path ...]
+pulsar file[:line[:column]]
+
+One or more paths to files or folders may be specified. If
+there is an
+existing Pulsar window that contains all of the given
+folders, the paths
+will be opened in that window. Otherwise, they will be
+opened in a new
+window.
+
+A file may be opened at the desired line (and optionally
+column) by
+appending the numbers right after the file name, e.g.
+`pulsar file:5:8`.
+
+Paths that start with `atom://` will be interpreted as URLs.
+
+Environment Variables:
+
+ATOM_DEV_RESOURCE_PATH  The path from which Pulsar loads
+source code in dev mode.
+Defaults to `~/github/atom`.
+
+ATOM_HOME               The root path for all configuration
+files and folders.
+Defaults to `~/.pulsar`.
+
+Options:
+  -d, --dev                      Run in development mode.
+                                                   [boolean]
+  -f, --foreground               Keep the main process in
+                                 the foreground.   [boolean]
+  -h, --help                     Print this usage message.
+                                                   [boolean]
+  -l, --log-file                 Log all output to file when
+                                 running tests.     [string]
+  -n, --new-window               Open a new window.[boolean]
+      --profile-startup          Create a profile of the
+                                 startup execution time.
+                                                   [boolean]
+  -r, --resource-path            Set the path to the Pulsar
+                                 source directory and enable
+                                 dev-mode.          [string]
+      --safe                     Do not load packages from
+                                 ~/.pulsar/packages or
+                                 ~/.pulsar/dev/packages.
+                                                   [boolean]
+      --benchmark                This option is no longer
+                                 supported.        [boolean]
+      --benchmark-test           This option is no longer
+                                 supported.        [boolean]
+  -t, --test                     Run the specified specs and
+                                 exit with error code on
+                                 failures.         [boolean]
+  -m, --main-process             Run the specified specs in
+                                 the main process. [boolean]
+      --timeout                  When in test mode, waits
+                                 until the specified time
+                                 (in minutes) and kills the
+                                 process (exit code: 130).
+                                                    [string]
+  -w, --wait                     Wait for window to be
+                                 closed before returning.
+                                                   [boolean]
+      --clear-window-state       Delete all Pulsar
+                                 environment state.[boolean]
+      --enable-electron-logging  Enable low-level logging
+                                 messages from Electron.
+                                                   [boolean]
+  -a, --add                      Open path as a new project
+                                 in last used window.
+                                                   [boolean]
+  -p, --package                  Delegate all commands to
+                                 Pulsar's package
+                                 management. Run with
+                                 --package for more details
+                                                   [boolean]
+  -v, --version                  Show version number
+                                                   [boolean]
+```
+
+### ppm
+
+**ppm** is the command-line equivalent to `apm` and is a package manager
+based on `npm`.
+
+- macOS
+  - `ppm` is bundled and installed automatically with Pulsar. You can run
+  the **Pulsar > Install Shell Commands** menu option to install it again if
+  you aren't able to run it from a terminal.
+- Linux
+  * Manjaro
+    * `pulsar-bin` package
+      * `ppm` is bundled at `/opt/Pulsar/resources/app/ppm`
+      - install ppm package as a global package
+        * `cd "/opt/Pulsar/resources/app/ppm"; npm install -g`
+
+## see also
+
+1. <https://pulsar-edit.dev/>
