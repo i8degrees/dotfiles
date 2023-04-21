@@ -2,6 +2,8 @@
 #
 #
 
-# KDE Plasma configuration that is unique to every computer
+# KDE Plasma configuration that should be kept unique 
+# to every computer account
 .config/plasmashellrc
+.config/plasma-org.kde.plasma.desktop-appletsrc
 
