@@ -23,10 +23,8 @@ My personal customization files and scripts for my environments. Friendly toward
 
 ```shell
 # --recursive takes care of git submodules
-git clone --recursive https://github.com/i8degrees/dotfiles.git $HOME/dotfiles.git
+git clone --recurse-submodules https://github.com/i8degrees/dotfiles.git $HOME/dotfiles.git
 cd $HOME/dotfiles || exit 255
-#git submodule init
-#git submodule update --init --recursive
 cpan Stow # Stow here, NOT stow
 stow stow
 ```
