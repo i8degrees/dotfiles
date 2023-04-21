@@ -40,3 +40,7 @@ git submodule init
 git submodule update --init --recursive
 ```
 
+## See also
+
+1. [Konsave -- Save Linux Customization](https://github.com/Prayag2/konsave)
+1. [mention of kwriteconfig5](https://github.com/nix-community/home-manager/issues/607)
