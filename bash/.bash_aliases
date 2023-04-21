@@ -7,7 +7,7 @@
 # Local bash (1) aliases executed for interactive shells.
 #
 
-alias rebash='source ~/.bashrc'
+alias rebash='source ~/.bash_profile'
 
 # Clear BASH history; zero out, flush immediately && reload shell
 alias chistory='cat /dev/null > ~/.bash_history && history -cw && rebash'
