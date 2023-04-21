@@ -32,8 +32,8 @@ fi
 
 umask 022
 
-# rbenv path related variables
-if [[ -x $(which rbenv) ]]; then
+# rbenv env
+if [[ -x "$(command -v rbenv)" ]]; then
   eval "$(rbenv init -)"
 fi
 
@@ -67,3 +67,8 @@ PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
 
 # node env
 eval "$(nodenv init -)"
+
+# pulsar apm env
+if [[ -d "/opt/Pulsar/resources/app/ppm/bin" ]]; then
+  PATH="/opt/Pulsar/resources/app/ppm/bin:$PATH"
+fi
