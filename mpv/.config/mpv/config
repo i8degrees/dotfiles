@@ -127,7 +127,7 @@ hr-seek="yes"
 video-aspect=-1
 
 vo="gpu"
-hwdec="auto"
+hwdec="vdpau"
 # IMPORTANT(jeff): Requires tapping i8degrees/Formulae/mpv formula built
 # with `--enable-vda`. Remove or comment out if this is not the case, as
 # `opengl` video output is incompatible with this option!
@@ -157,7 +157,10 @@ hwdec="auto"
 #
 
 [LAN]
-# cache=102400
+cache=yes
+#cache=102400
 
 [stream]
-# cache=8192
+cache=yes
+#cache=8192
+
