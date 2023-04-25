@@ -1,0 +1,25 @@
+#!/bin/bash
+
+#NOM_DEBUG=1
+INSTALL_URL="https://tpo.pe/pathogen.vim"
+DEST_PATH="$HOME/.vim/autoload/pathogen.vim"
+curl="$(command -v curl)"
+
+if [[ ! (-d $(dirname "$DEST_PATH")) ]]; then
+  echo "CRITICAL: The destination path at $DEST_PATH does not exist."
+  echo
+  echo "Please stow the vim package before running this script!"
+  echo
+  exit 255
+fi
+
+if [[ ! (-x "$curl") ]]; then
+  echo "CRITICAL: The curl binary is missing. This is required for"
+  echo "the vim package installation script."
+  echo
+  exit 255
+fi
+
+# https://github.com/tpope/vim-pathogen
+$curl -LSso "$DEST_PATH" "$INSTALL_URL"
+
