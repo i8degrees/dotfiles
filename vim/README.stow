@@ -1,17 +1,32 @@
 # vim
 
+My beloved `vim` -- I do not leave home without it! This is my second-in-line 
+favorite text editor. 
+
+My configuration for this package is based off my 
+friend's [implementation][1].
+
 ## usage
 
+Two simple steps are involved in setting up.
+
+1. First, stow the `vim` package, as per usual.
+
 ```shell
-apt-get install stow
-git clone https://github.com/i8degrees/dotfiles.git $HOME/dotfiles
-cd dotfiles
-# NOTE(jeff): An alternative to using stow is to symlink $HOME/dotfiles/vim to $HOME/.vim
-# with the standard `ln` utility from `coreutils`.
 stow vim
-# ln $HOME/dotfiles/vim $HOME/.vim
+# ln $HOME/dotfiles.git/vim $HOME/.vim
 ```
 
-### installation
+2. Lastly, I have several third-party plugins that I depend on for daily
+use, and thus we must install these post-haste.
 
-[vim plugins](https://github.com/VundleVim/Vundle.vim) can be setup by ...
+```shell
+~/dotfiles.git/vim/INSTALL.stow
+```
+
+## See also
+
+[1]: https://github.com/fielding/dotfiles
+
+<https://github.com/VundleVim/Vundle.vim>
+
