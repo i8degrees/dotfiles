@@ -4,3 +4,11 @@
 .vim/backup/*
 .vim/bundle/*
 .vim/tmp/*
+
+# IMPORTANT(jeff): VIM complains about being unable to create
+# swap files anytime we open a file for editing whenever its
+# folders specified below are missing. 
+!.vim/autoload/.placeholder
+!.vim/backup/.placeholder
+!.vim/bundle/.placeholder
+!.vim/tmp/.placeholder
