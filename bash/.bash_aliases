@@ -90,7 +90,7 @@ case "$(uname -s)" in
       alias ls="gls --dereference-command-line --human-readable --size -l --color=auto"
       alias df="gdf -Th"
       alias rm="grm -iv"
-      alias cp="gcp -iav"
+      alias cp="gcp -iav --reflink=auto"
       alias mv="gmv -iv"
       alias mkdir="gmkdir -pv"
       alias rmdir='grmdir -v'
@@ -181,7 +181,7 @@ case "$(uname -s)" in
     alias lsr="ls -lRa --color=auto"
     alias df="df -Th"
     alias rm="rm -iv"
-    alias cp="cp -iav"
+    alias cp="cp -iav --reflink=auto"
     alias mv="mv -iv"
     alias mkdir="mkdir -pv"
     alias chmod='chmod -v'
