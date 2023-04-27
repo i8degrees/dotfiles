@@ -70,7 +70,7 @@ eval "$(nodenv init -)"
 
 # pulsar apm env
 if [[ -d "/opt/Pulsar/resources/app/ppm/bin" ]]; then
-  PATH="/opt/Pulsar/resources/app/ppm/bin:$PATH"
+  PATH="$PATH:/opt/Pulsar/resources/app/ppm/bin"
 fi
 
 [[ -d "/opt/android-sdk/platform-tools" ]] && PATH=/opt/android-sdk/platform-tools:$PATH
