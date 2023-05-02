@@ -1,0 +1,43 @@
+#!/bin/sh
+#
+# 2011-08-24: jeffrey.carp@gmail.com
+#
+#		~/.bash_profile
+#
+# Local bash (1) profile executed for login shells.
+#
+
+#if [[ -z $DISPLAY && $(tty) = /dev/tty1 ]]; then
+
+#if [[ -n $(tty) ]]; then
+#	command tmux
+#fi
+
+PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+
+case "$(uname -s)" in
+	Darwin)
+		PATH="$PATH:$HOME/Applications:/usr/X11/bin"
+	;;
+	Linux)
+		PATH="$PATH:$HOME/.config/feh/themes"
+	;;
+	*)
+	;;
+esac
+
+if [ -f "$HOME/.bashrc" ]; then
+	. "$HOME/.bashrc"
+fi
+
+umask 022
+
+# rbenv path related variables
+if [[ -x $(which rbenv) ]]; then
+  eval "$(rbenv init -)"
+fi
+
+export XDG_DATA_HOME=${HOME}/.local/share
+export XDG_CONFIG_HOME=${HOME}/.config
+
+source /Users/jeff/.iterm2_shell_integration.bash
