@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # dotfiles
 
 My personal customization files and scripts for my environments. Friendly towards both servers and desktops. Naturally, I prefer command-line whenever possible ;-)
@@ -42,3 +43,12 @@ git submodule update --init --recursive
 
 1. [Konsave -- Save Linux Customization](https://github.com/Prayag2/konsave)
 1. [mention of kwriteconfig5](https://github.com/nix-community/home-manager/issues/607)
+=======
+# my dotfiles repo
+
+My UNIX setup files -- Linux & Mac OS X
+
+# Related projects
+
+https://github.com/jh3y/kody
+>>>>>>> 077b120 (README: Add related projects section)
