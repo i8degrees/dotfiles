@@ -174,3 +174,6 @@ tmp/*
 *.log
 error_log
 access_log
+
+CACHEDIR.TAG
+
