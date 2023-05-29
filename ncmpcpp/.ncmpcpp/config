@@ -26,15 +26,15 @@
 #
 ## set it in order to make tag editor and renaming files work properly
 #
-mpd_host = "localhost"
+mpd_host = "fs1.lan"
 #
 mpd_port = "6600"
 #
-mpd_music_dir = "/Volumes/Music"
+mpd_music_dir = "/mnt/fs1/Music"
 #
 mpd_connection_timeout = "5"
 #
-mpd_crossfade_time = "4"
+mpd_crossfade_time = "2"
 #
 #mpd_communication_mode = "notifications" (polling/notifications)
 #
@@ -60,7 +60,7 @@ mpd_crossfade_time = "4"
 #
 visualizer_in_stereo = "yes"
 #
-visualizer_fifo_path = "/Users/jeff/.config/mpd/tmp/mpd.fifo"
+#visualizer_fifo_path = "/Users/jeff/.config/mpd/tmp/mpd.fifo"
 #
 ##
 ## Note: Below parameter is needed for ncmpcpp
@@ -70,7 +70,7 @@ visualizer_fifo_path = "/Users/jeff/.config/mpd/tmp/mpd.fifo"
 ## are some problems with it.
 ##
 #
-visualizer_output_name = "FIFO Output"
+#visualizer_output_name = "FIFO Output"
 #
 ##
 ## Note: Below parameter defines how often ncmpcpp
