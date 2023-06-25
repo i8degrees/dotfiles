@@ -1,0 +1,24 @@
+#!/bin/sh
+# Sourced from Gregor at https://superuser.com/a/1761740
+#
+
+# By defaulting to this alternative, we could place this script
+# at /usr/bin/pinentry to avoid extra configuration elsewhere,
+# however, it might be overwritten by upgrades.
+pe=/etc/alternatives/pinentry
+bin=/usr/bin
+case "$PINENTRY_USER_DATA" in
+*USE_TTY*)  pe=$bin/pinentry-tty  ;;
+*USE_CURSES*)   pe=$bin/pinentry-curses ;;
+*USE_GTK2*) pe=$bin/pinentry-gtk-2 ;;
+*USE_GNOME3*)   pe=$bin/pinentry-gnome3 ;;
+*USE_X11*)  pe=$bin/pinentry-x11 ;;
+*USE_QT*)   pe=$bin/pinentry-qt ;;
+esac
+exec $pe "$@"
+
+# Then, in your ~/.bash_profile
+#if [ "$SSH_CLIENT" ]; then
+   # I have logged in via SSH
+   #export PINENTRY_USER_DATA=USE_CURSES
+#fi
