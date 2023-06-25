@@ -1,0 +1,8 @@
+.gnupg/crls.d/*
+.gnupg/openpgp-revocs.d/*
+.gnupg/private-keys-v1.d/*
+.gnupg/pubring.kbx
+.gnupg/pubring.kbx~
+.gnupg/random_seed
+.gnupg/trustdb.gpg
+!.gnupg/gpg-agent.conf
