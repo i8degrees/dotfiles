@@ -6,6 +6,10 @@
     audioBeep: false
     automaticallyUpdate: false
     colorProfile: "srgb"
+    customFileTypes:
+      "text.plain": [
+        "language-ini"
+      ]
     disabledPackages: [
       "node-debug"
       "node-requirer"
@@ -27,7 +31,7 @@
   editor:
     defaultFontSize: 12
     fontFamily: "Source Code Pro"
-    fontSize: 13
+    fontSize: 17
     invisibles: {}
     lineHeight: 1.4
     preferredLineLength: 78
@@ -77,6 +81,15 @@
   editor:
     softWrapAtPreferredLineLength: true
     softWrapHangingIndent: 2
+".shell-session.text":
+  editor:
+    autoIndent: true
+    preferredLineLength: 78
+    scrollPastEnd: true
+".shell.source":
+  editor:
+    preferredLineLength: 78
+    softWrap: false
 ".source.tmux":
   editor:
     preferredLineLength: 78

@@ -93,6 +93,12 @@ Options:
                                                    [boolean]
 ```
 
+### post-installation steps for completion of personal dotfiles configuration
+
+```Shell
+npm i -g bash-language-server
+```
+
 ### ppm
 
 **ppm** is the command-line equivalent to `apm` and is a package manager
