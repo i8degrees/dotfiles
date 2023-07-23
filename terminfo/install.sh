@@ -19,8 +19,8 @@ if [ ! -d "$PREFIX" ]; then
   PREFIX="$HOME/.terminfo"
 fi
 
-sudo tic iterm.terminfo -o $PREFIX
-sudo tic screen-256color-italic.terminfo -o $PREFIX
-sudo tic tmux-256color.terminfo -o $PREFIX
-sudo tic tmux.terminfo -o $PREFIX
+tic iterm.terminfo -o $PREFIX
+tic screen-256color-italic.terminfo -o $PREFIX
+tic tmux-256color.terminfo -o $PREFIX
+tic tmux.terminfo -o $PREFIX
 
