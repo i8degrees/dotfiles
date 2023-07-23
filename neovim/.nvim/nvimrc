@@ -1,0 +1,12 @@
+set runtimepath+=/usr/share/vim/vimfiles
+
+" https://github.com/bash-lsp/bash-language-server
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'sh',
+  callback = function()
+    vim.lsp.start({
+      name = 'bash-language-server',
+      cmd = { 'bash-language-server', 'start' },
+    })
+  end,
+})
