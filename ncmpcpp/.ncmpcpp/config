@@ -60,7 +60,7 @@ mpd_crossfade_time = "2"
 #
 visualizer_in_stereo = "yes"
 #
-#visualizer_fifo_path = "/Users/jeff/.config/mpd/tmp/mpd.fifo"
+visualizer_fifo_path = "/mnt/fs1/Music/.mpd/fifo"
 #
 ##
 ## Note: Below parameter is needed for ncmpcpp
