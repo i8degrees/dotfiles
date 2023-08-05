@@ -12,6 +12,7 @@
   email = 1329364+i8degrees@users.noreply.github.com
   signingkey = F38DCE7F835748F9
 [core]
+  pager = less -r
   whitespace = tabwidth=2,nowarn
   # ...core.excludesfile ~/src/.gitignore
   # ...core.excludesfile ~/Projects/.gitignore
@@ -22,7 +23,7 @@
   autocrlf = input
   #safecrlf = true
 [init]
-  defaultBranch = dev
+  defaultBranch = master
 [advice]
   statusHints = false
   pushNonFastForward = false
@@ -42,7 +43,7 @@
 [remotes]
   default = origin
 [color]
-  ui = auto
+  ui = always
 [color "branch"]
   current = yellow reverse
   local = yellow
