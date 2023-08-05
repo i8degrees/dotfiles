@@ -12,3 +12,4 @@ vim/bundle
 # Dolphin file manager
 .directory
 
+/.project
