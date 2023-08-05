@@ -56,6 +56,7 @@
   "sync-settings-git-location": {}
   "tree-view": {}
   welcome:
+    lastViewedChangeLog: "1.107.1"
     showOnStartup: false
 ".powershell.source":
   editor:
