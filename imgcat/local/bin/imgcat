@@ -1,4 +1,9 @@
 #!/bin/sh
+#
+# TODO(jeff): Add a check and branching for iTerm -- it has its own imgcat
+# utility that can be used independently from this when inside of that terminal
+# emulator.
+#
 
 IMAGE_FILE="$1"
 ARGS="$2"
@@ -26,7 +31,10 @@ fi
 wezterm imgcat "$IMAGE_FILE" $ARGS
 
 # TODO(jeff): This requires a nightly image of Wezterm...
+# Need to research the following terminal sequence [1] from wezterm/src/main.rs [2]
+#
+# 1. "\u{1b}Ptmux;\u{1b}", "\u{1b}\\"
+# 2. https://github.com/wez/wezterm/
 #wezterm imgcat --tmux-passthru enable "$IMAGE_FILE" $ARGS
 
 exit 0
-
