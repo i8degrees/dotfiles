@@ -1,0 +1,32 @@
+#!/bin/sh
+
+IMAGE_FILE="$1"
+ARGS="$2"
+
+if [ ! -x "$(command -v wezterm)" ]; then
+  echo "CRITICAL: Missing command -- wezterm."
+  echo
+  exit 2
+fi
+
+if [ "$IMAGE_FILE" = "" ] || [ -z "$IMAGE_FILE" ]; then
+  echo "CRITICAL: Missing function argument in ${0} -- image file path."
+  exit 255
+fi
+
+if [ "$ARGS" = "" ]; then
+  ARGS="--width=64"
+fi
+
+if [ "$DEBUG" = "1" ]; then
+  echo "ARGS: $ARGS"
+fi
+
+# shellcheck disable=SC2086
+wezterm imgcat "$IMAGE_FILE" $ARGS
+
+# TODO(jeff): This requires a nightly image of Wezterm...
+#wezterm imgcat --tmux-passthru enable "$IMAGE_FILE" $ARGS
+
+exit 0
+
