@@ -14,6 +14,7 @@ config.font = wezterm.font "SourceCode Pro"
 
 config.enable_scroll_bar = false
 config.min_scroll_bar_height = '1cell'
+config.exit_behavior='Hold'
 config.colors = {
   scrollbar_thumb = 'pink'
 }
