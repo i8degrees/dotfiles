@@ -84,8 +84,10 @@
   # show files ignored by git
   ignore = ls-files -o -i --exclude-standard
   ptags = push --tags
+  whatadded = log --diff-filter=A
   # !.git/hooks/ctags
   #ctags =
+
 [lfs]
   pruneverifyremotealways = true
 [filter "lfs"]
