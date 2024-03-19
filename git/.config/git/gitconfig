@@ -19,7 +19,7 @@
   excludesfile = ~/.config/git/gitignore_global
   # ignorednore file perms (chmods)
   # Source: http://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-mode-changes-chmod
-  # filemode = false
+  filemode = true
   autocrlf = input
   #safecrlf = true
 [init]
