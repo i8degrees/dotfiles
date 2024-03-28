@@ -10,6 +10,10 @@ if wezterm.config_builder then
   config = wezterm.config_builder()
 end
 
+-- 1. https://wezfurlong.org/wezterm/config/lua/config/default_cwd.html?h=set+working+directory
+-- wezterm set-working-directory <CWD> <HOST>
+-- FIXME(jeff): Why does this not get applied for us?
+config.default_cwd = HOME.. "/Notes.git/"
 config.font = wezterm.font "SourceCode Pro"
 
 config.enable_scroll_bar = false
