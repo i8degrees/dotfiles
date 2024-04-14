@@ -54,7 +54,6 @@ slang="en"
 # set the window title using the media filename, when not set with --title.
 title="${filename}"
 osd-playing-msg="${media-title} @ ${=time-pos}"
-term-playing-msg="Reported Video Framerate (FPS): ${fps}"
 
 # no-osc
 #osd-font="HelveticaNeue-Light"
@@ -126,8 +125,12 @@ hr-seek="yes"
 # container
 video-aspect=-1
 
+# 1. https://github.com/mpv-player/mpv/wiki/Hardware-decoding-on-Linux
 vo="gpu"
 hwdec="vdpau"
+#hwdec="vaapi"
+#vo="gpu"
+#hwdec="auto"
 # IMPORTANT(jeff): Requires tapping i8degrees/Formulae/mpv formula built
 # with `--enable-vda`. Remove or comment out if this is not the case, as
 # `opengl` video output is incompatible with this option!
