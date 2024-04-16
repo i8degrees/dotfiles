@@ -14,10 +14,11 @@ include=~/.config/mpv/profiles.conf
 script=~/.config/mpv/scripts/fs.lua
 script=~/.config/mpv/scripts/image.lua
 script=~/.config/mpv/scripts/mpv-cut/main.lua
+script=~/.config/mpv/scripts/osd.lua
 # sws-scaler="spline"
 # vf="scale"
 volume=50
-volume-max=200
+volume-max=250
 
 no-border
 
