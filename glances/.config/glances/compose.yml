@@ -4,30 +4,34 @@
 ---
 version: "3"
 
+
+networks:
+  frontend:
+    driver: overlay
+    attachable: true
+    external: true
+
 services:
   monitoring:
     container_name: "glances-1"
-    image: "nicolargo/glances:alpine-3.3.0.2-full"
+    image: nicolargo/glances:alpine-3.3.0.2-full
     restart: "always"
     pid: host
     ports:
-      - "192.168.12.1:61208:61208/tcp"
+      - "61208:61208/tcp"
     volumes:
       - "/etc/localtime:/etc/localtime:ro"
       - "./mounts/docker.sock:/var/run/docker.sock:ro"
     environment:
       - "TZ=America/Chicago"
       - "GLANCES_OPT=-w"
-    #labels:
-      #- "traefik.http.routers.frontend.rule=Host(`top.fs1.home`) && (`htop.fs1.home`)"
-      #- "traefik.http.routers.frontendy.entrypoints=websecure"
-      #- "traefik.http.services.frontend.loadbalancer.server.port=61208"
-      #- "traefik.http.routers.frontend.service=frontend"
-      #- "traefik.http.routers.frontend.tls.certresolver=stepca"
+    labels:
+      - "traefik.enable=false"
+      - "traefik.http.routers.glances-1.rule=Host(`top.fs1.home`) && PathPrefix(`/`)"
+      #- "traefik.http.routers.glances-1.rule=(Host(`top.fs1.home`) && (`htop.fs1.home`)) && PathPrefix(`/`)"
+      - "traefik.http.routers.glances-1.entrypoints=websecure"
+      - "traefik.http.services.glances-1.loadbalancer.server.port=61208"
+      - "traefik.http.routers.glances-1.service=glances-1"
+      - "traefik.http.routers.glances-1.tls.certresolver=staging-acme"
     networks:
-      - proxy
-
-# docker network create proxy
-networks:
-  proxy:
-    external: true
+      - frontend
