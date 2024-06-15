@@ -11,6 +11,7 @@
 [default]
 use-filedir-conf
 include=~/.config/mpv/profiles.conf
+script=~/.config/mpv/scripts/bookmarker.git/bookmarker.lua
 script=~/.config/mpv/scripts/fs.lua
 script=~/.config/mpv/scripts/image.lua
 script=~/.config/mpv/scripts/mpv-cut/main.lua
