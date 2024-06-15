@@ -156,6 +156,9 @@ let g:netrw_liststyle=3
 " Quick access to vim's file explorer (netrw)
 " map <F5> :E
 nmap <C-f> :E<CR>
+" Initial vim key binding for a "search & replace"
+" :%s/term/replace/g
+nmap <C-s> :%s/
 
 " vim-gitgutter; default to line highlighting
 let g:gitgutter_highlight_lines=1
