@@ -2,10 +2,6 @@
 Description=Google Chrome
 desktops=97405061-3fe5-4585-91c1-518d267032c1
 desktopsrule=3
-maximizehoriz=true
-maximizehorizrule=3
-maximizevert=true
-maximizevertrule=3
 position=1280,36
 positionrule=3
 size=1920,1044
@@ -136,10 +132,6 @@ Description=pulsar
 clientmachine=localhost
 desktops=b2787aec-6b17-4dc6-a365-c439e4fa3467
 desktopsrule=3
-maximizehoriz=true
-maximizehorizrule=3
-maximizevert=true
-maximizevertrule=3
 position=1280,36
 positionrule=3
 screen=1
@@ -181,7 +173,8 @@ screen=2
 screenrule=3
 size=640,988
 sizerule=3
-wmclass=org.wezfurlong.wezterm
+wmclass=org.wezfurlong.wezterm org.wezfurlong.wezterm
+wmclasscomplete=true
 wmclassmatch=1
 
 [xfce4-terminal]
