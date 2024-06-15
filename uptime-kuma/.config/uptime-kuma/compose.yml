@@ -39,7 +39,7 @@ services:
       - "NODE_EXTRA_CA_CERTS=/etc/ssl/private"
     labels:
       - "traefik.enable=false"
-      - "traefik.http.routers.uptime.rule=((Host(`uptime.scorpio.home`)) && PathPrefix(`/`))"
+      - "traefik.http.routers.uptime.rule=((Host(`uptime.fs1.home`)) && PathPrefix(`/`))"
       - "traefik.http.routers.uptime.entrypoints=websecure"
       - "traefik.http.routers.uptime.tls=true"
       - "traefik.http.services.uptime.loadbalancer.server.port=3001"
@@ -47,6 +47,6 @@ services:
       - "traefik.http.routers.uptime.tls.certresolver=staging-acme"
       - "homepage.group=syn"
       - "homepage.name=uptime-kuma"
-      - "homepage.container=uptime-kuma-3"
-      - "homepage.href=https://uptime.virgo.home"
+      - "homepage.container=uptime-kuma-2"
+      - "homepage.href=https://uptime.scorpio.home"
 
