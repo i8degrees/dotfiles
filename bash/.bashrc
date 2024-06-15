@@ -7,6 +7,9 @@
 # Local interactive bash (1) shell config.
 #
 
+# IMPORTANT(jeff): Do not close the terminal with the CTRL+D key stroke!
+#IGNOREEOF=4 # set -o ignoreeof
+
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -56,23 +59,19 @@ export HISTCONTROL=ignoredups
 # rbash alias.
 unalias -a # Remove all alias definitions
 
-if [ -x "$HOME/.bash_cflags" ]; then
-  . "$HOME/.bash_cflags"
-fi
-
-if [ -x "$HOME/.bashlib" ]; then
-  . "$HOME/.bashlib"
-fi
-
-if [ -x "$HOME/.bash_prompt" ]; then
-  . "$HOME/.bash_prompt"
-fi
-
 if [ -x "$(which locale)" ]; then
   eval "$(locale)"
 fi
 
 # NOTE: Initial PATH environment is set in ~/.bash_profile.
+
+# NOTE(jeff): This is recommended as per the EXAMPLE of Section 1 of the
+# manual page for which; man 1 which
+which() {
+  (alias; declare -f) | /usr/bin/which --tty-only --read-alias \
+    --read-functions --show-tilde --show-dot $@
+  }
+export -f which
 
 case "$(uname -s)" in
   Darwin)
@@ -105,7 +104,7 @@ case "$(uname -s)" in
     MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
   ;;
   Linux)
-    PATH="$HOME/.nodenv/shims:/home/linuxbrew/.linuxbrew/bin:$HOME/local/bin:$PATH"
+    PATH="$HOME/.nodenv/shims:$HOME/local/bin:$PATH"
     TMPDIR="/tmp"; export TMPDIR
   ;;
   *)
@@ -120,27 +119,49 @@ ATOM_BIN="$(command -v atom)"
 
 if [[ -x "$VIMTINY_BIN" ]]; then
   EDITOR=$VIMTINY_BIN; export EDITOR
-elif [[ -x "$NEOVIM_BIN" ]]; then
-  EDITOR=$NEOVIM_BIN; export EDITOR
 elif [[ -x "$VIM_BIN" ]]; then
   EDITOR=$VIM_BIN; export EDITOR
+elif [[ -x "$NEOVIM_BIN" ]]; then
+  EDITOR=$NEOVIM_BIN; export EDITOR
 fi
 
-if [[ -x "$ATOM_BIN" ]]; then
-  VISUAL=$ATOM_BIN; export VISUAL
-elif [[ -x "$SUBL_BIN" ]]; then
-  # VISUAL="subl -w" # Do not exit editor until file is closed
-  VISUAL=$SUBL_BIN; export VISUAL
+if [ -n "$EDITOR" ]; then
+  VISUAL="$EDITOR"; export VISUAL
 fi
+
+#if [[ -x "$ATOM_BIN" ]]; then
+  #VISUAL=$ATOM_BIN; export VISUAL
+#elif [[ -x "$SUBL_BIN" ]]; then
+  # VISUAL="subl -w" # Do not exit editor until file is closed
+  #VISUAL=$SUBL_BIN; export VISUAL
+#fi
+
+if [[ "$EDITOR" == "/usr/bin/nvim" || "$EDITOR" == "/usr/bin/neovim" ]]; then
+  VIM="$HOME/.nvim/nvimrc"; export VIM
+fi
+
+#VISUAL_EDITOR="$(which pulsar)"
+VISUAL_EDITOR="$(which subl)"
+export VISUAL_EDITOR
 
 #eval "$(resize)"
 
 #export USECOLOR=true
-<<<<<<< HEAD:bash/.bashrc
-TERM="tmux-256color"; export TERM
-TMPDIR="/tmp"; export TMPDIR
-=======
-export TERM=screen-256color-italic
+if [ -x "$(command -v toe)" ] && [ -x "$(command -v grep)" ]; then
+  [ ! "$(toe|grep -q -i -e 'xterm')" ] && TERM="xterm"
+  [ ! "$(toe|grep -q -i -e 'xterm-256color')" ] && TERM="xterm-256color"
+  [ ! "$(toe|grep -q -i -e 'tmux')" ] && TERM="tmux"
+  [ ! "$(toe|grep -q -i -e 'tmux-256color')" ] && TERM="tmux-256color"
+  # FIXME(jeff): Figure out how we can support this termcap on any machine --
+  # this will resolve the "unknown terminal" issue we have.
+  #[ ! "$(toe|grep -q -i -e 'screen-256color-italic')" ] && TERM="screen-256color-italic"
+else
+  TERM="linux"
+fi
+
+[ -n "$TERM" ] && export TERM
+
+# TMPDIR="/tmp"; export TMPDIR
 #TMPDIR="$HOME/tmp"; export TMPDIR
 >>>>>>> a0612b8 (Fix vim issue (CTRL modifier key)):bash/bashrc
 BLOCKSIZE=K; export BLOCKSIZE
@@ -152,12 +173,15 @@ INPUTRC="$HOME/.inputrc"; export INPUTRC
 BROWSER="google-chrome"; export BROWSER
 
 MINICOM="-m -c on"; export MINICOM
-export MPD_HOST="666@${HOSTNAME}"
+MPD_HOST="666@/home/jeff/.config/mpd/socket"
+#MPD_HOST="777@~/.config/mpd/socket"
+#MPD_HOST="666@localhost"
+export MPD_HOST
 SSH_KEYS="$HOME/.ssh/libra_dsa"; export SSH_KEYS
 
 case "$(uname -s)" in
   Darwin)
-    if [ -f "$(which lesspipe.sh)" ]; then
+    if [ -f "$(command -v lesspipe.sh)" ]; then
       LESSOPEN="|/usr/local/bin/lesspipe.sh %s"; export LESSOPEN
     fi
 
@@ -185,7 +209,7 @@ case "$(uname -s)" in
     export GIT_ASKPASS=/usr/local/bin/git-credential-osxkeychain
   ;;
   Linux)
-    if [ -f "$(which lesspipe)" ]; then
+    if [ -f "$(command -v lesspipe)" ]; then
       eval "$(lesspipe)"
     fi
 
@@ -217,14 +241,31 @@ case "$(uname -s)" in
   ;;
 esac
 
+# perl env
+# PATH="/home/jeff/perl5/bin${PATH:+:${PATH}}"; export PATH;
+# PERL5LIB="/home/jeff/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
+PERL_LOCAL_LIB_ROOT="$HOME/.cpan/build/lib/perl5"; export PERL_LOCAL_LIB_ROOT
+# PERL_LOCAL_LIB_ROOT="$HOME/.cpan/build/lib/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
+PERL_MB_OPT="--install_base \"$HOME/.cpan/build/lib/perl5\""; export PERL_MB_OPT;
+PERL_MM_OPT="INSTALL_BASE=$HOME/.cpan/build/lib/perl5"; export PERL_MM_OPT;
+PERL_CPANM_OPT="--notest installdeps"; export PERL_CPANM_OPT
+# Module::Install options
+PERL_AUTOINSTALL='--skipdeps'; export PERL_AUTOINSTALL
+
 # Additional bash scripts to include in local site configuration
 
 if [ -x "$HOME/.bash_aliases" ]; then
   . $HOME/.bash_aliases
 fi
 
-# PATH="/home/jeff/perl5/bin${PATH:+:${PATH}}"; export PATH;
-# PERL5LIB="/home/jeff/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
-# PERL_LOCAL_LIB_ROOT="/home/jeff/perl5${PERL_LOCAL_LIB_ROOT:+:${PERL_LOCAL_LIB_ROOT}}"; export PERL_LOCAL_LIB_ROOT;
-# PERL_MB_OPT="--install_base \"/home/jeff/perl5\""; export PERL_MB_OPT;
-# PERL_MM_OPT="INSTALL_BASE=/home/jeff/perl5"; export PERL_MM_OPT;
+if [ -x "$HOME/.bash_cflags" ]; then
+  . "$HOME/.bash_cflags"
+fi
+
+if [ -x "$HOME/.bashlib" ]; then
+  . "$HOME/.bashlib"
+fi
+
+if [ -x "$HOME/.bash_prompt" ]; then
+  . "$HOME/.bash_prompt"
+fi
