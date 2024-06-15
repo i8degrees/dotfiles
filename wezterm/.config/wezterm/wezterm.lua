@@ -14,6 +14,9 @@ end
 -- wezterm set-working-directory <CWD> <HOST>
 -- FIXME(jeff): Why does this not get applied for us?
 config.default_cwd = HOME.. "/Notes.git/"
+config.default_prog = {
+  HOME.. "/local/bin/tmux_init.sh"
+}
 config.font = wezterm.font "SourceCode Pro"
 
 config.enable_scroll_bar = false
