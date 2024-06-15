@@ -25,20 +25,30 @@
     ]
     uriHandlerRegistration: "always"
   editor:
+    defaultFontSize: 12
     fontFamily: "Source Code Pro"
-    fontSize: 15
+    fontSize: 13
     invisibles: {}
     lineHeight: 1.4
+    preferredLineLength: 78
     showIndentGuide: true
     showInvisibles: true
-    tabType: "soft"
     zoomFontWhenCtrlScrolling: false
   "exception-reporting":
     userId: "5f0033ff-3917-46e8-a8a6-b38030f36e8d"
   "ide-powershell":
     developer: {}
+  "linter-markdownlint":
+    executablePath: "/home/jeff/.gem/ruby/3.0.0/bin/mdl"
+  "linter-ui-default":
+    panelHeight: 120.4000015258789
   "markdown-preview":
     breakOnSingleNewline: true
+  "platformio-ide-terminal":
+    core:
+      mapTerminalsTo: "Folder"
+      mapTerminalsToAutoOpen: true
+    style: {}
   "project-plus":
     newWindow: true
     projectHome: " ~/Projects"
@@ -56,7 +66,7 @@
   "sync-settings-git-location": {}
   "tree-view": {}
   welcome:
-    lastViewedChangeLog: "1.112.1"
+    lastViewedChangeLog: "1.116.0"
     showOnStartup: false
 ".powershell.source":
   editor:
