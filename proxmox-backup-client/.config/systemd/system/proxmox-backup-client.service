@@ -1,0 +1,18 @@
+#
+# proxmox-backup-client.service
+#
+# NOTE(JEFF): This service requires root privileges
+#
+
+[Unit]
+Description=Backup the root filesystems
+Documentation=https://pbs.proxmox.com/docs/backup-client.html#
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=/home/jeff/local/bin/backup-host.sh system
+
+[Install]
+WantedBy=default.target

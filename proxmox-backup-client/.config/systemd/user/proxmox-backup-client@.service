@@ -1,0 +1,18 @@
+#
+# proxmox-backup-client@user.service
+#
+# NOTE(JEFF): This service requires user privileges
+#
+
+[Unit]
+Description=Backup %h home dir
+Documentation=https://pbs.proxmox.com/docs/backup-client.html#
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=oneshot
+ExecStart=%h/local/bin/backup-host.sh home
+
+[Install]
+WantedBy=default.target
