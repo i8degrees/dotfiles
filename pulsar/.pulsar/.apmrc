@@ -1,0 +1,22 @@
+# ~/.pulsar/.apmrc:jeff
+#
+# Custom Atom Package Manager Configuration
+#
+# 1. https://github.com/apache/pulsar-manager/blob/master/src/README.md
+
+# The client ID you received from GitHub when you registered [1]
+# 1. https://github.com/settings/applications/new
+
+github.client.id=Ov23livefa27rm9jmxva
+
+# The client secret you received from GitHub for your GitHub App.
+github.client.secret=413acfe325d622557b7dad5ec4084faa1796aef2
+
+github.oauth.host=https://github.com/login/oauth/access_token
+github.user.info=https://api.github.com/user
+github.login.host=https://github.com/login/oauth/authorize
+github.redirect.host=http://localhost:9527
+
+# Expiration time of token for third party platform, unit second.
+# 60 * 60 * 24 * 7
+user.access.token.expire=604800

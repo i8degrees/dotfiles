@@ -21,6 +21,13 @@
     color: "grey"
   }
   {
+    title: "proxmox-notes"
+    paths: [
+      "/home/jeff/Projects/proxmox-notes.git"
+    ]
+    color: "grey"
+  }
+  {
     title: "ttcards"
     paths: [
       "/home/jeff/Projects/i8degrees/ttcards.git"
