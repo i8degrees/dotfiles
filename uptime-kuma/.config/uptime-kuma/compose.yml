@@ -1,0 +1,52 @@
+#
+# 1. https://github.com/louislam/uptime-kuma
+# 1. https://hub.docker.com/r/elestio/uptime-kuma
+# 1. https://github.com/louislam/uptime-kuma/wiki/Environment-Variables
+---
+
+version: "3.9"
+
+networks:
+  private:
+    driver: overlay
+    attachable: true
+    external: true
+  public:
+    driver: overlay
+    attachable: true
+    external: true
+volumes:
+  uptime_config:
+    external: true
+
+services:
+  uptime-kuma:
+    restart: unless-stopped
+    image: "elestio/uptime-kuma:1.23.10"
+    container_name: "uptime-kuma-1"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/etc/ssl/certs:/etc/ssl/certs:ro"
+      - "/usr/share/ca-certificates/trust-source/anchors:/etc/ssl/private:ro"
+      - "uptime_config:/app/data"
+    ports:
+      - "3001:3001"
+    networks:
+      - public
+    environment:
+      - "TZ=America/Chicago"
+      - "ADMIN_EMAIL=i8degrees+fs1@gmail.com"
+      - "NODE_EXTRA_CA_CERTS=/etc/ssl/private"
+    labels:
+      - "traefik.enable=false"
+      - "traefik.http.routers.uptime.rule=((Host(`uptime.scorpio.home`)) && PathPrefix(`/`))"
+      - "traefik.http.routers.uptime.entrypoints=websecure"
+      - "traefik.http.routers.uptime.tls=true"
+      - "traefik.http.services.uptime.loadbalancer.server.port=3001"
+      - "traefik.http.routers.uptime.service=uptime"
+      - "traefik.http.routers.uptime.tls.certresolver=staging-acme"
+      - "homepage.group=syn"
+      - "homepage.name=uptime-kuma"
+      - "homepage.container=uptime-kuma-3"
+      - "homepage.href=https://uptime.virgo.home"
+
