@@ -1,0 +1,11 @@
+[Unit]
+Description=Synergy Client Daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/synergyc --no-daemon --display :0 scorpio.home
+Restart=always
+RestartSec=8
+
+[Install]
+WantedBy=graphical-session.target

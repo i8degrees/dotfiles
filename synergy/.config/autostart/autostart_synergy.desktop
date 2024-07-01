@@ -1,0 +1,8 @@
+[Desktop Entry]
+Exec=/home/jeff/.config/autostart/synergyc.sh
+Icon=dialog-scripts
+Name=autostart_login
+Type=Application
+X-KDE-AutostartScript=true
+Hidden=false
+
