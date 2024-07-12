@@ -1,0 +1,12 @@
+#!/bin/sh
+#
+# Custom launcher for WezTerm as an AppImage
+#
+
+WEZTERM_BIN="$1"
+
+if [ -z "$WEZTERM_BIN" ]; then
+  WEZTERM_BIN="$HOME/Applications/WezTerm-20240203-110809-5046fc22-Ubuntu20.04_08b1f108014d427aa974cc356d6b042b.AppImage"
+fi
+
+$WEZTERM_BIN "$@"
