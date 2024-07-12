@@ -393,7 +393,7 @@ dip() {
 
 if [ -x "$(which xclip)" ]; then
   DISPLAY=:0
-  alias xclip='xclip -selection clip'
+  alias xclip='xclip -selection clipboard'
   alias pbcopy='xclip -i'
   alias pbpaste='xclip -o'
 fi

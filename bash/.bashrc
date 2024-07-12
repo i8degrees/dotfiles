@@ -241,6 +241,16 @@ case "$(uname -s)" in
   ;;
 esac
 
+# rbenv env
+if [[ -x "$(which -v rbenv)" ]]; then
+  eval "$(rbenv init -)"
+fi
+
+# ruby env
+if [ -d "/home/jeff/.local/share/gem/ruby/3.0.0/bin" ]; then
+  PATH="/home/jeff/.local/share/gem/ruby/3.0.0/bin:$PATH"
+fi
+
 # perl env
 # PATH="/home/jeff/perl5/bin${PATH:+:${PATH}}"; export PATH;
 # PERL5LIB="/home/jeff/perl5/lib/perl5${PERL5LIB:+:${PERL5LIB}}"; export PERL5LIB;
@@ -255,7 +265,7 @@ PERL_AUTOINSTALL='--skipdeps'; export PERL_AUTOINSTALL
 # Additional bash scripts to include in local site configuration
 
 if [ -x "$HOME/.bash_aliases" ]; then
-  . $HOME/.bash_aliases
+  . "$HOME/.bash_aliases"
 fi
 
 if [ -x "$HOME/.bash_cflags" ]; then
