@@ -68,15 +68,6 @@ BW_SESSION="qQ4CTs9rkCT25u/rOd6JJwIlWMSWGuxufmrV6uWrv7BctlTzqILuZU6LoAXsV7yhTuKp
 # python3 env (pip)
 PATH="$HOME/.local/bin:$PATH"
 
-# rbenv env
-if [[ -x "$(which -v rbenv)" ]]; then
-  eval "$(rbenv init -)"
-fi
-
-if [ -d "/home/jeff/.local/share/gem/ruby/3.0.0/bin" ]; then
-  PATH="/home/jeff/.local/share/gem/ruby/3.0.0/bin:$PATH"
-fi
-
 # pulsar apm env
 if [[ -d "/opt/Pulsar/resources/app/ppm/bin" ]]; then
   PATH="$PATH:/opt/Pulsar/resources/app/ppm/bin"
