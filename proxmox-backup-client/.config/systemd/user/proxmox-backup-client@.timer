@@ -1,0 +1,11 @@
+[Unit]
+Description=Daily backup of home to pbs1.home
+
+[Timer]
+OnCalendar=*-*-* 11:42:00
+
+# IMPORTANT(jeff): This will cause the service to execute upon system startup -- 
+# and then every five minutes from said startup.
+[Install]
+WantedBy=timers.target
+
