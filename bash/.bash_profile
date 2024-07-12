@@ -90,7 +90,6 @@ INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"; export INFOPATH
 #append_path "/home/linuxbrew/.linuxbrew/bin"
 #append_path "/home/linuxbrew/.linuxbrew/sbin"
 
-HOMEBREW_GITHUB_API_TOKEN="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"; export HOMEBREW_GITHUB_API_TOKEN
 
 #QT_LOGGING_RULES="kwin_*.debug=true"; export QT_LOGGING_RULES
 
