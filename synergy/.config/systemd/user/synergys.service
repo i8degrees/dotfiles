@@ -1,0 +1,11 @@
+[Unit]
+Description=Synergy Daemon
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/synergyd --no-restart --no-daemon --name scorpio.home --config $HOME/.synergy.conf --address :24800 --log $HOME/.synergy/synergy.log --debug DEBUG
+Restart=always
+RestartSec=8
+
+[Install]
+WantedBy=graphical-session.target
