@@ -4,13 +4,14 @@
 "               jeff (additions)
 "--------------------------------------------------------------
 
+" IMPORTANT(JEFF): Fix warnings at startup regarding vim state
+system("mkdir -p ~/.vim/backup && mkdir -p ~/.vim/tmp; $?")
+
 " where to put backup files
 set backupdir=~/.vim/backup/
-set backupdir=/tmp/.vim/backup
 
 " where to put tmp files
-" set directory=~/.vim/tmp/
-set directory=/tmp/.vim/tmp/
+set directory=~/.vim/tmp/
 
 " where to find colors, plugins and so on
 if has("win32") || has ("win16")
