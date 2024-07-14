@@ -8,7 +8,7 @@
 #
 
 # IMPORTANT(jeff): Do not close the terminal with the CTRL+D key stroke!
-#IGNOREEOF=4 # set -o ignoreeof
+IGNOREEOF=4 # set -o ignoreeof
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
@@ -163,7 +163,6 @@ fi
 
 # TMPDIR="/tmp"; export TMPDIR
 #TMPDIR="$HOME/tmp"; export TMPDIR
->>>>>>> a0612b8 (Fix vim issue (CTRL modifier key)):bash/bashrc
 BLOCKSIZE=K; export BLOCKSIZE
 INPUTRC="$HOME/.inputrc"; export INPUTRC
 
