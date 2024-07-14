@@ -108,5 +108,12 @@ DOTNET_HOST_PATH="/usr/share/dotnet/dotnet"; export DOTNET_HOST_PATH
 [ -d "$DOTNET_ROOT" ] && PATH="$DOTNET_ROOT:${DOTNET_ROOT}/tools:$PATH"
 
 # java appmenu
-_JAVA_OPTIONS="${_JAVA_OPTIONS} -javaagent:/usr/share/java/jayatanaag.jar"; export _JAVA_OPTIONS
+JAVA_OPTIONS="${JAVA_OPTIONS}"; export JAVA_OPTIONS
+#JAVA_OPTIONS="${JAVA_OPTIONS} -javaagent:/usr/share/java/jayatanaag.jar"; export JAVA_OPTIONS
+# valapanel appmenu patch
 JAYATANA_FORCE=1; export JAYATANA_FORCE=1
+
+# wezterm env
+if [[ -d "/opt/wezterm/bin" ]] && [[ -e "/opt/wezterm/bin/wezterm" ]]; then
+  append_path "/opt/wezterm/bin"
+fi
