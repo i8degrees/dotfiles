@@ -6,9 +6,11 @@
 
 " where to put backup files
 set backupdir=~/.vim/backup/
+set backupdir=/tmp/.vim/backup
 
 " where to put tmp files
-set directory=~/.vim/tmp/
+" set directory=~/.vim/tmp/
+set directory=/tmp/.vim/tmp/
 
 " where to find colors, plugins and so on
 if has("win32") || has ("win16")
