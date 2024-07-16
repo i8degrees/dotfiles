@@ -6,6 +6,17 @@
 #
 # Local bash (1) profile executed for login shells.
 #
+# Append "$1" to $PATH when not already in.
+# This function API is accessible to scripts in /etc/profile.d
+
+append_path() {
+  case ":$PATH:" in
+    *:"$1":*)
+      ;;
+    *)
+      PATH="${PATH:+$PATH:}$1"
+  esac
+}
 
 #if [[ -z $DISPLAY && $(tty) = /dev/tty1 ]]; then
 
@@ -13,14 +24,14 @@
 #	command tmux
 #fi
 
-PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin"
+#PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 
 case "$(uname -s)" in
 	Darwin)
 		PATH="$PATH:$HOME/Applications:/usr/X11/bin"
 	;;
 	Linux)
-		PATH="/snap/bin:${HOME}/.config/feh/themes:$PATH:/usr/games"
+    PATH="${HOME}/.config/feh/themes:$PATH:/usr/games"
 	;;
 	*)
 	;;
@@ -31,11 +42,6 @@ if [ -f "$HOME/.bashrc" ]; then
 fi
 
 umask 022
-
-# rbenv env
-if [[ -x "$(command -v rbenv)" ]]; then
-  eval "$(rbenv init -)"
-fi
 
 # golang env
 GOPATH="${HOME}/local/src/golang"; export GOPATH
@@ -62,12 +68,6 @@ BW_SESSION="qQ4CTs9rkCT25u/rOd6JJwIlWMSWGuxufmrV6uWrv7BctlTzqILuZU6LoAXsV7yhTuKp
 # python3 env (pip)
 PATH="$HOME/.local/bin:$PATH"
 
-# pkg-config env
-PKG_CONFIG_PATH=/usr/lib/x86_64-linux-gnu/pkgconfig
-
-# node env
-eval "$(nodenv init -)"
-
 # pulsar apm env
 if [[ -d "/opt/Pulsar/resources/app/ppm/bin" ]]; then
   PATH="$PATH:/opt/Pulsar/resources/app/ppm/bin"
@@ -75,3 +75,45 @@ fi
 
 [[ -d "/opt/android-sdk/platform-tools" ]] && PATH=/opt/android-sdk/platform-tools:$PATH
 
+# homebrew env
+#
+# Set PATH, MANPATH, etc., for Homebrew.
+#
+# IMPORTANT(jeff): It is important that we put the binaries from brew **last**
+# in our PATH environment. Otherwise, you will start executing common utilities
+# from the wrong system!
+export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
+export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
+export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
+MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:"; export MANPATH
+INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"; export INFOPATH
+#append_path "/home/linuxbrew/.linuxbrew/bin"
+#append_path "/home/linuxbrew/.linuxbrew/sbin"
+
+
+#QT_LOGGING_RULES="kwin_*.debug=true"; export QT_LOGGING_RULES
+
+# node env
+eval "$(nodenv init - --no-rehash)"
+NODE_BUILD_DEFINITIONS="${HOMEBREW_PREFIX}/opt/node-build-update-defs/share/node-build"; export NODE_BUILD_DEFINITIONS
+
+# pkg-config env
+PKG_CONFIG_PATH="/usr/lib/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/lib32/pkgconfig:/usr/share/pkgconfig:${HOMEBREW_PREFIX}/lib"; export PKG_CONFIG_PATH
+
+# dotnet env
+# 1. https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#set-environment-variables-system-wide
+DOTNET_ROOT="/usr/share/dotnet"; export DOTNET_ROOT
+DOTNET_HOST_PATH="/usr/share/dotnet/dotnet"; export DOTNET_HOST_PATH
+
+[ -d "$DOTNET_ROOT" ] && PATH="$DOTNET_ROOT:${DOTNET_ROOT}/tools:$PATH"
+
+# java appmenu
+JAVA_OPTIONS="${JAVA_OPTIONS}"; export JAVA_OPTIONS
+#JAVA_OPTIONS="${JAVA_OPTIONS} -javaagent:/usr/share/java/jayatanaag.jar"; export JAVA_OPTIONS
+# valapanel appmenu patch
+JAYATANA_FORCE=1; export JAYATANA_FORCE=1
+
+# wezterm env
+if [[ -d "/opt/wezterm/bin" ]] && [[ -e "/opt/wezterm/bin/wezterm" ]]; then
+  append_path "/opt/wezterm/bin"
+fi

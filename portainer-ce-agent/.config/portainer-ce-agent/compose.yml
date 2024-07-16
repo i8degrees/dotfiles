@@ -1,0 +1,20 @@
+#
+# 1. https://docs.portainer.io/advanced/reverse-proxy/traefik
+---
+
+version: "3.8"
+
+services:
+  agent:
+    restart: "always"
+    container_name: "portainer-agent-1"
+    image: "portainer/agent:2.19.5"
+    ports:
+      - 9001:9001/tcp
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "/var/run/docker.sock:/var/run/docker.sock:ro"
+    # network_mode: host
+    environment:
+      - "TZ=America/Chicago"
+

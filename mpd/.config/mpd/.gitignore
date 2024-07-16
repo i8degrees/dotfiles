@@ -1,0 +1,9 @@
+# mpd/.gitignore:jeff
+#
+
+# User-state data from mpd -- NEVER commit!
+fifo
+log
+state
+stickers.db
+database

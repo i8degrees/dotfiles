@@ -1,0 +1,37 @@
+#
+# 1. https://glances.readthedocs.io/en/latest/docker.html
+#
+---
+version: "3"
+
+
+networks:
+  frontend:
+    driver: overlay
+    attachable: true
+    external: true
+
+services:
+  monitoring:
+    container_name: "glances-1"
+    image: nicolargo/glances:alpine-3.3.0.2-full
+    restart: "always"
+    pid: host
+    ports:
+      - "61208:61208/tcp"
+    volumes:
+      - "/etc/localtime:/etc/localtime:ro"
+      - "./mounts/docker.sock:/var/run/docker.sock:ro"
+    environment:
+      - "TZ=America/Chicago"
+      - "GLANCES_OPT=-w"
+    labels:
+      - "traefik.enable=false"
+      - "traefik.http.routers.glances-1.rule=Host(`top.fs1.home`) && PathPrefix(`/`)"
+      #- "traefik.http.routers.glances-1.rule=(Host(`top.fs1.home`) && (`htop.fs1.home`)) && PathPrefix(`/`)"
+      - "traefik.http.routers.glances-1.entrypoints=websecure"
+      - "traefik.http.services.glances-1.loadbalancer.server.port=61208"
+      - "traefik.http.routers.glances-1.service=glances-1"
+      - "traefik.http.routers.glances-1.tls.certresolver=staging-acme"
+    networks:
+      - frontend

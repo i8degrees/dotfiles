@@ -14,8 +14,11 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-Type=notify
+Type=simple
+EnvironmentFile=%h/.config/proxmox-backup/pbs1.password
 ExecStart=%h/local/bin/backup-host.sh home
+Restart=on-failure
+RestartSec=60
 
-[Install]
-WantedBy=default.target
+#[Install]
+#WantedBy=default.target

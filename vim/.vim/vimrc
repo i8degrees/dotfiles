@@ -4,6 +4,9 @@
 "               jeff (additions)
 "--------------------------------------------------------------
 
+" IMPORTANT(JEFF): Fix warnings at startup regarding vim state
+system("mkdir -p ~/.vim/backup && mkdir -p ~/.vim/tmp; $?")
+
 " where to put backup files
 set backupdir=~/.vim/backup/
 
@@ -16,8 +19,7 @@ if has("win32") || has ("win16")
 endif
 
 syntax on
-"colorscheme vice
-colorscheme fielding
+colorscheme vice
 "colorscheme lightline-vice
 filetype plugin on
 
@@ -125,11 +127,10 @@ set t_vb=                     	" [disabled] visual bell
 if has("win32") || has ("win16")
   set term=win32
 else
-  " set term=xterm-256color
-  " FIXME: This breaks the use of the CTRL modifier key!
   set term=screen-256color-italic
 endif
 
+" Enable italics support for comment syntax
 highlight Comment cterm=italic
 
 call pathogen#infect() 			" vim plugins management
@@ -156,9 +157,6 @@ let g:netrw_liststyle=3
 " Quick access to vim's file explorer (netrw)
 " map <F5> :E
 nmap <C-f> :E<CR>
-" Initial vim key binding for a "search & replace"
-" :%s/term/replace/g
-nmap <C-s> :%s/
 
 " vim-gitgutter; default to line highlighting
 let g:gitgutter_highlight_lines=1
