@@ -14,21 +14,21 @@ alias chistory='cat /dev/null > ~/.bash_history && history -cw && rebash'
 
 alias ncdu='ncdu -x $@'
 
-if [ "$(which md5deep)" ]; then
+if [ "$(command -v md5deep)" ]; then
   alias md5='md5deep -re' # recursive, progress
 else
   alias md5='md5sum'
 fi
 
-if [ "$(which colormake)" ]; then
+if [ "$(command -v colormake)" ]; then
   alias make='colormake'
 fi
 
-if [ "$(which cmake)" ]; then
+if [ "$(command -v cmake)" ]; then
   alias cmakeclean='make clean; make uninstall; rm -rf CMakeFiles CMakeCache.txt cmake_install.cmake cmake_uninstall.cmake CPackConfig.cmake CPackSourceConfig.cmake Makefile'
 fi
 
-if [ "$(which git)" ]; then
+if [ "$(command -v git)" ]; then
   alias gpush='git push -u $@'
   alias gcheckout='git checkout $@'
   alias gmerge='git merge --no-ff $@'
@@ -42,8 +42,8 @@ if [ "$(which git)" ]; then
 fi
 
 # TODO: combine tar, zip, ... creation and listing as one do-it-all function
-if [[ "$(which tar)" ]]; then
-  if [[ "$(which tarcolor)" ]]; then # lesspipe bash script
+if [[ "$(command -v tar)" ]]; then
+  if [[ "$(command -v tarcolor)" ]]; then # lesspipe bash script
     alias listtar='tar -tvf $@ | tarcolor'
   else
     alias listtar='tar -tvf $@'
@@ -53,20 +53,20 @@ if [[ "$(which tar)" ]]; then
   #FIXME: alias createtar='tar -czvf $1 --exclude=*.DS_Store $2'
 fi
 
-if [[ "$(which zip)" ]]; then
+if [[ "$(command -v zip)" ]]; then
   alias createzip='zip -r $@'
 fi
 
-if [[ "$(which wget)" ]]; then
+if [[ "$(command -v wget)" ]]; then
   alias dl='wget $@'
 fi
 
-if [[ "$(which valgrind)" ]]; then
+if [[ "$(command -v valgrind)" ]]; then
   alias memleaks=' valgrind --tool=memcheck --leak-check=full --num-callers=40 $@'
 fi
 
 # Quick access to comparing nomlib's screen-shots from visual unit tests
-if [[ "$(which md5)" ]]; then
+if [[ "$(command -v md5)" ]]; then
   alias dupe='md5 $@'
 fi
 
@@ -123,12 +123,12 @@ case "$(uname -s)" in
     alias modprobe='kextload $@'
     alias otool='otool -L $@'
 
-    if [ -x "$(which i586-mingw32-gcc)" ]; then
+    if [ -x "$(command -v i586-mingw32-gcc)" ]; then
       alias win32-gcc='i586-mingw32-gcc'
     fi
 
     # Homebrew package management
-    if [[ -x "$(which brew)" ]]; then
+    if [[ -x "$(command -v brew)" ]]; then
       alias bdepstree='brew uses -installed $@'
       alias bdeps='brew deps $@'
       alias binstall='brew install -vd $@'
@@ -149,7 +149,7 @@ case "$(uname -s)" in
     # grep color term support -- GREP_OPTIONS / GREP_COLOR bash vars --
     # apparently does not work under OS X (v10.7.x+)
     # http://www.askdavetaylor.com/force_mac_os_x_grep_to_always_output_in_color/
-    if [ "$(which grep)" ]; then # /usr/local/bin/grep (homebrew package)
+    if [ "$(command -v grep)" ]; then # /usr/local/bin/grep (homebrew package)
       alias grep='grep --color=always -I $@'
     fi
 
@@ -162,12 +162,12 @@ case "$(uname -s)" in
       alias stree='open -a SourceTree $@'
     fi
 
-    if [[ "$(which mpv)" ]]; then
+    if [[ "$(command -v mpv)" ]]; then
       alias mplayer='mpv $@'
     fi
 
     # watch is part of coreutils brew pkg, methinks
-    if [[ $(which watch) ]]; then
+    if [[ $(command -v watch) ]]; then
       alias watchclang="watch 'pgrep clang'"
     fi
 
@@ -187,7 +187,6 @@ case "$(uname -s)" in
     alias chmod='chmod -v'
     alias chown='chown -v'
     alias ln='ln -v'
-    alias xclip="xclip -sel clip"
 
     #alias edit="$(which geany)"
     # alias edit="$(which vim)"
@@ -199,7 +198,7 @@ case "$(uname -s)" in
 
     # User specific
     if [[ -n "$(id|grep jeff)" ]]; then
-      if [ -x "$(which nvidia-settings)" ]; then
+      if [ -x "$(command -v nvidia-settings)" ]; then
         alias nvidia-settings="nvidia-settings --config=$HOME/.nvidia-settings-libra &"
       fi
     fi
@@ -241,7 +240,7 @@ case "$(uname -s)" in
     #export GREP_OPTIONS="--color=always -I"; # -I = --binary-files-without-match
     alias grep='grep --color=always -I $@'
 
-    if [[ $(which xdg-open) ]]; then
+    if [[ $(command -v xdg-open) ]]; then
       alias open='xdg-open $@'
     fi
   ;;
@@ -257,7 +256,7 @@ alias killall="killall -9 $@"
 alias pid="ps aux|pgrep"
 alias watch="watch -n 1.0"
 alias iostat="iostat -d 1"
-alias ifstat="clear && $(which ifstat) -z -i en2 -w -S $@"
+alias ifstat="clear && $(command -v ifstat) -z -i en2 -w -S $@"
 
 alias cls="clear"
 alias kpatch="patch -p1 < $@"
@@ -275,22 +274,22 @@ alias kpatch="patch -p1 < $@"
   #alias g++="/usr/bin/gcc"
 #fi
 
-if [ -x "$(which colordiff)" ]; then
+if [ -x "$(command -v colordiff)" ]; then
 #if [[ "$COLORTERM" && -x "/usr/bin/colordiff" ]]; then
-  alias diff="$(which colordiff) -r $@" # recursive
+  alias diff="$(command -v colordiff) -r $@" # recursive
   #alias diff="$(which colordiff) -uNr $@"
 else
-  alias diff="$(which diff) -r $@" # recursive
+  alias diff="$(command -v diff) -r $@" # recursive
 fi
 
 # Grep options: silent mode (do not show errors), ignore binary files, case
 # in-sensitive, recursive
 alias g='grep $@'
-alias ip='echo "Public IP: "; curl icanhazip.com; echo "Internal IPs: "; ifconfig|grep "192.168.151.\|192.168.15."'
+alias get_ip='echo "Public IP: $(curl --silent http://checkip.mynaughty.party 2>/dev/null)"; echo "Internal IPs: "; ifconfig|grep "192.168.12.\|192.168.15."'
 #alias findfile='find $1 -name $2'
 
 # Generic Colourizer for terminal apps
-GRC_BIN=$(which grc)
+GRC_BIN=$(command -v grc)
 if [[ -x $GRC_BIN ]]; then
 
   # Default grc cfg
@@ -317,7 +316,6 @@ if [[ -x $GRC_BIN ]]; then
   # alias mount='colourify mount2 $@'
 fi
 
-<<<<<<< HEAD:bash/.bash_aliases
 alias open='xdg-open $@'
 alias o='open $@'
 alias start='open $@'
@@ -336,8 +334,8 @@ if [[ -x "$(command -v gnome-www-browser)" ]]; then
   alias www='gnome-www-browser $@'
 fi
 
-TIMG_BIN=$(which timg)
-TIV_BIN=$(which tiv)
+TIMG_BIN=$(command -v timg)
+TIV_BIN=$(command -v tiv)
 
 if [[ -x "$TIMG_BIN" ]]; then
   alias image='timg $@'
@@ -353,16 +351,50 @@ fi
 
 if [[ "$(alias video)" ]]; then
   alias v='video $@'
-=======
-if [[ -x "$(which MP4Box)" ]]; then
-  alias mp4box='MP4Box $@'
 fi
 
-if [[ -x "$(which MP4Client)" ]]; then
+  if [[ -x "$(command -v MP4Box)" ]]; then
+    alias mp4box='MP4Box $@'
+  fi
+
+if [[ -x "$(command -v MP4Client)" ]]; then
   alias mp4c='MP4Client $@'
 fi
 
-if [[ -x "${HOME}/Applications/Invisor Lite.app/Contents/MacOS/Invisor Lite" ]]; then
-  alias meta='open -a "Invisor Lite" $@'
->>>>>>> 5badf3c (bash/bash_aliases: Add optional mp4box && meta aliases):bash/bash_aliases
+#if [[ -x "${HOME}/Applications/Invisor Lite.app/Contents/MacOS/Invisor Lite" ]]; then
+#fi
+
+#if [[ os_check == "linux" ]]; then
+  #alias mount='mount --mkdir $@'
+#fi
+
+if [[ -x "$(command -v pulsar)" && -x "$(command -v apm)" ]]; then
+  alias ppm='apm $@'
 fi
+
+if [ -x "$(which mdless)" ]; then
+  if [ -x "$(which resize)" ]; then
+    [ -z "$COLUMNS" ] && eval "$(resize)"; WIDTH=$(expr "$COLUMNS" / 2)
+      alias mdless='mdless --all-images $@'
+      #alias mdless="mdless --width=\"${WIDTH}\" --all-images $@"
+  else
+    echo
+    alias mdless='mdless --all-images $@'
+  fi
+fi
+
+# https://bytefreaks.net/applications/docker/how-to-list-all-docker-container-names-and-their-ips
+dip() {
+  docker ps -q | xargs -n 1 docker inspect --format '{{ .Name }} {{range .NetworkSettings.Networks}} {{.IPAddress}} / {{.GlobalIPv6Address}}{{end}}' | sed 's#^/##';
+}
+
+[ -x "$(command -v -v htop)" ] && alias top='sudo htop'
+[ -x "$(command -v step-cli)" ] && alias step='step-cli'
+
+if [ -x "$(which xclip)" ]; then
+  DISPLAY=:0
+  alias xclip='xclip -selection clipboard'
+  alias pbcopy='xclip -i'
+  alias pbpaste='xclip -o'
+fi
+
