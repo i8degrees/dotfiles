@@ -1,0 +1,51 @@
+#
+#
+# TODO(JEFF): setup docker secrets to store our PBS_PASSWORD
+---
+
+version: "3.7"
+
+
+#secrets:
+  #pbs_passphrase:
+
+networks:
+  traefik-proxy:
+    driver: overlay
+    attachable: true
+    external: true
+    #external: false
+
+volumes:
+  config:
+    external: false
+  config_shared:
+    driver: local
+    driver_opts:
+      type: nfs
+      o: addr=fs1-san.home,rw
+      device: :/mnt/fs1/TimeMachine/Applications/pbs1-1
+
+services:
+  pbs:
+    image: fdrake/proxmox-backup-client:latest
+    container_name: "pbs-1"
+    hostname: "pbs-1"
+    restart: unless-stopped
+    command: "/config/pbc.sh" # proxmox-backup-client command to run
+    tmpfs:
+      - /tmp:rw # Error 95 Operation Denied
+    environment:
+      - TZ=America/Chicago
+      - LC_TIME=C.UTF-8
+      - BACKUP_TARGETS=virgo_root.pxar:/mnt/srv virgo_home.pxar:/mnt/home
+      - "NAMESPACE=virgo"
+      - "PBS_REPOSITORY=jeff@pbs@pbs1-san.home:BackupDisk_npool0"
+      #- PBS_FINGERPRINT=<fingerprint>
+      #- PBS_REPOSITORY=root@pam!token@pbs:datastore
+      - "NAMESPACE=scorpio"
+    volumes:
+      - config:/root/.config/proxmox-backup
+      - ./mounts/config:/config:ro
+    env_file:
+      - .env
