@@ -3,7 +3,8 @@
 #
 # NOTE(JEFF): This service requires user privileges
 #
-# systemctl --user enable proxmox-backup-client@jeff.service
+# systemctl --user enable proxmox-backup-client@jeff.timer
+# systemctl --user start proxmox-backup-client@jeff.timer
 # systemctl --user start proxmox-backup-client@jeff.service
 #
 
@@ -17,5 +18,5 @@ Wants=network-online.target
 Type=simple
 EnvironmentFile=%h/.config/proxmox-backup/pbs1.password
 ExecStart=%h/local/bin/backup-host.sh home
-Restart=on-failure
+Restart=never
 
