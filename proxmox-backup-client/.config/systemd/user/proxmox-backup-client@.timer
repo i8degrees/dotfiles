@@ -4,18 +4,18 @@ Description=Daily backup of home to pbs1.home
 [Timer]
 # Executes once a day at the prescribed time
 OnCalendar=*-*-* 11:42:00 America/Chicago
-RandomizedDelaySec=300
+#RandomizedDelaySec=300
 # Record the timestamp of the last unit execution time to
 # compare this to the current time. Upon activation, the service
 # unit is triggered immediately if it would have been triggered
 # at least once during the time when the timer was inactive.
-Persistent=true
+#Persistent=true
 # Ensure that our system is resumed from suspend at the time
 # of this timer trigger if such system is asleep.
 # WARNING(JEFF): You are responsible for putting the system back
 # to sleep however you wish upon the task's completion.
 #WakeSystem=true
 
-#[Install]
-#WantedBy=timers.target
+[Install]
+WantedBy=timers.target
 
