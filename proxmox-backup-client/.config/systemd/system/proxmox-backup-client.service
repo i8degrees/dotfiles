@@ -11,12 +11,10 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-=======
 Type=simple
-EnvironmentFile=/var/lib/proxmox-backup/pbs1.password 
+EnvironmentFile=-/var/lib/proxmox-backup/pbs1.password
 ExecStart=/home/jeff/local/bin/backup-host.sh system
 Restart=on-failure
-RestartSec=60
 
 #[Install]
 #WantedBy=default.target

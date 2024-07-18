@@ -1,11 +1,11 @@
 [Unit]
-Description=Daily backup of rootfs to pbs1.home
+Description=Daily backup of root to pbs1.home
 
 [Timer]
-OnCalendar=*-*-* 14:30:00
+OnCalendar=14:30:00 America/Chicago
+Persistent=true
+#WakeSystem=true
 
-# IMPORTANT(jeff): This will cause the service to execute upon system startup -- 
-# and then every five minutes from said startup.
-[Install]
-WantedBy=timers.target
+#[Install]
+#WantedBy=timers.target
 
