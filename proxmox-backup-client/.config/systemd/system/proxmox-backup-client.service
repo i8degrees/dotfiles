@@ -16,5 +16,3 @@ EnvironmentFile=-/var/lib/proxmox-backup/pbs1.password
 ExecStart=/home/jeff/local/bin/backup-host.sh system
 Restart=on-failure
 
-#[Install]
-#WantedBy=default.target
