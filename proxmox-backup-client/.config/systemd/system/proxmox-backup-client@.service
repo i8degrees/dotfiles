@@ -1,11 +1,11 @@
 #
-# proxmox-backup-client.service
+# proxmox-backup-client@.service
 #
 # NOTE(JEFF): This service requires root privileges
 #
-# systemctl enable proxmox-backup-client.timer
+# systemctl enable $(pwd)/proxmox-backup-client.timer
 # systemctl start proxmox-backup-client.timer
-# systemctl start proxmox-backup-client.service
+# #systemctl start proxmox-backup-client@root.service
 
 [Unit]
 Description=Backup the root filesystems
@@ -16,6 +16,7 @@ Wants=network-online.target
 [Service]
 Type=simple
 EnvironmentFile=-/var/lib/proxmox-backup/pbs1.password
-ExecStart=/home/jeff/local/bin/backup-host.sh system
+ExecStart=%h/local/bin/backup-host.sh system
 Restart=no
 
+#systemctl enable proxmox-backup-client@.service
