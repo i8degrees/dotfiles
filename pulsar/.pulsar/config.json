@@ -33,6 +33,7 @@
       "uriHandlerRegistration": "always"
     },
     "editor": {
+      "defaultFontSize": 12,
       "fontFamily": "Source Code Pro",
       "fontSize": 17,
       "invisibles": {},
@@ -40,16 +41,35 @@
       "showIndentGuide": true,
       "showInvisibles": true,
       "tabType": "soft",
+      "preferredLineLength": 78,
       "zoomFontWhenCtrlScrolling": false
     },
     "exception-reporting": {
       "userId": "5f0033ff-3917-46e8-a8a6-b38030f36e8d"
     },
-    "ide-powershell": {
-      "developer": {}
+    "file-icons": {
+      "coloured": false
+    },
+    "linter-markdownlint": {
+      "executablePath": "/home/jeff/.gem/ruby/3.0.0/bin/mdl",
+      "severity": "error"
+    },
+    "linter-ui-default": {
+      "panelHeight": 227.40000915527344,
+      "useBusySignal": false
     },
     "markdown-preview": {
       "breakOnSingleNewline": true
+    },
+    "platformio-ide-terminal": {
+      "core": {
+        "mapTerminalsTo": "Folder",
+        "mapTerminalsToAutoOpen": true
+      },
+      "style": {}
+    },
+    "ide-powershell": {
+      "developer": {}
     },
     "project-plus": {
       "newWindow": true,
@@ -72,7 +92,7 @@
     "sync-settings-git-location": {},
     "tree-view": {},
     "welcome": {
-      "lastViewedChangeLog": "1.107.1",
+      "lastViewedChangeLog": "1.119.0",
       "showOnStartup": false
     }
   },
@@ -98,6 +118,12 @@
   ".source.tmux": {
     "editor": {
       "preferredLineLength": 78
+    }
+  },
+  "platformio-ide": {
+    "core": {
+      "customPATH": "~/.platformio/bin",
+      "useBuiltinPIOCore": false
     }
   }
 }

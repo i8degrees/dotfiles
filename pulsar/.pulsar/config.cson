@@ -34,16 +34,15 @@
     fontSize: 17
     invisibles: {}
     lineHeight: 1.4
-    preferredLineLength: 78
     showIndentGuide: true
     showInvisibles: true
+    tabType: "soft"
+    preferredLineLength: 78
     zoomFontWhenCtrlScrolling: false
   "exception-reporting":
     userId: "5f0033ff-3917-46e8-a8a6-b38030f36e8d"
   "file-icons":
     coloured: false
-  "ide-powershell":
-    developer: {}
   "linter-markdownlint":
     executablePath: "/home/jeff/.gem/ruby/3.0.0/bin/mdl"
     severity: "error"
@@ -57,6 +56,15 @@
       mapTerminalsTo: "Folder"
       mapTerminalsToAutoOpen: true
     style: {}
+  "platformio-ide-terminal":
+    core:
+      mapTerminalsTo: "Folder"
+      mapTerminalsToAutoOpen: true
+    style: {}
+  "ide-powershell":
+    developer: {}
+  "markdown-preview":
+    breakOnSingleNewline: true
   "project-plus":
     newWindow: true
     projectHome: " ~/Projects"
@@ -72,11 +80,9 @@
     personalAccessToken: "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"
     quietUpdateCheck: true
   "sync-settings-git-location": {}
-  "tool-bar":
-    position: "Left"
   "tree-view": {}
   welcome:
-    lastViewedChangeLog: "1.118.0"
+    lastViewedChangeLog: "1.119.0"
     showOnStartup: false
 ".powershell.source":
   editor:
