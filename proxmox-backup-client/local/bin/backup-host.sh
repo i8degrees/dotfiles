@@ -30,6 +30,15 @@ set -o errexit
 #set -o pipefail
 #set -o xtrace
 
+# IMPORTANT(JEFF): Ensure that we have a sane homedir environment!
+if [ ! -v "$HOME" ]; then
+  if [ "$(id -u)" = "0" ]; then
+    HOME="/root"
+  else
+    HOME="/home/$(id -un)"
+  fi
+fi
+
 # shellcheck disable=SC1091
 source "$HOME/local/lib/pve_util.sh"
 
