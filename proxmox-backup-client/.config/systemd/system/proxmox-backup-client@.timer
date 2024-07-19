@@ -4,6 +4,7 @@
 # NOTE(JEFF): This service requires root privileges
 #
 # systemctl enable proxmox-backup-client@root.timer
+# systemctl enable proxmox-backup-client@root.service
 # systemctl start proxmox-backup-client@root.timer
 # #systemctl start proxmox-backup-client@root.service
 [Unit]
@@ -14,6 +15,7 @@ OnCalendar=14:30:00 America/Chicago
 #Persistent=true
 #WakeSystem=true
 #Unit=proxmox-backup-client@%i.service
+RandomizedDelaySec=1800
 
 [Install]
 WantedBy=timers.target
