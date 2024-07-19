@@ -1,0 +1,9 @@
+[Unit]
+Description=USB/IP server
+After=network.target
+
+[Service]
+ExecStart=/usr/sbin/usbipd --ipv4 --daemon --pid
+
+[Install]
+WantedBy=multi-user.target
