@@ -8,6 +8,11 @@
 # Otherwise, this script becomes interactive as it must ask the user
 # for a password to login before it can initiate the backup.
 #
+# TODO(JEFF): Create a function that can parse the inclusion lists within
+# our PASSFILE without the `--include-dev` -- this will ensure compatibility
+# with other tools. We will use another function to output the final
+# inclusion format of which will then include these proxmox specific switches
+# for use with the backup client.
 
 set -o errexit
 #set -o nounset
@@ -65,13 +70,14 @@ ARG_HOST="$2"
 ARG_TYPE="$1" # root | home
 EXCLUSIONS_LIST=""
 REPOSITORY_URI=""
+INCLUDES=""
 
 # IMPORTANT(JEFF): The following two variables can also be referred to from
 # their respective file paths as commented below.
 # /var/lib/proxmox-backup/pbs1.password
-ROOT_INCLUDES="--include-dev /efi --include-dev /boot"
+DEFAULT_ROOT_INCLUDES="--include-dev /efi --include-dev /boot --include-dev /boot/efi"
 # ~/.config/proxmox-backup/pbs1.password
-HOME_INCLUDES="--include-dev /home"
+DEFAULT_HOME_INCLUDES="--include-dev /home"
 
 if [ "$ARG_HOST" != "" ]; then
   HOST="$ARG_HOST"
@@ -81,15 +87,15 @@ if [ "$ARG_TYPE" = "" ]; then
   ARG_TYPE="home"
 fi
 
-if [[ "$ARG_TYPE" = "system" ]] && [[ ! "$USER" = "root" ]]; then
+if [[ "$ARG_TYPE" = "system" ]] && [[ ! "$(id -u)" = "0" ]]; then
    echo "CRITICAL: This script must be ran as the superuser, root."
    echo
    exit 2
 fi
 
-if [[ "$ARG_TYPE" = "home" ]] && [[ "$USER" != "root" ]]; then
+if [[ "$ARG_TYPE" = "home" ]] && [[ "$(id -u)" != "0" ]]; then
   PASSFILE="$HOME/.config/proxmox-backup/pbs1.password"
-elif [[ "$ARG_TYPE" = "system" ]] && [[ "$USER" = "root" ]]; then
+elif [[ "$ARG_TYPE" = "system" ]] && [[ "$(id -u)" = "0" ]]; then
   # TODO(JEFF): This should become a variable that can be modified by
   # redefining "PASSFILE" outside of the script to the user's preferred
   # location, i.e.: PASSFILE=/new/location; backup-host.sh <ARGS>
@@ -146,6 +152,18 @@ if [ "$REPOSITORY_URI" = "" ]; then
   exit 2
 fi
 
+if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
+  INCLUDES="$INCLUDES $ROOT_INCLUDES"
+else
+  INCLUDES="$INCLUDES $DEFAULT_ROOT_INCLUDES"
+fi
+
+if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
+  INCLUDES="$INCLUDES $HOME_INCLUDES"
+else
+  INCLUDES="$INCLUDES $DEFAULT_HOME_INCLUDES"
+fi
+
 # proxmox-backup-client demands this of us to be set ahead of executing the
 # backup client
 PBS_PASSWORD="$PASSPHRASE"; export PBS_PASSWORD
@@ -176,11 +194,11 @@ if [ -z "$NAMESPACE" ]; then # NAMESPACE variable is NOT declared
     if [ -e "/.pxarexclude" ]; then
       echo "INFO: Using exclusion list at /.pxarexclude"
       # shellcheck disable=SC2086
-      proxmox-backup-client backup "${HOST}_root.pxar:/" $ROOT_INCLUDES
+      proxmox-backup-client backup "${HOST}_root.pxar:/" $INCLUDES
     else
       echo "INFO: Using exclusion list from $PASSFILE"
       # shellcheck disable=SC2086
-      proxmox-backup-client backup "${HOST}_root.pxar:/" $EXCLUSIONS_LIST $ROOT_INCLUDES
+      proxmox-backup-client backup "${HOST}_root.pxar:/" $EXCLUSIONS_LIST $INCLUDES
     fi
   elif [ "$ARG_TYPE" = "home" ]; then
     # home dir (user)
@@ -202,11 +220,11 @@ else # NAMESPACE variable is declared in configuration
     if [ -e "/.pxarexclude" ]; then
       echo "INFO: Using exclusion list at /.pxarexclude"
       # shellcheck disable=SC2086
-      proxmox-backup-client backup "${HOST}_root.pxar:/" $ROOT_INCLUDES --ns "$NAMESPACE"
+      proxmox-backup-client backup "${HOST}_root.pxar:/" $INCLUDES --ns "$NAMESPACE"
     else
       echo "INFO: Using exclusion list from $PASSFILE"
       # shellcheck disable=SC2086
-      proxmox-backup-client backup "${HOST}_root.pxar:/" $EXCLUSIONS_LIST $ROOT_INCLUDES --ns "$NAMESPACE"
+      proxmox-backup-client backup "${HOST}_root.pxar:/" $EXCLUSIONS_LIST $INCLUDES --ns "$NAMESPACE"
     fi
   elif [ "$ARG_TYPE" = "home" ]; then
     # home dir (user)
