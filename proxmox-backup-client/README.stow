@@ -1,0 +1,36 @@
+---
+created: 2024-07-19T16:13:00+05:00
+modified: 2024-07-19T16:13:00+05:00
+editor: vim
+---
+
+# proxmox-backup-client
+
+## usage
+
+* `$HOME/local/bin/backup-host.sh <system|home>`
+* `$HOME/.config/proxmox-backup/pbs1.password`
+* `/var/lib/proxmox-backup/pbs1.password`
+
+### setup
+
+#### activate systemd units
+
+```shell
+pushd "~/dotfiles.git/proxmox-backup-client/.config/systemd/system/"
+systemctl enable proxmox-backup-client@root.timer
+systemctl enable proxmox-backup-client@root.service
+systemctl start proxmox-backup-client@root.timer
+systemctl status proxmox-backup-client@root.timer
+#systemctl start proxmox-backup-client@root.service
+```
+
+```shell
+pushd "~/dotfiles.git/proxmox-backup-client/.config/systemd/user/"
+systemctl --user enable proxmox-backup-client@jeff.timer
+systemctl --user enable proxmox-backup-client@jeff.service
+systemctl --user start proxmox-backup-client@jeff.timer
+systemctl --user status proxmox-backup-client@jeff.timer
+#systemctl --user start proxmox-backup-client@jeff.service
+```
+
