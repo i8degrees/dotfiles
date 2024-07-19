@@ -8,16 +8,30 @@
 # Otherwise, this script becomes interactive as it must ask the user
 # for a password to login before it can initiate the backup.
 #
-# TODO(JEFF): Create a function that can parse the inclusion lists within
+# 1. TODO(JEFF): Create a function that can parse the inclusion lists within
 # our PASSFILE without the `--include-dev` -- this will ensure compatibility
 # with other tools. We will use another function to output the final
 # inclusion format of which will then include these proxmox specific switches
 # for use with the backup client.
+#
+# 2. TODO(JEFF): Rename systemd unit files; from
+# `proxmox-backup-client@.(service|timer)` to `proxmox-backup@.(service|timer)`.
+# Update installation documentation at the said unit files.
+#
+# 3. TODO(JEFF): Rename pbs1.password to pbs1.passwd
+#
+# 4. TODO(JEFF): Integrate the usage of this script into our Docker Compose
+# script for performing client-side restores from within this container
+# run-time -- a recovery image, if you will.
+#
 
 set -o errexit
 #set -o nounset
 #set -o pipefail
 #set -o xtrace
+
+# shellcheck disable=SC1091
+source "$HOME/local/lib/pve_util.sh"
 
 # Specific cleanup code for sanitizing the passwords from memory; this
 # function is safe to be called explicitly.
@@ -155,13 +169,13 @@ fi
 if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
   INCLUDES="$INCLUDES $ROOT_INCLUDES"
 else
-  INCLUDES="$INCLUDES $DEFAULT_ROOT_INCLUDES"
+  INCLUDES="$DEFAULT_ROOT_INCLUDES"
 fi
 
 if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
   INCLUDES="$INCLUDES $HOME_INCLUDES"
 else
-  INCLUDES="$INCLUDES $DEFAULT_HOME_INCLUDES"
+  INCLUDES="$DEFAULT_HOME_INCLUDES"
 fi
 
 # proxmox-backup-client demands this of us to be set ahead of executing the
@@ -238,7 +252,6 @@ else # NAMESPACE variable is declared in configuration
       proxmox-backup-client backup "${HOST}_home.pxar:/home" $EXCLUSIONS_LIST $HOME_INCLUDES --ns "$NAMESPACE"
     fi
   fi
-
 fi
 
 cleanup
