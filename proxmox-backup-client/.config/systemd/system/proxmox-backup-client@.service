@@ -3,8 +3,10 @@
 #
 # NOTE(JEFF): This service requires root privileges
 #
-# systemctl enable $(pwd)/proxmox-backup-client.timer
-# systemctl start proxmox-backup-client.timer
+# cd "~/dotfiles.git/proxmox-backup-client/.config/systemd/system/"
+# systemctl enable proxmox-backup-client@root.timer
+# systemctl enable proxmox-backup-client@root.service
+# systemctl start proxmox-backup-client@root.timer
 # #systemctl start proxmox-backup-client@root.service
 
 [Unit]
@@ -19,4 +21,3 @@ EnvironmentFile=-/var/lib/proxmox-backup/pbs1.password
 ExecStart=%h/local/bin/backup-host.sh system
 Restart=no
 
-#systemctl enable proxmox-backup-client@.service
