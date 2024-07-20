@@ -1,4 +1,9 @@
-<<<<<<< HEAD
+---
+created: 2021-11-23T16:04:44+06:00
+modified: 2024-07-20T00:55:31+05:00
+title: dotfiles
+---
+
 # dotfiles
 
 My personal customization files and scripts for my environments. Friendly towards both servers and desktops. Naturally, I prefer command-line whenever possible ;-)
@@ -20,7 +25,7 @@ My personal customization files and scripts for my environments. Friendly toward
 - FreeBSD
   * It has been some time since I have used this OS and honestly cannot even remember the last version it was on. I do not recall any specific problems here.
 
-- [GNU Stow](https://www.gnu.org/software/stow/) must be installed beforehand. The software is a simple (one file) Perl script without external dependencies. It can also be found in the [CPAN modules repository](https://metacpan.org/dist/Stow/view/bin/stow). ```shell cpan install Stow``` and append `$HOME/perl5/bin` to your system `PATH`.
+- [GNU Stow](https://www.gnu.org/software/stow/) must be installed beforehand. The software is a simple (one file) Perl script without external dependencies. It can also be found in the [CPAN modules repository](https://metacpan.org/dist/Stow/view/bin/stow). `cpan install Stow` and append `$HOME/perl5/bin` to your system `PATH`.
 
 ```shell
 # --recursive takes care of git submodules
@@ -43,7 +48,6 @@ git submodule update --init --recursive
 
 1. [Konsave -- Save Linux Customization](https://github.com/Prayag2/konsave)
 1. [mention of kwriteconfig5](https://github.com/nix-community/home-manager/issues/607)
-=======
 # my dotfiles repo
 
 My UNIX setup files -- Linux & Mac OS X
@@ -51,4 +55,3 @@ My UNIX setup files -- Linux & Mac OS X
 # Related projects
 
 https://github.com/jh3y/kody
->>>>>>> 077b120 (README: Add related projects section)
