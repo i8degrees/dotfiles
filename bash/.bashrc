@@ -240,14 +240,17 @@ case "$(uname -s)" in
   ;;
 esac
 
-# rbenv env
-if [[ -x "$(which -v rbenv)" ]]; then
-  eval "$(rbenv init -)"
-fi
-
 # ruby env
-if [ -d "/home/jeff/.local/share/gem/ruby/3.0.0/bin" ]; then
-  PATH="/home/jeff/.local/share/gem/ruby/3.0.0/bin:$PATH"
+if [ -x "$(command -v rbenv)" ]; then
+  eval "$(rbenv init -)"
+
+  RUBY_PREFIX_PATH="$(rbenv prefix)"
+  if [ -d "${RUBY_PREFIX_PATH}/bin" ]; then
+    PATH="${RUBY_PREFIX_PATH}/bin:$PATH"
+  fi
+
+  SHIMS_PREFIX_PATH="$(rbenv root)/shims"
+  [ -d "$SHIMS_PREFIX_PATH" ] && PATH="${SHIMS_PREFIX_PATH}:$PATH"
 fi
 
 # perl env
