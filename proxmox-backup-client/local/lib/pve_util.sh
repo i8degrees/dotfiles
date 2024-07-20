@@ -32,7 +32,7 @@ to_proxmox_include() {
   for path in "$@"; do
     buffer+=$(echo "--include-dev $path ")
   done
-  echo $buffer
+  echo "$buffer"
 }
 
 # --exclude-dev <path>
@@ -42,5 +42,5 @@ to_proxmox_exclude() {
   for path in "$@"; do
     buffer+=$(echo "--exclude $path ")
   done
-  echo $buffer
+  echo "$buffer"
 }
