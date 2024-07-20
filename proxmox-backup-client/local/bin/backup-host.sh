@@ -39,8 +39,24 @@ if [ ! -v "$HOME" ]; then
   fi
 fi
 
-# shellcheck disable=SC1091
-source "$HOME/local/lib/pve_util.sh"
+[ -n "$DEBUG" ] && echo "HOME: $HOME"
+
+declare LIB_PATH
+if [ -x "/opt/sbin/pve_util.sh" ]; then
+  LIB_PATH="/opt/sbin/pve_util.sh"
+elif [ -x "$HOME/local/lib/pve_util.sh" ]; then
+  LIB_PATH="$HOME/local/lib/pve_util.sh"
+fi
+
+# shellcheck disable=SC1090
+source "$LIB_PATH"
+if [ ! -v "$LIB_PATH" ]; then
+  echo "CRITICAL: Failed to find pve_util.sh..."
+  echo
+  exit 2
+fi
+
+[ -n "$DEBUG" ] && echo "LIB_PATH: $LIB_PATH"
 
 # Specific cleanup code for sanitizing the passwords from memory; this
 # function is safe to be called explicitly.
@@ -75,6 +91,7 @@ trap 'cleanup' ERR
 usage_info() {
   script_name="$(basename "${0}")"
   exit_code="$1"
+
   echo -e "Usage:\n"
   echo -e "\t${script_name} [OPTIONS] <system|home> <HOSTNAME>\n"
   echo -e "Options:\n"
@@ -175,17 +192,8 @@ if [ "$REPOSITORY_URI" = "" ]; then
   exit 2
 fi
 
-if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
-  INCLUDES="$INCLUDES $ROOT_INCLUDES"
-else
-  INCLUDES="$DEFAULT_ROOT_INCLUDES"
-fi
-
-if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
-  INCLUDES="$INCLUDES $HOME_INCLUDES"
-else
-  INCLUDES="$DEFAULT_HOME_INCLUDES"
-fi
+# echo $INCLUDES
+# echo $EXCLUSIONS
 
 # proxmox-backup-client demands this of us to be set ahead of executing the
 # backup client
@@ -213,6 +221,15 @@ cleanup_passwords
 if [ -z "$NAMESPACE" ]; then # NAMESPACE variable is NOT declared
 
   if [ "$ARG_TYPE" = "system" ]; then
+    if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
+      INCLUDES="$ROOT_INCLUDES"
+    else
+      INCLUDES="$DEFAULT_ROOT_INCLUDES"
+    fi
+
+    # echo $INCLUDES
+    # echo $EXCLUSIONS
+
     # rootfs dirs
     if [ -e "/.pxarexclude" ]; then
       echo "INFO: Using exclusion list at /.pxarexclude"
@@ -224,21 +241,35 @@ if [ -z "$NAMESPACE" ]; then # NAMESPACE variable is NOT declared
       proxmox-backup-client backup "${HOST}_root.pxar:/" $EXCLUSIONS_LIST $INCLUDES
     fi
   elif [ "$ARG_TYPE" = "home" ]; then
+    if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
+      INCLUDES="$HOME_INCLUDES"
+    else
+      INCLUDES="$DEFAULT_HOME_INCLUDES"
+    fi
     # home dir (user)
     if [ -e "$HOME/.pxarexclude" ]; then
       echo "INFO: Using exclusion list at $HOME/.pxarexclude"
       # shellcheck disable=SC2086
-      proxmox-backup-client backup "${HOST}_home.pxar:/home" $HOME_INCLUDES
+      proxmox-backup-client backup "${HOST}_home.pxar:/home" $INCLUDES
     else # .config/proxmox-backup/pbs1
       echo "INFO: Using exclusion list from $PASSFILE"
       # shellcheck disable=SC2086
-      proxmox-backup-client backup "${HOST}_home.pxar:/home" $EXCLUSIONS_LIST $HOME_INCLUDES
+      proxmox-backup-client backup "${HOST}_home.pxar:/home" $EXCLUSIONS_LIST $INCLUDES
     fi # if [ -e "$HOME/.pxarexclude" ]; then
   fi # system
 
 else # NAMESPACE variable is declared in configuration
 
   if [ "$ARG_TYPE" = "system" ]; then
+    if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
+      INCLUDES="$ROOT_INCLUDES"
+    else
+      INCLUDES="$DEFAULT_ROOT_INCLUDES"
+    fi
+
+    # echo $INCLUDES
+    # echo $EXCLUSIONS
+    
     # rootfs dirs
     if [ -e "/.pxarexclude" ]; then
       echo "INFO: Using exclusion list at /.pxarexclude"
@@ -250,15 +281,20 @@ else # NAMESPACE variable is declared in configuration
       proxmox-backup-client backup "${HOST}_root.pxar:/" $EXCLUSIONS_LIST $INCLUDES --ns "$NAMESPACE"
     fi
   elif [ "$ARG_TYPE" = "home" ]; then
+    if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
+      INCLUDES="$HOME_INCLUDES"
+    else
+      INCLUDES="$DEFAULT_HOME_INCLUDES"
+    fi
     # home dir (user)
     if [ -e "$HOME/.pxarexclude" ]; then
       echo "INFO: Using exclusion list at $HOME/.pxarexclude"
       # shellcheck disable=SC2086
-      proxmox-backup-client backup "${HOST}_home.pxar:/home" $HOME_INCLUDES --ns "$NAMESPACE"
+      proxmox-backup-client backup "${HOST}_home.pxar:/home" $INCLUDES --ns "$NAMESPACE"
     else
       echo "INFO: Using exclusion list from $PASSFILE"
       # shellcheck disable=SC2086
-      proxmox-backup-client backup "${HOST}_home.pxar:/home" $EXCLUSIONS_LIST $HOME_INCLUDES --ns "$NAMESPACE"
+      proxmox-backup-client backup "${HOST}_home.pxar:/home" $EXCLUSIONS_LIST $INCLUDES --ns "$NAMESPACE"
     fi
   fi
 fi
