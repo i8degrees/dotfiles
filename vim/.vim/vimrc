@@ -5,7 +5,8 @@
 "--------------------------------------------------------------
 
 " IMPORTANT(JEFF): Fix warnings at startup regarding vim state
-system("mkdir -p ~/.vim/backup && mkdir -p ~/.vim/tmp; $?")
+:call system("mkdir -p ~/.vim/backup")
+:call system("mkdir -p ~/.vim/tmp")
 
 " where to put backup files
 set backupdir=~/.vim/backup/
