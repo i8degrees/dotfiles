@@ -12,7 +12,7 @@ Description=Daily backup of root to pbs1.home
 
 [Timer]
 OnCalendar=14:30:00 America/Chicago
-#Persistent=true
+Persistent=true
 #WakeSystem=true
 #Unit=proxmox-backup-client@%i.service
 RandomizedDelaySec=1800
