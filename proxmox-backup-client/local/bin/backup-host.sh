@@ -42,9 +42,9 @@ fi
 [ -n "$DEBUG" ] && echo "HOME: $HOME"
 
 declare LIB_PATH
-if [ -x "/opt/sbin/pve_util.sh" ]; then
+if [ -x "/opt/sbin/pve_util.sh" ]; then # make install
   LIB_PATH="/opt/sbin/pve_util.sh"
-elif [ -x "$HOME/local/lib/pve_util.sh" ]; then
+elif [ -x "$HOME/local/lib/pve_util.sh" ]; then # stow proxmox-backup-client
   LIB_PATH="$HOME/local/lib/pve_util.sh"
 fi
 
@@ -105,12 +105,15 @@ usage_info() {
   fi
 }
 
+# XDG_STATE_HOME
+HELP_URL="https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html"
 HOST=$(hostname --short)
 ARG_HOST="$2"
 ARG_TYPE="$1" # root | home
 EXCLUSIONS_LIST=""
 REPOSITORY_URI=""
 INCLUDES=""
+STATE_DIR=""
 
 # IMPORTANT(JEFF): The following two variables can also be referred to from
 # their respective file paths as commented below.
@@ -133,13 +136,36 @@ if [[ "$ARG_TYPE" = "system" ]] && [[ ! "$(id -u)" = "0" ]]; then
    exit 2
 fi
 
+if [ -v "$XDG_STATE_HOME" ]; then
+  STATE_DIR="$XDG_STATE_HOME"
+else
+  echo "CRITICAL: Failed to set STATE_DIR..."
+  echo
+  echo "Please set and export XDG_STATE_HOME from your shell environment."
+  echo "For BASH, this may be your $HOME/.bashrc or perhaps '/etc/bash.bashrc'."
+  echo
+  echo "The value of XDG_STATE_HOME defaults to '~/.config' for users and "
+  echo "for the superuser / root is '/var/lib'."
+  echo "Please see this page for more information."
+  echo
+  echo "$HELP_URL"
+  echo
+  exit 2
+fi
+
+if [ ! -d "$STATE_DIR" ]; then
+  echo "CRITICAL: Failed to locate ${STATE_DIR} from STATE_DIR..."
+  echo
+  exit 2
+fi
+
 if [[ "$ARG_TYPE" = "home" ]] && [[ "$(id -u)" != "0" ]]; then
-  PASSFILE="$HOME/.config/proxmox-backup/pbs1.password"
+  PASSFILE="${STATE_DIR}/proxmox-backup/pbs1.password"
 elif [[ "$ARG_TYPE" = "system" ]] && [[ "$(id -u)" = "0" ]]; then
   # TODO(JEFF): This should become a variable that can be modified by
   # redefining "PASSFILE" outside of the script to the user's preferred
   # location, i.e.: PASSFILE=/new/location; backup-host.sh <ARGS>
-  PASSFILE="/var/lib/proxmox-backup/pbs1.password"
+  PASSFILE="${STATE_DIR}/proxmox-backup/pbs1.password"
 fi
 
 if [ -f "$PASSFILE" ]; then
@@ -210,7 +236,7 @@ XDG_RUNTIME_DIR="$RUNTIME_DIR"; export XDG_RUNTIME_DIR
 mkdir -p "$XDG_RUNTIME_DIR" && chmod 0700 "$XDG_RUNTIME_DIR"
 
 if [ ! -d "$XDG_RUNTIME_DIR" ]; then
-  echo "CRITICAL: Failed to create ${XDG_RUNTIME_DIR}..."
+  echo "CRITICAL: Failed to create ${XDG_RUNTIME_DIR} from XDG_RUNTIME_DIR..."
   echo
   exit 2
 fi
@@ -269,7 +295,7 @@ else # NAMESPACE variable is declared in configuration
 
     # echo $INCLUDES
     # echo $EXCLUSIONS
-    
+
     # rootfs dirs
     if [ -e "/.pxarexclude" ]; then
       echo "INFO: Using exclusion list at /.pxarexclude"
