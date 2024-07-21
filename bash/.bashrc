@@ -264,6 +264,9 @@ PERL_CPANM_OPT="--notest installdeps"; export PERL_CPANM_OPT
 # Module::Install options
 PERL_AUTOINSTALL='--skipdeps'; export PERL_AUTOINSTALL
 
+# proxmox-backup-client env
+XDG_STATE_HOME="$HOME/.config"; export XDG_STATE_HOME
+
 # Additional bash scripts to include in local site configuration
 
 if [ -x "$HOME/.bash_aliases" ]; then
