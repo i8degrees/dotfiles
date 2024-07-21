@@ -1,4 +1,5 @@
 
+#FOO="${FOO:-default value}"
 HOME_PREFIX:=/home/jeff
 INSTALL_PREFIX:=/opt
 
