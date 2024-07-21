@@ -157,11 +157,11 @@ else
   exit 2
 fi
 
-if [ ! -d "$STATE_DIR" ]; then
-  echo "CRITICAL: Failed to locate ${STATE_DIR} from STATE_DIR..."
-  echo
-  exit 2
-fi
+# if [ ! -d "$STATE_DIR" ]; then
+#   echo "CRITICAL: Failed to locate ${STATE_DIR} from STATE_DIR..."
+#   echo
+#   exit 2
+# fi
 
 if [[ "$ARG_TYPE" = "home" ]] && [[ "$(id -u)" != "0" ]]; then
   PASSFILE="${STATE_DIR}/proxmox-backup/pbs1.password"
@@ -197,11 +197,11 @@ fi
 
 if [[ -n "$EXCLUSIONS" ]] && [[ "$EXCLUSIONS" != "" ]]; then
   EXCLUSIONS_LIST="$EXCLUSIONS"
-  echo "INFO: Using the exclusion list from ${PASSFILE}."
-  echo
-else
-  echo "INFO: Not using the exclusion list from ${PASSFILE}."
-  echo
+  # echo "INFO: Using the exclusion list from ${PASSFILE}."
+  # echo
+# else
+  # echo "INFO: Not using the exclusion list from ${PASSFILE}."
+  # echo
 fi
 
 if [[ -n "$PBS_REPOSITORY" ]] && [[ "$PBS_REPOSITORY" != "" ]]; then
