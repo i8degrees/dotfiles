@@ -31,7 +31,7 @@ set -o errexit
 #set -o xtrace
 
 # IMPORTANT(JEFF): Ensure that we have a sane homedir environment!
-if [ ! -v "$HOME" ]; then
+if [ -z "$HOME" ]; then
   if [ "$(id -u)" = "0" ]; then
     HOME="/root"
   else
@@ -41,22 +41,26 @@ fi
 
 [ -n "$DEBUG" ] && echo "HOME: $HOME"
 
-declare LIB_PATH
+LIB_PATH=""
 if [ -x "/opt/sbin/pve_util.sh" ]; then # make install
   LIB_PATH="/opt/sbin/pve_util.sh"
 elif [ -x "$HOME/local/lib/pve_util.sh" ]; then # stow proxmox-backup-client
   LIB_PATH="$HOME/local/lib/pve_util.sh"
 fi
 
-# shellcheck disable=SC1090
-source "$LIB_PATH"
-if [ ! -v "$LIB_PATH" ]; then
-  echo "CRITICAL: Failed to find pve_util.sh..."
+if [ ! -e "$LIB_PATH" ]; then
+  echo "CRITICAL: Failed to find pve_util.sh."
+  echo
+  echo "LIB_PATH=${LIB_PATH}"
+  echo "HOME=${HOME}"
   echo
   exit 2
 fi
 
 [ -n "$DEBUG" ] && echo "LIB_PATH: $LIB_PATH"
+
+# shellcheck disable=SC1090
+source "$LIB_PATH"
 
 # Specific cleanup code for sanitizing the passwords from memory; this
 # function is safe to be called explicitly.
@@ -136,7 +140,7 @@ if [[ "$ARG_TYPE" = "system" ]] && [[ ! "$(id -u)" = "0" ]]; then
    exit 2
 fi
 
-if [ -v "$XDG_STATE_HOME" ]; then
+if [ -n "$XDG_STATE_HOME" ]; then
   STATE_DIR="$XDG_STATE_HOME"
 else
   echo "CRITICAL: Failed to set STATE_DIR..."
