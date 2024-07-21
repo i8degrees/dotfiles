@@ -11,21 +11,15 @@ set -o errexit
 # remove inclusion switch from path list
 #
 # --include-dev <path>\n to <path>\n
+#
 # from_proxmox_include(path)
 from_proxmox_include() {
   in="$@"
   echo "$in" | sed s/--include-dev/''/ig
 }
 
-# remove exclusion switch from path list
-# --exclude-dev <path>\n to <path>\n
-# from_proxmox_exclude(path)
-from_proxmox_exclude() {
-  in="$@"
-  echo "$in" | sed s/--exclude/''/ig
-}
-
 # --include-dev <path>
+#
 # to_proxmox_include(path)
 to_proxmox_include() {
   buffer=()
@@ -35,7 +29,18 @@ to_proxmox_include() {
   echo "$buffer"
 }
 
-# --exclude-dev <path>
+# remove exclusion switch from path list
+#
+# --exclude <path>\n to <path>\n
+#
+# from_proxmox_exclude(path)
+from_proxmox_exclude() {
+  in="$@"
+  echo "$in" | sed s/--exclude/''/ig
+}
+
+# --exclude <path>
+#
 # to_proxmox_exclude(path)
 to_proxmox_exclude() {
   buffer=()
