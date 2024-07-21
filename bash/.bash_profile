@@ -59,11 +59,28 @@ CAROOT="${HOME}/pki"; export CAROOT
 # gtk2 env
 #GTK_THEME="Adapta-Nokto"; export GTK_THEME
 
-# bw env
-BW_CLIENTSECRET="wIIQ2ao9wjtTHPivjualyZ7cf8eIrL"
-BW_CLIENTID="user.030c456e-d385-4987-b831-acf0004f7a71"
+# bitwarden env
+# FIXME(JEFF): Certificate validation fails validation with both step-ca [2]
+# and the Bitwarden cmd, bw [2].
+#
+# 1. step certificate verify ~/.config/Bitwarden\ CLI/fullchain.pem
+#
+# 2. bw login
+#   * request to https://vault.mynaughty.party/identity/accounts/prelogin failed
+#   with the first certificate failing validation; this would be the
+#   vault.mynaughty.party certificate from fullchain.pem
+if [ -x "$(command -v bw)" ]; then
+  BW_CLIENTSECRET="wIIQ2ao9wjtTHPivjualyZ7cf8eIrL"
+  BW_CLIENTID="user.030c456e-d385-4987-b831-acf0004f7a71"
+  BW_SESSION="qQ4CTs9rkCT25u/rOd6JJwIlWMSWGuxufmrV6uWrv7BctlTzqILuZU6LoAXsV7yhTuKph5/QOeJWLFe79p2REg=="; export BW_SESSION
 
-BW_SESSION="qQ4CTs9rkCT25u/rOd6JJwIlWMSWGuxufmrV6uWrv7BctlTzqILuZU6LoAXsV7yhTuKph5/QOeJWLFe79p2REg=="; export BW_SESSION
+  # setup the necessary certificates for our custom vault location;
+  # upon stowing the "bitwarden-cli" package from our dotfiles.git repo,
+  # this path will be created for you automatically.
+  if [ -e "$HOME/.config/Bitwarden\ CLI/fullchain.pem" ]; then
+    NODE_EXTRA_CA_CERTS="$HOME/.config/Bitwarden\ CLI/fullchain.pem"
+  fi
+fi
 
 # python3 env (pip)
 PATH="$HOME/.local/bin:$PATH"
