@@ -223,47 +223,50 @@ cleanup_passwords
 
 INCLUDES=()
 
-if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
-  if echo "$ROOT_INCLUDES | grep -q -i -e '--include-dev'"; then
-    INCLUDES+=($(to_proxmox_include "$ROOT_INCLUDES"))
+if [ "$ARG_TYPE" = "system" ]; then
+  if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
+    if echo "$ROOT_INCLUDES | grep -q -i -e '--include-dev'"; then
+      INCLUDES+=($(to_proxmox_include "$ROOT_INCLUDES"))
+    else
+      INCLUDES+=($(from_proxmox_include "$ROOT_INCLUDES"))
+    fi
   else
-    INCLUDES+=($(from_proxmox_include "$ROOT_INCLUDES"))
+    INCLUDES+=("$DEFAULT_ROOT_INCLUDES")
   fi
-else
-  INCLUDES+=("$DEFAULT_ROOT_INCLUDES")
+elif [ "$ARG_TYPE" = "home" ]; then
+  if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
+    if echo "$HOME_INCLUDES | grep -q -i -e '--include-dev'"; then
+      INCLUDES+=($(to_proxmox_include $HOME_INCLUDES))
+    else
+      INCLUDES+=($(from_proxmox_include $HOME_INCLUDES))
+
+    fi
+  else
+    INCLUDES+=("$DEFAULT_HOME_INCLUDES")
+  fi
 fi
 
-if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
-  if echo "$HOME_INCLUDES | grep -q -i -e '--include-dev'"; then
-    INCLUDES+=($(to_proxmox_include $HOME_INCLUDES))
-  else
-    INCLUDES+=($(from_proxmox_include $HOME_INCLUDES))
-  fi
-else
-  INCLUDES+=("$DEFAULT_HOME_INCLUDES")
-fi
-
-[ -n "$DEBUG" ] && echo -e "Inclusions are, as follows: \n${INCLUDES}\n"
-[ -n "$DEBUG" ] && echo -e "Exclusions are, as follows: \n${EXCLUSIONS}\n"
+[ -n "$DEBUG" ] && echo -e "Inclusions are, as follows: \n${INCLUDES[@]}\n"
+[ -n "$DEBUG" ] && echo -e "Exclusions are, as follows: \n${EXCLUSIONS[@]}\n"
 
 EXTRA_ARGS=()
 
 if [ "$ARG_TYPE" = "system" ]; then
   # rootfs dirs
   if [ -e "/.pxarexclude" ]; then
-    EXTRA_ARGS+=("${HOST}_root.pxar:/" "$INCLUDES")
+    EXTRA_ARGS+=("${HOST}_root.pxar:/" "${INCLUDES[@]}")
     echo "INFO: Using exclusion list at /.pxarexclude"
   else
-    EXTRA_ARGS+=("${HOST}_root.pxar:/" "$EXCLUSIONS_LIST" "$INCLUDES")
+    EXTRA_ARGS+=("${HOST}_root.pxar:/" "${EXCLUSIONS_LIST[@]}" "${INCLUDES[@]}")
     echo "INFO: Using exclusion list from $PASSFILE"
   fi
 elif [ "$ARG_TYPE" = "home" ]; then
   # home dir (user)
   if [ -e "$HOME/.pxarexclude" ]; then
-    EXTRA_ARGS+=("${HOST}_home.pxar:/home" "$INCLUDES")
+    EXTRA_ARGS+=("${HOST}_home.pxar:/home" "${INCLUDES[@]}")
     echo "INFO: Using exclusion list at $HOME/.pxarexclude"
   else # .config/proxmox-backup/pbs1
-    EXTRA_ARGS+=("${HOST}_home.pxar:/home" "$EXCLUSIONS_LIST" "$INCLUDES")
+    EXTRA_ARGS+=("${HOST}_home.pxar:/home" "${EXCLUSIONS_LIST[@]}" "${INCLUDES[@]}")
     echo "INFO: Using exclusion list from $PASSFILE"
   fi # if [ -e "$HOME/.pxarexclude" ]; then
 fi # system
@@ -272,8 +275,8 @@ if [ -n "$NAMESPACE" ]; then
   EXTRA_ARGS+=("--ns" "$NAMESPACE")
 fi
 
-[ -n "$DEBUG" ] && echo -e "proxmox-backup-client backup ${EXTRA_ARGS[@]}\n"
-proxmox-backup-client backup ${EXTRA_ARGS[@]}
+#[ -n "$DEBUG" ] && echo -e "proxmox-backup-client backup ${EXTRA_ARGS[@]}\n"
+run_cmd proxmox-backup-client backup "${EXTRA_ARGS[@]}"
 
 # example post-hook
 # shellcheck disable=SC2034
