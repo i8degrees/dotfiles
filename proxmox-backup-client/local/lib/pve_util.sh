@@ -8,6 +8,20 @@ set -o errexit
 #set -o pipefail
 #set -o xtrace
 
+run_cmd() {
+  local cmd="$*"
+
+  if [ "$DRY_RUN" = "1" ] || [ "$DRY_RUN" = "true" ]; then
+    echo -e "DEBUG: ${cmd}\n"
+    return 0
+  else
+    # execute within this script's context
+    ${cmd}
+    # execute by forking a new shell context / environment (perhaps more secure?)
+    #/bin/sh -c ${cmd}
+  fi
+}
+
 # remove inclusion switch from path list
 #
 # --include-dev <path>\n to <path>\n
