@@ -18,11 +18,17 @@
 # script for performing client-side restores from within this container
 # run-time -- a recovery image, if you will.
 #
+# 5. TODO(JEFF): Integrate support for handling pre and post backup hooks;
+# so called "hooks" shall be shell scripts that are specified by the end-user
+# and then called by this script at the appropiate phases.
+#
 
-set -o errexit
-#set -o nounset
-#set -o pipefail
-#set -o xtrace
+if [ -n "$DEBUG" ]; then
+  set -o errexit
+  #set -o nounset
+  #set -o pipefail
+  #set -o xtrace
+fi
 
 # IMPORTANT(JEFF): Ensure that we have a sane homedir environment!
 if [ -z "$HOME" ]; then
