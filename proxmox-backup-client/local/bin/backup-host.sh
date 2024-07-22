@@ -250,6 +250,9 @@ if [ ! -d "$XDG_RUNTIME_DIR" ]; then
   exit 2
 fi
 
+# example pre-hook
+PRE_HOOK_EXEC="$HOME/local/etc/proxmox-backup/hooks/pre_hook.sh"
+
 proxmox-backup-client login
 cleanup_passwords
 
@@ -333,5 +336,8 @@ else # NAMESPACE variable is declared in configuration
     fi
   fi
 fi
+
+# example post-hook
+POST_HOOK_EXEC="$HOME/local/etc/proxmox-backup/hooks/post_hook.sh"
 
 cleanup
