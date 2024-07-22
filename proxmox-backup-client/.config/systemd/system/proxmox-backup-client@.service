@@ -16,8 +16,7 @@ Wants=network-online.target
 
 [Service]
 Type=simple
-#Environment=XDG_STATE_HOME=/var/lib
-EnvironmentFile=-/var/lib/proxmox-backup/pbs1.password
+EnvironmentFile=%h/.config/proxmox-backup/pbs1.password
 #ExecStart=/opt/sbin/backup-host.sh system
 ExecStart=%h/local/bin/backup-host.sh system
 Restart=no
