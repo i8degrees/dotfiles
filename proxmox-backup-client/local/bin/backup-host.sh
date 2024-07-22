@@ -169,6 +169,8 @@ if [[ -n "$EXCLUSIONS" ]] && [[ "$EXCLUSIONS" != "" ]]; then
   else
     EXCLUSIONS_LIST=$(to_proxmox_exclude "$EXCLUSIONS")
   fi
+else
+  EXCLUSIONS_LIST=$DEFAULT_EXCLUSIONS
 fi
 
 if [[ -n "$PBS_REPOSITORY" ]] && [[ "$PBS_REPOSITORY" != "" ]]; then
@@ -219,24 +221,26 @@ PRE_HOOK_EXEC="$HOME/local/etc/proxmox-backup/hooks/pre_hook.sh"
 proxmox-backup-client login
 cleanup_passwords
 
+INCLUDES=()
+
 if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
   if echo "$ROOT_INCLUDES | grep -q -i -e '--include-dev'"; then
-    INCLUDES=$(to_proxmox_include "$ROOT_INCLUDES")
+    INCLUDES+=($(to_proxmox_include "$ROOT_INCLUDES"))
   else
-    INCLUDES=$(from_proxmox_include "$ROOT_INCLUDES")
+    INCLUDES+=($(from_proxmox_include "$ROOT_INCLUDES"))
   fi
 else
-  INCLUDES="$DEFAULT_ROOT_INCLUDES"
+  INCLUDES+=("$DEFAULT_ROOT_INCLUDES")
 fi
 
 if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
   if echo "$HOME_INCLUDES | grep -q -i -e '--include-dev'"; then
-    INCLUDES=$(to_proxmox_include $HOME_INCLUDES)
+    INCLUDES+=($(to_proxmox_include $HOME_INCLUDES))
   else
-    INCLUDES=$(from_proxmox_include $HOME_INCLUDES)
+    INCLUDES+=($(from_proxmox_include $HOME_INCLUDES))
   fi
 else
-  INCLUDES="$DEFAULT_HOME_INCLUDES"
+  INCLUDES+=("$DEFAULT_HOME_INCLUDES")
 fi
 
 [ -n "$DEBUG" ] && echo -e "Inclusions are, as follows: \n${INCLUDES}\n"
