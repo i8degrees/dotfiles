@@ -109,23 +109,19 @@ usage_info() {
   fi
 }
 
-# XDG_STATE_HOME
-HELP_URL="https://specifications.freedesktop.org/basedir-spec/latest/ar01s03.html"
 HOST=$(hostname --short)
 ARG_HOST="$2"
 ARG_TYPE="$1" # root | home
 EXCLUSIONS_LIST=""
 REPOSITORY_URI=""
 INCLUDES=""
-STATE_DIR=""
 
 # IMPORTANT(JEFF): The following two variables can also be referred to from
 # their respective file paths as commented below.
 # ~/.config/proxmox-backup/pbs1.password
-# /var/lib/proxmox-backup/pbs1.password
 DEFAULT_ROOT_INCLUDES=$(to_proxmox_include /boot /boot/efi /efi /opt /opt/bin /opt/sbin /opt/go /opt/python3 /opt/share /usr/local/bin /usr/local/src /var/lib /var/log)
 DEFAULT_HOME_INCLUDES=$(to_proxmox_include /home /home/jeff /home/api /home/scripts)
-# TODO
+# shellcheck disable=SC2034
 DEFAULT_EXCLUSIONS=$(to_proxmox_exclude /dev/ /mnt/ /net/ /run/ /sys/ /tmp/ /cifs/ /misc/ /proc/ /media/ /usr/src/ /var/log/ /var/run/ /timeshift /var/cache /var/lock/ /var/mail/ /var/spool/ /home/recoll/ /home/timeshift/ /var/cache/man/ /var/tmp/pamac/ /var/cache/pamac/ /var/cache/pacman/ /var/cache/rclone/ /var/cache/fscache/ /var/cache/pkgfile/ /var/cache/private/ /var/cache/ /var/lib/systemd/coredump /var/tmp/pamac-build-jeff/ /dev /etc/mtab /home/test/.cache/ /media /mnt /proc /run /sys /timeshift /var/cache/ /var/crash /var/lib/flatpak /var/lock /var/log /var/run /var/spool /var/tmp /lost+found *.cache* *node_modules* /home/linuxbrew/ /home/test /home/jeff/Backups/borg.json /home/jeff/Backups/virgo.lan /home/jeff/Backups/scorpio /home/jeff/Backups/fs1 /home/jeff/Projects/sunshine_t1_elite /home/jeff/Projects/syn-net/ /home/jeff/.local/share/akonadi/ /home/jeff/.local/share/docker/ /home/jeff/.local/share/fsearch /home/jeff/.local/share/NuGet/ /home/jeff/.local/share/baloo/ /home/jeff/Videos/pr0n/ /home/jeff/.docker/desktop/vms /home/jeff/.docker/desktop/log /home/jeff/Software/ /home/jeff/.local/share/Trash/ /root/.cache/ /root/.local/share/Trash /Cloud *Downloads* /var/cache/private/ /var/tmp/rclone/ /home/jeff/.config/google-chrome /home/jeff/.config/android-messages-desktop /home/jeff/.config/Bitwarden .android .audacity-data .cache .cargo .cddb .config/chromium .julia .local/bin .local/share/baloo .local/share/Steam .local/share/Trash .npm .pki .steam *.socket* .Xauthority .steampid)
 
 if [ "$ARG_HOST" != "" ]; then
@@ -142,49 +138,19 @@ if [[ "$ARG_TYPE" = "system" ]] && [[ ! "$(id -u)" = "0" ]]; then
    exit 2
 fi
 
-if [ -n "$XDG_STATE_HOME" ]; then
-  STATE_DIR="$XDG_STATE_HOME"
-else
-  echo "CRITICAL: Failed to set STATE_DIR..."
-  echo
-  echo "Please set and export XDG_STATE_HOME from your shell environment."
-  echo "For BASH, this may be your $HOME/.bashrc or perhaps '/etc/bash.bashrc'."
-  echo
-  echo "The value of XDG_STATE_HOME defaults to '~/.config' for users and "
-  echo "for the superuser / root is '/var/lib'."
-  echo "Please see this page for more information."
-  echo
-  echo "$HELP_URL"
-  echo
-  exit 2
-fi
+# FIXME(JEFF): Verify that the file permissions of this file are sane!
+# chmod 0600 or so is appropiate -- it must be readable by ONLY the
+# user that this script is initiated from.
+#if [ "stat -c %a $PASSFILE" != "600" ]; then
+  #echo "ERROR: Your password file must have its permissions set to 600."
+  #echo
+  #echo "Please run 'chmod -v 600" ${PASSFILE}"' to fix this error condition."
+  #echo
+  #exit 4
+#fi
 
-# if [ ! -d "$STATE_DIR" ]; then
-#   echo "CRITICAL: Failed to locate ${STATE_DIR} from STATE_DIR..."
-#   echo
-#   exit 2
-# fi
-
-if [[ "$ARG_TYPE" = "home" ]] && [[ "$(id -u)" != "0" ]]; then
-  PASSFILE="${STATE_DIR}/proxmox-backup/pbs1.password"
-elif [[ "$ARG_TYPE" = "system" ]] && [[ "$(id -u)" = "0" ]]; then
-  # TODO(JEFF): This should become a variable that can be modified by
-  # redefining "PASSFILE" outside of the script to the user's preferred
-  # location, i.e.: PASSFILE=/new/location; backup-host.sh <ARGS>
-  PASSFILE="${STATE_DIR}/proxmox-backup/pbs1.password"
-fi
-
+PASSFILE="${HOME}/.config/proxmox-backup/pbs1.password"
 if [ -f "$PASSFILE" ]; then
-  # FIXME(JEFF): Verify that the file permissions of this file are sane!
-  # chmod 0600 or so is appropiate -- it must be readable by ONLY the
-  # user that this script is initiated from.
-  #if [ "stat -c %a $PASSFILE" != "600" ]; then
-    #echo "ERROR: Your password file must have its permissions set to 600."
-    #echo
-    #echo "Please run 'chmod -v 600" ${PASSFILE}"' to fix this error condition."
-    #echo
-    #exit 4
-  #fi
   echo "INFO: Loading environment from the file at ${PASSFILE}..."
   echo
   # shellcheck disable=SC1090
@@ -198,15 +164,11 @@ elif [ ! -f "$PASSFILE" ]; then
 fi
 
 if [[ -n "$EXCLUSIONS" ]] && [[ "$EXCLUSIONS" != "" ]]; then
-  EXCLUSIONS_LIST="$EXCLUSIONS"
-  # TODO
-  #EXCLUSIONS_LIST=$(from_proxmox_exclude "$EXCLUSIONS")
-
-  # echo "INFO: Using the exclusion list from ${PASSFILE}."
-  # echo
-# else
-  # echo "INFO: Not using the exclusion list from ${PASSFILE}."
-  # echo
+  if echo "$EXCLUSIONS | grep -q -i -e '--exclude'"; then
+    EXCLUSIONS_LIST=$(from_proxmox_exclude "$EXCLUSIONS")
+  else
+    EXCLUSIONS_LIST=$(to_proxmox_exclude "$EXCLUSIONS")
+  fi
 fi
 
 if [[ -n "$PBS_REPOSITORY" ]] && [[ "$PBS_REPOSITORY" != "" ]]; then
@@ -251,93 +213,66 @@ if [ ! -d "$XDG_RUNTIME_DIR" ]; then
 fi
 
 # example pre-hook
+# shellcheck disable=SC2034
 PRE_HOOK_EXEC="$HOME/local/etc/proxmox-backup/hooks/pre_hook.sh"
 
 proxmox-backup-client login
 cleanup_passwords
 
-if [ -z "$NAMESPACE" ]; then # NAMESPACE variable is NOT declared
-
-  if [ "$ARG_TYPE" = "system" ]; then
-    if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
-      INCLUDES="$ROOT_INCLUDES"
-    else
-      INCLUDES="$DEFAULT_ROOT_INCLUDES"
-    fi
-
-    # echo $INCLUDES
-    # echo $EXCLUSIONS
-
-    # rootfs dirs
-    if [ -e "/.pxarexclude" ]; then
-      echo "INFO: Using exclusion list at /.pxarexclude"
-      # shellcheck disable=SC2086
-      proxmox-backup-client backup "${HOST}_root.pxar:/" $INCLUDES
-    else
-      echo "INFO: Using exclusion list from $PASSFILE"
-      # shellcheck disable=SC2086
-      proxmox-backup-client backup "${HOST}_root.pxar:/" $EXCLUSIONS_LIST $INCLUDES
-    fi
-  elif [ "$ARG_TYPE" = "home" ]; then
-    if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
-      INCLUDES="$HOME_INCLUDES"
-    else
-      INCLUDES="$DEFAULT_HOME_INCLUDES"
-    fi
-    # home dir (user)
-    if [ -e "$HOME/.pxarexclude" ]; then
-      echo "INFO: Using exclusion list at $HOME/.pxarexclude"
-      # shellcheck disable=SC2086
-      proxmox-backup-client backup "${HOST}_home.pxar:/home" $INCLUDES
-    else # .config/proxmox-backup/pbs1
-      echo "INFO: Using exclusion list from $PASSFILE"
-      # shellcheck disable=SC2086
-      proxmox-backup-client backup "${HOST}_home.pxar:/home" $EXCLUSIONS_LIST $INCLUDES
-    fi # if [ -e "$HOME/.pxarexclude" ]; then
-  fi # system
-
-else # NAMESPACE variable is declared in configuration
-
-  if [ "$ARG_TYPE" = "system" ]; then
-    if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
-      INCLUDES="$ROOT_INCLUDES"
-    else
-      INCLUDES="$DEFAULT_ROOT_INCLUDES"
-    fi
-
-    # echo $INCLUDES
-    # echo $EXCLUSIONS
-
-    # rootfs dirs
-    if [ -e "/.pxarexclude" ]; then
-      echo "INFO: Using exclusion list at /.pxarexclude"
-      # shellcheck disable=SC2086
-      proxmox-backup-client backup "${HOST}_root.pxar:/" $INCLUDES --ns "$NAMESPACE"
-    else
-      echo "INFO: Using exclusion list from $PASSFILE"
-      # shellcheck disable=SC2086
-      proxmox-backup-client backup "${HOST}_root.pxar:/" $EXCLUSIONS_LIST $INCLUDES --ns "$NAMESPACE"
-    fi
-  elif [ "$ARG_TYPE" = "home" ]; then
-    if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
-      INCLUDES="$HOME_INCLUDES"
-    else
-      INCLUDES="$DEFAULT_HOME_INCLUDES"
-    fi
-    # home dir (user)
-    if [ -e "$HOME/.pxarexclude" ]; then
-      echo "INFO: Using exclusion list at $HOME/.pxarexclude"
-      # shellcheck disable=SC2086
-      proxmox-backup-client backup "${HOST}_home.pxar:/home" $INCLUDES --ns "$NAMESPACE"
-    else
-      echo "INFO: Using exclusion list from $PASSFILE"
-      # shellcheck disable=SC2086
-      proxmox-backup-client backup "${HOST}_home.pxar:/home" $EXCLUSIONS_LIST $INCLUDES --ns "$NAMESPACE"
-    fi
+if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
+  if echo "$ROOT_INCLUDES | grep -q -i -e '--include-dev'"; then
+    INCLUDES=$(to_proxmox_include "$ROOT_INCLUDES")
+  else
+    INCLUDES=$(from_proxmox_include "$ROOT_INCLUDES")
   fi
+else
+  INCLUDES="$DEFAULT_ROOT_INCLUDES"
 fi
 
+if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
+  if echo "$HOME_INCLUDES | grep -q -i -e '--include-dev'"; then
+    INCLUDES=$(to_proxmox_include $HOME_INCLUDES)
+  else
+    INCLUDES=$(from_proxmox_include $HOME_INCLUDES)
+  fi
+else
+  INCLUDES="$DEFAULT_HOME_INCLUDES"
+fi
+
+[ -n "$DEBUG" ] && echo -e "Inclusions are, as follows: \n${INCLUDES}\n"
+[ -n "$DEBUG" ] && echo -e "Exclusions are, as follows: \n${EXCLUSIONS}\n"
+
+EXTRA_ARGS=()
+
+if [ "$ARG_TYPE" = "system" ]; then
+  # rootfs dirs
+  if [ -e "/.pxarexclude" ]; then
+    EXTRA_ARGS+=("${HOST}_root.pxar:/" "$INCLUDES")
+    echo "INFO: Using exclusion list at /.pxarexclude"
+  else
+    EXTRA_ARGS+=("${HOST}_root.pxar:/" "$EXCLUSIONS_LIST" "$INCLUDES")
+    echo "INFO: Using exclusion list from $PASSFILE"
+  fi
+elif [ "$ARG_TYPE" = "home" ]; then
+  # home dir (user)
+  if [ -e "$HOME/.pxarexclude" ]; then
+    EXTRA_ARGS+=("${HOST}_home.pxar:/home" "$INCLUDES")
+    echo "INFO: Using exclusion list at $HOME/.pxarexclude"
+  else # .config/proxmox-backup/pbs1
+    EXTRA_ARGS+=("${HOST}_home.pxar:/home" "$EXCLUSIONS_LIST" "$INCLUDES")
+    echo "INFO: Using exclusion list from $PASSFILE"
+  fi # if [ -e "$HOME/.pxarexclude" ]; then
+fi # system
+
+if [ -n "$NAMESPACE" ]; then
+  EXTRA_ARGS+=("--ns" "$NAMESPACE")
+fi
+
+[ -n "$DEBUG" ] && echo -e "proxmox-backup-client backup ${EXTRA_ARGS[@]}\n"
+proxmox-backup-client backup ${EXTRA_ARGS[@]}
+
 # example post-hook
+# shellcheck disable=SC2034
 POST_HOOK_EXEC="$HOME/local/etc/proxmox-backup/hooks/post_hook.sh"
 
 cleanup
