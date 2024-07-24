@@ -75,7 +75,7 @@ cleanup_passwords() {
 #
 # void cleanup()
 cleanup() {
-   proxmox-backup-client logout
+   run_cmd proxmox-backup-client logout
    cleanup_passwords
    REPOSITORY=""; unset REPOSITORY
    EXCLUSIONS=""; unset EXCLUSIONS
@@ -135,7 +135,7 @@ fi
 if [[ "$ARG_TYPE" = "system" ]] && [[ ! "$(id -u)" = "0" ]]; then
    echo "CRITICAL: This script must be ran as the superuser, root."
    echo
-   exit 2
+   #exit 2
 fi
 
 # FIXME(JEFF): Verify that the file permissions of this file are sane!
@@ -218,31 +218,28 @@ fi
 # shellcheck disable=SC2034
 PRE_HOOK_EXEC="$HOME/local/etc/proxmox-backup/hooks/pre_hook.sh"
 
-proxmox-backup-client login
+run_cmd proxmox-backup-client login
 cleanup_passwords
-
-INCLUDES=()
 
 if [ "$ARG_TYPE" = "system" ]; then
   if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
     if echo "$ROOT_INCLUDES | grep -q -i -e '--include-dev'"; then
-      INCLUDES+=($(to_proxmox_include "$ROOT_INCLUDES"))
+      INCLUDES=$(to_proxmox_include "$ROOT_INCLUDES")
     else
-      INCLUDES+=($(from_proxmox_include "$ROOT_INCLUDES"))
+      INCLUDES=$(from_proxmox_include "$ROOT_INCLUDES")
     fi
   else
-    INCLUDES+=("$DEFAULT_ROOT_INCLUDES")
+    INCLUDES=$(to_proxmox_include "$DEFAULT_ROOT_INCLUDES")
   fi
 elif [ "$ARG_TYPE" = "home" ]; then
   if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
     if echo "$HOME_INCLUDES | grep -q -i -e '--include-dev'"; then
-      INCLUDES+=($(to_proxmox_include $HOME_INCLUDES))
+      INCLUDES=$(to_proxmox_include $HOME_INCLUDES)
     else
-      INCLUDES+=($(from_proxmox_include $HOME_INCLUDES))
-
+      INCLUDES=$(from_proxmox_include $HOME_INCLUDES)
     fi
   else
-    INCLUDES+=("$DEFAULT_HOME_INCLUDES")
+    INCLUDES=$(to_proxmox_include "$DEFAULT_HOME_INCLUDES")
   fi
 fi
 
