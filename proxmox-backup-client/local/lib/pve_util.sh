@@ -12,7 +12,7 @@ run_cmd() {
   local cmd="$*"
 
   if [ "$DRY_RUN" = "1" ] || [ "$DRY_RUN" = "true" ]; then
-    echo -e "DEBUG: ${cmd}\n"
+    echo -e "DRY: ${cmd}\n"
     return 0
   else
     # execute within this script's context
