@@ -216,6 +216,7 @@ fi
 # example pre-hook
 # shellcheck disable=SC2034
 PRE_HOOK_EXEC="$HOME/local/etc/proxmox-backup/hooks/pre_hook.sh"
+#[ -x "$PRE_HOOK_EXEC" ] && run_cmd "$PRE_HOOK_EXEC"
 
 run_cmd proxmox-backup-client login
 cleanup_passwords
@@ -263,41 +264,36 @@ fi
 #[ -n "$DEBUG" ] && echo -e "Inclusions are, as follows: \n${INCLUDES[@]}\n"
 #[ -n "$DEBUG" ] && echo -e "Exclusions are, as follows: \n${EXCLUSIONS[@]}\n"
 
-EXTRA_ARGS=()
 
-if [ "$ARG_TYPE" = "system" ]; then
-  # rootfs dirs
-  if [ -e "/.pxarexclude" ]; then
-    # shellcheck disable=2206
-    EXTRA_ARGS+=("${HOST}_root.pxar:/" $INCLUDES)
-    echo "INFO: Using exclusion list at /.pxarexclude"
-  else
-    # shellcheck disable=2206
-    EXTRA_ARGS+=("${HOST}_root.pxar:/" $EXCLUSIONS_LIST $INCLUDES)
-    echo "INFO: Using exclusion list from $PASSFILE"
-  fi
-elif [ "$ARG_TYPE" = "home" ]; then
-  # home dir (user)
-  if [ -e "$HOME/.pxarexclude" ]; then
-    # shellcheck disable=2206
-    EXTRA_ARGS+=("${HOST}_home.pxar:/home" $INCLUDES)
-    echo "INFO: Using exclusion list at $HOME/.pxarexclude"
-  else # .config/proxmox-backup/pbs1
-    # shellcheck disable=2206
-    EXTRA_ARGS+=("${HOST}_home.pxar:/home" $EXCLUSIONS_LIST $INCLUDES)
-    echo "INFO: Using exclusion list from $PASSFILE"
-  fi # if [ -e "$HOME/.pxarexclude" ]; then
-fi # system
+if [ -e "/.pxarexclude" ]; then
+  echo "INFO: Found /.pxarexclude."
+  echo
+fi
+
+if [ -e "$HOME/.pxarexclude" ]; then
+  echo "INFO: Found $HOME/.pxarexclude."
+  echo
+fi
+
+EXTRA_ARGS=()
+if [ "$ARG_TYPE" = "home" ]; then
+  # shellcheck disable=SC2206
+  EXTRA_ARGS+=("${HOST}_home.pxar:/home" $EXCLUSIONS_LIST $INCLUDES)
+else
+  # shellcheck disable=SC2206
+  EXTRA_ARGS+=("${HOST}_root.pxar:/" $EXCLUSIONS_LIST $INCLUDES)
+fi
 
 if [ -n "$NAMESPACE" ]; then
   EXTRA_ARGS+=("--ns" "$NAMESPACE")
 fi
 
-[ -n "$DEBUG" ] && echo -e "proxmox-backup-client backup ${EXTRA_ARGS[$*]}\n"
 run_cmd proxmox-backup-client backup "${EXTRA_ARGS[@]}"
 
 # example post-hook
 # shellcheck disable=SC2034
 POST_HOOK_EXEC="$HOME/local/etc/proxmox-backup/hooks/post_hook.sh"
+#[ -x "$POST_HOOK_EXEC" ] && run_cmd "$POST_HOOK_EXEC"
 
 cleanup
+
