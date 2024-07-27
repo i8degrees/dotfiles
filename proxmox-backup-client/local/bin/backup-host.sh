@@ -226,18 +226,18 @@ if [ "$ARG_TYPE" = "system" ]; then
     if echo "$ROOT_INCLUDES | grep -q -i -e '--include-dev'"; then
       # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
       # its argument list?
-      # shellcheck disable=2086
+      # shellcheck disable=SC2086
       INCLUDES=$(to_proxmox_include $ROOT_INCLUDES)
     else
       # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
       # its argument list?
-      # shellcheck disable=2086
+      # shellcheck disable=SC2086
       INCLUDES=$(from_proxmox_include $ROOT_INCLUDES)
     fi
   else
     # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
     # its argument list?
-    # shellcheck disable=2086
+    # shellcheck disable=SC2086
     INCLUDES=$(to_proxmox_include $DEFAULT_ROOT_INCLUDES)
   fi
 elif [ "$ARG_TYPE" = "home" ]; then
@@ -245,18 +245,18 @@ elif [ "$ARG_TYPE" = "home" ]; then
     if echo "$HOME_INCLUDES | grep -q -i -e '--include-dev'"; then
       # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
       # its argument list?
-      # shellcheck disable=2086
+      # shellcheck disable=SC2086
       INCLUDES=$(to_proxmox_include $HOME_INCLUDES)
     else
       # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
       # its argument list?
-      # shellcheck disable=2086
+      # shellcheck disable=SC2086
       INCLUDES=$(from_proxmox_include $HOME_INCLUDES)
     fi
   else
     # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
     # its argument list?
-    # shellcheck disable=2086
+    # shellcheck disable=SC2086
     INCLUDES=$(to_proxmox_include $DEFAULT_HOME_INCLUDES)
   fi
 fi
@@ -296,4 +296,3 @@ POST_HOOK_EXEC="$HOME/local/etc/proxmox-backup/hooks/post_hook.sh"
 #[ -x "$POST_HOOK_EXEC" ] && run_cmd "$POST_HOOK_EXEC"
 
 cleanup
-
