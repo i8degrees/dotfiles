@@ -48,7 +48,6 @@
   "linter-markdownlint":
     executablePath: "/home/jeff/.gem/ruby/3.0.0/bin/mdl"
     severity: "error"
-  "linter-shellcheck-pulsar": {}
   "linter-ui-default":
     panelHeight: 227.40000915527344
     useBusySignal: false
