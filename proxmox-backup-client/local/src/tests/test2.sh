@@ -21,3 +21,6 @@ echo
 echo to_proxmox_exclude
 to_proxmox_exclude $TEST2
 echo
+
+echo from_proxmox_include
+from_proxmox_include "--include-dev /home --include-dev /home/scripts"
