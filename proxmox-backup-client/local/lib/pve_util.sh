@@ -63,3 +63,60 @@ to_proxmox_exclude() {
   done
   echo "$buffer"
 }
+
+parse_root_includes() {
+  ROOT_INCLUDES="$1"
+  RESULT=""
+
+  if echo "$ROOT_INCLUDES | grep -q -i -e '--include-dev'"; then
+    # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
+    # its argument list?
+    # shellcheck disable=SC2086
+    RESULT=$(to_proxmox_include $ROOT_INCLUDES)
+  else
+    # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
+    # its argument list?
+    # shellcheck disable=SC2086
+    RESULT=$(from_proxmox_include $ROOT_INCLUDES)
+  fi
+
+  echo "$RESULT"
+}
+
+parse_home_includes() {
+  HOME_INCLUDES="$1"
+  RESULT=""
+
+  if echo "$HOME_INCLUDES | grep -q -i -e '--include-dev'"; then
+    # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
+    # its argument list?
+    # shellcheck disable=SC2086
+    RESULT=$(to_proxmox_include $HOME_INCLUDES)
+  else
+    # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
+    # its argument list?
+    # shellcheck disable=SC2086
+    RESULT=$(from_proxmox_include $HOME_INCLUDES)
+  fi
+
+  echo "$RESULT"
+}
+
+parse_exclusions() {
+  EXCLUSIONS="$1"
+  RESULT=""
+
+  if echo "$EXCLUSIONS | grep -q -i -e '--exclude'"; then
+    # FIXME(JEFF): Adapt from_proxmox_exclude function to support quotes in
+    # its argument list?
+    # shellcheck disable=SC2086
+    RESULT=$(from_proxmox_exclude $EXCLUSIONS)
+  else
+    # FIXME(JEFF): Adapt to_proxmox_exclude function to support quotes in
+    # its argument list?
+    # shellcheck disable=SC2086
+    RESULT=$(to_proxmox_exclude $EXCLUSIONS)
+  fi
+
+  echo "$RESULT"
+}
