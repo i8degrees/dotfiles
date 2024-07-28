@@ -234,8 +234,8 @@ fi
 
 if [[ -n "$EXCLUSIONS" ]] && [[ "$EXCLUSIONS" != "" ]]; then
   EXCLUSIONS_LIST=$(parse_exclusions $EXCLUSIONS)
-else
-  EXCLUSIONS_LIST=$DEFAULT_EXCLUSIONS
+# else
+  # EXCLUSIONS_LIST=$DEFAULT_EXCLUSIONS
 fi
 
 if [ -e "/.pxarexclude" ]; then
