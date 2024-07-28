@@ -111,7 +111,7 @@ usage_info() {
 
 HOST=$(hostname --short)
 ARG_HOST="$2"
-ARG_TYPE="$1" # root | home
+BACKUP_NAME="$1" # root | home
 EXCLUSIONS_LIST=""
 REPOSITORY_URI=""
 INCLUDES=""
@@ -133,11 +133,11 @@ if [ "$ARG_HOST" != "" ]; then
   HOST="$ARG_HOST"
 fi
 
-if [ "$ARG_TYPE" = "" ]; then
-  ARG_TYPE="home"
+if [ "$BACKUP_NAME" = "" ]; then
+  BACKUP_NAME="home"
 fi
 
-if [[ "$ARG_TYPE" = "system" ]] && [[ ! "$(id -u)" = "0" ]]; then
+if [[ "$BACKUP_NAME" = "system" ]] && [[ ! "$(id -u)" = "0" ]]; then
    echo "CRITICAL: This script must be ran as the superuser, root."
    echo
    #exit 2
@@ -249,7 +249,7 @@ if [ -e "$HOME/.pxarexclude" ]; then
 fi
 
 EXTRA_ARGS=()
-if [ "$ARG_TYPE" = "home" ]; then
+if [ "$BACKUP_NAME" = "home" ]; then
   # shellcheck disable=SC2206
   EXTRA_ARGS+=("${HOST}_home.pxar:/home" $EXCLUSIONS_LIST $INCLUDES)
 else
@@ -261,6 +261,7 @@ if [ -n "$NAMESPACE" ]; then
   EXTRA_ARGS+=("--ns" "$NAMESPACE")
 fi
 
+echo "proxmox-backup-client backup ${EXTRA_ARGS[@]}"
 run_cmd proxmox-backup-client backup "${EXTRA_ARGS[@]}"
 
 # example post-hook
