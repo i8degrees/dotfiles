@@ -216,20 +216,20 @@ cleanup_passwords
 
 if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
   INCLUDES=$(parse_root_includes $ROOT_INCLUDES)
-else
+# else
   # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
   # its argument list?
   # shellcheck disable=SC2086
-  INCLUDES=$DEFAULT_ROOT_INCLUDES
+  # INCLUDES=$DEFAULT_ROOT_INCLUDES
 fi
 
 if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
   INCLUDES=$(parse_home_includes $HOME_INCLUDES)
-else
+# else
   # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
   # its argument list?
   # shellcheck disable=SC2086
-  INCLUDES=$DEFAULT_HOME_INCLUDES
+  # INCLUDES=$DEFAULT_HOME_INCLUDES
 fi
 
 if [[ -n "$EXCLUSIONS" ]] && [[ "$EXCLUSIONS" != "" ]]; then
