@@ -11,7 +11,7 @@ set -o errexit
 run_cmd() {
   local cmd="$*"
 
-  if [ "$DRY_RUN" = "1" ] || [ "$DRY_RUN" = "true" ]; then
+  if [ "$DEBUG" = "1" ] || [ "$DRY_RUN" = "1" ] || [ "$DRY_RUN" = "true" ]; then
     echo -e "DRY: ${cmd}\n"
     return 0
   else
@@ -28,14 +28,16 @@ run_cmd() {
 #
 # from_proxmox_include(path)
 from_proxmox_include() {
-  in="$@"
-  echo "$in" | sed s/--include-dev/''/ig
+  path="$@"
+  echo "$path" | sed 's/--include-dev '//ig
 }
 
 # --include-dev <path>
 #
 # to_proxmox_include(path)
 to_proxmox_include() {
+  # path="$@"
+  # echo "$path" | sed s/$path/"--include-dev $path"/ig
   buffer=()
   for path in "$@"; do
     buffer+=$(echo "--include-dev $path ")
@@ -49,14 +51,16 @@ to_proxmox_include() {
 #
 # from_proxmox_exclude(path)
 from_proxmox_exclude() {
-  in="$@"
-  echo "$in" | sed s/--exclude/''/ig
+  path="$@"
+  echo "$path" | sed 's/--exclude '/''/ig
 }
 
 # --exclude <path>
 #
 # to_proxmox_exclude(path)
 to_proxmox_exclude() {
+  # path="$@"
+  # echo "$path" | sed "s/$path/--exclude $path"/ig
   buffer=()
   for path in "$@"; do
     buffer+=$(echo "--exclude $path ")
@@ -65,8 +69,12 @@ to_proxmox_exclude() {
 }
 
 parse_root_includes() {
-  ROOT_INCLUDES="$1"
   RESULT=""
+
+  ROOT_INCLUDES="$1"
+  if [ -z "$ROOT_INCLUDES" ]; then
+    echo "$RESULT"
+  fi
 
   if echo "$ROOT_INCLUDES | grep -q -i -e '--include-dev'"; then
     # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
@@ -84,8 +92,12 @@ parse_root_includes() {
 }
 
 parse_home_includes() {
-  HOME_INCLUDES="$1"
   RESULT=""
+  HOME_INCLUDES="$1"
+
+  if [ -z "$HOME_INCLUDES" ]; then
+    echo "$RESULT"
+  fi
 
   if echo "$HOME_INCLUDES | grep -q -i -e '--include-dev'"; then
     # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
@@ -103,8 +115,12 @@ parse_home_includes() {
 }
 
 parse_exclusions() {
-  EXCLUSIONS="$1"
   RESULT=""
+
+  EXCLUSIONS="$1"
+  if [ -z "$EXCLUSIONS" ]; then
+    echo "$RESULT"
+  fi
 
   if echo "$EXCLUSIONS | grep -q -i -e '--exclude'"; then
     # FIXME(JEFF): Adapt from_proxmox_exclude function to support quotes in
