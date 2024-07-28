@@ -168,22 +168,6 @@ elif [ ! -f "$PASSFILE" ]; then
    echo
 fi
 
-if [[ -n "$EXCLUSIONS" ]] && [[ "$EXCLUSIONS" != "" ]]; then
-  if echo "$EXCLUSIONS | grep -q -i -e '--exclude'"; then
-    # FIXME(JEFF): Adapt from_proxmox_exclude function to support quotes in
-    # its argument list?
-    # shellcheck disable=SC2086
-    EXCLUSIONS_LIST=$(from_proxmox_exclude $EXCLUSIONS)
-  else
-    # FIXME(JEFF): Adapt to_proxmox_exclude function to support quotes in
-    # its argument list?
-    # shellcheck disable=SC2086
-    EXCLUSIONS_LIST=$(to_proxmox_exclude $EXCLUSIONS)
-  fi
-else
-  EXCLUSIONS_LIST=$DEFAULT_EXCLUSIONS
-fi
-
 if [[ -n "$PBS_REPOSITORY" ]] && [[ "$PBS_REPOSITORY" != "" ]]; then
   # Handle the case where the user sets the repository from an env var
   REPOSITORY_URI="$PBS_REPOSITORY"
@@ -201,9 +185,6 @@ if [ "$REPOSITORY_URI" = "" ]; then
   echo
   exit 2
 fi
-
-# echo $INCLUDES
-# echo $EXCLUSIONS
 
 # proxmox-backup-client demands this of us to be set ahead of executing the
 # backup client
@@ -233,49 +214,29 @@ PRE_HOOK_EXEC="$HOME/local/etc/proxmox-backup/hooks/pre_hook.sh"
 run_cmd proxmox-backup-client login
 cleanup_passwords
 
-if [ "$ARG_TYPE" = "system" ]; then
-  if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
-    if echo "$ROOT_INCLUDES | grep -q -i -e '--include-dev'"; then
-      # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
-      # its argument list?
-      # shellcheck disable=SC2086
-      INCLUDES=$(to_proxmox_include $ROOT_INCLUDES)
-    else
-      # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
-      # its argument list?
-      # shellcheck disable=SC2086
-      INCLUDES=$(from_proxmox_include $ROOT_INCLUDES)
-    fi
-  else
-    # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
-    # its argument list?
-    # shellcheck disable=SC2086
-    INCLUDES=$(to_proxmox_include $DEFAULT_ROOT_INCLUDES)
-  fi
-elif [ "$ARG_TYPE" = "home" ]; then
-  if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
-    if echo "$HOME_INCLUDES | grep -q -i -e '--include-dev'"; then
-      # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
-      # its argument list?
-      # shellcheck disable=SC2086
-      INCLUDES=$(to_proxmox_include $HOME_INCLUDES)
-    else
-      # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
-      # its argument list?
-      # shellcheck disable=SC2086
-      INCLUDES=$(from_proxmox_include $HOME_INCLUDES)
-    fi
-  else
-    # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
-    # its argument list?
-    # shellcheck disable=SC2086
-    INCLUDES=$(to_proxmox_include $DEFAULT_HOME_INCLUDES)
-  fi
+if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
+  INCLUDES=$(parse_root_includes $ROOT_INCLUDES)
+else
+  # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
+  # its argument list?
+  # shellcheck disable=SC2086
+  INCLUDES=$DEFAULT_ROOT_INCLUDES
 fi
 
-#[ -n "$DEBUG" ] && echo -e "Inclusions are, as follows: \n${INCLUDES[@]}\n"
-#[ -n "$DEBUG" ] && echo -e "Exclusions are, as follows: \n${EXCLUSIONS[@]}\n"
+if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
+  INCLUDES=$(parse_home_includes $HOME_INCLUDES)
+else
+  # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
+  # its argument list?
+  # shellcheck disable=SC2086
+  INCLUDES=$DEFAULT_HOME_INCLUDES
+fi
 
+if [[ -n "$EXCLUSIONS" ]] && [[ "$EXCLUSIONS" != "" ]]; then
+  EXCLUSIONS_LIST=$(parse_exclusions $EXCLUSIONS)
+else
+  EXCLUSIONS_LIST=$DEFAULT_EXCLUSIONS
+fi
 
 if [ -e "/.pxarexclude" ]; then
   echo "INFO: Found /.pxarexclude."
