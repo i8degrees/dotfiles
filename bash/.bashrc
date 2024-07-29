@@ -176,7 +176,7 @@ fi
 # TMPDIR="/tmp"; export TMPDIR
 #TMPDIR="$HOME/tmp"; export TMPDIR
 BLOCKSIZE=K; export BLOCKSIZE
-[ -f "$HOME/.inputrc" ] && INPUTRC="$HOME/.inputrc"; export INPUTRC
+[ -f "$HOME/.inputrc" ] && INPUTRC="$HOME/.inputrc"
 
 if [ "$SHELL" = "/bin/bash" ] && [ -n "$INPUTRC" ]; then
   bind -f "$INPUTRC"
