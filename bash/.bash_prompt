@@ -2,9 +2,7 @@
 # username@hostname
 #PROMPT_COMMAND='[\u@\h \W]\$'
 
+# TODO(JEFF): Improve upon this so we can activate it for daily use!
 # username@hostname (master)|0
 # bash-prompt-generator.org
-PROMPT_COMMAND='PS1_CMD1=$(git branch --show-current 2>/dev/null)'; PS1='\[\e[1m\]\u\[\e[0m\]@\[\e[3m\]\h\[\e[0m\] (${PS1_CMD1})|\[\e[2;3m\]$?\[\e[0m\]'
-
-#export PS1_CMD1
-#PS1=$PROMPT_COMMAND; export PS1
+#PROMPT_COMMAND='PS1_CMD1=$(git branch --show-current 2>/dev/null)'; PS1='\[\e[1m\]\u\[\e[0m\]@\[\e[3m\]\h\[\e[0m\] (${PS1_CMD1})|\[\e[2;3m\]$?\[\e[0m\]'
