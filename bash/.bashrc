@@ -7,6 +7,10 @@
 # Local interactive bash (1) shell config.
 #
 
+if [ -x "$HOME/.bash_prompt" ]; then
+  . "$HOME/.bash_prompt"
+fi
+
 # IMPORTANT(jeff): Do not close the terminal with the CTRL+D key stroke!
 IGNOREEOF=4 # set -o ignoreeof
 
@@ -281,6 +285,3 @@ if [ -x "$HOME/.bashlib" ]; then
   . "$HOME/.bashlib"
 fi
 
-if [ -x "$HOME/.bash_prompt" ]; then
-  . "$HOME/.bash_prompt"
-fi
