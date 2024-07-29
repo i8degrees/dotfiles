@@ -42,6 +42,13 @@ shopt -s hostcomplete
 # if true, minor spelling errors of a dir component in a cd will be corrected
 shopt -s cdspell
 
+# Automatically prepend `cd` when only a path is given as a shell command
+shopt -s autocd
+
+# Do not allow existing regular files to be overwritten by redirection of
+# shell output.
+set -o noclobber
+
 # Our bash (1) history file
 export HISTFILE="$HOME/.bash_history"
 
@@ -51,8 +58,9 @@ export HISTFILESIZE=8192
 # TODO: need to verify this is the same as above.
 export HISTSIZE="$HISTFILESIZE"
 
-# Do not put duplicate lines in the history.
-export HISTCONTROL=ignoredups
+# 1. Remove all but the last identical command
+# 2. Avoid saving commands that begin with a space
+export HISTCONTROL="erasedups:ignorespace"
 
 # Linux)
 # NOTE: The following line *must* be included before the repo GCC toolchain bins
@@ -168,7 +176,11 @@ fi
 # TMPDIR="/tmp"; export TMPDIR
 #TMPDIR="$HOME/tmp"; export TMPDIR
 BLOCKSIZE=K; export BLOCKSIZE
-INPUTRC="$HOME/.inputrc"; export INPUTRC
+[ -f "$HOME/.inputrc" ] && INPUTRC="$HOME/.inputrc"; export INPUTRC
+
+if [ "$SHELL" = "/bin/bash" ] && [ -n "$INPUTRC" ]; then
+  bind -f "$INPUTRC"
+fi
 
 #if [ "$(which vimpager)" ]; then
 #fi
@@ -283,5 +295,9 @@ fi
 
 if [ -x "$HOME/.bashlib" ]; then
   . "$HOME/.bashlib"
+fi
+
+if [ -x "$HOME/.bash_completions" ]; then
+  . "$HOME/.bash_completions"
 fi
 

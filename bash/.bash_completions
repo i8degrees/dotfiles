@@ -1,0 +1,10 @@
+#!/bin/sh
+# ~/.bash_completions:jeff
+#
+#
+
+if [ -e "/usr/share/doc/pkgfile/command-not-found.bash" ]; then
+  # shellcheck disable=SC1091
+  . "/usr/share/doc/pkgfile/command-not-found.bash"
+fi
+
