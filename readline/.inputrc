@@ -1,6 +1,8 @@
-#!/bin/sh
-# Jeffrey Carpenter <jefffrey.carp@gmail.com>
+# ~/.inputrc:jeff
 #
+
+# https://wiki.archlinux.org/title/Readline#History
+$include /etc/inputrc
 
 "\e[1~"	beginning-of-line # ^A
 "\e[4~"	end-of-line # ^E
@@ -12,10 +14,10 @@
 # this is actually equivalent to "\C-?": delete-char
 
 # Source: https://github.com/justfielding/dotfiles
-# set editing-mode vi
+set editing-mode vi
 # set blink-matching-paren on
 # set completion-ignore-case on
-# set expand-tilde off
+set expand-tilde on
 
 # Use Unicode & do NOT use the "8bit hack" to input/output non-ASCII characters
 # See http://code.google.com/p/iterm2/wiki/Keybindings
@@ -48,3 +50,38 @@ $if mode=vi
   "\e[1;5D"   backward-word
   "\e[1;5C"   forward-word
 $endif
+
+# https://wiki.archlinux.org/title/Readline#Colorized_completion
+# Color files by types
+# Note that this may cause completion text blink in some terminals (e.g. xterm).
+set colored-stats On
+# Append char to indicate type
+set visible-stats On
+# Mark symlinked directories
+set mark-symlinked-directories On
+# Color the common prefix
+set colored-completion-prefix On
+# Color the common prefix in menu-complete
+set menu-complete-display-prefix On
+
+# https://wiki.archlinux.org/title/Readline#Faster_completion
+set show-all-if-ambiguous on
+
+# Ensures that pasting into Readline inserts the clipboard as single string
+# of characters, instead of inserting characters as if they were entered
+# from the keyboard. This is a safety feature.
+set enable-bracketed-paste on
+
+# https://wiki.archlinux.org/title/Readline#Different_cursor_shapes_for_each_mode
+set show-mode-in-prompt on
+
+# This will set a block shaped cursor when in command mode and a pipe cursor
+# when in insert mode.
+$if term=linux
+  set vi-ins-mode-string \1\e[?0c\2
+  set vi-cmd-mode-string \1\e[?8c\2
+$else
+  set vi-ins-mode-string \1\e[6 q\2
+  set vi-cmd-mode-string \1\e[2 q\2
+$endif
+
