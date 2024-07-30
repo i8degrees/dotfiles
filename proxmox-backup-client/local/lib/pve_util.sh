@@ -141,11 +141,14 @@ is_proxmox_include() {
   ARG="$@"
   # ARG="$*"
 
-  # FIXME(JEFF): Re-write this without stdout or stderr; perhaps we can
-  # redirect echo output to /dev/null or so?
-  if ! echo "$ARG" | grep -q -i -e "$INCLUDE_DEV_STR"; then
+  if [[ "$ARG" =~ /"${INCLUDE_DEV_STR}"/ig ]]; then
     RESULT=1
   fi
+  # FIXME(JEFF): Re-write this without stdout or stderr; perhaps we can
+  # redirect echo output to /dev/null or so?
+  # if ! echo "$ARG" | grep -q -i -e "$INCLUDE_DEV_STR"; then
+    # RESULT=1
+  # fi
 
   return "$RESULT"
 }
@@ -158,11 +161,14 @@ is_proxmox_exclude() {
   ARG="$@"
   # ARG="$*"
 
-  # FIXME(JEFF): Re-write this without stdout or stderr; perhaps we can
-  # redirect echo output to /dev/null or so?
-  if ! echo "$ARG" | grep -q -i -e "$EXCLUDE_DEV_STR"; then
+  if [[ "$ARG" =~ /"${EXCLUDE_DEV_STR}"/ig ]]; then
     RESULT=1
   fi
+  # FIXME(JEFF): Re-write this without stdout or stderr; perhaps we can
+  # redirect echo output to /dev/null or so?
+  # if ! echo "$ARG" | grep -q -i -e "$EXCLUDE_DEV_STR"; then
+    # RESULT=1
+  # fi
 
   return "$RESULT"
 }
