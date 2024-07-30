@@ -215,7 +215,7 @@ run_cmd proxmox-backup-client login
 cleanup_passwords
 
 if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
-  INCLUDES=$(parse_root_includes $ROOT_INCLUDES)
+  INCLUDES=$(parse_inclusions $ROOT_INCLUDES)
 # else
   # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
   # its argument list?
@@ -224,7 +224,7 @@ if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
 fi
 
 if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
-  INCLUDES=$(parse_home_includes $HOME_INCLUDES)
+  INCLUDES=$(parse_inclusions $HOME_INCLUDES)
 # else
   # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
   # its argument list?

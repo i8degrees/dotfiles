@@ -70,50 +70,52 @@ to_proxmox_exclude() {
   echo "$buffer"
 }
 
-parse_root_includes() {
+parse_inclusions() {
   RESULT=""
+  ARG="$@"
 
-  ROOT_INCLUDES="$1"
-  if [ "$ROOT_INCLUDES" = "" ]; then
-    echo "$RESULT"
-    return 1
-  fi
-
-  # if echo "$ROOT_INCLUDES | grep -q -i -e '--include-dev'"; then
   # shellcheck disable=SC2086
-  RESULT=$(to_proxmox_include $ROOT_INCLUDES)
-
-  echo "$RESULT"
-}
-
-parse_home_includes() {
-  RESULT=""
-  HOME_INCLUDES="$1"
-
-  if [ "$HOME_INCLUDES" = "" ]; then
-    echo "$RESULT"
-    return 1
-  fi
-
-  # if echo "$HOME_INCLUDES | grep -q -i -e '--include-dev'"; then
-  # shellcheck disable=SC2086
-  RESULT=$(to_proxmox_include $HOME_INCLUDES)
-
+  RESULT=$(to_proxmox_include $ARG)
   echo "$RESULT"
 }
 
 parse_exclusions() {
   RESULT=""
+  ARG="$@"
 
-  EXCLUSIONS="$1"
-  if [ "$EXCLUSIONS" = "" ]; then
-    echo "$RESULT"
-    return 1
+  # shellcheck disable=SC2086
+  RESULT=$(to_proxmox_exclude $ARG)
+  echo "$RESULT"
+}
+
+# TODO(JEFF): This function needs to be added to test1.sh and tested thouroughly
+#
+# is_proxmox_include(list)
+is_proxmox_include() {
+  RESULT=0
+  ARG="$@"
+
+  # FIXME(JEFF): Re-write this without stdout or stderr; perhaps we can
+  # redirect echo output to /dev/null or so?
+  if ! echo "$ARG | grep -q -i -e '--include-dev'"; then
+    RESULT=1
   fi
 
-  # if echo "$EXCLUSIONS | grep -q -i -e '--exclude'"; then
-  # shellcheck disable=SC2086
-  RESULT=$(to_proxmox_exclude $EXCLUSIONS)
+  return "$RESULT"
+}
 
-  echo "$RESULT"
+# TODO(JEFF): This function needs to be added to test2.sh and tested thouroughly
+#
+# is_proxmox_exclude(list)
+is_proxmox_exclude() {
+  RESULT=0
+  ARG="$@"
+
+  # FIXME(JEFF): Re-write this without stdout or stderr; perhaps we can
+  # redirect echo output to /dev/null or so?
+  if ! echo "$ARG | grep -q -i -e '--exclude'"; then
+    RESULT=1
+  fi
+
+  return "$RESULT"
 }
