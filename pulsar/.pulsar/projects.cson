@@ -2,42 +2,35 @@
   {
     title: "dotfiles"
     paths: [
-      "/home/jeff/Projects/i8degrees/dotfiles.git"
+      "/home/jeff/dotfiles.git"
     ]
-    color: "grey"
-  }
-  {
-    title: "robocopy"
-    paths: [
-      "/home/jeff/Projects/i8degrees-net/robocopy.git"
-    ]
-    color: "pink"
+    color: "green"
   }
   {
     title: "notes"
     paths: [
-      "/home/jeff/Projects/i8degrees/Notes.git"
+      "/home/jeff/Notes.git"
     ]
     color: "grey"
   }
   {
     title: "proxmox-notes"
     paths: [
-      "/home/jeff/Projects/proxmox-notes.git"
+      "/home/jeff/proxmox-notes.git"
     ]
     color: "grey"
   }
   {
     title: "ttcards"
     paths: [
-      "/home/jeff/Projects/i8degrees/ttcards.git"
+      "/mnt/fs1/Projects/ttcards.git"
     ]
     color: "grey"
   }
   {
     title: "nomlib"
     paths: [
-      "/home/jeff/Projects/i8degrees/nomlib.git"
+      "/mnt/fs1/Projects/nomlib.git"
     ]
     color: "grey"
   }
@@ -45,7 +38,14 @@
     title: "messagebin"
     group: "git/i8degrees-net"
     paths: [
-      "/home/jeff/Projects/i8degrees-net/messagebin.git"
+      "/mnt/fs1/Projects/i8degrees-net/messagebin.git"
+    ]
+    color: "pink"
+  }
+  {
+    title: "robocopy"
+    paths: [
+      "/home/jeff/Projects/i8degrees-net/robocopy.git"
     ]
     color: "pink"
   }
