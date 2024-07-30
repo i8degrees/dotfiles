@@ -116,19 +116,6 @@ EXCLUSIONS_LIST=""
 REPOSITORY_URI=""
 INCLUDES=""
 
-# IMPORTANT(JEFF): The following two variables can also be referred to from
-# their respective file paths as commented below.
-# ~/.config/proxmox-backup/pbs1.password
-# FIXME(JEFF): Ensure that we understand this exception
-# shellcheck disable=SC2035
-DEFAULT_ROOT_INCLUDES=$(to_proxmox_include /boot /boot/efi /efi /opt /opt/bin /opt/sbin /opt/go /opt/python3 /opt/share /usr/local/bin /usr/local/src /var/lib /var/log)
-# FIXME(JEFF): Ensure that we understand this exception
-# shellcheck disable=SC2035
-DEFAULT_HOME_INCLUDES=$(to_proxmox_include /home /home/jeff /home/api /home/scripts)
-# FIXME(JEFF): Ensure that we understand this exception
-# shellcheck disable=SC2035
-DEFAULT_EXCLUSIONS=$(to_proxmox_exclude /dev/ /mnt/ /net/ /run/ /sys/ /tmp/ /cifs/ /misc/ /proc/ /media/ /usr/src/ /var/log/ /var/run/ /timeshift /var/cache /var/lock/ /var/mail/ /var/spool/ /home/recoll/ /home/timeshift/ /var/cache/man/ /var/tmp/pamac/ /var/cache/pamac/ /var/cache/pacman/ /var/cache/rclone/ /var/cache/fscache/ /var/cache/pkgfile/ /var/cache/private/ /var/cache/ /var/lib/systemd/coredump /var/tmp/pamac-build-jeff/ /dev /etc/mtab /home/test/.cache/ /media /mnt /proc /run /sys /timeshift /var/cache/ /var/crash /var/lib/flatpak /var/lock /var/log /var/run /var/spool /var/tmp /lost+found *.cache* *node_modules* /home/linuxbrew/ /home/test /home/jeff/Backups/borg.json /home/jeff/Backups/virgo.lan /home/jeff/Backups/scorpio /home/jeff/Backups/fs1 /home/jeff/Projects/sunshine_t1_elite /home/jeff/Projects/syn-net/ /home/jeff/.local/share/akonadi/ /home/jeff/.local/share/docker/ /home/jeff/.local/share/fsearch /home/jeff/.local/share/NuGet/ /home/jeff/.local/share/baloo/ /home/jeff/Videos/pr0n/ /home/jeff/.docker/desktop/vms /home/jeff/.docker/desktop/log /home/jeff/Software/ /home/jeff/.local/share/Trash/ /root/.cache/ /root/.local/share/Trash /Cloud *Downloads* /var/cache/private/ /var/tmp/rclone/ /home/jeff/.config/google-chrome /home/jeff/.config/android-messages-desktop /home/jeff/.config/Bitwarden .android .audacity-data .cache .cargo .cddb .config/chromium .julia .local/bin .local/share/baloo .local/share/Steam .local/share/Trash .npm .pki .steam *.socket* .Xauthority .steampid)
-
 if [ "$ARG_HOST" != "" ]; then
   HOST="$ARG_HOST"
 fi
@@ -215,42 +202,22 @@ run_cmd proxmox-backup-client login
 cleanup_passwords
 
 if [ "$BACKUP_NAME" = "system" ]; then
-
   if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
     INCLUDES=$(parse_inclusions $ROOT_INCLUDES)
-  # else
-    # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
-    # its argument list?
-    # shellcheck disable=SC2086
-    # INCLUDES=$DEFAULT_ROOT_INCLUDES
   fi
 elif [ "$BACKUP_NAME" = "home" ]; then
-
   if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
     INCLUDES=$(parse_inclusions $HOME_INCLUDES)
-  # else
-    # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
-    # its argument list?
-    # shellcheck disable=SC2086
-    # INCLUDES=$DEFAULT_HOME_INCLUDES
   fi
 fi
+
+[ -n "$DEBUG" ] && echo $INCLUDES
 
 if [[ -n "$EXCLUSIONS" ]] && [[ "$EXCLUSIONS" != "" ]]; then
   EXCLUSIONS_LIST=$(parse_exclusions $EXCLUSIONS)
-# else
-  # EXCLUSIONS_LIST=$DEFAULT_EXCLUSIONS
 fi
 
-if [ -e "/.pxarexclude" ]; then
-  echo "INFO: Found /.pxarexclude."
-  echo
-fi
-
-if [ -e "$HOME/.pxarexclude" ]; then
-  echo "INFO: Found $HOME/.pxarexclude."
-  echo
-fi
+[ -n "$DEBUG" ] && echo $EXCLUSIONS_LIST
 
 EXTRA_ARGS=()
 if [ "$BACKUP_NAME" = "home" ]; then
