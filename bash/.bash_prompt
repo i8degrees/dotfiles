@@ -8,7 +8,7 @@
 # This value is used as the number of trailing directory components to retain
 # when expanding the \w and \W prompt string escapes.
 # Characters removed are replaced with an ellipsis.
-PROMPT_DIRTRIM=3; export PROMPT_DIRTRIM
+PROMPT_DIRTRIM=3
 
 # username@hostname
 #PROMPT_COMMAND='[\u@\h \W]\$'
