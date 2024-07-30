@@ -74,6 +74,8 @@ parse_inclusions() {
   RESULT=""
   ARG="$@"
 
+  # if $(is_proxmox_include $ARG) ]; then
+  # else
   # shellcheck disable=SC2086
   RESULT=$(to_proxmox_include $ARG)
   echo "$RESULT"
@@ -83,6 +85,8 @@ parse_exclusions() {
   RESULT=""
   ARG="$@"
 
+  # if $(is_proxmox_exclude $ARG) ]; then
+  # else
   # shellcheck disable=SC2086
   RESULT=$(to_proxmox_exclude $ARG)
   echo "$RESULT"
