@@ -1,3 +1,14 @@
+# ~/.bash_prompt:jeff
+#
+#
+
+# 1. https://jichu4n.com/posts/shortening-paths-in-the-bash-prompt-with-prompt_dirtrim/
+# 2. https://www.gnu.org/software/bash/manual/html_node/Bash-Variables.html
+#
+# This value is used as the number of trailing directory components to retain
+# when expanding the \w and \W prompt string escapes.
+# Characters removed are replaced with an ellipsis.
+PROMPT_DIRTRIM=3; export PROMPT_DIRTRIM
 
 # username@hostname
 #PROMPT_COMMAND='[\u@\h \W]\$'
