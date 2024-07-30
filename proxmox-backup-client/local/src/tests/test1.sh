@@ -24,10 +24,45 @@ ret=$(to_proxmox_include $TEST1)
 echo $ret
 echo
 
+# if [ -z "$ret" ]; then
+  # exit 2
+# fi
+
+# if [ "$ret" != "--include-dev /var/cache/apt --include-dev /var/tmp --include-dev /var/lock --include-dev /var/run --include-dev /var/mail --include-dev /home/recoll --include-dev /home/test" ]; then
+  # echo $ret
+  # exit 1
+# fi
+
 echo parse_inclusions
 INCLUDES=$(parse_inclusions $TEST1)
 echo $INCLUDES
 
+# assert "Parsed input list with output" "1 == "$INCLUDES"
+# assert "Parsed input list with output" "0 == ""
+# assert "Returns 200 response" "200 == $(curl -sLo /dev/null -I -w '%{http_code}' christianwood.net)"
+
 echo "parse_inclusions(null)"
 INCLUDES=$(parse_inclusions )
 echo $INCLUDES
+
+# assertTrue $INCLUDES ""
+
+echo generate_build_version
+generate_build_version
+echo
+
+echo generate_build_version false
+generate_build_version false
+echo
+
+echo generate_build_version 0
+generate_build_version 0
+echo
+
+echo generate_build_version true
+generate_build_version true
+echo
+
+echo generate_build_version 1
+generate_build_version 1
+echo
