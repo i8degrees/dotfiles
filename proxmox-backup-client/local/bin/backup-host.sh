@@ -25,7 +25,7 @@
 
 if [ -n "$DEBUG" ]; then
   set -o errexit
-  #set -o nounset
+  # set -o nounset
   #set -o pipefail
   #set -o xtrace
 fi
@@ -62,52 +62,10 @@ fi
 # shellcheck disable=SC1090
 source "$LIB_PATH"
 
-# Specific cleanup code for sanitizing the passwords from memory; this
-# function is safe to be called explicitly.
-#
-# void cleanup_passwords()
-cleanup_passwords() {
-   PBS_PASSWORD=""; unset PBS_PASSWORD
-   PASSPHRASE=""; unset PASSPHRASE
-}
-
-# Trap function; this function is also safe to call directly.
-#
-# void cleanup()
-cleanup() {
-   run_cmd proxmox-backup-client logout
-   cleanup_passwords
-   REPOSITORY=""; unset REPOSITORY
-   EXCLUSIONS=""; unset EXCLUSIONS
-}
-
 # IMPORTANT(JEFF): Always try to ensure that we leave our environment
 # sanitized of any sensitive data.
 trap 'cleanup' SIGINT
 trap 'cleanup' ERR
-
-# Print usage information, and optionally, when an exit code is provided,
-# exit the script with the specified exit code.
-#
-# exit_code - unsigned integer
-#
-# usage_info(exit_code)
-usage_info() {
-  script_name="$(basename "${0}")"
-  exit_code="$1"
-
-  echo -e "Usage:\n"
-  echo -e "\t${script_name} [OPTIONS] <system|home> <HOSTNAME>\n"
-  echo -e "Options:\n"
-  echo -e "\t-h,  --help\tDisplay this help text and exit\n"
-  echo -e "\t-X,  --exclusion-file\tProvide an exclusion list file\n"
-  echo -e "\t-f,  --file\tLoad host-specific environment\n"
-  echo
-
-  if [ "$exit_code" != "" ]; then
-    exit "$exit_code"
-  fi
-}
 
 HOST=$(hostname --short)
 ARG_HOST="$2"
@@ -120,14 +78,21 @@ if [ "$ARG_HOST" != "" ]; then
   HOST="$ARG_HOST"
 fi
 
+if [[ "$BACKUP_NAME" =~ "version" ]]; then
+  generate_build_version "true"
+  exit 0
+elif [[ "$BACKUP_NAME" =~ "help" ]]; then
+  usage_info 0
+fi
+
 if [ "$BACKUP_NAME" = "" ]; then
   BACKUP_NAME="home"
 fi
 
 if [[ "$BACKUP_NAME" = "system" ]] && [[ ! "$(id -u)" = "0" ]]; then
-   echo "CRITICAL: This script must be ran as the superuser, root."
+   echo "CRITICAL: This script should be executed as root."
    echo
-   #exit 2
+   exit 255
 fi
 
 # FIXME(JEFF): Verify that the file permissions of this file are sane!
@@ -175,7 +140,9 @@ fi
 
 # proxmox-backup-client demands this of us to be set ahead of executing the
 # backup client
+# shellcheck disable=SC1034
 PBS_PASSWORD="$PASSPHRASE"; export PBS_PASSWORD
+# shellcheck disable=SC1034
 PBS_REPOSITORY="$REPOSITORY_URI"; export PBS_REPOSITORY
 
 echo "INFO: Using repository at ${REPOSITORY_URI} for $HOST..."
@@ -193,51 +160,34 @@ if [ ! -d "$XDG_RUNTIME_DIR" ]; then
   exit 2
 fi
 
-# example pre-hook
-# shellcheck disable=SC2034
-PRE_HOOK_EXEC="$HOME/local/etc/proxmox-backup/hooks/pre_hook.sh"
-#[ -x "$PRE_HOOK_EXEC" ] && run_cmd "$PRE_HOOK_EXEC"
+[ "$HOOKS_ENABLED" = "1" ] && [ -x "$PRE_HOOK_EXEC" ] && run_cmd "$PRE_HOOK_EXEC"
 
 run_cmd proxmox-backup-client login
 cleanup_passwords
 
 if [ "$BACKUP_NAME" = "system" ]; then
   if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
+    # shellcheck disable=SC2034
     INCLUDES=$(parse_inclusions $ROOT_INCLUDES)
   fi
 elif [ "$BACKUP_NAME" = "home" ]; then
   if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
+    # shellcheck disable=SC2034
     INCLUDES=$(parse_inclusions $HOME_INCLUDES)
   fi
 fi
 
-[ -n "$DEBUG" ] && echo $INCLUDES
-
 if [[ -n "$EXCLUSIONS" ]] && [[ "$EXCLUSIONS" != "" ]]; then
+  # shellcheck disable=SC2034
   EXCLUSIONS_LIST=$(parse_exclusions $EXCLUSIONS)
 fi
 
-[ -n "$DEBUG" ] && echo $EXCLUSIONS_LIST
+RUN_CMD=$(build_run_cmd "$BACKUP_NAME" "$NAMESPACE")
+[ -n "$DEBUG" ] && echo "proxmox-backup-client backup ${RUN_CMD[*]}"
 
-EXTRA_ARGS=()
-if [ "$BACKUP_NAME" = "home" ]; then
-  # shellcheck disable=SC2206
-  EXTRA_ARGS+=("${HOST}_home.pxar:/home" $EXCLUSIONS_LIST $INCLUDES)
-else
-  # shellcheck disable=SC2206
-  EXTRA_ARGS+=("${HOST}_root.pxar:/" $EXCLUSIONS_LIST $INCLUDES)
-fi
+run_cmd proxmox-backup-client backup "${RUN_CMD[@]}"
 
-if [ -n "$NAMESPACE" ]; then
-  EXTRA_ARGS+=("--ns" "$NAMESPACE")
-fi
-
-echo "proxmox-backup-client backup ${EXTRA_ARGS[@]}"
-run_cmd proxmox-backup-client backup "${EXTRA_ARGS[@]}"
-
-# example post-hook
 # shellcheck disable=SC2034
-POST_HOOK_EXEC="$HOME/local/etc/proxmox-backup/hooks/post_hook.sh"
-#[ -x "$POST_HOOK_EXEC" ] && run_cmd "$POST_HOOK_EXEC"
+[ "$HOOKS_ENABLED" = "1" ] && [ -x "$POST_HOOK_EXEC" ] && run_cmd "$POST_HOOK_EXEC"
 
 cleanup
