@@ -214,22 +214,26 @@ PRE_HOOK_EXEC="$HOME/local/etc/proxmox-backup/hooks/pre_hook.sh"
 run_cmd proxmox-backup-client login
 cleanup_passwords
 
-if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
-  INCLUDES=$(parse_inclusions $ROOT_INCLUDES)
-# else
-  # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
-  # its argument list?
-  # shellcheck disable=SC2086
-  # INCLUDES=$DEFAULT_ROOT_INCLUDES
-fi
+if [ "$BACKUP_NAME" = "system" ]; then
 
-if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
-  INCLUDES=$(parse_inclusions $HOME_INCLUDES)
-# else
-  # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
-  # its argument list?
-  # shellcheck disable=SC2086
-  # INCLUDES=$DEFAULT_HOME_INCLUDES
+  if [[ -n "$ROOT_INCLUDES" ]] && [[ "$ROOT_INCLUDES" != "" ]]; then
+    INCLUDES=$(parse_inclusions $ROOT_INCLUDES)
+  # else
+    # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
+    # its argument list?
+    # shellcheck disable=SC2086
+    # INCLUDES=$DEFAULT_ROOT_INCLUDES
+  fi
+elif [ "$BACKUP_NAME" = "home" ]; then
+
+  if [[ -n "$HOME_INCLUDES" ]] && [[ "$HOME_INCLUDES" != "" ]]; then
+    INCLUDES=$(parse_inclusions $HOME_INCLUDES)
+  # else
+    # FIXME(JEFF): Adapt to_proxmox_include function to support quotes in
+    # its argument list?
+    # shellcheck disable=SC2086
+    # INCLUDES=$DEFAULT_HOME_INCLUDES
+  fi
 fi
 
 if [[ -n "$EXCLUSIONS" ]] && [[ "$EXCLUSIONS" != "" ]]; then
