@@ -8,10 +8,43 @@ set -o errexit
 #set -o pipefail
 #set -o xtrace
 
-run_cmd() {
-  local cmd="$*"
+# globals
+readonly INCLUDE_DEV_STR="--include-dev" # proxmox-backup-client v3.2.x
+readonly EXCLUDE_DEV_STR="--exclude" # proxmox-backup-client v3.2.x
 
-  if [ "$DEBUG" = "1" ] || [ "$DRY_RUN" = "1" ] || [ "$DRY_RUN" = "true" ]; then
+# params: Message, Assertion
+#
+# assert(messageStr, assertion)
+#
+# 1. assert "Passes when true" "1 == 1"
+# 2. assert "Fails when false" "1 == 2"
+# http://tldp.org/LDP/abs/html/debugging.html#ASSERT
+assert() {
+  E_PARAM_ERR=98
+  E_ASSERT_FAILED=99
+
+  if [ -z "$2" ]
+  then
+    return $E_PARAM_ERR
+  fi
+
+  message=$1
+  assertion=$2
+
+  if [ ! "$assertion" ]
+  then
+    echo "❌ $message"
+    exit $E_ASSERT_FAILED
+  else
+    echo "✅ $message"
+    return
+  fi
+}
+
+run_cmd() {
+  local cmd="$*" # array as a string
+
+  if [ "$DRY_RUN" = "1" ] || [ "$DRY_RUN" = "true" ]; then
     echo -e "DRY: ${cmd}\n"
     return 0
   else
@@ -30,7 +63,9 @@ run_cmd() {
 # from_proxmox_include(path)
 from_proxmox_include() {
   path="$@"
-  echo "$path" | sed 's/--include-dev '//ig
+  # path="$*"
+  # echo "$path" | sed 's/--include-dev '//ig
+  printf '%s' "$path" | sed 's/--include-dev '/''/ig
 }
 
 # FIXME(JEFF): Adapt function to support quotes in its argument list?
@@ -42,7 +77,8 @@ to_proxmox_include() {
   # echo "$path" | sed s/$path/"--include-dev $path"/ig
   buffer=()
   for path in "$@"; do
-    buffer+=$(echo "--include-dev $path ")
+    buffer+=$(printf '%s' "$INCLUDE_DEV_STR $path ")
+    # buffer+=$(echo "--include-dev $path ")
   done
   echo "$buffer"
 }
@@ -54,7 +90,9 @@ to_proxmox_include() {
 # from_proxmox_exclude(path)
 from_proxmox_exclude() {
   path="$@"
-  echo "$path" | sed 's/--exclude '/''/ig
+  # path="$*"
+  # echo "$path" | sed 's/--exclude '/''/ig
+  printf '%s' "$path" | sed 's/--exclude '/''/ig
 }
 
 # --exclude <path>
@@ -65,7 +103,8 @@ to_proxmox_exclude() {
   # echo "$path" | sed "s/$path/--exclude $path"/ig
   buffer=()
   for path in "$@"; do
-    buffer+=$(echo "--exclude $path ")
+    buffer+=$(printf '%s' "$EXCLUDE_DEV_STR $path ")
+    # buffer+=$(echo "--exclude $path ")
   done
   echo "$buffer"
 }
@@ -73,6 +112,7 @@ to_proxmox_exclude() {
 parse_inclusions() {
   RESULT=""
   ARG="$@"
+  # ARG="$*"
 
   # if $(is_proxmox_include $ARG) ]; then
   # else
@@ -84,6 +124,7 @@ parse_inclusions() {
 parse_exclusions() {
   RESULT=""
   ARG="$@"
+  # ARG="$*"
 
   # if $(is_proxmox_exclude $ARG) ]; then
   # else
@@ -98,10 +139,11 @@ parse_exclusions() {
 is_proxmox_include() {
   RESULT=0
   ARG="$@"
+  # ARG="$*"
 
   # FIXME(JEFF): Re-write this without stdout or stderr; perhaps we can
   # redirect echo output to /dev/null or so?
-  if ! echo "$ARG | grep -q -i -e '--include-dev'"; then
+  if ! echo "$ARG" | grep -q -i -e "$INCLUDE_DEV_STR"; then
     RESULT=1
   fi
 
@@ -114,12 +156,105 @@ is_proxmox_include() {
 is_proxmox_exclude() {
   RESULT=0
   ARG="$@"
+  # ARG="$*"
 
   # FIXME(JEFF): Re-write this without stdout or stderr; perhaps we can
   # redirect echo output to /dev/null or so?
-  if ! echo "$ARG | grep -q -i -e '--exclude'"; then
+  if ! echo "$ARG" | grep -q -i -e "$EXCLUDE_DEV_STR"; then
     RESULT=1
   fi
 
   return "$RESULT"
+}
+
+# Print usage information, and optionally, when an exit code is provided,
+# exit the script with the specified exit code.
+#
+# exit_code - unsigned integer
+#
+# usage_info(exit_code)
+usage_info() {
+  script_name="$(basename "${0}")"
+  version=$(generate_build_version "true")
+  exit_code="$1"
+
+  echo -e "Usage:\n"
+  echo -e "\t${script_name} v${version} [OPTIONS] <system|home> <HOSTNAME>\n"
+  echo -e "Options:\n"
+  echo -e "\t-h,  --help\tDisplay this help text and exit\n"
+  echo -e "\t-X,  --exclusion-file\tProvide an exclusion list file\n"
+  echo -e "\t-f,  --file\tLoad host-specific environment\n"
+  echo
+
+  if [ "$exit_code" != "" ]; then
+    exit "$exit_code"
+  fi
+}
+
+# Use the sha commit of the git repo at HEAD~0 as a version string
+#
+# shorten_str (optional) - boolean value
+#
+# returns a string that is the first 41 bytes of the sha commit when
+# `shorten_str` is *false*
+# returns a string that is the first 7 bytes of the sha commit when
+# `shorten_str` is *true*.
+#
+# generate_build_version(bool shorten_str="false")
+generate_build_version() {
+  SHORT_STR="$1"
+
+  VERSION_HEAD=$(git rev-parse HEAD)
+  # VERSION_DEV=$(git rev-parse dev)
+  if [ -z "$SHORT_STR" ] || [ "$SHORT_STR" != "true" ] && [ "$SHORT_STR" != "1" ]; then
+    echo "${VERSION_HEAD}"
+  else
+    echo "${VERSION_HEAD:0:7}"
+  fi
+}
+
+# Specific cleanup code for sanitizing the passwords from memory; this
+# function is safe to be called explicitly.
+#
+# void cleanup_passwords()
+cleanup_passwords() {
+  # shellcheck disable=SC2034
+  PBS_PASSWORD=""; unset PBS_PASSWORD
+  # shellcheck disable=SC2034
+  PASSPHRASE=""; unset PASSPHRASE
+}
+
+# Trap function; this function is also safe to call directly.
+#
+# void cleanup()
+cleanup() {
+  run_cmd proxmox-backup-client logout
+  cleanup_passwords
+
+  # shellcheck disable=SC2034
+  REPOSITORY=""; unset REPOSITORY
+  # shellcheck disable=SC2034
+  EXCLUSIONS=""; unset EXCLUSIONS
+}
+
+build_run_cmd() {
+  ARGS=()
+  readonly TYPE="$1"
+  readonly NS="$2"
+
+  if [ "$TYPE" = "home" ]; then
+    # shellcheck disable=SC2206
+    ARGS+=("${HOST}_home.pxar:/home" $EXCLUSIONS_LIST $INCLUDES)
+  elif [ "$TYPE" = "system" ]; then
+    # shellcheck disable=SC2206
+    ARGS+=("${HOST}_root.pxar:/" $EXCLUSIONS_LIST $INCLUDES)
+  # else
+    # ARGS+=("$TYPE" $EXCLUSIONS_LIST $INCLUDES)
+  fi
+
+  if [ -n "$NS" ]; then
+    ARGS+=("--ns" "$NS")
+  fi
+
+  echo "${ARGS[*]}"
 }
