@@ -46,7 +46,7 @@
   "ide-powershell":
     developer: {}
   "linter-markdownlint":
-    executablePath: "/home/jeff/.gem/ruby/3.0.0/bin/mdl"
+    executablePath: "/home/jeff/.rbenv/shims/mdl"
     severity: "error"
   "linter-ui-default":
     panelHeight: 227.40000915527344
