@@ -7,6 +7,8 @@
 # Local interactive bash (1) shell config.
 #
 
+[ -z "$PS1" ] && return
+
 if [ -x "$HOME/.bash_prompt" ]; then
   . "$HOME/.bash_prompt"
 fi
@@ -301,4 +303,3 @@ fi
 if [ -x "$HOME/.bash_completions" ]; then
   . "$HOME/.bash_completions"
 fi
-
