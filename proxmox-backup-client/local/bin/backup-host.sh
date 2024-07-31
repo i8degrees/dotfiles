@@ -67,6 +67,7 @@ source "$LIB_PATH"
 trap 'cleanup' SIGINT
 trap 'cleanup' ERR
 
+PASSFILE="${HOME}/.config/proxmox-backup/pbs1.password"
 HOST=$(hostname --short)
 ARG_HOST="$2"
 BACKUP_NAME="$1" # root | home
@@ -85,14 +86,16 @@ elif [[ "$BACKUP_NAME" =~ "help" ]]; then
   usage_info 0
 fi
 
-if [ "$BACKUP_NAME" = "" ]; then
-  BACKUP_NAME="home"
-fi
+# if [ "$BACKUP_NAME" = "" ]; then
+  # BACKUP_NAME="home"
+# fi
+
+echo "$(script_name) v$(generate_build_version 1)"
 
 if [[ "$BACKUP_NAME" = "system" ]] && [[ ! "$(id -u)" = "0" ]]; then
-   echo "CRITICAL: This script should be executed as root."
+   echo "WARNING: This script should be executed as root."
    echo
-   exit 255
+   #exit 255
 fi
 
 # FIXME(JEFF): Verify that the file permissions of this file are sane!
@@ -106,7 +109,6 @@ fi
   #exit 4
 #fi
 
-PASSFILE="${HOME}/.config/proxmox-backup/pbs1.password"
 if [ -f "$PASSFILE" ]; then
   echo "INFO: Loading environment from the file at ${PASSFILE}..."
   echo
@@ -145,7 +147,7 @@ PBS_PASSWORD="$PASSPHRASE"; export PBS_PASSWORD
 # shellcheck disable=SC1034
 PBS_REPOSITORY="$REPOSITORY_URI"; export PBS_REPOSITORY
 
-echo "INFO: Using repository at ${REPOSITORY_URI} for $HOST..."
+echo "INFO: Using repository at ${REPOSITORY_URI}..."
 
 # IMPORTANT(JEFF): proxmox-backup-client will not start without
 # XDG_RUNTIME_DIR being declared and setup proper.
@@ -175,6 +177,14 @@ elif [ "$BACKUP_NAME" = "home" ]; then
     # shellcheck disable=SC2034
     INCLUDES=$(parse_inclusions $HOME_INCLUDES)
   fi
+else
+  echo "TODO(JEFF): Handle this case -- we must assume that the user wishes "
+  echo "to use their own 'backup-spec' (the first argument after backup to "
+  echo "the client)."
+  echo
+  INCLUDES=$(parse_inclusions $@)
+  BACKUP_NAME="$1"
+  [ -z "$DEBUG" ] && usage_info 1
 fi
 
 if [[ -n "$EXCLUSIONS" ]] && [[ "$EXCLUSIONS" != "" ]]; then
@@ -183,7 +193,6 @@ if [[ -n "$EXCLUSIONS" ]] && [[ "$EXCLUSIONS" != "" ]]; then
 fi
 
 RUN_CMD=$(build_run_cmd "$BACKUP_NAME" "$NAMESPACE")
-[ -n "$DEBUG" ] && echo "proxmox-backup-client backup ${RUN_CMD[*]}"
 
 run_cmd proxmox-backup-client backup "${RUN_CMD[@]}"
 
