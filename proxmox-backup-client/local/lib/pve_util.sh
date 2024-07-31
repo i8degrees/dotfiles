@@ -173,6 +173,10 @@ is_proxmox_exclude() {
   return "$RESULT"
 }
 
+script_name() {
+  echo $(basename "$0")
+}
+
 # Print usage information, and optionally, when an exit code is provided,
 # exit the script with the specified exit code.
 #
@@ -180,12 +184,12 @@ is_proxmox_exclude() {
 #
 # usage_info(exit_code)
 usage_info() {
-  script_name="$(basename "${0}")"
+  name=$(script_name)
   version=$(generate_build_version "true")
   exit_code="$1"
 
   echo -e "Usage:\n"
-  echo -e "\t${script_name} v${version} [OPTIONS] <system|home> <HOSTNAME>\n"
+  echo -e "\t${name} v${version} [OPTIONS] <system|home> <HOSTNAME>\n"
   echo -e "Options:\n"
   echo -e "\t-h,  --help\tDisplay this help text and exit\n"
   echo -e "\t-X,  --exclusion-file\tProvide an exclusion list file\n"
@@ -209,13 +213,10 @@ usage_info() {
 # generate_build_version(bool shorten_str="false")
 generate_build_version() {
   SHORT_STR="$1"
-
-  VERSION_HEAD=$(git rev-parse HEAD)
-  # VERSION_DEV=$(git rev-parse dev)
   if [ -z "$SHORT_STR" ] || [ "$SHORT_STR" != "true" ] && [ "$SHORT_STR" != "1" ]; then
-    echo "${VERSION_HEAD}"
+    echo "$(git rev-parse HEAD~0)"
   else
-    echo "${VERSION_HEAD:0:7}"
+    echo "$(git rev-parse --short HEAD~0)"
   fi
 }
 
