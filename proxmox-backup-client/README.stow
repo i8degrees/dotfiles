@@ -34,3 +34,9 @@ systemctl --user status proxmox-backup-client@jeff.timer
 #systemctl --user start proxmox-backup-client@jeff.service
 ```
 
+```shell
+pushd "~/dotfiles.git/proxmox-backup-client/"
+mkdir -p "/root/.config/proxmox-backup"
+cp -av ./local/share/proxmox-backup/pxarexclude.root /.pxarexclude
+cp -av ./.config/proxmox-backup/pbs1.password.dist /root/.config/proxmox-backup/pbs1.password
+```
