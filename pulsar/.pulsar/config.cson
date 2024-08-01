@@ -52,7 +52,10 @@
     panelHeight: 227.40000915527344
     useBusySignal: false
   "markdown-preview":
+    allowUnsafeProtocols: true
     breakOnSingleNewline: true
+    gitHubStyleMode: "dark"
+    useGitHubStyle: true
   "platformio-ide-terminal":
     core:
       mapTerminalsTo: "Folder"
