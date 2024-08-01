@@ -25,7 +25,7 @@ services:
     restart: unless-stopped
     image: "fdrake/proxmox-backup-client:latest"
     container_name: "pbs-1"
-    command: "/config/pbc.sh" # proxmox-backup-client command to run
+    command: "/config/pbc.sh" # proxmox-backup-client sub-command to run
     tmpfs:
       - /tmp:rw # Error 95 Operation Denied
     environment:

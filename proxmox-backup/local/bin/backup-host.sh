@@ -8,10 +8,6 @@
 # Otherwise, this script becomes interactive as it must ask the user
 # for a password to login before it can initiate the backup.
 #
-# 2. TODO(JEFF): Rename systemd unit files; from
-# `proxmox-backup-client@.(service|timer)` to `proxmox-backup@.(service|timer)`.
-# Update installation documentation at the said unit files.
-#
 # 3. TODO(JEFF): Rename pbs1.password to pbs1.passwd
 #
 # 4. TODO(JEFF): Integrate the usage of this script into our Docker Compose
@@ -44,7 +40,7 @@ fi
 LIB_PATH=""
 if [ -x "/opt/sbin/pve_util.sh" ]; then # make install
   LIB_PATH="/opt/sbin/pve_util.sh"
-elif [ -x "$HOME/local/lib/pve_util.sh" ]; then # stow proxmox-backup-client
+elif [ -x "$HOME/local/lib/pve_util.sh" ]; then # stow proxmox-backup
   LIB_PATH="$HOME/local/lib/pve_util.sh"
 fi
 
@@ -141,7 +137,7 @@ if [ "$REPOSITORY_URI" = "" ]; then
 fi
 
 # proxmox-backup-client demands this of us to be set ahead of executing the
-# backup client
+# client
 # shellcheck disable=SC1034
 PBS_PASSWORD="$PASSPHRASE"; export PBS_PASSWORD
 # shellcheck disable=SC1034

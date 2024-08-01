@@ -1,8 +1,8 @@
 #
 #
-# systemctl enable proxmox-backup-client@jeff.timer
-# systemctl start proxmox-backup-client@jeff.timer
-# systemctl start proxmox-backup-client@jeff.service
+# systemctl enable proxmox-backup@jeff.timer
+# systemctl start proxmox-backup@jeff.timer
+# systemctl start proxmox-backup@jeff.service
 #
 
 [Unit]
