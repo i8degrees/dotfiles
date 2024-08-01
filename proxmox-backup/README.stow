@@ -1,0 +1,42 @@
+---
+created: 2024-07-19T16:13:00+05:00
+modified: 2024-07-19T16:13:00+05:00
+editor: vim
+---
+
+# proxmox-backup
+
+## usage
+
+* `$HOME/local/bin/backup-host.sh <system|home>`
+* `$HOME/.config/proxmox-backup/pbs1.password`
+* `/var/lib/proxmox-backup/pbs1.password`
+
+### setup
+
+#### activate systemd units
+
+```shell
+pushd "~/dotfiles.git/proxmox-backup/.config/systemd/system/"
+systemctl enable proxmox-backup@root.timer
+systemctl enable proxmox-backup@root.service
+systemctl start proxmox-backup@root.timer
+systemctl status proxmox-backup@root.timer
+#systemctl start proxmox-backup@root.service
+```
+
+```shell
+pushd "~/dotfiles.git/proxmox-backup/.config/systemd/user/"
+systemctl --user enable proxmox-backup@jeff.timer
+systemctl --user enable proxmox-backup@jeff.service
+systemctl --user start proxmox-backup@jeff.timer
+systemctl --user status proxmox-backup@jeff.timer
+#systemctl --user start proxmox-backup@jeff.service
+```
+
+```shell
+pushd "~/dotfiles.git/proxmox-backup/"
+mkdir -p "/root/.config/proxmox-backup"
+cp -av ./local/share/proxmox-backup/pxarexclude.root /.pxarexclude
+cp -av ./.config/proxmox-backup/pbs1.password.dist /root/.config/proxmox-backup/pbs1.password
+```
