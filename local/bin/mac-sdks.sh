@@ -1,5 +1,5 @@
 #!/bin/sh
-# Jeffrey Carpenter <i8degrees@gmail.com>
+# Jeffrey Carpenter <1329364+i8degrees@users.noreply.github.com>
 
 function usage_info()
 {
