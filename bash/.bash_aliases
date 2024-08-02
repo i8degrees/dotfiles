@@ -326,7 +326,7 @@ elif [[ -n "$EDITOR" ]]; then
   alias edit="$EDITOR $*"
 fi
 
-if [[ "$(alias edit)" ]]; then
+if [ "$(type -t edit)" != 'alias' ]; then
   alias e='edit $@'
 fi
 
@@ -345,17 +345,17 @@ elif [[ -x "$TIV_BIN" ]]; then
   alias video='echo Please install the timg package for video support.'
 fi
 
-if [[ "$(alias image)" ]]; then
+if [ "$(type -t image)" != 'alias' ]; then
   alias img='image $@'
 fi
 
-if [[ "$(alias video)" ]]; then
+if [ "$(type -t video)" != 'alias' ]; then
   alias v='video $@'
 fi
 
-  if [[ -x "$(command -v MP4Box)" ]]; then
-    alias mp4box='MP4Box $@'
-  fi
+if [[ -x "$(command -v MP4Box)" ]]; then
+  alias mp4box='MP4Box $@'
+fi
 
 if [[ -x "$(command -v MP4Client)" ]]; then
   alias mp4c='MP4Client $@'

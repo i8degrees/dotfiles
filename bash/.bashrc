@@ -81,11 +81,11 @@ fi
 
 # NOTE(jeff): This is recommended as per the EXAMPLE of Section 1 of the
 # manual page for which; man 1 which
-which() {
-  (alias; declare -f) | /usr/bin/which --tty-only --read-alias \
-    --read-functions --show-tilde --show-dot $@
-  }
-export -f which
+#which() {
+  #(alias; declare -f) | /usr/bin/which --tty-only --read-alias \
+    #--read-functions --show-tilde --show-dot $@
+  #}
+#export -f which
 
 case "$(uname -s)" in
   Darwin)
