@@ -1,0 +1,42 @@
+{
+  "name": "proxmox-backup",
+  "version": "1.0.0",
+  "description": "custom backup script with systemd service and timer",
+  "main": "local/bin/backup-host.sh",
+  "scripts": {
+    "start": "local/bin/backup-host.sh",
+    "test": "npm run-script test:*",
+    "test:test1": "local/src/tests/test1.sh",
+    "test:test2": "local/src/tests/test2.sh",
+    "lint": "npm run-script lint:*",
+    "lint:package": "exit 0",
+    "lint:shellcheck": "exit 0",
+    "lint:tests": "exit 0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/i8degrees/dotfiles.git"
+  },
+  "keywords": [
+    "proxmox",
+    "proxmox-backup",
+    "pbs",
+    "shell",
+    "systemd"
+  ],
+  "author": "Jeffrey Carpenter <1329364+i8degrees@users.noreply.github.com>",
+  "license": "BSD-2-Clause",
+  "bugs": {
+    "url": "https://github.com/i8degrees/dotfiles/issues"
+  },
+  "homepage": "https://github.com/i8degrees/dotfiles/blob/master/proxmox-backup/README.stow",
+  "directories": {
+    "bin": "local/bin",
+    "etc": "local/etc",
+    "lib": "local/lib",
+    "share": "local/share",
+    "src": "local/src",
+    "config": ".config/proxmox-backup",
+    "systemd": ".config/systemd"
+  }
+}
