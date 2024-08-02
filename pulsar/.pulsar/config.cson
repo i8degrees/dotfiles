@@ -61,6 +61,11 @@
       mapTerminalsTo: "Folder"
       mapTerminalsToAutoOpen: true
     style: {}
+  "project-manager":
+    environmentSpecificProjects: true
+    includeGitRepositories: true
+    savePathsRelativeToHome: true
+    sortBy: "last modified"
   "project-plus":
     newWindow: true
     projectHome: " ~/Projects"
