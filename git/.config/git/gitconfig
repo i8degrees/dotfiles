@@ -4,6 +4,9 @@
 #
 #   SEE ALSO
 # 1. https://git-scm.com/docs/gitcredentials
+[credential "https://gist.github.com"]
+  helper = "store --file ~/.git-credentials"
+  username = i8degrees
 [credential "https://github.com"]
   helper = "store --file ~/.git-credentials"
   username = i8degrees
