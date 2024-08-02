@@ -111,8 +111,13 @@ INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"; export INFOPATH
 #QT_LOGGING_RULES="kwin_*.debug=true"; export QT_LOGGING_RULES
 
 # node env
-eval "$(nodenv init - --no-rehash)"
-NODE_BUILD_DEFINITIONS="${HOMEBREW_PREFIX}/opt/node-build-update-defs/share/node-build"; export NODE_BUILD_DEFINITIONS
+if [ -x "$HOME/.nodenv/bin/nodenv" ]; then
+  append_path "$HOME/.nodenv/bin"
+  eval "$(nodenv init - --no-rehash)"
+  if [ -n "$HOMEBREW_PREFIX" ]; then
+    NODE_BUILD_DEFINITIONS="${HOMEBREW_PREFIX}/opt/node-build-update-defs/share/node-build"; export NODE_BUILD_DEFINITIONS
+  fi
+fi
 
 # pkg-config env
 PKG_CONFIG_PATH="/usr/lib/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/lib32/pkgconfig:/usr/share/pkgconfig:${HOMEBREW_PREFIX}/lib"; export PKG_CONFIG_PATH
