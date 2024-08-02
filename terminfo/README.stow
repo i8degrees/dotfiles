@@ -11,5 +11,9 @@ fine until you switch users, such as `sudo vim /etc/fstab` -- unless you pass `-
 to `sudo` -- or install the compiled termcap files to a system-accessible path, such as
 the default prefix, `/usr/share/terminfo`.
 
-`install.sh`
+```shell
+$HOME/dotfiles.git/termcap/install.sh $HOME/.terminfo
+# FIXME
+# DEBUG=1 $HOME/dotfiles.git/termcap/install.sh /usr/share/terminfo
+```
 
