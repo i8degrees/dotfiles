@@ -14,16 +14,18 @@ if [ -n "$DEBUG" ]; then
   set -o errexit
 fi
 
+source "$HOME/.config/proxmox-backup/pbs1.password"
+
 # IMPORTANT(JEFF): The path must NOT end with a trailing path delimiter, i.e.:
 # a `/` character!
-TMP_DIR=/tmp
+TMP_DIR="/tmp"
 if [ -n "$TMPDIR" ]; then
   TMP_DIR=$TMPDIR
 fi
 
 # IMPORTANT(JEFF): The path must NOT end with a trailing path delimiter, i.e.:
 # a `/` character!
-DEST_DIR="/data/metadata"
+DEST_DIR="/var/opt/metadata"
 
 if [[ ! (-d "$DEST_DIR") ]]; then
   mkdir -p "$DEST_DIR" || exit 254
@@ -67,13 +69,13 @@ else
   echo
 fi
 
-NCDU_ARGS="--extended" 
+NCDU_ARGS="--extended"
 NCDU_EXCLUSIONS=(
   --exclude-kernfs
   --exclude /home/jeff
   --exclude /home/acme
   --exclude /media
-  --exclude /mnt 
+  --exclude /mnt
 )
 
 if [ -x "$(command -v ncdu)" ]; then
@@ -116,5 +118,6 @@ if [ -e "$METADATA_README" ]; then
 fi
 
 echo "Success! Collected disk metadata for ${POOL_NAME} at ${DEST_DIR}..."
+echo
 exit 0
 
