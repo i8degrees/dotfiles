@@ -3,9 +3,6 @@
 #
 # NOTE(JEFF): This service requires user privileges
 #
-# systemctl --user enable proxmox-backup@jeff.timer
-# systemctl --user start proxmox-backup@jeff.timer
-# systemctl --user start proxmox-backup@jeff.service
 #
 
 [Unit]
