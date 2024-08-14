@@ -139,3 +139,21 @@ JAYATANA_FORCE=1; export JAYATANA_FORCE=1
 if [[ -d "/opt/wezterm/bin" ]] && [[ -e "/opt/wezterm/bin/wezterm" ]]; then
   append_path "/opt/wezterm/bin"
 fi
+eval export PATH="/home/jeff/.nodenv/shims:${PATH}"
+export NODENV_SHELL=bash
+source '/usr/lib/nodenv/libexec/../completions/nodenv.bash'
+command nodenv rehash 2>/dev/null
+nodenv() {
+  local command
+  command="${1:-}"
+  if [ "$#" -gt 0 ]; then
+    shift
+  fi
+
+  case "$command" in
+  rehash|shell)
+    eval "$(nodenv "sh-$command" "$@")";;
+  *)
+    command nodenv "$command" "$@";;
+  esac
+}

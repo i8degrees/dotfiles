@@ -48,13 +48,11 @@ case "$(uname -s)" in
 
   ;;
   Linux)
-    PATH="$PATH:$HOME/.config/feh/themes"
+    #PATH="$PATH:$HOME/.config/feh/themes"
   ;;
   *)
   ;;
 esac
-
-export PATH
 
 export XDG_DATA_HOME=${HOME}/.local/share
 export XDG_CONFIG_HOME=${HOME}/.config
@@ -64,4 +62,5 @@ if [ -f "$HOME/.bashrc" ]; then
 fi
 
 umask 022
-source /Users/jeff/.iterm2_shell_integration.bash
+
+[ -e "$HOME/.iterm2_shell_integration.bash" ] && source "$HOME/.iterm2_shell_integration.bash"
