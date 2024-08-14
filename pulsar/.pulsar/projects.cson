@@ -10,6 +10,9 @@
     title: "notes"
     paths: [
       "/home/jeff/Notes.git"
+      "/home/jeff/Projects/syn-net"
+      "/home/jeff/proxmox-notes.git"
+      "/home/jeff/Projects/arduino/sketches"
     ]
     color: "grey"
   }
@@ -17,6 +20,7 @@
     title: "proxmox-notes"
     paths: [
       "/home/jeff/proxmox-notes.git"
+      "/home/jeff/dotfiles.git"
     ]
     color: "grey"
   }
