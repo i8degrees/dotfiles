@@ -7,6 +7,16 @@
 # Local interactive bash (1) shell config.
 #
 
+# node environment setup
+#setup_node_env(str)
+setup_node_env() {
+  bin="$1"
+  [ -x "$bin" ] && eval "$(nodenv init -)"
+  if [ -e "$HOME/.nodenv/shims" ]; then
+    PATH=$HOME/.nodenv/shims:$PATH
+  fi
+}
+
 [ -z "$PS1" ] && return
 
 if [ -x "$HOME/.bash_prompt" ]; then
@@ -118,31 +128,46 @@ case "$(uname -s)" in
     MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
   ;;
   Linux)
-    PATH="$HOME/.nodenv/shims:$HOME/local/bin:$PATH"
-    TMPDIR="/tmp"; export TMPDIR
+    PATH="$HOME/bin:$HOME/local/bin:$PATH"
+    #TMPDIR="/tmp"
+
+
+
+    setup_node_env nodenv
   ;;
   *)
   ;;
 esac
 
+#TMPDIR="$HOME/tmp"
 VIM_BIN="$(command -v vim)"
 VIMTINY_BIN="$(command -v vim.tiny)"
 NEOVIM_BIN="$(command -v nvim)"
 SUBL_BIN="$(command -v subl)"
 ATOM_BIN="$(command -v atom)"
+NVIM_BIN=$NEOVIM_BIN
+
+if [[ -x "$NEOVIM_BIN" ]]; then
+  EDITOR=$NEOVIM_BIN
+fi
 
 if [[ -x "$VIMTINY_BIN" ]]; then
-  EDITOR=$VIMTINY_BIN; export EDITOR
+  EDITOR=$VIMTINY_BIN
 elif [[ -x "$VIM_BIN" ]]; then
-  EDITOR=$VIM_BIN; export EDITOR
-elif [[ -x "$NEOVIM_BIN" ]]; then
-  EDITOR=$NEOVIM_BIN; export EDITOR
+  EDITOR=$VIM_BIN
+elif [[ -x "$NVIM_BIN" ]]; then
+  EDITOR=$NVIM_BIN;
 fi
 
-if [ -n "$EDITOR" ]; then
-  VISUAL="$EDITOR"; export VISUAL
+if [ -z "$EDITOR" ]; then
+  export EDITOR
 fi
 
+if [ -n "$SUBL" ]; then
+  VISUAL="$EDITOR"
+fi
+
+export VISUAL
 #if [[ -x "$ATOM_BIN" ]]; then
   #VISUAL=$ATOM_BIN; export VISUAL
 #elif [[ -x "$SUBL_BIN" ]]; then
