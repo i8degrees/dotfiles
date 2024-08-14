@@ -13,7 +13,9 @@ end
 -- 1. https://wezfurlong.org/wezterm/config/lua/config/default_cwd.html?h=set+working+directory
 -- wezterm set-working-directory <CWD> <HOST>
 -- FIXME(jeff): Why does this not get applied for us?
-config.default_cwd = HOME.. "/dotfiles.git"
+config.default_cwd = HOME.. "/Notes.git/"
+-- wezterm.run_child  
+--   "USE_TMUX=1 ".. HOME.. "/local/bin/tmux_init.sh"
 config.default_prog = {
   HOME.. "/local/bin/tmux_init.sh"
 }
