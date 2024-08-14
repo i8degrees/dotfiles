@@ -16,7 +16,6 @@
       "autocomplete-snippets"
       "snippets"
       "sync-settings-git-location"
-      "language-gfm"
     ]
     packagesWithSnippetsDisabled: [
       "language-powershell"
@@ -47,7 +46,7 @@
   "ide-powershell":
     developer: {}
   "linter-markdownlint":
-    executablePath: "/home/jeff/.gem/ruby/3.0.0/bin/mdl"
+    executablePath: "/home/jeff/.rbenv/versions/3.3.4/bin/mdl
     severity: "error"
   "linter-ui-default":
     panelHeight: 227.40000915527344
@@ -76,7 +75,7 @@
   "sync-settings-git-location": {}
   "tree-view": {}
   welcome:
-    lastViewedChangeLog: "1.120.0"
+    lastViewedChangeLog: "1.119.0"
     showOnStartup: false
 ".powershell.source":
   editor:
