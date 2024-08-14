@@ -10,6 +10,9 @@
 [credential "https://github.com"]
   helper = "store --file ~/.git-credentials"
   username = i8degrees
+[credential "https://git.fs1.home"]
+  helper = "store --file ~/.git-credentials"
+  username = i8degrees
 [user]
   name = Jeffrey Carpenter
   email = 1329364+i8degrees@users.noreply.github.com
