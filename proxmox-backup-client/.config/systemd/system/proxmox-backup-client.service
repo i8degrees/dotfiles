@@ -11,7 +11,7 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
-Type=oneshot
+Type=notify
 ExecStart=/home/jeff/local/bin/backup-host.sh system
 
 [Install]
