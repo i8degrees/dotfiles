@@ -46,26 +46,18 @@
   "ide-powershell":
     developer: {}
   "linter-markdownlint":
-    executablePath: "/home/jeff/.rbenv/versions/3.3.4/bin/mdl"
+    executablePath: "/home/jeff/.rbenv/versions/3.3.4/bin/mdl
     severity: "error"
   "linter-ui-default":
     panelHeight: 227.40000915527344
     useBusySignal: false
   "markdown-preview":
-    allowUnsafeProtocols: true
     breakOnSingleNewline: true
-    gitHubStyleMode: "dark"
-    useGitHubStyle: true
   "platformio-ide-terminal":
     core:
       mapTerminalsTo: "Folder"
       mapTerminalsToAutoOpen: true
     style: {}
-  "project-manager":
-    environmentSpecificProjects: true
-    includeGitRepositories: true
-    savePathsRelativeToHome: true
-    sortBy: "last modified"
   "project-plus":
     newWindow: true
     projectHome: " ~/Projects"
