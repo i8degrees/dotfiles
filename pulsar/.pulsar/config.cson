@@ -46,12 +46,9 @@
     coloured: false
   "ide-powershell":
     developer: {}
-<<<<<<< HEAD
-=======
   "linter-markdownlint":
     executablePath: "/home/jeff/.local/share/gem/ruby/3.0.0/bin/mdl"
     severity: "error"
->>>>>>> 0ec9555 (pulsar nothings)
   "linter-ui-default":
     panelHeight: 227.40000915527344
     useBusySignal: false

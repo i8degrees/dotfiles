@@ -16,5 +16,6 @@ Wants=network-online.target
 [Service]
 Type=simple
 EnvironmentFile=%h/.config/proxmox-backup/pbs1.password
+Type=notify
 ExecStart=%h/local/bin/backup-host.sh home
 Restart=no
