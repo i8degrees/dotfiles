@@ -16,7 +16,6 @@
       "autocomplete-snippets"
       "snippets"
       "sync-settings-git-location"
-      "language-gfm"
     ]
     packagesWithSnippetsDisabled: [
       "language-powershell"
@@ -46,6 +45,12 @@
     coloured: false
   "ide-powershell":
     developer: {}
+<<<<<<< HEAD
+=======
+  "linter-markdownlint":
+    executablePath: "/home/jeff/.rbenv/versions/3.3.4/bin/mdl
+    severity: "error"
+>>>>>>> 0ec9555 (pulsar nothings)
   "linter-ui-default":
     panelHeight: 227.40000915527344
     useBusySignal: false
@@ -73,7 +78,7 @@
   "sync-settings-git-location": {}
   "tree-view": {}
   welcome:
-    lastViewedChangeLog: "1.120.0"
+    lastViewedChangeLog: "1.119.0"
     showOnStartup: false
 ".powershell.source":
   editor:
