@@ -16,6 +16,7 @@
       "autocomplete-snippets"
       "snippets"
       "sync-settings-git-location"
+      "language-gfm"
     ]
     packagesWithSnippetsDisabled: [
       "language-powershell"
@@ -48,7 +49,7 @@
 <<<<<<< HEAD
 =======
   "linter-markdownlint":
-    executablePath: "/home/jeff/.rbenv/versions/3.3.4/bin/mdl
+    executablePath: "/home/jeff/.local/share/gem/ruby/3.0.0/bin/mdl"
     severity: "error"
 >>>>>>> 0ec9555 (pulsar nothings)
   "linter-ui-default":
