@@ -16,6 +16,7 @@
       "autocomplete-snippets"
       "snippets"
       "sync-settings-git-location"
+      "language-gfm"
     ]
     packagesWithSnippetsDisabled: [
       "language-powershell"
