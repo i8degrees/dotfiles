@@ -46,9 +46,6 @@
     coloured: false
   "ide-powershell":
     developer: {}
-  "linter-markdownlint":
-    executablePath: "/home/jeff/.local/share/gem/ruby/3.0.0/bin/mdl"
-    severity: "error"
   "linter-ui-default":
     panelHeight: 227.40000915527344
     useBusySignal: false
