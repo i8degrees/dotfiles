@@ -9,8 +9,8 @@
 
 alias rebash='source ~/.bash_profile'
 
-# Clear BASH history; zero out, flush immediately && reload shell
-alias chistory='cat /dev/null > ~/.bash_history && history -cw && rebash'
+# Clear BASH history, flush immediately && reload shell
+alias chistory='history -cw && rebash'
 
 alias ncdu='ncdu -x $@'
 
