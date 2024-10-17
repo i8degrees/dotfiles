@@ -1,0 +1,21 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Comments=https://github.com/inflex/fbvpdf/tree/untagged-26a016a8c4991b08628a
+Exec='~/local/opt/flexbv/fbvpdf'
+GenericName[en_US]=
+GenericName=
+Hidden=False
+Icon=dialog-scripts
+MimeType=
+Name[en_US]=FlexBV PDF
+Name=FlexBV PDF
+Path=~/local/opt/flexbv
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+WorkingDirectory=~/local/opt/flexbv
+X-KDE-AutostartScript=true
+X-KDE-SubstituteUID=false
+X-KDE-Username=
