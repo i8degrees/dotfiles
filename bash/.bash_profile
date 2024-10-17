@@ -157,3 +157,9 @@ nodenv() {
     command nodenv "$command" "$@";;
   esac
 }
+
+# flexbv env
+if [ -d "$HOME/local/opt/flexbv" ]; then
+  append_path "$HOME/local/opt/flexbv"
+fi
+
