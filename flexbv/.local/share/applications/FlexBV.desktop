@@ -1,0 +1,9 @@
+[Desktop Entry]
+Exec=~/local/opt/flexbv/flexbv
+WorkingDirectory=~/local/opt/flexbv
+Icon=dialog-scripts
+Name=FlexBV
+Type=Application
+X-KDE-AutostartScript=true
+Hidden=False
+Comments=https://pldaniels.com/flexbv5/
