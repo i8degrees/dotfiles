@@ -3,10 +3,6 @@
 #
 # NOTE(JEFF): This service requires root privileges
 #
-# systemctl enable proxmox-backup@root.timer
-# systemctl enable proxmox-backup@root.service
-# systemctl start proxmox-backup@root.timer
-# #systemctl start proxmox-backup@root.service
 
 [Unit]
 Description=Backup the root filesystems
