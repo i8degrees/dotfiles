@@ -14,15 +14,23 @@ editor: vim
 
 ### setup
 
+```shell
+pushd $HOME/dotfiles.git
+git pull
+stow proxmox-backup
+pushd $HOME/.config/systemd/system
+systemctl daemon-reload
+```
+
 #### activate systemd units
 
 ```shell
+# pushd $HOME/dotfiles.git
 pushd "~/dotfiles.git/proxmox-backup/.config/systemd/system/"
 systemctl enable proxmox-backup@root.timer
 systemctl enable proxmox-backup@root.service
 systemctl start proxmox-backup@root.timer
-systemctl status proxmox-backup@root.timer
-#systemctl start proxmox-backup@root.service
+popd
 ```
 
 ```shell
@@ -40,3 +48,4 @@ mkdir -p "/root/.config/proxmox-backup"
 cp -av ./local/share/proxmox-backup/pxarexclude.root /.pxarexclude
 cp -av ./.config/proxmox-backup/pbs1.password.dist /root/.config/proxmox-backup/pbs1.password
 ```
+
