@@ -77,7 +77,6 @@
   "tree-view": {}
   welcome:
     lastViewedChangeLog: "1.120.0"
-    showChangeLog: false
     showOnStartup: false
 ".powershell.source":
   editor:
