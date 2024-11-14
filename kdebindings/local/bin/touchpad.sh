@@ -3,11 +3,8 @@
 #
 
 BOOL_ARG="$1"
-if [ -z "$BOOL_ARG" ]; then
-  BOOL_ARG="0"
-fi
 
-if [ "$BOOL_ARG" = "toggle" ]; then
+if [ "$BOOL_ARG" = "" ]; then
   declare result
   toggle_result=$(synclient -l|grep TouchpadOff)
   if [[ "$toggle_result" =~ "0" ]]; then
