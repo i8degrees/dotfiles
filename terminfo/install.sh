@@ -2,38 +2,14 @@
 #
 #
 
-INSTALL_BASE="$HOME/dotfiles.git/terminfo"
-PREFIX="$1" # $HOME/.terminfo
-#PREFIX="/usr/share/terminfo" # $HOME/.terminfo
+source "./lib/rc.functions"
+
+PWD="$(pwd)"
+SRC_FILES="${PWD}/dist"
 TIC_BIN=$(command -v tic) # /usr/bin/tic
 
-check_os() {
-  result="unknown"
-
-  if [ -z "$ID" ]; then
-    if [ -e "/etc/os-release" ]; then
-      eval "$(cat /etc/os-release)"
-    else
-      echo "$result"
-    fi
-  fi
-
-  if [ -n "$ID" ]; then
-    result="$ID"
-  fi
-
-  echo "$result"
-}
-
-if [ -z "$PREFIX" ]; then
-  PREFIX="/usr/share/terminfo"
-else
-  PREFIX=$1
-fi
-
-if [ ! -x "$INSTALL_BASE" ]; then
-  echo "CRITICAL: Failed to find installation files..."
-  [ -n "$DEBUG" ] && echo; echo "INSTALL_BASE: ${INSTALL_BASE}"
+if [ ! -d "$SRC_FILES" ]; then
+  echo "CRITICAL: Failed to find distribution files at ${SRC_FILES}..."
   echo
   exit 2
 fi
@@ -62,7 +38,7 @@ if [ ! -x "$TIC_BIN" ]; then
       install_help_text="brew install ncurses"
     ;;
     debian|ubuntu)
-      install_help_text="apt install ncurses-bin"
+      install_help_text="apt install ncurses-bin ncurses-term"
     ;;
     windows|cygwin)
       # TODO(JEFF): find package names
@@ -76,36 +52,25 @@ if [ ! -x "$TIC_BIN" ]; then
   printf "\t"
   echo "$install_help_text"
   echo
-  exit 255
 fi
-exit 255
-if [ ! -d "$PREFIX" ]; then
-  echo "WARNING: The selected prefix path at $PREFIX does not exist."
-  echo
-  echo "Installing to the default prefix at $HOME."
-  PREFIX="$HOME/.terminfo"
-fi
-
-[ -n "$DEBUG" ] && echo "PREFIX: $PREFIX"
 
 TERMCAP_FILES=(
-  "${INSTALL_BASE}"/iterm.terminfo
-  "${INSTALL_BASE}"/screen-256color-italic.terminfo
-  "${INSTALL_BASE}"/tmux-256color.terminfo
-  "${INSTALL_BASE}"/tmux.terminfo
+  #"${SRC_FILES}/iterm.terminfo"
+  "${SRC_FILES}/screen-256color-italic.terminfo"
+  "${SRC_FILES}/tmux-256color.terminfo"
+  "${SRC_FILES}/tmux.terminfo"
 )
 
-for path in "${TERMCAP_FILES[@]}"; do
-  [ -n "$DEBUG" ] && echo "DEBUG: " tic "$path" -o "$PREFIX"
-  tic "$path" -o "$PREFIX"
-done
+cmd_exec=()
 
-#tic "${INSTALL_BASE}"/iterm.terminfo -o \
-#  $PREFIX
-#tic "${INSTALL_BASE}"/screen-256color-italic.terminfo -o \
-#  $PREFIX
-#tic "${INSTALL_BASE}"/tmux-256color.terminfo -o \
-#  $PREFIX
-#tic "${INSTALL_BASE}"/tmux.terminfo -o \
-#  $PREFIX
+for path in "${TERMCAP_FILES[@]}"; do
+  if ! check_privileges "$(id -u)"; then
+    cmd_exec+=("sudo")
+  fi
+
+  cmd_exec+=("$TIC_BIN ${path};")
+done
+  
+[ -n "$DRY_RUN" ] && echo "${cmd_exec[@]}"
+[ -z "$DRY_RUN" ] && eval "${cmd_exec[@]}"
 
