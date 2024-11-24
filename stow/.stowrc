@@ -15,6 +15,9 @@ ignore=.DS_Store/ig
 ignore=node_modules/ig
 
 # Intended to be my dotfiles metadata
-ignore=README.stow|INSTALL.stow|UNINSTALL.stow|REMOVE.stow|LICENSE.stow|/ig
+ignore=README.stow|INSTALL.stow|UNINSTALL.stow|REMOVE.stow|LICENSE.stow/ig
+# FIXME
+#ignore=terminfo|files|README.stow|INSTALL.stow|UNINSTALL.stow|REMOVE.stow|LICENSE.stow/ig
+
 #ignore=.gitignore/ig
 
