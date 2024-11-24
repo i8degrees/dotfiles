@@ -17,3 +17,12 @@ $HOME/dotfiles.git/termcap/install.sh $HOME/.terminfo
 # DEBUG=1 $HOME/dotfiles.git/termcap/install.sh /usr/share/terminfo
 ```
 
+## TODO
+
+- [ ] Block the usage of stow for this package by adding a `.stowrc` in this
+directory with the regex list of files to ignore (this path)
+
+# Reference Documents
+
+1. <https://tldp.org/HOWTO/Text-Terminal-HOWTO-16.html>
+
