@@ -131,10 +131,17 @@ else
   set term=screen-256color-italic
 endif
 
-" Enable italics support for comment syntax
-highlight Comment cterm=italic
+" FIXME(JEFF): Before we set the terminal environment, we must check
+" for the existence of the env, else we must abort!
+"set term=xterm-256color
 
-call pathogen#infect() 			" vim plugins management
+" Enable italics support for comment syntax
+if &term == "screen-256color-italic"
+  highlight Comment cterm=italic
+endif
+
+" FIXME(JEFF): Plugin management!
+"call pathogen#infect() 			" vim plugins management
 
 :nnoremap <leader>m :silent !open -a Marked.app '%'<cr>
 
