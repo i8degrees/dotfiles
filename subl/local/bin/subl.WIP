@@ -1,0 +1,89 @@
+#!/usr/bin/env bash
+#
+# subl:jeff
+#
+# Find And execute the best Visual text editor I am to likely have running
+# at the moment (depending on the operating system and all!)
+#
+
+[ -e "$HOME/.bashrc" ] && source "$HOME/.bashrc"
+
+if [[ -n "$DEBUG" && "$DEBUG" -gt 0 ]]; then
+  echo "$0: $@"
+fi
+
+# TODO(jeff): Need to flesh this implementation out; cleanup the branching
+# model -- instead of only checking for the existance of various editor
+# commands, perhaps we ought to take into consideration what the pre-existing
+# EDITOR and VISUAL environment is setup as and try to use this as our primary
+# check?
+
+# select_editor(path = required)
+select_editor() {
+  editor_path = "$1"
+  args="$@"
+  if [ -z "$editor_path" ]; then
+    return 1;
+  fi
+
+  if [ -x "$(command -v ${editor_path})" ]; then
+    # STUB(JEFF): ...
+
+    # FIXME(JEFF): We ought to use shift here instead of a loop!
+    ARGS=()
+    # NOTE(JEFF): Gather up all the arguments passed into this function 
+    # **after** the first element (0).
+    for arg in "${args[@]}"; do
+      if [ "$arg" = "$editor_path" ]; then
+        continue
+      else
+        ARGS+=("${arg}")
+      fi
+    done
+
+    [ -n "$DEBUG" ] && echo "DEBUG: ${ARGS[@]}"
+
+    "$editor_path" "${args}"
+  fi
+}
+
+# fallback_editor(args = optional)
+fallback_editor() {
+  ARGS="$@"
+
+  if [[ -x "$(command -v flatpak)" && $(flatpak info com.sublimetext.three) = 0 ]]; then
+    flatpak run --branch=stable --arch=x86_64 --command=subl --file-forwarding com.sublimetext.three @@ "${ARGS[@]}" @@
+  elif [[ -x "$(command -v code-oss)" ]]; then
+    code-oss "${ARGS[@]}"
+  elif [[ -x "$(command -v code)" ]]; then
+    code "${ARGS[@]}"
+  elif [[ -x "$(command -v pulsar)" ]]; then
+    pulsar "${ARGS[@]}"
+  elif [[ -x "$(command -v atom)" ]]; then
+    atom "${ARGS[@]}"
+  elif [[ -x "$(command -v vim)" ]]; then
+    vim "${ARGS[@]}"
+  fi
+}
+
+echo $EDITOR
+echo $VISUAL
+exit 255
+
+if [ -z "$EDITOR" ]; then
+  echo "ERROR: Your environment is missing the EDITOR variable..."
+  echo
+  exit 1
+fi
+
+if [ -z "$VISUAL" ]; then
+  select_editor "$EDITOR" "$@"
+else
+  select_editor "$VISUAL" "$@"
+fi
+
+if [ "$?" != "0" ]; then
+  fallback_editor "$@"
+fi
+
+exit "$?"
