@@ -328,3 +328,20 @@ fi
 if [ -x "$HOME/.bash_completions" ]; then
   . "$HOME/.bash_completions"
 fi
+
+# ssh env
+# FIXME(JEFF): We need to finish setting this up before we make this live in
+# the repo.
+#
+# SEE ALSO
+# 1. ~/.tmux.conf
+#
+# Not in a TMUX session
+if [ -z ${TMUX+x} ]; then
+  if [ ! -S ~/.ssh/ssh_auth_sock ] && [ -S "$SSH_AUTH_SOCK" ]; then
+    ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
+  fi
+else
+  # # In TMUX session
+  export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+fi
