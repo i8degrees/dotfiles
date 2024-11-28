@@ -398,5 +398,3 @@ if [ -x "$(which xclip)" ]; then
   alias pbpaste='xclip -o'
 fi
 
-[ -x "$(which pamac)" ] && alias pamac='pamac $@ --no-upgrade --no-confirm'
-
