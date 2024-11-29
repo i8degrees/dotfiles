@@ -12,8 +12,8 @@ if [ "$BOOL_ARG" = "" ]; then
   else
     result=0
   fi
-  synclient TouchpadOff="$result"
+  synclient TouchpadOff="$result" ClickPad="$result"
 else
-  synclient TouchpadOff="${BOOL_ARG}"
+  synclient TouchpadOff="${BOOL_ARG}" ClickPad="$result"
 fi
 
