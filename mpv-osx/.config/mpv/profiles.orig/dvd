@@ -1,0 +1,10 @@
+# dvd:jeff
+
+[dvd]
+profile-desc="DVD source"
+framedrop="vo"
+volume=50
+# vo=opengl-old,icc-profile=~/.colors/displays/ProPhotoRGB.icc
+# vo=opengl-hq:icc-profile=~/.colors/displays/VideoNTSC.icc:icc-contrast=100
+cache=4096
+force-media-title="DVD Video"

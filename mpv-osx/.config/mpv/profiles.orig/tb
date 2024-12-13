@@ -1,0 +1,30 @@
+# tb:jeff
+#
+# DV Source to DVD Video
+
+[tb]
+profile-desc="Time Bomb DVD Source"
+profile=dvd,dv,opengl-hq
+# framedrop="decoder+vo"
+# scale=lanczos
+# vo=opengl:icc-profile=~/.colors/displays/VideoNTSC.icc:icc-contrast=100
+# icc-profile-auto
+# icc-contrast=100
+
+video-aspect=1
+# icc-profile=~/.colors/displays/VideoNTSC.icc
+# saturation=100
+volume=100
+# IMPORTANT(jeff): Use keyframe seeking -- not per frame seeks -- if possible!
+hr-seek="yes"
+
+# ...AV filtering examples...
+
+# vf="crop=209:0:600:324"
+# vf="scale=1440:960"
+# vf=pp=tmpnoise[1:2:3]
+# af=scaletempo=scale=1.2:speed=pitch
+
+# Number of CPU threads to use for AV decoding
+vd-lavc=threads=8
+ad-lavc=threads=2

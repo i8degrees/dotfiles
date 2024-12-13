@@ -1,0 +1,10 @@
+# wvc80n:jeff
+#
+# wvc80n.local surveillance camera
+
+[wvc80n]
+profile-desc="wvc80n.local surveillance camera"
+vo=gpu
+ao=null
+no-resume-playback
+video-rotate=270

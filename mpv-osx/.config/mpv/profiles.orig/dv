@@ -1,0 +1,8 @@
+# dv:jeff
+#
+# Deinterlace DV video
+
+[dv]
+profile-desc="DV deinterlacing"
+deinterlace=yes
+field-dominance=bottom
