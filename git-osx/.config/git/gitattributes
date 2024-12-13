@@ -1,0 +1,9 @@
+# 2012-03/14:jeff
+#
+#		.gitattributes
+#
+# Git(1) attributes config
+#
+
+# OSX / Xcode related
+*.pbxproj -crlf -diff -merge
