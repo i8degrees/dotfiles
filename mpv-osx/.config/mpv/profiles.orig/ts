@@ -1,0 +1,9 @@
+# ts:jeff
+
+[ts.rubberband]
+profile-desc="Time Stretching using librubberband engine"
+af=rubberband
+
+[ts.scaletempo]
+profile-desc="Time Stretching using scaletempo filter"
+af=scaletempo
