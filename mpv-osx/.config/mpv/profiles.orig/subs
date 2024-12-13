@@ -1,0 +1,16 @@
+# subs:jeff
+#
+# mpv defaults for authoring subtitles with Jubler
+
+[subs]
+profile-desc="Jubler subtitles"
+profile=slave
+# volume=100
+ass-force-style=Kerning=yes
+sub-text-font="Helvetica Neue"
+# sub-text-font-size=24
+# sub-scale=1
+slang="en"
+framedrop="no"
+ontop="yes"
+quiet="yes"

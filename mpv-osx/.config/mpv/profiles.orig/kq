@@ -1,0 +1,29 @@
+# kq:jeff
+#
+# Help clean up distorted audio waveforms
+
+[kq]
+profile-desc="Soften audio waveforms"
+# 31.25 Hz, 62.50 Hz, 125.00 Hz, 250.00 Hz,
+# 500.00 Hz, 1.00 kHz, 2.00 kHz,
+# 4.00 kHz, 8.00 kHz, 16.00 kHz
+
+# # Low-fi Headphones
+af-add=equalizer=4:4:4:0:-2:-2:-4:-12:-12:-12
+
+# Hi-fi Klipsch
+af-add=equalizer=4:4:4:0:0:0:-4:-12:-12:-12
+
+[kqq]
+profile-desc="Softer audio waveforms"
+# 31.25 Hz, 62.50 Hz, 125.00 Hz, 250.00 Hz,
+# 500.00 Hz, 1.00 kHz, 2.00 kHz,
+# 4.00 kHz, 8.00 kHz, 16.00 kHz
+af-add=equalizer=4:4:4:4:0:0:-4:-8:-8:-8
+
+[kqf]
+profile-desc="Flat audio waveforms"
+# 31.25 Hz, 62.50 Hz, 125.00 Hz, 250.00 Hz,
+# 500.00 Hz, 1.00 kHz, 2.00 kHz,
+# 4.00 kHz, 8.00 kHz, 16.00 kHz
+af-add=equalizer=0:0:0:0:0:0:0:0:0:0

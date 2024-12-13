@@ -1,0 +1,65 @@
+#     Mplayer input defaults
+#
+#   See ~/.mplayer/config
+#
+# https://github.com/mpv-player/mpv/blob/master/etc/input.conf
+
+RIGHT                               seek +2
+LEFT                                seek -2
+UP                                  add volume +10
+DOWN                                add volume -10
+HOME                                seek -60
+END                                 seek +60
+=                                   set speed +0.05
+-                                   set speed -0.05
+\                                   set speed 1.00
+SPACE                               cycle pause
+m                                   cycle mute
+d                                   cycle framedrop
+f                                   cycle fullscreen
+meta+f                              cycle fullscreen
+l                                   cycle loop
+s                                   screenshot
+
+o                                   osd
+o                                   show_progress
+
+i                                   show_text "${filename}"
+.                                   frame_step
+,                                   frame_back_step
+
+#ESC                                 quit
+#q                                   quit
+
+# resume playback support -- creates a watch_later dir
+q                                   quit_watch_later
+ESC                                 quit_watch_later
+
+META+LEFT                           playlist_next
+META+RIGHT                          playlist_prev
+a                                   cycle_values video-aspect "16:10" "16:9" "4:3"
+#CTRL+LEFT                           seek -999 # rewind to beginning of video
+CTRL+LEFT                           seek -8
+CTRL+RIGHT                          seek +8
+CTRL+ALT+LEFT                       seek -60
+CTRL+ALT+RIGHT                      seek +60
+
+# Mimics QuickTime Player 7 mouse control for a Logitech G400 (M/N: M-U0028)
+#
+# NOTE: AXIS_UP, AXIS_DOWN, MOUSE_BTN5..6 inputs are broken (not responsive)
+MOUSE_BTN0  cycle pause         # left click
+MOUSE_BTN1  cycle fullscreen    # middle click
+MOUSE_BTN2  ignore              # right click
+MOUSE_BTN3  frame_step          # wheel up; AXIS_UP?
+MOUSE_BTN4  frame_back_step     # wheel down; AXIS_DOWN?
+META+MOUSE_BTN3 add volume +10  # AXIS_UP
+META+MOUSE_BTN4 add volume -10  # AXIS_DOWN
+
+# Mouse wheels, touchpad or other input devices that have axes
+# if the input devices supports precise scrolling it will also scale the
+# numeric value accordingly
+# AXIS_UP    add volume +10
+# AXIS_DOWN  add volume -10
+
+# MOUSE_BTN5 ignore
+# MOUSE_BTN6 ignore

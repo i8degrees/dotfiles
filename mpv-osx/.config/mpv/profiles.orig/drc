@@ -1,0 +1,15 @@
+# drc:jeff
+
+[ac3.drc]
+profile-desc="Dynamic Range Compression using AC3 decoder"
+ad=lavc:ac3
+
+# Low-fi Headphones
+# ad=lavc-ac3drc=4
+
+# Hi-fi Klipsch
+ad=lavc-ac3drc=1
+
+[drc]
+profile-desc="Dynamic Range Compression"
+af="drc=2"
