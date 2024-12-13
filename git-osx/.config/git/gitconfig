@@ -1,0 +1,113 @@
+# ~/.git-credentials
+#
+# protocol://username:token@domain
+#
+#   SEE ALSO
+# 1. https://git-scm.com/docs/gitcredentials
+#[url "git@github.com:"]
+  #insteadOf = "https://github.com/"
+[credential "https://gist.github.com"]
+  helper = "store --file ~/.git-credentials"
+  username = i8degrees
+[credential "https://github.com"]
+  helper = "store --file ~/.git-credentials"
+  username = i8degrees
+[credential "https://git.fs1.home"]
+  helper = "store --file ~/.git-credentials"
+  username = i8degrees
+[user]
+	name = Jeffrey Carpenter
+	email = 1329364+i8degrees@users.noreply.github.com
+  signingkey = 82FA9C6FB8C8CDD9
+[core]
+  pager = less -r
+  whitespace = tabwidth=2,nowarn
+  # ...core.excludesfile ~/src/.gitignore
+  # ...core.excludesfile ~/Projects/.gitignore
+	excludesfile = /Users/jeff/.config/git/gitignore_global
+  # ignorednore file perms (chmods)
+  # Source: http://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-mode-changes-chmod
+  filemode = true
+  autocrlf = input
+  #safecrlf = true
+[init]
+  defaultBranch = master
+[advice]
+  statusHints = false
+  pushNonFastForward = false
+[pull]
+  rebase = true
+[push]
+  default = simple
+  autoSetupRemote = true
+[merge]
+  stat = true
+[diff]
+  renames = copies
+  mnemonicprefix = true
+[branch]
+  autosetupmerge = true
+  autosetuprebase = always
+[remotes]
+  default = origin
+[color]
+  ui = always
+[color "branch"]
+  current = yellow reverse
+  local = yellow
+  remote = green
+[color "diff"]
+  meta = yellow bold
+  frag = magenta bold
+  old = red bold
+  new = green bold
+[color "status"]
+  added = yellow
+  changed = green
+  untracked = cyan
+[color "diff"]
+  whitespace = red reverse
+[apply]
+  whitespace = fix
+[alias]
+  # minimalistic git-status
+  status = status -sb
+  commit = commit -v
+  # show remote branching
+  br = remote show origin
+  # delete a merged branches
+  brdel = branch -d
+  co = checkout
+  # create & save a clipboard of changes to allow switching
+  # branches w/o committing
+  save = stash save
+  slist = stash list # list stashes
+  logv = --graph --decorate --pretty=oneline --abbrev-commit --all
+  ls = ls-files
+  oops = amend
+  # Patch (read: commit) code in chunks / hunks as they were (created?)
+  chunk = add -p
+  #undo = reset --soft HEAD^
+  unstage = reset HEAD
+  # show files ignored by git
+  ignore = ls-files -o -i --exclude-standard
+  ptags = push --tags
+  whatadded = log --diff-filter=A
+  # !.git/hooks/ctags
+  #ctags =
+
+[lfs]
+  pruneverifyremotealways = true
+[filter "lfs"]
+  clean = git-lfs clean -- %f
+  smudge = git-lfs smudge -- %f
+  process = git-lfs filter-process
+  required = true
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[commit]
+	template = /Users/jeff/.stCommitMsg
