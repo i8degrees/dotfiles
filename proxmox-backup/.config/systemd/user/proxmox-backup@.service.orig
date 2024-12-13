@@ -3,8 +3,11 @@
 #
 # NOTE(JEFF): This service requires user privileges
 #
+<<<<<<< HEAD:proxmox-backup/.config/systemd/user/proxmox-backup@.service
+=======
 # systemctl --user enable proxmox-backup-client@jeff.service
 # systemctl --user start proxmox-backup-client@jeff.service
+>>>>>>> 00ea4c9 (Initial commit (needs to be merged onto dev)):proxmox-backup-client/.config/systemd/user/proxmox-backup-client@.service
 #
 
 [Unit]
@@ -14,7 +17,11 @@ After=network-online.target
 Wants=network-online.target
 
 [Service]
+<<<<<<< HEAD:proxmox-backup/.config/systemd/user/proxmox-backup@.service
 Type=simple
 EnvironmentFile=%h/.config/proxmox-backup/pbs1.password
+=======
+Type=notify
+>>>>>>> 00ea4c9 (Initial commit (needs to be merged onto dev)):proxmox-backup-client/.config/systemd/user/proxmox-backup-client@.service
 ExecStart=%h/local/bin/backup-host.sh home
 Restart=no
