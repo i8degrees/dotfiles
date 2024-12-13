@@ -1,0 +1,10 @@
+
+#
+# User-state data from mpd -- NEVER commit!
+# mpd/.gitignore:jeff
+database*
+fifo*
+log*
+socket*
+state*
+stickers*.db
