@@ -11,11 +11,11 @@
 \node_modules
 
 # Intended to be my dotfiles metadata
-\README.stow
-\LICENSE.stow
-\INSTALL.stow
-\UNINSTALL.stow
-\REMOVE.stow
+RREADME.stow
+LICENSE.stow
+INSTALL.stow
+UNINSTALL.stow
+REMOVE.stow
 
 # git related
 #\.gitignore/ig
