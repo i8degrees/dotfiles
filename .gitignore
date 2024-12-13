@@ -13,3 +13,4 @@ vim/bundle
 .directory
 
 /.project
+vim/.vim/backup
