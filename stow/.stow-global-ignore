@@ -11,7 +11,7 @@
 node_modules
 
 # Intended to be my dotfiles metadata
-RREADME.stow
+README.stow
 LICENSE.stow
 INSTALL.stow
 UNINSTALL.stow
