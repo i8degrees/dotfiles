@@ -7,4 +7,5 @@ fifo*
 log*
 socket*
 state*
+pid
 stickers*.db
