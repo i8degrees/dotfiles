@@ -187,18 +187,19 @@ export VISUAL_EDITOR
 
 #export USECOLOR=true
 if [ -x "$(command -v toe)" ] && [ -x "$(command -v grep)" ]; then
+  # FIXME(jeff): Figure out how we can support this termcap on any machine --
+  # this will resolve the "unknown terminal" issue we have.
+  [ ! "$(toe|grep -q -i -e 'screen-256color-italic')" ] && TERM="screen-256color-italic"
   [ ! "$(toe|grep -q -i -e 'xterm')" ] && TERM="xterm"
   [ ! "$(toe|grep -q -i -e 'xterm-256color')" ] && TERM="xterm-256color"
   [ ! "$(toe|grep -q -i -e 'tmux')" ] && TERM="tmux"
   [ ! "$(toe|grep -q -i -e 'tmux-256color')" ] && TERM="tmux-256color"
-  # FIXME(jeff): Figure out how we can support this termcap on any machine --
-  # this will resolve the "unknown terminal" issue we have.
-  #[ ! "$(toe|grep -q -i -e 'screen-256color-italic')" ] && TERM="screen-256color-italic"
 else
   TERM="linux"
 fi
 
 [ -n "$TERM" ] && export TERM
+TERM=screen-256color-italic
 
 # TMPDIR="/tmp"; export TMPDIR
 #TMPDIR="$HOME/tmp"; export TMPDIR
