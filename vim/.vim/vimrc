@@ -127,8 +127,6 @@ set t_vb=                     	" [disabled] visual bell
 
 if has("win32") || has ("win16")
   set term=win32
-else
-  set term=screen-256color-italic
 endif
 
 " FIXME(JEFF): Before we set the terminal environment, we must check
