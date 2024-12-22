@@ -1,0 +1,5 @@
+#!/bin/sh
+
+xclip -o $@
+
+exit 0

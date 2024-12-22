@@ -1,0 +1,88 @@
+! 2012-01/13:jeff
+
+! 		~/.Xresources
+!
+! xrdb -load ~/.Xresources
+!
+! See also,
+! 	xinit (1)	urxvt (1)
+!
+
+! #define TERM_COLOR_THEME_FIELDING
+#define TERM_COLOR_THEME_HONKY
+#define URXVT_COLOR_THEME_MANPAGES
+! #define CURSOR_THEME_DEFAULT
+#define CURSOR_THEME_NPLUS
+! #define USE_XAUTOLOCK
+
+! #define BACKGROUND
+#define BACKGROUND_NAUGHTY
+
+!		[ URxvt.General ]
+URxvt.title: 			tmux
+!URxvt.termName:		urxvtc
+!URxvt.geometry:		80x24
+URxvt.geometry:			$(LINES)x$(COLUMNS)
+!URxvt.modifier:		alt
+!URxvt.iconName:		terminal
+URxvt.iso14755:			false
+URxvt.iso14755_52:		false
+URxvt.skipScroll: 		false
+URxvt.scrollBar:		false
+URxvt.saveLines: 		65536
+URxvt.borderLess: 		false
+URxvt.cursorBlink: 		true
+URxvt.internalBorder: 	0
+URxvt.externalBorder:	0
+URxvt.cutchars: 		"()*,<>[]{}|'"
+URxvt.print-pipe: 		cat > $(TMPDIR)=$HOME mktemp urxvt.XXXXXX
+URxvt.visualBell: 		true
+URxvt.urgentOnBell:		true
+
+!		[ URxvt.URL/Clipboard Handling ]
+URxvt.perl-ext-common: 	default
+URxvt.urlLauncher:     	firefox
+URxvt.underlineURLs:   	true
+URxvt.keysym.M-Escape: 	perl:keyboard-select:activate
+URxvt.keysym.M-s:      	perl:keyboard-select:search
+
+!		[ URxvt.Fonts & Colors ]
+URxvt.font: 			xft:SourceCodePro:pixelsize=14
+URxvt.boldFont: 	xft:SourceCodePro:pixelsize=14:bold
+URxvt.depth: 			32
+URxvt.background: 		rgba:0000/0000/0000/bbbb
+URxvt.foreground: 		#eeeeee
+URxvt.cursorColor:		#83C048
+URxvt.highlightColor:	#444444
+URxvt.underlinecolor: 	#999999
+URxvt.transparent:		true
+URxvt.tintColor: 		white
+
+#ifdef BACKGROUND_NAUGHTY
+  !URxvt.backgroundPixmap: /home/jeff/Pictures/wallpapers/bending-over-lingerie-anita.png;styled=centered
+	URxvt.shading: 99 
+#endif
+
+#ifdef BACKGROUND
+	! URxvt.backgroundPixmap: /home/jeff/Pictures/wallpapers/arch.png
+	! Darken [0..99]
+	! Lighten [101..200]
+	! Disable [200]
+	URxvt.shading: 45
+#endif
+
+!		[Colored man pages ]
+#ifdef URXVT_COLOR_THEME_MANPAGES
+	URxvt.colorIT:			#87af5f
+	URxvt.colorBD:			#d7d7d7
+	URxvt.colorUL:			#87afd7
+#endif
+
+!		[ Color Schemes ]
+#ifdef TERM_COLOR_THEME_FIELDING
+	#include				"/home/jeff/.color/fielding"
+#endif
+
+#ifdef TERM_COLOR_THEME_HONKY
+	#include 				"/home/jeff/.color/honky"
+#endif

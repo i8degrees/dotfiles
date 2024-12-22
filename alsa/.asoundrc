@@ -1,0 +1,26 @@
+# PulseAudio alsa plugin configuration file to set the pulseaudio plugin as
+# default output for applications using alsa when pulseaudio is running.
+hook_func.pulse_load_if_running {
+	lib "libasound_module_conf_pulse.so"
+	func "conf_pulse_hook_load_if_running"
+}
+
+@hooks [
+	{
+		func pulse_load_if_running
+		files [
+			"/usr/share/alsa/pulse-alsa.conf"
+		]
+		errors false
+	}
+]
+
+pcm.teeraw {
+  type empty
+  slave.pcm "tee:default,'/tmp/out.raw',raw"
+  # 48000 S16_LE (aplay -t raw -f dst)
+}
+
+#lsa.interface "hci0"
+#defaults.bluealsa.device "AC:EE:9E:C3:36:EA"
+#defaults.bluealsa.profile "a2dp"

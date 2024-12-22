@@ -1,20 +1,42 @@
 #!/bin/sh
 
-sleep 1
+log_debug() {
+  echo "DEBUG(jeff): ${1}."
+  echo
+}
 
-WINDOW_TARGET="$(xdotool getactivewindow)"
+log_info() {
+  echo "INFO(jeff): ${1}."
+  echo
+}
 
-if [ $DEBUG = "1" ]; then
-  echo "WT: $WINDOW_TARGET"
+key_action() {
+  EXEC="xdotool key $1 grave"
+  if [ "$DEBUG" = "1" ]; then
+    log_debug "Executing..."
+    printf "\t"
+    echo "${EXEC}"
+  fi
+
+  $EXEC
+}
+
+if [ "$DEBUG" = "1" ]; then
+  log_debug "Debug mode is toggled ON."
+  log_debug "Sleeping for one (1) second... zZz!"
+  sleep 1
 fi
 
-ARGS="key --delay 20 --clearmodifiers --repeat 1"
-if [ -n "$WINDOW_TARGET" ]; then
-  ARGS="$ARGS --window $WINDOW_TARGET"
-  echo $ARGS
-  xdotool $ARGS grave 
-  # xdotool key --window $WINDOW_TARGET --repeat 1 --delay 500 --clearmodifiers grave
-else
-  xdotool windowactivate $WINDOW_TARGET
-  xdotool $ARGS grave
+WINDOW_ID="$(xdotool getactivewindow)"
+
+if [ "$DEBUG" = "1" ]; then
+  log_debug "Locked on target at window ${WINDOW_ID}."
+fi
+
+xdotool windowactivate "${WINDOW_ID}"
+
+ARGS="--delay 0 --repeat-delay 20 --repeat 1 --clearmodifiers"
+
+if [ -n "${WINDOW_ID}" ]; then
+  key_action "${ARGS}"
 fi

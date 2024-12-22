@@ -1,0 +1,5 @@
+#!/bin/sh
+
+# https://wiki.archlinux.org/title/Xinit#xinitrc
+#exec /usr/bin/Xwayland -nolisten tcp "$@" vt$XDG_VTNR
+exec /usr/bin/Xorg -nolisten tcp "$@" vt$XDG_VTNR

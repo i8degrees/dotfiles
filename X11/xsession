@@ -1,0 +1,7 @@
+#!/bin/sh
+#
+dbus-update-activation-environment --systemd DISPLAY
+XDG_SESSION_TYPE=x11; export XDG_SESSION_TYPE
+GDK_BACKEND=x11; export GDK_BACKEND
+exec dbus-run-session gnome-session --session=gnome --autostart=/home/jeff/.config/autostart
+

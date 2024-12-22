@@ -1,0 +1,32 @@
+
+[Unit]
+Description=RClone VFS Service
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=notify
+KillMode=none
+Environment=GOMAXPROCS=2
+
+#ExecStart=rclone mount g_jeff:/ /net/Cloud/g_jeff
+ExecStart=rclone mount cmerge:/ /net/Cloud/g_jeff
+--allow-other
+--config /home/jeff/.config/rclone/rclone.conf
+--use-mmap
+--drive-skip-gdocs
+--dir-cache-time 168h
+--timeout 1h
+--umask 002
+--poll-interval=1m
+--vfs-cache-mode writes
+--vfs-read-chunk-size 64M
+#--vfs-read-chunk-size-limit 2048M
+#--tpslimit 10
+#--tpslimit-burst 10
+ExecStop=/bin/fusermount -uz /net/Cloud/g_jeff
+Restart=on-failure
+
+[Install]
+WantedBy=default.target
+

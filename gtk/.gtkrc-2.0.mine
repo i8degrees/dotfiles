@@ -1,0 +1,64 @@
+# 2011-07/21: jeff
+#
+#		~/.gtkrc-2.0.mine
+#
+#	* 	In conjunction with LXAppearance theme-control, see also:
+#		~/.gtkrc-2.0
+#
+# REFERENCE SOURCE:
+#	http://developer.gnome.org/gtk/stable/GtkSettings.html
+#
+
+gtk-menu-popup-delay = 0
+gtk-menu-popdown-delay = 0
+gtk-can-change-accels = 1
+gtk-enable-accels = 1
+gtk-enable-mnemonics = 1
+gtk-enable-tooltips = 1
+gtk-recent-files-limit = 25
+gtk-recent-files-max-age = 7
+gtk-cursor-blink-time = 1000
+gtk-print-backends = "cups"
+gtk-xft-hinting = 1
+gtk-xft-hintstyle = hintfull
+gtk-xft-rgba = rgb
+
+# Pidgin Conversations Font
+# Origins: http://developer.pidgin.im/wiki/Using%20Pidgin#HowdoIchangethefontPidginusesThebackgroundcolor
+style "imhtml-fix"
+{
+    font_name = "Helvetica Neue LT Com 53 Extended 14"
+}
+
+# Pidgin Conversation entry box
+widget "*pidgin_conv_entry" style "imhtml-fix"
+
+# Pidgin Conversation History Pane
+widget "*pidgin_conv_imhtml" style "imhtml-fix"
+
+# Pidgin Log viewer
+widget "*pidgin_log_imhtml" style "imhtml-fix"
+
+# Pidgin IM::HTML Widgets
+widget "*pidgin_request_imhtml" style "imhtml-fix"
+
+# Pidgin Dialog::HTML Widgets
+widget "*pidgin_notify_imhtml" style "imhtml-fix"
+
+# Thunar
+# Origins: http://thunar.xfce.org/pwiki/documentation/advanced_settings
+style "thunar-icon-view-reduced-style"
+{
+	#ThunarIconView::column-spacing = 4
+	#ThunarIconView::row-spacing = 4
+}
+class "ThunarIconView" style "thunar-icon-view-reduced-style"
+
+style "fonttweak"
+{
+	base[NORMAL] = "#666666"
+}
+
+widget_class "*Thunar*View*" style "fonttweak"
+#widget_class "*GtkTreeView*" style "fonttweak"
+

@@ -1,0 +1,6 @@
+#!/bin/sh
+
+pbcopy
+
+exit 0
+

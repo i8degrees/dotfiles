@@ -30,6 +30,7 @@
   filemode = true
   autocrlf = input
   #safecrlf = true
+  askPass = /usr/bin/ksshaskpass
 [init]
   defaultBranch = master
 [advice]
