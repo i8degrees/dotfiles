@@ -6,9 +6,8 @@ include="/home/jeff/.mplayer/kq.profile"
 include="/home/jeff/.mplayer/subs.profile"
 volume=25
 softvol-max=100
-volume-max=200
 volstep=5
-#vo="gpu"
+vo="corevideo"
 lavdopts="threads=4"
 af="scaletempo" # correct pitch when speed factor is <> 1.0
 vf="screenshot"
