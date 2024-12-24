@@ -1,6 +1,4 @@
 #!/bin/sh
 
-pbcopy
-
-exit 0
+pbcopy "$@"
 

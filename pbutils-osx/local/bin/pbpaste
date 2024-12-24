@@ -1,5 +1,4 @@
 #!/bin/sh
 
-pbpaste
+pbpaste "$@"
 
-exit 0
