@@ -7,6 +7,13 @@ source "./lib/rc.functions"
 PWD="$(pwd)"
 SRC_FILES="${PWD}/dist"
 TIC_BIN=$(command -v tic) # /usr/bin/tic
+SUDO_BIN="$(command -v sudo)"
+
+if [ ! -x "${SUDO_BIN}" ]; then
+  echo "WARNING: sudo was not found. This may result in failure of this script."
+  echo
+  # exit 2
+fi
 
 if [ ! -d "$SRC_FILES" ]; then
   echo "CRITICAL: Failed to find distribution files at ${SRC_FILES}..."
@@ -24,7 +31,7 @@ if [ ! -x "$TIC_BIN" ]; then
   case "$os_stamp" in
     manjaro|arch)
       # TODO(JEFF): find package names
-      install_help_text="sudo pacman -S ncurses"
+      install_help_text="pacman -S ncurses"
     ;;
     alpine)
       install_help_text="apk add ncurses-terminfo"
@@ -62,10 +69,11 @@ TERMCAP_FILES=(
 )
 
 cmd_exec=()
-
 for path in "${TERMCAP_FILES[@]}"; do
   if ! check_privileges "$(id -u)"; then
-    cmd_exec+=("sudo")
+    if [ -x "$SUDO_BIN" ]; then
+      cmd_exec+=("sudo")
+    fi
   fi
 
   cmd_exec+=("$TIC_BIN ${path};")
