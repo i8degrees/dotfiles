@@ -1,6 +1,4 @@
 #!/bin/sh
 
-xclip -i
-
-exit 0
+xclip -i "$@"
 
