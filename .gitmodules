@@ -1,8 +1,17 @@
-[submodule "mpv/.config/mpv/scripts/mpv-cut"]
+# FIXME
+[submodule "mpv-bookmarker"]
+	path = mpv/.config/mpv/scripts/mpv-bookmarker
+	url = https://github.com/NurioHin/mpv-bookmarker
+	branch = master
+[submodule "mpv-cut"]
 	path = mpv/.config/mpv/scripts/mpv-cut
 	url = https://github.com/familyfriendlymikey/mpv-cut
 	branch = main
 [submodule "tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
+	branch = master
+[submodule "nodenv-default-packages"]
+	path = nodenv/.nodenv/plugins/nodenv-default-packages
+	url = https://github.com/nodenv/nodenv-default-packages.git
 	branch = master
