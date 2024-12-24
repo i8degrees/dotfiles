@@ -1,28 +1,36 @@
 [ActivityManager][Global Shortcuts]
 switch-to-activity-6da4598a-2fb9-4022-ae85-c317963c596f=
 
+[Custom Commands][qdbus.desktop]
+Exec=qdbus org.kde.krunner /App displaySingleRunner krunner_appmenu
+Name=qdbus org.kde.krunner /App displaySingleRunner krunner_appmenu
+
+[Custom Commands][touchpad.sh.desktop]
+Exec=/home/jeff/local/bin/touchpad.sh
+Name=/home/jeff/local/bin/touchpad.sh
+
 [KDE Keyboard Layout Switcher][Global Shortcuts]
-Switch to Last-Used Keyboard Layout=Meta+Alt+L
+Switch to Last-Used Keyboard Layout=
 Switch to Next Keyboard Layout=
 
 [StandardShortcuts]
 AboutApp=
 AboutKDE=
-Activate Next Tab=Ctrl+]; Ctrl+PgDown
+Activate Next Tab=Ctrl+PgDown; Ctrl+]
 Activate Previous Tab=Ctrl+PgUp; Ctrl+[
 ActualSize=Ctrl+0
 AddBookmark=Ctrl+B
-Back=Alt+Left; Back
+Back=Back; Alt+Left
 BackwardWord=Ctrl+Left
 Begin=Ctrl+Home
 BeginningOfLine=Home
 Clear=
-Close=Ctrl+W; Meta+W
+Close=Meta+W; Ctrl+W
 ConfigureNotifications=
 ConfigureToolbars=
 Copy=Ctrl+Ins; Ctrl+C
 CreateFolder=F10
-Cut=Shift+Del; Ctrl+X
+Cut=Ctrl+X; Shift+Del
 DeleteFile=Shift+Del
 DeleteWordBack=Ctrl+Backspace
 DeleteWordForward=Ctrl+Del
@@ -39,14 +47,14 @@ FindPrev=Shift+F3
 FitToHeight=
 FitToPage=
 FitToWidth=
-Forward=Forward; Alt+Right
+Forward=Alt+Right; Forward
 ForwardWord=Ctrl+Right
-FullScreen=Ctrl+Shift+F; Meta+Ctrl+Shift+F
+FullScreen=Meta+Ctrl+Shift+F; Ctrl+Shift+F
 Goto=
 GotoLine=Ctrl+G
 GotoPage=
 Help=
-Home=Alt+Home; Home Page
+Home=Home Page; Alt+Home
 KeyBindings=Ctrl+<
 Mail=
 MoveToTrash=Del
@@ -76,7 +84,7 @@ RotateUp=Up
 Save=Ctrl+S
 SaveAs=Ctrl+Shift+S
 SelectAll=Ctrl+A
-ShowHideHiddenFiles=Alt+.; Ctrl+>; Ctrl+H
+ShowHideHiddenFiles=Alt+.; Ctrl+H; Ctrl+>
 ShowMenubar=Ctrl+M
 ShowStatusbar=
 ShowToolbar=
@@ -88,7 +96,7 @@ Undo=Ctrl+Z
 Up=Alt+Up
 WhatsThis=
 Zoom=
-ZoomIn=Ctrl+=; Ctrl++
+ZoomIn=Ctrl++; Ctrl+=
 ZoomOut=Ctrl+-
 
 [kaccess][Global Shortcuts]
@@ -105,7 +113,7 @@ stopAudio=
 [kcm_touchpad][Global Shortcuts]
 Disable Touchpad=Touchpad Off
 Enable Touchpad=Touchpad On
-Toggle Touchpad=
+Toggle Touchpad=Touchpad Toggle
 
 [khotkeys][Global Shortcuts]
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=
@@ -117,7 +125,7 @@ decrease_volume_small=Shift+Volume Down
 increase_microphone_volume=Microphone Volume Up
 increase_volume=Volume Up
 increase_volume_small=Shift+Volume Up
-mic_mute=Microphone Mute; Meta+Volume Mute
+mic_mute=Meta+Volume Mute; Microphone Mute
 mute=
 
 [konversation][Global Shortcuts]
@@ -126,7 +134,7 @@ toggle_mainwindow_visibility=
 
 [ksmserver][Global Shortcuts]
 Halt Without Confirmation=
-Lock Session=Screensaver; Meta+L; Ctrl+Alt+L
+Lock Session=Ctrl+Alt+L; Screensaver; Meta+L
 Log Out=Ctrl+Alt+Del
 Log Out Without Confirmation=
 LogOut=
@@ -153,9 +161,9 @@ Cycle Overview=
 Cycle Overview Opposite=
 Decrease Opacity=
 Edit Tiles=Meta+T
-Expose=
-ExposeAll=
-ExposeClass=
+Expose=Ctrl+F9
+ExposeAll=Ctrl+F10; Launch (C)
+ExposeClass=Ctrl+F7
 ExposeClassCurrentDesktop=
 Grid View=Meta+G
 Increase Opacity=
@@ -180,7 +188,7 @@ Switch Window Down=
 Switch Window Left=
 Switch Window Right=
 Switch Window Up=
-Switch to Desktop 1=Meta+Shift+F1; Meta+!
+Switch to Desktop 1=Meta+!; Meta+Shift+F1
 Switch to Desktop 10=
 Switch to Desktop 11=
 Switch to Desktop 12=
@@ -197,8 +205,8 @@ Switch to Desktop 3=Meta+#; Meta+Shift+F3
 Switch to Desktop 4=Meta+Shift+F4; Meta+$
 Switch to Desktop 5=Meta+%; Meta+Shift+F5
 Switch to Desktop 6=Meta+Shift+F6; Meta+^
-Switch to Desktop 7=Meta+Shift+F7; Meta+&
-Switch to Desktop 8=Meta+*; Meta+Shift+F8
+Switch to Desktop 7=Meta+&; Meta+Shift+F7
+Switch to Desktop 8=Meta+Shift+F8; Meta+*
 Switch to Desktop 9=
 Switch to Next Desktop=
 Switch to Next Screen=
@@ -229,7 +237,7 @@ Walk Through Windows of Current Application Alternative=
 Walk Through Windows of Current Application Alternative (Reverse)=
 Window Above Other Windows=
 Window Below Other Windows=
-Window Close=Alt+F4; Meta+Q
+Window Close=Meta+Q; Alt+F4
 Window Fullscreen=
 Window Grow Horizontal=
 Window Grow Vertical=
@@ -327,6 +335,12 @@ playpausemedia=Media Play
 previousmedia=Media Previous
 stopmedia=Media Stop
 
+[org.flameshot.Flameshot.desktop][Global Shortcuts]
+Capture=Print
+Configure=
+Launcher=
+_launch=
+
 [org.kde.dolphin.desktop][Global Shortcuts]
 _launch=
 
@@ -340,7 +354,7 @@ _launch=Ctrl+Alt+T
 
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=
-_launch=Meta+R; Meta+Space; Alt+Space; Search
+_launch=Alt+Space; Meta+R; Search; Meta+Space
 
 [org.kde.kscreen.desktop][Global Shortcuts]
 ShowOSD=
