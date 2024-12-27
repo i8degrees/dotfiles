@@ -1,4 +1,10 @@
-# FIXME
+# .gitmodules:jeff
+#
+# TODO(JEFF): Add the full set of nodenv plugins that we use at scorpio.home;
+#	see ~/.nodenv/plugins
+#
+
+# mpv plugins
 [submodule "mpv-bookmarker"]
 	path = mpv/.config/mpv/scripts/mpv-bookmarker
 	url = https://github.com/NurioHin/mpv-bookmarker
@@ -7,11 +13,46 @@
 	path = mpv/.config/mpv/scripts/mpv-cut
 	url = https://github.com/familyfriendlymikey/mpv-cut
 	branch = main
+
+# tmux plugins
+[submodule "tmux-continuum"]
+	path = tmux/.tmux/plugins/tmux-continuum
+	url = https://git::@github.com/tmux-plugins/tmux-continuum
+	branch = master
+[submodule "tmux-resurrect"]
+	path = tmux/.tmux/plugins/tmux-resurrect
+	url = https://git::@github.com/tmux-plugins/tmux-resurrect
+	branch = master
+[submodule "tmuxinator"]
+	path = tmux/.tmux/plugins/tmuxinator
+	url = https://git::@github.com/tmuxinator/tmuxinator
+	branch = master
+[submodule "tmux-open"]
+	path = tmux/.tmux/plugins/tmux-open
+	url = https://git::@github.com/tmux-plugins/tmux-open
+	branch = master
+[submodule "tmux-sensible"]
+	path = tmux/.tmux/plugins/tmux-sensible
+	url = https://git::@github.com/tmux-plugins/tmux-sensible
+	branch = master
+[submodule "tmux-yank"]
+	path = tmux/.tmux/plugins/tmux-yank
+	url = https://git::@github.com/tmux-plugins/tmux-yank
+	branch = master
 [submodule "tpm"]
 	path = tmux/.tmux/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm.git
 	branch = master
+
+# nodenv plugins
 [submodule "nodenv-default-packages"]
 	path = nodenv/.nodenv/plugins/nodenv-default-packages
 	url = https://github.com/nodenv/nodenv-default-packages.git
 	branch = master
+
+# nvim plugins
+[submodule "neovim-config"]
+	path = nvim/neovim-config
+	url = https://github.com/ntk148v/neovim-config.git
+	branch = master
+
