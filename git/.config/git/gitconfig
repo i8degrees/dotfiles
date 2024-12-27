@@ -30,6 +30,7 @@
   filemode = true
   autocrlf = input
   #safecrlf = true
+  askPass = ksshaskpass
 [init]
   defaultBranch = master
 [advice]
