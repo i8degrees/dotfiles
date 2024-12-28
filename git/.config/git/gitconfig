@@ -16,6 +16,7 @@
   helper = "store --file ~/.git-credentials"
   username = i8degrees
 [user]
+  username = i8degrees
   name = Jeffrey Carpenter
   email = 1329364+i8degrees@users.noreply.github.com
   signingkey = 82FA9C6FB8C8CDD9
