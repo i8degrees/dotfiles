@@ -252,7 +252,7 @@ build_run_cmd() {
   if [ "$TYPE" = "home" ]; then
     # shellcheck disable=SC2206
     ARGS+=("${HOST}_home.pxar:/home" $EXCLUSIONS_LIST $INCLUDES)
-  elif [ "$TYPE" = "system" ] || [ "$TYPE" = "root" ]; then
+  elif [ "$TYPE" = "root" ] || [ "$TYPE" = "system" ]; then
     # shellcheck disable=SC2206
     ARGS+=("${HOST}_root.pxar:/" $EXCLUSIONS_LIST $INCLUDES)
   # else
