@@ -70,6 +70,7 @@ BACKUP_NAME="$1" # root | home
 EXCLUSIONS_LIST=""
 REPOSITORY_URI=""
 INCLUDES=""
+BACKUP_MODE="legacy"
 
 if [ "$ARG_HOST" != "" ]; then
   HOST="$ARG_HOST"
@@ -85,6 +86,10 @@ fi
 # if [ "$BACKUP_NAME" = "" ]; then
   # BACKUP_NAME="home"
 # fi
+
+if [ -n "$FILE_DETECTION_MODE" ]; then
+   BACKUP_MODE="$FILE_DETECTION_MODE"
+fi
 
 echo "$(script_name) v$(generate_build_version 1)"
 
@@ -144,6 +149,10 @@ PBS_PASSWORD="$PASSPHRASE"; export PBS_PASSWORD
 PBS_REPOSITORY="$REPOSITORY_URI"; export PBS_REPOSITORY
 
 echo "INFO: Using repository at ${REPOSITORY_URI}..."
+echo
+
+echo "INFO: The file detection mode is set to ${BACKUP_MODE}..."
+echo
 
 # IMPORTANT(JEFF): proxmox-backup-client will not start without
 # XDG_RUNTIME_DIR being declared and setup proper.
@@ -188,7 +197,7 @@ if [[ -n "$EXCLUSIONS" ]] && [[ "$EXCLUSIONS" != "" ]]; then
   EXCLUSIONS_LIST=$(parse_exclusions $EXCLUSIONS)
 fi
 
-RUN_CMD=$(build_run_cmd "$BACKUP_NAME" "$NAMESPACE")
+RUN_CMD=$(build_run_cmd "$BACKUP_NAME" "$NAMESPACE" "--change-detection-mode" "$BACKUP_MODE")
 
 run_cmd proxmox-backup-client backup "${RUN_CMD[@]}"
 
