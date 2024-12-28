@@ -12,7 +12,7 @@
 [submodule "mpv-cut"]
 	path = mpv/.config/mpv/scripts/mpv-cut
 	url = https://github.com/familyfriendlymikey/mpv-cut
-	branch = main
+	branch = release
 
 # tmux plugins
 [submodule "tmux-continuum"]
@@ -41,7 +41,7 @@
 	branch = master
 [submodule "tpm"]
 	path = tmux/.tmux/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm.git
+	url = https://github.com/tmux-plugins/tpm
 	branch = master
 
 # nodenv plugins
