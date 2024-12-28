@@ -1,2 +1,7 @@
 
-!.tmux/plugins/.placeholder
+# IMPORTANT(JEFF): These plugins must be installed using the bin scripts of
+# the tpm package at .tmux/plugins/tpm/bin
+.tmux/plugins/tmux-continuum/
+.tmux/plugins/tmux-open/
+.tmux/plugins/tmux-resurrect/
+.tmux/plugins/tmux-yank/
