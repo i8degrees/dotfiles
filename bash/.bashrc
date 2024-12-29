@@ -217,11 +217,10 @@ fi
 BROWSER="google-chrome"; export BROWSER
 
 MINICOM="-m -c on"; export MINICOM
-MPD_HOST="666@/home/jeff/.config/mpd/socket"
+MPD_HOST="$HOME/.config/mpd/socket"
 #MPD_HOST="777@~/.config/mpd/socket"
-#MPD_HOST="666@localhost"
 export MPD_HOST
-SSH_KEYS="$HOME/.ssh/libra_dsa"; export SSH_KEYS
+SSH_KEYS="$HOME/.ssh/id_ed25519:$HOME/.ssh/id_ed25519-github"; export SSH_KEYS
 
 case "$(uname -s)" in
   Darwin)
