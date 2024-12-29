@@ -52,3 +52,18 @@
   path = tmux/.tmux/plugins/tpm
   url = https://github.com/tmux-plugins/tpm
   branch = master
+[submodule "nodenv/.nodenv/plugins/node-build"]
+	path = nodenv/.nodenv/plugins/node-build
+	url = https://github.com/nodenv/node-build.git
+[submodule "nodenv/.nodenv/plugins/node-build-update-defs"]
+	path = nodenv/.nodenv/plugins/node-build-update-defs
+	url = https://github.com/nodenv/node-build-update-defs.git
+[submodule "nodenv/.nodenv/plugins/nodenv-each"]
+	path = nodenv/.nodenv/plugins/nodenv-each
+	url = https://github.com/nodenv/nodenv-each.git
+[submodule "nodenv/.nodenv/plugins/nodenv-update"]
+	path = nodenv/.nodenv/plugins/nodenv-update
+	url = https://github.com/nodenv/nodenv-update.git
+[submodule "nodenv/.nodenv/plugins/nodenv-package-json-engine"]
+	path = nodenv/.nodenv/plugins/nodenv-package-json-engine
+	url = https://github.com/nodenv/nodenv-package-json-engine.git
