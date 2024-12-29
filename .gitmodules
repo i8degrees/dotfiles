@@ -6,47 +6,49 @@
 
 # mpv plugins
 [submodule "mpv/.config/mpv/scripts/mpv-cut"]
-	path = mpv/.config/mpv/scripts/mpv-cut
-	url = https://github.com/familyfriendlymikey/mpv-cut
-	branch = main
+  path = mpv/.config/mpv/scripts/mpv-cut
+  url = https://github.com/familyfriendlymikey/mpv-cut
+  branch = main
 [submodule "mpv/.config/mpv/scripts/mpv-bookmarker"]
-	path = mpv/.config/mpv/scripts/mpv-bookmarker
-	url = https://github.com/NurioHin/mpv-bookmarker.git
-
-
+  path = mpv/.config/mpv/scripts/mpv-bookmarker
+  url = https://github.com/NurioHin/mpv-bookmarker.git
+  branch = master
 # nodenv plugins
 [submodule "nodenv/.nodenv/plugins/nodenv-default-packages"]
-	path = nodenv/.nodenv/plugins/nodenv-default-packages
-	url = https://github.com/nodenv/nodenv-default-packages.git
-
+  path = nodenv/.nodenv/plugins/nodenv-default-packages
+  url = https://github.com/nodenv/nodenv-default-packages.git
+  branch = master
 # nvim plugins
 [submodule "nvim/neovim-config"]
-	path = nvim/neovim-config
-	url = https://github.com/ntk148v/neovim-config.git
-	branch = master
-
+  path = nvim/neovim-config
+  url = https://github.com/ntk148v/neovim-config.git
+  branch = master
 # tmux plugins
 [submodule "tmux/.tmux/plugins/tmuxinator"]
-	path = tmux/.tmux/plugins/tmuxinator
-	url = https://git::@github.com/tmuxinator/tmuxinator
-	branch = 3.0.5
+  path = tmux/.tmux/plugins/tmuxinator
+  url = https://git::@github.com/tmuxinator/tmuxinator
+  branch = master
 [submodule "tmux/.tmux/plugins/tmux-sensible"]
-	path = tmux/.tmux/plugins/tmux-sensible
-	url = https://git::@github.com/tmux-plugins/tmux-sensible
-	branch = master
+  path = tmux/.tmux/plugins/tmux-sensible
+  url = https://git::@github.com/tmux-plugins/tmux-sensible
+  branch = master
 [submodule "tmux/.tmux/plugins/tmux-open"]
-	path = tmux/.tmux/plugins/tmux-open
-	url = https://github.com/tmux-plugins/tmux-open
+  path = tmux/.tmux/plugins/tmux-open
+  url = https://github.com/tmux-plugins/tmux-open
+  branch = master
 [submodule "tmux/.tmux/plugins/tmux-yank"]
-	path = tmux/.tmux/plugins/tmux-yank
-	url = https://github.com/tmux-plugins/tmux-yank
+  path = tmux/.tmux/plugins/tmux-yank
+  url = https://github.com/tmux-plugins/tmux-yank
+  branch = master
 [submodule "tmux/.tmux/plugins/tmux-resurrect"]
-	path = tmux/.tmux/plugins/tmux-resurrect
-	url = https://github.com/tmux-plugins/tmux-resurrect
+  path = tmux/.tmux/plugins/tmux-resurrect
+  url = https://github.com/tmux-plugins/tmux-resurrect
+  branch = master
 [submodule "tmux/.tmux/plugins/tmux-continuum"]
-	path = tmux/.tmux/plugins/tmux-continuum
-	url = https://github.com/tmux-plugins/tmux-continuum
+  path = tmux/.tmux/plugins/tmux-continuum
+  url = https://github.com/tmux-plugins/tmux-continuum
+  branch = master
 [submodule "tmux/.tmux/plugins/tpm"]
-	path = tmux/.tmux/plugins/tpm
+  path = tmux/.tmux/plugins/tpm
   url = https://github.com/tmux-plugins/tpm
   branch = master
