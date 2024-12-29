@@ -1,25 +1,52 @@
 # ~/.nodenv/default-packages:jeff
 #
+# 	nodenv-default-packages is a plugin for nodenv that manages
+# a default set of npm packages that are to be installed
+# globally for each version of nodejs that is managed by
+# nodenv.
 
-npm@8.19.2
-yarn@1.22.19
-shellcheck@latest
-
+#install-peerdeps
+#lerna
+#localtunnel >= 2.0.2
+#ngrok
+#nodemcu-tool@latest
+#np
+#npm-check
+#npm@latest
+#postcss-sass
+#pug-lint
+#sass-lint
+#yarn@1.22.19
+#yarn@2.4.3
+ass-to-vtt
+bson2json
+# FIXME
+#create-dmg@latest
+cson
+cson@latest
 csslint >= 0.9.0 < 0.10.0
 dos2unix ~1.1.2
+foreman
+#fx
+html2jade
+htmlhint
+js-beautify
 jshint ~2.6.3
-cson
-m3u-linter
 json5
+json5-validator
 jsonlint
+lerna@3.20.1
+m3u-linter
+markdown
+# Use packaged version of jq when possible!
+#node-jq@latest
 npm-run-all ~4.1.5
+npm@8.19.2
+npx
 rollup ~2.59.0
-xmllint ~0.1.1
-
-# Naughty Girl related
-ass-to-vtt
+sfnt2woff
+shellcheck@latest
 srt-to-vtt
 subsrt
-#webpack-cli@latest
-#webpack@latest
-
+xmllint ~0.1.1
+yaml-lint
