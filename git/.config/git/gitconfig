@@ -45,6 +45,7 @@
 [merge]
   stat = true
 [diff]
+  colorMoved = zebra
   renames = copies
   mnemonicprefix = true
 [branch]
@@ -97,6 +98,7 @@
   whatadded = log --diff-filter=A
   # !.git/hooks/ctags
   #ctags =
+  diff = diff --cached
 
 [lfs]
   pruneverifyremotealways = true
