@@ -67,3 +67,9 @@
 [submodule "nodenv/.nodenv/plugins/nodenv-package-json-engine"]
 	path = nodenv/.nodenv/plugins/nodenv-package-json-engine
 	url = https://github.com/nodenv/nodenv-package-json-engine.git
+[submodule "nodenv/.nodenv/plugins/nodenv-vars"]
+	path = nodenv/.nodenv/plugins/nodenv-vars
+	url = https://github.com/nodenv/nodenv-vars.git
+[submodule "nodenv/.nodenv/plugins/nodenv-man"]
+	path = nodenv/.nodenv/plugins/nodenv-man
+	url = https://github.com/nodenv/nodenv-man.git
