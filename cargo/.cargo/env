@@ -1,0 +1,18 @@
+#!/bin/sh
+#
+# rustup shell env init
+#
+
+# NOTE(JEFF): Affix colons on either side of $PATH to simplify matching.
+#
+# Wow -- I totally hadn't a clue that the following syntax was even a thing!
+case ":${PATH}:" in
+    *:"$HOME/.cargo/bin":*)
+      true # NO-OP
+    ;;
+    *)
+      # Prepending path in case a system-installed rustc needs to be overridden
+      PATH="$HOME/.cargo/bin:$PATH"
+    ;;
+esac
+
