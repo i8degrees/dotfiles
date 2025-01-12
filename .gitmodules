@@ -73,3 +73,7 @@
 [submodule "nodenv/.nodenv/plugins/nodenv-man"]
 	path = nodenv/.nodenv/plugins/nodenv-man
 	url = https://github.com/nodenv/nodenv-man.git
+[submodule "tmux/.tmux/plugins/tmux-copycat"]
+	path = tmux/.tmux/plugins/tmux-copycat
+  url = https://github.com/tmux-plugins/tmux-copycat.git
+  branch = master
