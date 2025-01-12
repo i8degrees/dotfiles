@@ -20,6 +20,7 @@ REMOVE.stow
 # top-level directory paths to ignore
 terminfo
 files
+.gitignore
 
 # git related
 #\.gitignore/ig
