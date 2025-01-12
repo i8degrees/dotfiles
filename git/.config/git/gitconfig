@@ -4,8 +4,17 @@
 #
 #   SEE ALSO
 # 1. https://git-scm.com/docs/gitcredentials
-[url "git@github.com:"]
-  insteadOf = "https://github.com/"
+[url "git@github.com:i8degrees-scripts"]
+  insteadOf = "https://github.com/i8degrees-scripts"
+[url "git@github.com:i8degrees-dockerfiles"]
+  insteadOf = "https://github.com/i8degrees-dockerfiles"
+[url "git@github.com:syn-net"]
+  insteadOf = "https://github.com/syn-net"
+[url "git@github.com:i8degrees"]
+  insteadOf = "https://github.com/i8degrees"
+# DEPRECATED(JEFF): The usage of file-based token stores has been abandoned
+# and is pending removal. Always prefer the use of SSH transport for this is
+# the (arguably, only!) reliable, cross-platform method available.
 [credential "https://gist.github.com"]
   helper = "store --file ~/.git-credentials"
   username = i8degrees
