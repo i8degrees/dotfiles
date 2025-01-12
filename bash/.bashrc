@@ -50,25 +50,6 @@ USE_EXPERIMENTAL=0
 # has been commited to git, though, as of yet.
 #USE_ZFS_ADMIN=0
 
-# NodeJS env
-#
-# (void) setup_node_env(str = required)
-# ...where str is a non-zero array of characters to say what NodeJS version
-# manager binary to prefer in setting up all of this.
-#
-# TODO(JEFF): Consider removing this logic entirely as we never have gotten
-# around to exploring other version managers, such as NVM. Doubtful that 
-# I ever will, either, considering that all outstanding nodenv issues
-# have since been resolved now...
-setup_node_env() {
-  bin="$1"
-  [ -x "$bin" ] && eval "$($bin init -)"
-
-  if [ -e "$HOME/.nodenv/shims" ]; then
-    PATH="$HOME/.nodenv/shims:$PATH"
-  fi
-}
-
 if [ -x "$HOME/.bash_prompt" ]; then
   . "$HOME/.bash_prompt"
 fi
@@ -193,8 +174,6 @@ case "$(uname -s)" in
   Linux)
     PATH="$HOME/bin:$HOME/local/bin:$PATH"
     #TMPDIR="/tmp"
-
-    setup_node_env nodenv
   ;;
   *)
   ;;
