@@ -118,7 +118,7 @@ INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"; export INFOPATH
 # manager binary to prefer in setting up all of this.
 #
 # TODO(JEFF): Consider removing this logic entirely as we never have gotten
-# around to exploring other version managers, such as NVM. Doubtful that 
+# around to exploring other version managers, such as NVM. Doubtful that
 # I ever will, either, considering that all outstanding nodenv issues
 # have since been resolved now...
 NODENV_COMPLETIONS="/usr/lib/nodenv/libexec/completions/nodenv.bash"
