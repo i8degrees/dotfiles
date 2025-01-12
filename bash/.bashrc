@@ -1,23 +1,73 @@
 #!/bin/bash
+# ~/.bashrc:jeff
 #
-# 2011-07-20:jeff
-#
-#     ~/.bashrc
-#
-# Local interactive bash (1) shell config.
+# Executed by bash(1) for non-login (non-interactive) shell requests
 #
 
-# node environment setup
-#setup_node_env(str)
+# IMPORTANT(JEFF): Do not source this file when we are not in an
+# interactive shell -- this resolves termination issues when using
+# SSH utilities like scp, ~/.ssh/rc and so forth and what have you!
+[ -z "$PS1" ] && return
+
+[ -n "$DEBUG" ] && set -o errexit
+[ -n "$DEBUG_TRACE" ] && set -o xtrace
+
+# NOTE(JEFF): Control bit for how to handle deprecated bits herein.
+# The default shall always be NOT TO and thus must be set explicitly
+# with, or without a value.
+#
+# TODO(JEFF): Relocate this env bit to a more appropiate place; perhaps
+# in our local BASH environment conditional includes -- none of that
+# has been commited to git, though, as of yet.
+#USE_DEPRECATED=0
+
+# NOTE(JEFF): Control bit for how to handle everything I deem 
+# "experimental"; this is more like occasionally used environments
+# that I wish not to normally propagate for whatever reason.
+#
+# TODO(JEFF): Relocate this env bit to a more appropiate place; perhaps
+# in our local BASH environment conditional includes -- none of that
+# has been commited to git, though, as of yet.
+USE_EXPERIMENTAL=0
+
+# NOTE(JEFF): Control bit for whether to set file limits via ulimit;
+# I am undecided as to how I wish to do this, as I often have done so
+# via sysctl and other such methods, but... simplicity is the ideal
+# state for many things as some old adage goes!
+#
+# TODO(JEFF): Relocate this env bit to a more appropiate place; perhaps
+# in our local BASH environment conditional includes -- none of that
+# has been commited to git, though, as of yet.
+#USE_FILE_LIMITS=0 # ulimit based
+
+# NOTE(JEFF): Control bit for whether to allow enabling ZFS administrative
+# scripts, even as root -- this is STRONGLY ill advised, but such is my
+# life, so fuck off; this is what our snapshots, checkpoints and most 
+# importantly, proper system backups are for, right? :]
+#
+# TODO(JEFF): Relocate this env bit to a more appropiate place; perhaps
+# in our local BASH environment conditional includes -- none of that
+# has been commited to git, though, as of yet.
+#USE_ZFS_ADMIN=0
+
+# NodeJS env
+#
+# (void) setup_node_env(str = required)
+# ...where str is a non-zero array of characters to say what NodeJS version
+# manager binary to prefer in setting up all of this.
+#
+# TODO(JEFF): Consider removing this logic entirely as we never have gotten
+# around to exploring other version managers, such as NVM. Doubtful that 
+# I ever will, either, considering that all outstanding nodenv issues
+# have since been resolved now...
 setup_node_env() {
   bin="$1"
-  [ -x "$bin" ] && eval "$(nodenv init -)"
+  [ -x "$bin" ] && eval "$($bin init -)"
+
   if [ -e "$HOME/.nodenv/shims" ]; then
-    PATH=$HOME/.nodenv/shims:$PATH
+    PATH="$HOME/.nodenv/shims:$PATH"
   fi
 }
-
-[ -z "$PS1" ] && return
 
 if [ -x "$HOME/.bash_prompt" ]; then
   . "$HOME/.bash_prompt"
@@ -64,8 +114,9 @@ set -o noclobber
 # Our bash (1) history file
 export HISTFILE="$HOME/.bash_history"
 
-# Maximum of 16384 lines storable in our history file
-export HISTFILESIZE=8192
+# Set a maximum capacity of 16.384 KB (or 16384 lines) of heap storage
+# for our BASH history logs.
+export HISTFILESIZE=16384 # 16.384 KB
 
 # TODO: need to verify this is the same as above.
 export HISTSIZE="$HISTFILESIZE"
@@ -83,8 +134,20 @@ export HISTCONTROL="erasedups:ignorespace"
 # rbash alias.
 unalias -a # Remove all alias definitions
 
-if [ -x "$(which locale)" ]; then
+if [ -n "$(command -v locale)" ]; then
   eval "$(locale)"
+  # IMPORTANT(JEFF): Under no certain condition shall I ever wish to NOT
+  # see my clock timestamps in 24-hour. Especially relevant now that
+  # it is not uncommon to be working in multiple timezones at the same
+  # time where you must correlate log timestamps and such...
+  #
+  # TLDR; Fuck 12 hour timestamps. Seriously, dude -- burn all such clocks
+  # out of existance for they are now OBSOLETE and should never need reference
+  # to ever again, lest you wish to make serious time calculation mistakes...
+  # I mean, that's never happened before, right? Hmmph, oh, that's right; Y2K
+  # already happened and now we near yet another DOOM AND GLOOM Y2K in 2038
+  # when your 64-bit counters shall overflow. Same story, different day...
+  [[ ! "$LC_TIME" =~ /C.UTF-8/ ]] && LC_TIME="C.UTF-8"; export LC_TIME
 fi
 
 # NOTE: Initial PATH environment is set in ~/.bash_profile.
@@ -131,8 +194,6 @@ case "$(uname -s)" in
     PATH="$HOME/bin:$HOME/local/bin:$PATH"
     #TMPDIR="/tmp"
 
-
-
     setup_node_env nodenv
   ;;
   *)
@@ -142,21 +203,15 @@ esac
 #TMPDIR="$HOME/tmp"
 VIM_BIN="$(command -v vim)"
 VIMTINY_BIN="$(command -v vim.tiny)"
-NEOVIM_BIN="$(command -v nvim)"
+# TODO(JEFF): The `subl` script replaces all of the following editor
+# logic you see below. It has yet to be fully commited into the git
+# tree, though.
 SUBL_BIN="$(command -v subl)"
-ATOM_BIN="$(command -v atom)"
-NVIM_BIN=$NEOVIM_BIN
-
-if [[ -x "$NEOVIM_BIN" ]]; then
-  EDITOR=$NEOVIM_BIN
-fi
 
 if [[ -x "$VIMTINY_BIN" ]]; then
   EDITOR=$VIMTINY_BIN
 elif [[ -x "$VIM_BIN" ]]; then
   EDITOR=$VIM_BIN
-elif [[ -x "$NVIM_BIN" ]]; then
-  EDITOR=$NVIM_BIN;
 fi
 
 if [ -z "$EDITOR" ]; then
@@ -168,22 +223,17 @@ if [ -n "$SUBL" ]; then
 fi
 
 export VISUAL
-#if [[ -x "$ATOM_BIN" ]]; then
-  #VISUAL=$ATOM_BIN; export VISUAL
-#elif [[ -x "$SUBL_BIN" ]]; then
-  # VISUAL="subl -w" # Do not exit editor until file is closed
-  #VISUAL=$SUBL_BIN; export VISUAL
-#fi
 
-if [[ "$EDITOR" == "/usr/bin/nvim" || "$EDITOR" == "/usr/bin/neovim" ]]; then
-  VIM="$HOME/.nvim/nvimrc"; export VIM
+if [ -n "$USE_DEPRECATED" ]; then
+  # DEPRECATED(JEFF): The nvim environment is being considered for removal
+  # due to lack of use.
+  if [[ "$EDITOR" == "/usr/bin/nvim" || "$EDITOR" == "/usr/bin/neovim" ]]; then
+    VIM="$HOME/.nvim/nvimrc"; export VIM
+  fi
 fi
 
-#VISUAL_EDITOR="$(which pulsar)"
 VISUAL_EDITOR="$(which subl)"
 export VISUAL_EDITOR
-
-#eval "$(resize)"
 
 #export USECOLOR=true
 if [ -x "$(command -v toe)" ] && [ -x "$(command -v grep)" ]; then
@@ -214,13 +264,66 @@ fi
 #if [ "$(which vimpager)" ]; then
 #fi
 
-BROWSER="google-chrome"; export BROWSER
+# browser env
+if [ -n "$(command -v google-chrome)" ]; then
+  BROWSER="google-chrome"
+elif [ -n "$(command -v firefox-bin)" ]; then
+  # TODO(JEFF): Ugh, is this the correct binary name for Firefox? Geez,
+  # thanks, I feel old now... Firebird, err Phoenix -- Nutscape!
+  BROWSER="firefox-bin"
+elif [ -n "$(command -v elinks)" ]; then
+  # sensible-browser refers to this environment variable
+  BROWSER="elinks"
+fi
 
-MINICOM="-m -c on"; export MINICOM
-MPD_HOST="$HOME/.config/mpd/socket"
-#MPD_HOST="777@~/.config/mpd/socket"
-export MPD_HOST
-SSH_KEYS="$HOME/.ssh/id_ed25519:$HOME/.ssh/id_ed25519-github"; export SSH_KEYS
+if [ -n "$BROWSER" ]; then
+  export BROWSER
+fi
+
+# All things serial comms env
+if [ -n "$(command -v minicom)" ]; then
+  MINICOM="-m -c on"; export MINICOM
+elif [ -n "$(command -v tio)" ]; then
+  true # STUB(JEFF): Future implementation detail...
+fi
+
+# mpd env
+if [ -n "$(command -v mpd)" ]; then
+  MPD_HOST="$HOME/.config/mpd/socket"
+  #MPD_HOST="777@~/.config/mpd/socket"
+fi
+
+if [ -n "$MPD_HOST" ]; then
+  export MPD_HOST
+fi
+
+# ssh env
+# IMPORTANT(JEFF): Please always use ed25519 cipher except in specified
+# edge cases stated below!
+SSH_KEYS_PRIMARY="$HOME/.ssh/id_ed25519" # conditional file include
+
+# WARNING(JEFF): RSA keys are sometimes the only viable option when dealing
+# with ancient or even somewhat modern embedded platforms. Neither of which
+# should EVER be reachable by the internet, mind you as RSA 1024 bit keys
+# are now vulnerable to attack!
+SSH_KEYS_BACKUP="$HOME/.ssh/id_rsa" # conditional file include
+SSH_KEYS_GITHUB="$HOME/.ssh/id_ed25519-github" # conditional file include
+
+if [ -e "$SSH_KEYS_PRIMARY" ]; then
+  SSH_KEYS="$SSH_KEYS:$SSH_KEYS_PRIMARY"
+fi
+
+if [ -e "$SSH_KEYS_BACKUP" ]; then
+  SSH_KEYS="$SSH_KEYS:$SSH_KEYS_BACKUP"
+fi
+
+if [ -e "$SSH_KEYS_GITHUB" ]; then
+  SSH_KEYS="$SSH_KEYS:$HOME/.ssh/id_ed25519-github" 
+fi
+
+if [ -n "$SSH_KEYS" ]; then
+  export SSH_KEYS
+fi
 
 case "$(uname -s)" in
   Darwin)
@@ -252,13 +355,20 @@ case "$(uname -s)" in
     export GIT_ASKPASS=/usr/local/bin/git-credential-osxkeychain
   ;;
   Linux)
+
+    LS_OPTIONS='--color=auto'; export LS_OPTIONS
+    eval "$(dircolors)"
+
     if [ -f "$(command -v lesspipe)" ]; then
       eval "$(lesspipe)"
     fi
 
     eval "$(dircolors -b $HOME/.colors/dir_colors)"
 
-    # XDG CONFIG DIRS (Xorg FreeDesktop standard)
+    # NOTE(JEFF): XDG CONFIG DIRS; a FreeDesktop standard
+    # When we want to mutate `XDG_CONFIG_DIRS`, we must do so via
+    # inclusion of inside of `~/.config/user-dirs.dirs`, else
+    # undesirable things are likely to occur!
     if [ -f ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs ]; then
       . ${XDG_CONFIG_HOME:-~/.config}/user-dirs.dirs
     fi
@@ -330,18 +440,45 @@ if [ -x "$HOME/.bash_completions" ]; then
 fi
 
 # ssh env
-# FIXME(JEFF): We need to finish setting this up before we make this live in
-# the repo.
 #
 # SEE ALSO
 # 1. ~/.tmux.conf
 #
-# Not in a TMUX session
+
+# NOTE(JEFF): Conditional branch for whether we are already inside a tmux
+# session or not -- this is very important to always resolve!
+#
+# TODO(JEFF): Rename the SSH auth socket file to `~/.ssh/agent` or so ASAP
+#SSH_AUTH_FILE="$HOME/.ssh/agent"
+
+SSH_AUTH_FILE="$HOME/.ssh/ssh_auth_sock"
 if [ -z ${TMUX+x} ]; then
-  if [ ! -S ~/.ssh/ssh_auth_sock ] && [ -S "$SSH_AUTH_SOCK" ]; then
-    ln -sf $SSH_AUTH_SOCK ~/.ssh/ssh_auth_sock
+  if [ ! -S "$SSH_AUTH_FILE" ] && [ -S "$SSH_AUTH_SOCK" ]; then
+    ln -sf "$SSH_AUTH_SOCK" "$SSH_AUTH_FILE"
   fi
-else
-  # # In TMUX session
-  export SSH_AUTH_SOCK=~/.ssh/ssh_auth_sock
+else # tmux session
+  SSH_AUTH_SOCK="$SSH_AUTH_FILE"; export SSH_AUTH_SOCK
 fi
+
+if [ -n "$USE_EXPERIMENTAL" ]; then
+  RCLONE_CONFIG="$HOME/.config/rclone/rclone.conf"; export RCLONE_CONFIG
+fi
+
+# maximum open files and related env
+if [ -n "$USE_FILE_LIMITS" ]; then
+  # adjust open files limit for this user's env
+  [ -n "$(command -v ulimit)" ] && ulimit -n 65535
+fi
+
+# rust env
+CARGO_BIN="$(command -v cargo)"
+CARGO_ENV_FILE="$HOME/.cargo/env"
+if [ -n "$CARGO_BIN" ]; then
+  [ -f "$CARGO_ENV_FILE" ] && . "$CARGO_ENV_FILE"
+fi
+
+# ZFS env
+if [ -n "$USE_ZFS_ADMIN" ]; then
+  ZPOOL_SCRIPTS_AS_ROOT=1; export ZPOOL_SCRIPTS_AS_ROOT
+fi
+
