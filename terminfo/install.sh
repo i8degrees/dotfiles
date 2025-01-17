@@ -2,7 +2,42 @@
 #
 #
 
-source "./lib/rc.functions"
+# Returns zero (0) if the user ID is not root
+# Returns one (1) if the user ID matches that
+# of the superuser (root).
+#
+#check_privileges(id = required)
+check_privileges() {
+  result=0
+  userid="$1"
+  if [ -z "$userid" ]; then
+    return "$result"
+  fi
+
+  if [ "$userid" = "0" ]; then
+    result=1
+  fi
+
+  return "$result"
+}
+
+check_os() {
+  result="unknown"
+
+  if [ -z "$ID" ]; then
+    if [ -e "/etc/os-release" ]; then
+      eval "$(cat /etc/os-release)"
+    else
+      echo "$result"
+    fi
+  fi
+
+  if [ -n "$ID" ]; then
+    result="$ID"
+  fi
+
+  echo "$result"
+}
 
 PWD="$(pwd)"
 SRC_FILES="${PWD}/dist"
@@ -25,7 +60,7 @@ if [ ! -x "$TIC_BIN" ]; then
   echo "CRITICAL: The termcap compiler -- tic -- was not found."
   echo
   os_stamp=$(check_os)
-  echo $os_stamp
+  echo "$os_stamp"
 
   install_help_text=""
   case "$os_stamp" in
@@ -81,4 +116,10 @@ done
   
 [ -n "$DRY_RUN" ] && echo "${cmd_exec[@]}"
 [ -z "$DRY_RUN" ] && eval "${cmd_exec[@]}"
+
+# shellcheck disable=SC2181
+if [ "$?" = "0" ]; then
+  echo "INFO: Our terminfo files have been successfully installed."
+  echo
+fi
 
