@@ -129,14 +129,8 @@ if has("win32") || has ("win16")
   set term=win32
 endif
 
-" FIXME(JEFF): Before we set the terminal environment, we must check
-" for the existence of the env, else we must abort!
-"set term=xterm-256color
-
 " Enable italics support for comment syntax
-if &term == "screen-256color-italic"
-  highlight Comment cterm=italic
-endif
+highlight Comment cterm=italic
 
 " FIXME(JEFF): Plugin management!
 "call pathogen#infect() 			" vim plugins management
