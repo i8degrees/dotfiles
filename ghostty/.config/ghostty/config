@@ -1,0 +1,22 @@
+# ~/.config/ghostty/config:jeff
+#
+# user ghostty configuration
+#
+# 1. https://ghostty.org/docs/config
+#
+
+# The syntax is "key = value". The whitespace around the
+# equals doesn't matter.
+#background = 282c34
+#foreground = ffffff
+
+# Comments start with a `#` and are only valid on their own line.
+# Blank lines are ignored!
+
+keybind = cmd+w=close_surface
+keybind = cmd+shit+o=new_split:down
+#keybind = cmd+t=
+
+# Empty values reset the configuration to the default value
+font-family = "JetBrains Mono"
+
