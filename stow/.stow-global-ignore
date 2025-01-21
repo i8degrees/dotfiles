@@ -9,6 +9,10 @@
 
 # NodeJS packages
 node_modules
+package.json
+package-lock.json
+
+Makefile
 
 #  dotfiles metadata stays put
 README.stow
