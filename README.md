@@ -40,7 +40,9 @@ stow stow
 has ignore filters in place that are important. Without these ignored files in play, you may find metadata files that are intended only be read in-place end up in directories where they should not be.
 
 ```shell
-
+# Manual git submodule initialization
+git submodule update --init --recursive
+git submodule sync
 ```
 
 ## See also
