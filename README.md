@@ -40,8 +40,8 @@ has ignore filters in place that are important. Without these ignored files in p
 
 ```shell
 # Manual git submodule initialization
-git submodule init
 git submodule update --init --recursive
+git submodule sync
 ```
 
 ## See also
