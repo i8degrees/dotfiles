@@ -83,8 +83,9 @@ if [ -n "$(command -v bw)" ]; then
   fi
 fi
 
-# python3 env (pip)
-PATH="$HOME/.local/bin:$PATH"
+# python3 env using pipx or python -m venv
+[ -e "$HOME/.local/bin" ] && append_path "$HOME/.local/bin"
+[ -e "$HOME/.local/share/python3.12/bin" ] && append_path "$HOME/.local/python3.12/bin"
 
 # pulsar apm env
 if [[ -d "/opt/Pulsar/resources/app/ppm/bin" ]]; then
