@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+#
+# Workstation dev snippets for daily work
+#
+#
+
+# Append "$1" to $PATH when non-existing
+#
+# 1. append_path snippet originates from Manjaro KDE's function call in
+# `/etc/profile` as of circa 2024.
+append_path() {
+  case ":$PATH:" in
+    *:"$1":*)
+      # NOTE(JEFF): The path (pre)-exists; do nothing...
+      true
+    ;;
+    *)
+      PATH="${PATH:+$PATH:}$1"
+    ;;
+  esac
+
+  #export PATH
+}
+
