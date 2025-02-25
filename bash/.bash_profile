@@ -196,3 +196,6 @@ fi
 # node env
 setup_node_env nodenv
 
+# SSH env
+[ -e "$HOME/.bash/ssh" ] && . "$HOME/.bash/ssh"
+
