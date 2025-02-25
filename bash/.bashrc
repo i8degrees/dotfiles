@@ -115,6 +115,8 @@ export HISTCONTROL="erasedups:ignorespace"
 # rbash alias.
 unalias -a # Remove all alias definitions
 
+# locale env
+TZ="America/Chicago"; export TZ
 if [ -n "$(command -v locale)" ]; then
   eval "$(locale)"
   # IMPORTANT(JEFF): Under no certain condition shall I ever wish to NOT
