@@ -1,0 +1,42 @@
+#!/bin/sh
+#
+# ~/.bash/ssh:jeff
+#
+
+SSH_ENV="$HOME/.ssh/ssh_agent"
+
+# Store SSH agent env in a file so we may reference the same daemon upon
+# shell jumping -- especially in combination with tmux.
+#
+# SEE ALSO
+# 1. `~/.tmux.conf:SSH_AUTH_SOCK`
+# 2. https://stackoverflow.com/a/18915067
+function start_agent {
+    echo "INFO: Initializing a new SSH agent..."
+    echo
+    /usr/bin/ssh-agent -s | sed 's/^echo/#echo/' > "${SSH_ENV}"
+
+    if [ -e "${SSH_ENV}" ]; then
+      chmod 600 "${SSH_ENV}"
+      . "${SSH_ENV}" > /dev/null
+      echo "INFO: SSH agent environment has been setup."
+      echo
+    fi
+}
+
+# Source SSH settings, if applicable
+
+if [ -f "${SSH_ENV}" ]; then
+    . "${SSH_ENV}" > /dev/null
+
+    #ps ${SSH_AGENT_PID} doesn't work under cywgin
+    # NOTE(JEFF): This syntax we tried does not seem to work for us.
+    #ps -ef | grep ${SSH_AGENT_PID} | grep ssh-agent$ > /dev/null || {
+
+    ps -o pid= "${SSH_AGENT_PID}" > /dev/null || {
+        start_agent;
+    }
+else
+    start_agent;
+fi
+
