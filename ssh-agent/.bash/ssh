@@ -3,6 +3,10 @@
 # ~/.bash/ssh:jeff
 #
 
+# IMPORTANT(JEFF): Allow existing regular files to be overwritten by
+# redirection of shell output, i.e.: `>` operator.
+set +o noclobber
+
 SSH_ENV="$HOME/.ssh/ssh_agent"
 
 # Store SSH agent env in a file so we may reference the same daemon upon
@@ -40,3 +44,7 @@ else
     start_agent;
 fi
 
+# FIXME(JEFF): Verify whether or not we need to concern ourselves with
+# resetting this shell option back to its origin; it is initialized in
+# our local bashrc file.
+#set -o noclobber
