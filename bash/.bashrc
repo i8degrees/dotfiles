@@ -278,34 +278,6 @@ if [ -n "$MPD_HOST" ]; then
   export MPD_HOST
 fi
 
-# ssh env
-# IMPORTANT(JEFF): Please always use ed25519 cipher except in specified
-# edge cases stated below!
-SSH_KEYS_PRIMARY="$HOME/.ssh/id_ed25519" # conditional file include
-
-# WARNING(JEFF): RSA keys are sometimes the only viable option when dealing
-# with ancient or even somewhat modern embedded platforms. Neither of which
-# should EVER be reachable by the internet, mind you as RSA 1024 bit keys
-# are now vulnerable to attack!
-SSH_KEYS_BACKUP="$HOME/.ssh/id_rsa" # conditional file include
-SSH_KEYS_GITHUB="$HOME/.ssh/id_ed25519-github" # conditional file include
-
-if [ -e "$SSH_KEYS_PRIMARY" ]; then
-  SSH_KEYS="$SSH_KEYS:$SSH_KEYS_PRIMARY"
-fi
-
-if [ -e "$SSH_KEYS_BACKUP" ]; then
-  SSH_KEYS="$SSH_KEYS:$SSH_KEYS_BACKUP"
-fi
-
-if [ -e "$SSH_KEYS_GITHUB" ]; then
-  SSH_KEYS="$SSH_KEYS:$HOME/.ssh/id_ed25519-github" 
-fi
-
-if [ -n "$SSH_KEYS" ]; then
-  export SSH_KEYS
-fi
-
 case "$(uname -s)" in
   Darwin)
     if [ -f "$(command -v lesspipe.sh)" ]; then
@@ -418,27 +390,6 @@ fi
 
 if [ -x "$HOME/.bash_completions" ]; then
   . "$HOME/.bash_completions"
-fi
-
-# ssh env
-#
-# SEE ALSO
-# 1. ~/.tmux.conf
-#
-
-# NOTE(JEFF): Conditional branch for whether we are already inside a tmux
-# session or not -- this is very important to always resolve!
-#
-# TODO(JEFF): Rename the SSH auth socket file to `~/.ssh/agent` or so ASAP
-#SSH_AUTH_FILE="$HOME/.ssh/agent"
-
-SSH_AUTH_FILE="$HOME/.ssh/ssh_auth_sock"
-if [ -z ${TMUX+x} ]; then
-  if [ ! -S "$SSH_AUTH_FILE" ] && [ -S "$SSH_AUTH_SOCK" ]; then
-    ln -sf "$SSH_AUTH_SOCK" "$SSH_AUTH_FILE"
-  fi
-else # tmux session
-  SSH_AUTH_SOCK="$SSH_AUTH_FILE"; export SSH_AUTH_SOCK
 fi
 
 if [ -n "$USE_EXPERIMENTAL" ]; then
