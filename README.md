@@ -1,6 +1,6 @@
 ---
 created: 2021-11-23T16:04:44+06:00
-modified: 2024-07-20T00:55:31+05:00
+modified: 2025-02-26T02:33:48-06:00
 title: dotfiles
 ---
 
@@ -30,8 +30,9 @@ My personal customization files and scripts for my environments. Friendly toward
 ```shell
 # --recursive takes care of git submodules
 git clone --recurse-submodules https://github.com/i8degrees/dotfiles.git $HOME/dotfiles.git
-cd $HOME/dotfiles || exit 255
-cpan Stow # Stow here, NOT stow
+cd $HOME/dotfiles.git
+sudo apt install stow
+#sudo pacman -S stow
 stow stow
 ```
 
@@ -39,9 +40,7 @@ stow stow
 has ignore filters in place that are important. Without these ignored files in play, you may find metadata files that are intended only be read in-place end up in directories where they should not be.
 
 ```shell
-# Manual git submodule initialization
-git submodule init
-git submodule update --init --recursive
+
 ```
 
 ## See also
