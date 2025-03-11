@@ -1,3 +1,0 @@
-# TODO(jeff): Finish implementation of this file; add install.d/** to the ignore filter so that stow does not install
-# this into the home directory!
-install.d/
