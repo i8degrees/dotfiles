@@ -1,0 +1,9 @@
+[Desktop Entry]
+Categories=FileManager;Utility;Core;
+Comment=xbindkeys
+Exec=xbindkeys -p
+MimeType=inode/directory;
+Name=xbindkeys
+StartupNotify=true
+Type=Application
+Hidden=false
