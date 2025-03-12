@@ -26,19 +26,17 @@
 # m:xxx + c:xxx 
 # Shift+... 
 
-
-
-
 keystate_numlock = enable
 keystate_scrolllock = enable
 keystate_capslock = enable
-
-
 
 #tilde
 "~/local/bin/capslock-to-tilde.sh"
     m:0x12 + c:66
     Mod2 + Caps_Lock 
 
-#
-# End of xbindkeys configuration
+# NOTE(JEFF): Disable middle-click copy to selection clipboard
+"echo -n | xsel -n -i; pkill xbindkeys; xdotool click 2; xbindkeys"
+b:2 + Release
+
+# EOF
