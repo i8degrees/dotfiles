@@ -1,6 +1,10 @@
 [ActivityManager][Global Shortcuts]
 switch-to-activity-6da4598a-2fb9-4022-ae85-c317963c596f=
 
+[Custom Commands][net.local.home.arpa.rofi.desktop.desktop]
+Exec=dex /home/jeff/.config/autostart/home.arpa.rofi.desktop
+Name=rofi menu (activate window)
+
 [Custom Commands][qdbus.desktop]
 Exec=qdbus org.kde.krunner /App displaySingleRunner krunner_appmenu
 Name=qdbus org.kde.krunner /App displaySingleRunner krunner_appmenu
@@ -20,12 +24,12 @@ Activate Next Tab=Ctrl+]; Ctrl+PgDown
 Activate Previous Tab=Ctrl+PgUp; Ctrl+[
 ActualSize=Ctrl+0
 AddBookmark=Ctrl+B
-Back=Alt+Left; Back
+Back=Back; Alt+Left
 BackwardWord=Ctrl+Left
 Begin=Ctrl+Home
 BeginningOfLine=Home
 Clear=
-Close=Ctrl+W; Meta+W
+Close=Meta+W; Ctrl+W
 ConfigureNotifications=
 ConfigureToolbars=
 Copy=Ctrl+C; Ctrl+Ins
@@ -54,7 +58,7 @@ Goto=
 GotoLine=Ctrl+G
 GotoPage=
 Help=
-Home=Alt+Home; Home Page
+Home=Home Page; Alt+Home
 KeyBindings=Ctrl+<
 Mail=
 MoveToTrash=Del
@@ -62,10 +66,10 @@ New=Ctrl+N
 Next=PgDown
 NextCompletion=Ctrl+Down
 Open=Ctrl+O
-OpenContextMenu=Menu; Shift+F10
+OpenContextMenu=Shift+F10; Menu
 OpenMainMenu=F10
 OpenRecent=
-Paste=Ctrl+V; Shift+Ins
+Paste=Shift+Ins; Ctrl+V
 Paste Selection=Ctrl+Shift+Ins
 Preferences=Ctrl+,
 PrevCompletion=Ctrl+Up
@@ -74,7 +78,7 @@ PrintPreview=
 Prior=PgUp
 Quit=Ctrl+Q
 Redo=Ctrl+Shift+Z
-Reload=Refresh; F5
+Reload=F5; Refresh
 RenameFile=F2
 Replace=Ctrl+R
 ReportBug=
@@ -84,7 +88,7 @@ RotateUp=Up
 Save=Ctrl+S
 SaveAs=Ctrl+Shift+S
 SelectAll=Ctrl+A
-ShowHideHiddenFiles=Ctrl+H; Ctrl+>; Alt+.
+ShowHideHiddenFiles=Ctrl+>; Ctrl+H; Alt+.
 ShowMenubar=Ctrl+M
 ShowStatusbar=
 ShowToolbar=
@@ -96,7 +100,7 @@ Undo=Ctrl+Z
 Up=Alt+Up
 WhatsThis=
 Zoom=
-ZoomIn=Ctrl+=; Ctrl++
+ZoomIn=Ctrl++; Ctrl+=
 ZoomOut=Ctrl+-
 
 [kaccess][Global Shortcuts]
@@ -137,7 +141,7 @@ increase-volume-PCM@HDA Intel PCH=
 increase_microphone_volume=Microphone Volume Up
 increase_volume=Volume Up
 increase_volume_small=Shift+Volume Up
-mic_mute=Microphone Mute; Meta+Volume Mute
+mic_mute=Meta+Volume Mute; Microphone Mute
 mute=
 toggle-mute-Capture@HDA Intel PCH=
 toggle-mute-Headphone Mic Boost@HDA Intel PCH=
@@ -160,7 +164,7 @@ toggle_mainwindow_visibility=
 
 [ksmserver][Global Shortcuts]
 Halt Without Confirmation=
-Lock Session=Meta+L; Ctrl+Alt+L; Screensaver
+Lock Session=Screensaver; Meta+L; Ctrl+Alt+L
 Log Out=Ctrl+Alt+Del
 Log Out Without Confirmation=
 LogOut=
@@ -188,7 +192,7 @@ Cycle Overview Opposite=
 Decrease Opacity=
 Edit Tiles=Meta+T
 Expose=Ctrl+F9
-ExposeAll=Launch (C); Ctrl+F10
+ExposeAll=Ctrl+F10; Launch (C)
 ExposeClass=Ctrl+F7
 ExposeClassCurrentDesktop=
 Grid View=Meta+G
@@ -214,7 +218,7 @@ Switch Window Down=
 Switch Window Left=
 Switch Window Right=
 Switch Window Up=
-Switch to Desktop 1=Meta+Shift+F1; Meta+!
+Switch to Desktop 1=Meta+!; Meta+Shift+F1
 Switch to Desktop 10=
 Switch to Desktop 11=
 Switch to Desktop 12=
@@ -225,13 +229,13 @@ Switch to Desktop 16=
 Switch to Desktop 17=
 Switch to Desktop 18=
 Switch to Desktop 19=
-Switch to Desktop 2=Meta+Shift+F2; Meta+@
+Switch to Desktop 2=Meta+@; Meta+Shift+F2
 Switch to Desktop 20=
-Switch to Desktop 3=Meta+#; Meta+Shift+F3
-Switch to Desktop 4=Meta+$; Meta+Shift+F4
+Switch to Desktop 3=Meta+Shift+F3; Meta+#
+Switch to Desktop 4=Meta+Shift+F4; Meta+$
 Switch to Desktop 5=Meta+%; Meta+Shift+F5
-Switch to Desktop 6=Meta+Shift+F6; Meta+^
-Switch to Desktop 7=Meta+&; Meta+Shift+F7
+Switch to Desktop 6=Meta+^; Meta+Shift+F6
+Switch to Desktop 7=Meta+Shift+F7; Meta+&
 Switch to Desktop 8=Meta+*; Meta+Shift+F8
 Switch to Desktop 9=
 Switch to Next Desktop=
@@ -263,7 +267,7 @@ Walk Through Windows of Current Application Alternative=
 Walk Through Windows of Current Application Alternative (Reverse)=
 Window Above Other Windows=
 Window Below Other Windows=
-Window Close=Meta+Q; Alt+F4
+Window Close=Alt+F4; Meta+Q
 Window Fullscreen=
 Window Grow Horizontal=
 Window Grow Vertical=
@@ -299,7 +303,7 @@ Window Quick Tile Top Left=
 Window Quick Tile Top Right=
 Window Raise=
 Window Resize=
-Window Shade=Ctrl+Space
+Window Shade=Ctrl+Shift+Space
 Window Shrink Horizontal=
 Window Shrink Vertical=
 Window to Desktop 1=
@@ -361,6 +365,9 @@ playpausemedia=Media Play
 previousmedia=Media Previous
 stopmedia=Media Stop
 
+[net.local.home.arpa.rofi.desktop.desktop][Global Shortcuts]
+_launch=Ctrl+Space
+
 [org.flameshot.Flameshot.desktop][Global Shortcuts]
 Capture=Print
 Configure=
@@ -380,7 +387,7 @@ _launch=Ctrl+Alt+T
 
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=
-_launch=Meta+R; Meta+Space; Search; Alt+Space
+_launch=Meta+R; Search; Meta+Space; Alt+Space
 
 [org.kde.kscreen.desktop][Global Shortcuts]
 ShowOSD=
@@ -416,7 +423,7 @@ PowerOff=Power Off
 Sleep=Sleep
 Toggle Keyboard Backlight=Keyboard Light On/Off
 Turn Off Screen=
-powerProfile=Meta+B; Battery
+powerProfile=
 
 [plasmashell][Global Shortcuts]
 activate application launcher=
