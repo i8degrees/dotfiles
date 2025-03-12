@@ -1,0 +1,25 @@
+[Desktop Action active-windows]
+Exec=/usr/bin/rofi -show window
+Name=Show Active Windows
+
+[Desktop Action drun]
+Exec=/usr/bin/rofi -show drun
+Name=Show desktop menu entries
+
+[Desktop Entry]
+Actions=active-windows;drun
+Categories=System;
+Comment=An Apple Spotlight inspired integration for core GUI access
+Exec=/usr/bin/rofi -show window
+Icon=home.arpa.icons
+Keywords=menu;rofi;dbus;spotlight
+Name=Rofi
+StartupNotify=true
+Terminal=false
+Type=Application
+X-GNOME-UsesNotifications=true
+X-TerminalArgAppId=--class=
+#X-TerminalArgDir=--working-directory
+#X-TerminalArgExec=
+X-TerminalArgHold=--wait-after-command
+X-TerminalArgTitle=--title=
