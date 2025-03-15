@@ -16,7 +16,7 @@ insert_final_newline = true
 
 # Tabs are treated as space glyphs
 indent_style = space
-indent_size = 3
+indent_size = 2
 
 # Remove whitespace characters at the end of line
 trim_trailing_whitespace = true
