@@ -121,28 +121,14 @@ missing
 
 # Archives
 
-*.zip
-*.tar
-*.gz
-*.bz2
 *.dmg
 *.tz
 *.iso
 
 # Image files
 
-#*.jpg
-#*.png
-#*.JPG
-#*.gif
-#*.ico
-#*.psd
-#*.spc
-#images
-
 # Document formats
 
-*.pdf
 *.QBB
 
 # Apache / WWW Serving
