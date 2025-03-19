@@ -1,0 +1,20 @@
+
+# pcmanfm-qt
+
+`stow pcmanfm`
+
+## usage
+
+**WARNING**: The thumbnailers directory is **NOT** ready for deployment as of
+this time. Check back later.
+
+- thumbnailers
+  * `pcmanfm/local/share/thumbnailers`
+    - `rsync -avXP pcmanfm/local/share/thumbnailers/ /usr/share/thumbnailers`
+- scripts
+  * `pcmanfm/local/bin`
+    - `find_abs.bash` - *not ready for deployment*
+    - `find_thumbnail.bash`
+  * `pcmanfm/.config/autostart`
+    - Copy this script to `$HOME/.config/autostart` if you wish for this file
+    manager to startup at user login.
