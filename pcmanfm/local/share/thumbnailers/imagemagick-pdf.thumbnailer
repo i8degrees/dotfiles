@@ -1,0 +1,5 @@
+[Thumbnailer]
+X-GConf-Path=/apps/thumbnailers/imagemagick-pdf
+#Type=application/pdf
+Type=application/pdf;application/x-ext-pdf;application/x-bzpdf;application/x-gzpdf;application/x-xzpdf
+Exec=convert -resize 192x192 -quality 100 %s -thumbnail %s
