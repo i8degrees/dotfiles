@@ -12,7 +12,7 @@ alias rebash='source ~/.bash_profile'
 # Clear BASH history, flush immediately && reload shell
 alias chistory='history -cw && rebash'
 
-alias ncdu='ncdu -x $@'
+alias ncdu='ncdu -x'
 
 if [ "$(command -v md5deep)" ]; then
   alias md5='md5deep -re' # recursive, progress
@@ -29,10 +29,10 @@ if [ "$(command -v cmake)" ]; then
 fi
 
 if [ "$(command -v git)" ]; then
-  alias gpush='git push -u $@'
-  alias gcheckout='git checkout $@'
-  alias gmerge='git merge --no-ff $@'
-  alias gclone='git clone $@'
+  alias gpush='git push -u'
+  alias gcheckout='git checkout'
+  alias gmerge='git merge --no-ff'
+  alias gclone='git clone'
   # Compare branches to determine which branch <source> is based from
   # $1 = <source>
   # $2 = <relation>
@@ -44,30 +44,30 @@ fi
 # TODO: combine tar, zip, ... creation and listing as one do-it-all function
 if [[ "$(command -v tar)" ]]; then
   if [[ "$(command -v tarcolor)" ]]; then # lesspipe bash script
-    alias listtar='tar -tvf $@ | tarcolor'
+    alias listtar='tar -tvf | tarcolor'
   else
-    alias listtar='tar -tvf $@'
+    alias listtar='tar -tvf'
   fi
 
-  alias createtar='tar -czvf $@'
+  alias createtar='tar -czvf'
   #FIXME: alias createtar='tar -czvf $1 --exclude=*.DS_Store $2'
 fi
 
 if [[ "$(command -v zip)" ]]; then
-  alias createzip='zip -r $@'
+  alias createzip='zip -r'
 fi
 
 if [[ "$(command -v wget)" ]]; then
-  alias dl='wget $@'
+  alias dl='wget'
 fi
 
 if [[ "$(command -v valgrind)" ]]; then
-  alias memleaks=' valgrind --tool=memcheck --leak-check=full --num-callers=40 $@'
+  alias memleaks=' valgrind --tool=memcheck --leak-check=full --num-callers=40'
 fi
 
 # Quick access to comparing nomlib's screen-shots from visual unit tests
 if [[ "$(command -v md5)" ]]; then
-  alias dupe='md5 $@'
+  alias dupe='md5'
 fi
 
 case "$(uname -s)" in
@@ -78,8 +78,8 @@ case "$(uname -s)" in
     #
     #       -R     Do  not  traverse  and report the memory object map for each
     #              process.
-    alias top='top -stats cpu,pid,command,time,rsize,pstate -user jeff -n43 -F -R -o-CPU $@'
-    alias www='browser $@'
+    alias top='top -stats cpu,pid,command,time,rsize,pstate -user jeff -n43 -F -R -o-CPU'
+    alias www='browser'
     alias c='pbcopy'
     alias p='pbpaste'
 
@@ -99,29 +99,29 @@ case "$(uname -s)" in
       alias ln='gln -v'
       alias find='gfind'
       alias dmesg='sudo dmesg'
-      alias eject='diskutil eject $@'
-      alias mount_ext4='ext4fuse -o allow_other $@'
-      #alias cloc='cloc --by-file-by-lang --exclude-list-file=.cloc $@'
+      alias eject='diskutil eject'
+      alias mount_ext4='ext4fuse -o allow_other'
+      #alias cloc='cloc --by-file-by-lang --exclude-list-file=.cloc'
       alias route='netstat -nr'
-      alias leaks='iprofiler -T 300 -allocations -leaks $@'
+      alias leaks='iprofiler -T 300 -allocations -leaks'
     fi
 
     #alias pgrep="psgrep"
 
     # ~/local/bin/subl is a symbolic link to
     # $HOME/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl
-    alias edit='subl $@'
-    alias e='edit $@'
+    alias edit='subl'
+    alias e='edit'
 
     alias chrome='open -a "Google Chrome" --args -allow-file-access-from-files'
     alias marked='open -a "Marked"'
 
-    alias iphone='open -a "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/" --args $@'
+    alias iphone='open -a "/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app/" --args'
 
     alias extract='open -a "Archive Utility"'
     alias lsmod='kextstat'
-    alias modprobe='kextload $@'
-    alias otool='otool -L $@'
+    alias modprobe='kextload'
+    alias otool='otool -L'
 
     if [ -x "$(command -v i586-mingw32-gcc)" ]; then
       alias win32-gcc='i586-mingw32-gcc'
@@ -129,19 +129,19 @@ case "$(uname -s)" in
 
     # Homebrew package management
     if [[ -x "$(command -v brew)" ]]; then
-      alias bdepstree='brew uses -installed $@'
-      alias bdeps='brew deps $@'
-      alias binstall='brew install -vd $@'
-      alias breinstall='brew reinstall -vd $@'
-      alias bremove='brew remove $@'
-      alias blist='brew leaves $@'
+      alias bdepstree='brew uses -installed'
+      alias bdeps='brew deps'
+      alias binstall='brew install -vd'
+      alias breinstall='brew reinstall -vd'
+      alias bremove='brew remove'
+      alias blist='brew leaves'
       alias bdoc='brew doctor'
       alias bupdate='brew update'
       alias bupgrade='brew upgrade --all'
-      alias bsearch='brew search $@'
-      alias boutdated='brew outdated $@'
+      alias bsearch='brew search'
+      alias boutdated='brew outdated'
       alias bpinned='brew list --pinned'
-      alias bmissing='brew missing $@'
+      alias bmissing='brew missing'
 
       # See also: ~/.bashlib for additional definitions
     fi
@@ -150,7 +150,7 @@ case "$(uname -s)" in
     # apparently does not work under OS X (v10.7.x+)
     # http://www.askdavetaylor.com/force_mac_os_x_grep_to_always_output_in_color/
     if [ "$(command -v grep)" ]; then # /usr/local/bin/grep (homebrew package)
-      alias grep='grep --color=always -I $@'
+      alias grep='grep --color=always -I'
     fi
 
     # iOS Simulator
@@ -159,11 +159,11 @@ case "$(uname -s)" in
 
     # Open SourceTree app at specified path(s)
     if [[ -x "$HOME/Applications/SourceTree.app/Contents/MacOS/SourceTree" ]]; then
-      alias stree='open -a SourceTree $@'
+      alias stree='open -a SourceTree'
     fi
 
     if [[ "$(command -v mpv)" ]]; then
-      alias mplayer='mpv $@'
+      alias mplayer='mpv'
     fi
 
     # watch is part of coreutils brew pkg, methinks
@@ -171,7 +171,7 @@ case "$(uname -s)" in
       alias watchclang="watch 'pgrep clang'"
     fi
 
-    alias cmake-gui='${HOME}/Applications/Developer/CMake.app/Contents/MacOS/CMake $@'
+    alias cmake-gui='${HOME}/Applications/Developer/CMake.app/Contents/MacOS/CMake'
     alias hexedit='${HOME}/Applications/0xED.app/Contents/MacOS/0xED'
   ;;
   Linux)
@@ -183,9 +183,9 @@ case "$(uname -s)" in
     # to use this `-r` switch -- dependent upon shell, redirection, etc. I
     # believe that it also may well depend on whether or not we have colors
     # enabled.
-    [ -n "$(command -v less)" ] && alias less='less -r $@'
+    [ -n "$(command -v less)" ] && alias less='less -r'
     # GNU coreutils
-    [ -n "$(command -v top)" ]] && alias top='top -o %CPU -o PID -o COMMAND -o TIME -o %MEM -o PR -o S -u jeff -n43'
+    [ -n "$(command -v top)" ] && alias top='top -o %CPU -o PID -o COMMAND -o TIME -o %MEM -o PR -o S -u jeff -n43'
     [ -n "$(command -v ls)" ] && alias ls="ls -lhs --color=auto"
     alias lsr="ls -lRa --color=auto"
     [ -n "$(command -v df)" ] && alias df="df -Th"
@@ -199,8 +199,8 @@ case "$(uname -s)" in
 
     # ~/local/bin/subl is a symbolic link to
     # $HOME/local/opt/SublimeText2/sublime_text
-    alias edit='subl $@'
-    alias e='edit $@'
+    alias edit='subl'
+    alias e='edit '
 
     # User specific
     if [[ -n "$(id|grep jeff)" ]]; then
@@ -232,11 +232,11 @@ case "$(uname -s)" in
       alias pkgupgrade="pacman -Syu" # package upgrade from arch repos
       #alias pkgupgrade="yaourt -Syua" # package repo upgrade, arch + AUR
       alias pkgq="pacman -Q|grep $1" # package repo query (installed)
-      alias pkgd="yaourt -Sii $@" # package info w/ details
+      alias pkgd="yaourt -Sii" # package info w/ details
       alias pkgs="yaourt -Ss" # package search from arch + AUR repos
-      alias pkgi="yaourt -Si $@" # package info
-      alias pkgii="pacman -Qii $@" # ???
-      alias pkgf="yaourt -Ql $@" # list files within package
+      alias pkgi="yaourt -Si" # package info
+      alias pkgii="pacman -Qii" # ???
+      alias pkgf="yaourt -Ql" # list files within package
       alias pkgf?="pacman -Qo $1" # list package from which file is from
       alias pkgorphan="pacman -Qdt" # list package orphans; ...
       alias pkgsrc="pacman -sQm" # list locally compiled/installed packages (AUR, abs)
@@ -244,10 +244,10 @@ case "$(uname -s)" in
 
     # grep color term support
     #export GREP_OPTIONS="--color=always -I"; # -I = --binary-files-without-match
-    alias grep='grep --color=always -I $@'
+    alias grep='grep --color=always -I'
 
     if [[ $(command -v xdg-open) ]]; then
-      alias open='xdg-open $@'
+      alias open='xdg-open'
     fi
   ;;
   *)
@@ -257,12 +257,12 @@ case "$(uname -s)" in
 esac
 
 alias tree="tree -Chu"
-alias killall="killall -9 $@"
+alias killall="killall -9"
 
 alias pid="ps aux|pgrep"
 alias watch="watch -n 1.0"
 alias iostat="iostat -d 1"
-alias ifstat="clear && $(command -v ifstat) -z -i en2 -w -S $@"
+alias ifstat="clear && $(command -v ifstat) -z -i en2 -w -S"
 
 alias cls="clear"
 alias kpatch="patch -p1 < $@"
@@ -290,7 +290,7 @@ fi
 
 # Grep options: silent mode (do not show errors), ignore binary files, case
 # in-sensitive, recursive
-alias g='grep $@'
+alias g='grep'
 alias get_ip='echo "Public IP: $(curl --silent http://checkip.mynaughty.party 2>/dev/null)"; echo "Internal IPs: "; ifconfig|grep "192.168.12.\|192.168.15."'
 #alias findfile='find $1 -name $2'
 
@@ -312,9 +312,9 @@ if [[ -x $GRC_BIN ]]; then
   alias netstat='colourify netstat'
   alias ping='colourify ping'
   alias traceroute='colourify /usr/sbin/traceroute'
-  alias tail='colourify tail $@'
+  alias tail='colourify tail'
   # alias df='colourify gdf -Th $@'
-  alias cvs='colourify cvs $@'
+  alias cvs='colourify cvs'
   # TODO: Swap out gls colorize with grc variant?
   # See https://github.com/justfielding/dotfiles/commit/b66ee9468e77dea912bbf21a4866d7a89bb1d749
   # alias ls='colourify ls $@'
@@ -322,9 +322,9 @@ if [[ -x $GRC_BIN ]]; then
   # alias mount='colourify mount2 $@'
 fi
 
-alias open='xdg-open $@'
-alias o='open $@'
-alias start='open $@'
+alias open='xdg-open'
+alias o='open'
+alias start='open'
 
 if [[ -n "$VISUAL" ]]; then
   alias edit="$VISUAL $*"
@@ -333,38 +333,38 @@ elif [[ -n "$EDITOR" ]]; then
 fi
 
 if [ "$(type -t edit)" != 'alias' ]; then
-  alias e='edit $@'
+  alias e='edit'
 fi
 
 if [[ -x "$(command -v gnome-www-browser)" ]]; then
-  alias www='gnome-www-browser $@'
+  alias www='gnome-www-browser'
 fi
 
 TIMG_BIN=$(command -v timg)
 TIV_BIN=$(command -v tiv)
 
 if [[ -x "$TIMG_BIN" ]]; then
-  alias image='timg $@'
-  alias video='timg $@'
+  alias image='timg'
+  alias video='timg'
 elif [[ -x "$TIV_BIN" ]]; then
-  alias image='tiv $@'
+  alias image='tiv'
   alias video='echo Please install the timg package for video support.'
 fi
 
 if [ "$(type -t image)" != 'alias' ]; then
-  alias img='image $@'
+  alias img='image'
 fi
 
 if [ "$(type -t video)" != 'alias' ]; then
-  alias v='video $@'
+  alias v='video'
 fi
 
 if [[ -x "$(command -v MP4Box)" ]]; then
-  alias mp4box='MP4Box $@'
+  alias mp4box='MP4Box'
 fi
 
 if [[ -x "$(command -v MP4Client)" ]]; then
-  alias mp4c='MP4Client $@'
+  alias mp4c='MP4Client'
 fi
 
 #if [[ -x "${HOME}/Applications/Invisor Lite.app/Contents/MacOS/Invisor Lite" ]]; then
@@ -375,17 +375,17 @@ fi
 #fi
 
 if [[ -x "$(command -v pulsar)" && -x "$(command -v apm)" ]]; then
-  alias ppm='apm $@'
+  alias ppm='apm'
 fi
 
 if [ -x "$(which mdless)" ]; then
   if [ -x "$(which resize)" ]; then
     [ -z "$COLUMNS" ] && eval "$(resize)"; WIDTH=$(expr "$COLUMNS" / 2)
-      alias mdless='mdless --all-images $@'
-      #alias mdless="mdless --width=\"${WIDTH}\" --all-images $@"
+      alias mdless='mdless --all-images'
+      #alias mdless="mdless --width=\"${WIDTH}\" --all-images"
   else
     echo
-    alias mdless='mdless --all-images $@'
+    alias mdless='mdless --all-images'
   fi
 fi
 
