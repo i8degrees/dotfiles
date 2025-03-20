@@ -175,21 +175,27 @@ case "$(uname -s)" in
     alias hexedit='${HOME}/Applications/0xED.app/Contents/MacOS/0xED'
   ;;
   Linux)
+    # This is necessary for when we wish to redirect output from a script to
+    # a file or onto the console; without it, we see the raw shell escape
+    # sequences.
+    #
+    # NOTE(JEFF): We will likely have to deal with automating whether or not
+    # to use this `-r` switch -- dependent upon shell, redirection, etc. I
+    # believe that it also may well depend on whether or not we have colors
+    # enabled.
+    [ -n "$(command -v less)" ] && alias less='less -r $@'
     # GNU coreutils
-    alias top='top -o %CPU -o PID -o COMMAND -o TIME -o %MEM -o PR -o S -u jeff -n43'
-    alias ls="ls -lhs --color=auto"
+    [ -n "$(command -v top)" ]] && alias top='top -o %CPU -o PID -o COMMAND -o TIME -o %MEM -o PR -o S -u jeff -n43'
+    [ -n "$(command -v ls)" ] && alias ls="ls -lhs --color=auto"
     alias lsr="ls -lRa --color=auto"
-    alias df="df -Th"
+    [ -n "$(command -v df)" ] && alias df="df -Th"
     alias rm="rm -iv"
     alias cp="cp -iav --reflink=auto"
     alias mv="mv -iv"
     alias mkdir="mkdir -pv"
     alias chmod='chmod -v'
-    alias chown='chown -v'
+    [ -n "$(command -v chown)" ] && alias chown='chown -v'
     alias ln='ln -v'
-
-    #alias edit="$(which geany)"
-    # alias edit="$(which vim)"
 
     # ~/local/bin/subl is a symbolic link to
     # $HOME/local/opt/SublimeText2/sublime_text
