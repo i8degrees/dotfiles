@@ -15,6 +15,11 @@
       "**/.ruby-lsp": true,
       "node_modules": true,
       "**/node_modules": true
+    },
+    "files.associations": {
+      "Makefile.stow": "makefile",
+      "TODO.stow": "markdown",
+      "README.stow": "markdown"
     }
   }
 }
