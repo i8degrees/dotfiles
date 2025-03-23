@@ -13,6 +13,7 @@ package.json
 package-lock.json
 
 Makefile
+Makefile.stow
 
 #  dotfiles metadata stays put
 README.stow
@@ -20,6 +21,7 @@ LICENSE.stow
 INSTALL.stow
 UNINSTALL.stow
 REMOVE.stow
+TODO.stow
 
 # top-level directory paths to ignore
 terminfo
