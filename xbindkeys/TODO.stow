@@ -1,0 +1,13 @@
+
+# xbindkeys
+
+## TODO
+
+- [ ] fix lint errors and then write an install script for setting up `xbindkeys`
+  * `stow xbindkeys`
+  * `pacman -S xbindkeys` || `sudo apt install xbindkeys`
+
+
+- See also
+  * `Makefile`
+  * `../terminfo/install.sh`
