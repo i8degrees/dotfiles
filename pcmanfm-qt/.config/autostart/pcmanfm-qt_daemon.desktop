@@ -1,10 +1,10 @@
 [Desktop Entry]
 Categories=FileManager;Utility;Core;Qt;
-Comment=Browse the file system and manage the files
-Exec=pcmanfm-qt %U
+Comment=Start pcmanfm-qt in daemon mode as a companion to its main shortcut
+Exec=pcmanfm-qt -d
 GenericName=File Manager
 Icon=pcmanfm-qt
 MimeType=inode/directory;
-Name=PCManFM-Qt File Manager
+Name=PCManFM-Qt File Manager (daemon mode)
 StartupNotify=true
 Type=Application
