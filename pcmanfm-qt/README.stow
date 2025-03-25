@@ -18,3 +18,12 @@ this time. Check back later.
   * `pcmanfm/.config/autostart`
     - Copy this script to `$HOME/.config/autostart` if you wish for this file
     manager to startup at user login.
+
+## TODO
+
+- [ ] use template Makefile to write an installer for our system-wide
+thumbnailers at `pcmanfm-qt/local/share/thumbnailers` -- we could not find
+the user equivalent path for this directory.
+  * `pcmanfm-qt/Makefile` -- our template
+  * `terminfo/install.sh` -- for inspiration
+
