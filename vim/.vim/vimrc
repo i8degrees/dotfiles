@@ -4,6 +4,54 @@
 "               jeff (additions)
 "--------------------------------------------------------------
 
+" NOTE(JEFF): The host-based branching here should only be used
+" as a last resort!
+let hostname = substitute(system('hostname'), '\n', '', '')
+if hostname == "scorpio"
+   " ...
+elseif hostname == "pve1"
+  " ...
+else
+  " ...
+endif
+
+" Detect the operating environment
+"
+" OS_stamp(void)
+"
+" Return string 'wsl', 'msys', 'linux', or 'windows'.
+function OS_stamp()
+  let env = ''
+  "if !exists('g:env')
+    if has('win64') || has('win32') || has('win16')
+      let envStr = 'WINDOWS'
+    else
+      let envStr = toupper(substitute(system('uname -s'), '\n', '', ''))
+    endif
+    if matchstr(envStr, 'WSL') == 'WSL' | return 'wsl' | endif
+    if matchstr(envStr, 'LINUX') == 'LINUX' | return 'linux' | endif
+    " ... MacOS
+    if matchstr(envStr, 'DARWIN') == 'DARWIN' | return 'darwin' | endif
+    if matchstr(envStr, 'CYGWIN') == 'CYGWIN' | return 'cygwin' | endif
+    " ... to do MinGW-specific stuff (Git Bash, mainly).
+    if matchstr(envStr, 'MINGW') == 'MINGW' | return 'msys' | endif
+    " ... Windows land
+    if matchstr(envStr, 'WINDOWS') == 'WINDOWS' | return 'windows' | endif
+    # ... GUI choice
+    if has("X11") | return 'linux' | else | return 'windows' | endif
+
+    " let l:uname = system('uname -srm')
+    " if matchstr(l:uname, "WSL") == "WSL" | return 'wsl' | endif
+    " if matchstr(l:uname, "MINGW") == "MINGW" | return 'msys' | endif
+endfunction
+
+if !exists('g:env')
+  let g:env = OS_stamp()
+  if g:env =~ 'linux'
+    set term=xterm-256color
+  endif
+endif
+
 " IMPORTANT(JEFF): Fix warnings at startup regarding vim state
 :call system("mkdir -p ~/.vim/backup")
 :call system("mkdir -p ~/.vim/tmp")
@@ -125,7 +173,7 @@ endif
 set noerrorbells novisualbell 	" [disabled] audible && visual queue bells
 set t_vb=                     	" [disabled] visual bell
 
-if has("win32") || has ("win16")
+if g:env == 'windows'
   set term=win32
 endif
 
