@@ -1,0 +1,17 @@
+# .stow-local-ignore:jeff
+#
+#
+
+INSTALL.stow
+README.stow
+
+.ssh/authorized_keys
+.ssh/known_hosts
+.ssh/id_rsa
+.ssh/id_dsa
+.ssh/id_ecdsa
+.ssh/id_ecdsas
+.ssh/id_ed25519
+.ssh/id_ed25519-github
+.ssh/id_ed25519-github-nopassphrase
+
