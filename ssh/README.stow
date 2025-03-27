@@ -1,0 +1,30 @@
+
+# ssh
+
+The `ssh` stow package is presently intended as
+a starting template to base the end-user's 
+own `ssh_config (5)` from.  
+
+## usage
+
+```sh
+cd "$HOME/dotfiles.git"
+```
+
+The default installation method involves a simple invocation of `stow` followed by the package name of `ssh`. 
+
+```sh
+stow -R ssh
+```
+
+This action will fail if you already have a local `~/.ssh/config` setup. Refer to the **merge config** section header for follow-up instructions.
+
+### merge config
+
+It is expected that the end-user more than likely already has this file setup. In this case, doing a text string comparison on the two files in question will yield the textual differences found across the two specified files.
+
+```sh
+diff "$HOME/.ssh/config" "$HOME/dotfiles.git/ssh/.ssh/config"
+#diff "$HOME/.ssh/config" "$HOME/dotfiles.git/ssh/.ssh/config >> /tmp/ssh.patch"; less -r /tmp/ssh.patch
+```
+
