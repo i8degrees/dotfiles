@@ -6,55 +6,80 @@
 
 " NOTE(JEFF): The host-based branching here should only be used
 " as a last resort!
-let hostname = substitute(system('hostname'), '\n', '', '')
-if hostname == "scorpio"
-   " ...
-elseif hostname == "pve1"
-  " ...
-else
-  " ...
-endif
+function GetHostname()
+  let hostStr = substitute(system('hostname'), '\n', '', '')
+  return hostStr
+endfunction
+
+"let host = GetHostname()
 
 " Detect the operating environment
 "
-" OS_stamp(void)
+" [string] OS_stamp(void)
 "
-" Return string 'wsl', 'msys', 'linux', or 'windows'.
+" Returns one of the following strings:
+" 'wsl', 'msys', 'linux', or 'windows'.
 function OS_stamp()
-  let env = ''
-  "if !exists('g:env')
-    if has('win64') || has('win32') || has('win16')
-      let envStr = 'WINDOWS'
-    else
-      let envStr = toupper(substitute(system('uname -s'), '\n', '', ''))
-    endif
-    if matchstr(envStr, 'WSL') == 'WSL' | return 'wsl' | endif
-    if matchstr(envStr, 'LINUX') == 'LINUX' | return 'linux' | endif
-    " ... MacOS
-    if matchstr(envStr, 'DARWIN') == 'DARWIN' | return 'darwin' | endif
-    if matchstr(envStr, 'CYGWIN') == 'CYGWIN' | return 'cygwin' | endif
-    " ... to do MinGW-specific stuff (Git Bash, mainly).
-    if matchstr(envStr, 'MINGW') == 'MINGW' | return 'msys' | endif
-    " ... Windows land
-    if matchstr(envStr, 'WINDOWS') == 'WINDOWS' | return 'windows' | endif
-    # ... GUI choice
-    if has("X11") | return 'linux' | else | return 'windows' | endif
+  let envStr = toupper(substitute(system('uname -s'), '\n', '', ''))
 
-    " let l:uname = system('uname -srm')
-    " if matchstr(l:uname, "WSL") == "WSL" | return 'wsl' | endif
-    " if matchstr(l:uname, "MINGW") == "MINGW" | return 'msys' | endif
+  " ... Windows land
+  if matchstr(envStr, 'WINDOWS') == 'WINDOWS' | return 'windows' | endif
+
+  if matchstr(envStr, 'WSL') == 'WSL' | return 'wsl' | endif
+
+  if matchstr(envStr, 'CYGWIN') == 'CYGWIN' | return 'cygwin' | endif
+
+  " ... to do MinGW-specific stuff (Git Bash, mainly).
+  if matchstr(envStr, 'MINGW') == 'MINGW' | return 'msys' | endif
+
+  " ...base M$ stamp strings
+  if has('win64') || has('win32') || has('win16')
+    return 'windows'
+  endif
+
+  " ... MacOS
+  if matchstr(envStr, 'DARWIN') == 'DARWIN' | return 'darwin' | endif
+
+  " ... *nix types handling
+  if matchstr(envStr, 'LINUX') == 'LINUX' | return 'linux' | endif
+
+  if has('unix')
+    return 'unix'
+  endif
+
+  " let l:uname = system('uname -srm')
+  " if matchstr(l:uname, "WSL") == "WSL" | return 'wsl' | endif
+  " if matchstr(l:uname, "MINGW") == "MINGW" | return 'msys' | endif
 endfunction
 
+" Detect the use of a "GUI" environment.
+"
+" [string] IsGUI(void)
+"
+" Returns one of the following strings:
+" 'linux' or 'windows'
+function IsGui()
+  if has("X11") | return 'linux' | else | return 'windows' | endif
+endfunction
+
+" Set the default terminal for vim
 if !exists('g:env')
   let g:env = OS_stamp()
   if g:env =~ 'linux'
-    set term=xterm-256color
+    "set term=xterm-256color
   endif
 endif
 
+" FIXME(JEFF): Re-enable plugin management!
+"call pathogen#infect() 			" vim plugins management
+
 " IMPORTANT(JEFF): Fix warnings at startup regarding vim state
-:call system("mkdir -p ~/.vim/backup")
-:call system("mkdir -p ~/.vim/tmp")
+" FIXME(JEFF): 'unix' str
+if g:env =~ 'linux' || g:env =~ 'darwin' || g:env =~ 'msys' || 
+    g:env =~ 'cygwin' || g:env =~ 'unix'
+  :call system("mkdir -p ~/.vim/backup")
+  :call system("mkdir -p ~/.vim/tmp")
+endif
 
 " where to put backup files
 set backupdir=~/.vim/backup/
@@ -63,8 +88,10 @@ set backupdir=~/.vim/backup/
 set directory=~/.vim/tmp/
 
 " where to find colors, plugins and so on
-if has("win32") || has ("win16")
+if g:env =~ 'windows'
+  "if has("win32") || has ("win16")
   set runtimepath=~/.vim
+  "endif
 endif
 
 syntax on
@@ -126,6 +153,7 @@ inoremap <C-U> <C-G>u<C-U>
 :noremap <silent> <Space> :silent noh<Bar>echo<CR>
 
 " In many terminal emulators the mouse works just fine, thus enable it.
+" NOTE(JEFF): If this needs additional branching, see `IsGui` function.
 if has('mouse')
   set mouse=a
 endif
@@ -173,15 +201,15 @@ endif
 set noerrorbells novisualbell 	" [disabled] audible && visual queue bells
 set t_vb=                     	" [disabled] visual bell
 
-if g:env == 'windows'
+if g:env =~ 'windows'
   set term=win32
 endif
 
 " Enable italics support for comment syntax
-highlight Comment cterm=italic
-
-" FIXME(JEFF): Plugin management!
-"call pathogen#infect() 			" vim plugins management
+" screen-256color-italic
+if &term =~ 'italic'
+  highlight Comment cterm=italic
+endif
 
 :nnoremap <leader>m :silent !open -a Marked.app '%'<cr>
 
