@@ -59,24 +59,33 @@ endfunction
 " Returns one of the following strings:
 " 'linux' or 'windows'
 function IsGui()
+  " TODO(JEFF): Does this check return TRUE when we are
+  " inside Wayland env?
   if has("X11") | return 'linux' | else | return 'windows' | endif
 endfunction
 
-" Set the default terminal for vim
 if !exists('g:env')
   let g:env = OS_stamp()
-  if g:env =~ 'linux'
-    "set term=xterm-256color
-  endif
 endif
 
-" FIXME(JEFF): Re-enable plugin management!
+" DEPRECATED(JEFF): We should never set the term variable directly
+" unless we are debugging something! Instead, it should only be
+" used as a R/O env as a "feature" test. This will be removed
+" entirely upon additional tests under our three major workstation
+" environments.
+"
+" Set the default terminal for vim
+"if g:env =~ 'linux'
+  "set term=xterm-256color
+"endif
+
+" FIXME(JEFF): Re-enable plugin management?
 "call pathogen#infect() 			" vim plugins management
 
 " IMPORTANT(JEFF): Fix warnings at startup regarding vim state
 " FIXME(JEFF): 'unix' str
-if g:env =~ 'linux' || g:env =~ 'darwin' || g:env =~ 'msys' || 
-    g:env =~ 'cygwin' || g:env =~ 'unix'
+if g:env =~ 'linux' | elseif g:env =~ 'darwin' | elseif g:env =~ 'msys' | 
+  elseif g:env =~ 'cygwin' | elseif g:env =~ 'unix'
   :call system("mkdir -p ~/.vim/backup")
   :call system("mkdir -p ~/.vim/tmp")
 endif
@@ -207,7 +216,7 @@ endif
 
 " Enable italics support for comment syntax
 " screen-256color-italic
-if &term =~ 'italic'
+if &term =~ 'italic' | elseif &term =~ 'iTerm.app'
   highlight Comment cterm=italic
 endif
 
