@@ -37,6 +37,6 @@ keystate_capslock = enable
 
 # NOTE(JEFF): Disable middle-click copy to selection clipboard
 "echo -n | xsel -n -i; pkill xbindkeys; xdotool click 2; xbindkeys"
-b:2 + Release
+  b:2 + Release
 
 # EOF
