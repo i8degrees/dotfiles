@@ -4,6 +4,12 @@
 "               jeff (additions)
 "--------------------------------------------------------------
 
+" TODO(JEFF): Install the following plugins once we have plugins re-enabled
+" for vim!
+"
+" 1. [Use the same clipboard across vim & tmux](https://github.com/roxma/vim-tmux-clipboard.git)
+" 2. [Copy text over SSH](https://github.com/haya14busa/vim-poweryank)
+
 " NOTE(JEFF): The host-based branching here should only be used
 " as a last resort!
 function GetHostname()
