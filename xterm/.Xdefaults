@@ -1,0 +1,12 @@
+# .Xdefaults:jeff
+#
+# X11 environment defaults
+#
+
+# xterm
+#
+# Enable clipboard functionality with tmux via enablement of the protocol
+# OSC 52.
+# https://github.com/tmux/tmux/wiki/Clipboard#terminal-support---xterm
+XTerm*disallowedWindowOps: 20,21,SetXprop
+
