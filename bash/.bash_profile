@@ -126,13 +126,22 @@ NODENV_COMPLETIONS="/usr/lib/nodenv/libexec/completions/nodenv.bash"
 
 setup_node_env() {
   bin="$1"
-  args="- --no-rehash"
+  args="$2"
+  if [ -z "$args" ]; then
+    # NOTE(JEFF): We use the old syntax here, as compared to...
+    # "nodenv init - - --no-rehash"
+    args="init - --no-rehash"
+  fi
 
   if [ ! -x "$HOME/.nodenv/bin/nodenv" ]; then
     return
   fi
 
-  [ -n "$(command -v "$bin")" ] && eval "$($bin init "$args")"
+  # FIXME(JEFF): I would like to not ignore this error, but when we add
+  # quotes to $args -- it stops parsing the list correctly. Perhaps we
+  # should make args an array? args=()
+  # shellcheck disable=SC2068
+  [ -n "$(command -v "$bin")" ] && eval "$($bin ${args[@]})"
   [ -e "$HOME/.nodenv/bin" ] && append_path "$HOME/.nodenv/bin"
   [ -e "$HOME/.nodenv/shims" ] && PATH="$HOME/.nodenv/shims:$PATH"
   # shellcheck disable=SC1090
@@ -194,8 +203,9 @@ if [ -d "$HOME/local/opt/flexbv" ]; then
 fi
 
 # node env
-setup_node_env nodenv
+setup_node_env nodenv "init - - --no-rehash"
 
 # SSH env
+# shellcheck disable=SC1091
 [ -e "$HOME/.bash/ssh" ] && . "$HOME/.bash/ssh"
 
