@@ -12,6 +12,7 @@ README.stow
 .ssh/id_ecdsa
 .ssh/id_ecdsas
 .ssh/id_ed25519
+.ssh/id_ed25519-archlinux
 .ssh/id_ed25519-github
 .ssh/id_ed25519-github-nopassphrase
 
