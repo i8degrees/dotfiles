@@ -8,3 +8,4 @@ MimeType=inode/directory;
 Name=PCManFM-Qt File Manager (daemon mode)
 StartupNotify=true
 Type=Application
+NoDisplay=true
