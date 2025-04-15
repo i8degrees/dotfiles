@@ -209,3 +209,6 @@ setup_node_env nodenv "init - - --no-rehash"
 # shellcheck disable=SC1091
 [ -e "$HOME/.bash/ssh" ] && . "$HOME/.bash/ssh"
 
+# vscode env
+[ -n "$(command -v code)" ] && . "$(code --locate-shell-integration-path bash)"
+
