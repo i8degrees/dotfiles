@@ -1,6 +1,9 @@
 {
   "folders": [
     {
+      "path": "/Users/jeff/dotfiles.git"
+    },
+    {
       "path": "/home/jeff/dotfiles.git"
     }
   ],
@@ -9,12 +12,12 @@
       "**/.git": true,
       "**/.svn": true,
       "**/.hg": true,
-      "**/CVS": true,
       "**/.DS_Store": true,
       "**/Thumbs.db": true,
+      "**/CVS": true,
       "**/.ruby-lsp": true,
       "node_modules": true,
-      "**/node_modules": true
+      "**/node_modules": false
     },
     "files.associations": {
       "Makefile.stow": "makefile",
