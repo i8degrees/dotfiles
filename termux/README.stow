@@ -1,0 +1,21 @@
+
+# termux
+
+This is a `stow` package containing configuration
+that is intended to be used within an Android OS 
+environment with the [Termux][0] application installed.
+
+## usage
+
+```sh
+# assuming that dotfiles.git repo has been cloned
+# and you have changed directory path to the root
+of this repo
+stow termux
+cp -av /data/data/com.termux/files/home/.aliases /sdcard/.aliases
+```
+
+# reference documents
+
+[0]: <https://play.google.com/#>
+
