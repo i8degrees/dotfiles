@@ -1,0 +1,42 @@
+# .aliases by Skittles9823 2018 - 2019
+#           Terminal Mods
+
+TBIN=/data/data/com.termux/files/usr/bin
+THOME=/data/data/com.termux/files/home; export THOME
+
+alias rebash='source /sdcard/.aliases'
+alias aflinger='rootcheck && $ROOT dumpsys media.audio_flinger'
+alias bb='$BBDIR/busybox'
+alias bsu='su -s bash'
+alias dservice='rootcheck && $ROOT dumpsys media.dolby_memoryservice'
+alias killice='rootcheck && $ROOT killall dk.icepower.icesound'
+alias l='bb ls --group-directories-first'
+alias la='l -A'
+alias ll='l -l'
+alias lo='l -al'
+alias ls='ls --color=auto'
+alias nano='nano -l'
+alias killpac='rootcheck && $ROOT kill $(pidof $1)'
+alias sbash='. /system/etc/bash/bashrc'
+alias sudo='su -c "$@"'
+alias vd='cd'
+
+if [ $(which vim) ]; then 
+  alias vi='vim'
+else
+  alias vim='vi'
+fi
+
+# Functions which I'm gonna count as aliases
+getperms(){ rootcheck && $ROOT pm get-privapp-permissions $1 | sed "s/, /\n/g" 
+}
+getdenyperms(){ rootcheck && $ROOT pm get-privapp-deny-permissions $1 | sed "s/, /\n/g" 
+}
+
+HOME=/sdcard; export HOME
+
+PATH=$TBIN:$THOME/local/bin:$HOME/local/bin:$PATH
+TZ=America/Chicago; export TZ
+LANG=en_US.UTF-8; export LANG
+LC_TIME=C.UTF-8; export LC_TIME
+
