@@ -2,9 +2,12 @@
 #
 #
 
+# top-level of package
+.gitignore
 INSTALL.stow
 README.stow
 
+# one level deeper
 .ssh/authorized_keys
 .ssh/known_hosts
 .ssh/id_rsa
