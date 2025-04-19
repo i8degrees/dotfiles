@@ -119,6 +119,7 @@ unalias -a # Remove all alias definitions
 TZ="America/Chicago"; export TZ
 if [ -n "$(command -v locale)" ]; then
   eval "$(locale)"
+  #LANG=en_US.UTF-8; export LANG
   # IMPORTANT(JEFF): Under no certain condition shall I ever wish to NOT
   # see my clock timestamps in 24-hour. Especially relevant now that
   # it is not uncommon to be working in multiple timezones at the same
