@@ -112,9 +112,9 @@ INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"; export INFOPATH
 
 #QT_LOGGING_RULES="kwin_*.debug=true"; export QT_LOGGING_RULES
 
-# NodeJS env
+# NodeJS env initialization with nodenv for version tracking
 #
-# (void) setup_node_env(str = required)
+# (void) setup_nodejs_env(str = required)
 # ...where str is a non-zero array of characters to say what NodeJS version
 # manager binary to prefer in setting up all of this.
 #
@@ -124,17 +124,22 @@ INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"; export INFOPATH
 # have since been resolved now...
 NODENV_COMPLETIONS="/usr/lib/nodenv/libexec/completions/nodenv.bash"
 
-setup_node_env() {
+#eval "$(nodenv init - bash)"
+setup_nodejs_env() {
   bin="$1"
   args="$2"
+  # NOTE(JEFF): Automatic nodenv env init; this is equivalent to the response
+  # you receive upon executing `nodenv shell`.
   if [ -z "$args" ]; then
-    # NOTE(JEFF): We use the old syntax here, as compared to...
-    # "nodenv init - - --no-rehash"
-    args="init - --no-rehash"
+    if [ -r "$HOME/.nodenv/shims/.nodenv-shim" ]; then
+      args="init - --no-rehash"
+    else
+      args="init - bash"
+    fi
   fi
 
-  if [ ! -x "$HOME/.nodenv/bin/nodenv" ]; then
-    return
+  if [ ! -x "$HOME/.nodenv/shims/node" ]; then
+    return 2
   fi
 
   # FIXME(JEFF): I would like to not ignore this error, but when we add
@@ -202,8 +207,8 @@ if [ -d "$HOME/local/opt/flexbv" ]; then
   append_path "$HOME/local/opt/flexbv"
 fi
 
-# node env
-setup_node_env nodenv "init - - --no-rehash"
+# NodeJS env
+setup_nodejs_env nodenv
 
 # SSH env
 # shellcheck disable=SC1091
