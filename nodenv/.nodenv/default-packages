@@ -50,3 +50,7 @@ srt-to-vtt
 subsrt
 xmllint ~0.1.1
 yaml-lint
+
+# FIXME(JEFF): We need to review the last version that utilized .eslintrc as
+# the default configuration file for parsing JS..?
+#eslint@latest
