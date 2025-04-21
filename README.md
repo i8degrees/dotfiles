@@ -25,18 +25,79 @@ My personal customization files and scripts for my environments. Friendly toward
 - FreeBSD
   * It has been some time since I have used this OS and honestly cannot even remember the last version it was on. I do not recall any specific problems here.
 
+### deps
+
 - [GNU Stow](https://www.gnu.org/software/stow/) must be installed beforehand. The software is a simple (one file) Perl script without external dependencies. It can also be found in the [CPAN modules repository](https://metacpan.org/dist/Stow/view/bin/stow). `cpan install Stow` and append `$HOME/perl5/bin` to your system `PATH`.
+
+#### stow
+
+Most all environments include a packaged version of `stow`. It is suggested
+that you use the distribution's package of `stow`. How you do so dffers
+depending on the environment. I will try and include the most common methods
+that I know have worked for me.
+
+##### Windows
+
+You have three options that I am aware of:
+
+1. Perl5 installer with CPAN package
+2. native builds packaged from the Chocolately 
+repositories
+3. WSL2 with the Linux distribution of your choice
+
+###### native build
+
+- Open a terminal of your choice with **administrative** privileges.
+    - `cmd32.exe`
+    - `pshell.exe`
+
+```sh
+# winget install -y stow
+#choco.exe install -y git git-lfs vim
+choco.exe install -y stow
+```
+
+##### Debian
+
+This includes Debian and all derivatives, such as Ubuntu, Proxmox VE
+and so forth.
+
+```sh
+apt-get install -y stow
+```
+
+##### Arch Linux
+
+This includes Arch Linux and all derivatives, such as Manjaro Linux.
+
+```sh
+sudo pacman -S stow
+```
+
+##### MacOS
+
+```sh
+brew install stow -vd
+```
+
+##### CPAN (Perl)
 
 ```shell
 # --recursive takes care of git submodules
 git clone --recurse-submodules https://github.com/i8degrees/dotfiles.git $HOME/dotfiles.git
 cd $HOME/dotfiles || exit 255
 cpan Stow # Stow here, NOT stow
-stow stow
+stow -Rv stow
 ```
 
-**IMPORTANT:** The very first package you should stow is the `stow` package, as it contains my `stowrc` options file. This configuration
-has ignore filters in place that are important. Without these ignored files in play, you may find metadata files that are intended only be read in-place end up in directories where they should not be.
+##### post-installation
+
+**IMPORTANT:** After installing `stow`, you should begin by first
+stowing my `stow` directory from this git repo.
+
+```sh
+stow -Rv stow
+```
 
 ```shell
 # Manual git submodule initialization
