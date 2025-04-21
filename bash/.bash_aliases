@@ -175,9 +175,13 @@ case "$(uname -s)" in
     alias hexedit='${HOME}/Applications/0xED.app/Contents/MacOS/0xED'
   ;;
   Linux)
-    # This is necessary for when we wish to redirect output from a script to
-    # a file or onto the console; without it, we see the raw shell escape
-    # sequences.
+    # NOTE(JEFF): You may temporarily disable the following aliases by
+    # executing "unalias" followed by the command in your shell, i.e.:
+    # unalias rm
+    #
+    # NOTE(JEFF): This is necessary for when we wish to redirect output from
+    # a script to a file or onto the console; without it, we see the raw shell
+    # escape sequences.
     #
     # NOTE(JEFF): We will likely have to deal with automating whether or not
     # to use this `-r` switch -- dependent upon shell, redirection, etc. I
@@ -378,15 +382,8 @@ if [[ -x "$(command -v pulsar)" && -x "$(command -v apm)" ]]; then
   alias ppm='apm'
 fi
 
-if [ -x "$(which mdless)" ]; then
-  if [ -x "$(which resize)" ]; then
-    [ -z "$COLUMNS" ] && eval "$(resize)"; WIDTH=$(expr "$COLUMNS" / 2)
-      alias mdless='mdless --all-images'
-      #alias mdless="mdless --width=\"${WIDTH}\" --all-images"
-  else
-    echo
-    alias mdless='mdless --all-images'
-  fi
+if [ -n "$(command -v mdless)" ]; then
+  alias mdless='mdless --all-images'
 fi
 
 # https://bytefreaks.net/applications/docker/how-to-list-all-docker-container-names-and-their-ips
@@ -394,11 +391,10 @@ dip() {
   docker ps -q | xargs -n 1 docker inspect --format '{{ .Name }} {{range .NetworkSettings.Networks}} {{.IPAddress}} / {{.GlobalIPv6Address}}{{end}}' | sed 's#^/##';
 }
 
-[ -x "$(command -v -v htop)" ] && alias top='sudo htop'
-[ -x "$(command -v step-cli)" ] && alias step='step-cli'
+[ -n "$(command -v -v htop)" ] && alias top='sudo htop'
+[ -n "$(command -v step-cli)" ] && alias step='step-cli'
 
-if [ -x "$(which xclip)" ]; then
-  DISPLAY=:0
+if [ -n "$(command -v xclip)" ]; then
   alias xclip='xclip -selection clipboard'
   alias pbcopy='xclip -i'
   alias pbpaste='xclip -o'
