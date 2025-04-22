@@ -126,6 +126,7 @@ NODENV_COMPLETIONS="/usr/lib/nodenv/libexec/completions/nodenv.bash"
 
 #eval "$(nodenv init - bash)"
 setup_nodejs_env() {
+  node_bin="$HOME/.nodenv/shims/node"
   bin="$1"
   args="$2"
   # NOTE(JEFF): Automatic nodenv env init; this is equivalent to the response
@@ -138,7 +139,15 @@ setup_nodejs_env() {
     fi
   fi
 
-  if [ ! -x "$HOME/.nodenv/shims/node" ]; then
+  if [ ! -x "$bin" ]; then
+    echo "ERROR: Failed to find nodenv at ${bin}..."
+    echo
+    return 1
+  fi
+
+  if [ ! -x "$node_bin" ]; then
+    echo "ERROR: Failed to find node at ${node_bin}..."
+    echo
     return 2
   fi
 
@@ -146,7 +155,8 @@ setup_nodejs_env() {
   # quotes to $args -- it stops parsing the list correctly. Perhaps we
   # should make args an array? args=()
   # shellcheck disable=SC2068
-  [ -n "$(command -v "$bin")" ] && eval "$($bin ${args[@]})"
+  [ -n "$DEBUG" ] && echo "$("$bin" ${args[@]})"
+  eval "$("$bin" ${args[@]})"
   [ -e "$HOME/.nodenv/bin" ] && append_path "$HOME/.nodenv/bin"
   [ -e "$HOME/.nodenv/shims" ] && PATH="$HOME/.nodenv/shims:$PATH"
   # shellcheck disable=SC1090
@@ -208,7 +218,8 @@ if [ -d "$HOME/local/opt/flexbv" ]; then
 fi
 
 # NodeJS env
-setup_nodejs_env nodenv
+setup_nodejs_env "$HOME/.nodenv/bin/nodenv" \
+  "init - --no-rehash"
 
 # SSH env
 # shellcheck disable=SC1091
