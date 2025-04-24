@@ -218,7 +218,7 @@ if [ -d "$HOME/local/opt/flexbv" ]; then
 fi
 
 # NodeJS env
-setup_nodejs_env "$HOME/.nodenv/bin/nodenv" \
+setup_nodejs_env "$(command -v nodenv)" \
   "init - --no-rehash"
 
 # SSH env
