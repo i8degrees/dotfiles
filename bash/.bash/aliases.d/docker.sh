@@ -56,7 +56,9 @@ showDockerLabels() {
 #alias docker='k3s kubectl exec -it docker-1-695d96b4f6-5nlx6 -n ix-docker-1 -- docker $@'
 
 # NOTE(JEFF): Try to warn the user of missing dependencies that may affect the usage of these aliases.
-deps=(jq sed sort wc bc docker docker-compose)
+# Some of these are typicallly shell "built-ins" depending on the interpreter,
+# such as is the case with BASH.
+deps=(jq sed sort wc bc docker)
 for script in "${deps[@]}"; do
   if ! exists_exe "$script"; then
     echo "ERROR: Failed to find $script..."
