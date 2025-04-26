@@ -2,6 +2,11 @@
 #
 #
 
+# FIXME(JEFF): This shall go away after we setup a git 
+# submodule of the nodenv repo into the nodenv/ stow
+# package.
+.gitignore.fixme
+
 INSTALL.stow
 README.stow
 
