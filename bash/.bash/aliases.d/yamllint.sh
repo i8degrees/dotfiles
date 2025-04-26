@@ -2,6 +2,6 @@
 #
 #
 
-yamllint_bin="$(command -v yamllint)"
-[ -n "$yamllint_bin" ] && alias yamllint='yamllint --no-warnings'
+yamllint_bin="$(which yamllint)"
+[ -x "$yamllint_bin" ] && alias yamllint='yamllint --no-warnings'
 

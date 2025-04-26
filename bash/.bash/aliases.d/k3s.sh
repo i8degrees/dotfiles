@@ -1,3 +1,6 @@
+#!/bin/sh
+#
+#
 
 [ -x "$(which kubectl)" ] && alias kubectl='k3s kubectl $@'
 
