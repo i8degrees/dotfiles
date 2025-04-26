@@ -1,9 +1,10 @@
 [Desktop Entry]
 Type=Application
 Version=1.0
+Icon=RQuickShare
 Name=RQuickShare
 Comment=RQuickSharestartup script
 Exec=/usr/bin/rquickshare
 StartupNotify=false
 Terminal=false
-Hidden=true
+Hidden=false
