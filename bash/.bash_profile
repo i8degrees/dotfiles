@@ -1,8 +1,6 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
-# 2011-08-24: jeff
-#
-#		~/.bash_profile
+#		~/.bash_profile:jeff
 #
 # Local bash (1) profile executed for login shells.
 #
@@ -26,23 +24,38 @@ append_path() {
 
 #PATH="/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/var/lib/flatpak/exports/bin:/usr/lib/jvm/default/bin:/usr/bin/site_perl:/usr/bin/vendor_perl:/usr/bin/core_perl"
 
-case "$(uname -s)" in
-	Darwin)
-		PATH="$PATH:$HOME/Applications:/usr/X11/bin"
-	;;
-	Linux)
-    PATH="${HOME}/.config/feh/themes:$PATH:/usr/games"
-	;;
-	*)
-	;;
-esac
-
+umask 022
+# IMPORTANT(JEFF): Do not relocate the following snippet as we must source
+# this particular script before anything else; we initialize our environment
+# by clearing all the existing aliases, etc in this file.
 if [ -f "$HOME/.bashrc" ]; then
   # shellcheck disable=SC1091
-  . "$HOME/.bashrc"
+  [ -z "$DEBUG" ] && . "$HOME/.bashrc"
 fi
 
-umask 022
+# NOTE(JEFF): BASH alias snippets from the user (opt-in)
+if [ -d "$HOME/.bash/aliases.d" ]; then
+  for i in "$HOME/.bash/aliases.d"/*.sh; do
+    if [[ -r "$i" ]] && [[ -x "$i" ]]; then
+      [ -n "$DEBUG" ] && echo "$i"
+      # shellcheck disable=SC1090
+      . "$i"
+    fi
+  done
+  unset i
+fi
+
+case "$(uname -s)" in
+  Darwin)
+    PATH="$PATH:$HOME/Applications:/usr/X11/bin"
+  ;;
+  Linux)
+    PATH="${HOME}/.config/feh/themes:$PATH:/usr/games"
+	;;
+	*) # catch-all
+  ;;
+esac
+
 
 # golang env
 GOPATH="${HOME}/local/src/golang"; export GOPATH
@@ -218,13 +231,13 @@ if [ -d "$HOME/local/opt/flexbv" ]; then
 fi
 
 # NodeJS env
-setup_nodejs_env "$(command -v nodenv)" \
-  "init - --no-rehash"
+setup_nodejs_env "$(which nodenv)"
 
 # SSH env
 # shellcheck disable=SC1091
 [ -e "$HOME/.bash/ssh" ] && . "$HOME/.bash/ssh"
 
 # vscode env
+# shellcheck disable=SC1090
 [ -n "$(command -v code)" ] && . "$(code --locate-shell-integration-path bash)"
 
