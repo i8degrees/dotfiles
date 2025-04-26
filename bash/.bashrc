@@ -111,9 +111,8 @@ export HISTCONTROL="erasedups:ignorespace"
 #   path is set
 #PATH="/usr/lib/colorgcc/bin"
 
-# Reset aliases to ensure consistent state upon environment reload; see my
-# rbash alias.
-unalias -a # Remove all alias definitions
+# Reset all aliases definitions at shell env startup for consistency
+unalias -a
 
 # locale env
 TZ="America/Chicago"; export TZ
