@@ -231,7 +231,22 @@ if [ -d "$HOME/local/opt/flexbv" ]; then
 fi
 
 # NodeJS env
-setup_nodejs_env "$(which nodenv)"
+#
+# NOTE(JEFF): The additional branching here is intended only to
+# be temporary, until I have the chance to clean up / merge the
+# differences between the installation of nodenv from
+# docker.fs1.home and scorpio.home; one uses nodenv from the
+# package manager and the other from the official git repo.
+nodejs_bin_path="$(which nodenv)"
+if [ -x "$nodejs_bin_path" ]; then
+  true
+elif [ -x "$HOME/.nodenv/bin/nodenv" ]; then
+  nodejs_bin_path="$HOME/.nodenv/bin/nodenv"
+elif [ -x "$HOME/.nodenv/libexec/nodenv" ]; then
+  nodejs_bin_path="$HOME/.nodenv/libexec/nodenv"
+fi
+
+setup_nodejs_env "$nodejs_bin_path"
 
 # SSH env
 # shellcheck disable=SC1091
