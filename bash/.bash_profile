@@ -4,17 +4,9 @@
 #
 # Local bash (1) profile executed for login shells.
 #
-# Append "$1" to $PATH when not already in.
-# This function API is accessible to scripts in /etc/profile.d
 
-append_path() {
-  case ":$PATH:" in
-    *:"$1":*)
-      ;;
-    *)
-      PATH="${PATH:+$PATH:}$1"
-  esac
-}
+# shellcheck disable=SC1091
+[ -e "$HOME/.bash/lib" ] && . "$HOME/.bash/lib"
 
 #if [[ -z $DISPLAY && $(tty) = /dev/tty1 ]]; then
 
@@ -237,7 +229,7 @@ fi
 # differences between the installation of nodenv from
 # docker.fs1.home and scorpio.home; one uses nodenv from the
 # package manager and the other from the official git repo.
-nodejs_bin_path="$(which nodenv)"
+nodejs_bin_path="$(exists_exe nodenv)"
 if [ -x "$nodejs_bin_path" ]; then
   true
 elif [ -x "$HOME/.nodenv/bin/nodenv" ]; then

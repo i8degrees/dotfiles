@@ -6,6 +6,8 @@
 [ -n "$DEBUG" ] && set -o errexit
 [ -n "$DEBUG_TRACE" ] && set -o xtrace
 
+[ -e "$HOME/.bash/lib" ] && . "$HOME/.bash/lib"
+
 # DEPRECATED(JEFF): This function is made obsolete by
 # the zstd alias using -T0 to specify an auto-calculated
 # number of threads (same as the function). Please use
@@ -22,7 +24,7 @@ _zstd() {
   zstd_args="-T${num_threads}"
   args=$*
 
-  if [ -x "$(which zstd)" ]; then
+  if [ -x "$(exists_exe zstd)" ]; then
     [ -z "$DEBUG" ] && zstd $zstd_args "$args"
     [ -n "$DEBUG" ] && echo zstd $zstd_args "$args"
   else
@@ -34,9 +36,9 @@ _zstd() {
 
 # IMPORTANT(JEFF): Use the maximum number of threads 
 # detected by zstd for (de)-compression.
-[ -x "$(which zstd)" ] && alias zstd='zstd -T0'
+[ -x "$(exists_exe zstd)" ] && alias zstd='zstd -T0'
 
-if [ -x "$(which zfs)" ]; then
+if [ -x "$(exists_exe zfs)" ]; then
   alias zfs-mv='zfs rename'
   alias zfs-move='zfs mv'
 fi

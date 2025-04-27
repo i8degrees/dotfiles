@@ -1,8 +1,13 @@
 
 # termux
 
+**DEPRECATED(JEFF):** This package is obsolete as of commit `d749be15f` and
+should no longer be used in new installations. The `bash` stow package should
+be used instead. The `termux` stow package will be removed some time in the
+future; sooner than later, if I remember! ;-)
+
 This is a `stow` package containing configuration
-that is intended to be used within an Android OS 
+that is intended to be used within an Android OS
 environment with the [Termux][0] application installed.
 
 ## usage

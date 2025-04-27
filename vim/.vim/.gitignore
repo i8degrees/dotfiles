@@ -1,17 +1,24 @@
 
 .netrwhist
+viminfo
 
 ./autoload/*
 ./backup/*
 backup/.@(!(.|))*
 ./bundle/*
 ./tmp/*
+./swap/*
+./undo/*
+./view/*
 
 # IMPORTANT(jeff): VIM complains about being unable to create
 # swap files anytime we open a file for editing whenever its
-# folders specified below are missing. 
+# folders specified below are missing.
 !./autoload/.placeholder
 !./backup/.placeholder
 !./bundle/.placeholder
 !./tmp/.placeholder
+!./swap/.placeholder
+!./undo/.placeholder
+!./view/.placeholder
 

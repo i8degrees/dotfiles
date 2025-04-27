@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 #
-# Workstation dev snippets for daily work
+# Utility functions for supporting our BASH dotfiles
 #
 #
 
@@ -20,5 +20,39 @@ append_path() {
   esac
 
   #export PATH
+}
+
+# Check for the existence of a path that is executable.
+#
+# exists_exe(path = required)
+#
+# ...where path is a string containing the command for which
+# we seek the existence of
+exists_exe() {
+  pathstr="$1"
+  if [ -z "$pathstr" ]; then
+    return 2
+  fi
+
+  if which $pathstr >/dev/null 2>&1; then
+    return 0 # truthy
+  else
+    return 1 # err
+  fi
+}
+
+# NOTE(JEFF): The remainder of .aliases is split up
+# between our ~/.bash_profile, ~/.bashrc and ~/.bash_aliases
+
+# .aliases by Skittles9823 2018 - 2019
+#           Terminal Mods
+#
+# Functions which I'm gonna count as aliases
+getperms() {
+  rootcheck && $ROOT pm get-privapp-permissions $1 | sed "s/, /\n/g" 
+}
+
+getdenyperms() {
+  rootcheck && $ROOT pm get-privapp-deny-permissions $1 | sed "s/, /\n/g" 
 }
 
