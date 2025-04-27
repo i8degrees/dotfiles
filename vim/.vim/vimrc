@@ -17,6 +17,14 @@ function GetHostname()
   return hostStr
 endfunction
 
+" Getter function to query the HOME env value
+" TODO(JEFF): This function would not be portable while using a native build
+" of vim for Windows..?
+function GetHome()
+  let str = substitute(system('echo $HOME'), '\n', '', '')
+  return str
+endfunction
+
 "let host = GetHostname()
 
 " Detect the operating environment
@@ -25,6 +33,14 @@ endfunction
 "
 " Returns one of the following strings:
 " 'wsl', 'msys', 'linux', or 'windows'.
+"
+" TODO(JEFF): Figure out how we can best determine when we are on Android OS
+" using Termux (or probably any other) as the shell. The function returns
+" 'linux' for us. Perhaps we could do an additional check [1]..? The other
+" idea that immediately comes to mind is seeking out a file path that is
+" unique to Android OS?
+"
+" 1. uname -o
 function OS_stamp()
   let envStr = toupper(substitute(system('uname -s'), '\n', '', ''))
 
@@ -70,6 +86,10 @@ function IsGui()
   if has("X11") | return 'linux' | else | return 'windows' | endif
 endfunction
 
+if !exists('g:home')
+  let g:home = GetHome()
+endif
+
 if !exists('g:env')
   let g:env = OS_stamp()
 endif
@@ -92,21 +112,32 @@ endif
 " FIXME(JEFF): 'unix' str
 if g:env =~ 'linux' | elseif g:env =~ 'darwin' | elseif g:env =~ 'msys' | 
   elseif g:env =~ 'cygwin' | elseif g:env =~ 'unix'
+  " FIXME(JEFF): How do we insert the value of g:home inside of a string that
+  " is being assigned like so?
   :call system("mkdir -p ~/.vim/backup")
   :call system("mkdir -p ~/.vim/tmp")
 endif
 
 " where to put backup files
-set backupdir=~/.vim/backup/
+"set backupdir=~/.vim/backup/
+" FIXME(JEFF): How do we insert the value of g:home inside of a string that
+" is being assigned like so?
+set backupdir="/data/data/com.termux/files/home/.vim/backup/"
 
 " where to put tmp files
-set directory=~/.vim/tmp/
+"set directory=~/.vim/tmp/
+" FIXME(JEFF): How do we insert the value of g:home inside of a string that
+" is being assigned like so?
+set directory="/data/data/com.termux/files/home/.vim/tmp/"
 
 " where to find colors, plugins and so on
 if g:env =~ 'windows'
   "if has("win32") || has ("win16")
   set runtimepath=~/.vim
-  "endif
+else
+  " FIXME(JEFF): How do we insert the value of g:home inside of a string that
+  " is being assigned like so?
+  "set runtimepath="/data/data/com.termux/files/home/.vim"
 endif
 
 syntax on

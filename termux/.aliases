@@ -1,8 +1,9 @@
 # .aliases by Skittles9823 2018 - 2019
 #           Terminal Mods
 
-TBIN=/data/data/com.termux/files/usr/bin
+TBIN=/data/data/com.termux/files/usr/bin; export TBIN
 THOME=/data/data/com.termux/files/home; export THOME
+SDHOME=/sdcard; export SDHOME
 
 alias rebash='source /sdcard/.aliases'
 alias aflinger='rootcheck && $ROOT dumpsys media.audio_flinger'
@@ -33,7 +34,12 @@ getperms(){ rootcheck && $ROOT pm get-privapp-permissions $1 | sed "s/, /\n/g"
 getdenyperms(){ rootcheck && $ROOT pm get-privapp-deny-permissions $1 | sed "s/, /\n/g" 
 }
 
-HOME=/sdcard; export HOME
+# TODO(JEFF): Determine if we can figure up a way of choosing which path we
+# wish to set as HOME at the time of this script execution. Perhaps something
+# like checking the current working directory..?
+#HOME=$SDHOME
+HOME=$THOME
+export HOME
 
 PATH=$TBIN:$THOME/local/bin:$HOME/local/bin:$PATH
 TZ=America/Chicago; export TZ
