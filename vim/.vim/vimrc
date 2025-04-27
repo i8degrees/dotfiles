@@ -17,14 +17,6 @@ function GetHostname()
   return hostStr
 endfunction
 
-" Getter function to query the HOME env value
-" TODO(JEFF): This function would not be portable while using a native build
-" of vim for Windows..?
-function GetHome()
-  let str = substitute(system('echo $HOME'), '\n', '', '')
-  return str
-endfunction
-
 "let host = GetHostname()
 
 " Detect the operating environment
@@ -33,14 +25,6 @@ endfunction
 "
 " Returns one of the following strings:
 " 'wsl', 'msys', 'linux', or 'windows'.
-"
-" TODO(JEFF): Figure out how we can best determine when we are on Android OS
-" using Termux (or probably any other) as the shell. The function returns
-" 'linux' for us. Perhaps we could do an additional check [1]..? The other
-" idea that immediately comes to mind is seeking out a file path that is
-" unique to Android OS?
-"
-" 1. uname -o
 function OS_stamp()
   let envStr = toupper(substitute(system('uname -s'), '\n', '', ''))
 
@@ -74,21 +58,43 @@ function OS_stamp()
   " if matchstr(l:uname, "MINGW") == "MINGW" | return 'msys' | endif
 endfunction
 
+" TODO(JEFF): Figure out how we can best determine when we are on Android OS
+" using Termux (or probably any other) as the shell. The function returns
+" 'linux' for us. Perhaps we could do an additional check [1]..? The other
+" idea that immediately comes to mind is seeking out a file path that is
+" unique to Android OS?
+"
+" 1. uname -o
+" 2. uname -s
+function MachineStamp()
+  " TODO(JEFF): Verify that `uname -s` produces the same output under Termux
+  " on Android OS. Darwin (MacOS) does not support the `-o` switch.
+  let envStr = toupper(substitute(system('uname -s'), '\n', '', ''))
+
+  " ... Android OS
+  if matchstr(envStr, 'Android') == 'Android' | return 'android' | endif
+  if matchstr(envStr, 'DARWIN') == 'DARWIN' | return 'darwin' | endif
+  return envStr
+endfunction
+
+if !exists('g:stamp')
+  let g:stamp = MachineStamp()
+endif
+
 " Detect the use of a "GUI" environment.
 "
 " [string] IsGUI(void)
 "
 " Returns one of the following strings:
 " 'linux' or 'windows'
+"
+" FIXME(JEFF): Do not use this function until we deal with the other possible
+" environments (MacOS, etc).
 function IsGui()
   " TODO(JEFF): Does this check return TRUE when we are
-  " inside Wayland env?
+  " inside Wayland env? This returns 'windows' under darwin (MacOS) -_-
   if has("X11") | return 'linux' | else | return 'windows' | endif
 endfunction
-
-if !exists('g:home')
-  let g:home = GetHome()
-endif
 
 if !exists('g:env')
   let g:env = OS_stamp()
@@ -108,36 +114,37 @@ endif
 " FIXME(JEFF): Re-enable plugin management?
 "call pathogen#infect() 			" vim plugins management
 
-" IMPORTANT(JEFF): Fix warnings at startup regarding vim state
-" FIXME(JEFF): 'unix' str
-if g:env =~ 'linux' | elseif g:env =~ 'darwin' | elseif g:env =~ 'msys' | 
-  elseif g:env =~ 'cygwin' | elseif g:env =~ 'unix'
-  " FIXME(JEFF): How do we insert the value of g:home inside of a string that
-  " is being assigned like so?
-  :call system("mkdir -p ~/.vim/backup")
-  :call system("mkdir -p ~/.vim/tmp")
-endif
+" IMPORTANT(JEFF): Ensure that we have our vim env setup properly so that
+" we do not see any warnings upon start or especially on file save!
+"
+" 1. https://wiki.archlinux.org/title/Vim#Workaround_for_XDG_Base_Directory_specification
 
 " where to put backup files
-"set backupdir=~/.vim/backup/
-" FIXME(JEFF): How do we insert the value of g:home inside of a string that
-" is being assigned like so?
-set backupdir="/data/data/com.termux/files/home/.vim/backup/"
+set backupdir=$HOME/.vim/backup/ | call mkdir(&backupdir, 'p')
 
-" where to put tmp files
-"set directory=~/.vim/tmp/
-" FIXME(JEFF): How do we insert the value of g:home inside of a string that
-" is being assigned like so?
-set directory="/data/data/com.termux/files/home/.vim/tmp/"
+" where to put tmp (swap) files
+"
+" 1. https://wiki.archlinux.org/title/Vim#Workaround_for_XDG_Base_Directory_specification
+"set directory=$HOME/.vim/tmp/ | call mkdir(&directory, 'p')
+set directory=$HOME/.vim/swap/ | call mkdir(&directory, 'p')
+
+set undodir=$HOME/.vim/undo | call mkdir(&undodir, 'p')
+set viewdir=$HOME/.vim/view | call mkdir(&viewdir, 'p')
+
+if !has('nvim') | set viminfofile=$HOME/.vim/viminfo | endif
 
 " where to find colors, plugins and so on
 if g:env =~ 'windows'
-  "if has("win32") || has ("win16")
   set runtimepath=~/.vim
+elseif g:stamp =~ 'android'
+  " NOTE(JEFF): I believe that the only time this is necessary would be when
+  " we are using Termux shell on Android OS, due to the unusual need for us
+  " to use two different HOME paths (THOME and SDHOME).
+  set runtimepath+=$HOME/.vim
 else
-  " FIXME(JEFF): How do we insert the value of g:home inside of a string that
-  " is being assigned like so?
-  "set runtimepath="/data/data/com.termux/files/home/.vim"
+  " NOTE(JEFF): We need not bother setting anything here, least in the typical
+  " case. It is common for distributions to statically include $HOME/.vim in
+  " the distribution's build of vim.
 endif
 
 syntax on
