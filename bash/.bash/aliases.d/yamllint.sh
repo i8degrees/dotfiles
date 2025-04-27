@@ -1,7 +1,7 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 #
 
-yamllint_bin="$(which yamllint)"
-[ -x "$yamllint_bin" ] && alias yamllint='yamllint --no-warnings'
+[ -e "$HOME/.bash/lib" ] && . "$HOME/.bash/lib"
 
+[ -x "$(exists_exe yamllint)" ] && alias yamllint='yamllint --no-warnings'

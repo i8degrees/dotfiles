@@ -4,11 +4,15 @@
 "               jeff (additions)
 "--------------------------------------------------------------
 
-" TODO(JEFF): Install the following plugins once we have plugins re-enabled
-" for vim!
+" TODO(JEFF): Relocate our functions into its own file
+" TODO(JEFF): Install the following plugins once we have plugins 
+" set back up!
 "
 " 1. [Use the same clipboard across vim & tmux](https://github.com/roxma/vim-tmux-clipboard.git)
 " 2. [Copy text over SSH](https://github.com/haya14busa/vim-poweryank)
+
+" FIXME(JEFF): Re-enable plugin management?
+"call pathogen#infect() 			" vim plugins management
 
 " NOTE(JEFF): The host-based branching here should only be used
 " as a last resort!
@@ -16,8 +20,6 @@ function GetHostname()
   let hostStr = substitute(system('hostname'), '\n', '', '')
   return hostStr
 endfunction
-
-"let host = GetHostname()
 
 " Detect the operating environment
 "
@@ -58,15 +60,45 @@ function OS_stamp()
   " if matchstr(l:uname, "MINGW") == "MINGW" | return 'msys' | endif
 endfunction
 
+" TODO(JEFF): Figure out how we can best determine when we are on Android OS
+" using Termux (or probably any other) as the shell. The function returns
+" 'linux' for us. Perhaps we could do an additional check [1]..? The other
+" idea that immediately comes to mind is seeking out a file path that is
+" unique to Android OS?
+"
+" 1. uname -o
+" 2. uname -s
+function MachineStamp()
+  " Termux on Android OS (v13)
+  let envStr = tolower(substitute(system('uname -o'), '\n', '', ''))
+  " TODO(JEFF): Is this the right way to check for error state?
+  if envStr == ''
+    let envStr = OS_stamp()
+  endif
+
+  " ... Android OS
+  if matchstr(envStr, 'android') == 'android' | return 'android' | endif
+  " FIXME(JEFF): Remove after verifying; this branch should never be executed...
+  if matchstr(envStr, 'darwin') == 'darwin' | return 'darwin' | endif
+  return envStr
+endfunction
+
+if !exists('g:stamp')
+  let g:stamp = MachineStamp()
+endif
+
 " Detect the use of a "GUI" environment.
 "
 " [string] IsGUI(void)
 "
 " Returns one of the following strings:
 " 'linux' or 'windows'
+"
+" FIXME(JEFF): Do not use this function until we deal with the other possible
+" environments (MacOS, etc).
 function IsGui()
   " TODO(JEFF): Does this check return TRUE when we are
-  " inside Wayland env?
+  " inside Wayland env? This returns 'windows' under darwin (MacOS) -_-
   if has("X11") | return 'linux' | else | return 'windows' | endif
 endfunction
 
@@ -85,28 +117,51 @@ endif
   "set term=xterm-256color
 "endif
 
-" FIXME(JEFF): Re-enable plugin management?
-"call pathogen#infect() 			" vim plugins management
 
-" IMPORTANT(JEFF): Fix warnings at startup regarding vim state
-" FIXME(JEFF): 'unix' str
-if g:env =~ 'linux' | elseif g:env =~ 'darwin' | elseif g:env =~ 'msys' | 
-  elseif g:env =~ 'cygwin' | elseif g:env =~ 'unix'
-  :call system("mkdir -p ~/.vim/backup")
-  :call system("mkdir -p ~/.vim/tmp")
-endif
+" IMPORTANT(JEFF): Ensure that we have our vim env setup properly so that
+" we do not see any warnings upon start or especially on file save!
+"
+" 1. https://wiki.archlinux.org/title/Vim#Workaround_for_XDG_Base_Directory_specification
 
 " where to put backup files
-set backupdir=~/.vim/backup/
+set backupdir=$HOME/.vim/backup/ | call mkdir(&backupdir, 'p')
 
-" where to put tmp files
-set directory=~/.vim/tmp/
+" where to put tmp (swap) files
+"
+" 1. https://wiki.archlinux.org/title/Vim#Workaround_for_XDG_Base_Directory_specification
+"set directory=$HOME/.vim/tmp/ | call mkdir(&directory, 'p')
+set directory=$HOME/.vim/swap/ | call mkdir(&directory, 'p')
+
+set undodir=$HOME/.vim/undo | call mkdir(&undodir, 'p')
+set viewdir=$HOME/.vim/view | call mkdir(&viewdir, 'p')
+
+if !has('nvim') | set viminfofile=$HOME/.vim/viminfo | endif
 
 " where to find colors, plugins and so on
 if g:env =~ 'windows'
-  "if has("win32") || has ("win16")
   set runtimepath=~/.vim
-  "endif
+elseif g:stamp =~ 'android'
+  " NOTE(JEFF): I believe that the only time this is necessary would be when
+  " we are using Termux shell on Android OS, due to the unusual need for us
+  " to use two different HOME paths (THOME and SDHOME).
+  if $THOME
+    " preferred
+    set runtimepath+=$THOME/.vim
+  elseif $SDHOME
+    " This should only be used as a last resort; Termux is
+    " an isolated island when not using a rooted device.
+    set runtimepath+=$SDHOME/.vim
+  elseif $HOME
+    " This *should* already be set to $THOME elsewhere (upon shell init)
+    " but otherwise, this may or may not be a great choice for us here...
+    set runtimepath+=$HOME/.vim
+  else
+    " NOTE(JEFF): We ought need not bother
+  endif
+else
+  " NOTE(JEFF): We need not bother setting anything here, least in the typical
+  " case. It is common for distributions to statically include $HOME/.vim in
+  " the distribution's build of vim.
 endif
 
 syntax on
