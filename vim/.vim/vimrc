@@ -4,11 +4,15 @@
 "               jeff (additions)
 "--------------------------------------------------------------
 
-" TODO(JEFF): Install the following plugins once we have plugins re-enabled
-" for vim!
+" TODO(JEFF): Relocate our functions into its own file
+" TODO(JEFF): Install the following plugins once we have plugins 
+" set back up!
 "
 " 1. [Use the same clipboard across vim & tmux](https://github.com/roxma/vim-tmux-clipboard.git)
 " 2. [Copy text over SSH](https://github.com/haya14busa/vim-poweryank)
+
+" FIXME(JEFF): Re-enable plugin management?
+"call pathogen#infect() 			" vim plugins management
 
 " NOTE(JEFF): The host-based branching here should only be used
 " as a last resort!
@@ -16,8 +20,6 @@ function GetHostname()
   let hostStr = substitute(system('hostname'), '\n', '', '')
   return hostStr
 endfunction
-
-"let host = GetHostname()
 
 " Detect the operating environment
 "
@@ -67,13 +69,17 @@ endfunction
 " 1. uname -o
 " 2. uname -s
 function MachineStamp()
-  " TODO(JEFF): Verify that `uname -s` produces the same output under Termux
-  " on Android OS. Darwin (MacOS) does not support the `-o` switch.
-  let envStr = toupper(substitute(system('uname -s'), '\n', '', ''))
+  " Termux on Android OS (v13)
+  let envStr = tolower(substitute(system('uname -o'), '\n', '', ''))
+  " TODO(JEFF): Is this the right way to check for error state?
+  if envStr == ''
+    let envStr = OS_stamp()
+  endif
 
   " ... Android OS
-  if matchstr(envStr, 'Android') == 'Android' | return 'android' | endif
-  if matchstr(envStr, 'DARWIN') == 'DARWIN' | return 'darwin' | endif
+  if matchstr(envStr, 'android') == 'android' | return 'android' | endif
+  " FIXME(JEFF): Remove after verifying; this branch should never be executed...
+  if matchstr(envStr, 'darwin') == 'darwin' | return 'darwin' | endif
   return envStr
 endfunction
 
@@ -111,8 +117,6 @@ endif
   "set term=xterm-256color
 "endif
 
-" FIXME(JEFF): Re-enable plugin management?
-"call pathogen#infect() 			" vim plugins management
 
 " IMPORTANT(JEFF): Ensure that we have our vim env setup properly so that
 " we do not see any warnings upon start or especially on file save!
@@ -140,7 +144,20 @@ elseif g:stamp =~ 'android'
   " NOTE(JEFF): I believe that the only time this is necessary would be when
   " we are using Termux shell on Android OS, due to the unusual need for us
   " to use two different HOME paths (THOME and SDHOME).
-  set runtimepath+=$HOME/.vim
+  if $THOME
+    " preferred
+    set runtimepath+=$THOME/.vim
+  elseif $SDHOME
+    " This should only be used as a last resort; Termux is
+    " an isolated island when not using a rooted device.
+    set runtimepath+=$SDHOME/.vim
+  elseif $HOME
+    " This *should* already be set to $THOME elsewhere (upon shell init)
+    " but otherwise, this may or may not be a great choice for us here...
+    set runtimepath+=$HOME/.vim
+  else
+    " NOTE(JEFF): We ought need not bother
+  endif
 else
   " NOTE(JEFF): We need not bother setting anything here, least in the typical
   " case. It is common for distributions to statically include $HOME/.vim in
