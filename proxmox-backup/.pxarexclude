@@ -18,6 +18,9 @@
 /home/jeff/.config/android-messages-desktop
 /home/jeff/.config/google-chrome
 /home/jeff/.config/google-chrome-unstable
+/home/jeff/.docker/*
+!/home/jeff/.docker/daemon.json
+!/home/jeff/.docker/config.json
 #/home/jeff/.docker/desktop/log
 #/home/jeff/.docker/desktop/vms
 /home/jeff/.local/share/NuGet/
