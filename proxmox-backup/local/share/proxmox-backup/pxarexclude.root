@@ -1,12 +1,15 @@
+/home/swapfile1
 *lost+found*
 /home/linuxbrew/
 /home/recoll/
 /home/test
 /home/timeshift/
+/.cache
 /root/.cache/
 /root/.local/share/Trash
 /timeshift
 /usr/src/
+/var/cache/
 /var/cache/apt/archives
 /var/cache/proxmox-backup
 /var/cache/rclone
@@ -16,3 +19,6 @@
 /var/run/
 /var/tmp/
 /rpool/
+/var/tmp/*
+/var/lib/docker/*
+!/var/lib/docker/volumes/*
