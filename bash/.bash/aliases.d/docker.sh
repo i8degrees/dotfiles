@@ -2,19 +2,7 @@
 #
 #
 
-# Check for the existence of a path that is executable.
-#
-# exists_exe(path = required)
-#
-# ...where path is a required string containing an absolute or relative path 
-# to a file.
-exists_exe() {
-  bin="$1"
-  if [ -x "$(which "$bin")" ]; then
-    return 0
-  fi
-  return 2
-}
+[ -e "$HOME/.bash/lib" ] && . "$HOME/.bash/lib"
 
 dockershell() {
   NAME=$1
@@ -67,7 +55,7 @@ for script in "${deps[@]}"; do
   fi
 done
 
-if [ -x "$(which docker)" ]; then
+if [ -x "$(exists_exe docker)" ]; then
   # Docker aliases
   alias dockerlogs='docker logs'
   alias dockerrestart='docker restart'

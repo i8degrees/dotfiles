@@ -7,6 +7,9 @@
 # Local bash (1) aliases executed for interactive shells.
 #
 
+# shellcheck disable=SC1091
+[ -e "$HOME/.bash/lib" ] && . "$HOME/.bash/lib"
+
 alias rebash='source ~/.bash_profile'
 
 # Clear BASH history, flush immediately && reload shell
@@ -187,12 +190,19 @@ case "$(uname -s)" in
     # to use this `-r` switch -- dependent upon shell, redirection, etc. I
     # believe that it also may well depend on whether or not we have colors
     # enabled.
-    [ -n "$(command -v less)" ] && alias less='less -r'
+    [ -x "$(which less)" ] && alias lessr='less -r'
+    [ -x "$(which less)" ] && alias lessR='less -R'
+    [ -x "$(which less)" ] && alias less='lessR'
+ 
     # GNU coreutils
     [ -n "$(command -v top)" ] && alias top='top -o %CPU -o PID -o COMMAND -o TIME -o %MEM -o PR -o S -u jeff -n43'
     [ -n "$(command -v ls)" ] && alias ls="ls -lhs --color=auto"
     alias lsr="ls -lRa --color=auto"
-    [ -n "$(command -v df)" ] && alias df="df -Th"
+    if [[ "$OSTYPE" =~ 'linux-android' ]]; then
+      [ -x "$(which df)" ] && alias df="df -h"
+    else
+      [ -x "$(which df)" ] && alias df="df -Th"
+    fi
     alias rm="rm -iv"
     alias cp="cp -iav --reflink=auto"
     alias mv="mv -iv"
@@ -252,6 +262,32 @@ case "$(uname -s)" in
 
     if [[ $(command -v xdg-open) ]]; then
       alias open='xdg-open'
+    fi
+
+    # NOTE(JEFF): We handle Linux derived distributions, such as Android OS
+    # like so here.
+    if [[ "$OSTYPE" =~ 'linux-android' ]]; then
+      alias rebash='source /sdcard/.aliases'
+      alias aflinger='rootcheck && $ROOT dumpsys media.audio_flinger'
+      alias bb='$BBDIR/busybox'
+      alias bsu='su -s bash'
+      alias dservice='rootcheck && $ROOT dumpsys media.dolby_memoryservice'
+      alias killice='rootcheck && $ROOT killall dk.icepower.icesound'
+      alias l='bb ls --group-directories-first'
+      alias la='l -A'
+      alias ll='l -l'
+      alias lo='l -al'
+      alias ls='ls --color=auto'
+      alias nano='nano -l'
+      alias killpac='rootcheck && $ROOT kill $(pidof $1)'
+      alias sbash='. /system/etc/bash/bashrc'
+      alias sudo='su -c "$@"'
+      alias vd='cd'
+      if [ "$(which vim)" ]; then 
+        alias vi='vim'
+      else
+        alias vim='vi'
+      fi
     fi
   ;;
   *)

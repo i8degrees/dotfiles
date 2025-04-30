@@ -308,6 +308,28 @@ case "$(uname -s)" in
     export GIT_ASKPASS=/usr/local/bin/git-credential-osxkeychain
   ;;
   Linux)
+    # NOTE(JEFF): We handle Linux derived distributions, such as Android OS
+    # like so here.
+    if [[ "$OSTYPE" =~ 'linux-android' ]]; then
+      TBIN=/data/data/com.termux/files/usr/bin
+      THOME=/data/data/com.termux/files/home
+      SDHOME=/sdcard
+      export TBIN THOME SDHOME
+
+      # TODO(JEFF): Determine if we can figure up a way of choosing which path we
+      # wish to set as HOME at the time of this script execution. Perhaps something
+      # like checking the current working directory..?
+      #HOME=$SDHOME
+      HOME=$THOME
+      #export HOME
+
+      PATH=$TBIN:$THOME/local/bin:$HOME/local/bin:$PATH
+      TZ=America/Chicago
+      LANG=en_US.UTF-8
+      LC_TIME=C.UTF-8
+ 
+      export HOME TZ LANG LC_TIME
+    fi # endif OSTYPE = 'linux-android'
 
     LS_OPTIONS='--color=auto'; export LS_OPTIONS
     eval "$(dircolors)"
