@@ -216,13 +216,6 @@ case "$(uname -s)" in
     alias edit='subl'
     alias e='edit '
 
-    # User specific
-    if [[ -n "$(id|grep jeff)" ]]; then
-      if [ -x "$(command -v nvidia-settings)" ]; then
-        alias nvidia-settings="nvidia-settings --config=$HOME/.nvidia-settings-libra &"
-      fi
-    fi
-
     # ArchLinux-tailored configuration:
     if [ "$LOCAL" == "virgo.arch" ]; then
       #if [[ "$COLORTERM" && -x "$(which pacman-color)" ]]; then
