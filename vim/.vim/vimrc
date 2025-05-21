@@ -5,7 +5,7 @@
 "--------------------------------------------------------------
 
 " TODO(JEFF): Relocate our functions into its own file
-" TODO(JEFF): Install the following plugins once we have plugins
+" TODO(JEFF): Install the following plugins once we have plugins 
 " set back up!
 "
 " 1. [Use the same clipboard across vim & tmux](https://github.com/roxma/vim-tmux-clipboard.git)
@@ -20,8 +20,6 @@ function GetHostname()
   let hostStr = substitute(system('hostname'), '\n', '', '')
   return hostStr
 endfunction
-
-"let host = GetHostname()
 
 " Detect the operating environment
 "
