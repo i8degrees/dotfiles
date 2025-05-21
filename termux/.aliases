@@ -7,11 +7,11 @@
 
 # Functions which I'm gonna count as aliases
 getperms() {
-  rootcheck && $ROOT pm get-privapp-permissions $1 | sed "s/, /\n/g" 
+  rootcheck && $ROOT pm get-privapp-permissions $1 | sed "s/, /\n/g"
 }
 
 getdenyperms() {
-  rootcheck && $ROOT pm get-privapp-deny-permissions $1 | sed "s/, /\n/g" 
+  rootcheck && $ROOT pm get-privapp-deny-permissions $1 | sed "s/, /\n/g"
 }
 
 # shellcheck disable=SC1091
@@ -43,7 +43,7 @@ if [ -n "$USE_TERMUX_MOD" ]; then
   alias sudo='su -c "$@"'
   alias vd='cd'
 
-  if [ "$(which vim)" ]; then 
+  if [ "$(which vim)" ]; then
     alias vi='vim'
   else
     alias vim='vi'
