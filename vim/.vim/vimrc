@@ -5,7 +5,7 @@
 "--------------------------------------------------------------
 
 " TODO(JEFF): Relocate our functions into its own file
-" TODO(JEFF): Install the following plugins once we have plugins 
+" TODO(JEFF): Install the following plugins once we have plugins
 " set back up!
 "
 " 1. [Use the same clipboard across vim & tmux](https://github.com/roxma/vim-tmux-clipboard.git)
@@ -21,12 +21,30 @@ function GetHostname()
   return hostStr
 endfunction
 
+" Getter function to query the HOME env value
+" TODO(JEFF): This function would not be portable while using a native build
+" of vim for Windows..?
+function GetHome()
+  let str = substitute(system('echo $HOME'), '\n', '', '')
+  return str
+endfunction
+
+"let host = GetHostname()
+
 " Detect the operating environment
 "
 " [string] OS_stamp(void)
 "
 " Returns one of the following strings:
 " 'wsl', 'msys', 'linux', or 'windows'.
+"
+" TODO(JEFF): Figure out how we can best determine when we are on Android OS
+" using Termux (or probably any other) as the shell. The function returns
+" 'linux' for us. Perhaps we could do an additional check [1]..? The other
+" idea that immediately comes to mind is seeking out a file path that is
+" unique to Android OS?
+"
+" 1. uname -o
 function OS_stamp()
   let envStr = toupper(substitute(system('uname -s'), '\n', '', ''))
 
@@ -101,6 +119,10 @@ function IsGui()
   " inside Wayland env? This returns 'windows' under darwin (MacOS) -_-
   if has("X11") | return 'linux' | else | return 'windows' | endif
 endfunction
+
+if !exists('g:home')
+  let g:home = GetHome()
+endif
 
 if !exists('g:env')
   let g:env = OS_stamp()
