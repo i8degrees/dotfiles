@@ -181,7 +181,7 @@ case "$(uname -s)" in
     # NOTE(JEFF): You may temporarily disable the following aliases by
     # executing "unalias" followed by the command in your shell, i.e.:
     # unalias rm
-    #
+
     # NOTE(JEFF): This is necessary for when we wish to redirect output from
     # a script to a file or onto the console; without it, we see the raw shell
     # escape sequences.
@@ -193,10 +193,10 @@ case "$(uname -s)" in
     [ -x "$(which less)" ] && alias lessr='less -r'
     [ -x "$(which less)" ] && alias lessR='less -R'
     [ -x "$(which less)" ] && alias less='lessR'
- 
+
     # GNU coreutils
     [ -n "$(command -v top)" ] && alias top='top -o %CPU -o PID -o COMMAND -o TIME -o %MEM -o PR -o S -u jeff -n43'
-    [ -n "$(command -v ls)" ] && alias ls="ls -lhs --color=auto"
+    [ -x "$(which ls)" ] && alias ls="ls -lhas --color=auto"
     alias lsr="ls -lRa --color=auto"
     if [[ "$OSTYPE" =~ 'linux-android' ]]; then
       [ -x "$(which df)" ] && alias df="df -h"
@@ -283,7 +283,7 @@ case "$(uname -s)" in
       alias sbash='. /system/etc/bash/bashrc'
       alias sudo='su -c "$@"'
       alias vd='cd'
-      if [ "$(which vim)" ]; then 
+      if [ "$(which vim)" ]; then
         alias vi='vim'
       else
         alias vim='vi'
