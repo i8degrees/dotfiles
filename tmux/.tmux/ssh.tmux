@@ -21,6 +21,8 @@
 # if "test ! -e ~/.bash/ssh" \
   # "run 'cd ~/dotfiles.git && stow -R ssh-agent'"
 
-tmux set -g update-environment "SSH_AUTH_LOCK SSH_ASKPASS WINDOWID SSH_CONNECTION SSH_AUTHORITY"
-# NOTE(JEFF): This requires the `~/.bash/ssh` script to be sourced before
+tmux set -g update-environment "XAUTHORITY SSH_AUTH_LOCK SSH_ASKPASS WINDOWID SSH_CONNECTION SSH_AUTHORITY"
 tmux setenv -g SSH_AUTH_SOCK "$HOME/.ssh/ssh_agent"
+
+# TODO(JEFF): Should we be updating the environment with the DISPLAY env, too??
+#tmux setenv -g DISPLAY ":0"
