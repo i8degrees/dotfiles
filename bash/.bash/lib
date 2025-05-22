@@ -56,3 +56,11 @@ getdenyperms() {
   rootcheck && $ROOT pm get-privapp-deny-permissions $1 | sed "s/, /\n/g" 
 }
 
+
+#if "$(uname -a | tr '[:upper:]' '[:lower:]' | grep -i -e 'Android'>/dev/null)"; then
+#if [ -z "$OSTYPE" ]; then
+  #if ! "$(uname -a|grep -i -e 'Android' >/dev/null)"; then
+    #OSTYPE="linux-android"
+  #fi
+#fi
+
