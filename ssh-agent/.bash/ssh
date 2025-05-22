@@ -2,6 +2,9 @@
 #
 # ~/.bash/ssh:jeff
 #
+# NOTE(JEFF): This configuration must always be compatible with the SH shell
+# in order for this and the invocation from tmux to remain cross-platform.
+#
 
 # IMPORTANT(JEFF): Allow existing regular files to be overwritten by
 # redirection of shell output, i.e.: `>` operator.
@@ -15,13 +18,14 @@ SSH_ENV="$HOME/.ssh/ssh_agent"
 # SEE ALSO
 # 1. `~/.tmux.conf:SSH_AUTH_SOCK`
 # 2. https://stackoverflow.com/a/18915067
-function start_agent {
+start_agent() {
     echo "INFO: Initializing a new SSH agent..."
     echo
     /usr/bin/ssh-agent -s | sed 's/^echo/#echo/' > "${SSH_ENV}"
 
     if [ -e "${SSH_ENV}" ]; then
       chmod 600 "${SSH_ENV}"
+      # shellcheck disable=SC1090
       . "${SSH_ENV}" > /dev/null
       echo "INFO: SSH agent environment has been setup."
       echo
@@ -31,6 +35,7 @@ function start_agent {
 # Source SSH settings, if applicable
 
 if [ -f "${SSH_ENV}" ]; then
+    # shellcheck disable=SC1090
     . "${SSH_ENV}" > /dev/null
 
     #ps ${SSH_AGENT_PID} doesn't work under cywgin
@@ -44,7 +49,3 @@ else
     start_agent;
 fi
 
-# FIXME(JEFF): Verify whether or not we need to concern ourselves with
-# resetting this shell option back to its origin; it is initialized in
-# our local bashrc file.
-#set -o noclobber
