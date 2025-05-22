@@ -4,21 +4,45 @@
 #
 #
 
-# shellcheck disable=SC3054
-# shellcheck disable=SC3030
-# shellcheck disable=SC3040
+init_new_session() {
+  session="$1"
+  cwd="$1"
+
+  echo "INFO: Failed to find an existing session..."
+  echo "INFO: Creating a new tmux session ${session}..."
+
+  if [ "${cwd}" != "" ] && [ -e "${cwd}" ]; then
+    tmux new -s "${session}" -A -c "${cwd}"
+  else
+    tmux new -s "${session}" -A
+  fi
+}
+
+init_existing_session() {
+  session="$1"
+  cwd="$2"
+
+  echo "INFO: Found an existing tmux session..."
+  echo "INFO: Attaching the existing tmux session..."
+
+  if [ "${cwd}" != "" ] && [ -e "${cwd}" ]; then
+    tmux attach -t "${session}" -c "${cwd}"
+  else
+    tmux attach -t "${session}"
+  fi
+}
+
 if [ -n "$BASH" ]; then
   set -o pipefail
   [ -n "$DEBUG" ] && set -o errexit
   [ -n "$DEBUG_TRACE" ] && set -o xtrace
 fi
 
-DEFAULT_SESSION="default"
+DEFAULT_SESSION="$1"
+[ -z "$DEFAULT_SESSION" ] && DEFAULT_SESSION="default"
 
-# TODO(JEFF): I think that I would like to make this an optional parameter
-# where if is is an empty string, for the path not to be fed to the tmux 
-# args.
-DEFAULT_CWD="$HOME/Notes.git"
+DEFAULT_CWD="$2"
+[ -z "$DEFAULT_CWD" ] && DEFAULT_CWD="$HOME/dotfiles.git"
 
 #if "$(uname -a | tr '[:upper:]' '[:lower:]' | grep -i -e 'Android'>/dev/null)"; then
 #if [ -z "$OSTYPE" ]; then
@@ -28,10 +52,15 @@ DEFAULT_CWD="$HOME/Notes.git"
 #fi
 
 if [ ! -x "$(which tmux)" ]; then
+  echo "WARN: Failed to find tmux..."
+  echo
   if [ -n "$TBIN" ] && [ -n "$THOME" ]; then
     # echo "android"
     PATH="$TBIN:$THOME/bin:$THOME/local/bin:$PATH"
   fi
 fi
 
-tmux attach -t ${DEFAULT_SESSION} -c "${DEFAULT_CWD}" || tmux new -s "${DEFAULT_SESSION}" -A -c "${DEFAULT_CWD}"
+
+init_existing_session "${DEFAULT_SESSION}" "${CWD}" ||
+init_new_session "${DEFAULT_SESSION}" "${CWD}"
+
