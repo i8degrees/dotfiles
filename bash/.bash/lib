@@ -56,7 +56,7 @@ getdenyperms() {
   rootcheck && $ROOT pm get-privapp-deny-permissions $1 | sed "s/, /\n/g" 
 }
 
-
+# https://stackoverflow.com/questions/394230/how-to-detect-the-os-from-a-bash-script/68706298#68706298
 #if "$(uname -a | tr '[:upper:]' '[:lower:]' | grep -i -e 'Android'>/dev/null)"; then
 #if [ -z "$OSTYPE" ]; then
   #if ! "$(uname -a|grep -i -e 'Android' >/dev/null)"; then
