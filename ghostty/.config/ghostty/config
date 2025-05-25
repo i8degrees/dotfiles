@@ -16,7 +16,8 @@ auto-update = off
 #foreground = ffffff
 
 keybind = cmd+w=close_surface
-keybind = cmd+shit+o=new_split:down
+# FIXME(JEFF): Invalid syntax?
+#keybind = cmd+shit+o=new_split:down
 #keybind = cmd+t=
 
 font-family = "JetBrains Mono"
