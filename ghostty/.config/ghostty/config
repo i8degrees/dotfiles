@@ -24,6 +24,8 @@ font-family = "JetBrains Mono"
 #font-family = "Source Code Pro"
 bold-is-bright = true
 
+# IMPORTANT(JEFF): The script we pass here must comply with the semantics of Ghostty;
+# `/bin/sh -c $SHELL --posix`
 initial-command = ~/local/bin/tmux_init.sh
 shell-integration = bash
 shell-integration-features = cursor,sudo,title
