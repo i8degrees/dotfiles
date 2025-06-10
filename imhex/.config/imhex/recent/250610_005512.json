@@ -1,0 +1,7 @@
+{
+    "baseAddress": 0,
+    "currPage": 0,
+    "displayName": "bin",
+    "path": "/tmp/bin",
+    "type": "hex.builtin.provider.file"
+}
