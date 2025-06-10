@@ -248,3 +248,9 @@ setup_nodejs_env "$nodejs_bin_path"
 # shellcheck disable=SC1090
 [ -n "$(command -v code)" ] && . "$(code --locate-shell-integration-path bash)"
 
+# rust env
+CARGO_BIN="$(which cargo)"
+CARGO_ENV_FILE="$HOME/.cargo/env"
+if [ -n "$CARGO_BIN" ]; then
+  [ -f "$CARGO_ENV_FILE" ] && . "$CARGO_ENV_FILE"
+fi
