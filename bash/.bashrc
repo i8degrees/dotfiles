@@ -424,13 +424,6 @@ if [ -n "$USE_FILE_LIMITS" ]; then
   [ -n "$(command -v ulimit)" ] && ulimit -n 65535
 fi
 
-# rust env
-CARGO_BIN="$(command -v cargo)"
-CARGO_ENV_FILE="$HOME/.cargo/env"
-if [ -n "$CARGO_BIN" ]; then
-  [ -f "$CARGO_ENV_FILE" ] && . "$CARGO_ENV_FILE"
-fi
-
 # ZFS env
 if [ -n "$USE_ZFS_ADMIN" ]; then
   ZPOOL_SCRIPTS_AS_ROOT=1; export ZPOOL_SCRIPTS_AS_ROOT
