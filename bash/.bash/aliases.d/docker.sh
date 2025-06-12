@@ -55,7 +55,7 @@ for script in "${deps[@]}"; do
   fi
 done
 
-if [ -x "$(exists_exe docker)" ]; then
+if exists_exe docker; then
   # Docker aliases
   alias dockerlogs='docker logs'
   alias dockerrestart='docker restart'
