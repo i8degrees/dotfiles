@@ -5,6 +5,25 @@
 ```shell
 curl "https://rclone.org/install.sh" | sudo bash
 # IMPORTANT(jeff): rclone v1.57 or newer is required for fstab mounting
+stow -Rv rclone
+```
+
+### environment vars
+
+- `RCLONE_CONFIG_PASS` - This is for use when we opt-in to using file encryption on our configuration file
+- `RCLONE_CONFIG` - Absolute path to our `rclone` configuration file
+
+### encryption in use
+
+Our configuration file is encrypted. Every so often, these tokens need to be
+refreshed and you will be notified of these needs by `rclone` at the time it
+deems necessary. In addition, any time you wish to view or modify the existing
+configuration, you will be prompted for the configuration file passphrase used
+for decryption.
+
+```shell
+# This is how we encrypted our configuration file
+rclone config encryption set
 ```
 
 ### fstab
@@ -34,5 +53,7 @@ your drive mounts.
 
 ## reference documents
 
-<https://rclone.org/commands/rclone_mount/>
-<https://blog.galt.me/how-to-mount-gdrive-in-nextcloud/>
+1. https://rclone.org/commands/rclone_mount/
+1. https://blog.galt.me/how-to-mount-gdrive-in-nextcloud/
+1. https://rclone.org/commands/rclone_config_encryption_set/
+1. https://rclone.org/docs/#configuration-encryption
