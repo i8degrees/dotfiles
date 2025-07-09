@@ -153,6 +153,9 @@ case "$(uname -s)" in
     # apparently does not work under OS X (v10.7.x+)
     # http://www.askdavetaylor.com/force_mac_os_x_grep_to_always_output_in_color/
     if [ "$(command -v grep)" ]; then # /usr/local/bin/grep (homebrew package)
+      # FIXME(JEFF): I believe that even under Mac OSX and/or BSD grep, the correct switch for
+      # grep color terminal support is `--colour` and not `--color`. I would like to verify
+      # this before changing the alias below.
       alias grep='grep --color=always -I'
     fi
 
@@ -251,7 +254,9 @@ case "$(uname -s)" in
 
     # grep color term support
     #export GREP_OPTIONS="--color=always -I"; # -I = --binary-files-without-match
-    alias grep='grep --color=always -I'
+    # 1. https://www.gnu.org/software/grep/manual/html_node/Environment-Variables.html
+    # 1. https://www.gnu.org/software/grep/manual/html_node/General-Output-Control.html
+    [ -x "$(which grep)" ] && alias grep='grep --colour=auto -I'
 
     if [[ $(command -v xdg-open) ]]; then
       alias open='xdg-open'
