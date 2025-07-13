@@ -31,7 +31,7 @@
   signingkey = 82FA9C6FB8C8CDD9
 [core]
   pager = less -r
-  whitespace = tabwidth=2,nowarn
+  whitespace = tabwidth=2,warn
   # ...core.excludesfile ~/src/.gitignore
   # ...core.excludesfile ~/Projects/.gitignore
   excludesfile = ~/.config/git/gitignore_global
