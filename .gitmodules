@@ -1,29 +1,13 @@
 # .gitmodules:jeff
 #
-# TODO(JEFF): Add the full set of nodenv plugins that we use at scorpio.home;
-#	see ~/.nodenv/plugins
+# IMPORTANT(JEFF): Additions to this file MUST always include an existing,
+# valid branch in the declaration body. I consider it a big bonus if it also
+# includes the ignore (untracked, dirty, all) attribute.
+#
+# SEE ALSO
+# man 5 gitmodules
 #
 
-# mpv plugins
-[submodule "mpv/.config/mpv/scripts/mpv-cut"]
-  path = mpv/.config/mpv/scripts/mpv-cut
-  url = https://github.com/familyfriendlymikey/mpv-cut
-  branch = main
-[submodule "mpv/.config/mpv/scripts/mpv-bookmarker"]
-  path = mpv/.config/mpv/scripts/mpv-bookmarker
-  url = https://github.com/NurioHin/mpv-bookmarker.git
-  branch = master
-# nodenv plugins
-[submodule "nodenv/.nodenv/plugins/nodenv-default-packages"]
-  path = nodenv/.nodenv/plugins/nodenv-default-packages
-  url = https://github.com/nodenv/nodenv-default-packages.git
-  branch = master
-  ignore = untracked
-# nvim plugins
-[submodule "nvim/neovim-config"]
-  path = nvim/neovim-config
-  url = https://github.com/ntk148v/neovim-config.git
-  branch = master
 # tmux plugins
 [submodule "tmux/.tmux/plugins/tmuxinator"]
   path = tmux/.tmux/plugins/tmuxinator
@@ -53,6 +37,16 @@
   path = tmux/.tmux/plugins/tpm
   url = https://github.com/tmux-plugins/tpm
   branch = master
+[submodule "tmux/.tmux/plugins/tmux-copycat"]
+	path = tmux/.tmux/plugins/tmux-copycat
+  url = https://github.com/tmux-plugins/tmux-copycat.git
+  branch = master
+# nodenv plugins
+[submodule "nodenv/.nodenv/plugins/nodenv-default-packages"]
+  path = nodenv/.nodenv/plugins/nodenv-default-packages
+  url = https://github.com/nodenv/nodenv-default-packages.git
+  branch = master
+  ignore = untracked
 [submodule "nodenv/.nodenv/plugins/node-build"]
 	path = nodenv/.nodenv/plugins/node-build
 	url = https://github.com/nodenv/node-build.git
@@ -88,7 +82,17 @@
 	url = https://github.com/nodenv/nodenv-man.git
   branch = master
   ignore = untracked
-[submodule "tmux/.tmux/plugins/tmux-copycat"]
-	path = tmux/.tmux/plugins/tmux-copycat
-  url = https://github.com/tmux-plugins/tmux-copycat.git
+# mpv plugins
+[submodule "mpv/.config/mpv/scripts/mpv-cut"]
+  path = mpv/.config/mpv/scripts/mpv-cut
+  url = https://github.com/familyfriendlymikey/mpv-cut
+  branch = main
+[submodule "mpv/.config/mpv/scripts/mpv-bookmarker"]
+  path = mpv/.config/mpv/scripts/mpv-bookmarker
+  url = https://github.com/NurioHin/mpv-bookmarker.git
+  branch = master
+# nvim plugins
+[submodule "nvim/neovim-config"]
+  path = nvim/neovim-config
+  url = https://github.com/ntk148v/neovim-config.git
   branch = master
