@@ -18,6 +18,7 @@
   path = nodenv/.nodenv/plugins/nodenv-default-packages
   url = https://github.com/nodenv/nodenv-default-packages.git
   branch = master
+  ignore = untracked
 # nvim plugins
 [submodule "nvim/neovim-config"]
   path = nvim/neovim-config
@@ -56,30 +57,37 @@
 	path = nodenv/.nodenv/plugins/node-build
 	url = https://github.com/nodenv/node-build.git
   branch = main
+  ignore = untracked
 [submodule "nodenv/.nodenv/plugins/node-build-update-defs"]
 	path = nodenv/.nodenv/plugins/node-build-update-defs
   url = https://github.com/nodenv/node-build-update-defs.git
   branch = main
+  ignore = untracked
 [submodule "nodenv/.nodenv/plugins/nodenv-each"]
 	path = nodenv/.nodenv/plugins/nodenv-each
 	url = https://github.com/nodenv/nodenv-each.git
   branch = master
+  ignore = untracked
 [submodule "nodenv/.nodenv/plugins/nodenv-update"]
 	path = nodenv/.nodenv/plugins/nodenv-update
 	url = https://github.com/nodenv/nodenv-update.git
   branch = master
+  ignore = untracked
 [submodule "nodenv/.nodenv/plugins/nodenv-package-json-engine"]
 	path = nodenv/.nodenv/plugins/nodenv-package-json-engine
 	url = https://github.com/nodenv/nodenv-package-json-engine.git
   branch = master
+  ignore = untracked
 [submodule "nodenv/.nodenv/plugins/nodenv-vars"]
 	path = nodenv/.nodenv/plugins/nodenv-vars
 	url = https://github.com/nodenv/nodenv-vars.git
   branch = master
+  ignore = untracked
 [submodule "nodenv/.nodenv/plugins/nodenv-man"]
 	path = nodenv/.nodenv/plugins/nodenv-man
 	url = https://github.com/nodenv/nodenv-man.git
   branch = master
+  ignore = untracked
 [submodule "tmux/.tmux/plugins/tmux-copycat"]
 	path = tmux/.tmux/plugins/tmux-copycat
   url = https://github.com/tmux-plugins/tmux-copycat.git
