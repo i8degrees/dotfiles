@@ -32,3 +32,5 @@ shell-integration-features = cursor,sudo,title
 
 working-directory = home
 window-decoration = false
+
+quit-after-last-window-closed-delay = 20s
