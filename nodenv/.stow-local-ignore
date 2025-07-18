@@ -6,6 +6,7 @@
 # submodule of the nodenv repo into the nodenv/ stow
 # package.
 .gitignore.fixme
+.gitignore
 
 INSTALL.stow
 README.stow
