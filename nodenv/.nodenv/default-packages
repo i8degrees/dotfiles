@@ -12,10 +12,11 @@
 #nodemcu-tool@latest
 #np
 #npm-check
-#npm@latest
+npm@latest
 #postcss-sass
 #pug-lint
 #sass-lint
+yarn@latest
 #yarn@1.22.19
 #yarn@2.4.3
 ass-to-vtt
@@ -41,7 +42,7 @@ markdown
 # Use packaged version of jq when possible!
 #node-jq@latest
 npm-run-all ~4.1.5
-npm@8.19.2
+#npm@8.19.2
 npx
 rollup ~2.59.0
 sfnt2woff
