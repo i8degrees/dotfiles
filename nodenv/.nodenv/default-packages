@@ -5,7 +5,7 @@
 # globally for each version of nodejs that is managed by
 # nodenv.
 
-#install-peerdeps
+install-peerdeps
 #lerna
 #localtunnel >= 2.0.2
 #ngrok
@@ -20,6 +20,7 @@ yarn@latest
 #yarn@1.22.19
 #yarn@2.4.3
 ass-to-vtt
+bson
 bson2json
 # FIXME
 #create-dmg@latest
@@ -39,11 +40,14 @@ jsonlint
 lerna@3.20.1
 m3u-linter
 markdown
+mdless
 # Use packaged version of jq when possible!
 #node-jq@latest
+npm-check
 npm-run-all ~4.1.5
 #npm@8.19.2
 npx
+#npx@10.2.2
 rollup ~2.59.0
 sfnt2woff
 shellcheck@latest
@@ -55,3 +59,4 @@ yaml-lint@latest
 # FIXME(JEFF): We need to review the last version that utilized .eslintrc as
 # the default configuration file for parsing JS..?
 #eslint@latest
+
