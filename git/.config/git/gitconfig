@@ -31,7 +31,7 @@
   signingkey = 82FA9C6FB8C8CDD9
 [core]
   pager = less -r
-  whitespace = tabwidth=2,warn
+  whitespace = tabwidth=2,fix
   # ...core.excludesfile ~/src/.gitignore
   # ...core.excludesfile ~/Projects/.gitignore
   excludesfile = ~/.config/git/gitignore_global
@@ -116,3 +116,21 @@
   smudge = git-lfs smudge -- %f
   process = git-lfs filter-process
   required = true
+
+# NOTE(JEFF): The following subsection is a list of
+# repository directories where we wish to deem safe
+# for usage with git when working under another
+# user. This list is expected to grow over time!
+#
+# SEE ALSO
+# 1.  man git-config
+#     (safe.directory)
+[safe]
+  # Android OS
+  directory = /sdcard/*
+  directory = /data/data/com.termux/files/home/*
+  # NAS clients
+  directory = /mnt/fs1/Projects/*
+  directory = /mnt/fs1/jeff/*
+  # Arch Linux (source package builds)
+  #directory = /var/*
