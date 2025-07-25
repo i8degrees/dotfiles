@@ -25,6 +25,32 @@ My personal customization files and scripts for my environments. Friendly toward
 - FreeBSD
   * It has been some time since I have used this OS and honestly cannot even remember the last version it was on. I do not recall any specific problems here.
 
+### setup
+
+```shell
+#git clone https://github.com/i8degrees/dotfiles.git \
+git clone --recurse-submodules https://github.com/i8degrees/dotfiles.git \
+"$HOME/dotfiles.git"
+cd "$HOME/dotfiles.git"
+git checkout master
+#git checkout dev
+```
+
+#### git submodules
+
+This repository makes heavy use of `git-submodules` for keeping various
+files up-to-date from their upstream origins. The use of this is entirely
+optional and should be considered *opt-in*.
+
+I have found at times -- namely when files from one or more git submodules
+or even its own top-level configuration, i.e.: `.gitmodules` -- a full re-init
+of the submodules is necessary to prevent getting stuck.
+
+```shell
+git submodule update --init --recursive
+git submodule sync
+```
+
 ### deps
 
 - [GNU Stow](https://www.gnu.org/software/stow/) must be installed beforehand. The software is a simple (one file) Perl script without external dependencies. It can also be found in the [CPAN modules repository](https://metacpan.org/dist/Stow/view/bin/stow). `cpan install Stow` and append `$HOME/perl5/bin` to your system `PATH`.
@@ -83,36 +109,39 @@ brew install stow -vd
 ##### CPAN (Perl)
 
 ```shell
-# --recursive takes care of git submodules
-git clone --recurse-submodules https://github.com/i8degrees/dotfiles.git $HOME/dotfiles.git
-cd $HOME/dotfiles || exit 255
 cpan Stow # Stow here, NOT stow
 stow -Rv stow
 ```
 
 ##### post-installation
 
-**IMPORTANT:** After installing `stow`, you should begin by first
-stowing my `stow` directory from this git repo.
+**IMPORTANT:** Immediately after installing `stow`, you should
+*always* begin by stowing the `stow` directory first.
+
+This `stow` package contains configuration parameters that
+prevent metadata files from being distributed upon their
+stowing. You can take a look at the list of metadata files 
+by looking at `stow/.stow-global-ignore` at any time.
 
 ```sh
-stow -Rv stow
+# -Rv allows us to re-stow each specified package
+stow -Rv stow git ssh-agent bash colors readline tmux vim # ...
 ```
 
-```shell
-# Manual git submodule initialization
-git submodule update --init --recursive
-git submodule sync
+Removal of one or more stow packages
+
+```sh
+# one or more stow packages is accepted
+stow -Dv git
 ```
 
 ## See also
 
 1. [Konsave -- Save Linux Customization](https://github.com/Prayag2/konsave)
 1. [mention of kwriteconfig5](https://github.com/nix-community/home-manager/issues/607)
-# my dotfiles repo
 
-My UNIX setup files -- Linux & Mac OS X
+## Related projects
 
-# Related projects
+- <https://github.com/fielding/dotfiles.git>
+- <https://github.com/jh3y/kody>
 
-https://github.com/jh3y/kody
