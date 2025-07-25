@@ -229,8 +229,8 @@ fi
 # differences between the installation of nodenv from
 # docker.fs1.home and scorpio.home; one uses nodenv from the
 # package manager and the other from the official git repo.
-nodejs_bin_path="$(exists_exe nodenv)"
-if [ -x "$nodejs_bin_path" ]; then
+nodejs_bin_path="$(which nodenv)"
+if [ "$nodejs_bin_path" ]; then
   true
 elif [ -x "$HOME/.nodenv/bin/nodenv" ]; then
   nodejs_bin_path="$HOME/.nodenv/bin/nodenv"
