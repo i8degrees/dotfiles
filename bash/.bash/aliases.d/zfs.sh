@@ -36,9 +36,10 @@ _zstd() {
 
 # IMPORTANT(JEFF): Use the maximum number of threads 
 # detected by zstd for (de)-compression.
-[ -x "$(exists_exe zstd)" ] && alias zstd='zstd -T0'
+#[ -x "$(exists_exe zstd)" ] && alias zstd='zstd -T0'
+[ "$(which zstd)" ] && alias zstd='zstd -T0'
 
-if [ -x "$(exists_exe zfs)" ]; then
+if [ "$(which zfs)" ]; then
   alias zfs-mv='zfs rename'
   alias zfs-move='zfs mv'
 fi
