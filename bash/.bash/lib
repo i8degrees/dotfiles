@@ -64,3 +64,41 @@ getdenyperms() {
   #fi
 #fi
 
+# See also: choose_terminal function
+DEFAULT_TERMINALS_CONFIG=(
+  "$(which ghostty)"
+  "$(which wezterm)"
+  "$(which xfce4-terminal)"
+  "$(which urxvtcd)"
+)
+
+# Select the default terminal application to utilize; this function sets the TERMINAL variable to the path of the
+# terminal that is chosen. The first one on the list to exist always wins! The TERMINAL env is used by various 
+# utilities, such as the rofi-sensible-terminal script that inspired the creation of this function.
+#
+#[string] choose_terminal(terms = [optional, string])
+#
+# ...where `terms` is an optional, non-empty string of your terminal's name; if this `name` does not exist in the 
+# system PATH, the call will fail and the terminal will never be considered. It is because of this that it is suggested
+# that you always give the function the absolute path to the terminal you wish to add.
+#
+# TODO(JEFF): Profile this function -- hell, all of our shell init scripts -- and see how slow looping through an 
+# array like this is. I am somewhat concerned about embedded systems, such as routers and such!
+choose_terminal() {
+  terminals=()  
+  result=""
+
+  term="$1"
+  [ "$term" != "" ] && terminals+=("${term}")
+
+  terminals+=("${DEFAULT_TERMINALS_CONFIG[@]}")
+
+  for app in "${terminals[@]}"; do
+    if [ -x "$app" ]; then
+      result="$app"
+      break;
+    fi
+  done
+
+  echo "$result"
+}

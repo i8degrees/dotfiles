@@ -232,6 +232,9 @@ fi
 [ -n "$TERM" ] && export TERM
 TERM=screen-256color-italic
 
+# TODO(JEFF): On Darwin, we should pass `iTerm2.app` to this function!
+TERMINAL=$(choose_terminal); export TERMINAL
+
 # TMPDIR="/tmp"; export TMPDIR
 #TMPDIR="$HOME/tmp"; export TMPDIR
 BLOCKSIZE=K; export BLOCKSIZE
