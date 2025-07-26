@@ -254,3 +254,6 @@ CARGO_ENV_FILE="$HOME/.cargo/env"
 if [ -n "$CARGO_BIN" ]; then
   [ -f "$CARGO_ENV_FILE" ] && . "$CARGO_ENV_FILE"
 fi
+
+[ -r "/scripts/bin" ] && PATH="/scripts/bin:$PATH"
+[ -r "/root/bin" ] && PATH="/root/bin:$PATH"
