@@ -5,4 +5,5 @@
 
 PATH=/usr/bin:/usr/local/bin:/bin
 
-rofi -show bw
+rofi -show ssh
+
