@@ -12,6 +12,8 @@
 [ -n "$DEBUG" ] && set -o errexit
 [ -n "$DEBUG_TRACE" ] && set -o xtrace
 
+[ -r "$HOME/.bash/lib" ] && . "$HOME/.bash/lib"
+
 # NOTE(JEFF): Control bit for how to handle deprecated bits herein.
 # The default shall always be NOT TO and thus must be set explicitly
 # with, or without a value.
