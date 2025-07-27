@@ -102,3 +102,30 @@ choose_terminal() {
 
   echo "$result"
 }
+
+# TODO(JEFF): Finish impl
+# `git lfs ls-files --json | jq .files[0].size`
+bytes() {
+  value="$1"
+  result=$value
+  return "$result"
+}
+
+kilobytes() {
+  value=$(bytes "$1")
+  result=$(("$value" * 1024))
+  return "$result"
+}
+
+megabytes() {
+  value=$(kilobytes "$1")
+  result=$(("$value" * 1024))
+  return "$result"
+}
+
+gigabytes() {
+  value=$(megabytes "$1")
+  result=$(("$value" * 1024))
+  return "$result"
+}
+
