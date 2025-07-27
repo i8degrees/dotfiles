@@ -38,6 +38,7 @@ init_new_session() {
   echo "INFO: Failed to find an existing session..."
   echo "INFO: Creating a new tmux session ${session}..."
 
+
   if [ "${cwd}" != "" ] && [ -e "${cwd}" ]; then
     tmux new -s "${session}" -A -c "${cwd}"
   else
@@ -80,8 +81,16 @@ _tmux_init() {
     return 1 # EPERM
   fi
 
-  init_existing_session "${session}" "${cwd}" ||
-    init_new_session "${session}" "${cwd}" ||
+  # IMPORTANT(JEFF): Determine execution flow by checking
+  # for existing tmux sessions by the given session name;
+  # always prefer an existing session over spawning a new
+  # one!
+  if tmux list-sessions | grep -i -e "${session}"; then
+    init_existing_session "${session}" "${cwd}"
+  else
+    init_new_session "${session}" "${cwd}"
+  fi
+
   return "$exit_code"
 }
 
@@ -114,32 +123,29 @@ _find_tmux tmux
   #usage_text 22 # EINVAL
 #fi
 
-while true; do
-  case "$1" in
-    p|posix|--posix)
-      # IMPORTANT(JEFF): This is specifically for complying with how Ghostty
-      # handles the default-command configuration.
-      _tmux_init "$DEFAULT_SESSION" "$DEFAULT_CWD"
-      shift
-      ;;
-    -v|--version)
-      usage_text 0 # OK
-      shift
-      ;;
-    -h|usage|--help)
-      usage_text 0 # OK
-      shift
-      ;;
-    --)
-      usage_text 0 # OK
-      shift
-      break
-      ;;
-    *)
-      #false
-      # NOTE(JEFF): Handle non-Ghostty terminals by using the same
-      # control flow that we are used to!
-      _tmux_init "$DEFAULT_SESSION" "$DEFAULT_CWD"
-      ;;
-  esac
-done
+case "$1" in
+  # IMPORTANT(JEFF): This is specifically for complying with how Ghostty
+  # handles the default-command configuration.
+  p|posix|--posix)
+    _tmux_init "$DEFAULT_SESSION" "$DEFAULT_CWD"
+    shift
+    ;;
+  -v|--version)
+    usage_text 0 # OK
+    shift
+    ;;
+  -h|usage|--help)
+    usage_text 0 # OK
+    shift
+    ;;
+  --)
+    usage_text 0 # OK
+    shift
+    ;;
+  # NOTE(JEFF): Handle non-Ghostty terminals 
+  *)
+    # catch-all
+    _tmux_init "$DEFAULT_SESSION" "$DEFAULT_CWD"
+    ;;
+esac
+
