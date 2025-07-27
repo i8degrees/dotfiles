@@ -34,7 +34,7 @@ exists_exe() {
     return 2
   fi
 
-  if which $pathstr >/dev/null 2>&1; then
+  if which "$pathstr" &>/dev/null; then
     return 0 # truthy
   else
     return 1 # err
@@ -66,10 +66,10 @@ getdenyperms() {
 
 # See also: choose_terminal function
 DEFAULT_TERMINALS_CONFIG=(
-  "$(which ghostty)"
-  "$(which wezterm)"
-  "$(which xfce4-terminal)"
-  "$(which urxvtcd)"
+  "$(which ghostty &>/dev/null)"
+  "$(which wezterm &>/dev/null)"
+  "$(which xfce4-terminal &>/dev/null)"
+  "$(which urxvtcd &>/dev/null)"
 )
 
 # Select the default terminal application to utilize; this function sets the TERMINAL variable to the path of the
