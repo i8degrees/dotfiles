@@ -229,7 +229,7 @@ fi
 # differences between the installation of nodenv from
 # docker.fs1.home and scorpio.home; one uses nodenv from the
 # package manager and the other from the official git repo.
-nodejs_bin_path="$(which nodenv)"
+nodejs_bin_path="$(which nodenv &>/dev/null)"
 if [ "$nodejs_bin_path" ]; then
   true
 elif [ -x "$HOME/.nodenv/bin/nodenv" ]; then
@@ -249,7 +249,7 @@ setup_nodejs_env "$nodejs_bin_path"
 [ -n "$(command -v code)" ] && . "$(code --locate-shell-integration-path bash)"
 
 # rust env
-CARGO_BIN="$(which cargo)"
+CARGO_BIN="$(which cargo &>/dev/null)"
 CARGO_ENV_FILE="$HOME/.cargo/env"
 if [ -n "$CARGO_BIN" ]; then
   [ -f "$CARGO_ENV_FILE" ] && . "$CARGO_ENV_FILE"
