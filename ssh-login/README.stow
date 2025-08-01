@@ -1,0 +1,33 @@
+
+# ssh-login
+
+Automatic `ssh` login TTY on bootup
+
+## usage
+
+```shell
+stow -Rv bash ssh-login
+```
+
+### systemd login
+
+```shell
+sudo systemctl edit getty@tty4
+```
+
+**NOTE:** Replace the username -- `jeff` -- in the following override snippet
+with your user name.
+
+```shell
+# getty@tty4 override
+[Service]
+Environment="USE_SSH_LOGIN_TTY=1"
+ExecStart=
+ExecStart=-/sbin/agetty -o '-f -p -- jeff' --noissue --autologin jeff %I $TERM
+```
+
+## reference documents
+
+1. `dotfiles.git:/bash/.bash_login`
+2. `dotfiles.git:/ssh-login/.bash/ssh_login.bash`
+
