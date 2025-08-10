@@ -1,6 +1,12 @@
 # .aliases by Skittles9823 2018 - 2019
 #           Terminal Mods
 
+# TODO(JEFF): rename this file; something like
+# `~/.bash/aliases.d/termux` ..?
+# TODO(JEFF): integrate further into our 
+# bash dotfiles?
+#
+
 # IMPORTANT(JEFF): This file has been made obsolete as of the
 # git branch feature/android-bash
 #USE_TERMUX_MOD=1
@@ -47,6 +53,11 @@ if [ -n "$USE_TERMUX_MOD" ]; then
     alias vi='vim'
   else
     alias vim='vi'
+  fi
+
+  # SSH env; this always assumes android OS
+  if [ "$(which mosh)" && "$(which ssh)" ]; then
+    alias ssh='mosh $@'
   fi
 fi
 
