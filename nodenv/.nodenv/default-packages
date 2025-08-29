@@ -60,3 +60,5 @@ yaml-lint@latest
 # the default configuration file for parsing JS..?
 #eslint@latest
 
+hugo-bin
+#hugo-extended
