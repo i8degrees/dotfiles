@@ -20,9 +20,13 @@ DEFAULT_CWD="$2"
 
 usage_text() {
   name="tmux_init.sh"
-  version="1.0.0"
-  usage="--posix"
-  echo "$name" v"$version"
+  version="unknown"
+  if [ -x "$(which git)" ]; then
+    version="$(git describe --dirty --always --tags)"
+  fi
+  usage="<session_name> <cwd>"
+  usage="$name $usage"
+  echo "$name" "$version"
   echo "Usage: $usage"
 
   exit_code="$1"
@@ -123,10 +127,13 @@ _find_tmux tmux
   #usage_text 22 # EINVAL
 #fi
 
+# tmux_init.sh --version /home/jeff/Projects
+# tmux_init.sh default /home/jeff/Projects
+# tmux_init.sh --posix /home/jeff/Projects
 case "$1" in
   # IMPORTANT(JEFF): This is specifically for complying with how Ghostty
   # handles the default-command configuration.
-  p|posix|--posix)
+  --posix)
     _tmux_init "$DEFAULT_SESSION" "$DEFAULT_CWD"
     shift
     ;;
