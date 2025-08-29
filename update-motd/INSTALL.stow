@@ -1,0 +1,14 @@
+
+# update-motd
+
+## usage
+
+```shell
+# git clone dotfiles.git
+cd dotfiles.git
+cd update-motd
+sudo make -j1 install
+```
+
+## reference documents
+
