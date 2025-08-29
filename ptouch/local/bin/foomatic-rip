@@ -1,0 +1,61 @@
+#!/bin/sh
+
+ptouch_usage() {
+  echo '
+  --debug			enable debug output
+	--font <file>		use font <file> or <name>
+	--fontsize <size>	Manually set fontsize
+	--writepng <file>	instead of printing, write output to png file
+	--force-tape-width <px>	Set tape width in pixels, use together with
+				--writepng without a printer connected.
+	--copies <number>	Sets the number of identical prints
+print commands:
+	--image <file>		print the given image which must be a 2 color
+				(black/white) png
+	--text <text>		Print 1-4 lines of text.
+				If the text contains spaces, use quotation marks
+				around it.
+	--cutmark		Print a mark where the tape should be cut
+	--pad <n>		Add n pixels padding (blank tape)
+	--chain			Skip final feed of label and any automatic cut
+other commands:
+	--version		show version info (required for bug report)
+	--info			show info about detected tape
+	--list-supported	show printers supported by this version
+  '
+}
+
+lpr_usage() {
+  echo '
+  Usage: lpr [options] [file(s)]
+Options:
+-# num-copies           Specify the number of copies to print
+-E                      Encrypt the connection to the server
+-H server[:port]        Connect to the named server and port
+-m                      Send an email notification when the job completes
+-o option[=value]       Specify a printer-specific option
+-o job-sheets=standard  Print a banner page with the job
+-o media=size           Specify the media size to use
+-o number-up=N          Specify that input pages should be printed N-up (1, 2, 4, 6, 9, and 16 are supported)
+-o orientation-requested=N
+                        Specify portrait (3) or landscape (4) orientation
+-o print-quality=N      Specify the print quality - draft (3), normal (4), or best (5)
+-o sides=one-sided      Specify 1-sided printing
+-o sides=two-sided-long-edge
+                        Specify 2-sided portrait printing
+-o sides=two-sided-short-edge
+                        Specify 2-sided landscape printing
+-P destination          Specify the destination
+-q                      Specify the job should be held for printing
+-r                      Remove the file(s) after submission
+-T title                Specify the job title
+-U username             Specify the username to use for authentication
+'
+}
+
+if ptouch-print --text $1; then
+  true
+else
+  ptouch_usage || lpr_usage
+fi
+
