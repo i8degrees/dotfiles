@@ -1,0 +1,6 @@
+update-motd
+=============
+
+See the manpage: update-motd(8).
+
+ $ man 8 update-motd

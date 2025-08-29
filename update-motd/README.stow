@@ -1,0 +1,13 @@
+
+# update-motd
+
+## usage
+
+```shell
+zless usr/share/man/man8/update-motd.8.gz
+```
+
+## TODO
+
+- [ ] write `Makefile` with the default `install` target
+  * `scripts.git:/hosts/pve3/Makefile`

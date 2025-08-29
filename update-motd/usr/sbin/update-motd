@@ -1,0 +1,84 @@
+#!/bin/sh
+#
+#    update-motd - update the dynamic MOTD immediately
+#
+#    Copyright (C) 2008-2014 Dustin Kirkland <dustin.kirkland@gmail.com>
+#
+#    Authors: Dustin Kirkland <dustin.kirkland@gmail.com>
+#
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, version 3 of the License.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+check_os() {
+  result="unknown"
+
+  if [ -z "$ID" ]; then
+    if [ -e "/etc/os-release" ]; then
+      eval "$(cat /etc/os-release)"
+    else
+      echo "$result"
+    fi
+  fi
+
+  if [ -n "$ID" ]; then
+    result="$ID"
+  fi
+
+  echo "$result"
+}
+
+set -e
+
+if [ "$1" = "--show-only" ]; then
+    SHOW_ONLY=true
+else
+    SHOW_ONLY=false
+fi
+
+if ! $SHOW_ONLY && ! touch /var/run/motd.new 2>/dev/null; then
+	echo "ERROR: Permission denied, try:" 1>&2
+	echo "  sudo $0" 1>&2
+	exit 1
+fi
+
+os_stamp=$(check_os)
+if [ "$os_stamp" = "unbutu" ]; then
+  if ! $SHOW_ONLY && run-parts --lsbsysinit /etc/update-motd.d > /var/run/motd.new; then
+    if mv -f /var/run/motd.new /var/run/motd; then
+      cat /var/run/motd
+      exit 0
+    else
+      echo "ERROR: could not install new MOTD" 1>&2
+      exit 1
+    fi
+  elif ! $SHOW_ONLY; then
+      echo "ERROR: could not generate new MOTD" 1>&2
+      exit 2
+  elif $SHOW_ONLY; then
+      run-parts --lsbsysinit /etc/update-motd.d
+  fi
+else
+  if ! $SHOW_ONLY && run-parts /etc/update-motd.d > /var/run/motd.new; then
+    if mv -f /var/run/motd.new /var/run/motd; then
+      cat /var/run/motd
+      exit 0
+    else
+      echo "ERROR: could not install new MOTD" 1>&2
+      exit 1
+    fi
+  elif ! $SHOW_ONLY; then
+      echo "ERROR: could not generate new MOTD" 1>&2
+      exit 2
+  elif $SHOW_ONLY; then
+      run-parts /etc/update-motd.d
+  fi
+fi
