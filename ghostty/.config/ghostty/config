@@ -24,13 +24,20 @@ font-family = "JetBrains Mono"
 #font-family = "Source Code Pro"
 bold-is-bright = true
 
+#command = /bin/bash
+# TODO
+#command = /bin/bash ~/local/bin/tmux_init.sh default /home/jeff/Projects
 # IMPORTANT(JEFF): The script we pass here must comply with the semantics of Ghostty;
 # `/bin/sh -c $SHELL --posix`
-initial-command = ~/local/bin/tmux_init.sh
+#initial-command = ~/local/bin/tmux_init.sh default /home/jeff/Projects
+# This is primarily useful for scripts or debugging.
+#wait-after-command = true
+
 shell-integration = bash
 shell-integration-features = cursor,sudo,title
 
 working-directory = home
 window-decoration = false
 
-quit-after-last-window-closed-delay = 20s
+quit-after-last-window-closed-delay = 10s
+
