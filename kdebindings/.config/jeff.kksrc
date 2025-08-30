@@ -1,5 +1,10 @@
 [ActivityManager][Global Shortcuts]
+switch-to-activity-61471e11-2aa5-480a-ba72-abf2407f6f94=
 switch-to-activity-6da4598a-2fb9-4022-ae85-c317963c596f=
+
+[Custom Commands][net.local.rofi.desktop]
+Exec=dex /home/jeff/.config/autostart/home.arpa.rofi.desktop
+Name=rofi menu (active windows)
 
 [Custom Commands][qdbus.desktop]
 Exec=qdbus org.kde.krunner /App displaySingleRunner krunner_appmenu
@@ -16,11 +21,11 @@ Switch to Next Keyboard Layout=
 [StandardShortcuts]
 AboutApp=
 AboutKDE=
-Activate Next Tab=Ctrl+PgDown; Ctrl+]
+Activate Next Tab=Ctrl+]; Ctrl+PgDown
 Activate Previous Tab=Ctrl+PgUp; Ctrl+[
 ActualSize=Ctrl+0
 AddBookmark=Ctrl+B
-Back=Back; Alt+Left
+Back=Alt+Left; Back
 BackwardWord=Ctrl+Left
 Begin=Ctrl+Home
 BeginningOfLine=Home
@@ -29,7 +34,7 @@ Close=Meta+W; Ctrl+W
 ConfigureNotifications=
 ConfigureToolbars=
 Copy=Ctrl+Ins; Ctrl+C
-CreateFolder=F10
+CreateFolder=Ctrl+Shift+N
 Cut=Ctrl+X; Shift+Del
 DeleteFile=Shift+Del
 DeleteWordBack=Ctrl+Backspace
@@ -47,7 +52,7 @@ FindPrev=Shift+F3
 FitToHeight=
 FitToPage=
 FitToWidth=
-Forward=Alt+Right; Forward
+Forward=Forward; Alt+Right
 ForwardWord=Ctrl+Right
 FullScreen=Meta+Ctrl+Shift+F; Ctrl+Shift+F
 Goto=
@@ -84,7 +89,7 @@ RotateUp=Up
 Save=Ctrl+S
 SaveAs=Ctrl+Shift+S
 SelectAll=Ctrl+A
-ShowHideHiddenFiles=Alt+.; Ctrl+H; Ctrl+>
+ShowHideHiddenFiles=Alt+.; Ctrl+>; Ctrl+H
 ShowMenubar=Ctrl+M
 ShowStatusbar=
 ShowToolbar=
@@ -96,8 +101,57 @@ Undo=Ctrl+Z
 Up=Alt+Up
 WhatsThis=
 Zoom=
-ZoomIn=Ctrl++; Ctrl+=
+ZoomIn=Ctrl+=; Ctrl++
 ZoomOut=Ctrl+-
+
+[chrome-hpfldicfbfomlpcikngkocigghgafkph-Default][Global Shortcuts]
+5DD20C48290CB2F96D5D4DBE057540E9-love-song=
+5DD20C48290CB2F96D5D4DBE057540E9-toggle-connector=
+5DD20C48290CB2F96D5D4DBE057540E9-unlove-song=
+6930C4AB41F5459B515CCB4A7DFDB000-clear-item-selections=
+6930C4AB41F5459B515CCB4A7DFDB000-save-session=
+C384396536FC6C44C772C0AD03BCAF55-capture-entire-page-action=
+C384396536FC6C44C772C0AD03BCAF55-capture-selection-action=
+C384396536FC6C44C772C0AD03BCAF55-capture-visible-page-action=
+C384396536FC6C44C772C0AD03BCAF55-last-used-action=
+CB214090D6549D2643A7E1D61D4434DA-autofill_card=
+CB214090D6549D2643A7E1D61D4434DA-autofill_identity=
+CB214090D6549D2643A7E1D61D4434DA-autofill_login=
+CB214090D6549D2643A7E1D61D4434DA-generate_password=
+CB214090D6549D2643A7E1D61D4434DA-lock_vault=
+E4CDF88927BAF6E533E2FBBD2C542286-save-to-archivebox-action=
+
+[google-chrome][Global Shortcuts]
+4F460218F6120AD3855AB1D63C243113-clear-item-selections=
+4F460218F6120AD3855AB1D63C243113-save-session=
+5DD20C48290CB2F96D5D4DBE057540E9-love-song=
+5DD20C48290CB2F96D5D4DBE057540E9-toggle-connector=
+5DD20C48290CB2F96D5D4DBE057540E9-unlove-song=
+6930C4AB41F5459B515CCB4A7DFDB000-clear-item-selections=
+6930C4AB41F5459B515CCB4A7DFDB000-save-session=
+9B1D0B46D05FF2F875E06768BAEC6CA2-save-to-archivebox-action=
+C384396536FC6C44C772C0AD03BCAF55-capture-entire-page-action=Meta+Shift+S
+C384396536FC6C44C772C0AD03BCAF55-capture-selection-action=
+C384396536FC6C44C772C0AD03BCAF55-capture-visible-page-action=
+C384396536FC6C44C772C0AD03BCAF55-last-used-action=
+CB214090D6549D2643A7E1D61D4434DA-autofill_card=
+CB214090D6549D2643A7E1D61D4434DA-autofill_identity=
+CB214090D6549D2643A7E1D61D4434DA-autofill_login=Ctrl+Shift+L
+CB214090D6549D2643A7E1D61D4434DA-generate_password=
+CB214090D6549D2643A7E1D61D4434DA-lock_vault=
+E461BD263DF01EBFCE945E0F2EF1543A-love-song=
+E461BD263DF01EBFCE945E0F2EF1543A-toggle-connector=
+E461BD263DF01EBFCE945E0F2EF1543A-unlove-song=
+E4CDF88927BAF6E533E2FBBD2C542286-save-to-archivebox-action=Ctrl+Shift, Meta+Shift+A
+EF8D5FEA28A03C5285063465E22ACA5B-autofill_card=
+EF8D5FEA28A03C5285063465E22ACA5B-autofill_identity=
+EF8D5FEA28A03C5285063465E22ACA5B-autofill_login=
+EF8D5FEA28A03C5285063465E22ACA5B-generate_password=
+EF8D5FEA28A03C5285063465E22ACA5B-lock_vault=
+FE871D1D8F2D4C4584D420A07BBE8D96-capture-entire-page-action=
+FE871D1D8F2D4C4584D420A07BBE8D96-capture-selection-action=
+FE871D1D8F2D4C4584D420A07BBE8D96-capture-visible-page-action=
+FE871D1D8F2D4C4584D420A07BBE8D96-last-used-action=
 
 [kaccess][Global Shortcuts]
 Toggle Screen Reader On and Off=
@@ -119,14 +173,17 @@ Toggle Touchpad=Touchpad Toggle
 {d03619b6-9b3c-48cc-9d9c-a2aadb485550}=
 
 [kmix][Global Shortcuts]
+decrease-volume-Mic@USB 2.0 Camera=
 decrease_microphone_volume=Microphone Volume Down
 decrease_volume=Volume Down
 decrease_volume_small=Shift+Volume Down
+increase-volume-Mic@USB 2.0 Camera=
 increase_microphone_volume=Microphone Volume Up
 increase_volume=Volume Up
 increase_volume_small=Shift+Volume Up
 mic_mute=Meta+Volume Mute; Microphone Mute
 mute=
+toggle-mute-Mic@USB 2.0 Camera=
 
 [konversation][Global Shortcuts]
 next_active_tab=
@@ -134,7 +191,7 @@ toggle_mainwindow_visibility=
 
 [ksmserver][Global Shortcuts]
 Halt Without Confirmation=
-Lock Session=Ctrl+Alt+L; Screensaver; Meta+L
+Lock Session=Screensaver; Meta+L; Meta+Shift+L
 Log Out=Ctrl+Alt+Del
 Log Out Without Confirmation=
 LogOut=
@@ -162,7 +219,7 @@ Cycle Overview Opposite=
 Decrease Opacity=
 Edit Tiles=Meta+T
 Expose=Ctrl+F9
-ExposeAll=Ctrl+F10; Launch (C)
+ExposeAll=Launch (C); Ctrl+F10
 ExposeClass=Ctrl+F7
 ExposeClassCurrentDesktop=
 Grid View=Meta+G
@@ -188,7 +245,7 @@ Switch Window Down=
 Switch Window Left=
 Switch Window Right=
 Switch Window Up=
-Switch to Desktop 1=Meta+!; Meta+Shift+F1
+Switch to Desktop 1=Meta+Shift+F1; Meta+!
 Switch to Desktop 10=
 Switch to Desktop 11=
 Switch to Desktop 12=
@@ -199,14 +256,14 @@ Switch to Desktop 16=
 Switch to Desktop 17=
 Switch to Desktop 18=
 Switch to Desktop 19=
-Switch to Desktop 2=Meta+Shift+F2; Meta+@
+Switch to Desktop 2=Meta+@; Meta+Shift+F2
 Switch to Desktop 20=
 Switch to Desktop 3=Meta+#; Meta+Shift+F3
-Switch to Desktop 4=Meta+Shift+F4; Meta+$
+Switch to Desktop 4=Meta+$; Meta+Shift+F4
 Switch to Desktop 5=Meta+%; Meta+Shift+F5
-Switch to Desktop 6=Meta+Shift+F6; Meta+^
-Switch to Desktop 7=Meta+&; Meta+Shift+F7
-Switch to Desktop 8=Meta+Shift+F8; Meta+*
+Switch to Desktop 6=Meta+^; Meta+Shift+F6
+Switch to Desktop 7=Meta+Shift+F7; Meta+&
+Switch to Desktop 8=Meta+*; Meta+Shift+F8
 Switch to Desktop 9=
 Switch to Next Desktop=
 Switch to Next Screen=
@@ -237,7 +294,11 @@ Walk Through Windows of Current Application Alternative=
 Walk Through Windows of Current Application Alternative (Reverse)=
 Window Above Other Windows=
 Window Below Other Windows=
-Window Close=Meta+Q; Alt+F4
+Window Close=Meta+Q
+Window Custom Quick Tile Bottom=
+Window Custom Quick Tile Left=
+Window Custom Quick Tile Right=
+Window Custom Quick Tile Top=
 Window Fullscreen=
 Window Grow Horizontal=
 Window Grow Vertical=
@@ -273,7 +334,7 @@ Window Quick Tile Top Left=
 Window Quick Tile Top Right=
 Window Raise=
 Window Resize=
-Window Shade=
+Window Shade=Ctrl+Shift+Space
 Window Shrink Horizontal=
 Window Shrink Vertical=
 Window to Desktop 1=
@@ -308,6 +369,7 @@ Window to Screen 4=
 Window to Screen 5=
 Window to Screen 6=
 Window to Screen 7=
+disableInputCapture=Meta+Shift+Esc
 kTile=Ctrl+.
 kTile Position 1=Meta+Shift+F
 kTile Position 10=
@@ -335,6 +397,9 @@ playpausemedia=Media Play
 previousmedia=Media Previous
 stopmedia=Media Stop
 
+[net.local.rofi.desktop][Global Shortcuts]
+_launch=Ctrl+Space
+
 [org.flameshot.Flameshot.desktop][Global Shortcuts]
 Capture=Print
 Configure=
@@ -354,19 +419,19 @@ _launch=Ctrl+Alt+T
 
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=
-_launch=Alt+Space; Meta+R; Search; Meta+Space
+_launch=Alt+Space; Meta+R; Search
 
 [org.kde.kscreen.desktop][Global Shortcuts]
 ShowOSD=
 
 [org.kde.plasma-systemmonitor.desktop][Global Shortcuts]
-_launch=Ctrl+Esc; Ctrl+Alt+0
+_launch=Ctrl+Alt+0; Ctrl+Esc
 
 [org.kde.plasma.emojier.desktop][Global Shortcuts]
 _launch=
 
 [org.kde.spectacle.desktop][Global Shortcuts]
-ActiveWindowScreenShot=Meta+Print; Print
+ActiveWindowScreenShot=Print; Meta+Print
 CurrentMonitorScreenShot=Ctrl+Print
 FullScreenScreenShot=
 OpenWithoutScreenshot=
@@ -390,7 +455,7 @@ PowerOff=Power Off
 Sleep=Sleep
 Toggle Keyboard Backlight=Keyboard Light On/Off
 Turn Off Screen=
-powerProfile=Battery; Meta+B
+powerProfile=
 
 [plasmashell][Global Shortcuts]
 activate application launcher=
@@ -405,6 +470,7 @@ activate task manager entry 7=
 activate task manager entry 8=
 activate task manager entry 9=
 activate widget 111=
+activate widget 133=
 activate widget 189=
 activate widget 212=Ctrl+`
 activate widget 218=
@@ -419,7 +485,7 @@ activate widget 85=
 activate widget 90=
 clear-history=
 clipboard_action=
-cycle-panels=Meta+Alt+P; Meta+F1
+cycle-panels=Meta+F1; Meta+Alt+P
 cycleNextAction=
 cyclePrevAction=
 edit_clipboard=
@@ -446,7 +512,7 @@ show-barcode=
 show-on-mouse-pos=Meta+V
 
 [qdbus.desktop][Global Shortcuts]
-_launch=Meta+Shift+S
+_launch=Meta+Space
 
 [systemsettings.desktop][Global Shortcuts]
 _launch=Tools
@@ -458,3 +524,16 @@ kcm-users=
 
 [touchpad.sh.desktop][Global Shortcuts]
 _launch=Meta+P
+
+[wacomtablet][Global Shortcuts]
+Map to fullscreen=Meta+Ctrl+F
+Map to screen 1=Meta+Ctrl+1
+Map to screen 2=Meta+Ctrl+2
+Next Profile=Meta+Ctrl+N
+Previous Profile=Meta+Ctrl+P
+Toggle screen map selection=Meta+Ctrl+M
+Toggle stylus mode=Meta+Ctrl+S
+Toggle touch tool=Meta+Ctrl+T
+
+[yakuake][Global Shortcuts]
+toggle-window-state=F12
