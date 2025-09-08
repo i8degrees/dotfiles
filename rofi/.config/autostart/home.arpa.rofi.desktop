@@ -37,5 +37,5 @@ X-TerminalArgAppId=--class=
 #X-TerminalArgExec=
 X-TerminalArgHold=--wait-after-command
 X-TerminalArgTitle=--title=
-Hidden=false
+Hidden=true
 
