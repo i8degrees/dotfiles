@@ -1,0 +1,12 @@
+
+# autofs
+
+## usage
+
+```shell
+# cd ~/dotfiles.git
+stow -Rv autofs
+cd "$HOME/.local/private"
+cp -av fs1.passwd.dist fs1.passwd
+```
+

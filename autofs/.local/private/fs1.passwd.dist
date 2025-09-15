@@ -1,0 +1,9 @@
+# fs1.passwd.dist:jeff
+#
+# cp -av fs1.passwd.dist fs1.passwd
+#
+# Local CIFS / SMB authentication
+WORKGROUP=WORKGROUP
+USERNAME=jeff
+PASSWORD=19841986
+
