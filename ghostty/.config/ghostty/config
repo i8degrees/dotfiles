@@ -37,7 +37,7 @@ shell-integration = bash
 shell-integration-features = cursor,sudo,title
 
 working-directory = home
-window-decoration = false
+window-decoration = true
 
 quit-after-last-window-closed-delay = 10s
 
