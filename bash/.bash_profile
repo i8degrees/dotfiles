@@ -42,7 +42,13 @@ case "$(uname -s)" in
     PATH="$PATH:$HOME/Applications:/usr/X11/bin"
   ;;
   Linux)
-    PATH="${HOME}/.config/feh/themes:$PATH:/usr/games"
+    # feh env
+    [ -r "$HOME/.config/feh/themes" ] && append_path "$HOME/.config/feh/themes"
+
+    # Local user's script env...
+    [ -r "$HOME/bin" ] && append_path "$HOME/bin"
+    [ -r "$HOME/local/bin" ] && append_path "$HOME/local/bin"
+    [ -r "$HOME/local/sbin" ] && append_path "$HOME/local/sbin"
 	;;
 	*) # catch-all
   ;;
@@ -256,4 +262,4 @@ if [ -n "$CARGO_BIN" ]; then
 fi
 
 [ -r "/scripts/bin" ] && PATH="/scripts/bin:$PATH"
-[ -r "/root/bin" ] && PATH="/root/bin:$PATH"
+
