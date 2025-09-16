@@ -176,7 +176,6 @@ case "$(uname -s)" in
     MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
   ;;
   Linux)
-    PATH="$HOME/bin:$HOME/local/bin:$PATH"
     #TMPDIR="/tmp"
   ;;
   *)
@@ -232,7 +231,7 @@ else
 fi
 
 [ -n "$TERM" ] && export TERM
-TERM=screen-256color-italic
+TERM=xterm-256color
 
 # TODO(JEFF): On Darwin, we should pass `iTerm2.app` to this function!
 TERMINAL=$(choose_terminal); export TERMINAL
