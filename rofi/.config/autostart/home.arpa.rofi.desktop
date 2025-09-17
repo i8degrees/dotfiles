@@ -1,20 +1,20 @@
 # FIXME(JEFF): The active-windows action is broken due to the
-# incomplete Wayland support for the `wlr-foreign-toplevel-management` 
+# incomplete Wayland support for the `wlr-foreign-toplevel-management`
 # protocol.
 [Desktop Action active-windows]
-Exec=/home/jeff/local/bin/rofi_window.sh
+Exec=/bin/sh -c "$HOME/local/bin/rofi_window.sh"
 Name=Show Active Windows
 
 [Desktop Action drun]
-Exec=/home/jeff/local/bin/rofi_drun.sh
+Exec=/bin/sh -c "$HOME/local/bin/rofi_drun.sh"
 Name=Show desktop menu entries
 
 [Desktop Action bw]
-Exec=/home/jeff/local/bin/rofi_bw.sh
+Exec=/bin/sh -c "$HOME/local/bin/rofi_bw.sh"
 Name=Show BitWarden Vault
 
 [Desktop Action ssh]
-Exec=/home/jeff/local/bin/rofi_ssh.sh
+Exec=/bin/sh -c "$HOME/local/bin/rofi_ssh.sh"
 Name=Show Rofi Menu of available SSH hosts to connect to
 
 [Desktop Entry]
@@ -22,9 +22,9 @@ Actions=active-windows;drun;bw
 Categories=System;
 Comment=An Apple Spotlight inspired integration for core GUI access
 # FIXME(JEFF): The active-windows action is broken due to the
-# incomplete Wayland support for the `wlr-foreign-toplevel-management` 
+# incomplete Wayland support for the `wlr-foreign-toplevel-management`
 # protocol.
-Exec=/home/jeff/local/bin/rofi_window.sh
+Exec=/bin/sh -c "$HOME/local/bin/rofi_window.sh"
 Icon=home.arpa.icons
 Keywords=menu;rofi;dbus;spotlight
 Name=Rofi
