@@ -1,0 +1,21 @@
+[Desktop Entry]
+Categories=System;Archiving;Qt;
+Comment[en_US]=
+Comment=
+Exec=pkexec vorta
+GenericName[en_US]=Backup Software @root
+GenericName=Backup Software @root
+Icon=com.borgbase.Vorta-symbolic
+Keywords=borg;
+MimeType=
+Name[en_US]=Vorta @root
+Name=Vorta @root
+Path=
+StartupNotify=true
+StartupWMClass=vorta
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
+Hidden=false
