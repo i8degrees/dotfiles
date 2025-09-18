@@ -1,0 +1,84 @@
+#!/bin/sh
+#
+#
+
+__ssh_hosts() {
+  timeout=1
+  ping_args="-4 -w$timeout"
+  num_tries=0
+  host_str=
+
+  for host in "$@"; do
+    host_str=$(printf "%s\\n" "$host")
+  done
+
+  echo "$host_str"
+}
+
+#ssh_hosts(...args)
+#
+# ...where `args` is a space delimited string 
+# containing one or more hostnames.
+ssh_hosts() {
+  timeout=1
+  ping_args="-4 -w$timeout"
+  num_tries=0
+  host_str=
+  result=
+
+  for host in "$@"; do
+    #hoststr=$(printf %s\\n $host)
+    if ping $ping_args "$host" >/dev/null; then
+      host_str=$host
+      break
+      #host_str=$host
+    else
+      num_retries=$(($num_retries+1))
+      continue
+    fi
+  done
+
+  echo $host_str
+  #result=$(printf "%s\\n" "$host_str")
+  #echo "$result"
+  #echo "$host_str" $num_retries
+}
+
+if [ ! -x "$(which ssh)" ]; then
+  echo "CRITICAL: Failed to find ssh binary..."
+  echo
+  exit 2 # ENOENT 
+fi
+
+if [ -z "$SSH_HOSTS" ]; then
+  echo "Failed to find env"
+  echo
+  #exit 255
+fi
+
+# IMPORTANT(JEFF): This environment must be passed by getty@tty4.service so
+# that we do not reach this flow under normal circumstances!
+if [ "$USE_SSH_LOGIN_TTY" = 1 ]; then
+  user_str=
+  if [ -n "$SSH_USER" ]; then
+    user_str=$SSH_USER
+  else
+    user_str=$USER
+  fi
+
+  TMPDIR=/tmp
+  HOME="/home/$USER"
+  PATH="$HOME/bin:/usr/bin:/bin"
+
+  #ssh_hosts $SSH_HOSTS
+  ssh_host="$(ssh_hosts $SSH_HOSTS)"
+  ssh_host_str="${user_str}@${ssh_host}"
+
+  cmd=ssh
+  if [ -n "$ssh_cmd" ]; then
+    cmd=$ssh_cmd
+  fi
+
+  $cmd "$ssh_host_str"; sleep 2s && exit 0
+  #$ssh_cmd "${SSH_HOST}"; echo "retry_count: $RETRIES_COUNTER" && sleep 2s && exit 0
+fi
