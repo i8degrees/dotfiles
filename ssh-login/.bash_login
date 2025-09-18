@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 #
 # 2011-09/09:jeff
 #
@@ -9,8 +9,8 @@ case "$(uname -s)" in
   Darwin)
   ;;
   Linux)
-    if [ -r "$HOME/.bash/ssh_login.sh" ]; then
-      "$HOME/.bash/ssh_login.sh"
+    if [ -r "$HOME/.bash/ssh_login" ]; then
+      "$HOME/.bash/ssh_login"
     fi
   ;;
   *)

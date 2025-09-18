@@ -1,1 +1,0 @@
-../dotfiles.git/ssh-login/.bash/ssh_login.bash
