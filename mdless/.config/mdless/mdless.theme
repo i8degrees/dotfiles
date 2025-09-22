@@ -1,0 +1,94 @@
+---
+metadata:
+  border: d blue on_black
+  marker: d black on_black
+  color: d white on_black
+emphasis:
+  bold: b
+  bold_character: "**"
+  italic: u i
+  italic_character: _
+  bold-italic: b u i
+highlight: b black on_yellow
+h1:
+  color: b intense_black on_white
+  pad: d black on_white
+  pad_char: "="
+h2:
+  color: b white on_intense_black
+  pad: d white on_intense_black
+  pad_char: "-"
+h3:
+  color: u b yellow
+h4:
+  color: u yellow
+h5:
+  color: b white
+h6:
+  color: b white
+link:
+  brackets: b black
+  text: u b blue
+  url: cyan
+image:
+  bang: red
+  brackets: b black
+  title: cyan
+  url: u yellow
+list:
+  ul_char: "*"
+  bullet: b intense_red
+  number: b intense_blue
+  color: intense_white
+footnote:
+  brackets: b black on_black
+  caret: b yellow on_black
+  title: x yellow on_black
+  note: u white on_black
+code_span:
+  marker: b white
+  color: b white on_intense_black
+  character: "`"
+code_block:
+  marker: intense_black
+  character: ">"
+  bg: on_black
+  color: white on_black
+  border: blue
+  title: magenta
+  eol: intense_black on_black
+  pygments_theme: monokai
+blockquote:
+  marker:
+    character: ">"
+    color: yellow
+  color: b white
+dd:
+  term: black on_white
+  marker: d red
+  color: b white
+hr:
+  color: d white
+table:
+  border: d black
+  header: yellow
+  divider: b black
+  color: white
+  bg: on_black
+html:
+  brackets: d yellow on_black
+  color: yellow on_black
+math:
+  brackets: b black
+  equation: b blue
+super: b green
+deletion: strikethrough red
+text: white
+at_tags:
+  tag: magenta
+  value: b white
+taskpaper:
+  marker: b white
+  project: b green
+  task: white
+  note: d white

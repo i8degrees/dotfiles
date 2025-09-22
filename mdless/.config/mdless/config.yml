@@ -1,0 +1,19 @@
+---
+:at_tags: false
+:autolink: true
+:color: true
+:inline_footnotes: false
+:intra_emphasis: true
+:lax_spacing: true
+:links: :inline
+:local_images: false
+:mmd_metadata: true
+:pager: true
+:preserve_linebreaks: true
+:remote_images: false
+:syntax_higlight: false
+:taskpaper: false
+:theme: default
+:transclude: true
+:width: 0
+:wiki_links: false
