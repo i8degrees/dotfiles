@@ -82,3 +82,6 @@ done
 [ -n "$DRY_RUN" ] && echo "${cmd_exec[@]}"
 [ -z "$DRY_RUN" ] && eval "${cmd_exec[@]}"
 
+echo "Success!"
+echo
+
