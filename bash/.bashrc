@@ -230,8 +230,11 @@ else
   TERM="linux"
 fi
 
-[ -n "$TERM" ] && export TERM
-TERM=xterm-256color
+# FIXME(JEFF): This is intended as a short-term fix for an issue we haven't
+# the time to look into just yet!
+#[ -n "$TERM" ] && export TERM
+#TERM=screen-256color-italic; export TERM
+TERM=xterm-256color; export TERM
 
 # TODO(JEFF): On Darwin, we should pass `iTerm2.app` to this function!
 TERMINAL=$(choose_terminal); export TERMINAL
