@@ -1,10 +1,24 @@
+# pxarexclude.root:jeff
+#
+# List of files to exclude from backups made with proxmox-backup-client
+#
+# SEE ALSO
+# 1. dotfiles.git:/proxmox-backup/local/bin/backup-host.sh
+#
+# IMPORTANT(JEFF): To use this file, we must copy this file to the root
+# filesystem like so; this assumes that you are already within the correct
+# parent working directory.
+#
+# 1. `sudo cp -av pxarexclude.root /.pxarexclude`
+#
+
 /home/swapfile1
-*lost+found*
+**lost+found**
 /home/linuxbrew/
 /home/recoll/
 /home/test
 /home/timeshift/
-/.cache
+**.cache**
 /root/.cache/
 /root/.local/share/Trash
 /timeshift
@@ -19,6 +33,6 @@
 /var/run/
 /var/tmp/
 /rpool/
-/var/tmp/*
-/var/lib/docker/*
-!/var/lib/docker/volumes/*
+/var/tmp/**
+/var/lib/docker/**
+!/var/lib/docker/volumes/**
