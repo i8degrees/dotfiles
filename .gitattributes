@@ -3,5 +3,5 @@
 *.xcf filter=lfs diff=lfs merge=lfs -text
 *.png filter=lfs diff=lfs merge=lfs -text
 *.jpg filter=lfs diff=lfs merge=lfs -text
-pxar filter=lfs diff=lfs merge=lfs -text
-proxmox-backup-client filter=lfs diff=lfs merge=lfs -text
+pxar/local/sbin/pxar filter=lfs diff=lfs merge=lfs -text
+proxmox-backup/local/sbin/proxmox-backup-client filter=lfs diff=lfs merge=lfs -text
