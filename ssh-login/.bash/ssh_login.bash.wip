@@ -1,0 +1,59 @@
+diff --git i/ssh-login/.bash/ssh_login.bash w/ssh-login/.bash/ssh_login.bash
+index ff9e6cc..b6d4dc8 100755
+--- i/ssh-login/.bash/ssh_login.bash
++++ w/ssh-login/.bash/ssh_login.bash
+@@ -2,6 +2,36 @@
+ #
+ #
+ 
++#ssh_hosts(...args)
++#
++# ...where `args` is a space delimited string 
++# containing one or more hostnames.
++ssh_hosts() {
++  timeout=1
++  ping_args="-4 -w$timeout"
++  num_tries=0
++  host_str=
++  result=
++
++  for host in "$@"; do
++    #hoststr=$(printf %s\\n $host)
++    if ping $ping_args "$host" >/dev/null; then
++      host_str=$host
++      break
++      #host_str=$host
++    else
++      num_retries=$(($num_retries+1))
++      continue
++    fi
++  done
++
++  echo $host_str
++  #result=$(printf "%s\\n" "$host_str")
++  #echo "$result"
++  #echo "$host_str" $num_retries
++}
++
++
+ if [ ! -x "$(which ssh)" ]; then
+   echo "CRITICAL: Failed to find ssh binary..."
+   echo
+@@ -39,6 +69,15 @@ if [ "$USE_SSH_LOGIN_TTY" = 1 ]; then
+   fi
+ 
+   SSH_HOST="${USER}@${HOST}"
+-
+-  ssh "${SSH_HOST}"; echo "retry_count: $RETRIES_COUNTER" && sleep 2s && exit 0
++  SSH_CMD="${SSH_CMD}"
++  if [ -x "${SSH_CMD}" ]; then
++    $SSH_CMD "${SSH_HOST}";
++    echo "retry_count: $RETRIES_COUNTER" && \
++      sleep 2s
++  fi
+ fi
++
++# end
++#
++
++
