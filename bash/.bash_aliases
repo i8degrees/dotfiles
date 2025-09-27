@@ -434,6 +434,12 @@ if [ -n "$(command -v xclip)" ]; then
   alias pbpaste='xclip -o'
 fi
 
-[ -x "$(which lastlog2)" ] && alias lastlog='lastlog2 $@'
-[ -x "$(which wakeonlan)" ] && alias wol='wakeonlan $@'
+# NOTE(JEFF): Prefer lastlog2 over lastlog, when available
+if [ "$(exists_exe lastlog2)" ]; then
+  alias lastlog='lastlog2'
+fi
+
+if [ "$(exists_exe wakeonlan)" ]; then
+  alias wol='wakeonlan'
+fi
 
