@@ -1,0 +1,8 @@
+# .stow-local-ignore:jeff
+#
+#
+
+.gitignore
+INSTALL.stow
+README.stow
+
