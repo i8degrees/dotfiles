@@ -13,3 +13,11 @@ vim/bundle
 .directory
 
 /.project
+
+# certificate files
+*.pem
+*.PEM
+*.crt
+*.CRT
+*.key
+*.KEY
