@@ -35,6 +35,7 @@ exists_exe() {
   fi
 
   if which "$pathstr" &>/dev/null; then
+    echo "$pathstr" # success!
     return 0 # truthy
   else
     return 1 # err
