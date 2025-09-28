@@ -1,16 +1,14 @@
 
-# termux
-
-~~~**DEPRECATED(JEFF):** This package is obsolete as of commit `d749be15f` and
-should no longer be used in new installations. The `bash` stow package should
-be used instead. The `termux` stow package will be removed some time in the
-future; sooner than later, if I remember! ;-)~~~
+# termux-boot
 
 This is a `stow` package containing configuration
 that is intended to be used within an Android OS
-environment with the [Termux][0] application installed.
+environment with the [Termux-boot][0] application 
+installed.
 
 ## usage
+
+- [[./USAGE.stow]]
 
 ### setup
 
@@ -23,42 +21,16 @@ pkg ins stow git git-lfs bash
 # the instructions for setting up the git repo and
 # have already entered the top-level directory 
 # therein.
-stow -Rv stow termux git tmux
+stow -Rv stow termux-boot git
 ```
 
-#### extra "base" packages
+## see also
 
-```shell
-stow -Rv ssh-agent ssh bash readline colors vim
-```
+- `dotfiles.git`
+  - [[../termux/README.stow]]
+  - [[../README.md]]
 
-### Configuring your "Soft" Keyboard
+## reference documents
 
-[Termux Wiki: Touch Keyboard][10]
-
-### Configuring your Hardware Keyboard
-
-[Termux Wiki: Hardware Keyboard][20]
-
-The following shortcuts are available when using `Termux` with a hardware 
-(e.g. bluetooth) keyboard by combining them with `Ctrl+Alt`:
-
-- `C` → Create new session
-- `R` → Rename current session
-- Down arrow (or `N`) → Next session
-- Up arrow (or `P`) → Previous session
-- Right arrow → Open drawer
-- Left arrow → Close drawer
-- `M` → Show menu
-- `U` → Select URL
-- `V` → Paste
-- `+/-` → Adjust text size
-- `1-9` → Go to numbered session
-- `K` → Enable/Disable soft keyboard
-
-# reference documents
-
-[0]: <https://play.google.com/#>
-[10]: https://wiki.termux.com/wiki/Touch_Keyboard
-[20]: https://wiki.termux.com/wiki/Hardware_Keyboard
+[0]: https://play.google.com/#
 
