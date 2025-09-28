@@ -8,3 +8,4 @@ MimeType=inode/directory;
 Name=PCManFM-Qt File Manager
 StartupNotify=true
 Type=Application
+
