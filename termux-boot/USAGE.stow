@@ -1,0 +1,53 @@
+
+# termux-boot
+
+The [Termux:Boot add-on][0] provides functionality 
+to run programs under `Termux` when the device 
+boots up.
+
+## usage
+
+* Start the [Termux:Boot app][0] once to allow the 
+system to start the app at boot time.
+
+* Create the `~/.termux/boot/` directory.
+
+* Put scripts you want to execute inside the 
+`~/.termux/boot/` directory.
+
+* If there are multiple files, they will be 
+executed in a sorted order.
+
+* Note that you may want to run `termux-wake-lock` 
+as first thing if you want to ensure that the 
+device is prevented from sleeping.
+
+### Example
+
+To start an `sshd` server and prevent the device 
+from sleeping at boot, create a file at 
+`~/.termux/boot/start-sshd` containing the 
+three lines:
+
+```shell
+#!/data/data/com.termux/files/usr/bin/sh
+termux-wake-lock
+sshd
+```
+
+### Learn more
+
+Join the Termux community through the various channels listed at
+
+[Termux Community][10]
+
+### Report issues
+
+[Reporting Issues][20]
+
+## reference documents
+
+[0]: https://play.google.com/#
+[10]: https://termux.org/community
+[20]: https://github.com/termux/termux-boot/issues
+
