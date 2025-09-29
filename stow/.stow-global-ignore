@@ -1,5 +1,7 @@
-# ~/dotfiles.git/stow/.stow-global-ignore:jeff
+# .stow-global-ignore:jeff
 #
+# Top-level package ignore filter for
+# the stow package manager
 #
 
 # MacOS resource forks
