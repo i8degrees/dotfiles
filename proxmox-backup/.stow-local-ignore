@@ -1,0 +1,32 @@
+# .stow-local-ignore:jeff
+#
+# Top-level package ignore filter for
+# the stow package manager
+#
+
+# MacOS resource forks
+._*
+# MacOS Finder preferences & styling for directory
+.DS_Store
+
+# NodeJS packages
+node_modules
+package.json
+package-lock.json
+
+Makefile
+Makefile.stow
+
+#  dotfiles metadata stays put
+README.stow
+LICENSE.stow
+INSTALL.stow
+UNINSTALL.stow
+REMOVE.stow
+TODO.stow
+
+# top-level directory paths to ignore
+.gitignore
+
+# git related
+#\.gitignore/ig
