@@ -1,0 +1,50 @@
+----
+created: 2025-09-29T20:37:41+05:00
+modified: 2025-09-29T20:37:41+05:00
+editorType: vim
+author: Jeffrey Carpenter
+----
+
+# proxmox-backup-client
+
+This stow package contains the statically 
+linked binaries of two files:
+
+- `proxmox-backup` client; version `4.0.14`
+  * used for when access to the **PBS** server
+  repository is accessible -- this is typically
+  the preferred route, but is not always going
+  to be the case!
+- `pxar`; version `4.0.14`
+  * used for when we are restoring files off
+  of our offsite backup disks.
+
+I have created this package for the sake of 
+being prepared in case of disaster striking --
+better safe than sorry!
+
+The binary files found here are extracted from the
+[Debian Trixie repository][20].
+
+## usage
+
+- [[../proxmox-backup/README.stow]]
+
+### setup
+
+```shell
+# assuming we already have the dotfiles.git repo
+# checked out and at the right branch
+stow -Rv proxmox-backup-client
+
+# now, you should find the two binaries here:
+~/local/sbin/proxmox-backup-client --help
+~/local/sbin/pxar --help
+```
+
+## reference documents
+
+[0]: https://pbs.proxmox.com/docs/backup-client.html
+[10]: https://pbs.proxmox.com/docs/installation.html#proxmox-backup-client-only-repository
+[20]: http://download.proxmox.com/debian/pbs-client/dists/trixie/main/binary-amd64/proxmox-backup-client-static_4.0.14-1_amd64.deb
+
