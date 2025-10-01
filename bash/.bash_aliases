@@ -265,7 +265,7 @@ case "$(uname -s)" in
     # NOTE(JEFF): We handle Linux derived distributions, such as Android OS
     # like so here.
     if [[ "$OSTYPE" =~ 'linux-android' ]]; then
-      alias rebash='source /sdcard/.aliases'
+      alias rebash='source $HOME/.aliases'
       alias aflinger='rootcheck && $ROOT dumpsys media.audio_flinger'
       alias bb='$BBDIR/busybox'
       alias bsu='su -s bash'
