@@ -1,9 +1,23 @@
 
 # nodenv
 
+nodenv is a version manager tool for the [Node.js][0] on Unix-like systems. It is useful for switching between
+multiple Node.js versions on the same machine and for ensuring that each project you are working on always
+runs on the correct Node.js version.
+
 ## usage
 
-## TODO
+```shell
+git clone "https://github.com/nodenv/nodenv.git" \
+  ~/.nodenv
+cd ~/dotfiles.git
+git checkout dev && git pull
+git submodule update --init
+git submodule sync
+stow -Rv nodenv
+```
 
-- [ ] *...*
+## reference documents
+
+[0]: https://nodejs.org
 
