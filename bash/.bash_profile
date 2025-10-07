@@ -105,106 +105,20 @@ fi
 
 [[ -d "/opt/android-sdk/platform-tools" ]] && PATH=/opt/android-sdk/platform-tools:$PATH
 
-# homebrew env
-#
-# Set PATH, MANPATH, etc., for Homebrew.
-#
-# IMPORTANT(jeff): It is important that we put the binaries from brew **last**
-# in our PATH environment. Otherwise, you will start executing common utilities
-# from the wrong system!
-export HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew";
-export HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar";
-export HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew";
-MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:"; export MANPATH
-INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"; export INFOPATH
-#append_path "/home/linuxbrew/.linuxbrew/bin"
-#append_path "/home/linuxbrew/.linuxbrew/sbin"
-
-
 #QT_LOGGING_RULES="kwin_*.debug=true"; export QT_LOGGING_RULES
 
-# NodeJS env initialization with nodenv for version tracking
-#
-# (void) setup_nodejs_env(str = required)
-# ...where str is a non-zero array of characters to say what NodeJS version
-# manager binary to prefer in setting up all of this.
-#
-# TODO(JEFF): Consider removing this logic entirely as we never have gotten
-# around to exploring other version managers, such as NVM. Doubtful that
-# I ever will, either, considering that all outstanding nodenv issues
-# have since been resolved now...
-NODENV_COMPLETIONS="/usr/lib/nodenv/libexec/completions/nodenv.bash"
-
-#eval "$(nodenv init - bash)"
-setup_nodejs_env() {
-  node_bin="$HOME/.nodenv/shims/node"
-  bin="$1"
-  args="$2"
-  # NOTE(JEFF): Automatic nodenv env init; this is equivalent to the response
-  # you receive upon executing `nodenv shell`.
-  if [ -z "$args" ]; then
-    if [ -r "$HOME/.nodenv/shims/.nodenv-shim" ]; then
-      args="init - --no-rehash"
-    else
-      args="init - bash"
-    fi
+# pkgconfig env
+if [ -x "$(which pkg-config)" ]; then
+  # FIXME(JEFF): Add path validation here before blindly adding these to the default search path...
+  PKG_CONFIG_PATH="/usr/lib/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/lib32/pkgconfig:/usr/share/pkgconfig"
+  if [ -n "$HOMEBREW_PREFIX" ]; then
+    PKG_CONFIG_PATH="${HOMEBREW_PREFIX}/lib:$PKG_CONFIG_PATH"
   fi
-
-  if [ ! -x "$bin" ]; then
-    echo "ERROR: Failed to find nodenv at ${bin}..."
-    echo
-    return 1
-  fi
-
-  if [ ! -x "$node_bin" ]; then
-    echo "ERROR: Failed to find node at ${node_bin}..."
-    echo
-    return 2
-  fi
-
-  # FIXME(JEFF): I would like to not ignore this error, but when we add
-  # quotes to $args -- it stops parsing the list correctly. Perhaps we
-  # should make args an array? args=()
-  # shellcheck disable=SC2068
-  [ -n "$DEBUG" ] && echo "$("$bin" ${args[@]})"
-  eval "$("$bin" ${args[@]})"
-  [ -e "$HOME/.nodenv/bin" ] && append_path "$HOME/.nodenv/bin"
-  [ -e "$HOME/.nodenv/shims" ] && PATH="$HOME/.nodenv/shims:$PATH"
-  # shellcheck disable=SC1090
-  [ -e "$NODENV_COMPLETIONS" ] && . "$NODENV_COMPLETIONS"
-
-  [ -n "$HOMEBREW_PREFIX" ] && NODE_BUILD_DEFINITIONS="${HOMEBREW_PREFIX}/opt/node-build-update-defs/share/node-build"; export NODE_BUILD_DEFINITIONS
-}
-
-#NODENV_SHELL=bash; export NODENV_SHELL
-
-# DEPRECATED(JEFF): What is all this??? I do not recall when I wrote this command alias
-# for nodenv. Therefore I feel as though I should treat it as pending removal.
-# shellcheck disable=SC2160
-if [ ! true ]; then
-  echo "WARNING: This branch is intended never to execute and thus something is wrong if you see this message..."
-  echo
-  command nodenv rehash 2>/dev/null
-  nodenv() {
-    local command
-    command="${1:-}"
-    if [ "$#" -gt 0 ]; then
-      shift
-    fi
-
-    case "$command" in
-      rehash|shell)
-      eval "$(nodenv "sh-$command" "$@")"
-    ;;
-    *)
-      command nodenv "$command" "$@"
-    ;;
-    esac
-  }
 fi
 
-# pkg-config env
-PKG_CONFIG_PATH="/usr/lib/pkgconfig:/usr/lib/x86_64-linux-gnu/pkgconfig:/usr/lib32/pkgconfig:/usr/share/pkgconfig:${HOMEBREW_PREFIX}/lib"; export PKG_CONFIG_PATH
+if [ -n "$PKG_CONFIG_PATH" ]; then
+  export PKG_CONFIG_PATH
+fi
 
 # dotnet env
 # 1. https://learn.microsoft.com/en-us/dotnet/core/install/linux-scripted-manual#set-environment-variables-system-wide
@@ -228,23 +142,16 @@ if [ -d "$HOME/local/opt/flexbv" ]; then
   append_path "$HOME/local/opt/flexbv"
 fi
 
-# NodeJS env
+# homebrew env
 #
-# NOTE(JEFF): The additional branching here is intended only to
-# be temporary, until I have the chance to clean up / merge the
-# differences between the installation of nodenv from
-# docker.fs1.home and scorpio.home; one uses nodenv from the
-# package manager and the other from the official git repo.
-nodejs_bin_path="$(which nodenv &>/dev/null)"
-if [ "$nodejs_bin_path" ]; then
-  true
-elif [ -x "$HOME/.nodenv/bin/nodenv" ]; then
-  nodejs_bin_path="$HOME/.nodenv/bin/nodenv"
-elif [ -x "$HOME/.nodenv/libexec/nodenv" ]; then
-  nodejs_bin_path="$HOME/.nodenv/libexec/nodenv"
-fi
+# IMPORTANT(jeff): It is important that we put the binaries from brew **last**
+# in our PATH environment. Otherwise, you will start executing common utilities
+# from the wrong system!
+# TODO(JEFF): Relocate this to Linux specific init...
+setup_homebrew_env_linux
 
-setup_nodejs_env "$nodejs_bin_path"
+# NodeJS env
+setup_nodejs_env
 
 # SSH env
 # shellcheck disable=SC1091
