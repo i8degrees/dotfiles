@@ -17,7 +17,35 @@ git submodule sync
 stow -Rv nodenv
 ```
 
+### homebrew
+
+**NOTE:** This is the preferred method for MacOS; HomeBrew supports Linux as well, so it can
+also be used in Linux if you so choose!
+
+```shell
+brew install nodenv -vd
+```
+
+### nodenv-installer
+#### wget
+
+```shell
+wget -q https://github.com/nodenv/nodenv-installer/raw/HEAD/bin/nodenv-installer -O- | bash
+```
+
+#### curl
+
+```shell
+curl -fsSL https://github.com/nodenv/nodenv-installer/raw/HEAD/bin/nodenv-installer | bash
+```
+
+#### node-build
+
+```shell
+git clone https://github.com/nodenv/node-build.git "$(nodenv root).git"/plugins/node-build
+```
+
 ## reference documents
 
 [0]: https://nodejs.org
-
+[0]: https://github.com/nodenv/nodenv
