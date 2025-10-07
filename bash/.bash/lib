@@ -132,6 +132,7 @@ setup_homebrew_env_linux() {
 
 # TODO(JEFF): Left for future impl
 setup_homebrew_env_macos() {
+  true
 }
 
 # NodeJS env initialization with nodenv for version tracking
