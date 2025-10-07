@@ -50,11 +50,11 @@ exists_exe() {
 #
 # Functions which I'm gonna count as aliases
 getperms() {
-  rootcheck && $ROOT pm get-privapp-permissions $1 | sed "s/, /\n/g" 
+  rootcheck && $ROOT pm get-privapp-permissions $1 | sed "s/, /\n/g"
 }
 
 getdenyperms() {
-  rootcheck && $ROOT pm get-privapp-deny-permissions $1 | sed "s/, /\n/g" 
+  rootcheck && $ROOT pm get-privapp-deny-permissions $1 | sed "s/, /\n/g"
 }
 
 # https://stackoverflow.com/questions/394230/how-to-detect-the-os-from-a-bash-script/68706298#68706298
@@ -74,19 +74,19 @@ DEFAULT_TERMINALS_CONFIG=(
 )
 
 # Select the default terminal application to utilize; this function sets the TERMINAL variable to the path of the
-# terminal that is chosen. The first one on the list to exist always wins! The TERMINAL env is used by various 
+# terminal that is chosen. The first one on the list to exist always wins! The TERMINAL env is used by various
 # utilities, such as the rofi-sensible-terminal script that inspired the creation of this function.
 #
 #[string] choose_terminal(terms = [optional, string])
 #
-# ...where `terms` is an optional, non-empty string of your terminal's name; if this `name` does not exist in the 
+# ...where `terms` is an optional, non-empty string of your terminal's name; if this `name` does not exist in the
 # system PATH, the call will fail and the terminal will never be considered. It is because of this that it is suggested
 # that you always give the function the absolute path to the terminal you wish to add.
 #
-# TODO(JEFF): Profile this function -- hell, all of our shell init scripts -- and see how slow looping through an 
+# TODO(JEFF): Profile this function -- hell, all of our shell init scripts -- and see how slow looping through an
 # array like this is. I am somewhat concerned about embedded systems, such as routers and such!
 choose_terminal() {
-  terminals=()  
+  terminals=()
   result=""
 
   term="$1"
@@ -102,6 +102,71 @@ choose_terminal() {
   done
 
   echo "$result"
+}
+
+# homebrew env
+#
+# Set PATH, MANPATH, etc., for Homebrew (on Linux).
+setup_homebrew_env_linux() {
+  if [ "$(exists_exe brew)" ]; then
+
+    if [ -d "/home/linuxbrew/.linuxbrew" ]; then
+      [ -d "/home/linuxbrew/.linuxbrew" ] &&
+        HOMEBREW_PREFIX="/home/linuxbrew/.linuxbrew"; export HOMEBREW_PREFIX
+      [ -d "/home/linuxbrew/.linuxbrew/Cellar" ] &&
+        HOMEBREW_CELLAR="/home/linuxbrew/.linuxbrew/Cellar"; export HOMEBREW_CELLAR
+      HOMEBREW_REPOSITORY="/home/linuxbrew/.linuxbrew/Homebrew"; export HOMEBREW_REPOSITORY
+
+      [ -d "/home/linuxbrew/.linuxbrew/share/man" ] &&
+        MANPATH="/home/linuxbrew/.linuxbrew/share/man${MANPATH+:$MANPATH}:"; export MANPATH
+      [ -d "/home/linuxbrew/.linuxbrew/share/info" ] &&
+        INFOPATH="/home/linuxbrew/.linuxbrew/share/info:${INFOPATH:-}"; export INFOPATH
+    fi
+
+    [ -d "/home/linuxbrew/.linuxbrew/bin" ] &&
+      append_path "/home/linuxbrew/.linuxbrew/bin"
+    [ -d "/home/linuxbrew/.linuxbrew/sbin" ] &&
+      append_path "/home/linuxbrew/.linuxbrew/sbin"
+  fi
+}
+
+# TODO(JEFF): Left for future impl
+setup_homebrew_env_macos() {
+}
+
+# NodeJS env initialization with nodenv for version tracking
+#
+# (void) setup_nodejs_env(str = required)
+# ...where str is a non-zero array of characters to say what NodeJS version
+# manager binary to prefer in setting up all of this.
+#
+# TODO(JEFF): Consider removing this logic entirely as we never have gotten
+# around to exploring other version managers, such as NVM. Doubtful that
+# I ever will, either, considering that all outstanding nodenv issues
+# have since been resolved now...
+#NODENV_COMPLETIONS="/usr/lib/nodenv/libexec/completions/nodenv.bash"
+NODENV_COMPLETIONS="/usr/lib/nodenv/libexec/completions/nodenv-completions"
+#NODENV_SHELL=bash; export NODENV_SHELL
+
+#setup_nodejs_env(shell = optional)
+setup_nodejs_env() {
+  shell="$1"
+  eval "$(nodenv init - $shell)"
+
+  # generic bits
+  [ -r "$HOME/.nodenv/bin" ] &&
+    append_path "$HOME/.nodenv/bin";
+  [ -r "$HOME/.nodenv/shims" ] &&
+    append_path "$HOME/.nodenv/shims"
+
+  # shellcheck disable=SC1090
+  [ -r "$NODENV_COMPLETIONS" ] &&
+    . "$NODENV_COMPLETIONS"
+
+  # homebrew support
+  [ -n "$HOMEBREW_PREFIX" ] &&
+    NODE_BUILD_DEFINITIONS="${HOMEBREW_PREFIX}/opt/node-build-update-defs/share/node-build";
+  export NODE_BUILD_DEFINITIONS
 }
 
 # TODO(JEFF): Finish impl
@@ -129,4 +194,3 @@ gigabytes() {
   result=$(("$value" * 1024))
   return "$result"
 }
-
