@@ -1,5 +1,5 @@
 #
-# proxmox-backup@.service
+# proxmox-backup.service
 #
 # NOTE(JEFF): This service requires root privileges
 #

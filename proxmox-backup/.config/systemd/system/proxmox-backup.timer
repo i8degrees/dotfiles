@@ -1,12 +1,9 @@
 #
-# proxmox-backup@.timer
+# proxmox-backup.timer
 #
 # NOTE(JEFF): This service requires root privileges
 #
-# systemctl enable proxmox-backup@root.timer
-# systemctl enable proxmox-backup@root.service
-# systemctl start proxmox-backup@root.timer
-# #systemctl start proxmox-backup@root.service
+# systemctl enable --now proxmox-backup.timer
 [Unit]
 Description=Daily backup of root to pbs1.home
 
