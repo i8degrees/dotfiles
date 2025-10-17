@@ -5,6 +5,10 @@
 # Local bash (1) profile executed for login shells.
 #
 
+# IMPORTANT(JEFF): This is a workaround to allow us back the scrollbuffer
+# without further customization.
+export MOSH_ENABLE_SCROLLBACK=1
+
 # shellcheck disable=SC1091
 [ -e "$HOME/.bash/lib" ] && . "$HOME/.bash/lib"
 
