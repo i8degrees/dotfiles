@@ -9,6 +9,17 @@
 # Empty values reset the configuration to the default value;
 # Blank lines are ignored!
 #
+# QUICK REFERENCE
+# 2. ghostty +validate-config
+# 3. ghostty +show-config
+#
+# systemd on Linux
+#
+# 1. systemctl enable --user app-com.mitchellh.ghostty.service
+# 1. systemctl reload --user app-com.mitchellh.ghostty.service
+# 1. journalctl -a -f --user -u app-com.mitchellh.ghostty.service
+# 1. systemctl status --user app-com.mitchellh.ghostty.service
+#
 
 auto-update = off
 
@@ -37,7 +48,16 @@ shell-integration = bash
 shell-integration-features = cursor,sudo,title
 
 working-directory = home
+# Always keep our window manager's decorations so we have access
+# to its window functions menu!
 window-decoration = true
 
-quit-after-last-window-closed-delay = 10s
+# optimizations for using ghostty with systemd on Linux
+# https://ghostty.org/docs/linux/systemd
+quit-after-last-window-closed = false
+quit-after-last-window-closed-delay = 30s
 
+# v1.2.x
+#gtk-titlebar-style=tabs
+# TODO(JEFF): Verify and setup
+#quick-terminal-size=480x640
