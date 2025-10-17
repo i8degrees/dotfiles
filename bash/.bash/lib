@@ -195,3 +195,33 @@ gigabytes() {
   result=$(("$value" * 1024))
   return "$result"
 }
+
+#tmosh(ssh_arg = required, ...extra_mosh_args = optional)
+#
+# EXAMPLES
+# 1. tmosh jeff@box1
+# 2. tmosh jeff@box1 $HOME/local/bin/tmux_init.sh
+#
+tmosh() {
+  ssh_arg="$1"
+  extra_mosh_args="$2"
+
+  mosh_args=""
+  [ -n "$MOSH_ENABLE_SCROLLBACK" ] &&
+    mosh_args="--no-init"
+  
+  # mosh $mosh_args "$ssh_arg" -- "$HOME/local/bin/tmux_init.sh"
+  if [[ -n "$DEBUG" ]] || [[ -n "$DRY_RUN" ]]; then
+    # FIXME(JEFF): Use run_cmd once we import `/scripts/lib/rc.functions`
+    echo mosh $mosh_args "$ssh_arg" -- "${extra_mosh_args}"
+  else # -z "$DEBUG"
+    # NOTE(JEFF): mosh-server errors on us -- it expects a non-empty argument list 
+    # when we pass the `--` syntax through
+    if [ -z "${extra_mosh_args}" ]; then
+      mosh $mosh_args "$ssh_arg"
+    else
+      mosh $mosh_args "$ssh_arg" -- "${extra_mosh_args}"
+    fi
+  fi
+}
+
