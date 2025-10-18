@@ -54,8 +54,11 @@ window-decoration = true
 
 # optimizations for using ghostty with systemd on Linux
 # https://ghostty.org/docs/linux/systemd
-quit-after-last-window-closed = false
-quit-after-last-window-closed-delay = 30s
+quit-after-last-window-closed-delay = 15s
+# store its window state, including window size, position, and 
+# the layout of tabs and splits
+window-save-state = "always"
+quit-after-last-window-closed = true
 
 # v1.2.x
 #gtk-titlebar-style=tabs
