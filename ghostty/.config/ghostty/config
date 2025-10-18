@@ -26,11 +26,6 @@ auto-update = off
 #background = 282c34
 #foreground = ffffff
 
-keybind = cmd+w=close_surface
-# FIXME(JEFF): Invalid syntax?
-#keybind = cmd+shit+o=new_split:down
-#keybind = cmd+t=
-
 font-family = "JetBrains Mono"
 #font-family = "Source Code Pro"
 bold-is-bright = true
@@ -55,12 +50,36 @@ window-decoration = true
 # optimizations for using ghostty with systemd on Linux
 # https://ghostty.org/docs/linux/systemd
 quit-after-last-window-closed-delay = 15s
-# store its window state, including window size, position, and 
+# IMPORTANT(JEFF): This should be enabled when using systemd to auto-start
+# ghostty, except when one prefers to use a FreeDesktop entry in their 
+# XDG autostart directory.
+initial-window = true
+#initial-window = false
+
+# NOTE(JEFF): Do not automatically copy text upon selection; this does not
+# disable middle-click paste.
+copy-on-select = false
+
+right-click-action = context-menu
+
+# store its window state, including window size, position, and
 # the layout of tabs and splits
+#
+# WARNING(JEFF): This feature may only be supported on MacOS --
+# if this is the case, our only other option may be to write a
+# startup script that can aid in at least restoring our tab
+# order, position and title.
 window-save-state = "always"
 quit-after-last-window-closed = true
+# TODO(JEFF): Switch back over if window state is not restored properly...
+quit-after-last-window-closed = false
 
 # v1.2.x
 #gtk-titlebar-style=tabs
 # TODO(JEFF): Verify and setup
 #quick-terminal-size=480x640
+
+# WARNING(JEFF): If this external path fails to parse, the parser fails
+# and stops before reaching the top-level parent!
+config-file = ~/.config/ghostty/input.conf
+
