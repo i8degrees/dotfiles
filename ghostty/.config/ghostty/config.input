@@ -3,7 +3,7 @@
 # Ghostty key bindings
 #
 # SEE ALSO
-# 1. https://ghostty.org/docs/config
+# 1. https://ghostty.org/docs/config/keybind/reference
 #
 # Comments start with a `#` and are only valid on their own line;
 # Empty values reset the configuration to the default value;
