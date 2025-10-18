@@ -62,6 +62,14 @@ copy-on-select = false
 
 right-click-action = context-menu
 
+mouse-hide-while-typing = true
+# NOTE(JEFF): This enables standard cursor selection as seen in other
+# terminal emulators --
+#
+# a) options + left mouse click on MacOS;
+# b) ALT + left mouse click on all other OS
+cursor-click-to-move = true
+
 # store its window state, including window size, position, and
 # the layout of tabs and splits
 #
