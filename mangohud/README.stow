@@ -1,0 +1,35 @@
+
+# MangoHUD
+
+A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more.
+
+![Overlay Example](./overlay_example.gif)
+
+## usage
+
+1. To enable the MangoHud overlay layer for Vulkan and OpenGL, run:
+
+```shell
+mangohud /path/to/app
+```
+
+2. For Lutris games, go to the System options in Lutris (make sure that
+advanced options are enabled) and add this to the Command prefix setting:
+
+```shell
+mangohud
+```
+
+3. For Steam games, you can add this as a launch option:
+
+```shell
+mangohud %command%
+```
+
+4. Or alternatively, add `MANGOHUD=1` to your shell profile (Vulkan only).
+
+
+## reference documents
+
+1. [Github.com: MangoHud](https://github.com/flightlessmango/MangoHud)
+
