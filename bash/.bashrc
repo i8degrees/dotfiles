@@ -9,6 +9,13 @@
 # SSH utilities like scp, ~/.ssh/rc and so forth and what have you!
 [ -z "$PS1" ] && return
 
+# Source global definitions
+if [ -f "/etc/bashrc" ]; then
+  . "/etc/bashrc"
+elif [ -f "/etc/bash.bashrc" ]; then
+  . "/etc/bashrc.bashrc"
+fi
+
 [ -n "$DEBUG" ] && set -o errexit
 [ -n "$DEBUG_TRACE" ] && set -o xtrace
 
@@ -176,6 +183,16 @@ case "$(uname -s)" in
     MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
   ;;
   Linux)
+    # User specific aliases and functions
+    if [ -d "$HOME/.bash/bashrc.d" ]; then
+    for rc in $HOME/.bash/bashrc.d/*; do
+      if [ -f "$rc" ]; then
+        . "$rc"
+      fi
+    done
+    fi
+    unset rc
+
     #TMPDIR="/tmp"
   ;;
   *)
