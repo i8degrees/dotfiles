@@ -1,11 +1,27 @@
 
 # MangoHUD
 
+**NOTE(JEFF):** This file is derived from the source [project page][0].
+
 A Vulkan and OpenGL overlay for monitoring FPS, temperatures, CPU/GPU load and more.
 
 ![Overlay Example](./overlay_example.gif)
 
 ## usage
+
+### bootstrap
+
+1. Assuming that you have already checked out the [git repository][10] from which this file comes from:
+
+```shell
+# cd dotfiles.git && git checkout dev
+stow -Rv mangohud
+```
+
+Now you should have a `~/.config/MangoHud` directory along with a few configuration files you can begin
+using right away, or use as a base for your own.
+
+### configure
 
 1. To enable the MangoHud overlay layer for Vulkan and OpenGL, run:
 
@@ -28,8 +44,21 @@ mangohud %command%
 
 4. Or alternatively, add `MANGOHUD=1` to your shell profile (Vulkan only).
 
+### Hud configuration
+
+MangoHud comes with a config file which can be used to set configuration options globally or per application. Usually it is installed as `~/.config/MangoHud/MangoHud.conf.example` or get a copy from here.
+
+The priorities of different config files are:
+
+    1. `/path/to/application/dir/MangoHud.conf`
+    2. Per-application configuration in `~/.config/MangoHud`:
+        i. `~/.config/MangoHud/<application_name>.conf` for native applications, where `<application_name>` is the case sensitive name of the executable
+        b. `~/.config/MangoHud/wine-<application_name>.conf` for wine/proton apps, where `<application_name>` is the case sensitive name of the executable without the .exe ending
+    3. `~/.config/MangoHud/MangoHud.conf
+
+Example: For Overwatch, this would be `wine-Overwatch.conf` (even though the executable you run from Lutris is `Battle.net.exe`, the actual game executable name is `Overwatch.exe`).
 
 ## reference documents
 
-1. [Github.com: MangoHud](https://github.com/flightlessmango/MangoHud)
-
+[0]: https://github.com/flightlessmango/MangoHud
+[10]: https://github.com/i8degrees/dotfiles.git
