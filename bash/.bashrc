@@ -13,7 +13,7 @@
 if [ -f "/etc/bashrc" ]; then
   . "/etc/bashrc"
 elif [ -f "/etc/bash.bashrc" ]; then
-  . "/etc/bashrc.bashrc"
+  . "/etc/bash.bashrc"
 fi
 
 [ -n "$DEBUG" ] && set -o errexit
