@@ -1,0 +1,29 @@
+# ~/.Xcompose:jeff
+#
+# Xcompose snippets; inspired by the [Omarchy key bindings][0]
+#
+# [0]: https://
+#
+
+# UTF-8 (Unicode) Compose sequences
+include "%XL"
+
+## test
+
+# CapsLock <M> + <S> =
+<Multi_key> <M> <S>             : "▸" arrow # ARROW
+
+## emojis
+
+<Multi_key> <M> <S>             :	"😄" smile  # smile
+<Multi_key> <M> <1>             :	"💯"	100%  # 100%
+<Multi_key> <M> <H>             :	"❤️" heart  # heart
+<Multi_key> <M> <D>             :	"🤤" drool  # drool
+<Multi_key> <M> <D>             :	"?" fire    # fire
+
+## Quick Completions
+
+<Multi_key> <Space> <Space>     : "—" # mdash (?)
+<Multi_key> <Space> <N>         : "Jeffrey Carpenter" # your name as specified in `~/.gitconfig` at `user.name`
+<Multi_key> <Space> <E>         : "<i8degrees@gmail.com>" # email as specified in `~/.gitconfig` at `user.email`
+<Multi_key> <Space> <P>         : "+1 (479) 249-0307" # phone number as specified somewhere

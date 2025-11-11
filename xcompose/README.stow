@@ -1,0 +1,14 @@
+
+# xcompose
+
+## usage
+
+```shell
+stow -Rv xcompose
+```
+
+## see also
+
+- `man 5 xcompose`
+- `/usr/share/X11/locale/en_US.UTF-8/Compose`
+
