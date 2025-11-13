@@ -1,10 +1,17 @@
-
-#
-# User-state data from mpd -- NEVER commit!
 # mpd/.gitignore:jeff
+#
+
+## User-state data from mpd -- NEVER commit!
+
 database*
 fifo*
 log*
+pid
 socket*
 state*
 stickers*.db
+site.conf
+
+# IMPORTANT(JEFF): See INSTALL.stow
+!site.conf.dist
+

@@ -1,0 +1,41 @@
+
+# mpd
+
+## usage
+
+```shell
+stow -Rv mpd
+```
+
+### installation
+
+```shell
+brew install mpd -vd
+```
+
+### hier
+
+- `~/.config/mpd`
+  - `./log`
+  - `./fifo`
+  - `./database`
+  - `./stickers.db`
+  - `./conf.d`
+    - immutable configuration data
+  - `./site.conf`
+  - R/W
+- `./site.conf.dist`
+  - R/O
+
+### configuration
+
+**IMPORTANT:** This is a required step.
+
+There is one configuration file that is expected to be customized by the
+end-user before one can successfully run the `mpd` daemon, given the package
+that you are reading about now.
+
+```shell
+cp -av ~/.config/mpd/site.conf.dist ~/.config/mpd/site.conf
+```
+

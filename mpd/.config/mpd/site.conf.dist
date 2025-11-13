@@ -9,8 +9,7 @@ bind_to_address "0.0.0.0" # scorpio.home:6600
 # friends to work; MPD_HOST=666@/home/jeff/.config/mpd/socket
 bind_to_address "~/.config/mpd/socket"
 
-#music_directory  "/mnt/fs1/Music"
-playlist_directory  "/mnt/fs1/Music/playlists"
+playlist_directory  "/var/mnt/music/playlists"
 music_directory "nfs://fs1-san.home/mnt/npool0/smb/Music"
 #playlist_directory "nfs://fs1-san.home/mnt/npool0/smb/Music/playlists"
 
