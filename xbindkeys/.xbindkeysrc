@@ -8,35 +8,35 @@
 # The pound(#) symbol may be used anywhere for comments.
 #
 # A list of keys is in /usr/include/X11/keysym.h and in
-# /usr/include/X11/keysymdef.h 
-# The XK_ is not needed. 
+# /usr/include/X11/keysymdef.h
+# The XK_ is not needed.
 #
-# List of modifier (on my keyboard): 
-#   Control, Shift, Mod1 (Alt), Mod2 (NumLock), 
-#   Mod3 (CapsLock), Mod4, Mod5 (Scroll). 
+# List of modifier (on my keyboard):
+#   Control, Shift, Mod1 (Alt), Mod2 (NumLock),
+#   Mod3 (CapsLock), Mod4, Mod5 (Scroll).
 #
-# Another way to specifie a key is to use 'xev' and set the 
-# keycode with c:nnn or the modifier with m:nnn where nnn is 
-# the keycode or the state returned by xev 
+# Another way to specifie a key is to use 'xev' and set the
+# keycode with c:nnn or the modifier with m:nnn where nnn is
+# the keycode or the state returned by xev
 #
-# This file is created by xbindkey_config 
-# The structure is : 
-# # Remark 
-# "command" 
-# m:xxx + c:xxx 
-# Shift+... 
+# This file is created by xbindkey_config
+# The structure is :
+# # Remark
+# "command"
+# m:xxx + c:xxx
+# Shift+...
 
 keystate_numlock = enable
 keystate_scrolllock = enable
 keystate_capslock = enable
 
-#tilde
+# tilde
 "~/local/bin/capslock-to-tilde.sh"
     m:0x12 + c:66
-    Mod2 + Caps_Lock 
+    Mod2 + Caps_Lock
 
-# NOTE(JEFF): Disable middle-click copy to selection clipboard
-"echo -n | xsel -n -i; pkill xbindkeys; xdotool click 2; xbindkeys"
+# Disable middle-click paste from selection clipboard
+"~/local/bin/disable-middle-click-paste.sh"
   b:2 + Release
 
 # EOF
