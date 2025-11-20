@@ -166,10 +166,16 @@ setup_nodejs_env
 [ -n "$(command -v code)" ] && . "$(code --locate-shell-integration-path bash)"
 
 # rust env
-CARGO_BIN="$(which cargo &>/dev/null)"
-CARGO_ENV_FILE="$HOME/.cargo/env"
-if [ -n "$CARGO_BIN" ]; then
-  [ -f "$CARGO_ENV_FILE" ] && . "$CARGO_ENV_FILE"
+if [ -x "$(which cargo)" ]; then
+  CARGO_BIN="$(which cargo &>/dev/null)"
+  CARGO_ENV_FILE="$HOME/.cargo/env"
+  if [ -n "$CARGO_BIN" ]; then
+    [ -f "$CARGO_ENV_FILE" ] &&
+      . "$CARGO_ENV_FILE"
+  fi
+
+  [ -d "$HOME/.cargo/bin" ] &&
+    append_path "$HOME/.cargo/bin"
 fi
 
 [ -r "/scripts/bin" ] && PATH="/scripts/bin:$PATH"
