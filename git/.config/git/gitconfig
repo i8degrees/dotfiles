@@ -41,6 +41,11 @@
   autocrlf = input
   #safecrlf = true
   askPass = ksshaskpass
+[log]
+  # TODO(JEFF): Match the output of `bin/date`; this requires
+  # a custom date format as the iso8601 preset is missing the
+  # `T` character and has undesirable spaces in between.
+  date=iso8601
 [init]
   defaultBranch = master
 [advice]
