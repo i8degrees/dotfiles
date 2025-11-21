@@ -217,7 +217,7 @@ if [ -z "$EDITOR" ]; then
   export EDITOR
 fi
 
-if [ -n "$SUBL" ]; then
+if [ -z "$SUBL" ]; then
   VISUAL="$EDITOR"
 fi
 

@@ -7,7 +7,7 @@
 #
 
 if [[ -n "$DEBUG" && "$DEBUG" -gt 0 ]]; then
-  echo "$0: $@"
+  echo "$0:" "$@"
 fi
 
 # TODO(jeff): Need to flesh this implementation out; cleanup the branching
@@ -18,20 +18,18 @@ fi
 
 # fallback_editor(args = optional)
 fallback_editor() {
-  ARGS="$@"
-
-  if [[ -x "$(command -v flatpak)" && $(flatpak info com.sublimetext.three) = 0 ]]; then
-    flatpak run --branch=stable --arch=x86_64 --command=subl --file-forwarding com.sublimetext.three @@ "${ARGS[@]}" @@
-  elif [[ -x "$(command -v code-oss)" ]]; then
-    code-oss "${ARGS[@]}"
+  if flatpak info com.sublimetext.three 2>/dev/null; then
+    flatpak run --branch=stable --arch=x86_64 --command=subl --file-forwarding com.sublimetext.three @@ "$@" @@
+  elif [[ -x "$(which zeditor)" ]]; then
+    zeditor "$@"
   elif [[ -x "$(command -v code)" ]]; then
-    code "${ARGS[@]}"
-  elif [[ -x "$(command -v pulsar)" ]]; then
-    pulsar "${ARGS[@]}"
+    code "$@"
   elif [[ -x "$(command -v atom)" ]]; then
-    atom "${ARGS[@]}"
+    atom "$@"
   elif [[ -x "$(command -v vim)" ]]; then
-    vim "${ARGS[@]}"
+    vim "$@"
+  elif [[ -x "$(command -v code-oss)" ]]; then
+    code-oss "$@"
   fi
 }
 
