@@ -31,12 +31,11 @@ keystate_scrolllock = enable
 keystate_capslock = enable
 
 # tilde
-"~/local/bin/capslock-to-tilde.sh"
-    m:0x12 + c:66
-    Mod2 + Caps_Lock
+#"~/local/bin/capslock-to-tilde.sh"
+#m:0x12 + c:66
+#Mod2 + Caps_Lock
 
-# Disable middle-click paste from selection clipboard
+# X11-only: Disable middle-click paste from selection clipboard
 "~/local/bin/disable-middle-click-paste.sh"
   b:2 + Release
 
-# EOF

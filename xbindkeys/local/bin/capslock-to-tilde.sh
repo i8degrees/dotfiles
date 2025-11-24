@@ -51,15 +51,17 @@ get_active_window() {
 
 #[signed int] key_event(window_id, keysequence, ...keysequence_args)
 key_event() {
+  # shellcheck disable=SC2034
   cmd="key"
-  cmd_buffer=
+  cmd_buffer=()
   #cmd="key" # top-level command
   keysequence_args=("$3") # array of opts for command
+
   # defaults
-  if [ -z "$keysequence_args" ]; then
+  # shellcheck disable=SC2034
+  #if [ -z "$keysequence_args" ]; then
     #keysequence_args=("--delay" "100")
-    true
-  fi
+  #fi
 
   target="$1"
   if [ -z "$target" ]; then
@@ -77,6 +79,9 @@ key_event() {
   cmd_buffer+=("--window" "$target" "${keysequence_args[@]}" "$keysequence")
 
   #eval "${cmd_buffer[@]}"
+  # NOTE(JEFF): We must not use quotes as we intend on
+  # direct execution of the buffer as a whole string!
+  # shellcheck disable=SC2068
   ${cmd_buffer[@]}
 
   [ -n "$DEBUG" ] && echo "DEBUG: ${cmd_buffer[*]}"
