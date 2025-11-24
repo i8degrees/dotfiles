@@ -1,0 +1,46 @@
+// Zed keymap
+//
+// For information on binding keys, see the Zed
+// documentation: https://zed.dev/docs/key-bindings
+//
+// To see the default key bindings run `zed: open default keymap`
+// from the command palette.
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      // "shift shift": "file_finder::Toggle"
+    }
+  },
+  {
+    "context": "Editor && vim_mode == insert",
+    "bindings": {
+      // "j k": "vim::NormalBefore"
+    }
+  },
+  // FIXME
+  /*{
+    "context": "Editor",
+    "bindings": {
+      "super-tab": [
+        "editor::GoToDiagnostic",
+        { "severity": { "min": "hint", "max": "error" } }
+      ],
+      "super-shift-tab": [
+        "editor::GoToPreviousDiagnostic",
+        { "severity": { "min": "hint", "max": "error" } }
+      ]
+    }
+  },
+  */
+  // TODO(JEFF): Import bindings from Sublime Text
+  {
+    "context": "Pane",
+    "bindings": {
+      "ctrl-k up": "pane::SplitUp",
+      "ctrl-k down": "pane::SplitDown",
+      "ctrl-k left": "pane::SplitLeft",
+      "ctrl-k right": "pane::SplitRight"
+    }
+  }
+]
