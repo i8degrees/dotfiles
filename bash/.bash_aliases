@@ -287,6 +287,25 @@ case "$(uname -s)" in
         alias vim='vi'
       fi
     fi
+
+    # NOTE(JEFF): Clipboard management; these are inspired by the OSX equivalents.
+    if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+      if exists_exe wl-copy; then
+        alias pbcopy='wl-copy'
+      fi
+
+      if exists_exe wl-paste; then
+        alias pbpaste='wl-paste'
+      fi
+    elif [ "$XDG_SESSION_TYPE" = "x11" ]; then
+      if exists_exe xclip; then
+        alias xclip='xclip -selection clipboard'
+        alias pbcopy='xclip -i'
+        alias pbpaste='xclip -o'
+      fi
+    elif [ "$XDG_SESSION_TYPE" = "tty" ]; then
+      true # TODO(JEFF): Implement terminal copy & paste
+    fi
   ;;
   *)
     #alias ls="ls -lhas --color=never"
@@ -428,12 +447,6 @@ dip() {
 [ -n "$(command -v -v htop)" ] && alias top='sudo htop'
 [ -n "$(command -v step-cli)" ] && alias step='step-cli'
 
-if [ -n "$(command -v xclip)" ]; then
-  alias xclip='xclip -selection clipboard'
-  alias pbcopy='xclip -i'
-  alias pbpaste='xclip -o'
-fi
-
 # NOTE(JEFF): Prefer lastlog2 over lastlog, when available
 if [ "$(exists_exe lastlog2)" ]; then
   alias lastlog='lastlog2'
@@ -442,4 +455,3 @@ fi
 if [ "$(exists_exe wakeonlan)" ]; then
   alias wol='wakeonlan'
 fi
-
