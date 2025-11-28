@@ -7,7 +7,7 @@
 // custom settings, run `zed: open default settings` from the
 // command palette (cmd-shift-p / ctrl-shift-p)
 //
-// 1. json5 -v ~/.config/zed/settings.json; echo $?
+// 1. json5 --validate ~/.config/zed/settings.json; echo $?
 {
   "icon_theme": "Material Icon Theme",
   "agent": {
@@ -17,18 +17,45 @@
     "edit_prediction_provider": "copilot"
   },
   "show_completions_on_input": false,
+  "telemetry": {
+    "metrics": false,
+    "diagnostics": false
+  },
+  "ui_font_size": 16,
+  "buffer_font_size": 16,
+  "theme": {
+    "mode": "system",
+    "light": "One Light",
+    "dark": "One Dark"
+  },
+  "tab_size": 2,
+  /* hard tabs are only for circumstances where we do wish to support "legacy" AKA
+   * Makefile syntax, Windows-specific code and the like
+   */
+  "hard_tabs": false,
+  "show_wrap_guides": true,
+  //"wrap_guides": [70, 79],
+  "wrap_guides": [78],
+  // Used if "soft_wrap": "preferred_line_length"
+  "preferred_line_length": 78,
+  "current_line_highlight": "all",
+  "scroll_beyond_last_line": "off",
+  "title_bar": {
+    "show_branch_icon": false,
+    "show_branch_name": true,
+    "show_project_items": true,
+    "show_onboarding_banner": true,
+    "show_user_picture": true,
+    "show_sign_in": true,
+    "show_menus": false
+  },
   "ssh_connections": [
     {
       "host": "ha1.home",
       "username": "root",
       "projects": [
         {
-          "paths": [
-            "/config",
-            "/config/esphome",
-            "/share",
-            "/ssl"
-          ]
+          "paths": ["/config", "/config/esphome", "/share", "/ssl"]
         }
       ],
       "nickname": "ha1"
@@ -83,9 +110,7 @@
       "username": "jeff",
       "projects": [
         {
-          "paths": [
-            "/home/jeff"
-          ]
+          "paths": ["/home/jeff"]
         },
         {
           "paths": [
@@ -119,10 +144,7 @@
       "username": "jeff",
       "projects": [
         {
-          "paths": [
-            "/home/jeff",
-            "/etc/autofs"
-          ]
+          "paths": ["/home/jeff", "/etc/autofs"]
         }
       ]
     },
@@ -160,40 +182,9 @@
       "username": "root",
       "projects": [
         {
-          "paths": [
-            "/jffs",
-            "/tmp/home/root"
-          ]
+          "paths": ["/jffs", "/tmp/home/root"]
         }
       ]
     }
-  ],
-  "telemetry": {
-    "metrics": false,
-    "diagnostics": false
-  },
-  "ui_font_size": 16,
-  "buffer_font_size": 16,
-  "theme": {
-    "mode": "system",
-    "light": "One Light",
-    "dark": "One Dark"
-  },
-  "tab_size": 2,
-  /* hard tabs are only for circumstances where we do wish to support "legacy" AKA
-   * Makefile syntax, Windows-specific code and the like
-   */
-  "hard_tabs": false,
-  "current_line_highlight": "all",
-  "preferred_line_length": 78,
-  "scroll_beyond_last_line": "off",
-  "title_bar": {
-    "show_branch_icon": false,
-    "show_branch_name": true,
-    "show_project_items": true,
-    "show_onboarding_banner": true,
-    "show_user_picture": true,
-    "show_sign_in": true,
-    "show_menus": false
-  }
+  ]
 }
