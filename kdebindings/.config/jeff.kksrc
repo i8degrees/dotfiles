@@ -2,6 +2,14 @@
 switch-to-activity-61471e11-2aa5-480a-ba72-abf2407f6f94=
 switch-to-activity-6da4598a-2fb9-4022-ae85-c317963c596f=
 
+[Custom Commands][net.local.krunner.desktop]
+Exec=krunner --runner windows
+Name=show active windows
+
+[Custom Commands][net.local.rofi-2.desktop]
+Exec=/usr/bin/rofi -show drun
+Name=Rofi Applications Menu
+
 [Custom Commands][net.local.rofi.desktop]
 Exec=dex /home/jeff/.config/autostart/home.arpa.rofi.desktop
 Name=rofi menu (active windows)
@@ -15,27 +23,28 @@ Exec=/home/jeff/local/bin/touchpad.sh
 Name=/home/jeff/local/bin/touchpad.sh
 
 [KDE Keyboard Layout Switcher][Global Shortcuts]
+Switch keyboard layout to English (US)=
 Switch to Last-Used Keyboard Layout=
 Switch to Next Keyboard Layout=
 
 [StandardShortcuts]
 AboutApp=
 AboutKDE=
-Activate Next Tab=Ctrl+]; Ctrl+PgDown
+Activate Next Tab=Ctrl+PgDown; Ctrl+]
 Activate Previous Tab=Ctrl+[; Ctrl+PgUp
 ActualSize=Ctrl+0
 AddBookmark=Ctrl+B
-Back=Alt+Left; Back
+Back=Back; Alt+Left
 BackwardWord=Ctrl+Left
 Begin=Ctrl+Home
 BeginningOfLine=Home
 Clear=
-Close=Ctrl+W; Meta+W
+Close=Ctrl+W
 ConfigureNotifications=
 ConfigureToolbars=
-Copy=Ctrl+C; Ctrl+Ins
+Copy=Ctrl+Ins; Ctrl+C
 CreateFolder=Ctrl+Shift+N
-Cut=Shift+Del; Ctrl+X
+Cut=Ctrl+X; Shift+Del
 DeleteFile=Shift+Del
 DeleteWordBack=Ctrl+Backspace
 DeleteWordForward=Ctrl+Del
@@ -67,10 +76,10 @@ New=Ctrl+N
 Next=PgDown
 NextCompletion=Ctrl+Down
 Open=Ctrl+O
-OpenContextMenu=Shift+F10; Menu
+OpenContextMenu=Menu; Shift+F10
 OpenMainMenu=F10
 OpenRecent=
-Paste=Shift+Ins; Ctrl+V
+Paste=Ctrl+V; Shift+Ins
 Paste Selection=Ctrl+Shift+Ins
 Preferences=Ctrl+,
 PrevCompletion=Ctrl+Up
@@ -89,7 +98,7 @@ RotateUp=Up
 Save=Ctrl+S
 SaveAs=Ctrl+Shift+S
 SelectAll=Ctrl+A
-ShowHideHiddenFiles=Ctrl+H; Ctrl+>; Alt+.
+ShowHideHiddenFiles=Alt+.; Ctrl+H; Ctrl+>
 ShowMenubar=Ctrl+M
 ShowStatusbar=
 ShowToolbar=
@@ -101,7 +110,7 @@ Undo=Ctrl+Z
 Up=Alt+Up
 WhatsThis=
 Zoom=
-ZoomIn=Ctrl+=; Ctrl++
+ZoomIn=Ctrl++; Ctrl+=
 ZoomOut=Ctrl+-
 
 [chrome-hpfldicfbfomlpcikngkocigghgafkph-Default][Global Shortcuts]
@@ -120,6 +129,32 @@ CB214090D6549D2643A7E1D61D4434DA-autofill_login=
 CB214090D6549D2643A7E1D61D4434DA-generate_password=
 CB214090D6549D2643A7E1D61D4434DA-lock_vault=
 E4CDF88927BAF6E533E2FBBD2C542286-save-to-archivebox-action=
+
+[com.google.Chrome][Global Shortcuts]
+4F460218F6120AD3855AB1D63C243113-clear-item-selections=
+4F460218F6120AD3855AB1D63C243113-save-session=
+78066EBA8796AC32CFBE2BC7D2EE05F9-close=
+78066EBA8796AC32CFBE2BC7D2EE05F9-manager=
+78066EBA8796AC32CFBE2BC7D2EE05F9-new=
+78066EBA8796AC32CFBE2BC7D2EE05F9-search=
+78066EBA8796AC32CFBE2BC7D2EE05F9-switch=
+9B1D0B46D05FF2F875E06768BAEC6CA2-save-to-archivebox-action=
+E461BD263DF01EBFCE945E0F2EF1543A-love-song=
+E461BD263DF01EBFCE945E0F2EF1543A-toggle-connector=
+E461BD263DF01EBFCE945E0F2EF1543A-unlove-song=
+EF8D5FEA28A03C5285063465E22ACA5B-autofill_card=
+EF8D5FEA28A03C5285063465E22ACA5B-autofill_identity=
+EF8D5FEA28A03C5285063465E22ACA5B-autofill_login=
+EF8D5FEA28A03C5285063465E22ACA5B-generate_password=
+EF8D5FEA28A03C5285063465E22ACA5B-lock_vault=
+FE871D1D8F2D4C4584D420A07BBE8D96-capture-entire-page-action=
+FE871D1D8F2D4C4584D420A07BBE8D96-capture-selection-action=
+FE871D1D8F2D4C4584D420A07BBE8D96-capture-visible-page-action=
+FE871D1D8F2D4C4584D420A07BBE8D96-last-used-action=
+
+[com.mitchellh.ghostty.desktop][Global Shortcuts]
+_launch=Ctrl+Shift+Y
+new-window=
 
 [google-chrome][Global Shortcuts]
 4F460218F6120AD3855AB1D63C243113-clear-item-selections=
@@ -181,7 +216,7 @@ increase-volume-Mic@USB 2.0 Camera=
 increase_microphone_volume=Microphone Volume Up
 increase_volume=Volume Up
 increase_volume_small=Shift+Volume Up
-mic_mute=Meta+Volume Mute; Microphone Mute
+mic_mute=Microphone Mute; Meta+Volume Mute
 mute=
 toggle-mute-Mic@USB 2.0 Camera=
 
@@ -191,7 +226,7 @@ toggle_mainwindow_visibility=
 
 [ksmserver][Global Shortcuts]
 Halt Without Confirmation=
-Lock Session=Screensaver; Meta+L
+Lock Session=Meta+L; Meta+Shift+L
 Log Out=Ctrl+Alt+Del
 Log Out Without Confirmation=
 LogOut=
@@ -214,6 +249,7 @@ AutotileSwapAbove=
 AutotileSwapBelow=
 AutotileSwapLeft=
 AutotileSwapRight=
+Cube=Meta+C
 Cycle Overview=
 Cycle Overview Opposite=
 Decrease Opacity=
@@ -222,7 +258,7 @@ Expose=Ctrl+F9
 ExposeAll=Launch (C); Ctrl+F10
 ExposeClass=Ctrl+F7
 ExposeClassCurrentDesktop=
-Grid View=Meta+G
+Grid View=Meta+F4
 Increase Opacity=
 Invert Screen Colors=
 Kill Window=
@@ -256,14 +292,14 @@ Switch to Desktop 16=
 Switch to Desktop 17=
 Switch to Desktop 18=
 Switch to Desktop 19=
-Switch to Desktop 2=Meta+@; Meta+Shift+F2
+Switch to Desktop 2=Meta+Shift+F2; Meta+@
 Switch to Desktop 20=
 Switch to Desktop 3=Meta+#; Meta+Shift+F3
-Switch to Desktop 4=Meta+$; Meta+Shift+F4
-Switch to Desktop 5=Meta+Shift+F5; Meta+%
-Switch to Desktop 6=Meta+^; Meta+Shift+F6
+Switch to Desktop 4=Meta+Shift+F4; Meta+$
+Switch to Desktop 5=Meta+%; Meta+Shift+F5
+Switch to Desktop 6=Meta+Shift+F6; Meta+^
 Switch to Desktop 7=Meta+&; Meta+Shift+F7
-Switch to Desktop 8=Meta+Shift+F8; Meta+*
+Switch to Desktop 8=Meta+*; Meta+Shift+F8
 Switch to Desktop 9=
 Switch to Next Desktop=
 Switch to Next Screen=
@@ -281,9 +317,11 @@ Switch to Screen Above=
 Switch to Screen Below=
 Switch to Screen to the Left=
 Switch to Screen to the Right=
+Toggle=Meta+Ctrl+Alt+P
 Toggle Night Color=
 Toggle Window Raise/Lower=
-TrackMouse=
+ToggleMouseClick=
+TrackMouse=Meta+Shift+M
 Walk Through Windows=Alt+Tab
 Walk Through Windows (Reverse)=Alt+Shift+Backtab
 Walk Through Windows Alternative=
@@ -294,12 +332,12 @@ Walk Through Windows of Current Application Alternative=
 Walk Through Windows of Current Application Alternative (Reverse)=
 Window Above Other Windows=
 Window Below Other Windows=
-Window Close=Meta+Q
+Window Close=Meta+W; Alt+F4; Meta+Q
 Window Custom Quick Tile Bottom=
 Window Custom Quick Tile Left=
 Window Custom Quick Tile Right=
 Window Custom Quick Tile Top=
-Window Fullscreen=
+Window Fullscreen=Meta+F
 Window Grow Horizontal=
 Window Grow Vertical=
 Window Lower=
@@ -370,12 +408,12 @@ Window to Screen 5=
 Window to Screen 6=
 Window to Screen 7=
 disableInputCapture=Meta+Shift+Esc
-kTile=Ctrl+.
-kTile Position 1=Meta+Shift+F
+kTile=
+kTile Position 1=
 kTile Position 10=
 kTile Position 11=
 kTile Position 12=
-kTile Position 2=Meta+Shift+C
+kTile Position 2=
 kTile Position 3=
 kTile Position 4=
 kTile Position 5=
@@ -397,6 +435,12 @@ playpausemedia=Media Play
 previousmedia=Media Previous
 stopmedia=Media Stop
 
+[net.local.krunner.desktop][Global Shortcuts]
+_launch=Ctrl+Space
+
+[net.local.rofi-2.desktop][Global Shortcuts]
+_launch=Meta+Shift+Space
+
 [net.local.rofi.desktop][Global Shortcuts]
 _launch=Ctrl+Space
 
@@ -407,15 +451,15 @@ Launcher=
 _launch=
 
 [org.kde.dolphin.desktop][Global Shortcuts]
-_launch=
+_launch=Meta+E
 
 [org.kde.kcalc.desktop][Global Shortcuts]
-_launch=
+_launch=Calculator
 
 [org.kde.konsole.desktop][Global Shortcuts]
 NewTab=
 NewWindow=
-_launch=Ctrl+Alt+T
+_launch=
 
 [org.kde.krunner.desktop][Global Shortcuts]
 RunClipboard=
@@ -425,7 +469,7 @@ _launch=Meta+R; Alt+Space; Search
 ShowOSD=
 
 [org.kde.plasma-systemmonitor.desktop][Global Shortcuts]
-_launch=Ctrl+Esc; Ctrl+Alt+0
+_launch=Ctrl+Alt+0; Ctrl+Esc
 
 [org.kde.plasma.emojier.desktop][Global Shortcuts]
 _launch=
@@ -485,7 +529,7 @@ activate widget 85=
 activate widget 90=
 clear-history=
 clipboard_action=
-cycle-panels=Meta+Alt+P; Meta+F1
+cycle-panels=Meta+F1; Meta+Alt+P
 cycleNextAction=
 cyclePrevAction=
 edit_clipboard=
