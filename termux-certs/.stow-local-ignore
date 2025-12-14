@@ -1,0 +1,17 @@
+# .stow-local-ignore:jeff
+#
+#
+
+.gitignore
+INSTALL.stow
+INSTALL.stow
+LICENSE.stow
+Makefile
+Makefile.stow
+README.stow
+README.stow
+REMOVE.stow
+TODO.stow
+TODO.stow
+UNINSTALL.stow
+
