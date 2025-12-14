@@ -5,6 +5,7 @@
 # packages via Termux on bootup -- before 
 # user auth
 #
+# shellcheck shell=dash
 
 # FIXME(JEFF): Fix paths
 
