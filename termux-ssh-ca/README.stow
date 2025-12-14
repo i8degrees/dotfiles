@@ -1,0 +1,61 @@
+# SSH Certificates
+
+## Creating Certificate Authority Root
+
+```shell
+CAROOT=$HOME/pki; export CAROOT
+```
+
+### Key Creation
+
+```shell
+mkdir $CAROOT/ssh/rootCA
+ssh-keygen -f $CAROOT/ssh/rootCA
+```
+
+## Signing your host keys
+
+```shell
+DEST_DIR="/var/lib/pki/ssh/virgo.lan"
+mkdir -p $DEST_DIR
+ssh-keygen -s $CAROOT/ssh/rootCA \
+  -I "$(date -I)_jeff@$(hostname -f) host key" \
+  -n "$(hostname -s),$(hostname -f)" -V -5m:+3650d \
+  -h \
+  "$DEST_DIR/ssh_host_rsa_key.pub" \
+  "$DEST_DIR/ssh_host_dsa_key.pub" \
+  "$DEST_DIR/ssh_host_ecdsa_key.pub" \
+  "$DEST_DIR/ssh_host_ed25519_key.pub"
+```
+
+## Generating Host Keys
+
+```shell
+ssh-keygen -t dsa -f $CAROOT/ssh/virgo.lan/ssh_host_dsa_key \
+  -C "$(date -I)_jeff@$(hostname -f) host key" -N ""
+ssh-keygen -t ed25519 -f $CAROOT/ssh/virgo.lan/ssh_host_ed25519_key \
+  -C "$(date -I)_jeff@$(hostname -f) host key" -N ""
+ssh-keygen -t ecdsa -f $CAROOT/ssh/virgo.lan/ssh_host_ecdsa_key \
+  -C "$(date -I)_jeff@$(hostname -f) host key" -N ""
+ssh-keygen -t rsa -f $CAROOT/ssh/virgo.lan/ssh_host_rsa_key \
+  -C "$(date -I)_jeff@$(hostname -f) host key" -N ""
+# IMPORTANT(jeff): These host keys require an external authenticator device in
+# order to create
+#ssh-keygen -t ecdsa-sk -f $CAROOT/ssh/virgo.lan/ssh_host_ecdsa-sk_key \
+  -C "$(date -I)_jeff@$(hostname -f) host key" -N ""
+#ssh-keygen -t ed25519-sk -f $CAROOT/ssh/virgo.lan/ssh_host_ed25519-sk_key \
+  -C "$(date -I)_jeff@$(hostname -f) host key" -N ""
+```
+
+### Using the CA for host verification
+
+### Signing your user keys
+
+### Using the CA for user verification
+
+### To revoke keys
+
+### To use
+
+ [1]: https://www.lorier.net/docs/ssh-ca.html
+ [2]: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/deployment_guide/sec-signing_ssh_certificates
