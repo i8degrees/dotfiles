@@ -1,5 +1,8 @@
 #!/data/data/com.termux/files/usr/bin/bash
 
+[ -r "$HOME/.bash/lib" ] &&
+. "$HOME/.bash/lib"
+
 if [ -n "$SYSTEM_CA" ]; then
   DEST="$SYSTEM_CA"
 else
@@ -20,20 +23,13 @@ if [ ! -d "$USER_CA" ]; then
   exit 2
 fi
 
-relative_path() {
-  true
-}
-
-abs_path() {
-  true
-}
-
 link() {
   prefix="$1"
   dest_str="$2"
 
+  # dest=$(relative_path $dest_str)
   dest=$(basename -s .crt $dest_str)
-  # orig/cert 
+  # orig/cert
   echo ln -sf "$prefix"/ "$CWD/$dest"
 }
 
