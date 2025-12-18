@@ -1,0 +1,9 @@
+# .stow-local-ignore:jeff
+#
+#
+
+INSTALL.stow
+README.stow
+# FIXME(JEFF): I do not believe that this
+# ignore filter is affecting stow's filtering.
+.local/share/tmux/.gitignore
