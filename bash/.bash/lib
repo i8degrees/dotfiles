@@ -209,13 +209,13 @@ tmosh() {
   mosh_args=""
   [ -n "$MOSH_ENABLE_SCROLLBACK" ] &&
     mosh_args="--no-init"
-  
+
   # mosh $mosh_args "$ssh_arg" -- "$HOME/local/bin/tmux_init.sh"
   if [[ -n "$DEBUG" ]] || [[ -n "$DRY_RUN" ]]; then
     # FIXME(JEFF): Use run_cmd once we import `/scripts/lib/rc.functions`
     echo mosh $mosh_args "$ssh_arg" -- "${extra_mosh_args}"
   else # -z "$DEBUG"
-    # NOTE(JEFF): mosh-server errors on us -- it expects a non-empty argument list 
+    # NOTE(JEFF): mosh-server errors on us -- it expects a non-empty argument list
     # when we pass the `--` syntax through
     if [ -z "${extra_mosh_args}" ]; then
       mosh $mosh_args "$ssh_arg"
@@ -225,3 +225,42 @@ tmosh() {
   fi
 }
 
+# Check for the existence of a path
+#
+# exists_path(path = required)
+#
+# ...where path is a string containing the path for which we
+# seek the existence of
+exists_path() {
+  result=1 # err
+  pathstr="$1"
+  if [ -z "$pathstr" ]; then
+    return 2
+  fi
+
+  if [ -d "$pathstr" ]; then
+    #echo "$pathstr"
+    result=0 # success!
+  fi
+  # TODO(JEFF): Additional checks...
+
+  return "$result"
+}
+
+exists_link() {
+  true
+}
+
+abs_path() {
+  true
+}
+
+relative_path() {
+  true
+  #dirname
+}
+
+base_path() {
+  true
+  #basename -s
+}
