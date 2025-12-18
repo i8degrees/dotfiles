@@ -351,18 +351,20 @@ case "$(uname -s)" in
       TZ=America/Chicago
       LANG=en_US.UTF-8
       LC_TIME=C.UTF-8
- 
+
       export HOME TZ LANG LC_TIME
     fi # endif OSTYPE = 'linux-android'
 
     LS_OPTIONS='--color=auto'; export LS_OPTIONS
-    eval "$(dircolors)"
+    exists_exe dircolors &&
+      eval "$(dircolors)"
 
     if [ -f "$(command -v lesspipe)" ]; then
       eval "$(lesspipe)"
     fi
 
-    eval "$(dircolors -b $HOME/.colors/dir_colors)"
+    exists_exe dircolors &&
+      eval "$(dircolors -b $HOME/.colors/dir_colors)"
 
     # NOTE(JEFF): XDG CONFIG DIRS; a FreeDesktop standard
     # When we want to mutate `XDG_CONFIG_DIRS`, we must do so via

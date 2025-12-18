@@ -253,7 +253,6 @@ exists_link() {
   true
 }
 
-
 # TODO(JEFF): Implement function
 # shellcheck disable=SC2329
 relative_path() {
@@ -320,3 +319,4 @@ link_path() {
 
   ln -sf "$prefix" "${dest_path}"
 }
+

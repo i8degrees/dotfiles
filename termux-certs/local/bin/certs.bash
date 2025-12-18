@@ -23,6 +23,12 @@
 [ -r "$HOME/.bash/lib" ] &&
   . "$HOME/.bash/lib"
 
+if [ -n "$SYSTEM_CA" ]; then
+  DEST="$SYSTEM_CA"
+else
+  exit 255
+fi
+
 # Transform a DER encoded TLS certificate to a PEM encoded 
 # certificate file.
 openssl_convert_der() {
@@ -144,7 +150,6 @@ if [ ! -d "$TERMUX_SYSTEM_CA" ]; then
   echo
   exit 2
 fi
-
 
 # TODO(JEFF): We must diff DER encoded certificates from PEM encoding,
 # thus we shall use `file -i $filename | grep charset=binary` in order
