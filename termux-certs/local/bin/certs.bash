@@ -1,55 +1,123 @@
 #!/data/data/com.termux/files/usr/bin/bash
+# termux-certs/local/bin/certs.bash:jeff
+# 
+# User Trusted Certificate Authority Roots
+#
+# Helper script for management of my privately
+# ran PKI infra at acme.fs1.home.
+#
+# TODO(JEFF): Extend this script to be usable
+# on any (non-Windows) platform, such as our
+# servers (Linux) and lastly, our desktop systems 
+# (MacOS, Linux).
+#
 
 [ -r "$HOME/.bash/lib" ] &&
 . "$HOME/.bash/lib"
 
-if [ -n "$SYSTEM_CA" ]; then
-  DEST="$SYSTEM_CA"
-else
-  exit 255
-fi
+# TODO(JEFF): Attempt to add `.` to extension if
+# the given input does not have one?
+append_extension() {
+  ext="$1"
+  dest_path="$2"
+  if [ -z "$ext" ] || [ "$ext" = "" ]; then
+    return 2 # ENOENT
+  fi
 
-if [ ! -d "$SYSTEM_CA" ]; then
-  exit 2
-fi
+  result=$(basename -s "$ext" "$dest_path")
 
-if [ -n "$USER_CA" ]; then
-  CWD="$USER_CA"
+  echo "$result"
+}
+
+link_path() {
+  prefix="$1"
+  dest_path="$2"
+
+  ln -sf "$prefix" "${dest_path}"
+}
+
+# Copy a file from a given source path to its specified 
+# path. Said paths must both be valid (POSIX) filesystem paths
+# as defined by the operating system.
+#
+# returns 2 - missing script parameter; a relative or absolute filesystem 
+# path, no longer than 255 bytes
+# returns 0 - success
+#
+#signed int copy_file(prefix = string, dest = string, opts = null)
+copy_file() {
+  prefix="$1"
+  if [ -z "${prefix}" ]; then
+    echo "ERROR: Missing script parameter - prefix (filesystem path)."
+    echo
+    return 2
+  fi
+
+  dest_path="$2"
+  default_params=("-avPu")
+
+  # TODO(JEFF): Implement the use of cp when rsync is not found
+  rsync "${default_params[$*]}" "${prefix}" "${dest_path}"
+}
+
+#CWD="$2"
+if [ -n "$TERMUX_USER_CA" ]; then
+  CWD="$TERMUX_USER_CA"
 else
   CWD="$HOME/.certs"
 fi
 
-if [ ! -d "$USER_CA" ]; then
+if [ ! -d "$TERMUX_USER_CA" ]; then
   exit 2
 fi
 
-link() {
-  prefix="$1"
-  dest_str="$2"
+# source of truth
+PREFIX="${CWD}/pem"
+NUM_FILES=$(ls -1 "${PREFIX}" | wc -l)
+for filename in $(ls -1 "${PREFIX}"); do
+  #echo "${filename}"
+  dest_filename=$(append_extension ".crt" "${TERMUX_USER_CA}"/"${filename}")
+  # TODO(JEFF): Add error handling here and subtract
+  # unsuccessful links from the NUM_FILES tracking var.
+  # 
+  link_path \
+    "${CWD}/pem/${filename}" \
+    "${CWD}/${dest_filename}"
+done
 
-  # dest=$(relative_path $dest_str)
-  dest=$(basename -s .crt $dest_str)
-  # orig/cert
-  echo ln -sf "$prefix"/ "$CWD/$dest"
-}
+if [ "$NUM_FILES" -ge 1 ]; then
+  echo "INFO: Linked ${NUM_FILES} file(s) to ${CWD}."
+fi
 
+DEST_CA_PATH=
+if [ -n "$TERMUX_SYSTEM_CA" ]; then
+  DEST_CA_PATH="$TERMUX_SYSTEM_CA"
+else
+  echo "CRITICAL: Failed to find global env - TERMUX_SYSTEM_CA."
+  echo
+  exit 255
+fi
 
-# TODO(JEFF): Use dir list of ~/.certs/orig
-# shellcheck disable=SC2034
-files=(
-  "canon-printers_rootCA.pem.crt"
-  "isrgrootx1.pem.crt"
-  "isrgrootx2.pem.crt"
-  "isrgrootx3.pem.crt"
-  "mkcert_rootCA.pem"
-  "proxmox-backup_rootCA.pem"
-  "proxmox_rootCA.pem"
-  "r10.pem.crt"
-  "r11.pem.crt"
-  "r3.pem.crt"
-  "smallstep_rootCA.pem.crt"
-)
+if [ ! -d "$TERMUX_SYSTEM_CA" ]; then
+  echo "CRITICAL: Failed to find global path (dir) - ${TERMUX_SYSTEM_CA}."
+  echo
+  exit 2
+fi
 
-link \
-  $CWD/orig/canon-printers_rootCA.pem.crt \
-  "$USER_CA"/canon-printers_rootCA.pem.crt
+# TODO(JEFF): We must add OS detection around this area
+# in order to prevent execution of Android specific steps;
+# I am thinking that we could split these tasks up into
+# mulitple bash scripts that are OS dependent.
+
+# TODO(JEFF): Consider detection of Magisk and/or the correct module
+# before we bother with this step?
+USERID="$(id -u)"
+if [ "${USERID}" = 0 ]; then
+  copy_file "${CWD}/*.crt" "${DEST_CA_PATH}"
+else
+  echo "ERROR: This script must be executed with root privileges."
+  echo
+fi
+
+exit 0
+
