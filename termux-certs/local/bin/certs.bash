@@ -21,27 +21,48 @@
 # [dotfiles.git]: https://github.com/i8degrees/dotfiles.git
 
 [ -r "$HOME/.bash/lib" ] &&
-. "$HOME/.bash/lib"
+  . "$HOME/.bash/lib"
 
-# TODO(JEFF): Attempt to add `.` to extension if
-# the given input does not have one?
-append_extension() {
-  ext="$1"
-  dest_path="$2"
-  if [ -z "$ext" ] || [ "$ext" = "" ]; then
-    return 2 # ENOENT
+# Transform a DER encoded TLS certificate to a PEM encoded 
+# certificate file.
+openssl_convert_der() {
+  source_path="$1"
+  if [ -z "$source_path" ]; then
+    echo
+    echo
+    return 2
   fi
-
-  result=$(basename -s "$ext" "$dest_path")
-
-  echo "$result"
+  dest_path="$source_path"
+  return 1
+  openssl x509 -inform DER -outform PEM \
+    -in "${source_path}" -out "${dest_path}"
 }
 
-link_path() {
-  prefix="$1"
-  dest_path="$2"
+openssl_hash_cert() {
+  source_path="$1"
+  if [ -z "$source_path" ]; then
+    echo
+    echo
+    return 2
+  fi
+  return 1
 
-  ln -sf "$prefix" "${dest_path}"
+  # 'example.crt' -> '829893ef.0'
+  mv -v "$source_path" "$(openssl x509 -subject_hash_old -noout -in "${source_path}")".0
+}
+
+openssl_fingerprint_cert() {
+  source_path="$1"
+  if [ -z "$source_path" ]; then
+    echo
+    echo
+    return 2
+  fi
+
+  dest_path="$source_path"
+  return 1
+  openssl x509 -noout -text -fingerprint \
+    -in "${source_path}" >> "${dest_path}"
 }
 
 # TODO(JEFF): Implement the use of cp when rsync is not found
@@ -91,11 +112,11 @@ fi
 
 # source of truth
 PREFIX="${CWD}/pem"
-NUM_FILES=$(ls -1 "${PREFIX}" | wc -l)
-for filename in $(ls -1 "${PREFIX}"); do
-  #echo "${filename}"
+NUM_FILES=$(find "${PREFIX}" | wc -l)
+for filename in $(find "${PREFIX}" -maxdepth 0 -exec ls -1 '{}' + $1;); do
   dest_filename=$(append_extension ".crt" "${TERMUX_USER_CA}"/"${filename}")
-  echo $dest_filename
+  [ -n "$DEBUG" ] &&
+    echo "$dest_filename"
   # TODO(JEFF): Add error handling here and subtract
   # unsuccessful links from the NUM_FILES tracking var.
   link_path \
@@ -123,6 +144,7 @@ if [ ! -d "$TERMUX_SYSTEM_CA" ]; then
   echo
   exit 2
 fi
+
 
 # TODO(JEFF): We must diff DER encoded certificates from PEM encoding,
 # thus we shall use `file -i $filename | grep charset=binary` in order

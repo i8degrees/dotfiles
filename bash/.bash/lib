@@ -225,7 +225,6 @@ tmosh() {
   fi
 }
 
-<<<<<<< HEAD
 # Check for the existence of a path
 #
 # exists_path(path = required)
@@ -248,25 +247,76 @@ exists_path() {
   return "$result"
 }
 
+# TODO(JEFF): Implement function
+# shellcheck disable=SC2034
 exists_link() {
   true
 }
 
+
+# TODO(JEFF): Implement function
+# shellcheck disable=SC2329
 relative_path() {
   true
 }
 
+# TODO(JEFF): Implement function
+# shellcheck disable=SC2034
 abs_path() {
   true
 }
 
+# TODO(JEFF): Implement function
+# shellcheck disable=SC2329
 relative_path() {
   true
   #dirname
 }
 
+# TODO(JEFF): Implement function
+# shellcheck disable=SC2034
 base_path() {
   true
   #basename -s
 }
 
+# Return an integer usable as a boolean in response to whether
+# a given file path is a binary file type.
+#
+# returns 0 - for success (yes, this is a binary path)
+# returns 1 - for failure (no, this is not a binary path)
+#
+#sint is_binary(path)
+is_binary() {
+  source_path="$1"
+  if [ -z "$source_path" ]; then
+    echo
+    echo
+    return 2
+  fi
+
+  file -i "$source_path" | grep "charset=binary"
+}
+
+# TODO(JEFF): Attempt to add `.` to extension if
+# the given input does not have one?
+append_extension() {
+  ext="$1"
+  dest_path="$2"
+  if [ -z "$ext" ] || [ "$ext" = "" ]; then
+    return 2 # ENOENT
+  fi
+
+  result=$(basename -s "$ext" "$dest_path")
+
+  echo "$result"
+}
+
+# Create a symbolic link from a given source and 
+# destination path.
+link_path() {
+  prefix="$1"
+  dest_path="$2"
+
+  ln -sf "$prefix" "${dest_path}"
+}
