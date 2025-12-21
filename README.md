@@ -112,6 +112,15 @@ brew install stow -vd
 cpan Stow # Stow here, NOT stow
 stow -Rv stow
 ```
+##### OpenWRT
+
+```shell
+opkg install git git-lfs \
+    getopt \
+    perlbase perlbase-cpan perlbase-extutils \
+    perlbase-getopt perlbase-posix perlbase-scalar \
+    perlbase-version
+```
 
 ##### post-installation
 
