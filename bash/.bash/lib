@@ -225,6 +225,7 @@ tmosh() {
   fi
 }
 
+<<<<<<< HEAD
 # Check for the existence of a path
 #
 # exists_path(path = required)
@@ -251,6 +252,10 @@ exists_link() {
   true
 }
 
+relative_path() {
+  true
+}
+
 abs_path() {
   true
 }
@@ -264,3 +269,4 @@ base_path() {
   true
   #basename -s
 }
+
