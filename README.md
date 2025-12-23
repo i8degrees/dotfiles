@@ -122,6 +122,13 @@ opkg install git git-lfs \
     perlbase-version
 ```
 
+**TODO(JEFF):** We need to create a `sh` script -- make is not
+distributed by default in the dist feeds -- somewhere
+in the stow package directory; this will install a packaged
+`Stow.pm` and `Stow/Util.pm` from within said package directory
+into the default system-wide path for Perl5 scripts. Finally,
+`stow` script will be installed to `/usr/local/bin/stow`.
+
 ##### post-installation
 
 **IMPORTANT:** Immediately after installing `stow`, you should
