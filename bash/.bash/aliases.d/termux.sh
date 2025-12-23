@@ -17,8 +17,13 @@
 # TODO(JEFF): Relocate this file to ~/.bash/path.d/termux.sh
 # once the hier is setup!
 
-[ -z "$BASH" ] &&
-  echo "CRITICAL: This script requires the BASH shell."; echo; return 95 # EOPNOTSUPP
+if test -n "${BASH_SOURCE}"; then
+  true
+else
+  echo "CRITICAL: This script requires the BASH shell."
+  echo
+  return 95 # EOPNOTSUPP
+fi
 
 if [[ ! "$OSTYPE" =~ 'linux-android' ]]; then
   return;
