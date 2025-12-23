@@ -155,7 +155,8 @@ fi
 setup_homebrew_env_linux
 
 # NodeJS env
-setup_nodejs_env
+[ $(exists_exe nodenv) ] &&
+  setup_nodejs_env
 
 # SSH env
 # shellcheck disable=SC1091
