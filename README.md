@@ -27,16 +27,17 @@ My personal customization files and scripts for my environments. Friendly toward
 
 ### setup
 
+#### git repository
+
 ```shell
-#git clone https://github.com/i8degrees/dotfiles.git \
 git clone --recurse-submodules https://github.com/i8degrees/dotfiles.git \
-"$HOME/dotfiles.git"
+    "$HOME/dotfiles.git"
 cd "$HOME/dotfiles.git"
 git checkout master
 #git checkout dev
 ```
 
-#### git submodules
+##### git submodules
 
 This repository makes heavy use of `git-submodules` for keeping various
 files up-to-date from their upstream origins. The use of this is entirely
@@ -50,6 +51,30 @@ of the submodules is necessary to prevent getting stuck.
 git submodule update --init --recursive
 git submodule sync
 ```
+
+##### git repository settings
+
+**NOTE:** You may wish to consider repository specific settings, such as:
+
+- `core.fileMode = false`
+
+When you are working across platforms that differ significantly in terms of
+filesystem attributes, or even when mounting this git repo from a remote file
+share, you are much more likely to witness this issue. In short, it is due to
+the filesystem's handling of POSIX file metadata across filesystems and
+operating systems.
+
+If you see things like tracked files showing changes when only the executable
+bit is modified and you know you have not touched this yourself, chances are
+you need to consider this setting. See `man 1 git-config` for details on this 
+setting.
+
+The repository specific settings file defaults to `~/.git/config`. It is
+suggested that you never modify this file directly, but to use `git config`
+for modifications. Two examples of usage are:
+
+- `git config get core.fileMode`
+- `git config set core.fileMode false`
 
 ### deps
 
