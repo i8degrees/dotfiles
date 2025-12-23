@@ -1,6 +1,8 @@
 # .aliases by Skittles9823 2018 - 2019
 #           Terminal Mods
-
+#
+# shellcheck shell=dash
+#
 # TODO(JEFF): rename this file; something like
 # `~/.bash/aliases.d/termux` ..?
 # TODO(JEFF): integrate further into our 
@@ -13,15 +15,16 @@
 
 # Functions which I'm gonna count as aliases
 getperms() {
-  rootcheck && $ROOT pm get-privapp-permissions $1 | sed "s/, /\n/g"
+  rootcheck && $ROOT pm get-privapp-permissions "$1" | sed "s/, /\n/g"
 }
 
 getdenyperms() {
-  rootcheck && $ROOT pm get-privapp-deny-permissions $1 | sed "s/, /\n/g"
+  rootcheck && $ROOT pm get-privapp-deny-permissions "$1" | sed "s/, /\n/g"
 }
 
 # shellcheck disable=SC1091
-[[ -n "$THOME" ]] && [[ -e "$THOME/.bash_profile" ]] && echo "Loading THOME/profile..." && . "$THOME/.bash_profile"
+[ -n "$THOME" ] && [ -e "$THOME/.bash_profile" ] && 
+  echo "Loading THOME/profile..." && . "$THOME/.bash_profile"
 
 # EOF
 
@@ -44,20 +47,19 @@ if [ -n "$USE_TERMUX_MOD" ]; then
   alias lo='l -al'
   alias ls='ls --color=auto'
   alias nano='nano -l'
+  # NOTE(JEFF): I am ignoring this error because I am
+  # not the author of the alias and I wish to maintain
+  # it as it was in its original state.
+  # shellcheck disable=SC2142
   alias killpac='rootcheck && $ROOT kill $(pidof $1)'
   alias sbash='. /system/etc/bash/bashrc'
-  alias sudo='su -c "$@"'
+  alias sudo='su -c'
   alias vd='cd'
 
   if [ "$(which vim)" ]; then
     alias vi='vim'
   else
     alias vim='vi'
-  fi
-
-  # SSH env; this always assumes android OS
-  if [ "$(which mosh)" && "$(which ssh)" ]; then
-    alias ssh='mosh $@'
   fi
 fi
 
