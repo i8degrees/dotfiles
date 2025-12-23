@@ -4,6 +4,9 @@
 # Set the device hostname (Termux on Android)
 #
 
+# sh, hostname && sudo
+PATH=/data/data/com.termux/files/usr/bin:$PATH
+
 [ -n "$DEBUG_TRACE" ] &&
   set -o xtrace
 
