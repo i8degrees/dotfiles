@@ -6,7 +6,7 @@
 # SEE ALSO
 # ~/.bash_profile
 #
-# shellcheck shell=dash
+# shellcheck shell=bash
 #
 # WARNING(JEFF): This file requires support files from the
 # termux stow package from my dotfiles repo
@@ -16,6 +16,9 @@
 # ~/.bash/path.d
 # TODO(JEFF): Relocate this file to ~/.bash/path.d/termux.sh
 # once the hier is setup!
+
+[ -z "$BASH" ] &&
+  echo "CRITICAL: This script requires the BASH shell."; echo; return 95 # EOPNOTSUPP
 
 if [[ ! "$OSTYPE" =~ 'linux-android' ]]; then
   return;
@@ -53,4 +56,3 @@ fi
 if [ -d $TERMUX_USER_INV ]; then
   export TERMUX_USER_INV
 fi
-
