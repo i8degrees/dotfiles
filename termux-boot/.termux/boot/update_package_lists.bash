@@ -18,18 +18,54 @@
 # variant that does not end up doing a full shell env
 # init.
 
-update_packages_list() {
-  dpkg_args=("-l")
+list_all_packages() {
+  run_args=("-l")
 
   dest_path="$1"
   if [ -z "$dest_path" ]; then
+    echo "ERROR: Missing script parameter."
     echo
-    echo
-    return 2
+    return 2 # ENOENT
   fi
 
-  dpkg "${dpkg_args[@]}" > "${dest_path}"
+  [ -x "$(which dpkg)" ] &&
+    dpkg "${run_args[@]}" > "${dest_path}"
 }
+
+# Dump only the packages where the end-user
+# explicitly installed it -- one package per line.
+#
+# TODO(JEFF): Handle sorting options; we want
+# to be able to transform the default one package
+# per newline list to all packages in one line
+# format so we can easily add apt install in front
+# of it for when we must re-install our shell env
+# from scratch.
+list_user_packages() {
+  run_args=("showmanual")
+
+  dest_path="$1"
+  if [ -z "$dest_path" ]; then
+    echo "ERROR: Missing script parameter."
+    echo
+    return 2 # ENOENT
+  fi
+
+  sorting_opts="$2"
+  if [ -z "${sorting_opts}" ]; then
+    sorting_opts=
+  fi
+
+  if [ "${sorting_opts}" = "all-one" ]; then
+    # TODO(JEFF): Impl
+    [ -x "$(which apt-mark)" ] &&
+      apt-mark "${run_args[@]}" > "${dest_path}"
+  else # catch-all is one package per newline
+    [ -x "$(which apt-mark)" ] &&
+      apt-mark "${run_args[@]}" > "${dest_path}"
+  fi
+}
+
 
 if [ -n "$THOME" ]; then
   echo "INFO: THOME env has been initialized."
@@ -68,7 +104,9 @@ if [ ! -d "$DEST_PREFIX" ]; then
   exit 2
 fi
 
-update_packages_list "${DEST_PREFIX}/installed_packages.md"
+list_all_packages "${DEST_PREFIX}/installed_packages.list"
+
+list_user_packages "${DEST_PREFIX}/installed_packages.userlist"
 
 exit 0
 
