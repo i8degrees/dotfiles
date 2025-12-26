@@ -207,11 +207,35 @@ case "$(uname -s)" in
       [ -x "$(which df)" ] && alias df="df -Th"
     fi
     alias rm="rm -iv"
-    alias cp="cp -iav --reflink=auto"
+
+    # NOTE(JEFF): Feature check; busybox and other embedded
+    # platforms often do not support the necessary APIs for
+    # `--reflink` switch.
+    if cp --reflink=auto &>/dev/null; then
+      alias cp="cp -iav --reflink=auto"
+    else
+      alias cp="cp -iav"
+    fi
+
     alias mv="mv -iv"
     alias mkdir="mkdir -pv"
-    alias chmod='chmod -v'
-    [ -n "$(command -v chown)" ] && alias chown='chown -v'
+
+    # NOTE(JEFF): Feature check; busybox and other embedded
+    # platforms often do not support all the common flags.
+    if chmod -v &>/dev/null; then
+      alias chmod='chmod -v'
+    else
+      alias chmod='chmod'
+    fi
+
+    # NOTE(JEFF): Feature check; busybox and other embedded
+    # platforms often do not support all the common flags.
+    if chown -v &>/dev/null; then
+      alias chown='chown -v'
+    else
+      true
+    fi
+
     alias ln='ln -v'
 
     # ~/local/bin/subl is a symbolic link to
@@ -316,7 +340,6 @@ esac
 alias tree="tree -Chu"
 alias killall="killall -9"
 
-alias pid="ps aux|pgrep"
 alias watch="watch -n 1.0"
 alias iostat="iostat -d 1"
 alias ifstat="clear && $(command -v ifstat) -z -i en2 -w -S"
