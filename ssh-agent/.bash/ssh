@@ -44,7 +44,7 @@ if [ -f "${SSH_ENV}" ]; then
 
     # NOTE(JEFF): Feature check; busybox and other embedded
     # platforms often do not support all the common flags.
-    if ps -o &>/dev/null; then
+    if ps -o pid= "${SSH_AGENT_PID}" &>/dev/null; then
       ps -o pid= "${SSH_AGENT_PID}" > /dev/null || {
           start_agent;
       }
