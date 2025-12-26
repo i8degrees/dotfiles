@@ -152,11 +152,16 @@ case "$(uname -s)" in
     # grep color term support -- GREP_OPTIONS / GREP_COLOR bash vars --
     # apparently does not work under OS X (v10.7.x+)
     # http://www.askdavetaylor.com/force_mac_os_x_grep_to_always_output_in_color/
-    if [ "$(command -v grep)" ]; then # /usr/local/bin/grep (homebrew package)
-      # FIXME(JEFF): I believe that even under Mac OSX and/or BSD grep, the correct switch for
-      # grep color terminal support is `--colour` and not `--color`. I would like to verify
-      # this before changing the alias below.
-      alias grep='grep --color=always -I'
+    if [ exists_exe grep &>/dev/null ]; then # /usr/local/bin/grep (homebrew package)
+      # NOTE(JEFF): Feature check; busybox and other embedded
+      # platforms often do not support all the common flags.
+      if [ grep --color=always &>/dev/null ]; then
+        alias grep='grep --color=always -I'
+      elif [ grep --colour=auto &>/dev/null ]; then
+        alias grep='grep --colour=auto -I'
+      else # no colors support
+        alias grep='grep -I'
+      fi
     fi
 
     # iOS Simulator
@@ -280,7 +285,15 @@ case "$(uname -s)" in
     #export GREP_OPTIONS="--color=always -I"; # -I = --binary-files-without-match
     # 1. https://www.gnu.org/software/grep/manual/html_node/Environment-Variables.html
     # 1. https://www.gnu.org/software/grep/manual/html_node/General-Output-Control.html
-    [ -x "$(which grep)" ] && alias grep='grep --colour=auto -I'
+    if [ exists_exe grep &>/dev/null ]; then
+      # NOTE(JEFF): Feature check; busybox and other embedded
+      # platforms often do not support all the common flags.
+      if [ grep --colour=auto &>/dev/null ]; then
+        alias grep='grep --colour=auto -I'
+      else
+        alias grep='grep -I'
+      fi
+    fi
 
     if [[ $(command -v xdg-open) ]]; then
       alias open='xdg-open'
