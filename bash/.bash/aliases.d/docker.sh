@@ -46,16 +46,15 @@ showDockerLabels() {
 # NOTE(JEFF): Try to warn the user of missing dependencies that may affect the usage of these aliases.
 # Some of these are typicallly shell "built-ins" depending on the interpreter,
 # such as is the case with BASH.
-deps=(jq sed sort wc bc docker)
+deps=(jq sed sort wc bc)
 for script in "${deps[@]}"; do
-  if ! exists_exe "$script"; then
+  if ! exists_exe "$script" &>/dev/null; then
     echo "ERROR: Failed to find $script..."
     continue
-    #exit 2
   fi
 done
 
-if exists_exe docker; then
+if exists_exe docker &>/dev/null; then
   # Docker aliases
   alias dockerlogs='docker logs'
   alias dockerrestart='docker restart'

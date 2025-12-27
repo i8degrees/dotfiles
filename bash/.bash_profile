@@ -155,7 +155,7 @@ fi
 setup_homebrew_env_linux
 
 # NodeJS env
-[ $(exists_exe nodenv) ] &&
+[ $(exists_exe nodenv &>/dev/null) ] &&
   setup_nodejs_env
 
 # SSH env

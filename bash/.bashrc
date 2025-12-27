@@ -356,14 +356,14 @@ case "$(uname -s)" in
     fi # endif OSTYPE = 'linux-android'
 
     LS_OPTIONS='--color=auto'; export LS_OPTIONS
-    exists_exe dircolors &&
+    exists_exe dircolors &>/dev/null &&
       eval "$(dircolors)"
 
     if [ -f "$(command -v lesspipe)" ]; then
       eval "$(lesspipe)"
     fi
 
-    exists_exe dircolors &&
+    exists_exe dircolors &>/dev/null &&
       eval "$(dircolors -b $HOME/.colors/dir_colors)"
 
     # NOTE(JEFF): XDG CONFIG DIRS; a FreeDesktop standard
