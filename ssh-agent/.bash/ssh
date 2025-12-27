@@ -48,23 +48,8 @@ if [ -f "${SSH_ENV}" ]; then
       ps -o pid= "${SSH_AGENT_PID}" > /dev/null || {
           start_agent;
       }
-    else
-      # FIXME(JEFF): I would like to find a solution that does not
-      # require any additional dependencies; OpenWRT requires us to
-      # install the procps-ng-ps package from the repositories for
-      # the full `ps` capabilities.
-      echo
-      echo "FIXME: The ssh-agent stow package is broken on the platform"
-      echo "you are running now - this is due to an incomplete ps utlity."
-      echo "Without this support, every time the shell is (re)-loaded"
-      echo "a new ssh-agent process will be spawned. This is a slow, but"
-      echo "deadly fork bomb in time!"
-      echo
-      {
-        start_agent;
-      }
     fi
 else
-    start_agent;
+  start_agent;
 fi
 
