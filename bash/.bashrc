@@ -183,13 +183,21 @@ case "$(uname -s)" in
     MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
   ;;
   Linux)
-    # User specific aliases and functions
+    # NOTE(JEFF): User specific bash resource files, such as BASH completion 
+    # scripts and additional environment settings.
+
+    # IMPORTANT(JEFF): The files iterated within have two requirements before
+    # they can be sourced:
+    #
+    # a) file exists and is readable;
+    # b) file has been marked executable;
+    # c) profit! $$$
     if [ -d "$HOME/.bash/bashrc.d" ]; then
-    for rc in $HOME/.bash/bashrc.d/*; do
-      if [ -f "$rc" ]; then
-        . "$rc"
-      fi
-    done
+      for rc in $HOME/.bash/bashrc.d/*; do
+        if [[ -r "$rc" ]] && [[ -x "$rc" ]]; then
+          . "$rc"
+        fi
+      done
     fi
     unset rc
 
