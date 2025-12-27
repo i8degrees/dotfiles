@@ -204,7 +204,7 @@ VIM_BIN="$(command -v vim)"
 VIMTINY_BIN="$(command -v vim.tiny)"
 # TODO(JEFF): The `subl` script replaces all of the following editor
 # logic you see below. It has yet to be fully commited into the git
-# tree, though.
+# tree.
 SUBL_BIN="$(command -v subl)"
 
 if [[ -x "$VIMTINY_BIN" ]]; then
@@ -213,15 +213,17 @@ elif [[ -x "$VIM_BIN" ]]; then
   EDITOR=$VIM_BIN
 fi
 
-if [ -z "$EDITOR" ]; then
+if [ -n "$EDITOR" ]; then
   export EDITOR
 fi
 
-if [ -z "$SUBL" ]; then
+if [ -z "$SUBL_BIN" ]; then
   VISUAL="$EDITOR"
 fi
 
-export VISUAL
+if [ -n "$VISUAL" ]; then
+  export VISUAL
+fi
 
 if [ -n "$USE_DEPRECATED" ]; then
   # DEPRECATED(JEFF): The nvim environment is being considered for removal
@@ -231,8 +233,13 @@ if [ -n "$USE_DEPRECATED" ]; then
   fi
 fi
 
-VISUAL_EDITOR="$(which subl)"
-export VISUAL_EDITOR
+if exists_exe subl &>/dev/null; then
+  VISUAL_EDITOR="$(which subl)"
+  export VISUAL_EDITOR
+else
+  VISUAL_EDITOR=$VIM_BIN
+  export VISUAL_EDITOR
+fi
 
 #export USECOLOR=true
 if [ -x "$(command -v toe)" ] && [ -x "$(command -v grep)" ]; then
