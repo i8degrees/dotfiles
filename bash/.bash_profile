@@ -46,6 +46,9 @@ case "$(uname -s)" in
     PATH="$PATH:$HOME/Applications:/usr/X11/bin"
   ;;
   Linux)
+    # NOTE(JEFF): OpenWRT && FreshTomato system PATH
+    [ -r "/path" ] && . "/path"
+
     # feh env
     [ -r "$HOME/.config/feh/themes" ] && append_path "$HOME/.config/feh/themes"
 
