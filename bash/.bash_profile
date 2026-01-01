@@ -110,6 +110,8 @@ if [[ -d "/opt/Pulsar/resources/app/ppm/bin" ]]; then
   PATH="$PATH:/opt/Pulsar/resources/app/ppm/bin"
 fi
 
+# Android SDK env
+[[ -d "/opt/android-sdk/build-tools/36" ]] && PATH=/opt/android-sdk/build-tools/36:$PATH
 [[ -d "/opt/android-sdk/platform-tools" ]] && PATH=/opt/android-sdk/platform-tools:$PATH
 
 #QT_LOGGING_RULES="kwin_*.debug=true"; export QT_LOGGING_RULES
