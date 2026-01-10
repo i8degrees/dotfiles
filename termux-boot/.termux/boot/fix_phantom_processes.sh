@@ -7,19 +7,22 @@
 # [SOURCE](https://github.com/termux/termux-app/issues/2366)
 #
 
+PATH=/data/data/com.termux/files/usr/bin:$PATH
+
 [ -n "$DEBUG_TRACE" ] &&
   set -o xtrace
 
+# value to set
 MAX_PROC=2147483647
-PROC_EXISTING_RESULT=$(sudo /system/bin/device_config get activity_manager max_phantom_processes)
 
+# env check (get)
+PROC_EXISTING_RESULT=$(sudo /system/bin/device_config get activity_manager max_phantom_processes)
 echo "CURRENT_MAX_PROC:" "${PROC_EXISTING_RESULT}"
 
+# set
 sudo /system/bin/device_config put activity_manager max_phantom_processes "${MAX_PROC}"
 
+# post-env check (get)
 PROC_AFTER_RESULT=$(sudo /system/bin/device_config get activity_manager max_phantom_processes)
-
 echo "PROC_AFTER_RESULT:" "${PROC_AFTER_RESULT}"
-
-exit 0
 
