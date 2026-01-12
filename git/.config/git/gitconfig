@@ -137,5 +137,6 @@
   # NAS clients
   directory = /mnt/fs1/Projects/*
   directory = /mnt/fs1/jeff/*
+  directory = /scripts.git
   # Arch Linux (source package builds)
   #directory = /var/*
