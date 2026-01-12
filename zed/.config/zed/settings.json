@@ -39,6 +39,7 @@
   // Used if "soft_wrap": "preferred_line_length"
   "preferred_line_length": 78,
   "current_line_highlight": "all",
+  // TODO(JEFF): Disable scrollbar visibility
   "scroll_beyond_last_line": "off",
   "title_bar": {
     "show_branch_icon": false,
