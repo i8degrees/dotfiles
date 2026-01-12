@@ -30,6 +30,9 @@ keybind = cmd+w=close_surface
 #keybind = cmd+shit+o=new_split:down
 #keybind = cmd+t=
 
+keybind = ctrl+o=new_split:down
 # TODO(JEFF): Test this key binding to see if we have the 'o' layout
 # we wish to use here; tmux!
-#keybind = super+ctrl+right_bracket=goto_split:next
+#keybind = ctrl+up=goto_split:up
+#keybind = ctrl+left=goto_split:next
+#keybind = ctrl+right=goto_split:right
