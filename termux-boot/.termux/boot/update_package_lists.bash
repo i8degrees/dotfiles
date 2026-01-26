@@ -66,6 +66,10 @@ list_user_packages() {
   fi
 }
 
+# stow -Rv bash
+# FIXME(JEFF): Consider relocating this stow package to termux-boot?
+[ -r "$HOME/.bash/aliases.d/termux.sh" ] &&
+  . "$HOME/.bash/aliases.d/termux.sh"
 
 if [ -n "$THOME" ]; then
   echo "INFO: THOME env has been initialized."
