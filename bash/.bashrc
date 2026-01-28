@@ -9,6 +9,13 @@
 # SSH utilities like scp, ~/.ssh/rc and so forth and what have you!
 [ -z "$PS1" ] && return
 
+# Ghostty shell integration for Bash. This should be at the top of your
+# bashrc!
+# 1. https://ghostty.org/docs/features/shell-integration
+if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
+    builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/bash/ghostty.bash"
+fi
+
 # Source global definitions
 if [ -f "/etc/bashrc" ]; then
   . "/etc/bashrc"

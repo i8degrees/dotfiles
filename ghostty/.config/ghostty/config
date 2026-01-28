@@ -30,16 +30,13 @@ font-family = "JetBrains Mono"
 #font-family = "Source Code Pro"
 bold-is-bright = true
 
-#command = /bin/bash
-# TODO
-#command = /bin/bash ~/local/bin/tmux_init.sh default /home/jeff/Projects
-# IMPORTANT(JEFF): The script we pass here must comply with the semantics of Ghostty;
-# `/bin/sh -c $SHELL --posix`
-#initial-command = ~/local/bin/tmux_init.sh default /home/jeff/Projects
-# This is primarily useful for scripts or debugging.
-#wait-after-command = true
-
-shell-integration = bash
+# IMPORTANT(JEFF): We prefer to initialize Ghostty's shell integration
+# features manually, via our shell init scripts. This is for preserving our
+# ability to quickly jump from one shell to the next, i.e.: BASH to ZSH and 
+# vice versa.
+#
+# 1. https://ghostty.org/docs/features/shell-integration
+shell-integration = none
 shell-integration-features = cursor,sudo,title
 
 working-directory = home
