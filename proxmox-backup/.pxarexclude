@@ -47,3 +47,5 @@
 /home/jeff/tmp/
 Xauthority
 steampath
+/home/test/**
+/home/test**
