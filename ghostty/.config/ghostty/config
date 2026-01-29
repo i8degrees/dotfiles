@@ -88,3 +88,5 @@ quit-after-last-window-closed = false
 # and stops before reaching the top-level parent!
 config-file = ~/.config/ghostty/config.input
 
+theme = human-plus-plus
+
