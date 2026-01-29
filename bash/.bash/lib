@@ -108,7 +108,7 @@ choose_terminal() {
 #
 # Set PATH, MANPATH, etc., for Homebrew (on Linux).
 setup_homebrew_env_linux() {
-  if [ "$(exists_exe brew)" ]; then
+  if exists_exe brew; then
 
     if [ -d "/home/linuxbrew/.linuxbrew" ]; then
       [ -d "/home/linuxbrew/.linuxbrew" ] &&

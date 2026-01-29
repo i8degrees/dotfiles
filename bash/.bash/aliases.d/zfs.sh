@@ -24,7 +24,7 @@ _zstd() {
   zstd_args="-T${num_threads}"
   args=$*
 
-  if [ -x "$(exists_exe zstd)" ]; then
+  if exists_exe zstd &>/dev/null; then
     [ -z "$DEBUG" ] && zstd $zstd_args "$args"
     [ -n "$DEBUG" ] && echo zstd $zstd_args "$args"
   else
@@ -36,9 +36,9 @@ _zstd() {
 
 # IMPORTANT(JEFF): Use the maximum number of threads 
 # detected by zstd for (de)-compression.
-[ "$(exists_exe zstd)" ] && alias zstd='zstd -T0'
+exists_exe zstd &>/dev/null && alias zstd='zstd -T0'
 
-if [ "$(exists_exe zfs)" ]; then
+if exists_exe zfs &>/dev/null; then
   alias zfs-mv='zfs rename'
   alias zfs-move='zfs mv'
 fi

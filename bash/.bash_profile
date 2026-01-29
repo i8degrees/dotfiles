@@ -160,7 +160,7 @@ fi
 setup_homebrew_env_linux
 
 # NodeJS env
-[ $(exists_exe nodenv &>/dev/null) ] &&
+exists_exe nodenv &>/dev/null &&
   setup_nodejs_env
 
 # SSH env
@@ -172,7 +172,7 @@ setup_homebrew_env_linux
 [ -n "$(command -v code)" ] && . "$(code --locate-shell-integration-path bash)"
 
 # rust env
-if [ -x "$(exists_exe cargo)" ]; then
+if exists_exe cargo &>/dev/null; then
   CARGO_ENV_FILE="$HOME/.cargo/env"
   [ -f "$CARGO_ENV_FILE" ] &&
     . "$CARGO_ENV_FILE"

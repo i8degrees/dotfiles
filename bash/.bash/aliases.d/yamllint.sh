@@ -4,4 +4,6 @@
 
 [ -e "$HOME/.bash/lib" ] && . "$HOME/.bash/lib"
 
-[ "$(exists_exe yamllint)" ] && alias yamllint='yamllint --no-warnings'
+if exists_exe yamllint &>/dev/null; then
+  alias yamllint='yamllint --no-warnings'
+fi

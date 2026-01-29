@@ -88,7 +88,7 @@ case "$(uname -s)" in
 
     # coreutils package from Homebrew for GNU commands to replace Darwin BSD
     # defaults
-    if [ "$(brew) -o $(brew list|grep coreutils)" ]; then
+    if brew -o brew list|grep coreutils; then
       alias du='gdu -csh'
       alias ls="gls --dereference-command-line --human-readable --size -l -a --color=auto"
       alias df="gdf -Th"
@@ -152,12 +152,12 @@ case "$(uname -s)" in
     # grep color term support -- GREP_OPTIONS / GREP_COLOR bash vars --
     # apparently does not work under OS X (v10.7.x+)
     # http://www.askdavetaylor.com/force_mac_os_x_grep_to_always_output_in_color/
-    if [ exists_exe grep &>/dev/null ]; then # /usr/local/bin/grep (homebrew package)
+    if exists_exe grep &>/dev/null; then # /usr/local/bin/grep (homebrew package)
       # NOTE(JEFF): Feature check; busybox and other embedded
       # platforms often do not support all the common flags.
-      if [ grep --color=always &>/dev/null ]; then
+      if grep --color=always &>/dev/null; then
         alias grep='grep --color=always -I'
-      elif [ grep --colour=auto &>/dev/null ]; then
+      elif grep --colour=auto &>/dev/null; then
         alias grep='grep --colour=auto -I'
       else # no colors support
         alias grep='grep -I'
@@ -285,10 +285,10 @@ case "$(uname -s)" in
     #export GREP_OPTIONS="--color=always -I"; # -I = --binary-files-without-match
     # 1. https://www.gnu.org/software/grep/manual/html_node/Environment-Variables.html
     # 1. https://www.gnu.org/software/grep/manual/html_node/General-Output-Control.html
-    if [ exists_exe grep &>/dev/null ]; then
+    if exists_exe grep &>/dev/null; then
       # NOTE(JEFF): Feature check; busybox and other embedded
       # platforms often do not support all the common flags.
-      if [ grep --colour=auto &>/dev/null ]; then
+      if grep --colour=auto &>/dev/null; then
         alias grep='grep --colour=auto -I'
       else
         alias grep='grep -I'
@@ -327,15 +327,10 @@ case "$(uname -s)" in
 
     # NOTE(JEFF): Clipboard management; these are inspired by the OSX equivalents.
     if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
-      if exists_exe wl-copy; then
-        alias pbcopy='wl-copy'
-      fi
-
-      if exists_exe wl-paste; then
-        alias pbpaste='wl-paste'
-      fi
+      exists_exe wl-copy &>/dev/null && alias pbcopy='wl-copy'
+      exists_exe wl-paste &>/dev/null && alias pbpaste='wl-paste'
     elif [ "$XDG_SESSION_TYPE" = "x11" ]; then
-      if exists_exe xclip; then
+      if exists_exe xclip &>/dev/null; then
         alias xclip='xclip -selection clipboard'
         alias pbcopy='xclip -i'
         alias pbpaste='xclip -o'
@@ -484,10 +479,6 @@ dip() {
 [ -n "$(command -v step-cli)" ] && alias step='step-cli'
 
 # NOTE(JEFF): Prefer lastlog2 over lastlog, when available
-if [ "$(exists_exe lastlog2)" ]; then
-  alias lastlog='lastlog2'
-fi
+exists_exe lastlog2 &>/dev/null && alias lastlog='lastlog2'
+exists_exe wakeonlan &>/dev/null && alias wol='wakeonlan'
 
-if [ "$(exists_exe wakeonlan)" ]; then
-  alias wol='wakeonlan'
-fi
