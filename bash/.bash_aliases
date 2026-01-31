@@ -153,13 +153,13 @@ case "$(uname -s)" in
     # apparently does not work under OS X (v10.7.x+)
     # http://www.askdavetaylor.com/force_mac_os_x_grep_to_always_output_in_color/
     if exists_exe grep &>/dev/null; then # /usr/local/bin/grep (homebrew package)
-      # NOTE(JEFF): Feature check; busybox and other embedded
-      # platforms often do not support all the common flags.
+      # >> NOTE(JEFF): Feature check; busybox and other embedded
+      # >> platforms often do not support all the common flags.
       if grep --color=always &>/dev/null; then
         alias grep='grep --color=always -I'
       elif grep --colour=auto &>/dev/null; then
         alias grep='grep --colour=auto -I'
-      else # no colors support
+      else # >> no colors support
         alias grep='grep -I'
       fi
     fi
@@ -186,18 +186,18 @@ case "$(uname -s)" in
     alias hexedit='${HOME}/Applications/0xED.app/Contents/MacOS/0xED'
   ;;
   Linux)
-    # NOTE(JEFF): You may temporarily disable the following aliases by
-    # executing "unalias" followed by the command in your shell, i.e.:
-    # unalias rm
+    # >> NOTE(JEFF): You may temporarily disable the following aliases by
+    # >> executing "unalias" followed by the command in your shell, i.e.:
+    # >> unalias rm
 
-    # NOTE(JEFF): This is necessary for when we wish to redirect output from
-    # a script to a file or onto the console; without it, we see the raw shell
-    # escape sequences.
+    # >> NOTE(JEFF): This is necessary for when we wish to redirect output from
+    # >> a script to a file or onto the console; without it, we see the raw shell
+    # >> escape sequences.
     #
-    # NOTE(JEFF): We will likely have to deal with automating whether or not
-    # to use this `-r` switch -- dependent upon shell, redirection, etc. I
-    # believe that it also may well depend on whether or not we have colors
-    # enabled.
+    # >> NOTE(JEFF): We will likely have to deal with automating whether or not
+    # >> to use this `-r` switch -- dependent upon shell, redirection, etc. I
+    # >> believe that it also may well depend on whether or not we have colors
+    # >> enabled.
     [ -x "$(which less)" ] && alias lessr='less -r'
     [ -x "$(which less)" ] && alias lessR='less -R'
     [ -x "$(which less)" ] && alias less='lessR'
@@ -213,9 +213,9 @@ case "$(uname -s)" in
     fi
     alias rm="rm -iv"
 
-    # NOTE(JEFF): Feature check; busybox and other embedded
-    # platforms often do not support the necessary APIs for
-    # `--reflink` switch.
+    # >> NOTE(JEFF): Feature check; busybox and other embedded
+    # >> platforms often do not support the necessary APIs for
+    # >> `--reflink` switch.
     if cp --reflink=auto &>/dev/null; then
       alias cp="cp -iav --reflink=auto"
     else
@@ -225,16 +225,16 @@ case "$(uname -s)" in
     alias mv="mv -iv"
     alias mkdir="mkdir -pv"
 
-    # NOTE(JEFF): Feature check; busybox and other embedded
-    # platforms often do not support all the common flags.
+    # >> NOTE(JEFF): Feature check; busybox and other embedded
+    # >> platforms often do not support all the common flags.
     if chmod -v &>/dev/null; then
       alias chmod='chmod -v'
     else
       alias chmod='chmod'
     fi
 
-    # NOTE(JEFF): Feature check; busybox and other embedded
-    # platforms often do not support all the common flags.
+    # >> NOTE(JEFF): Feature check; busybox and other embedded
+    # >> platforms often do not support all the common flags.
     if chown -v &>/dev/null; then
       alias chown='chown -v'
     else
@@ -264,7 +264,7 @@ case "$(uname -s)" in
         alias packer="/usr/bin/yaourt"
       #fi
 
-      # TODO/FIXME: yaourt <3
+      # ?? TODO/FIXME: yaourt <3
       alias yogurt="yaourt"
       alias pkginst="pacman -S" # package install from arch repos
       alias pkgupdate="pacman -Syy" # package repos update
@@ -286,8 +286,8 @@ case "$(uname -s)" in
     # 1. https://www.gnu.org/software/grep/manual/html_node/Environment-Variables.html
     # 1. https://www.gnu.org/software/grep/manual/html_node/General-Output-Control.html
     if exists_exe grep &>/dev/null; then
-      # NOTE(JEFF): Feature check; busybox and other embedded
-      # platforms often do not support all the common flags.
+      # >> NOTE(JEFF): Feature check; busybox and other embedded
+      # >> platforms often do not support all the common flags.
       if grep --colour=auto &>/dev/null; then
         alias grep='grep --colour=auto -I'
       else
@@ -299,8 +299,8 @@ case "$(uname -s)" in
       alias open='xdg-open'
     fi
 
-    # NOTE(JEFF): We handle Linux derived distributions, such as Android OS
-    # like so here.
+    # >> NOTE(JEFF): We handle Linux derived distributions, such as Android OS
+    # >> like so here.
     if [[ "$OSTYPE" =~ 'linux-android' ]]; then
       alias rebash='source $HOME/.aliases'
       alias aflinger='rootcheck && $ROOT dumpsys media.audio_flinger'
@@ -327,16 +327,20 @@ case "$(uname -s)" in
 
     # NOTE(JEFF): Clipboard management; these are inspired by the OSX equivalents.
     if [ "$XDG_SESSION_TYPE" = "wayland" ]; then
+      # >> IMPORTANT(JEFF): The wl-copy && wl-paste executables are from the
+      # >> wl-clipboard package via the Arch Linux repos
       exists_exe wl-copy &>/dev/null && alias pbcopy='wl-copy'
       exists_exe wl-paste &>/dev/null && alias pbpaste='wl-paste'
     elif [ "$XDG_SESSION_TYPE" = "x11" ]; then
+      # >> IMPORTANT(JEFF): The xclip executable is a package from the
+      # >> Arch Linux repos
       if exists_exe xclip &>/dev/null; then
         alias xclip='xclip -selection clipboard'
         alias pbcopy='xclip -i'
         alias pbpaste='xclip -o'
       fi
     elif [ "$XDG_SESSION_TYPE" = "tty" ]; then
-      true # TODO(JEFF): Implement terminal copy & paste
+      true # ?? TODO(JEFF): Implement terminal copy & paste
     fi
   ;;
   *)
@@ -355,7 +359,7 @@ alias ifstat="clear && $(command -v ifstat) -z -i en2 -w -S"
 alias cls="clear"
 alias kpatch="patch -p1 < $@"
 
-# TODO/FIXME
+# ?? TODO/FIXME
 #alias 'shutdown_vbox'="VBoxManage controlvm $@ poweroff"
 
 #if [[ "$COLORTERM" && -x "$(which colorgcc)" ]]; then
