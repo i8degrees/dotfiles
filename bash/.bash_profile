@@ -172,14 +172,18 @@ exists_exe nodenv &>/dev/null &&
 [ -n "$(command -v code)" ] && . "$(code --locate-shell-integration-path bash)"
 
 # rust env
+# 1. https://doc.rust-lang.org/cargo/commands/cargo-install.html#
 if exists_exe cargo &>/dev/null; then
+  #CARGO_HOME=$HOME/.cargo
+  #CARGO_INSTALL_ROOT=$HOME/.cargo/bin
+  mkdir -p "$HOME/.cargo/bin"
+
   CARGO_ENV_FILE="$HOME/.cargo/env"
+  # shellcheck disable=SC1090
   [ -f "$CARGO_ENV_FILE" ] &&
     . "$CARGO_ENV_FILE"
-
   [ -d "$HOME/.cargo/bin" ] &&
     append_path "$HOME/.cargo/bin"
 fi
 
 [ -r "/scripts/bin" ] && PATH="/scripts/bin:$PATH"
-
