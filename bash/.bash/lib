@@ -320,3 +320,10 @@ link_path() {
   ln -sf "$prefix" "${dest_path}"
 }
 
+# Quickly preview our GFM Markdown using Pandoc
+md() {
+  pandoc --standalone --css ./assets/css/theme.css \
+    --from gfm --to html \
+  $@ | lynx -stdin
+}
+
