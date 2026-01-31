@@ -140,3 +140,27 @@
   directory = /scripts.git
   # Arch Linux (source package builds)
   #directory = /var/*
+
+# my personal dotfiles needs to use the environment host as its core.name
+[includeIf "gitdir:~/dotfiles.git/"]
+  path = .gitconfig-dotfiles # ~/.gitconfig-dotfiles
+
+# ?? TODO(JEFF): site-specific env configuration
+#[includeIf "gitdir:~/Projects/"]
+  #path = .gitconfig-env
+
+# ?? TODO(JEFF): site-specific env configuration
+#[includeIf "gitdir:/mnt/fs1/Projects/"]
+  #path = .gitconfig-env
+
+# >> Human Plus Plus theme env
+#
+# !! FIXME(JEFF): Fixup install path to somewhere on our local filesystem,
+# such as our dotfiles or so.
+#
+# ?? TODO(JEFF): Revisit the documentation for this feature (includeIf) to
+# find the best syntax to use for not producing an error when sourcing the
+# following configuration
+#[includeIf ...where configuration exists at said path...]
+  #path = "/mnt/fs1/Projects/fielding/human-plus-plus.git/dist/git/colors.gitconfig"
+
