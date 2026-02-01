@@ -343,7 +343,7 @@ case "$(uname -s)" in
       true # ?? TODO(JEFF): Implement terminal copy & paste
     fi
   ;;
-  *)
+  *) # Catch-all block for undetected OS env
     #alias ls="ls -lhas --color=never"
     #alias lsr="ls -lRa --color=never"
   ;;
@@ -485,4 +485,22 @@ dip() {
 # NOTE(JEFF): Prefer lastlog2 over lastlog, when available
 exists_exe lastlog2 &>/dev/null && alias lastlog='lastlog2'
 exists_exe wakeonlan &>/dev/null && alias wol='wakeonlan'
+
+if exists_exe eza &>/dev/null; then
+  alias ls='eza -lhas name'
+  alias lsc='eza -lhas created'
+  alias lsr='eza -lhas name -R'
+else
+  # ?? FIXME(JEFF): Revert back to the original `ls` aliases
+  # ?? when we do not detect eza
+  true
+fi
+
+if exists_exe bat &>/dev/null; then
+  alias cat='bat'
+else
+  # This is where we would put `cat` aliases, if we were ever
+  # to find such a use...
+  true
+fi
 
