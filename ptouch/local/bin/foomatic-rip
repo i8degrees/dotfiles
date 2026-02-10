@@ -1,5 +1,10 @@
 #!/usr/bin/env bash
 
+# TODO(JEFF): Determine how best we can use ptouch-print image writing caps
+# even without detection of a compatible printer; I believe that we can spoof
+# the env by initializing the binary with it believing that a particular model
+# is available for use.
+
 [ -e "$HOME/.bash/lib" ] &&
   . "$HOME/.bash/lib"
 
