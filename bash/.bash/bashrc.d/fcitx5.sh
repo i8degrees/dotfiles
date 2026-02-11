@@ -9,7 +9,10 @@
 # >> NOTE: After this script is installed, you must restart your Wayland env
 # before this will take effect!
 
-[ -n "$DEBUG" ] && echo -e "$0 - init\n"
+if [ -n "$DEBUG" ]; then
+    echo "$0 - Initializing fcitx5 env."
+    echo
+fi
 
 # fcitx5 env
 #
@@ -22,7 +25,7 @@ if ! exists_exe fcitx5 &>/dev/null; then
     echo
   fi
 
-  return 1
+  return 1 # ENOENT; silent
 fi
 
 # shellcheck disable=SC2034
