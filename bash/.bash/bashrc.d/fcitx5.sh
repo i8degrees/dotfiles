@@ -6,6 +6,11 @@
 # the time of sourcing ~/.bashrc
 #
 
+# >> NOTE: After this script is installed, you must restart your Wayland env
+# before this will take effect!
+
+[ -n "$DEBUG" ] && echo -e "$0 - init\n"
+
 # fcitx5 env
 #
 # 1. https://fcitx-im.org/wiki/Using_Fcitx_5_on_Wayland/en#KDE_Plasma
