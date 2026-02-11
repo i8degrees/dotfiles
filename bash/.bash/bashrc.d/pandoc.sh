@@ -1,5 +1,5 @@
 # ~/.bash/bashrc.d/pandoc.sh:jeff
-#
+# shellcheck shell=bash
 # Executed by bash(1) shell at
 # the time of sourcing ~/.bashrc
 #
