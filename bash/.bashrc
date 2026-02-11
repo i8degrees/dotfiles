@@ -190,29 +190,34 @@ case "$(uname -s)" in
     MANPATH="/usr/local/opt/gnu-sed/libexec/gnuman:$MANPATH"
   ;;
   Linux)
-    # NOTE(JEFF): User specific bash resource files, such as BASH completion 
-    # scripts and additional environment settings.
-
-    # IMPORTANT(JEFF): The files iterated within have two requirements before
-    # they can be sourced:
-    #
-    # a) file exists and is readable;
-    # b) file has been marked executable;
-    # c) profit! $$$
-    if [ -d "$HOME/.bash/bashrc.d" ]; then
-      for rc in $HOME/.bash/bashrc.d/*; do
-        if [[ -r "$rc" ]] && [[ -x "$rc" ]]; then
-          . "$rc"
-        fi
-      done
-    fi
-    unset rc
-
     #TMPDIR="/tmp"
   ;;
   *)
+    # catch-all for unknown OS stamps
+    true
   ;;
 esac
+
+# NOTE(JEFF): User specific bash resource files, such as BASH completion 
+# scripts and additional environment settings.
+
+# IMPORTANT(JEFF): The files iterated within have two requirements before
+# they can be sourced:
+#
+# a) file exists and is readable;
+# b) file has been marked executable;
+# c) profit! $$$
+#
+# dotfiles.git:$ stow -Rv bash
+rc= # init for following loop
+if [ -d "$HOME/.bash/bashrc.d" ]; then
+  for rc in $HOME/.bash/bashrc.d/*; do
+    if [[ -r "$rc" ]] && [[ -x "$rc" ]]; then
+      . "$rc"
+    fi
+  done
+fi
+unset rc # de-init from for loop
 
 #TMPDIR="$HOME/tmp"
 VIM_BIN="$(command -v vim)"
