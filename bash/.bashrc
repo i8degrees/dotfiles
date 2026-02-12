@@ -497,3 +497,7 @@ HUMAN_PP_THEME_INIT="${HUMAN_PP_DIR}/dist/shell-init.sh"
 [ -r "$HUMAN_PP_THEME_INIT" ] &&
   . "$HUMAN_PP_THEME_INIT"
 
+if exists_exe bat &>/dev/null; then
+  BAT_THEME="${HUMAN_PP_DIR}/dist/bat/Human++.tmTheme"
+fi
+
