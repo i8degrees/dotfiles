@@ -101,9 +101,14 @@ if [ -n "$(command -v bw)" ]; then
   fi
 fi
 
-# python3 env using pipx or python -m venv
 [ -e "$HOME/.local/bin" ] && append_path "$HOME/.local/bin"
+
+# python3 env using pipx or python -m venv
+#
+# ?? TODO Use regex to cover all python2.x && python3.x versions
+[ -e "$HOME/.local/share/python3.11/bin" ] && append_path "$HOME/.local/python3.11/bin"
 [ -e "$HOME/.local/share/python3.12/bin" ] && append_path "$HOME/.local/python3.12/bin"
+[ -e "$HOME/.local/share/python3.13/bin" ] && append_path "$HOME/.local/python3.13/bin"
 
 # pulsar apm env
 if [[ -d "/opt/Pulsar/resources/app/ppm/bin" ]]; then
