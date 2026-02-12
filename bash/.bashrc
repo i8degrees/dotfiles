@@ -320,9 +320,17 @@ elif [ -n "$(command -v tio)" ]; then
 fi
 
 # mpd env
-if [ -n "$(command -v mpd)" ]; then
-  MPD_HOST="$HOME/.config/mpd/socket"
-  #MPD_HOST="777@~/.config/mpd/socket"
+if exists_exe mpc &>/dev/null; then
+  # ?? TODO Check for existance of pidof cmd before running this
+  if pidof mpd &>/dev/null; then
+    # >> Assume we are the server-side host
+    MPD_HOST="$HOME/.config/mpd/socket"
+  else
+    # >> Assume that we are a client
+    MPD_HOST=scorpio.home.arpa
+  fi
+
+  [ -n "$DEBUG" ] && echo -e "INFO: MPD_HOST=$MPD_HOST"
 fi
 
 if [ -n "$MPD_HOST" ]; then
