@@ -484,3 +484,16 @@ if [ -n "$USE_ZFS_ADMIN" ]; then
   ZPOOL_SCRIPTS_AS_ROOT=1; export ZPOOL_SCRIPTS_AS_ROOT
 fi
 
+# Human Plus Plus theme env; this is an early preview (not quite ready!)
+#
+# This shell init script covers theming for fzf, eza
+#
+# !! FIXME(JEFF): Update this path with a local variant somewhere in our
+# dotfiles or so!
+HUMAN_PP_DIR="/mnt/fs1/Projects/fielding/human-plus-plus.git"
+HUMAN_PP_THEME_INIT="${HUMAN_PP_DIR}/dist/shell-init.sh"
+
+# shellcheck disable=SC1090
+[ -r "$HUMAN_PP_THEME_INIT" ] &&
+  . "$HUMAN_PP_THEME_INIT"
+
