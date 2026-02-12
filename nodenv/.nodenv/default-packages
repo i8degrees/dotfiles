@@ -50,7 +50,6 @@ npx
 #npx@10.2.2
 rollup ~2.59.0
 sfnt2woff
-shellcheck@latest
 srt-to-vtt
 subsrt
 xmllint ~0.1.1
