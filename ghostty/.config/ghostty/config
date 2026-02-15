@@ -91,3 +91,7 @@ config-file = ~/.config/ghostty/config.input
 # Human Plus Plus env
 config-file = ?~/.config/ghostty/themes/human-plus-plus
 
+# ?? We may wish to toggle this off when we can detect a desktop (non-mobile)
+# ?? environment.
+mouse-hide-while-typing = true
+

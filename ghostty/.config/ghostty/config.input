@@ -5,12 +5,9 @@
 # SEE ALSO
 # 1. https://ghostty.org/docs/config/keybind/reference
 #
-# Comments start with a `#` and are only valid on their own line;
-# Empty values reset the configuration to the default value;
-# Blank lines are ignored!
-#
 # SEE ALSO
-# ~/.config/ghostty/config.defaults
+# 1. ~/.config/ghostty/config.defaults
+# 2. iTerm2 key bindings
 #
 # QUICK REFERENCE
 # 2. ghostty +validate-config
@@ -24,15 +21,50 @@
 # 1. systemctl status --user app-com.mitchellh.ghostty.service
 #
 
+# TODO(JEFF): Figure out how best to separate our key bindings into two
+# distinct groups, based on an environmental toggle switch from file or other
+# input:
+#
+# 1a. MacOS inspired keyboard layout
+# 1b. CMD becomes the primary modifier
+#
+# 2a. Alternative keyboard layout
+# 2b. CTRL or META becomes the primary modifier
+#
+
+# MacOS inspired key bindings
 keybind = cmd+w=close_surface
+#keybind = ctrl+shift+w=
 
-# FIXME(JEFF): Invalid syntax?
-#keybind = cmd+shit+o=new_split:down
-#keybind = cmd+t=
+keybind = cmd+t=new_tab
+#keybind = ctrl+shift+t=new_tab
 
-keybind = ctrl+o=new_split:down
-# TODO(JEFF): Test this key binding to see if we have the 'o' layout
-# we wish to use here; tmux!
-#keybind = ctrl+up=goto_split:up
-#keybind = ctrl+left=goto_split:next
-#keybind = ctrl+right=goto_split:right
+keybind = cmd+o=new_split:down
+#keybind = ctrl+shift+o=new_split:down
+
+keybind = cmd+]=new_split:right
+#keybind = ctrl+shift+]=new_split:right
+
+# Alternative key bindings
+#keybind = ctrl+shift+t=new_tab
+#keybind = ctrl+shift+w=close_surface
+#keybind = ctrl+shift+o=new_split:down
+
+# MacOS inspired key bindings
+keybind = cmd+c=copy_to_clipboard
+keybind = cmd+v=paste_from_clipboard
+
+# Alternative key bindings
+#keybind = ctrl+shift+c=copy_to_clipboard
+#keybind = ctrl+shift+v=paste_from_clipboard
+
+# MacOS inspired key bindings
+#keybind = cmd+home=scroll_to_top
+#keybind = cmd+end=scroll_to_bottom
+
+# Alternative key bindings
+keybind = shift+home=scroll_to_top
+keybind = shift+end=scroll_to_bottom
+
+keybind = cmd+f=toggle_fullscreen
+#keybind = ctrl+shift+f=toggle_fullscreen
