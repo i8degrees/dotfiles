@@ -17,6 +17,7 @@ tags: ["dotfiles", "todo", "fixme", "project management"]
     that are able to be assigned categories -- use case is
     for an attempt at automating commonly needed bits, such as:
     NETGEAR11; ha1.home:8123; 
+- [ ] relocate `ROADMAP.md` to our git repository's wiki
 
 ## Resolved ##
 
