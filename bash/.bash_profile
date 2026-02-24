@@ -192,3 +192,9 @@ if exists_exe cargo &>/dev/null; then
 fi
 
 [ -r "/scripts/bin" ] && PATH="/scripts/bin:$PATH"
+
+# xremap env
+#if exists_exe xremap &>/dev/null; then
+  #eval "$(xremap --completions bash)"
+#fi
+
