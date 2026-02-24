@@ -15,7 +15,10 @@ alias rebash='source ~/.bash_profile'
 # Clear BASH history, flush immediately && reload shell
 alias chistory='history -cw && rebash'
 
-alias ncdu='ncdu -x'
+# ncdu env
+if exists_exe ncdu &>/dev/null; then
+  alias ncdu='ncdu -x -r'
+fi
 
 if [ "$(command -v md5deep)" ]; then
   alias md5='md5deep -re' # recursive, progress
