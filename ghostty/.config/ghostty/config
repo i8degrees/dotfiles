@@ -95,3 +95,7 @@ config-file = ?~/.config/ghostty/themes/human-plus-plus
 # ?? environment.
 mouse-hide-while-typing = true
 
+# Allow programs the ability to detect the use of the SHIFT modifier key and
+# perform its actions using the `XTSHIFTESCAPE` sequence.
+mouse-shift-capture = true
+
