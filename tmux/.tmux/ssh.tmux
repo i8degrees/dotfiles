@@ -23,6 +23,6 @@
 # if "test ! -e ~/.bash/ssh" \
   # "run 'cd ~/dotfiles.git && stow -R ssh-agent'"
 
-tmux set -g update-environment "DISPLAY XAUTHORITY SSH_AUTH_LOCK SSH_ASKPASS WINDOWID SSH_CONNECTION SSH_AUTHORITY"
+tmux set -g update-environment "DISPLAY XAUTHORITY SSH_AUTH_LOCK SSH_ASKPASS WINDOWID SSH_CONNECTION SSH_AUTHORITY XDG_SESSION_TYPE"
 tmux setenv -g SSH_AUTH_SOCK "$HOME/.ssh/ssh_agent"
 
