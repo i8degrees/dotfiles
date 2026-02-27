@@ -32,7 +32,7 @@ bold-is-bright = true
 
 # IMPORTANT(JEFF): We prefer to initialize Ghostty's shell integration
 # features manually, via our shell init scripts. This is for preserving our
-# ability to quickly jump from one shell to the next, i.e.: BASH to ZSH and 
+# ability to quickly jump from one shell to the next, i.e.: BASH to ZSH and
 # vice versa.
 #
 # 1. https://ghostty.org/docs/features/shell-integration
@@ -67,6 +67,10 @@ mouse-hide-while-typing = true
 # b) ALT + left mouse click on all other OS
 cursor-click-to-move = true
 
+# Allow programs the ability to detect the use of the SHIFT modifier key and
+# perform its actions using the `XTSHIFTESCAPE` sequence.
+mouse-shift-capture = true
+
 # store its window state, including window size, position, and
 # the layout of tabs and splits
 #
@@ -90,12 +94,4 @@ config-file = ~/.config/ghostty/config.input
 
 # Human Plus Plus env
 config-file = ?~/.config/ghostty/themes/human-plus-plus
-
-# ?? We may wish to toggle this off when we can detect a desktop (non-mobile)
-# ?? environment.
-mouse-hide-while-typing = true
-
-# Allow programs the ability to detect the use of the SHIFT modifier key and
-# perform its actions using the `XTSHIFTESCAPE` sequence.
-mouse-shift-capture = true
 
