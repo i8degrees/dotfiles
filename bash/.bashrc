@@ -9,12 +9,10 @@
 # SSH utilities like scp, ~/.ssh/rc and so forth and what have you!
 [ -z "$PS1" ] && return
 
-# Ghostty shell integration for Bash. This should be at the top of your
-# bashrc!
-# 1. https://ghostty.org/docs/features/shell-integration
-if [ -n "${GHOSTTY_RESOURCES_DIR}" ]; then
-    builtin source "${GHOSTTY_RESOURCES_DIR}/shell-integration/bash/ghostty.bash"
-fi
+[ -n "$DEBUG" ] && set -o errexit
+[ -n "$DEBUG_TRACE" ] && set -o xtrace
+
+[ -r "$HOME/.bash/lib" ] && . "$HOME/.bash/lib"
 
 # Source global definitions
 if [ -f "/etc/bashrc" ]; then
@@ -23,10 +21,26 @@ elif [ -f "/etc/bash.bashrc" ]; then
   . "/etc/bash.bashrc"
 fi
 
-[ -n "$DEBUG" ] && set -o errexit
-[ -n "$DEBUG_TRACE" ] && set -o xtrace
+# NOTE(JEFF): User specific bash resource files, such as BASH completion 
+# scripts and additional environment settings.
 
-[ -r "$HOME/.bash/lib" ] && . "$HOME/.bash/lib"
+# IMPORTANT(JEFF): The files iterated within have two requirements before
+# they can be sourced:
+#
+# a) file exists and is readable;
+# b) file has been marked executable;
+# c) profit! $$$
+#
+# dotfiles.git:$ stow -Rv bash
+rc= # init for following loop
+if [ -d "$HOME/.bash/bashrc.d" ]; then
+  for rc in $HOME/.bash/bashrc.d/*; do
+    if [[ -r "$rc" ]] && [[ -x "$rc" ]]; then
+      . "$rc"
+    fi
+  done
+fi
+unset rc # de-init from for loop
 
 # NOTE(JEFF): Control bit for how to handle deprecated bits herein.
 # The default shall always be NOT TO and thus must be set explicitly
@@ -198,26 +212,6 @@ case "$(uname -s)" in
   ;;
 esac
 
-# NOTE(JEFF): User specific bash resource files, such as BASH completion 
-# scripts and additional environment settings.
-
-# IMPORTANT(JEFF): The files iterated within have two requirements before
-# they can be sourced:
-#
-# a) file exists and is readable;
-# b) file has been marked executable;
-# c) profit! $$$
-#
-# dotfiles.git:$ stow -Rv bash
-rc= # init for following loop
-if [ -d "$HOME/.bash/bashrc.d" ]; then
-  for rc in $HOME/.bash/bashrc.d/*; do
-    if [[ -r "$rc" ]] && [[ -x "$rc" ]]; then
-      . "$rc"
-    fi
-  done
-fi
-unset rc # de-init from for loop
 
 #TMPDIR="$HOME/tmp"
 VIM_BIN="$(command -v vim)"
