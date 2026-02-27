@@ -16,6 +16,9 @@ Wants=network-online.target
 
 [Service]
 Type=simple
+#Environment="HOME="
+#EnvironmentFile=/etc/default/proxmox-backup/pbs1.password
 EnvironmentFile=%h/.config/proxmox-backup/pbs1.password
+#ExecStart=$HOME/local/bin/backup-host.sh home
 ExecStart=%h/local/bin/backup-host.sh home
 Restart=no
