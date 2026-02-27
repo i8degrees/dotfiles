@@ -68,3 +68,15 @@ keybind = shift+end=scroll_to_bottom
 
 keybind = cmd+f=toggle_fullscreen
 #keybind = ctrl+shift+f=toggle_fullscreen
+
+# MacOS
+keybind = cmd+g=toggle_tab_overview
+# alt
+#keybind = ctrl+shift+g=toggle_tab_overview
+
+# !! The following key bindings only work with native tabs & windows (no tmux)
+# MacOS
+#keybind = cmd+s=write_scrollback_file:paste
+# Alt
+#keybind = ctrl+shift+s=write_scrollback_file:paste
+
