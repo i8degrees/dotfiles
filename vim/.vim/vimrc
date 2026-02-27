@@ -165,6 +165,7 @@ else
 endif
 
 syntax on
+" ?? Add human-plus-plus theme for vim via tinty-vim
 colorscheme vice
 "colorscheme lightline-vice
 filetype plugin on
@@ -241,8 +242,9 @@ if has("autocmd")
   " Also load indent files, to automatically do language-dependent indenting.
   filetype plugin indent on
   set ofu=syntaxcomplete#Complete
-  set path+=/path/to/your/rails-application/app/**
-  set path+=/path/to/your/rails-application/lib/**
+  " Ruby env
+  "set path+=/path/to/your/rails-application/app/**
+  "set path+=/path/to/your/rails-application/lib/**
   set suffixesadd=.rb
   set includeexpr+=substitute(v:fname,'s$','','g')
 
@@ -265,6 +267,8 @@ if has("autocmd")
 
   augroup END
 
+  " Enforce four space tabs for python source files
+  autocmd FileType python setlocal expandtab tabstop=4 shiftwidth=4 softtabstop=4
 endif " has("autocmd")
 
 " highlighting tabs, trailing white space and non breaking spaces
@@ -281,18 +285,31 @@ endif
 
 " Enable italics support for comment syntax
 " screen-256color-italic
-if &term =~ 'italic' | elseif &term =~ 'iTerm.app'
-  highlight Comment cterm=italic
-endif
+"if &term =~ 'italic' | elseif &term =~ 'iTerm.app'
+  "highlight Comment cterm=italic
+"endif
 
-:nnoremap <leader>m :silent !open -a Marked.app '%'<cr>
+" It ought be safe to enable this by default; we may run into trouble on
+" M$ Windows, but we shall not worry about it until we have a chance to
+" experience it.
+highlight Comment cterm=italic
+
+" MacOS specific Markdown preview app
+if g:env =~ 'darwin'
+  " ?? Detect whether or not the end user has Marked or Marked 2 installed
+  :nnoremap <leader>m :silent !open -a Marked.app '%'<cr>
+endif
+" ?? Add similar third-party MD preview open when `mdless` is found
 
 " default location of ctags
+" ?? Verify where our ctags file is from the nomlib && TTcards projects
 set tags=.tags
 
-" Mac OS X aliases the unnamed register to the + register AKA X11 clipboard
-" SOURCE: http://vim.wikia.com/wiki/Accessing_the_system_clipboard
-"set clipboard=unnamedplus
+if g:env =~ 'darwin'
+  " Mac OS X aliases the unnamed register to the + register AKA X11 clipboard
+  " SOURCE: http://vim.wikia.com/wiki/Accessing_the_system_clipboard
+  set clipboard=unnamedplus
+endif
 
 " Highlight column 80
 if exists('+colorcolumn') "vim 7.3
