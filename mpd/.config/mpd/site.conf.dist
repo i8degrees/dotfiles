@@ -1,17 +1,26 @@
-# ~/.config/mpd/mpd.d/site.conf:jeff
+# ~/.config/mpd/conf.d/site.conf:jeff
 #
 #
 
 port  "6600"
-bind_to_address "0.0.0.0" # scorpio.home:6600
+bind_to_address "0.0.0.0"
 
 # IMPORTANT(jeff): Provisioning a local socket for MPD allows `mpc add` and
-# friends to work; MPD_HOST=666@/home/jeff/.config/mpd/socket
+# friends to work; MPD_HOST=/home/jeff/.config/mpd/socket
 bind_to_address "~/.config/mpd/socket"
 
-playlist_directory  "/var/mnt/music/playlists"
-music_directory "nfs://fs1-san.home/mnt/npool0/smb/Music"
-#playlist_directory "nfs://fs1-san.home/mnt/npool0/smb/Music/playlists"
+playlist_directory  "/mnt/fs1/Music/playlists"
+# NOTE(JEFF): retrans=0 mimics the soft mount behavior
+#
+# SEE ALSO
+# 1. [libnfs: README](https://github.com/sahlberg/libnfs/blob/master/README)
+# 2. [libnfs: error definitions](https://github.com/sahlberg/libnfs/blob/master/nfs4/nfs4.x)
+#
+# FIXME(JEFF): Using NFS4 results in NFS4ERR_EXPIRED and related file locking
+# error messages when we try to use it.
+#
+#music_directory "nfs://fs1.home/mnt/npool0/smb/Music?version=4&debug=9&uid=500&gid=29"
+music_directory "nfs://fs1.home/mnt/npool0/smb/Music?version=3&debug=9&uid=500&gid=29"
 
 log_file  "~/.config/mpd/log"
 pid_file  "~/.config/mpd/pid"
@@ -54,3 +63,7 @@ default_permissions "read,add,control,admin"
 # Administrative
 #password  "180576934@read,add,control,admin"
 #password  "666@read,add,control"
+
+# default, verbose, secure
+#log_level  "verbose"
+log_level "default"
