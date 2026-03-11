@@ -4,8 +4,15 @@
 "               jeff (additions)
 "--------------------------------------------------------------
 
+" TODO(JEFF): Disable arrow keys in normal mode to enforce using h, j, k, l
+" vnoremap <Up> <Nop>
+" noremap <Down> <Nop>
+" noremap <Left> <Nop>
+" noremap <Right> <Nop>
+
 " TODO(JEFF): Relocate our functions into its own file
-" TODO(JEFF): Install the following plugins once we have plugins 
+
+" TODO(JEFF): Install the following plugins once we have plugins
 " set back up!
 "
 " 1. [Use the same clipboard across vim & tmux](https://github.com/roxma/vim-tmux-clipboard.git)
@@ -189,8 +196,8 @@ set textwidth=0                                                         " stops 
 set lbr                                                                 " wrap text
 set number                                                              " show line numbers
 set backup                                                              " turn on auto backups
-"set pastetoggle=<f5>                                                    " toggle paste mode
-set clipboard+=unnamed                                                  " yank and copy to xclipboard
+"set pastetoggle=<f5>                                                   " toggle paste mode
+set clipboard+=unnamedplus                                              " yank and copy to xclipboard
 set wildmenu                                                            " enhanced tab-completion
 set suffixesadd=.rb                                                     " comma seperated list of file suffixes
 set includeexpr+=substitute(v:fname,'s$','','g')                        " expression substitution
@@ -305,11 +312,11 @@ endif
 " ?? Verify where our ctags file is from the nomlib && TTcards projects
 set tags=.tags
 
-if g:env =~ 'darwin'
+"if g:env =~ 'darwin'
   " Mac OS X aliases the unnamed register to the + register AKA X11 clipboard
   " SOURCE: http://vim.wikia.com/wiki/Accessing_the_system_clipboard
-  set clipboard=unnamedplus
-endif
+  "set clipboard=unnamedplus
+"endif
 
 " Highlight column 80
 if exists('+colorcolumn') "vim 7.3
@@ -339,4 +346,11 @@ nmap <C-T> : TagbarToggle<CR>
 " nmap <C-p> :FufTaggedFile<CR>
 
 " vim-ctrlp key bindings
+
+" copy and paste; requires +clipboard, +wayland_clipboard, xxx vim build
+vnoremap <C-y> "+y      " yank -> copy
+vnoremap <C-x> "+d      " cut
+nnoremap <C-p> "+gP     " paste
+vnoremap <C-v> "+gP     " paste
+inoremap <C-v> <C-r>+   " paste
 
