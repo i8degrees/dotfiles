@@ -197,6 +197,7 @@ set lbr                                                                 " wrap t
 set number                                                              " show line numbers
 set backup                                                              " turn on auto backups
 "set pastetoggle=<f5>                                                   " toggle paste mode
+"set clipboard+=unnamed                                                 " yank and copy to xclipboard
 set clipboard+=unnamedplus                                              " yank and copy to xclipboard
 set wildmenu                                                            " enhanced tab-completion
 set suffixesadd=.rb                                                     " comma seperated list of file suffixes
@@ -353,4 +354,9 @@ vnoremap <C-x> "+d      " cut
 nnoremap <C-p> "+gP     " paste
 vnoremap <C-v> "+gP     " paste
 inoremap <C-v> <C-r>+   " paste
+"vim.keymap.set({ 'n', 'v' }, '<leader>p', '"+p', { desc = 'Paste from System' })
+"vim.keymap.set({ 'n', 'v' }, '<leader>y', '"+y', { desc = 'Yank to System' })
+"vnoremap <D-C> "*y
+vnoremap <C-C> "+y
+vnoremap <C-V> "+p
 

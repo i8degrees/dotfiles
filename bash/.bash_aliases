@@ -344,6 +344,14 @@ case "$(uname -s)" in
       fi
     elif [ "$XDG_SESSION_TYPE" = "tty" ]; then
       true # ?? TODO(JEFF): Implement terminal copy & paste
+    # NOTE(JEFF): Requires the termux-api package via Termux, i.e.: 
+    # `pkg install termux-api`; additionally, the Termux API 
+    # Android application must be installed.
+    elif [[ "$OSTYPE" =~ 'linux-android' ]]; then
+      exists_exe termux-clipboard-get &>/dev/null &&
+        alias pbcopy='termux-clipboard-get'
+      exists_exe termux-clipboard-put &>/dev/null &&
+        alias pbpaste='termux-clipboard-put'
     fi
   ;;
   *) # Catch-all block for undetected OS env
