@@ -37,10 +37,13 @@
   excludesfile = ~/.config/git/gitignore_global
   # ignorednore file perms (chmods)
   # Source: http://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-mode-changes-chmod
+  # Git shall detect executable bit AKA `+x`
   filemode = true
   autocrlf = input
   #safecrlf = true
   askPass = ksshaskpass
+  # >> Ensures that every repository has group writable AKA `g+w` perms setup
+  sharedRepository = group
 [log]
   # TODO(JEFF): Match the output of `bin/date`; this requires
   # a custom date format as the iso8601 preset is missing the
