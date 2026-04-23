@@ -348,10 +348,10 @@ case "$(uname -s)" in
     # `pkg install termux-api`; additionally, the Termux API 
     # Android application must be installed.
     elif [[ "$OSTYPE" =~ 'linux-android' ]]; then
+      exists_exe termux-clipboard-set &>/dev/null &&
+        alias pbcopy='termux-clipboard-set'
       exists_exe termux-clipboard-get &>/dev/null &&
-        alias pbcopy='termux-clipboard-get'
-      exists_exe termux-clipboard-put &>/dev/null &&
-        alias pbpaste='termux-clipboard-put'
+        alias pbpaste='termux-clipboard-get'
     fi
   ;;
   *) # Catch-all block for undetected OS env
