@@ -96,3 +96,7 @@
   path = nvim/neovim-config
   url = https://github.com/ntk148v/neovim-config.git
   branch = master
+[submodule "mpv/.config/mpv/scripts/mpv-image-viewer"]
+	path = mpv/.config/mpv/scripts/mpv-image-viewer
+	url = https://github.com/occivink/mpv-image-viewer.git
+	branch = master

@@ -11,11 +11,15 @@
 [default]
 use-filedir-conf
 include=~/.config/mpv/profiles.conf
-script=~/.config/mpv/scripts/bookmarker.git/bookmarker.lua
+script=~/.config/mpv/scripts/mpv-bookmarker/bookmarker-menu.lua
 script=~/.config/mpv/scripts/fs.lua
-script=~/.config/mpv/scripts/image.lua
+#script=~/.config/mpv/scripts/image.lua
 script=~/.config/mpv/scripts/mpv-cut/main.lua
 script=~/.config/mpv/scripts/osd.lua
+script=./scripts/mpv-image-viewer/scripts/image-positioning.lua
+
+# >> Required for image positioning when using mouse buttons!
+window-dragging=no
 # sws-scaler="spline"
 # vf="scale"
 volume=50
