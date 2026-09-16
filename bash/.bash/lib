@@ -21,6 +21,19 @@ append_path() {
 
   #export PATH
 }
+# Append "$1" to $PKG_CONFIG_PATH when given path does not exist
+append_pkgconfig_path() {
+  case ":$PKG_CONFIG_PATH:" in
+    *:"$1":*)
+      # NOTE(JEFF): The path (pre)-exists; do nothing...
+      true
+    ;;
+    *)
+      PKG_CONFIG_PATH="${PKG_CONFIG_PATH:+$PKG_CONFIG_PATH:}$1"
+    ;;
+  esac
+  export PKG_CONFIG_PATH
+}
 
 # Check for the existence of a path that is executable.
 #
