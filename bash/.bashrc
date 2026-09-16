@@ -256,23 +256,24 @@ else
 fi
 
 #export USECOLOR=true
-if [ -x "$(command -v toe)" ] && [ -x "$(command -v grep)" ]; then
+if [ ! -x "$(command -v toe)" ] && [ ! -x "$(command -v grep)" ]; then
   # FIXME(jeff): Figure out how we can support this termcap on any machine --
   # this will resolve the "unknown terminal" issue we have.
+  [ ! "$(toe|grep -q -i -e 'screen-256color')" ] && TERM="screen-256color"
   [ ! "$(toe|grep -q -i -e 'screen-256color-italic')" ] && TERM="screen-256color-italic"
   [ ! "$(toe|grep -q -i -e 'xterm')" ] && TERM="xterm"
   [ ! "$(toe|grep -q -i -e 'xterm-256color')" ] && TERM="xterm-256color"
   [ ! "$(toe|grep -q -i -e 'tmux')" ] && TERM="tmux"
   [ ! "$(toe|grep -q -i -e 'tmux-256color')" ] && TERM="tmux-256color"
-else
-  TERM="linux"
+#else
+  #TERM="linux"
 fi
 
 # FIXME(JEFF): This is intended as a short-term fix for an issue we haven't
 # the time to look into just yet!
 #[ -n "$TERM" ] && export TERM
 #TERM=screen-256color-italic; export TERM
-TERM=xterm-256color; export TERM
+#TERM=xterm-256color; export TERM
 
 # TODO(JEFF): On Darwin, we should pass `iTerm2.app` to this function!
 TERMINAL=$(choose_terminal); export TERMINAL

@@ -21,6 +21,14 @@
 # 1. systemctl status --user app-com.mitchellh.ghostty.service
 #
 
+# This will be used to set the `TERM` environment variable.
+# HACK: We set this with an `xterm` prefix because vim uses that to enable key
+# protocols (specifically this will enable `modifyOtherKeys`), among other
+# features. An option exists in vim to modify this: `:set
+# keyprotocol=ghostty:kitty`, however a bug in the implementation prevents it
+# from working properly. https://github.com/vim/vim/pull/13211 fixes this.
+term = tmux-256color
+
 auto-update = off
 
 #background = 282c34
@@ -78,6 +86,9 @@ mouse-shift-capture = true
 # if this is the case, our only other option may be to write a
 # startup script that can aid in at least restoring our tab
 # order, position and title.
+#
+# Once this feature is available, we should see the session data at
+#   $XDG_STATE_HOME/ghostty/window-state-v1.json
 window-save-state = "always"
 quit-after-last-window-closed = true
 # TODO(JEFF): Switch back over if window state is not restored properly...
