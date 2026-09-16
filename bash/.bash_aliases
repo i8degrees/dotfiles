@@ -515,3 +515,6 @@ else
   true
 fi
 
+if exists_exe glow &>/dev/null; then
+  alias glow='glow -p $@'
+fi
