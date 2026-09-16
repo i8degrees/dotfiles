@@ -59,6 +59,7 @@
 [push]
   default = simple
   autoSetupRemote = true
+	recurseSubmodules = check
 [merge]
   stat = true
 [diff]
@@ -167,3 +168,15 @@
 #[includeIf ...where configuration exists at said path...]
   #path = "/mnt/fs1/Projects/fielding/human-plus-plus.git/dist/git/colors.gitconfig"
 
+[commit]
+	gpgSign = yes
+[gui]
+	pruneduringfetch = true
+[smartgit "submodule"]
+	fetchalways = false
+	update = true
+	initializenew = true
+[gc]
+	autoDetach = false
+[include]
+	path = .smartgit-ai
