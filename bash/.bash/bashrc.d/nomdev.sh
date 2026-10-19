@@ -13,13 +13,11 @@ NOM_COLOR=1; export NOM_COLOR
 # openal-soft debugging
 #ALSOFT_LOGLEVEL=3
 
-# vcpkg env
-VCPKG_ROOT="${HOME}/.local/share/vcpkg"
-
-PRIVATE_VCPKG_ROOT="${HOME}/Projects/vcpkg-ports.git"
-[ -d "${PRIVATE_VCPKG_ROOT}" ] && export PRIVATE_VCPKG_ROOT
-
-if exists_exe vcpkg &>/dev/null; then
-  source "${VCPKG_ROOT}/scripts/vcpkg_completion.bash"
+# vcpkg env bits related to nomdev
+if [ -d "${HOME}/.local/share/vcpkg" ]; then
+  if [ -x "${HOME}/.local/share/vcpkg/vcpkg" ]; then
+    PRIVATE_VCPKG_ROOT="${HOME}/Projects/vcpkg-ports.git"
+    [ -d "${PRIVATE_VCPKG_ROOT}" ] && export PRIVATE_VCPKG_ROOT
+  fi
 fi
 
