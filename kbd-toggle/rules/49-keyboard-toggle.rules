@@ -1,0 +1,25 @@
+`use strict`
+
+// 49-keyboard-toggle.rules:jeff
+// See also
+// 1. /usr/share/polkit-1/actions/org.local.keyboard.policy
+
+// >> Add the users you wish to be allowed to toggle the built-in 
+// >> keyboard of the host.
+// >>
+// >> The host's login authentication system is governed by PAM
+// >> on Linux.
+
+const userWhiteList = [
+  `jeff`,
+  `admin`
+];
+
+polkit.addRule(function(action, subject) {
+  forEach.userWhiteList((username) => {
+    if(action.id == `org.local.keyboard.toggle` && subject.user == username) {
+      return polkit.Result.YES;
+    }
+  });
+});
+

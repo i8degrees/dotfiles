@@ -1,0 +1,12 @@
+# .stow-local-ignore:jeff
+#
+#
+
+INSTALL.stow
+README.stow
+TODO.stow
+rules/*
+actions/*
+install.sh
+uninstall.sh
+

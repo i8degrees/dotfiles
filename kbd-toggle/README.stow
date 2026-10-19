@@ -1,0 +1,38 @@
+---
+author: Jeffrey Carpenter
+created: 2026-10-18
+modified:
+tags:
+  - kbd-toggle
+  - dotfiles
+  - toggle keyboard
+  - laptop
+
+---
+
+# kbd-toggle
+
+A handy script to provide a virtual toggle switch for powering on and off
+your laptop's built-in keyboard.
+
+## usage
+
+### install
+
+To install the tool,
+
+```shell
+cd kbd-toggle && ./install.sh
+```
+
+To reverse the tool installation,
+
+```shell
+cd kbd-toggle && ./uninstall.sh
+```
+
+### activation
+
+The end-user script is at `~/local/bin/toggle_keyboard.sh` and this can be
+paired with a keyboard shortcut to toggle the laptop's built-in keyboard.
+
