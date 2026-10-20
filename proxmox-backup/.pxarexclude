@@ -49,3 +49,5 @@ Xauthority
 steampath
 /home/test/**
 /home/test**
+*jeff/.local/share/docker/policy*
+*jeff/.local/share/docker/policy/tuf*
