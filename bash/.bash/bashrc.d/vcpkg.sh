@@ -11,6 +11,8 @@
 # vcpkg env
 if [ -d "${HOME}/.local/share/vcpkg" ]; then
   if [ -x "${HOME}/.local/share/vcpkg/vcpkg" ]; then
+    echo "INFO: Initializing vcpkg env..."
+    echo
     VCPKG_ROOT="${HOME}/.local/share/vcpkg"
     PATH=${VCPKG_ROOT}:$PATH
 
