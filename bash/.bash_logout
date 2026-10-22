@@ -1,26 +1,26 @@
 #!/bin/sh
 #
-# 2011-09/09:jeffrey.carp@gmail.com
-#
-#		~/.bash_logout
+# ~/.bash_logout: executed by bash(1) when login shell exits.
 #
 
-reset_terminal() {
-  clear
-  reset
+console_clear() {
+  # when leaving the console clear the screen to increase privacy
+  if [ "$SHLVL" = 1 ]; then
+    [ -x /usr/bin/clear_console ] && /usr/bin/clear_console -q
+  fi
 }
 
 case "$(uname -s)" in
   Darwin)
-    reset_terminal
+    console_clear
   ;;
   Linux)
     # restore ALSA sfx levels
     #alsactl -f "$HOME/.asound.state store 0"
     #alsactl -f "$HOME/.asound.state store 1"
-    reset_terminal
+    console_clear
   ;;
   *)
-    reset_terminal
+    console_clear
   ;;
 esac
