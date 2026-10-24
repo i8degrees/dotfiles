@@ -1,0 +1,1 @@
+MPD_OPTS="--no-daemon $HOME/.config/mpd/mpd.conf"
