@@ -173,7 +173,8 @@ endif
 
 syntax on
 " ?? Add human-plus-plus theme for vim via tinty-vim
-colorscheme vice
+colorscheme humanplusplus
+"colorscheme vice
 "colorscheme lightline-vice
 filetype plugin on
 
