@@ -2,4 +2,4 @@
 # data.json && friends
 .config/Bitwarden\ CLI/data**
 .config/Bitwarden\ CLI/*.json**
-
+fullchain.pem*
