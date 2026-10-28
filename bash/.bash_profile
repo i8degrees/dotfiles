@@ -91,7 +91,7 @@ CAROOT="${HOME}/pki"; export CAROOT
 if [ -n "$(command -v bw)" ]; then
   #BW_CLIENTSECRET="wIIQ2ao9wjtTHPivjualyZ7cf8eIrL"
   #BW_CLIENTID="user.030c456e-d385-4987-b831-acf0004f7a71"
-  BW_SESSION="qQ4CTs9rkCT25u/rOd6JJwIlWMSWGuxufmrV6uWrv7BctlTzqILuZU6LoAXsV7yhTuKph5/QOeJWLFe79p2REg=="; export BW_SESSION
+  BW_SESSION="n2Rm7V6594VbrCVHTyde7w6mJv81mSzImxnRCWYvFxiWW2ABvp2Az9bsWIXEijE3zZCNIpyrrRLxk8uBsXWhlQ=="; export BW_SESSION
 
   # setup the necessary certificates for our custom vault location;
   # upon stowing the "bitwarden-cli" package from our dotfiles.git repo,
