@@ -172,10 +172,20 @@ else
 endif
 
 syntax on
-" ?? Add human-plus-plus theme for vim via tinty-vim
-colorscheme humanplusplus
-"colorscheme vice
-"colorscheme lightline-vice
+
+" Load the color scheme according to preference
+if filereadable(expand('~/.vim/colors/humanplusplus.vim'))
+  colorscheme humanplusplus
+elseif filereadable(expand('~/.vim/colors/vice.vim'))
+  colorscheme vice
+elseif filereadable(expand('~/.vim/colors/lightline-vice.vim'))
+  colorscheme lightline-vice
+elseif filereadable(expand('~/.vim/colors/fielding.vim'))
+  colorscheme fielding
+elseif filereadable(expand('~/.vim/colors/bacon.vim'))
+  colorscheme bacon
+endif
+
 filetype plugin on
 
 " NOTE(JEFF): Improve handling of file modifications while outside of
