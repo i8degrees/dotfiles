@@ -35,9 +35,16 @@ usage_text() {
   fi
 }
 
+# init_new_session(session: str, cwd: path)
+#
+# param session - a string describing the session to
+# create; must be a valid session name according to
+# tmux rules (see man 5 tmux)
+#
+# param cwd - an optional filesystem path
 init_new_session() {
   session="$1"
-  cwd="$1"
+  cwd="$2"
 
   echo "INFO: Failed to find an existing session..."
   echo "INFO: Creating a new tmux session ${session}..."
@@ -50,18 +57,17 @@ init_new_session() {
   fi
 }
 
+# init_existing_session(session: str)
+#
+# params session - a string describing an existing
+# tmux session to attach to.
 init_existing_session() {
   session="$1"
-  cwd="$2"
 
   echo "INFO: Found an existing tmux session..."
   echo "INFO: Attaching the existing tmux session..."
 
-  if [ "${cwd}" != "" ] && [ -e "${cwd}" ]; then
-    tmux attach -t "${session}" -c "${cwd}"
-  else
-    tmux attach -t "${session}"
-  fi
+  tmux attach -t "${session}"
 }
 
 _tmux_init() {
