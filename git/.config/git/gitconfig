@@ -28,7 +28,7 @@
   username = i8degrees
   name = Jeffrey Carpenter
   email = 1329364+i8degrees@users.noreply.github.com
-  signingkey = /home/jeff/.ssh/id_ed25519-github.pub
+  signingkey = ~/.ssh/id_ed25519-github.pub
   #signingkey = 82FA9C6FB8C8CDD9
 [gpg]
   format = ssh
