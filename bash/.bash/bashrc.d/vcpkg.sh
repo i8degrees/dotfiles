@@ -13,7 +13,7 @@ if [ -d "${HOME}/.local/share/vcpkg" ]; then
   if [ -x "${HOME}/.local/share/vcpkg/vcpkg" ]; then
     echo "INFO: Initializing vcpkg env..."
     echo
-    VCPKG_ROOT="${HOME}/.local/share/vcpkg"
+    VCPKG_ROOT="${HOME}/.local/share/vcpkg"; export VCPKG_ROOT
     PATH=${VCPKG_ROOT}:$PATH
 
     source "${VCPKG_ROOT}/scripts/vcpkg_completion.bash"
