@@ -100,3 +100,7 @@
 	path = mpv/.config/mpv/scripts/mpv-image-viewer
 	url = https://github.com/occivink/mpv-image-viewer.git
 	branch = master
+[submodule "vendor/human-plus-plus.git"]
+	path = vendor/human-plus-plus.git
+  url = git@github.com:fielding/human-plus-plus.git
+  branch = main
