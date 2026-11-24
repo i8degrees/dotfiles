@@ -21,3 +21,9 @@ if [ -d "${HOME}/.local/share/vcpkg" ]; then
   fi
 fi
 
+NOM=$HOME/Projects/nomlib.git
+[ -d "$NOM" ] && export NOM
+
+TT=$HOME/Projects/ttcards.git
+[ -d "$TT" ] && export TT
+
