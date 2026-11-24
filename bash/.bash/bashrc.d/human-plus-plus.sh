@@ -23,6 +23,11 @@ for dir in "${HUMAN_PP_DIRS[@]}"; do
   fi
 done
 
+# The repository root where the human-plus-plus git submodule lives -- this
+# is critical for our tmux theme configuration at ~/.tmux/themes.tmux to
+# succeed
+HPP_DIR="${ok_dirs[0]}"; export HPP_DIR
+
 # FIXME(JEFF): Check for the number of elements before
 # blindly assuming!
 # Use the first directory path that is found OK to
